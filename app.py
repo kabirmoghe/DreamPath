@@ -8,14 +8,12 @@ from semantic_course_search import *
 from college_info_retrieval import produce_courses_for_major
 from dotenv import load_dotenv
 
-
-
 # Load environment variables
 load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
-# Update CORS configuration to explicitly allow your React app's origin
+# Only allow requests from frontend
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
 
 @app.route('/api/majors', methods=['GET'])
@@ -54,26 +52,8 @@ def get_recommendations():
 
     # Clean major name for file paths
     major_cleaned = major.replace(" ", "_").lower()
-    
     print(f"Major cleaned: {major}")
 
-    # # Check if we have cached course data
-    # if os.path.exists(f'{major_cleaned}_courses_with_descriptions.csv'):
-    #     courses_with_descriptions_df = pd.read_csv(f'{major_cleaned}_courses_with_descriptions.csv')
-    #     courses_with_descriptions = courses_with_descriptions_df.to_dict('records')
-    # else:
-    #     # If not, fetch course data
-    #     courses_with_descriptions = produce_courses_for_major(major)
-    #     courses_with_descriptions_df = pd.DataFrame(courses_with_descriptions)
-    #     courses_with_descriptions_df.to_csv(f'{major_cleaned}_courses_with_descriptions.csv', index=False)
-    
-    # # Create or load vector store
-    # if not os.path.exists(f'vectorstores/{major_cleaned}'):
-    #     os.makedirs('vectorstores', exist_ok=True)
-    #     vectorstore = create_vector_store(courses_with_descriptions=courses_with_descriptions, vectorstore_name=major_cleaned)
-    # else:
-    #     vectorstore = FAISS.load_local(f"vectorstores/{major_cleaned}", OpenAIEmbeddings(api_key=openai_api_key), allow_dangerous_deserialization=True)
-    
     # Prepare student parameters
     student_parameters = {
         'college_interests': college_interests,
@@ -81,16 +61,7 @@ def get_recommendations():
         'long_term_goal': long_term_goal
     }
     
-    # # Get course recommendations
-    # course_recommendation_details = get_courses_across_student_parameters(student_parameters, vectorstore)
-    
-    # # Sort recommendations by total count
-    # sorted_recommendations = sorted(
-    #     course_recommendation_details.items(), 
-    #     key=lambda x: x[1]['total_count'], 
-    #     reverse=True
-    # )
-
+    # Get course recommendations
     major_course_recs, other_course_recs, all_unique_courses, all_course_to_department_map = get_courses_for_student_parameters(major, student_parameters)
     scored_major_course_recs, scored_other_course_recs = score_recommended_courses(major_course_recs, other_course_recs, all_unique_courses)
 
