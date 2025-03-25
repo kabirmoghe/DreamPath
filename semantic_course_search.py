@@ -16,6 +16,16 @@ load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
 def create_vector_store(courses_with_descriptions, vectorstore_name):
+    """
+    Creates vector store for set of courses associated with a department.
+
+    Args:
+        courses_with_descriptions (list[dict]): List of dictionaries, each containing course information.
+        vectorstore_name (str): Name of the vector store.
+
+    Returns:
+        FAISS: Vector store for the courses.
+    """
     # Create embeddings for the course descriptions
     docs = [
         Document(page_content=course['description'],
@@ -34,6 +44,15 @@ def create_vector_store(courses_with_descriptions, vectorstore_name):
     return vectorstore  # Return the created vectorstore
 
 def load_vector_store(vectorstore_name_raw):
+    """
+    Loads vector store for set of courses associated with a department. Either loads from cache or creates new vector store.
+
+    Args:
+        vectorstore_name_raw (str): Name of the department.
+
+    Returns:
+        FAISS: Vector store for the courses.
+    """
     vectorstore_name = vectorstore_name_raw.replace(" ", "_").lower()
 
      # Check if we have cached course data
@@ -61,6 +80,17 @@ def load_vector_store(vectorstore_name_raw):
     return vectorstore
 
 def semantic_search(vectorstore, query, k=5):
+    """
+    Performs semantic search on a vector store for courses associated with a department.
+
+    Args:
+        vectorstore (FAISS): Vector store to search.
+        query (str): Query to search for.
+        k (int): Number of results to return.
+
+    Returns:
+        list[str]: List of course codes.
+    """
     # Perform a semantic search
     results = vectorstore.similarity_search(query, k=k)
 
@@ -72,6 +102,18 @@ def semantic_search(vectorstore, query, k=5):
     return course_codes
 
 def parse_topics_from_student_response(prompt, major, parameter, parameter_response):
+    """
+    Parses topics from student response for a given parameter in initial form.
+
+    Args:
+        prompt (PromptTemplate): Prompt template to use.
+        major (str): Student's major.
+        parameter (str): Parameter currently being parsed.
+        parameter_response (str): Response to supply to prompt.
+
+    Returns:
+        list[str]: List of topics.
+    """
     llm = ChatOpenAI(temperature=0, model="gpt-4o")
 
     chain = prompt | llm
@@ -81,6 +123,16 @@ def parse_topics_from_student_response(prompt, major, parameter, parameter_respo
     return topics
 
 def get_departments_for_topic(topic, score_cutoff=80):
+    """
+    Gets departments for a given topic.
+
+    Args:
+        topic (str): Topic to search for.
+        score_cutoff (int): Score cutoff for fuzzy matching.
+
+    Returns:
+        list[str]: List of departments.
+    """
     llm = ChatOpenAI(temperature=0, model="gpt-4o")
 
     prompt = PromptTemplate(
@@ -109,6 +161,16 @@ def get_departments_for_topic(topic, score_cutoff=80):
     return departments
 
 def get_courses_for_parameter_search_areas(search_areas, vectorstore):
+    """
+    Gets courses for a given set of search areas/topics.
+
+    Args:
+        search_areas (list[str]): List of search areas/topics.
+        vectorstore (FAISS): Vector store to search.
+
+    Returns:
+        Counter: Counter of courses for each search area.
+    """
     courses_for_search_areas = Counter()
 
     for area in search_areas:
@@ -118,6 +180,17 @@ def get_courses_for_parameter_search_areas(search_areas, vectorstore):
     return courses_for_search_areas
 
 def get_courses_for_parameter(major, parameter, parameter_response):
+    """
+    Gets courses for a given parameter (college interests, post-graduation goal, long term career goal).
+
+    Args:
+        major (str): Student's major.
+        parameter (str): Parameter currently being parsed.
+        parameter_response (str): Response to supply to prompt.
+
+    Returns:
+        Counter: Counter of courses for each search area.
+    """
     if parameter == 'college_interests':
         prompt_template = PARSE_TOPICS_FOR_STUDENT_INTERESTS_PROMPT
     elif parameter == 'post_grad_goal':
@@ -184,6 +257,16 @@ def get_courses_for_parameter(major, parameter, parameter_response):
     return major_courses_for_parameter, other_courses_for_parameter, course_to_department_map
 
 def get_courses_for_student_parameters(major, student_parameter_data):
+    """
+    Gets courses across all parameters for a given student.
+
+    Args:
+        major (str): Student's major.
+        student_parameter_data (dict): Dictionary of student parameters.
+
+    Returns:
+        tuple: Tuple containing major course counts, other course counts, all unique courses, and course to parent department map.
+    """
     major_parameter_course_counts = {}
     other_parameter_course_counts = {}
     all_unique_courses = set()
@@ -207,6 +290,17 @@ def get_courses_for_student_parameters(major, student_parameter_data):
     return major_parameter_course_counts, other_parameter_course_counts, all_unique_courses, all_course_to_department_map
 
 def score_recommended_courses(major_parameter_course_counts, other_parameter_course_counts, all_unique_courses):
+    """
+    Scores courses across all parameters for a given student.
+
+    Args:
+        major_parameter_course_counts (dict): Dictionary of major course counts.
+        other_parameter_course_counts (dict): Dictionary of other course counts.
+        all_unique_courses (set): Set of all unique courses.
+
+    Returns:
+        tuple: Tuple containing major course recommendation details and other course recommendation details.
+    """
     print(f'Producing course recommendation details...')
     major_course_recommendation_details = {}
     other_course_recommendation_details = {}
@@ -240,134 +334,17 @@ def score_recommended_courses(major_parameter_course_counts, other_parameter_cou
     return major_course_recommendation_details, other_course_recommendation_details
 
 def rank_recommended_courses(course_recommendation_details):
+    """
+    Ranks courses across all parameters for a given student.
+
+    Args:
+        course_recommendation_details (dict): Dictionary of course recommendation details.
+
+    Returns:
+        list[tuple]: List of tuples containing course code and recommendation details.
+    """
     ranked_courses = sorted(course_recommendation_details.items(), key=lambda x: x[1]['total_count'], reverse=True)
     return ranked_courses
 
-def get_skills_for_post_grad_goal(post_grad_goal_text):
-    llm = ChatOpenAI(temperature=0, model="gpt-4o")
-
-    prompt = PromptTemplate(
-        input_variables=["post_grad_goal"],
-        template="""
-
-    Context:
-    A student has expressed interest in the following after graduating: 
-    
-    "{post_grad_goal}". 
-    --
-    Task:
-
-    What are 5 specific technical or academic topics they should study in college? 
-    These can include tools, concepts, or technologies that directly support their goal.
-    Return only a comma-separated list of the topics.
-    """
-    )
-
-    # Replace LLMChain with RunnableSequence (prompt | llm)
-    chain = prompt | llm
-    response = chain.invoke({"post_grad_goal": post_grad_goal_text})
-    
-    # Extract content from the response object
-    response_text = response.content if hasattr(response, 'content') else str(response)
-    topics = [t.strip() for t in response_text.split(",")]
-
-    return topics
-
-def get_skills_for_long_term_goal(long_term_goal_text):
-    llm = ChatOpenAI(temperature=0, model="gpt-4o")
-
-    prompt = PromptTemplate(
-        input_variables=["long_term_goal"],
-        template="""
-
-    Context:
-    A student has expressed the following interest in the following long-term career aspirations:
-    
-    "{long_term_goal}". 
-    --
-    Task:
-
-    What are 5 specific technical or academic topics they should study in college? 
-    These can include tools, concepts, or technologies that directly support their aspirations, including more abstract areas that may support leadership, policy-making, research, etc.
-    Return only a comma-separated list of the topics.
-    """
-    )
-
-    chain = prompt | llm
-    response = chain.invoke({"long_term_goal": long_term_goal_text})
-    response_text = response.content if hasattr(response, 'content') else str(response)
-    topics = [t.strip() for t in response_text.split(",")]
-    return topics
-
-def get_courses_across_student_parameters(student_parameters, vectorstore):
-    parameter_course_counts = {}
-    all_unique_courses = set()
-
-    # Get recommended courses (and counts) for each parameter (e.g. college interests, post-grad goal, etc.)
-    for parameter, parameter_search_areas in student_parameters.items():
-        print(f"\nGetting courses for {parameter}...")
-        if parameter == 'college_interests':
-            courses_for_parameter_areas = get_courses_for_parameter_search_areas(parameter_search_areas, vectorstore)
-        elif parameter == 'post_grad_goal':
-            skills = get_skills_for_post_grad_goal(student_parameters['post_grad_goal'])
-            print(f"--> Skills for post-grad goal: {skills}")
-
-            courses_for_parameter_areas = get_courses_for_parameter_search_areas(skills, vectorstore)
-        elif parameter == 'long_term_goal':
-            skills = get_skills_for_long_term_goal(student_parameters['long_term_goal'])
-            print(f"--> Skills for long-term aspirations: {skills}")
-
-            courses_for_parameter_areas = get_courses_for_parameter_search_areas(skills, vectorstore)
-        else:
-            raise ValueError(f"Invalid parameter: {parameter}")
-
-        parameter_course_counts[parameter] = courses_for_parameter_areas
-        all_unique_courses.update(courses_for_parameter_areas)
-
-    # Get all unique courses and their counts (by parameter, total)
-    print(f'Producing course recommendation details...')
-    course_recommendation_details = {}
-    for course_code in all_unique_courses:
-        total_count = 0
-
-        for parameter in parameter_course_counts:
-            if parameter=='long_term_goal':
-                total_count += parameter_course_counts[parameter][course_code] * 0.5
-            else:
-                total_count += parameter_course_counts[parameter][course_code]
-        
-        course_recommendation_details[course_code] = {
-            'total_count': total_count,
-            'parameter_counts': {parameter: parameter_course_counts[parameter][course_code] for parameter in parameter_course_counts}
-        }
-
-    return course_recommendation_details
-
 if __name__ == "__main__":
-
-    # example_major = 'Computer Science'
-
-    # example_student_parameters = {
-    #     'college_interests': 'cybersecurity, cloud computing, artificial intelligence and security',
-    #     'post_grad_goal': 'data scientist and machine learning engineer',
-    #     'long_term_goal': 'Lead the development of ethical, large-scale AI systems that enhance global cybersecurity infrastructure and advocate for responsible AI use in government or corporate policy.'
-    # }
-
-    # major_course_recs, other_course_recs, all_unique_courses, course_to_department_map = get_courses_for_student_parameters(example_major, example_student_parameters)
-    # scored_major_course_recs, scored_other_course_recs = score_recommended_courses(major_course_recs, other_course_recs, all_unique_courses)
-
-    # ranked_major_course_recs = rank_recommended_courses(scored_major_course_recs)
-    # ranked_other_course_recs = rank_recommended_courses(scored_other_course_recs)
-
-    # print('--------------------------------')
-    # print(ranked_major_course_recs)
-    # print(ranked_other_course_recs)
-    # print(course_to_department_map)
-
-    # testing fuzzy matching with Studio Art
-    llm_output_dept = "'Studio Art'"
-    known_departments = pd.read_csv("data/dartmouth_majors.csv")["Major"].tolist()
-    match, score, _ = process.extractOne(
-        llm_output_dept, known_departments, scorer=fuzz.token_sort_ratio
-    )
-    print(f'Top match: {match}; score: {score}')
+    pass
