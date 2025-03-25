@@ -37,8 +37,8 @@ def load_vector_store(vectorstore_name_raw):
     vectorstore_name = vectorstore_name_raw.replace(" ", "_").lower()
 
      # Check if we have cached course data
-    if os.path.exists(f'{vectorstore_name}_courses_with_descriptions.csv'):
-        courses_with_descriptions_df = pd.read_csv(f'{vectorstore_name}_courses_with_descriptions.csv')
+    if os.path.exists(f'data/{vectorstore_name}_courses_with_descriptions.csv'):
+        courses_with_descriptions_df = pd.read_csv(f'data/{vectorstore_name}_courses_with_descriptions.csv')
         courses_with_descriptions = courses_with_descriptions_df.to_dict('records')
     else:
         # If not, fetch course data
@@ -46,7 +46,7 @@ def load_vector_store(vectorstore_name_raw):
 
         if courses_with_descriptions:
             courses_with_descriptions_df = pd.DataFrame(courses_with_descriptions)
-            courses_with_descriptions_df.to_csv(f'{vectorstore_name}_courses_with_descriptions.csv', index=False)
+            courses_with_descriptions_df.to_csv(f'data/{vectorstore_name}_courses_with_descriptions.csv', index=False)
         else:
             print(f"No courses found for {vectorstore_name_raw}")
             return None
@@ -94,7 +94,7 @@ def get_departments_for_topic(topic, score_cutoff=80):
 
     # Processes departments from response
     raw_departments = [t.strip() for t in response_text.split(",")]
-    known_departments = pd.read_csv("dartmouth_majors.csv")["Major"].tolist()
+    known_departments = pd.read_csv("data/dartmouth_majors.csv")["Major"].tolist()
     departments = []
 
     for department in raw_departments:
@@ -366,7 +366,7 @@ if __name__ == "__main__":
 
     # testing fuzzy matching with Studio Art
     llm_output_dept = "'Studio Art'"
-    known_departments = pd.read_csv("dartmouth_majors.csv")["Major"].tolist()
+    known_departments = pd.read_csv("data/dartmouth_majors.csv")["Major"].tolist()
     match, score, _ = process.extractOne(
         llm_output_dept, known_departments, scorer=fuzz.token_sort_ratio
     )

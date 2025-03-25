@@ -338,7 +338,7 @@ def get_course_descriptions(courses_list):
     return courses_with_descriptions
 
 def produce_courses_for_major(major):
-    majors_df = pd.read_csv('dartmouth_majors.csv')
+    majors_df = pd.read_csv('data/dartmouth_majors.csv')
     undergraduate_links = get_undergraduate_links_by_major(majors_df, major)
 
     if undergraduate_links:

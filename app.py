@@ -99,7 +99,7 @@ def get_recommendations():
     
     # Format recommendations 
     major_recommendations = []
-    major_courses_with_descriptions_df = pd.read_csv(f'{major_cleaned}_courses_with_descriptions.csv')
+    major_courses_with_descriptions_df = pd.read_csv(f'data/{major_cleaned}_courses_with_descriptions.csv')
     for course_code, details in ranked_major_course_recs[:10]:
         course_info = major_courses_with_descriptions_df[major_courses_with_descriptions_df['course_code'] == course_code]
         if not course_info.empty:
@@ -131,7 +131,7 @@ def get_recommendations():
     other_recommendations = []
     for course_code, details in ranked_other_course_recs[:10]:
         department = all_course_to_department_map[course_code].replace(" ", "_").lower()
-        courses_with_descriptions_df = pd.read_csv(f'{department}_courses_with_descriptions.csv')
+        courses_with_descriptions_df = pd.read_csv(f'data/{department}_courses_with_descriptions.csv')
 
         course_info = courses_with_descriptions_df[courses_with_descriptions_df['course_code'] == course_code]
         if not course_info.empty:
