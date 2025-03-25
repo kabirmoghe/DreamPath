@@ -1,1 +1,7 @@
 .DS_Store
+Course Match Exploration.ipynb
+Linkedin Test.ipynb
+.env
+.ipynb_checkpoints
+__pycache__
+vectorstores/
