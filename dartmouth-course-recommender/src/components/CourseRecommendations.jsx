@@ -12,28 +12,18 @@ function CourseRecommendations({ recommendations }) {
   const complementaryRecommendations = recommendations.complementaryRecommendations || [];
   const coursePath = recommendations.coursePath || [];
   
-  // Handle tab changes with synchronized panel closing
+  // Handle tab changes
   const handleTabChange = (newTab) => {
-    if (activeTab === 'coursePath' && detailsPanelVisible) {
-      // First hide the panel
-      setDetailsPanelVisible(false);
-      
-      // Then change the tab after the panel transition completes
-      setTimeout(() => {
-        setActiveTab(newTab);
-        setExpandedCourse(null);
-      }, 300); // Match the CSS transition time
-    } else {
-      // If panel isn't visible, just change tabs immediately
-      setActiveTab(newTab);
-      setExpandedCourse(null);
-    }
+    setActiveTab(newTab);
+    setExpandedCourse(null);
+    setDetailsPanelVisible(false);
   };
   
   // Handle clicking outside the details panel to close it
   useEffect(() => {
     function handleClickOutside(event) {
-      if (detailsPanelRef.current && !detailsPanelRef.current.contains(event.target) && 
+      if (detailsPanelRef.current && 
+          !detailsPanelRef.current.contains(event.target) && 
           !event.target.closest('.view-details-btn')) {
         setDetailsPanelVisible(false);
       }
@@ -45,22 +35,12 @@ function CourseRecommendations({ recommendations }) {
     };
   }, [detailsPanelRef]);
 
-  // Toggle course details - different behavior based on active tab
+  // Toggle course details for major and complementary tabs
   const toggleCourse = (courseCode) => {
     if (activeTab === 'coursePath') {
-      // For course path tab, use the slide-out panel
-      if (expandedCourse === courseCode) {
-        setExpandedCourse(null);
-        setDetailsPanelVisible(false);
-      } else {
-        // If we're already showing a course and just switching to another
-        if (detailsPanelVisible) {
-          setExpandedCourse(courseCode);
-        } else {
-          setExpandedCourse(courseCode);
-          setDetailsPanelVisible(true);
-        }
-      }
+      // For course path tab, show the details panel
+      setExpandedCourse(courseCode);
+      setDetailsPanelVisible(true);
     } else {
       // For major and complementary tabs, just toggle the expanded state
       setExpandedCourse(expandedCourse === courseCode ? null : courseCode);
@@ -70,20 +50,15 @@ function CourseRecommendations({ recommendations }) {
   // Close button handler for the slide-out panel
   const handleClosePanel = () => {
     setDetailsPanelVisible(false);
-    setTimeout(() => {
-      if (!detailsPanelVisible) {
-        setExpandedCourse(null);
-      }
-    }, 300);
   };
 
   // Find the maximum score for scaling
   const allScores = [...majorRecommendations, ...complementaryRecommendations].map(course => course.totalScore);
   const maxScore = allScores.length > 0 ? Math.max(...allScores.filter(score => !isNaN(score))) : 1;
 
-  // Find course details across all recommendation types
+  // Find course details across all sources
   const findCourseDetails = (courseCode) => {
-    // Look through all terms in the course path
+    // First check in course path
     for (const term of coursePath) {
       for (const course of term) {
         if (typeof course === 'object' && course.courseCode === courseCode) {
@@ -92,15 +67,52 @@ function CourseRecommendations({ recommendations }) {
       }
     }
     
-    // If not found in course path, check major recommendations
-    const majorCourse = majorRecommendations.find(c => c.courseCode === courseCode);
-    if (majorCourse) return majorCourse;
+    // Check in major recommendations
+    const majorCourse = majorRecommendations.find(
+      course => course.courseCode === courseCode
+    );
     
-    // If not found in major, check complementary recommendations
-    const compCourse = complementaryRecommendations.find(c => c.courseCode === courseCode);
-    if (compCourse) return compCourse;
+    // Check in complementary recommendations
+    const complementaryCourse = complementaryRecommendations.find(
+      course => course.courseCode === courseCode
+    );
     
-    // If not found anywhere, return basic info
+    // If found in both, merge the details
+    if (majorCourse && complementaryCourse) {
+      return {
+        ...majorCourse,
+        ...complementaryCourse,
+        isMajor: true,
+        isComplementary: true,
+        majorTotalScore: majorCourse.totalScore,
+        complementaryTotalScore: complementaryCourse.totalScore,
+        majorParameterScores: majorCourse.parameterScores,
+        complementaryParameterScores: complementaryCourse.parameterScores
+      };
+    }
+    
+    // If found in only one, return that with appropriate flags
+    if (majorCourse) {
+      return {
+        ...majorCourse,
+        isMajor: true,
+        isComplementary: false,
+        majorTotalScore: majorCourse.totalScore,
+        majorParameterScores: majorCourse.parameterScores
+      };
+    }
+    
+    if (complementaryCourse) {
+      return {
+        ...complementaryCourse,
+        isMajor: false,
+        isComplementary: true,
+        complementaryTotalScore: complementaryCourse.totalScore,
+        complementaryParameterScores: complementaryCourse.parameterScores
+      };
+    }
+    
+    // If not found anywhere, return a basic object with the course code
     return { courseCode };
   };
 
@@ -168,11 +180,11 @@ function CourseRecommendations({ recommendations }) {
               
               <Card.Footer className="text-center">
                 <Button 
-                  variant="outline-primary" 
-                  size="sm" 
+                  variant={expandedCourse === course.courseCode ? "outline-secondary" : "outline-primary"} 
+                  size="sm"
                   onClick={() => toggleCourse(course.courseCode)}
                 >
-                  {expandedCourse === course.courseCode ? 'Show Less' : 'View More'}
+                  {expandedCourse === course.courseCode ? "Show Less" : "Show More"}
                 </Button>
               </Card.Footer>
             </Card>
@@ -241,12 +253,18 @@ function CourseRecommendations({ recommendations }) {
               {course.courseTitle}
             </p>
           )}
+          
           <div className="text-center">
             <Button 
-              variant="outline-primary" 
+              variant="outline-secondary" 
               size="sm" 
-              onClick={() => toggleCourse(courseCode)}
               className="view-details-btn"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setExpandedCourse(courseCode);
+                setDetailsPanelVisible(true);
+              }}
             >
               Details
             </Button>
@@ -311,62 +329,137 @@ function CourseRecommendations({ recommendations }) {
   };
 
   const renderDetailsPanel = () => {
-    // Only render for course path tab and when a course is expanded
-    if (activeTab !== 'coursePath' || !detailsPanelVisible || !expandedCourse) return null;
+    // Only render when a course is expanded and panel is visible
+    if (!detailsPanelVisible || !expandedCourse) return null;
     
+    // Find the course details across all sources
     const courseDetails = findCourseDetails(expandedCourse);
+    if (!courseDetails) return null;
+    
+    // Extract scores for display - add null checks
+    const majorScore = courseDetails.majorTotalScore;
+    const complementaryScore = courseDetails.complementaryTotalScore;
+    
+    // Combine parameter scores for display - add null checks
+    const majorParameterScores = courseDetails.majorParameterScores || {};
+    const complementaryParameterScores = courseDetails.complementaryParameterScores || {};
     
     return (
-      <div 
-        className="course-details-panel visible"
-        ref={detailsPanelRef}
-      >
-        <div className="details-header">
-          <h4>Course Details</h4>
-          <CloseButton onClick={handleClosePanel} />
-        </div>
+      <>
+        <div 
+          className={`panel-overlay ${detailsPanelVisible ? 'visible' : ''}`}
+          onClick={handleClosePanel}
+        ></div>
         
-        <div className="details-content">
-          <h5>{courseDetails.courseCode}</h5>
-          <h6>{courseDetails.courseTitle}</h6>
+        <div 
+          className={`course-details-panel ${detailsPanelVisible ? 'visible' : ''}`}
+          ref={detailsPanelRef}
+        >
+          <div className="details-header d-flex justify-content-between align-items-center mb-3">
+            <h4 className="mb-0">Course Details</h4>
+            <CloseButton onClick={handleClosePanel} />
+          </div>
           
-          {courseDetails.description ? (
-            <div className="mb-3">
-              <p className="small">{courseDetails.description}</p>
+          <div className="details-content">
+            <h5>{courseDetails.courseCode}</h5>
+            <h6 className="mb-3">{courseDetails.courseTitle || "No title available"}</h6>
+            
+            {/* Course type badges */}
+            <div className="course-type-badges mb-3">
+              {courseDetails.isMajor && <Badge bg="primary" className="me-2">Major Course</Badge>}
+              {courseDetails.isComplementary && <Badge bg="info" className="me-2">Complementary Course</Badge>}
+              {courseDetails.isPrerequisite && <Badge bg="secondary">Prerequisite</Badge>}
             </div>
-          ) : (
-            <p className="text-muted small">No description available</p>
-          )}
-          
-          {courseDetails.prerequisites && (
-            <div className="mb-3">
-              <h6 className="fw-bold">Prerequisites</h6>
-              <p className="small">{courseDetails.prerequisites}</p>
-            </div>
-          )}
-          
-          {courseDetails.degreeReq && (
-            <div className="mb-3">
-              <h6 className="fw-bold">Degree Requirements</h6>
-              <p className="small">{courseDetails.degreeReq}</p>
-            </div>
-          )}
-          
-          {courseDetails.parameterScores && Object.keys(courseDetails.parameterScores).length > 0 && (
-            <>
-              <h6 className="fw-bold">Recommendation Factors</h6>
-              <div className="score-breakdown">
-                {Object.entries(courseDetails.parameterScores).map(([parameter, score]) => (
-                  <div key={parameter} className="d-flex justify-content-between small mb-1">
-                    <span>{formatParameterName(parameter)}</span>
-                    <span>{isNaN(score) || score <= 0 ? "--" : score.toFixed(1)}</span>
-                  </div>
-                ))}
+            
+            {/* Course scores section - with null checks */}
+            {(majorScore !== undefined || complementaryScore !== undefined) && (
+              <div className="course-scores mb-3">
+                <h6 className="fw-bold">Course Scores</h6>
+                <div className="score-breakdown">
+                  {majorScore !== undefined && (
+                    <div className="d-flex justify-content-between small mb-1">
+                      <span>Major Score</span>
+                      <span className="fw-bold">
+                        {majorScore === null || isNaN(majorScore) ? "--" : majorScore.toFixed(1)}
+                      </span>
+                    </div>
+                  )}
+                  {complementaryScore !== undefined && (
+                    <div className="d-flex justify-content-between small mb-1">
+                      <span>Complementary Score</span>
+                      <span className="fw-bold">
+                        {complementaryScore === null || isNaN(complementaryScore) ? "--" : complementaryScore.toFixed(1)}
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
-            </>
-          )}
+            )}
+            
+            {/* Course description */}
+            <div className="mb-3">
+              <h6 className="fw-bold">Description</h6>
+              {courseDetails.description ? (
+                <p className="small">{courseDetails.description}</p>
+              ) : (
+                <p className="text-muted small">No description available</p>
+              )}
+            </div>
+            
+            {/* Prerequisites */}
+            {courseDetails.prerequisites && (
+              <div className="mb-3">
+                <h6 className="fw-bold">Prerequisites</h6>
+                <p className="small">{courseDetails.prerequisites}</p>
+              </div>
+            )}
+            
+            {/* Degree Requirements */}
+            {courseDetails.degreeReq && (
+              <div className="mb-3">
+                <h6 className="fw-bold">Degree Requirements</h6>
+                <p className="small">{courseDetails.degreeReq}</p>
+              </div>
+            )}
+            
+            {/* Major Recommendation Factors - with null checks */}
+            {courseDetails.isMajor && majorParameterScores && 
+             Object.entries(majorParameterScores).some(([_, score]) => score !== null && !isNaN(score) && score > 0) && (
+              <div className="mb-3">
+                <h6 className="fw-bold">Major Recommendation Factors</h6>
+                <div className="score-breakdown">
+                  {Object.entries(majorParameterScores)
+                    .filter(([_, score]) => score !== null && !isNaN(score) && score > 0)
+                    .map(([parameter, score]) => (
+                      <div key={`major-${parameter}`} className="d-flex justify-content-between small mb-1">
+                        <span>{formatParameterName(parameter)}</span>
+                        <span>{score.toFixed(1)}</span>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            )}
+            
+            {/* Complementary Recommendation Factors - with null checks */}
+            {courseDetails.isComplementary && complementaryParameterScores && 
+             Object.entries(complementaryParameterScores).some(([_, score]) => score !== null && !isNaN(score) && score > 0) && (
+              <div className="mb-3">
+                <h6 className="fw-bold">Complementary Recommendation Factors</h6>
+                <div className="score-breakdown">
+                  {Object.entries(complementaryParameterScores)
+                    .filter(([_, score]) => score !== null && !isNaN(score) && score > 0)
+                    .map(([parameter, score]) => (
+                      <div key={`complementary-${parameter}`} className="d-flex justify-content-between small mb-1">
+                        <span>{formatParameterName(parameter)}</span>
+                        <span>{score.toFixed(1)}</span>
+                      </div>
+                    ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      </>
     );
   };
 

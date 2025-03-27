@@ -139,7 +139,7 @@ function StudentForm({ majors, onSubmit }) {
       case 5:
         return (
           <>
-            <h3 className="mb-4 text-center">Your <span className="dream-text">DreamPath</span> Summary</h3>
+            <h3 className="mb-4 text-center">Summary</h3>
             <div className="summary-box p-4 mb-4 bg-light rounded">
               <p><strong>Major:</strong> {formData.major}</p>
               <p><strong>Interests:</strong> {formData.collegeInterests}</p>
@@ -197,7 +197,7 @@ function StudentForm({ majors, onSubmit }) {
                 type="submit"
                 className="ms-auto"
               >
-                Find My Courses
+                Build DreamPath
               </Button>
             )}
           </div>

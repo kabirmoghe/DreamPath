@@ -195,9 +195,9 @@ body {
   justify-content: center;
   height: 400px;
   padding: 2rem;
-  background-color: white;
+  background-color: transparent;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(74, 123, 222, 0.1);
+  box-shadow: none;
 }
 
 .spinner-container {
@@ -663,7 +663,7 @@ h6.fw-bold {
   transform: scale(1.2);
 }
 
-/* Course Details Panel */
+/* Course Details Panel - Updated styling */
 .recommendations-container {
   position: relative;
   min-height: 500px;
@@ -677,7 +677,7 @@ h6.fw-bold {
   height: 100vh;
   background-color: white;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+  z-index: 1001; /* Higher than overlay */
   transition: right 0.3s ease;
   padding: 1.5rem;
   overflow-y: auto;
@@ -691,74 +691,6 @@ h6.fw-bold {
   right: 0;
 }
 
-.details-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.75rem;
-  border-bottom: 1px solid #eee;
-}
-
-.details-header h4 {
-  margin: 0;
-  color: var(--dream-purple);
-}
-
-.details-content {
-  flex: 1;
-  overflow-y: auto;
-}
-
-.details-content h5 {
-  color: var(--dartmouth-green);
-  margin-bottom: 0.5rem;
-}
-
-.details-content h6 {
-  margin-bottom: 1rem;
-  font-weight: 400;
-  color: #555;
-}
-
-/* Make all description text in the panel consistent */
-.details-content p {
-  font-size: 0.875rem;
-  color: #333;
-  line-height: 1.5;
-}
-
-/* Make all "small" text consistent */
-.details-content .small {
-  font-size: 0.875rem;
-  color: #555;
-  line-height: 1.4;
-}
-
-/* Consistent styling for section headers in the panel */
-.details-content .fw-bold {
-  color: #444;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Score breakdown styling */
-.score-breakdown {
-  background-color: #f8f9fa;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  margin-top: 0.5rem;
-}
-
-.score-breakdown > div {
-  padding: 0.25rem 0;
-  border-bottom: 1px dotted #e0e0e0;
-}
-
-.score-breakdown > div:last-child {
-  border-bottom: none;
-}
-
 /* Overlay when panel is open */
 .panel-overlay {
   position: fixed;
@@ -767,7 +699,7 @@ h6.fw-bold {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.3);
-  z-index: 999;
+  z-index: 1000;
   display: none;
 }
 
@@ -797,5 +729,31 @@ h6.fw-bold {
   padding: 0.5rem 0.75rem;
   display: flex;
   align-items: center;
+}
+
+/* Styling for course scores */
+.course-scores-compact {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.score-badge {
+  font-size: 0.65rem;
+  padding: 0.2em 0.5em;
+}
+
+/* Styling for the total score in the details panel */
+.total-score {
+  border-top: 1px solid #ddd;
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
+  font-weight: 500;
+}
+
+/* Course type badges in details panel */
+.course-type-badges .badge {
+  font-size: 0.75rem;
+  padding: 0.35em 0.65em;
 }
 

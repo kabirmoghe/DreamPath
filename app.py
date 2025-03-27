@@ -20,21 +20,8 @@ CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
 @app.route('/api/majors', methods=['GET'])
 def get_majors():
     # Return list of available majors
-    available_majors = [
-        "African and African American Studies", 
-        "Biological Sciences", 
-        "Biophysical Chemistry",
-        "Cognitive Science",
-        "Computer Science",
-        "Economics",
-        "Engineering Sciences",
-        "English",
-        "Government",
-        "Mathematics",
-        "Philosophy",
-        "Psychology",
-        "Studio Art"
-    ]
+    available_majors = pd.read_csv('data/dartmouth_majors.csv')['Major'].tolist()
+    
     print(f"Available majors: {available_majors}")
     return jsonify(available_majors)
 
@@ -102,15 +89,15 @@ def get_recommendations():
     for term in course_codes_path:
         term_courses = []
         for course_code in term:
-            print(course_code)
 
             formatted_course = None
 
             # Check if course is a major recommendation and/or a prerequisite
             if course_code in all_major_course_codes:
                 if course_code in major_recommendations_map:
-                    formatted_course = major_recommendations_map[course_code]
-
+                    reference_major_course = major_recommendations_map[course_code]
+                    formatted_course = reference_major_course.copy()
+                    
                     # Rename scores
                     formatted_course['majorTotalScore'] = formatted_course['totalScore']
                     formatted_course['majorParameterScores'] = formatted_course['parameterScores']
@@ -124,17 +111,20 @@ def get_recommendations():
             # Check if course is a complementary recommendation and/or a prerequisite
             if course_code in all_complementary_course_codes:
                 if course_code in complementary_recommendations_map:
-                    temp_course = complementary_recommendations_map[course_code]
+                    reference_complementary_course = complementary_recommendations_map[course_code]
+                    temp_course = reference_complementary_course.copy()
 
                     # In case complementary course is not a major recommendation, format it
-                    if formatted_course is None:
+                    if formatted_course is not None:
+                        formatted_course['complementaryTotalScore'] = temp_course['totalScore']
+                        formatted_course['complementaryParameterScores'] = temp_course['parameterScores']
+                    else:
                         formatted_course = temp_course
+                        formatted_course['complementaryTotalScore'] = formatted_course['totalScore']
+                        formatted_course['complementaryParameterScores'] = formatted_course['parameterScores']
 
-                    # Rename scores
-                    formatted_course['complementaryTotalScore'] = formatted_course['totalScore']
-                    formatted_course['complementaryParameterScores'] = formatted_course['parameterScores']
-                    del formatted_course['totalScore']
-                    del formatted_course['parameterScores']
+                        del formatted_course['totalScore']
+                        del formatted_course['parameterScores']
                 else:
                     # In case complementary course is not a major recommendation, format it
                     if formatted_course is None:
@@ -147,6 +137,11 @@ def get_recommendations():
             formatted_course.setdefault('isMajor', False)
             formatted_course.setdefault('isComplementary', False)
             formatted_course.setdefault('isPrerequisite', False)
+            formatted_course.setdefault('majorTotalScore', None)
+            formatted_course.setdefault('majorParameterScores', None)
+            formatted_course.setdefault('complementaryTotalScore', None)
+            formatted_course.setdefault('complementaryParameterScores', None)
+            
             term_courses.append(formatted_course)
         
         course_path.append(term_courses)
