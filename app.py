@@ -6,7 +6,7 @@ from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
 from semantic_course_search import *
 from college_info_retrieval import produce_courses_for_major
-from build_major_course_path import build_course_path
+from build_major_course_path import retrieve_enhanced_course_from_course_code, build_course_path
 from dotenv import load_dotenv
 
 # Load environment variables
@@ -69,79 +69,133 @@ def get_recommendations():
     ranked_major_course_recs = rank_recommended_courses(scored_major_course_recs)
     ranked_other_course_recs = rank_recommended_courses(scored_other_course_recs)
     
-    # Format recommendations
+    # Format major course recommendations
     major_courses_with_descriptions_df = pd.read_csv(f'data/{major_cleaned}_courses_with_descriptions.csv')
-    major_recommendations = format_course_recommendations(
-        ranked_major_course_recs[:10], 
-        major_courses_with_descriptions_df
-    )
+    major_recommendations = []
+    major_recommendations_map = {}
+    for course_code, details in ranked_major_course_recs[:10]:
+        formatted_course = format_course(course_code, major_courses_with_descriptions_df, details)
+        if formatted_course:
+            major_recommendations.append(formatted_course)
+            major_recommendations_map[course_code] = formatted_course
 
-    # Get complementary recommendations
+    # Format complementary course recommendations
     complementary_recommendations = []
+    complementary_recommendations_map = {}
     for course_code, details in ranked_other_course_recs[:10]:
-        department = all_course_to_department_map[course_code].replace(" ", "_").lower()
-        courses_with_descriptions_df = pd.read_csv(f'data/{department}_courses_with_descriptions.csv')
-        formatted_course = format_single_course(course_code, details, courses_with_descriptions_df)
-
+        formatted_course = format_course(course_code, courses_df=None, details=details)
         if formatted_course:
             complementary_recommendations.append(formatted_course)
+            complementary_recommendations_map[course_code] = formatted_course
 
     # Get course codes
     major_courses = [course['courseCode'] for course in major_recommendations]
     complementary_courses = [course['courseCode'] for course in complementary_recommendations]
     
-    print(f"Major courses: {major_courses}")
-    print(f"Complementary courses: {complementary_courses}")
+    print(f"Produced major courses --> {major_courses}")
+    print(f"Produced complementary courses --> {complementary_courses}")
 
     # Build course path and enhance course codes with catalog information
-    course_codes_path = build_course_path(major_courses, complementary_courses)
-    print(course_codes_path)
+    course_codes_path, all_major_course_codes, all_complementary_course_codes = build_course_path(major_courses, complementary_courses)
+    course_path = []
+
+    for term in course_codes_path:
+        term_courses = []
+        for course_code in term:
+            print(course_code)
+
+            formatted_course = None
+
+            # Check if course is a major recommendation and/or a prerequisite
+            if course_code in all_major_course_codes:
+                if course_code in major_recommendations_map:
+                    formatted_course = major_recommendations_map[course_code]
+
+                    # Rename scores
+                    formatted_course['majorTotalScore'] = formatted_course['totalScore']
+                    formatted_course['majorParameterScores'] = formatted_course['parameterScores']
+                    del formatted_course['totalScore']
+                    del formatted_course['parameterScores']
+                else:
+                    formatted_course = format_course(course_code)
+                    formatted_course['isPrerequisite'] = True
+                formatted_course['isMajor'] = True
+                
+            # Check if course is a complementary recommendation and/or a prerequisite
+            if course_code in all_complementary_course_codes:
+                if course_code in complementary_recommendations_map:
+                    temp_course = complementary_recommendations_map[course_code]
+
+                    # In case complementary course is not a major recommendation, format it
+                    if formatted_course is None:
+                        formatted_course = temp_course
+
+                    # Rename scores
+                    formatted_course['complementaryTotalScore'] = formatted_course['totalScore']
+                    formatted_course['complementaryParameterScores'] = formatted_course['parameterScores']
+                    del formatted_course['totalScore']
+                    del formatted_course['parameterScores']
+                else:
+                    # In case complementary course is not a major recommendation, format it
+                    if formatted_course is None:
+                        formatted_course = format_course(course_code)
+
+                    formatted_course['isPrerequisite'] = True
+                formatted_course['isComplementary'] = True
+
+            # Backup defaults
+            formatted_course.setdefault('isMajor', False)
+            formatted_course.setdefault('isComplementary', False)
+            formatted_course.setdefault('isPrerequisite', False)
+            term_courses.append(formatted_course)
+        
+        course_path.append(term_courses)
 
     return jsonify({
         'majorRecommendations': major_recommendations,
         'complementaryRecommendations': complementary_recommendations,
-        'coursePath': course_codes_path
+        'coursePath': course_path
     })
 
 # Course formatting
-def format_course_recommendations(ranked_courses, courses_df):
-    """Format a list of ranked courses using the provided dataframe."""
-    recommendations = []
-    for course_code, details in ranked_courses:
-        formatted_course = format_single_course(course_code, details, courses_df)
-        if formatted_course:
-            recommendations.append(formatted_course)
-    return recommendations
+def format_course(course_code, courses_df=None, details=None):
+    # If department courses dataframe is provided, use it; otherwise produce course information
+    if courses_df is None:
+        course_info = retrieve_enhanced_course_from_course_code(course_code)
+    else:
+        course_info = courses_df[courses_df['course_code'] == course_code].iloc[0]
 
-def format_single_course(course_code, details, courses_df):
-    """Format a single course for the API response."""
-    course_info = courses_df[courses_df['course_code'] == course_code]
     if course_info.empty:
         return None
-        
-    # Convert NaN values to None (which becomes null in JSON)
+    
+    # Format course depending on if recommended or prereq on DreamPath
     prerequisites = None
-    if 'prerequisites' in course_info and not pd.isna(course_info['prerequisites'].iloc[0]):
-        prerequisites = course_info['prerequisites'].iloc[0]
-        
+    if 'prerequisites' in course_info and not pd.isna(course_info['prerequisites']):
+        prerequisites = course_info['prerequisites']
+
     degree_req = None
-    if 'degree_req' in course_info and not pd.isna(course_info['degree_req'].iloc[0]):
-        degree_req = course_info['degree_req'].iloc[0]
-    
-    # Clean up parameter scores to replace NaN with None
-    parameter_scores = {}
-    for param, score in details['parameter_counts'].items():
-        parameter_scores[param] = None if pd.isna(score) else score
-    
-    return {
+    if 'degree_req' in course_info and not pd.isna(course_info['degree_req']):
+        degree_req = course_info['degree_req']
+
+    formatted_course_info = {
         'courseCode': course_code,
-        'courseTitle': ' '.join(course_info['course_title'].iloc[0].split()[2:]),
-        'description': course_info['description'].iloc[0],
+        'courseTitle': ' '.join(course_info['course_title'].split()[2:]),
+        'description': course_info['description'],
         'prerequisites': prerequisites,
-        'degreeReq': degree_req,
-        'totalScore': None if pd.isna(details['total_count']) else details['total_count'],
-        'parameterScores': parameter_scores
+        'degreeReq': degree_req
     }
+
+    # If scoring details are provided (i.e. recommended course), include in response
+    if details is not None:
+        parameter_scores = {}
+
+        for param, score in details['parameter_counts'].items():
+            parameter_scores[param] = None if pd.isna(score) else score
+
+        formatted_course_info['totalScore'] = None if pd.isna(details['total_count']) else details['total_count']
+        formatted_course_info['parameterScores'] = parameter_scores
+
+    return formatted_course_info
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)

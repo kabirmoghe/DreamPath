@@ -522,7 +522,7 @@ h6.fw-bold {
 }
 
 .course-path-card {
-  border-left: 4px solid #0d6efd;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .no-courses {
@@ -551,5 +551,251 @@ h6.fw-bold {
 
 .course-path-scroll::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
+}
+
+/* Course card styling - keep default Bootstrap border */
+.course-path-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Override Bootstrap's border classes to only affect the left border */
+.course-path-card.border-primary {
+  border: 1px solid rgba(0,0,0,.125) !important; /* Reset to default Bootstrap border */
+  border-left: 4px solid var(--dream-purple) !important; /* Keep only left border colored */
+}
+
+.course-path-card.border-info {
+  border: 1px solid rgba(0,0,0,.125) !important; /* Reset to default Bootstrap border */
+  border-left: 4px solid var(--dream-teal) !important; /* Changed to dream-teal */
+}
+
+.course-path-card.border-secondary {
+  border: 1px solid rgba(0,0,0,.125) !important; /* Reset to default Bootstrap border */
+  border-left: 4px solid #6c757d !important; /* Keep only left border colored */
+}
+
+/* Add hover effect */
+.course-path-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,.1);
+}
+
+/* Legend for course types */
+.course-path-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  margin-right: 0.5rem;
+  border-radius: 2px;
+}
+
+/* Updated legend colors to match course cards exactly */
+.legend-color.major {
+  background-color: var(--dream-purple);
+}
+
+.legend-color.complementary {
+  background-color: var(--dream-teal); /* Changed to dream-teal */
+}
+
+.legend-color.prerequisite {
+  background-color: #6c757d;
+}
+
+/* Navigation controls for many terms */
+.course-path-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.term-nav-button {
+  background-color: white;
+  border: 1px solid rgba(0, 105, 62, 0.3);
+  color: var(--dartmouth-green);
+  border-radius: 4px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.term-nav-button:hover {
+  background-color: rgba(0, 105, 62, 0.05);
+}
+
+.term-nav-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Term indicator */
+.term-indicator {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.term-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ddd;
+  margin: 0 4px;
+  cursor: pointer;
+}
+
+.term-dot.active {
+  background-color: var(--dartmouth-green);
+  transform: scale(1.2);
+}
+
+/* Course Details Panel */
+.recommendations-container {
+  position: relative;
+  min-height: 500px;
+}
+
+.course-details-panel {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 380px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: right 0.3s ease;
+  padding: 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+}
+
+.course-details-panel.visible {
+  right: 0;
+}
+
+.details-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #eee;
+}
+
+.details-header h4 {
+  margin: 0;
+  color: var(--dream-purple);
+}
+
+.details-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.details-content h5 {
+  color: var(--dartmouth-green);
+  margin-bottom: 0.5rem;
+}
+
+.details-content h6 {
+  margin-bottom: 1rem;
+  font-weight: 400;
+  color: #555;
+}
+
+/* Make all description text in the panel consistent */
+.details-content p {
+  font-size: 0.875rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Make all "small" text consistent */
+.details-content .small {
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Consistent styling for section headers in the panel */
+.details-content .fw-bold {
+  color: #444;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Score breakdown styling */
+.score-breakdown {
+  background-color: #f8f9fa;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.score-breakdown > div {
+  padding: 0.25rem 0;
+  border-bottom: 1px dotted #e0e0e0;
+}
+
+.score-breakdown > div:last-child {
+  border-bottom: none;
+}
+
+/* Overlay when panel is open */
+.panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  display: none;
+}
+
+.panel-overlay.visible {
+  display: block;
+}
+
+/* Make the view details button more subtle */
+.view-details-btn {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Badge styling for course cards */
+.course-path-card .card-header .badge {
+  font-size: 0.7rem;
+  padding: 0.25em 0.6em;
+}
+
+/* Add a little spacing between badges when they appear together */
+.course-path-card .card-header .badge + .badge {
+  margin-left: 0.25rem;
+}
+
+/* Make the badges fit better in the header */
+.course-path-card .card-header {
+  padding: 0.5rem 0.75rem;
+  display: flex;
+  align-items: center;
 }
 

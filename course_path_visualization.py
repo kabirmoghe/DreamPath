@@ -18,7 +18,7 @@ def visualize_graph(flattened_graph_edges, all_courses):
     G.add_nodes_from(all_courses)
 
     plt.figure(figsize=(10, 6))
-    pos = nx.spring_layout(G, seed=42)
+    pos = nx.spring_layout(G, seed=1)
     nx.draw(
         G, pos,
         with_labels=True,

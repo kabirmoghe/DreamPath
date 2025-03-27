@@ -10,7 +10,6 @@ function LoadingSpinner({ message }) {
     "Finding courses that match your interests",
     "Discovering classes aligned with your post-grad goals",
     "Selecting courses for your career aspirations",
-    "Building your DreamPath"
   ];
 
   // Dynamic ellipsis effect
