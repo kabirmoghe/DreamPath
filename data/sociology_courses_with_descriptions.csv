@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 SOCY,SOCY 1 Introductory Sociology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-1,SOCY1,"How have societies developed historically? How are societies stratified by wealth, income, and other resources, and how has this changed over time? How are the opportunities and outlooks of individuals shaped by the communities in which they reside? How do individuals come together to produce meaningful social change? This course provides answers to these and other questions in ways that provide a broad introduction to the field of sociology. We will cover how sociologists and other social scientists conduct research, key theories and concepts that guide the discipline, and explore a wide range of topics including race, class, gender, inequality, collective action and social change. In many cases, the topics covered in the course reflect the research interests and course offerings of faculty in the sociology department at Dartmouth. As a result, the course also provides an introduction to some of the curriculum offered in the department. Open to all classes.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -424,7 +424,7 @@ SOCY,SOCY 1 Introductory Sociology,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 2 Social Problems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-2,SOCY2,"Daily news reports direct much of our attention to social problems such as crime, poverty, prejudice and political corruption. Yet rarely are such reports accompanied by a discussion of the systematic causes of these problems. More often we become witness to an endless stream of media coverage reporting seemingly isolated incidents. Seldom are we informed of the decision-making process by which some social problems become selected for coverage, while others are ignored. The purpose of this course is to subject the coverage of modern social problems to an in-depth, critical analysis. We will attempt to answer such questions as: ""how does a social problem become defined as such?"" and ""what are the causes or sources of various social problems?"" Open to all classes.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -850,7 +850,7 @@ SOCY,SOCY 2 Social Problems,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 7 First-Year Seminars in Sociology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-7,SOCY7,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1272,7 +1272,7 @@ SOCY,SOCY 7 First-Year Seminars in Sociology,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 10 Quantitative Analysis of Social Data,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-10,SOCY10,"This course provides an introduction to the methods and statistical techniques of quantitative analysis. The first part of the course deals with the methods of quantitative analysis (research design, conceptualization, operationalization, and measurement). The second part of the course introduces students to parametric and nonparametric statistics (frequency distributions, crosstabulations, measures of association, tests of significance, correlation, and bivariate regression). There is a strong emphasis in this course on applying the methods and techniques learned to actual social science data. No previous statistical or advanced mathematical training is assumed, but solid arithmetic and basic algebraic skills are necessary.Because of the large overlap in material covered, no student may receive credit for more than one of the coursesECON 10,ENVS 10,GOVT 10,MATH 10,PSYC 10,QSS 15, andSOCY 10, except by special petition to the Committee on Instruction.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1699,7 +1699,7 @@ SOCY,SOCY 10 Quantitative Analysis of Social Data,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 11 Research Methods,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-11,SOCY11,"This course is designed to provide students with the practical tools of doing social science research and the theoretical background for scientific inquiry into social issues. In the first part of the course we will discuss the research process itself, as well as conceptual issues in theory building and hypothesis testing. In the second part, students will devise and carry out group and individual research projects around a substantive topic. Each project will involve a variety of research techniques, the exact use and applicability of which will be the topic of class discussions. In addition, we will discuss ethical issues and the relevance of social science research for policy making and for advocacy.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2125,7 +2125,7 @@ SOCY,SOCY 11 Research Methods,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 15 Sociological Classics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-15,SOCY15,"This course introduces and criticizes the work of Karl Marx, Emile Durkheim, and Max Weber, three seminal writers whose ideas are still of enormous significance in shaping perspective and framing terms of argument among many major contemporary social and political thinkers. Among specific subjects to be covered are the following: class and class conflict; culture and ideology; forms and symbols of social solidarity; and questions of how shared ideals or divisive interests affect not just the study of human society, but the course of history itself.","SOCY 1orSOCY 2, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2553,7 +2553,7 @@ SOCY,SOCY 15 Sociological Classics,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['SOCY1']
 SOCY,SOCY 16 Constructing Social Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-16,SOCY16,"How are societies organized? This course examines how social scientists answer this question by exploring a variety of contemporary theoretical perspectives, including those that focus on how conflict, functional needs, individual self-interest, cognitive perceptions, culture or symbolic interpretations organize society. Students compare, contrast and evaluate these and other theories of social organization in light of empirical studies that have tried to explain the genesis and dynamics of groups, formal organizations, social classes, nation states and global systems.","SOCY 1orSOCY 2, or permission of the instructor",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2981,7 +2981,7 @@ SOCY,SOCY 16 Constructing Social Theory,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",['SOCY1']
 SOCY,SOCY 20 Population and Society,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-20,SOCY20,"The world’s population will more than double from 7 to 16 billion by 2100. In addition, some countries’ populations are booming whereas others face rapid decline. What does this mean for public policy, population health and aging, fertility and reproductive health, immigration and social inequality? To gain insight into these questions, social scientists study some of life’s most intimate moments – sex, illness and death, and moving from home to home. These components of population change (mortality, fertility, and migration) help us better understand the impact of population composition and change. In this class, we will first learn the basic tools that social scientists use to analyze broad population trends. We will then use these tools to gain insight into population patterns across the globe. At the end of the course, students will apply what they learned to the analysis of the population trends of a country of their choice, as well as compare and contrast population trends across different countries.",,Dist:INT or SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3407,7 +3407,7 @@ SOCY,SOCY 20 Population and Society,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 21 Political Sociology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-21,SOCY21,"Politics exists everywhere, when certain decisions affect two or more human beings. Immediately emerge political questions: who makes the decision, and how? Is it a result of dialogue and negotiations, or unilateral imposition of the most powerful? Who benefits? Who loses? Political Sociology studies processes of decision making and power relations at larger levels of society. In this Introductory course we will study basic questions of political processes, starting with the historical formation of States in Europe during centuries of Wars, their violent expansion overseas by colonialism and settler societies, and the emergence of nationalism and democracy. We will study democratic decision-making processes, theories of power elites, pluralism and class domination. How democratic processes represent classes, ethnic groups and race, and how civil society, social movements and trade unions organize and demand representation, at local and global levels. Finally, we will discuss how globalization impacts democratic processes.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3827,7 +3827,7 @@ SOCY,SOCY 21 Political Sociology,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 22 The Sociology of International Development,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-22,SOCY22,"This course will introduce students to the major sociological perspectives on economic and political development, with emphasis on developing countries. Among the views to be considered are modernization, which assumes that later developing countries will follow paths once traveled by today's advanced countries; and dependency and world system theories, which view the integration of less developed countries into the world market as problematic and, under certain conditions, even disadvantageous. We will test these theories by applying them to specific cases. A major part of the course will focus on the economic 'miracle' of East Asian countries, as well as cases that have not been so successful. Other important topics to be studied include the influence of states, markets, and multinational corporations in economic development; the relationship between different modes of development and income distribution; and political development and the prospects for democratization. Open to all classes.",,Dist:INT,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4249,7 +4249,7 @@ SOCY,SOCY 22 The Sociology of International Development,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 23 Social Movements,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-23,SOCY23,"Social movements are collective attempts to promote or resist social change, from the way people live their lives, to how governments govern, to how economic systems distribute rewards. This course examines why and when social movements come about, the organizations and strategies they adopt, and the circumstances in which they are most impactful. We explore these issues by researching individual political movements and engaging larger theoretical explanations for their development.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4675,7 +4675,7 @@ SOCY,SOCY 23 Social Movements,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 24 The Impact of Poverty on Education,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-24,SOCY24,"Rising income inequality is undermining the ability of public K-12 schools to meet a foundational goal: to provide children from impoverished areas the opportunity to succeed. This course focuses on the forces that have translated the growing income gap into a growing education gap. We will examine primary research from various fields that details how poverty affects developing children, families, neighborhoods, and schools in ways that go on to affect educational outcomes. We will also consider how interventions strategically targeted at these contexts can improve the educational success of children growing up in poverty.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5097,7 +5097,7 @@ SOCY,SOCY 24 The Impact of Poverty on Education,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 25 Democracy and Democratization in Developing Countries,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-25,SOCY25,"The road to democratization in most countries in recent years has been marked by large-scale social movements. This course will begin with an examination of various theories of democracy and democratization. It will specifically analyze the role of class, culture, ideology, and religion in the democratization process. Finally, we will apply the theories to the three cases of South Korea, Indonesia, and Iran, three countries with mixed successes.",,Dist:INT or SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5517,7 +5517,7 @@ SOCY,SOCY 25 Democracy and Democratization in Developing Countries,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,"SOCY 26 Capitalism, Prosperity and Crisis",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-26,SOCY26,"Capitalism in the last five centuries generated great wealth and prosperity in Western societies. In the last few decades, capitalism assumed a global character affecting social and economic life of the vast majority of the people in the world. Yet, capitalism has also been plagued by economic decline and failures, causing massive human suffering. This course will study the nature of capitalism, sources of prosperity and crisis, inequality in distribution of economic and political power.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5943,7 +5943,7 @@ SOCY,"SOCY 26 Capitalism, Prosperity and Crisis",https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 27 Organizations in Society,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-27,SOCY27,"Much of modern life takes place within a wide variety of complex, formal organizations, from multinational corporations, to churches, from social service agencies to volunteer organizations. In this course we will learn about the structure, internal processes, and environments of different forms of organization. Our focus is on sociological theories and empirical research, from a macrosociological perspective. Our objective will be to learn about how organizations work, as well as to gain an understanding of the impact of organizations on society and in our lives.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6369,7 +6369,7 @@ SOCY,SOCY 27 Organizations in Society,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 28 Health Care and Health Care Policy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-28,SOCY28,"This course examines the health care system in the United States, focusing on the roles and operations of health care institutions and providers. The objective throughout the course is to develop a comprehensive and critical perspective on current fields and issues in medical sociology. The course consists of five sections, progressing from macro-level to micro-level analyses of the delivery of health care, and returning to the macro-level to discuss recent policy changes and debates in the health care system.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6789,7 +6789,7 @@ SOCY,SOCY 28 Health Care and Health Care Policy,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 29 The Sociology of Work,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-29,SOCY29,"This course examines the sociological dimensions of work, occupations, and employment relations. Specific topics may include: the structure of work, historical and contemporary changes in the organizational context of work, ways in which work both creates and reflects social divisions, occupations and professions, occupational socialization and choice, and the intersection of work and family.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7209,7 +7209,7 @@ SOCY,SOCY 29 The Sociology of Work,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 30 Deviance and Social Control,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-30,SOCY30,"Students of society seem always to have been fascinated with explaining why some members deviate from commonly accepted rules. This course examines the major sociological explanations of deviance. We will explore the identification of certain behaviors as deviant, the process of becoming deviant, the management of a deviant identity, and the development of deviant subcultures. The course concludes with an examination of societal reactions to and the treatment of deviance and deviants. Examples of deviant and social control activities that may be considered include prostitution, religious cults, youth gangs, witchcraft, the handicapped, and asylums. Open to sophomores, juniors and seniors only.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7629,7 +7629,7 @@ SOCY,SOCY 30 Deviance and Social Control,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 31 Youth and Society,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-31,SOCY31,"This course explores central features of children’s preschool, preadolescent, adolescent, and college peer cultures.  We will discuss what it means to study youth from a sociological lens and research methods for doing so.  Specific topics may include: historical views of childhood; how gender, socioeconomic class, race, ethnicity, and sexuality shape youth’s experiences; what it means to be “popular”; identity development; extended adolescence; the role of culture (through games, books, television, etc.) in youth’s lives.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8055,7 +8055,7 @@ SOCY,SOCY 31 Youth and Society,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 32 The Social Meanings of Home,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-32,SOCY32,"This course is an exploration of the economic, cultural, social and political dynamics of ""home"" in contemporary U. S. society. The concept, ""home"" invariably invokes multiple and sometimes conflicting ideas-a physical dwelling, family, economic property, birthplace, nationality, environment, haven, etc. We speak of ""home sweet home,"" ""dream home,"" ""home is where the heart is,"" ""sweet home Alabama"" ""homeland,"" ""there's no place like home,"" and ""homies."" In the course, we will consider the home as a social context that profoundly shapes our personal and collective identities, gender roles and interpersonal relationships, class status and divisions, racial-ethnic memberships and conflicts, plus values and political ideals. The course will emphasize the homestead as economic property and the implications of its location, design, artifacts and domestic lifestyles for the cultivation of model subjects, consumers or citizens. Theoretical, empirical and interpretative materials in the course may touch on subjects as varied as housing and home ownership, shopping and hyperconsumption, food and kitchen culture, family values and the modeling of marriage and family life, the home improvement industry, and home and self makeovers on reality television.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8475,7 +8475,7 @@ SOCY,SOCY 32 The Social Meanings of Home,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 33 Self and Society,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-33,SOCY33,"Social Psychology is the study of the relationships between the individual and society. It is an interdisciplinary field to which the work of sociologists, psychologists, and occasionally scholars from other disciplines is relevant. This course introduces students to social psychology primarily, although not exclusively, from a sociological perspective. First, the course will acquaint students with the range of theoretical perspectives that have been used to study social psychology. Second, it will familiarize students with empirical research that has been done to examine these theories. Third, it will permit students to explore particular social psychological issues in greater depth both within and across particular perspectives within social psychology.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8895,7 +8895,7 @@ SOCY,SOCY 33 Self and Society,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 34 Health Disparities,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-34,SOCY34,"Social, economic, and political forces powerfully influence who gets sick, the types of diseases that affect them, the treatments that are available, and the outcomes of those treatments. In this course, we will study how discrimination, marriage, and social ties may contribute to gender, racial and ethnic, and socioeconomic health disparities. We will also examine the ways in which neighborhood and community context shape health and access to health care services.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9321,7 +9321,7 @@ SOCY,SOCY 34 Health Disparities,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 35 Sociology of Mental Health,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-35,SOCY35,"Poor mental health and mental illness are often viewed as biological flaws. Sociologists, however, argue that mental illness is socially constructed, and that population mental health is profoundly shaped by social conditions. In this course, we will explore sociological understandings of mental health and illness. We will focus on a range of topics, including: the social construction of mental illness, how social inequality contributes to mental health, and how society responds to the mentally ill.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9749,7 +9749,7 @@ SOCY,SOCY 35 Sociology of Mental Health,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 36 Sociology of Family,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-36,SOCY36,"The sociological study of the family involves our ability to take a step back to assess structures that pattern our personal experiences and how the private decisions that happen in families matter to society as a whole. We will examine how private affairs in family life interact with important public issues, particularly discussing intersections with gender, social class, race and ethnicity, marriage and cohabitation, divorce, remarriage and stepfamilies, childhood and adolescence, work, and social policy.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10175,7 +10175,7 @@ SOCY,SOCY 36 Sociology of Family,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 38 Status and Power in Social Interaction,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-38,SOCY38,"How do our interactions with others cause and result from inequalities in society? This course explores how status and power dynamics shape social life, using theories and research from sociological social psychology. We will learn how status beliefs emerge from social differences in resources and power, and how they perpetuate inequalities over time by shaping our interpretations of events and our behavior and emotions toward others. We will also consider how these inequalities can be overcome.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10595,7 +10595,7 @@ SOCY,SOCY 38 Status and Power in Social Interaction,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 41 Religion in a Global South Asia,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-41,SOCY41,"What are the social and political functions of religion? How does religion shape our everyday experiences and the way we make meaning of the world? What is the relationship between religion and structures of power? This course travels to South Asia to tackle these questions. South Asia is home to large populations of the world’s major religions as well as many local and syncretic religious traditions, making the region an illuminating site for investigating religion from a sociological perspective. The semester will begin with the theoretical interventions from classical social theorists like Marx, Weber and Durkheim. We will then move to critical perspectives on the social functions of religion, which will be based on empirical material and analysis that is rooted in the context and experience of post-colonial societies in South Asia. Students will have the opportunity to develop critical perspectives on different facets of religion and their intersections with structures of power, including imperialism, colonialism, class, gender, and race.",,Dist:SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11021,7 +11021,7 @@ SOCY,SOCY 41 Religion in a Global South Asia,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 42 Racism in Asian America,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-42,SOCY42,"This course first considers the migration histories and racial experiences of Asian American groups in comparison to other groups. By highlighting the contexts of global and transnational migration, this course identifies the many ways in which Asian American groups have been both excluded and differentially included in politics and racial discourse—whether as colonial subjects, exploited labor, transnational immigrants, or diasporic groups. Next, the course considers a variety of contemporary experiences of Asian Americans, as they manifest in the media, food, gender, family, pop culture, transnational adoption, affirmative action, multiracial solidarities and more!",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11447,7 +11447,7 @@ SOCY,SOCY 42 Racism in Asian America,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 43 Crossing Over: Latino Roots and Transitions,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-43,SOCY43,"This course focuses on the histories and experiences of Latinx transnational migrants—from Mexico, Central America, Puerto Rico, the Dominican Republic, and Cuba—living in the United States.  You will study the historical, political, and economic processes that have led to these migrations, as well as the varying ways in which race/ethnicity, class, gender/sexuality, and citizenship affect Latinx migrant lived experience.  Given our focus on “crossing,” readings will foreground subjects that capture this theme, from the literal movement of people, to the constant back and forth that shapes Latinx lives, to the adjustments Latinx people make given their language, their proximity to other immigrants and communities of color, and their varying acceptance within the United States.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11875,7 +11875,7 @@ SOCY,SOCY 43 Crossing Over: Latino Roots and Transitions,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 44 Complexities of Latino Identity,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-44,SOCY44,"The Latino population currently consists of approximately 40 million people in the United States; by the year 2050, the Census estimates that the Latino population will makeup at least 25 percent of the total U.S. population. This diverse group traces its origins to a variety of countries. Their experiences and identities in the United States are quite varied. This introductory course examines the experiences of reception, settlement, and transnational lives of various Latino groups - Chicanos, Puerto Ricans, Cubans, Dominicans, Central and South Americans - in the United States. By using interdisciplinary research, this course explores issues of race, class, gender, migration, and representation of group politics.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12295,7 +12295,7 @@ SOCY,SOCY 44 Complexities of Latino Identity,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 45 Inequality and Social Justice,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-45,SOCY45,"Social stratification refers to the unequal distribution of socially valued resources such as wealth, prestige, and power, across different groups in society. This course examines sociological research on the extent of these inequalities, how they are generated, and the consequences they bear. With an emphasis on historical and contemporary patterns of inequality in the United States, specific topics may include: wealth and income inequality; poverty; the intersection of class, race/ethnicity, and gender; educational attainment; and social change.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12721,7 +12721,7 @@ SOCY,SOCY 45 Inequality and Social Justice,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 46 Constructing Black Womanhood,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-46,SOCY46,"This course is a critical examination of the historical and contemporary status of black women in the United States, as presented in fiction, primary accounts, and social science literature. We will explore the nature, extent, and consequences of the multiple discriminations of race, sex, and class, as the context in which these women shaped their social roles and identities within the black community and the larger society. We will consider the themes of family, motherhood, and sexuality; educational, economic and political participation; aesthetics and religious traditions; self and social images.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13149,7 +13149,7 @@ SOCY,SOCY 46 Constructing Black Womanhood,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 47 Race and Ethnicity in the U.S.,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-47,SOCY47,"To many eyes, racial distinctions are self-evident, natural, and objectively-defined. In this course, we problematize this practice of defining racial categories based on phenotypic differences, instead taking a sociological approach to understanding the ways in which racial differences are socially constructed. Throughout this course, we will explore how race matters by studying racial identity and experience, immigration and assimilation, diversity, and inequality.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13575,7 +13575,7 @@ SOCY,SOCY 47 Race and Ethnicity in the U.S.,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,"SOCY 48 Immigration, Race and Ethnicity",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-48,SOCY48,"This course examines twentieth-century immigration to the United States. This course pays special attention to issues of race and ethnicity. The course begins with a brief history of US immigration and then thematically covers specific topics such as economic impacts and costs, social mobility, citizenship, transnationalism, assimilation, and religious issues and their relationship to the immigrant experience. We feature nativist reactions to immigration and highlight differences within and between Latino, Asian, and European groups throughout the course.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13997,7 +13997,7 @@ SOCY,"SOCY 48 Immigration, Race and Ethnicity",https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49 Lower Division Special Topics Courses,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49,SOCY49,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14413,7 +14413,7 @@ SOCY,SOCY 49 Lower Division Special Topics Courses,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.02 Theories of Democratization and the Case of Iran,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-02,SOCY49.02,"Theories of democratization generally examine the nature of the state, economy, social structure, class, culture and religion. This course will begin with an examination of various theories of democracy and democratization.  It will then apply these theories to the specific case of Iran. Despite two major revolutions and two movements, Iran is still facing problems democratizing. The latter part of the course relies on documentary films that contain actual footages of Iran’s nationalist movement in the 1950s and the revolutionary struggles in 1979.",,Dist:SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14833,7 +14833,7 @@ SOCY,SOCY 49.02 Theories of Democratization and the Case of Iran,https://dartmou
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.09 Critical Political Economy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-09,SOCY49.09,"Political economy was formulated as a central field of research since the 19th century, designed to comprehend both fields - politics and economics - and how they interact, at the local, regional and global level. Since the 2008 financial crisis it became a very popular field of research, highlighting varied and opposed theoretical approaches. The course will focus on critical perspectives to political economy, including a. class conflict, race and ethnic relations and the world system; b. state institutions and their relation to civil society, capital and labor organizations; and c. late developments of the neoliberal economy, the social and economic implications of inequality, and global protests of the 99%.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15253,7 +15253,7 @@ SOCY,SOCY 49.09 Critical Political Economy,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,"SOCY 49.12 Israeli Society—Structure, Institutions, Identities and Dynamics",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-12,SOCY49.12,"The goal of this course is to study  Israeli society from a sociological perspective. The course analyzes the economic, political and social factors that shaped Israeli society from its inception, its historical transformation at the structural and institutional levels, and in the changing relations among different social groups. This course examines the establishment of the state, absorption of immigrants, ethnicity, messianic politics, Palestinian uprisings, peace process, and redefinitions of nationalism.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15675,7 +15675,7 @@ SOCY,"SOCY 49.12 Israeli Society—Structure, Institutions, Identities and Dynam
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.13 Science and Religion in American Media,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-13,SOCY49.13,"The public life of science and religion seems to be characterized by intractable conflict.  In this course we examine case studies from current controversies over stem cell research, reproductive genetics, environmental policy, human origins, and sexuality.  We will explore who is creating and maintaining these public controversies and why.  We will examine “science and religion” as a defining confrontation in the development of American democracy, and consider how the American public sphere shapes possibilities for political participation.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16095,7 +16095,7 @@ SOCY,SOCY 49.13 Science and Religion in American Media,https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.15 Sociology of the Israeli-Palestinian Conflict,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-15,SOCY49.15,"The course aims to comprehend Israeli-Palestinian relations from the first moments of Zionist-Palestinian encounter. It presents different approaches to the interpretation of these relations, the beginning of the conflict before the establishment of the Jewish State, and its further developments. The course will enter key debates on  military-society relations, Jewish democracy,  economic relations, and the failure of the peace process, ending with a discussion of options for the future.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16517,7 +16517,7 @@ SOCY,SOCY 49.15 Sociology of the Israeli-Palestinian Conflict,https://dartmouth.
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.17 Religion and Political Economy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-17,SOCY49.17,"What is religion’s role in the wealth and poverty of nations? Is there really a “Protestant ethic” and a “spirit of capitalism?” Or is human prosperity completely independent of religious belief, institutions, and “spirit”? How do Western and non-Western societies seeking their place in the modern world reconcile religious traditions with the demands of economic globalization? This course will explore a wide gamut of past and present perspectives on this important, controversial subject.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16937,7 +16937,7 @@ SOCY,SOCY 49.17 Religion and Political Economy,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.18 Third World Revolutions,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-18,SOCY49.18,"This course presents a comparative analysis of the three major revolutions of the latter part of the twentieth century: Iran, Nicaragua, and the Philippines. The course begins with a discussion of major theories of revolutions, including works that focus on class analysis, ideological conflicts, and the state. In the second half of the term, the course explores the revolutions in Iran, Nicaragua, and the Philippines, focusing on the causes of the conflicts, the revolutionary processes, and their alternative outcomes: Islamic fundamentalism in Iran, revolutionary socialism in Nicaragua, and the restoration of liberal democracy in the Philippines. The latter part of the course relies on documentary films that contain actual footages of the revolutionary struggles and their outcomes in the three countries.",,Dist:INT or SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17357,7 +17357,7 @@ SOCY,SOCY 49.18 Third World Revolutions,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.19 Sport and Democratization in the Ancient and Modern Worlds,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-19,SOCY49.19,"The relationship between democratization in society and in sports forms the subject matter of this course.  We will begin to explore that relationship by looking at the various ways in which democratization in society and in sports influence each other in the modern world.  Then we will turn our attention to the past and examine the relationship between democratization in society and in sports in sixth- and fifth-century BCE Greece, in nineteenth-century CE Britain, and in twentieth-century CE America.  The course will end with a consideration of the lessons we have learned about democratization in society and in sports for public policy in the United States and elsewhere.",,Dist:INT or SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17777,7 +17777,7 @@ SOCY,SOCY 49.19 Sport and Democratization in the Ancient and Modern Worlds,https
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,"SOCY 49.21 The Black Church and Black Bodies: Race, Sexuality and Class in Religious Culture",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-21,SOCY49.21,"Black churches are challenged to better understand and respond to subjects that are often considered taboo.  This course will focus on ideas and approaches that have informed the historic and current Black Church around race, sexuality, and class (and their nexus).  Informed by Cultural Theory, it will consider how such churches have endeavored to understand, socialize, and in some instances, control Black bodies as well as some of the broader implications for critically assessing inequality, diversity, and social justice. Barnes.",,Dist:TMV; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18199,7 +18199,7 @@ SOCY,"SOCY 49.21 The Black Church and Black Bodies: Race, Sexuality and Class in
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.22 Social Justice and the City,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-22,SOCY49.22,"This course explores issues of social justice and cities in terms of the spatial unevenness of money and power within and among cities, between cities and their hinterlands, and between cities of the world. We will examine how multiple dynamic geographic processes produce spatial and social inequalities that make cities the locus of numerous social justice issues. We will also look at how urban communities and social groups are engaged in working for social change.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18621,7 +18621,7 @@ SOCY,SOCY 49.22 Social Justice and the City,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.24 Sociology of Human Rights,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-24,SOCY49.24,"In 1948, theUniversal Declaration of Human Rightscalled on the world’s nations to respect the “inherent dignity and…the equal inalienable rights” of all people. But while the declaration helped globalize human rights, the world continues to experience genocide, torture, slavery, discrimination, and the wide-scale displacement of people. The course seeks to gain a greater appreciation of the complex social forces that impede human rights while also imagining new strategies to address current-day human rights challenges. Students will critically examine human rights case law, develop a non-governmental organization, and participate in a simulation of the United Nations Security Council.",,Dist:INT or SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19041,7 +19041,7 @@ SOCY,SOCY 49.24 Sociology of Human Rights,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.25 Jews and Race,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-25,SOCY49.25,"The question of Jewish difference has been foundational in the formation of both Christendom and Islam. Of course, the question of race, and the racialization of the Jews, is often thought to be modern phenomenon when Race Science became prominent in the nineteenth century. But lately scholars have begun to re-think the category of race in connection with modernity and to reconsider race as a construct that extends back at least into the Middle Ages.\\fThis course will look at the long historical trajectory of Jews and race, beginning in the Middle Ages and focusing primarily on European modernity, America, including the complex alliance of Jews and Blacks from slavery to BLM, the role of race in the Israeli/Palestinian conflict and the rise of Islamophobia. The goal of this course is to better understand the nature of Jews as agenos/race/ethos/people as they are labeled by others as well as how they self-identify. Jews identified as a “race,” and were identified as such by others, until the 1930s, after whichethnosserved as a substitute. The question of “whiteness” loomed large for Jews in America; are Jews white, and if so, what are the implications of their “whiteness”? Finally, we will explore more recent iterations of this vexing issue in contemporary politics that includes “Jews of Color,” Zionism, Israel/Palestine, conversion to Judaism, and progressive politics in America.",,Dist:INT or TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19464,7 +19464,7 @@ SOCY,SOCY 49.25 Jews and Race,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.26 Markets and Their Critics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-26,SOCY49.26,"The purpose of this course is to explore the nature and implications of the market primarily as a political, but also as a social, economic and even moral phenomenon. From being a marginal, controlled, and secondary social institution in most early societies, markets have risen to become a central mode of social coordination and economic production, distribution and exchange in modern ones throughout the Western and non-Western world. What is the best way of thinking about this transformation in the prominence of the market in human life? Why has it happened, whom has it benefited, whom has it harmed, what functions has it served, what new problems has it created, and what if anything are the limits on the social utility of markets?",,Dist:INT or SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19887,7 +19887,7 @@ SOCY,SOCY 49.26 Markets and Their Critics,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.27 Transnational Feminist Sociology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-27,SOCY49.27,"How does globalization reconstitute the positions of workers and subjects on the global margins? How do the intersections of gender, race, class, sexuality, citizenship, and religion play out in the context of transnational and global power dynamics?This class invites us to think relationally, historically, dynamically and use intersectionality as a lens to critique the power exercised by global institutions, corporations, and political processes. By grounding our analysis in the perspectives of women and minoritarian subjects, we can think about new ways forward in building cross-cultural solidarities and coalitions that can inspire abolition and expand concepts of liberation around the world.",,Dist:INT or SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20310,7 +20310,7 @@ SOCY,SOCY 49.27 Transnational Feminist Sociology,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.28 Sociolinguistics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-28,SOCY49.28,"The field of sociolinguistics deals with the ways in which language serves to define and maintain group identity and social relationships among speakers. In this course we will consider such topics as regional and social variation in language; the relationship of language and ethnicity, sex and gender; language and social context; pidgin and creole languages; language endangerment and the fate of minority languages in the US and other countries; language planning, multiculturalism and education. Open to all classes.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20732,7 +20732,7 @@ SOCY,SOCY 49.28 Sociolinguistics,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 49.29 Introduction to Public Policy Research,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-49-29,SOCY49.29,"This course focuses on strategies for, and actual practice of, conducting research relevant to public policy decision-making. Students will be exposed to a variety of research methodologies used in public policy analysis. This course is designed to be a core element of the Public Policy Minor and will also serve as a training ground for prospective applicants wishing to serve in the Rockefeller Public Policy Research Shop during the winter and spring terms.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21154,7 +21154,7 @@ SOCY,SOCY 49.29 Introduction to Public Policy Research,https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 52 Insurgent South Asia,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-52,SOCY52,"Within the short quarter century run of the 21st century, the world has witnessed a global upwelling of insurgency. Southern Asian sites, including but not limited to India, Sri Lanka, Bangladesh, and Nepal have been fertile grounds for tens of millions of insurgent publics protesting against austerity, rising living costs, student debt, corrupt governments, police brutality, and government neglect during the COVID-19 pandemic. Who are these Southern Asian insurgent publics? How does South Asia reflect – or depart from – global patterns of insurgency and other forms of social protest? Do we need to theorize southern insurgency differently from those occurring in other parts of the world?",,Dist:SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21580,7 +21580,7 @@ SOCY,SOCY 52 Insurgent South Asia,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,"SOCY 53 Power, Politics and the State",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-53,SOCY53,"Is America in crisis? The nation is more deeply divided politically, economically, and ideologically than it has been for generations. Washington is in gridlock. Inequality and poverty have been rising. People have become polarized over racial, religious and social issues. Some say the politics of identity and self-interest have been unleashed at the expense of the nation’s general welfare. Some disagree. This course explores these issues. It examines how political, economic and ideological power has been mobilized recently in the United States and with what consequences, including the conservative shift in American politics, the 2008 financial crisis, the election of Donald Trump, and possibly the decline of the United States as the world’s superpower. The course draws on scholarly work in sociology, political science and economics.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22000,7 +22000,7 @@ SOCY,"SOCY 53 Power, Politics and the State",https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,"SOCY 54 Change, Context, and Causality: Intermediate Quantitative Data Analysis for Sociologists",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-54,SOCY54,"Sociologists and other social scientists are often interested in understanding causal and dynamic social processes such as:In this course, we’ll pick up where introductory statistics courses leave off, and get an introduction to more advanced statistical methods for observational data, including but not limited to: regression for categorical dependent variables, fixed and random effects models, and hierarchical linear modeling. This course will be a mix of seminar and lecture, where we will be focused on understanding how we can use these methods to better meet our goals and answer our research questions. Put differently, this course is less focused on going “under the hood” and more focused on “how to drive”—specifically, we will interrogate the assumptions and use of these statistical methods in the social sciences and learn how to implement these methods using STATA. This will include: discussion of core methodological assumptions and limitations, how to apply these statistical methods in different settings, and learning when specific methods are appropriate tools and when they are not. We will explore these issues through student-led discussions, hands-on data analysis, and dissecting the application of these methods in academic journal articles. As part of this course, you will be exposed to (and critique) a wide range of sociological research published in our major disciplinary journals. The course will culminate in an independent research project where students will analyze data and use the one or more of the modeling techniques discussed during the term to answer a sociological research question of their choosing.",SOCY 10,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22425,7 +22425,7 @@ SOCY,"SOCY 54 Change, Context, and Causality: Intermediate Quantitative Data Ana
 </form>
 
 </body>
-</html>"
+</html>",['SOCY10']
 SOCY,SOCY 55 Poverty and Public Policy in the U.S.,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-55,SOCY55,More than one in ten Americans lives in poverty according to official statistics. This course explores the nature and extent of poverty in the United States and the role of the government in addressing poverty issues. How do we measure poverty? Why does poverty persist? Why is there so little political discourse about poverty in America today? How effective are various poverty alleviation programs?,,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22853,7 +22853,7 @@ SOCY,SOCY 55 Poverty and Public Policy in the U.S.,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 56 Sociology of Gender,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-56,SOCY56,"What is gender? This seminar examines multiple sociological perspectives on what it means to be a woman, man, boy, or girl in everyday life - including gender as a social structure, an identity, an ideology, and something people ""do."" Readings and discussions reflect a belief that diversity (race/ethnicity, class, age, sexuality, etc.) is central to the study of gender. Possible topics include: language, the body, science, the wage gap, education, and masculinity during young adulthood.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23275,7 +23275,7 @@ SOCY,SOCY 56 Sociology of Gender,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 58 Education and Inequality,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-58,SOCY58,"How are schools organized and how do they organize society? What effects do schools have on individuals and what effects do they have on society? Using sociological theories and methods, we will examine the structure of schools and their effects on individuals and society. We will explore both formal and informal education. This course will focus on inequalities, specifically how social class, race, gender, and sexuality both organize and are organized by educational environments.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23697,7 +23697,7 @@ SOCY,SOCY 58 Education and Inequality,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 60 Dangerous Intersections: Intersectionality Beyond Boundaries,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-60,SOCY60,"Intersectionality has become a prominent framework for understanding how social categories shape lived experiences. As an interpretative tool utilized across the social sciences and humanities, intersectionality interrogates how power is distributed along and across axes of inequality and privilege. Course readings, discussions, assignments, and assessments will focus on a wide range of social locations connected to race, ethnicity, gender, class, sexuality, religion, language, and disability, while also accounting for the multiplicity, nuance, ambiguity, and contradictions in how these social identity markers intersect. Engaging both theoretical and empirical works, this course will examine how simultaneous and interdependent dynamics between axes of inequality impact identity formation and life chances, relationships of marginality and privilege, social continuity,  social conflict, and social change. Additionally, this course will critically explore the challenges and advantages of intersectional analysis and the future of intersectionality’s theoretical, methodological, and epistemological capacities.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24125,7 +24125,7 @@ SOCY,SOCY 60 Dangerous Intersections: Intersectionality Beyond Boundaries,https:
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 61 Unstalling the Stalled Revolution: Gender (In)equality at Work and at Home,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-61,SOCY61,"The nature of work, family life, and gender relations has changed dramatically over the last half century. This course examines these trends, with a focus on implications for gender inequality in society. We will focus on patterns in paid labor force participation and family life in the United States, and discuss the major debates surrounding the causes and consequences of such trends. We will also pay attention to how these patterns look across different races, ethnic groups, and socioeconomic status, as well as briefly examine how these trends compare to other countries. We will conclude by exploring the implication of gender inequality for families, as well as work-family policy debates.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24553,7 +24553,7 @@ SOCY,SOCY 61 Unstalling the Stalled Revolution: Gender (In)equality at Work and 
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,"SOCY 62 Love, Romance, Intimacy and Dating",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-62,SOCY62,"Why do you connect with some people and not others? What exactly is love? And how do you make smart romantic choices for yourself? In this course we examine the social aspects of love, romance, intimacy, and dating. Using sociological theories and methods, we will investigate how cultural beliefs and structural arrangements affect our most intimate feelings and experiences. Specific topics include virginity loss, adolescent sexual behavior, hooking up, dating, intimacy and polyamory.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24981,7 +24981,7 @@ SOCY,"SOCY 62 Love, Romance, Intimacy and Dating",https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 64 The Sociology of Emotion,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-64,SOCY64,"Most people think of emotions as a purely internal experience, composed solely of physiological elements. Recently, however, sociologists have begun to emphasize and explore the social side of emotion-for example, how emotions are shaped socially and culturally, how emotions are socially controlled, and the consequences of emotion for social life. We will examine these and other sociological aspects of emotional experience in this course, including exploring current debates about the social functions of emotions, especially as they pertain to the substantive areas of work and family. Topics include the social causes of emotion; cultural variations in feeling and expression norms (especially in regard to love and anger); changes in American norms over time; the shaping of children's emotions through socialization; individual and social techniques of emotion management; the social distribution of emotional experience; the social functions of emotion; emotional deviance; and the individual and social consequences of emotional display.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25401,7 +25401,7 @@ SOCY,SOCY 64 The Sociology of Emotion,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 65 The Social Psychology of Inequality,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-65,SOCY65,"Sociological social psychology examines the relationship between individuals and the larger social systems in which they are embedded, including interactions, groups, institutions, and cultures. This course will use key social psychological concepts (e.g., status, power, stigma, justice, identity) to explore how inequality is created, reproduced, and resisted. We will study how inequality operates in different social and institutional contexts (e.g., work, family, schools), and for members of different social groups (e.g., race, class, gender, age).",SOCY 1orSOCY 2,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25823,7 +25823,7 @@ SOCY,SOCY 65 The Social Psychology of Inequality,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['SOCY1']
 SOCY,SOCY 66 Markets and Management,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-66,SOCY66,"What is money? How do people find jobs? Are markets competitive or cooperative? This course examines these and other questions about how economic behavior is organized, operates and changes historically. It recognizes that economic activity is socially organized and guided by political, cultural and normative as well as economic principles. It explores how economic activity takes many forms, including groups of small competitive firms, large and powerful corporations, and diffuse networks of companies tied together through inter-firm alliances, business associations and other sorts of cooperative and competitive relations with each other, unions, government agencies and universities. It examines the organization and operation of different kinds of markets, different theories of how economic activity is organized, and the social factors that contribute to economic success or failure. It also investigates how managers, unions, policy makers and governments are coping with recent economic challenges, such as those posed by technological change and the globalization of economic activity. Because this is a course in economic sociology-not economics-no background in economics is required.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26249,7 +26249,7 @@ SOCY,SOCY 66 Markets and Management,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 69 The Sociology of Globalization,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-69,SOCY69,"This interdisciplinary course provides a critical approach to global urban studies, with a particular focus on race, migration, and the built environment. By scrutinizing sites of “globalization”—ships, railroads, ports, islands, plantations, canneries, slums, camps, museums, ghettos, cemeteries, infrastructures, archives—students will explore themes such as segregation, slave trade, anti-blackness, urban violence, settler colonialism, urban renewal, necropolitics, and environmental racism. The course will engage in a historical and postcolonial dialogue to offer students critical methods to “spatialize” intertwined histories of racial closure across continents.",,Dist:INT or SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26669,7 +26669,7 @@ SOCY,SOCY 69 The Sociology of Globalization,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 70 American Labor Relations,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-70,SOCY70,"This course examines the political, cultural, and economic sources of solidarity and mobilization among workers in the US from the late 19th century to the present.  Readings and discussion will focus on important historical developments among labor unions, from militant beginnings through an accommodationist phase after World War II and a deep decline, to recent attempts at revitalization.  Students will consider the impacts of labor movements on social inequality, politics and on a range of cross-cutting issues around gender, immigration and race.  We will conclude by examining the prospects for labor in light of the rapid and profound changes in the world of work and economic activity in the contemporary period.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27095,7 +27095,7 @@ SOCY,SOCY 70 American Labor Relations,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 71 Race Matters - &quot;Race&quot; Made to Matter,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-71,SOCY71,"What is race? What are the effects of race in our everyday life? How has science shaped our understanding of race and human diversity? This course explores how and why race is a social construction with profound implications in our social world not only in the U.S. but also beyond its shores. Diverse sciences have established that human beings are well over 99% genetically identical, but race remains a potent vision through division that has beenmadeand made to matter across multiple spheres of life. This ranges from ancestry testing to our identities to how we are categorized to where we live and whom we are taught to love and hate in society. How race intersects with socio-economic disparities related to inclusion and exclusion are among the topics examined in this course.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27523,7 +27523,7 @@ SOCY,SOCY 71 Race Matters - &quot;Race&quot; Made to Matter,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 72 Critical Community Sociology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-72,SOCY72,"This class will focus on interrogating the drivers of inequality in rural and small-town communities. To understand this, we critically examine several interconnected issues: culture, health, racial equity, education, environment, infrastructure, social services, economic justice, and geographic isolation.",Students who wish to enroll in this course should have previously completed either Introduction to Sociology or Social Problems. This requirement may be waived for students who have taken certain other sociology courses; contact the instructor to find out if you are eligible.,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27945,7 +27945,7 @@ SOCY,SOCY 72 Critical Community Sociology,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['SOCY1']
 SOCY,SOCY 73 Economic Sociology: From Tax to Fraud,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-73,SOCY73,"Just over a century ago, Austrian economist Joseph Schumpeter argued that human history, culture and politics cannot be properly understood without taking fiscal events—such as taxation and state budgeting—into account. War, the development of industry, and of capitalism itself all stemmed, he claimed, from the evolution of a “tax state.” From this insight, a century of research has emerged, spanning a wide range of fiscal activities by states, as well as by private actors.This course will review key themes of this subfield of sociology through four empirical topics: the world of high finance, including the social coordination and networks involved in the trading of securities and commodities; social organization and consequences of financial fraud in a variety of domains, including currency counterfeiting; social history of taxation, including social movements stemming from tax revolts; and system of offshore finance as a mechanism for reproducing inequality and elites.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28366,7 +28366,7 @@ SOCY,SOCY 73 Economic Sociology: From Tax to Fraud,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,"SOCY 74 Professionals, Policy and Practice",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-74,SOCY74,"Professionals, Policy & Practice examines how professionals have come to be among the most influential actors in contemporary organizations and the global political economy. Professionals have long been the focus of research in organization and management studies, but interest in them crosses disciplinary boundaries; thus, the course will include readings from sociology, accounting, legal studies, finance, and political science. We’ll draw on their varied theories, methods and approaches to examine how and why professionals coordinate and compete, shaping norms, standards and practices within and among organizations.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28786,7 +28786,7 @@ SOCY,"SOCY 74 Professionals, Policy and Practice",https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 75 Neighborhoods and Health,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-75,SOCY75,"Just as conditions within our homes have important implications for our health, conditions in the neighborhoods surrounding our homes also can have major health effects. Social, economic, and environmental features of neighborhoods have been linked with mortality, general health status, disability, birth outcomes, chronic conditions, obesity, depression, injuries, violence, health behaviors and more. In this course, we consider whether and how the characteristics of neighborhoods shape the physical and mental health of individuals, and how neighborhoods contribute to persistent health disparities. Special attention will be devoted to conceptual and methodological challenges to detecting the prevalence and magnitude of ‘neighborhood effects’ on health. Not open to students who have received credit forSOCY 79.12.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29212,7 +29212,7 @@ SOCY,SOCY 75 Neighborhoods and Health,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,"SOCY 76 Race, Power, and Politics",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-76,SOCY76,"This course sets out to understand race and ethnicity as the product of, as well as a basis for, political struggles. The conventional sociological understanding of race and ethnicity focuses on difference. That is, although sociologists take pains to argue that racial and ethnic differences are socially constructed, the vast, long-standing inequality among racial and ethnic groups make it very tempting to perceive the status quo as inevitable, if not natural. In order to counter this trend, we have to center the concept of power and trace how racial and ethnic divisions came to emerge from the political struggles of the past. And in doing so, it is crucial to understand not only successes but also failures of white supremacy—namely that non-whites have always disrupted workings of the dominant system, sometimes through electoral politics and other times through direct action.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29638,7 +29638,7 @@ SOCY,"SOCY 76 Race, Power, and Politics",https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 77 The Power of Numbers: How Data and Algorithms Shape the World,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-77,SOCY77,"While statistics and quantitative data are increasingly becoming important components of our lives, the specific social processes through which they are engineered remain elusive to many of us. We learn math, statistics, and quantitative methods in classes, but most often those courses glance over the social contexts in which the technology of numbers was developed. In this course, we trace the development of statistics and quantitative analysis through modern times in an attempt to understand how they have been used and perceived in society. We also address recent controversies surrounding their implementation in businesses and government institutions, especially in relation to algorithmic decision making. In the process, we will establish that statistics and quantitative data are not just abstract, formal tools whose meanings are absolute and obvious, but that they are social constructs embedded in particular institutions, such as the state and market.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30064,7 +30064,7 @@ SOCY,SOCY 77 The Power of Numbers: How Data and Algorithms Shape the World,https
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 78 The Micropolitics of Race,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-78,SOCY78,"This class explores racialized experiences and controversies that affect daily life in the United States. We use insights from sociology to analyze racial identity and public behavior. For example, why do many people of color often “code-switch” as they move from interacting with family and friends and into their workplace? Why are some Black people accustomed to giving “the nod” to other Black people they encounter in majority-white spaces? Why are many Asian-Americans told that they “speak really good English”  something social scientists would call a microaggression? We explore these issues and other controversial topics including interracial dating, neighborhood, gentrification, whiteness, and colorism.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30486,7 +30486,7 @@ SOCY,SOCY 78 The Micropolitics of Race,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 79 Upper Division Special Topics Courses,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-79,SOCY79,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30902,7 +30902,7 @@ SOCY,SOCY 79 Upper Division Special Topics Courses,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 79.04 Drugs and Pharmaceuticals in Society,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-79-04,SOCY79.04,Licit and illicit drugs make illuminating case studies for our economic and political systems. We investigate the following questions: Are profit motives and humanitarian concerns in irresolvable conflict? Does the international network of illegal drugs show the future of globalization? Does pharmaceutical lobbying demonstrate the anti-democratic influence of money? Is the “war on drugs” political demagoguery or a rational response to human weakness?,,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31322,7 +31322,7 @@ SOCY,SOCY 79.04 Drugs and Pharmaceuticals in Society,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 79.06 Sociology of the Body,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-79-06,SOCY79.06,"Can social life exist without bodies? How can attention to the body influence our understanding of social processes of subjectivity, interaction, and practice? While the body has long been an ""absent presence"" in sociology, multiple approaches to theorizing and researching the body have emerged in recent decades. A sociological approach to the body and embodiment provides an opportunity to bridge the gap between everyday experience and analyses of broad social structures which can seem disconnected from daily life. In this course, we will examine the processes by which individual bodies are shaped by and, in turn, shape social life. Key questions to be explored include: how are bodies regulated by social forces; how do individuals perform the body and how does interactional context influence this performance; what is the meaning of the body in social life; and is there a ""right"" body?",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31742,7 +31742,7 @@ SOCY,SOCY 79.06 Sociology of the Body,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 79.11 Nationalism and the Radical Right,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-79-11,SOCY79.11,"This course will introduce you to recent social science contributions to the subject of neo-nationalism and radical right-wing activism. Beginning with terminology, historical context and methodological approaches, we will proceed to an analysis of recent socio-political developments, focusing on the interrelationship between radical right-wing activism and other social phenomena. We will interrogate the reasons behind the appeal of the far right, inquiring into various socio-economic contexts, the role of historical narratives in shaping far-right activism, and the “mainstreaming” of far-right ideas. An overarching question for all these discussions will be that of the agency and motivations of the actors involved.We will draw cases from numerous contexts around the world and will reflect on similar developments on the political left. The course will allow for discussion of the most recent developments, as experienced by class attendees and reported by mass media. Finally, we will discuss ethical aspects of studying right-wing (and, for that matter, any political) radicalism.",,Dist:INT or SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32163,7 +32163,7 @@ SOCY,SOCY 79.11 Nationalism and the Radical Right,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 80 Independent Study,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-80,SOCY80,"This course offers the qualified student an opportunity to pursue a subject of special interest, under the direction of a faculty adviser assigned to the student for periodic (usually weekly) conferences. Ordinarily at least one formal paper embodying the results of the reading or research is required. In special situations students may work as a team on a single project. Occasionally credit may be given inSOCY 80for a research project done in an off-campus term, provided arrangements are made well in advance and adequate off-campus supervision can be assured. Although every effort will be made to accommodate qualified students desiring to carry an independent study, there is no guarantee that independent study can be arranged for any given student in any given term, and preference is given to senior and junior Sociology majors. Normally no student may takeSOCY 80more than twice during the undergraduate career. By permission of a Sociology faculty memberpriorto registration.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32585,7 +32585,7 @@ SOCY,SOCY 80 Independent Study,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 90 Senior Independent Study Project,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-90,SOCY90,Independent work under the direction of a member of the Department and with Departmental approval may satisfy the culminating requirement in the major. Those interested should develop their plans with a prospective faculty adviser and must submit and have approved a written proposal at least one term prior to the term in which the course will be elected. Open only to senior majors. By permission of a Sociology faculty memberpriorto registration.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33007,7 +33007,7 @@ SOCY,SOCY 90 Senior Independent Study Project,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 91 The Sociological Imagination,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-91,SOCY91,"C. Wright Mills described ""the sociological imagination"" as that quality of mind with the ability to grasp the interplay of biography and history, of self and social structure, of private troubles and public issues. As we venture into the 21st century, various issues of class, race and gender inequalities and conflicts appear to dominate popular discourse and policy debates. This capstone seminar will explore current substantive and theoretical expressions of the sociological imagination for providing critical assistance in understanding some of the major social issues of our time. The seminar is designed to emphasize critical discussion through active participation and class presentations. Each student will complete a significant intellectual project which reflects her or his own sociological analysis about an important social issue. Open to senior sociology majors, and others only by permission of the instructor.","s: SOCY 1 or 2, 10, 11 , 15 or 16",Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33435,7 +33435,7 @@ SOCY,SOCY 91 The Sociological Imagination,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>","['SOCY1', 'SOCY10', 'SOCY11', 'SOCY15']"
 SOCY,SOCY 98 Honors Thesis I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-98,SOCY98,"Open only to, and required of all, Sociology honors majors, this course involves independent work under the direction of a faculty adviser, culminating in the preparation and presentation of an honors thesis. Sociology honors majors normally electSOCY 98during one of the two terms prior to their final term, followed bySOCY 99during their final term. Exceptions to this pattern are, however, permitted if circumstances warrant. Honors students are normally expected to publicly present their thesis to the Department during the term in which it is completed. By permission of a Sociology faculty member prior to registration.\fStudents are awarded one course credit for successful completion of this course at the end of the third term of study. Students subsequently register forSOCY 99, and continue with their coursework into a third term.  Students do not register for a third term. A final grade will replace the “ON” for both this course andSOCY 99upon completion ofSOCY 99at the end of the third term of coursework.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33860,7 +33860,7 @@ SOCY,SOCY 98 Honors Thesis I,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 SOCY,SOCY 99 Honors Thesis II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology/socy-99,SOCY99,"Open only to, and required of all, Sociology honors majors, this course involves independent work under the direction of a faculty adviser, culminating in the preparation and presentation of an honors thesis. Sociology honors majors normally electSOCY 99during the last term in residence. Exceptions to this pattern are, however, permitted if circumstances warrant. Honors students are normally expected to publicly present their thesis to the Department during the term in which it is completed. By permission of a Sociology faculty member prior to registration.Students are awarded one course credit for successful completion of this course. Students who have registered forSOCY 98register for this course and continue with their coursework into a third term.  Students do not register for a third term. A final grade will replace the “ON” for bothSOCY 98and this course upon completion of this course at the end of the third term of coursework.\f",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34284,4 +34284,4 @@ SOCY,SOCY 99 Honors Thesis II,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]

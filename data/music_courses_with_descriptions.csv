@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 MUS,MUS 1 Beginning Music Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-1,MUS1,"A course intended for students with little or no knowledge of music theory. Among topics covered are musical notation, intervals, scales, rhythm and meter, and general musical terminology. Concepts will be directly related to music literature in class and through assignments. Students will have the opportunity to compose simple pieces and work on ear training.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -426,7 +426,7 @@ MUS,MUS 1 Beginning Music Theory,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 2 The Music of Today,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-2,MUS2,"From Sonic Youth, They Might Be Giants, Battles, Peter Schickele/PDQ Bach, John Zorn, Philip Glass, Arvo Pärt, Ligeti, Xenakis, Tan Dun, Christian Wolff, to Indonesian Quran Reciter Maria Ulfah, this course investigates the sound and ideas of punk/alternative/experimental rock bands, the avant-garde Jazz phenomenon, comic music parody, American and European minimalism, experimentalism, complexity, and ethnic fusion in contemporary classical music.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -854,7 +854,7 @@ MUS,MUS 2 The Music of Today,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,"MUS 3.02 American Music: Covers, Theft, and Musical Borrowing",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-3-02,MUS3.02,"Nearly every genre of American music is marked by its re-invention, adaptation, or outright theft of music from other cultures. We will study a wide cross-section of American music through the prism of musical borrowing. Our perspective includes songwriters, composers, and sound artists in rap, pop, rock, jazz, film, and the avant-garde. Readings on the aesthetics of cover songs, quotations, and plunderphonics will inform our engagement with American music and its sources.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1282,7 +1282,7 @@ MUS,"MUS 3.02 American Music: Covers, Theft, and Musical Borrowing",https://dart
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 3.03 American Music: Roots and Revolutionaries,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-3-03,MUS3.03,"This course explores diverse forms of American “roots” music—from country blues and Appalachian stringbands to ballads, shape-note singing, and the expressive culture of Arctic indigenous peoples—with the aim of understanding these musical practices on their own terms as well as their profound influence on American musical revolutionaries of the 20th and 21st centuries. Live music is central to the course, and attendance at musical events outside of regular class meetings is expected.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1710,7 +1710,7 @@ MUS,MUS 3.03 American Music: Roots and Revolutionaries,https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 3.09 Mestizaje: Music in Latin America,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-3-09,MUS3.09,"This course will introduce and explore the music of Latin America from both historical and analytical perspectives. It will study the music of Latin America as the result of a complex process of constant merging and amalgamation of cultures, experiences, ideologies, and practices. Throughout this course, students will become familiar with popular music genres, autochthonous instruments, significant pieces and composers, cosmologies and ideologies reflected in various musics, and general aspects of the local cultures.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2138,7 +2138,7 @@ MUS,MUS 3.09 Mestizaje: Music in Latin America,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 4 Global Sounds,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-4,MUS4,"Global Sounds explores world music, focusing each term on selected regions, countries, and cultures, and on how music has moved between East and West, past and present, and “roots” and popular styles. Course work includes critical listening/viewing, reading, and short weekly writing assignments as well as a final creative project or research paper. Where possible, guest artists are invited to offer live musical demonstrations. No prior musical experience is required.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2566,7 +2566,7 @@ MUS,MUS 4 Global Sounds,https://dartmouth.smartcatalogiq.com/en/current/orc/depa
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 5 Jazz: Black Creative Music and American Culture,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-5,MUS5,"The music known as ‘jazz’ has been one of the most revolutionary and influential artistic movements of the past century.Jazz: Black Creative Music and American Culturewill provide a basic historical overview of the music, with major themes including the relationship between composition and improvisation; the reinvention of traditional roles of performer, composer, bandleader, and collective ensemble; and the music’s connection to African-American history and the civil rights movement. Not open to students who have received credit for MUS 05.01, MUS 05.02,AAAS 39.01, orAAAS 39.02.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2990,7 +2990,7 @@ MUS,MUS 5 Jazz: Black Creative Music and American Culture,https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 7 First-Year Seminar,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-7,MUS7,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3414,7 +3414,7 @@ MUS,MUS 7 First-Year Seminar,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 8 Programming for Interactive Audio-Visual Arts,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-8,MUS8,"This course presents topics related to interactive visual art generated on a computer. Although it briefly covers computer-generated media art, the course focuses on the programming skills required for creating interactive works. Rather than using commercial software, students write their own programs, using the Processing language, to create interactive visuals and compositions. The course introduces fundamental concepts of how to represent and manipulate color, two-dimensional shapes, images, motion, and video. Coursework includes short programming assignments to practice the concepts introduced during lectures and projects to explore visual compositions. The course assumes no prior knowledge of programming. This course is not open to students who have passedCOSC 1orENGS 20or who have received credit for one of these courses via the Advanced Placement exam or the local placement exam.",,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3838,7 +3838,7 @@ MUS,MUS 8 Programming for Interactive Audio-Visual Arts,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 9.01 Introductory Guitar,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-9-01,MUS9.01,"This course is an introduction to the guitar for students with little to no formal training on the instrument. The goal is to establish a broad set of basic musical skills and effective practice techniques. Repertoire is drawn from diverse musical genres, including blues, Western classical music, American folk music, jazz, and funk. Assessment is based solely on the student’s proficiency with skills studied. The course culminates with a public performance.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4266,7 +4266,7 @@ MUS,MUS 9.01 Introductory Guitar,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 11 Introduction to Opera,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-11,MUS11,"The term 'opera' encompasses a vast range of music-dramatic forms and involves the extra-musical domains of literature, mythology, the visual arts, religion, philosophy, and social commentary. From its origins in late Renaissance Italy to the present, opera has been a most complex and compelling performing art, as well as a mirror of Western culture. This course will survey the development of opera, focusing on representative works by such composers as Monteverdi, Handel, Purcell, Mozart, Verdi, Wagner, Bizet, R. Strauss, Berg, and Britten. Special attention will be given to music as it relates to libretto and dramatic structure.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4694,7 +4694,7 @@ MUS,MUS 11 Introduction to Opera,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 13 Literature and Music,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-13,MUS13,"The affinities between literature and music have always held a special fascination for poets, writers, musicians, and critics. By studying the two arts as comparable media of expression, this course will test the legitimacy of interart parallels. An introduction to the major aspects, aesthetic implications, and interpretive methods comparing the two arts. Topics for lectures and discussion will include: musical structures as literary form; verbal music, word music, and program music; word-tone synthesis in the Lied; music and drama in opera; music in fiction; and the writer as music critic. Music-related poetry and prose examples, complemented by musical illustrations and ranging from the German and English Romantics through the French symbolists and the Dadaists to contemporary writing, will be selected from texts by Goethe, Brentano, Hoffmann, DeQuincey, Poe, Baudelaire, Mallarmé, Proust, Thomas Mann, Joyce, Eliot, Huxley, Shaw, and Pound. No particular musical background or technical knowledge of music required.",No particular musical background or technical knowledge of music required.,Dist:INT or LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5120,7 +5120,7 @@ MUS,MUS 13 Literature and Music,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,"MUS 14.01 Music, Mind, Invention",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-14-01,MUS14.01,"This course explores how the brain represents, learns, and reacts to music, covering musical ability, preference, reward, emotion, and creativity. Drawing from new results in neuroscience, music cognition, and music informatics, topics include: neural codes for pitch, rhythm, timbre, structure, and style; measuring musical performance, listening, and imagination with EEG and fMRI; brain-computer interfaces for music; and music composition and performance using biofeedback.",,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5542,7 +5542,7 @@ MUS,"MUS 14.01 Music, Mind, Invention",https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 14.05 Music and Artificial Intelligence,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-14-05,MUS14.05,"This course explores artificial intelligence (AI) for creating and consuming music. Through weekly readings and exercises, students will create music and art with AI-based systems and develop the critical skills to evaluate the outputs of creative AI. Starting with the history of algorithmic art and music, students will explore issues of digital music representation, generative music, computational creativity, and AI-based music production. The goal is to generate original works using algorithms, such as neural networks.",,Dist:TAS; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5972,7 +5972,7 @@ MUS,MUS 14.05 Music and Artificial Intelligence,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 16.01 Genre: History of Visual Music,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-16-01,MUS16.01,"This course introduces the history of visual music, the exploration of the relationship between music and abstract imagery. Students will investigate this subject from its predecessors to current day-tracing the constantly expanding practices of visual music through painting, cinema, performance, and installation-form intuitive sketch films to complex algorithmic works.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6396,7 +6396,7 @@ MUS,MUS 16.01 Genre: History of Visual Music,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 16.02 Music and Media in Everyday Life,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-16-02,MUS16.02,"This course lends an ear to the roles and power of musical media in the new millennium. Prominent themes include: new media’s purported democratizing effects on the production, circulation, and consumption of sound; the changing roles, responsibilities, and relevance of musicians and media artists in the digital age; and the potential for musical and social media to redraw the boundaries human experience, ethics, memory, and identity at large.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6820,7 +6820,7 @@ MUS,MUS 16.02 Music and Media in Everyday Life,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 17.06 The Language-Music Connection,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-17-06,MUS17.06,"Language and music are universal components of human experience, so integral that they are often considered part of what defines us as humans. While we treat them as distinct phenomena, the overlap between the two is immense, structurally, neurologically, and culturally. Such connections have long been recognized, but recent research from diverse fields like linguistics, (ethno)musicology, cognitive psychology, anthropology, and neuroscience continues to reveal just how intertwined the two faculties are. Drawing on this body of research and our respective specialties, we explore the language-music connection from the basic ingredients (pitch, timbre, rhythm, syntax), to cultural expression, to evolution and origins. Running through the course is a hands-on case study of a West African xylophone tradition where language and music are so intimately related that they cannot be separated. Students will be taught by a master of the tradition, Mamadou Diabaté, to feel for themselves what it means to speak through an instrument.",,Dist:INT or ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7244,7 +7244,7 @@ MUS,MUS 17.06 The Language-Music Connection,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 17.07 Entrepreneurship and the Arts,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-17-07,MUS17.07,"Presented in collaboration with the Magnuson Center for Entrepreneurship, this is a portfolio based course intended to apply entrepreneurial thinking to your liberal arts education at Dartmouth. Your idea, based on your own personal interests, experiences, and aspirations, will be developed through the application of entrepreneurial and business strategies scaffolded and presented by a curated series of guest-speakers including artists and educators from the Hopkins Center, Tuck faculty, and prominent alumni.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7672,7 +7672,7 @@ MUS,MUS 17.07 Entrepreneurship and the Arts,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,"MUS 18.01 Pop Music: Past, Present, Future",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-18-01,MUS18.01,"This course explores the developments, meanings, and performances of pop musicacrossWestern art traditions. What was the pervasive “Gangnam Style” of Renaissance Europe? Was Joseph Haydn the grandfather of the rickroll? And how did the equivalent of “Single Ladies” go viral in the 1920s United States? Tackling these questions seriously enables students to understand pop’s broader historical terrain, and to engage consequently in debates about artistic taste, accessibility, leisure, spreadability, appropriation, and innovation.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8094,7 +8094,7 @@ MUS,"MUS 18.01 Pop Music: Past, Present, Future",https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 18.02 Hip-Hop in the United States,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-18-02,MUS18.02,"This course is an introduction to hip-hop music and culture, intended to offer interdisciplinary perspectives on what is one of the most popular genres in the United States. From its humble origins in New York to now, hip-hop and rap music have changed the sonic landscape of the US and the world. We will examine rap music and hip-hop culture as artistic and sociological phenomena with emphasis on historical, cultural, economic and political contexts.  Discussions will include the coexistence of various hip-hop styles, their appropriation by the music industry, and controversies resulting from the exploitation of hip-hop music and culture as a commodity for national and global consumption.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8524,7 +8524,7 @@ MUS,MUS 18.02 Hip-Hop in the United States,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 18.03 Verzuz: A History of Black Popular Music,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-1-mus-19/mus-18-03,MUS18.03,"During the Covid-19 pandemic, superproducers Swizz Beatz and Timbaland created “Verzuz,” an event that matches artists with their contemporaries as they trade songs back and forth for nostalgia, competition, and celebration. In this class, we will use Verzuz battles to study Black popular music beginning in the mid 20th century. Drawing on music and materials pertaining to broader social and cultural contexts, we will analyze Black popular music from a sonic and cultural perspective.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8948,7 +8948,7 @@ MUS,MUS 18.03 Verzuz: A History of Black Popular Music,https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 20 Creative Music Theory I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-20,MUS20,"Explores ways to make and think creatively about music built upon diatonic and pulsed foundations. Prior knowledge of music theory fundamentals is recommended but all concepts are defined from the ground up. A varied repertoire of music is studied. Topics include staff notation, key, mode, melodic technique, motive, interval, phrase rhythm, form, triads and seventh chords, chord labels, arranging, harmonic syntax including secondary dominants, and style considerations. Incorporates work on musicianship.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9376,7 +9376,7 @@ MUS,MUS 20 Creative Music Theory I,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 21 Melody and Rhythm,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-21,MUS21,"Explores the art of organizing musical thoughts in time. Drawing from music of four continents and using class performance (singing, body percussion, playing instruments) as a primary vehicle, this course unlocks the structures and strategies employed by effective melodies and rhythms. Students will compose their own music, develop their skills in music analysis, and engage critically with literature on music cognition. Incorporates work on musicianship.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9804,7 +9804,7 @@ MUS,MUS 21 Melody and Rhythm,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 22 Creative Music Theory II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-22,MUS22,"For students already skilled in harmony and staff notation. We will study concepts and practices relevant to arranging in various styles and writing effectively for specific instruments and ensembles. Idioms include piano, strings, vocal groups, acoustic guitar. Close attention is given to the interplay of harmony and rhythm on a micro level and to macro effects of textural contrast in creating musical form. Readings connect students with musicians past and present who have listened intently to the structure and syntax of chords. Incorporates work on musicianship.",Students who have not takenMUS 20should contact the instructor prior to the first day of class.,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10234,7 +10234,7 @@ MUS,MUS 22 Creative Music Theory II,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['MUS20']
 MUS,MUS 23 Timbre and Form,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-23,MUS23,"An exploration of instrumentation and principles of musical form in Western music. Through weekly analysis and scoring exercises, students learn to read scores, understand musical structure, and write for combinations of instruments with attention to timbre, range, performance techniques, and orchestral idioms. Assignments include arrangements, for small and large ensemble, and formal analyses of several musical works whose aim is to show how composers shape melody, harmony and timbre to create large-scale musical structures.",MUS 20or permission of the instructor,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10664,7 +10664,7 @@ MUS,MUS 23 Timbre and Form,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",['MUS20']
 MUS,MUS 24.01 Black Sound Studies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-24-01,MUS24.01,"This upper-level reading and writing intensive seminar explores the field of Black sound studies. We will explore Black music, sound technologies, performance styles, aesthetics, and sonic epistemologies, all the while asking what might Black sound studies be and why. Each week, we will engage a text and an album together, moving through the sound sources of both pieces to generate moments of connection and silence between the two.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11094,7 +11094,7 @@ MUS,MUS 24.01 Black Sound Studies,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 25 Sonic Arts I: Machine Music,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-25,MUS25,"This course explores the impact of music technology on a century of sonic innovators. From room-sized synthesizers to backpack drum machines, from military vocoders to turntable science, we track how electronic tools have scrambled cultural hierarchies on their path from state-funded radio stations to present-day microchips.  Both sites of radical Black resistance and tools of a Eurocentric elite, electronic instruments have shaped auditory cultures in myriad, divergent ways. Tracing these threads, we’ll touch on the birth of Hip-Hop, Italian Futurists, Afrofuturism, Musique Concrète, American minimalism, Detroit Techno, and much more.Class sessions move from theory to practice, merging group discussions of repertoire and readings with hands-on sonic experimentation inAudacityandAbleton Live. Students are lent a home studio kit (with an audio interface, midi keyboard,  microphone, and headphones) to compose three sonic art projects throughout the term. Weekly X-hour meetings foster studio-based ear-training skills. Music 25 aims to empower the sonic intelligence in everyone. No previous musical training is required.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11523,7 +11523,7 @@ MUS,MUS 25 Sonic Arts I: Machine Music,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 26 Sonic Arts II: Sound is Alive,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-26,MUS26,"Mus 26 is an upper-level sonic arts studio course. Students will expand their technical and creative capacity with Ableton Live and be introduced to software tools for sound synthesis and generative music (Max/MSP, Spear). Though technically focused, the goals of this course are creative in nature: to broaden each student’s sonic palette through increased facility with software tools; to stretch each student’s aesthetic imagination through exposure to repertoire and invited artists; and to strengthen each student’s creative work habits through weekly course projects and crits.",Mus 25 or permission of the instructor,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11953,7 +11953,7 @@ MUS,MUS 26 Sonic Arts II: Sound is Alive,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",['MUS25']
 MUS,MUS 27.01 Musical Theater Writing,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-27-01,MUS27.01,"A musical tells a story with words and music. Beyond those basic parameters, any limitations around what a musical can and cannot be are up for debate. This multi-disciplinary class is open to composers, lyricists, songwriters, playwrights, directors, actors, singers, poets and musicians of any background. The objective is to investigate music theater by making it ourselves. In addition to looking at the past present and future of American musical theater we will engage a broad exploration musical storytelling, across many aesthetic sensibilities and time periods. The class requires weekly creative output in addition to reading and listening outside of class.  Students must be willing to work across the boundaries of their own disciplines to generate lyrics, songs and scenes. The class will establish a generous inter-disciplinary working environment which values creative risks, collaboration and inventiveness.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12377,7 +12377,7 @@ MUS,MUS 27.01 Musical Theater Writing,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 28 Sonic Space and Form,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-28,MUS28,"An exploration of mixing, shaping, and controlling sound and form in notated, produced, recorded, and live audio. Through weekly analysis and production exercises, students learn to read and manipulate mixes, filters, phase, convolution, and more advanced spectral techniques to apply these principles to musical structure, and write for combinations of sounds with attention to timbre, range, spatialization/imaging, and production idioms. Assignments include three ‘’orchestration” assignments, ranging from elementary to complex—the aim of which is to show how composers and producers shape sound, density, and timbre to create vibrant sonic forms.",MUS 25or permission of the instructor,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12807,7 +12807,7 @@ MUS,MUS 28 Sonic Space and Form,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",['MUS25']
 MUS,MUS 30.01 Composition Seminar,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-30-01,MUS30.01,"This course is for those intending to pursue compositional studies of any genre, style, or type of music at either the basic, intermediate, or advanced levels. Students will engage in extended creative projects designed in conjunction with the instructor during which they will receive intensive private instruction and participate in composition seminars. Projects may be undertaken in any of the following musical domains: acoustic, avant-garde, culturally-grounded, experimental, folk, inter- or multi-media, jazz, popular, rock, and traditional, or any other creative interest of the students enrolled. The term's work will include analyzing literature pertinent to the current session, and writing short compositions and essays involving the aesthetic, creative, and technical issues at hand.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13229,7 +13229,7 @@ MUS,MUS 30.01 Composition Seminar,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 30.02 Film Scoring,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-30-02,MUS30.02,"From music to image, this creative writing course explores the fundamental craftsmanship and aesthetic aspects of composing for film and media. We investigate and analyze the intersection of film, music and sound over the term. The course is structured in five modules, in which students are assigned to create original music and sound for four films (an animation, documentary, feature and experimental film) with acoustic, or a combination of electronic and acoustic instruments. The final project will be read and recorded with a chamber ensemble of professional musicians.",MUS 20; An interest in creating music and permission of the instructor.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13653,7 +13653,7 @@ MUS,MUS 30.02 Film Scoring,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>","['MUS20', 'IP']"
 MUS,MUS 30.03 Writing for Musical Theatre,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-30-03,MUS30.03,"This course will cover the principles of musical theatre writing for book writers and lyricists from plot, storyline, character, character arcs, utilizing the anatomy of the American Musical structure. The course will be part lecture (Chalk Talk), part incubator (Lab) and will combine theory and practice and engage modern musical theatre writing collaborative methodologies towards the creation of an adaptation for a musical theatre outline/treatment.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14077,7 +14077,7 @@ MUS,MUS 30.03 Writing for Musical Theatre,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 32 Improvisation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-32,MUS32,"“Improvisation” describes a wide variety of musical practices around the world through which musicians at least partially extemporize a musical performance.  This course aims to develop skills in improvisatory music-making both through practical experimentation and exercises, and by analyzing approaches to improvisation in selected musical styles, traditions, and works, with a focus on pieces by contemporary composers and avant-garde free improvisation.  For a final project, students will prepare and present a concert of improvised works.",MUS 1or exemption fromMUS 1.,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14507,7 +14507,7 @@ MUS,MUS 32 Improvisation,https://dartmouth.smartcatalogiq.com/en/current/orc/dep
 </form>
 
 </body>
-</html>"
+</html>",['MUS1']
 MUS,MUS 34 Sound Art Practice,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-34,MUS34,"The past half-century has witnessed a “sonic turn” in the visual arts. From installation to sonic sculptures, performance-based and participatory practices, artists have increasingly explored sound as a cultural, political, and corporeal phenomenon. This course is a studio introduction to the development of sound art as a social, sculptural, and environmental medium. Exploring repertoire at the nexus of experimental music, sculpture, installation, architecture and relational art, students will develop conceptual tools and pratical skills that enable independent intermedial work. Collaborative projects across diverse skill sets will be encouraged, and those with backgrounds in music, architecture, art, engineering, science, CS, dance and theater are encouraged to apply.",MUS 25or permission of the instructor,Dist:TAS; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14937,7 +14937,7 @@ MUS,MUS 34 Sound Art Practice,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",['MUS25']
 MUS,MUS 35 The Jazz Language,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-35,MUS35,"This course will present the essential elements of the ""jazz vocabulary"" to instrumentalists and vocalists. The language of jazz consists of the common melodic phrases, rhythms, harmonies, song forms and timbres that are employed by jazz musicians in jazz compositions and improvisations. Students will learn to use this language by applying it to a variety of compositions from the standard jazz repertoire including Blues, 16 measure forms, AABA and ABAC song forms as well as non-traditional and freer forms. Time in and out of class will be a balance of listening to and studying jazz recordings and playing jazz compositions with other members of the class. Watching jazz videos, practicing ear training, transcribing and analyzing melodies and solos as well as playing songs, solo transcriptions and jazz exercises. In-class rehearsals, individual practice outside of class and working through the process of preparation for a final performance will be the primary focus of this course. The development of each student's creativity will be an integral part of the work in this class.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15365,7 +15365,7 @@ MUS,MUS 35 The Jazz Language,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 36 Songwriting 1,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-36,MUS36,"The practice of animating language with music shows up in nearly every culture in the world. Throughout time, songs have been a medium for emotion, story, survival, cultural memory, spiritual practice, celebration, mourning, commerce and more.  In this course students will explore the technical, sonic, formal, poetic and metaphysical dimensions of songs through a rigorous weekly practice of songwriting, listening, sharing and critique. We will look broadly at songwriting techniques from many genres and traditions, and we will acquire powerful tools for unlocking and understanding the musicality that exists in language, and the meaning that can unfold from harmonic, melodic and sonic gestures. This course is open to students with any level of musical training or ability, but comfort with singing in front of others is recommended. Not open to students who have received credit for MUS 031.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15793,7 +15793,7 @@ MUS,MUS 36 Songwriting 1,https://dartmouth.smartcatalogiq.com/en/current/orc/dep
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 37 Songwriting 2: Making the Album,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-37,MUS37,"This course will focus on the process of composing and recording a collection of original songs. We will look at the emergence of the “album” as relates to the evolution of recording technologies and the craft of songwriting while each student will hone in on their own compositional voice. Over the course of the term students will explore albums across multiple platforms, time periods and genres, while composing and recording their own collection of original songs. We will also study recording fundamentals including mic placement, tracking, editing, mixing, equalization, compression, reverb and delay. The final project of this course will be a three to five song EP created by each student as a solo project or collaboration. The course is open to music makers of all genres and aesthetic sensibilities.","MUS 25orMUS 36or permission of the instructor. Previous experience in a Digital Audio Workstation (DAW) such as Ableton, ProTools or Logic is necessary for this course.",Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16223,7 +16223,7 @@ MUS,MUS 37 Songwriting 2: Making the Album,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['MUS25']
 MUS,MUS 38 Noise: Exploring Liberation in Sound,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-20-mus-39/mus-38,MUS38,"Music, as the organization of sound, is a borderless practice that expands across boundaries of discipline, culture, aesthetic category and social hierarchy. How can we enter into a sonic practice with that cosmic lens? Our musical educations have given us well-lit lanes for music making, but the objective of this course is to run our musical thinking off the road. Through weekly creative provocations we will venture into the wilderness of our most urgent spiritual, political, philosophical and ontological concerns. Through an engagement with critical theory, listening, embodied vocal work, social and creative practice, this course will approach music making in opposition to discipline. We will examine the musical (and non-musical) systems in which we participate, and seek to devise a co-created liberatory space for our musical impulses. This course is open to music makers and thinkers of all backgrounds and skill levels, regardless of musical training.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16646,7 +16646,7 @@ MUS,MUS 38 Noise: Exploring Liberation in Sound,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 41.01 Debussy the Innovator,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-40-mus-49/mus-41-01,MUS41.01,"Debussy’s music acted as a fulcrum between the 19th and 20th centuries and remains an active influence on musicians today. This course investigates the composer’s innovative approach to harmony, color, rhythm, and form. Via analytic and creative projects, we connect Debussy’s instrumental and vocal music to concurrent movements in literature, painting, and politics. We encounter the composer as performer, investigating his 1913 recordings on the Welte-Mignon reproducing piano. Reading primary sources sheds light on his personal life and alter-identity as Monsieur Croche. Across the term, we gauge Debussy’s profound influence on modernism, film scoring, jazz, and popular music.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17074,7 +17074,7 @@ MUS,MUS 41.01 Debussy the Innovator,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 42 Early Classical Music (From Plato to Mozart),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-40-mus-49/mus-42,MUS42,"This course introduces the composers and repertoires of Western classical music from ancient civilizations to ca. 1800. Our study emphasizes the development of musical instruments, the origins of written notation, and the constant search for new ways to organize sound. Examining numerous instrumental and vocal works, we will reflect on critical issues of history, virtuosity, class, gender, religion, censorship, and humor.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17502,7 +17502,7 @@ MUS,MUS 42 Early Classical Music (From Plato to Mozart),https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 43 Modern Classical Music (From Beethoven to Now),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-40-mus-49/mus-43,MUS43,"This course introduces the composers and repertoires of Western classical music since 1800. Our study spans the monumentalities of Romanticism, the upheavals of Modernism, and the innovations, digital technologies, and multiplicities of today. Examining numerous instrumental and vocal works, we will consider how compositional, societal, and economic change has destabilized the very definability of classical music, leading to its vibrant and variegated present.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17930,7 +17930,7 @@ MUS,MUS 43 Modern Classical Music (From Beethoven to Now),https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 45.03 The Music of Central Asia,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-40-mus-49/mus-45-03,MUS45.03,The course will focus on music in Central Eurasia—the core region of the historical Silk Road—and on musical connections between Central Asia and regions to which it has been historically linked by trade and cultural exchange. Course work includes reading and critical writing as well as listening and viewing assignments.  No prerequisite.,,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18352,7 +18352,7 @@ MUS,MUS 45.03 The Music of Central Asia,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 45.04 Music and Social Justice,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-40-mus-49/mus-45-04,MUS45.04,"This course asks what we can do for music and what music can do for the world. Our research and discussions lead us not simply to concrete examples of music functioning as an agent of change, but furthermore to contested notions of what it even means (and takes) to claim that something—society, art, people, culture, values—has undergone notable transformation. How do we think and talk about change via discourses of reform, revolution, rehabilitation, activism, innovation, progress, and productivity? What are some distinguishing features of music and sound that might enable them to serve as flashpoints or vehicles for change? And how might you—in this class and beyond—engage with music and its technologies to fulfill causes most meaningful to you?",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18782,7 +18782,7 @@ MUS,MUS 45.04 Music and Social Justice,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 45.05 Polyphony,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-40-mus-49/mus-45-05,MUS45.05,"Drawing from the world’s rich and diverse musical traditions, this course focuses on music and musical life in a particular geographic region or on a specific topic addressed from a cross-cultural and/or interdisciplinary perspective. In fall 2016, the focus is on polyphony--music composed or improvised by combining two or more distinct melodic lines. Examples will be drawn from contemporary and historical musical traditions of West Africa, Sardinia, Georgia, Tuva, and Western Europe. No prerequisite; no prior musical experience is required.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19210,7 +19210,7 @@ MUS,MUS 45.05 Polyphony,https://dartmouth.smartcatalogiq.com/en/current/orc/depa
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 45.06 Music from the Lands of the Silk Road,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-40-mus-49/mus-45-06,MUS45.06,"The Silk Road, the trans-Eurasian network of trade routes that stretched from Europe to Japan, and from South Siberia to South Asia, was not only a conduit for trade in luxury goods, but also for technological innovation and cultural exchange, including in the domain of music. This course addresses selected musical styles, genres, and repertoires from the lands of the Silk Road and the way they have been shaped by contact and interaction with other cultures. Examples are drawn from contemporary and historical musical traditions of the Middle East, Central Asia, the Caucasus, India, Tuva and Mongolia, China, Korea, and Japan. Where possible, guest artists are invited to offer live musical demonstrations. No prior musical experience is required.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19634,7 +19634,7 @@ MUS,MUS 45.06 Music from the Lands of the Silk Road,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 45.12 Advanced Studies in Jazz History: A Century of Jazz at Dartmouth,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-40-mus-49/mus-45-12,MUS45.12,"Advanced Studies in Jazz History offers students the opportunity for in-depth research into specific topics pertaining to Black Creative Music. This term we will be turning our gaze inward, exploring Dartmouth’s own history with jazz and other forms of Black music over the past century. Through a combination of primary source research, interviews and oral history, and creative storytelling and writing, the goal of this course is to generate lasting, honest, insightful, and engaging documentation of the complicated history of jazz at Dartmouth.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20058,7 +20058,7 @@ MUS,MUS 45.12 Advanced Studies in Jazz History: A Century of Jazz at Dartmouth,h
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 46 Video Games and the Meaning of Life,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-40-mus-49/mus-46,MUS46,"Video Games and the Meaning of Life is an interdisciplinary course that explores the modern human condition through the stories, designs, and soundscapes of digital games—from the perils of obedience (Hannah Arendt andThe Stanley Parable) to the metaphors of illness (Susan Sontag andThat Dragon, Cancer), from the deathless dreams of pacifism (Undertale) to the transnational rise of today’s billion-dollar e-Sports industry (League of Legends). All students are welcome; no gaming or musical experience needed.",,Dist:TMV; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20488,7 +20488,7 @@ MUS,MUS 46 Video Games and the Meaning of Life,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 50 Performance Laboratories,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-50,MUS50,"Performance Laboratories provide weekly coaching and instruction in diverse forms of music making and are open by audition to all Dartmouth students. Course work centers on musical readings and informal performance of selected repertoire chosen both for its intrinsic interest and for its relevance to the contents of course syllabi within the Department of Music. Performance laboratories may be taken for credit (three terms equals one credit) or on a not-for-credit basis. Subject to space availability, students may enroll in different laboratories during different terms. Terms of enrollment need not be consecutive.",,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20910,7 +20910,7 @@ MUS,MUS 50 Performance Laboratories,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 50.11 Chamber Music I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-50-11,MUS50.11,"Depending on enrollment and distribution of instruments, this laboratory may be broken down into several configurations, e.g., quartet, piano quintet, wind octet, string trio, etc. Repertoire focuses on chamber music from the eighteenth century through the first half of the twentieth.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21334,7 +21334,7 @@ MUS,MUS 50.11 Chamber Music I,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 50.12 Chamber Music II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-50-12,MUS50.12,"Depending on enrollment and distribution of instruments, this laboratory may be broken down into several configurations, e.g., quartet, piano quintet, wind octet, string trio, etc. Repertoire focuses on chamber music from the eighteenth century through the first half of the twentieth.",MUS 50.11,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21760,7 +21760,7 @@ MUS,MUS 50.12 Chamber Music II,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",['MUS50.11']
 MUS,MUS 50.13 Chamber Music III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-50-13,MUS50.13,"Depending on enrollment and distribution of instruments, this laboratory may be broken down into several configurations, e.g., quartet, piano quintet, wind octet, string trio, etc. Repertoire focuses on chamber music from the eighteenth century through the first half of the twentieth.",MUS 50.12,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22190,7 +22190,7 @@ MUS,MUS 50.13 Chamber Music III,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",['MUS50.12']
 MUS,MUS 50.21 Contemporary Music I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-50-21,MUS50.21,"The contemporary music laboratory will read through and study works appropriate to the participants' skill level, and where possible, collaborate with Dartmouth's compositional community in informal performances of newly-composed works.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22614,7 +22614,7 @@ MUS,MUS 50.21 Contemporary Music I,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 50.22 Contemporary Music II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-50-22,MUS50.22,"The contemporary music laboratory will read through and study works appropriate to the participants' skill level, and where possible, collaborate with Dartmouth's compositional community in informal performances of newly-composed works.",MUS 50.21,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23040,7 +23040,7 @@ MUS,MUS 50.22 Contemporary Music II,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['MUS50.21']
 MUS,MUS 50.23 Contemporary Music III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-50-23,MUS50.23,"The contemporary music laboratory will read through and study works appropriate to the participants' skill level, and where possible, collaborate with Dartmouth's compositional community in informal performances of newly-composed works.",MUS 50.22,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23470,7 +23470,7 @@ MUS,MUS 50.23 Contemporary Music III,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['MUS50.22']
 MUS,MUS 50.31 Jazz Improvisation I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-50-31,MUS50.31,"This course serves as a laboratory for students with some preparation in jazz to develop skills in composition, arranging, and performance. Ensemble configurations will be determined each term on the basis of enrollment.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23894,7 +23894,7 @@ MUS,MUS 50.31 Jazz Improvisation I,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 50.32 Jazz Improvisation II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-50-32,MUS50.32,"This course serves as a laboratory for students with some preparation in jazz to develop skills in composition, arranging, and performance. Ensemble configurations will be determined each term on the basis of enrollment.",MUS 50.31,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24320,7 +24320,7 @@ MUS,MUS 50.32 Jazz Improvisation II,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['MUS50.31']
 MUS,MUS 50.33 Jazz Improvisation III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-50-33,MUS50.33,"This course serves as a laboratory for students with some preparation in jazz to develop skills in composition, arranging, and performance. Ensemble configurations will be determined each term on the basis of enrollment.",MUS 50.32,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24750,7 +24750,7 @@ MUS,MUS 50.33 Jazz Improvisation III,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['MUS50.32']
 MUS,MUS 50.41 Vocal Performance Lab I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-50-41,MUS50.41,"This course serves as a performance laboratory for voice students, or students with an interest in vocal music, to develop vocal, language, and acting skills, working on repertoire from opera, art song, music theater, original compositions, the American songbook, and international music. Admission is by non-competitive audition. All are welcome.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25174,7 +25174,7 @@ MUS,MUS 50.41 Vocal Performance Lab I,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 50.42 Vocal Performance Lab II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-50-42,MUS50.42,"This course serves as a performance laboratory for voice students, or students with an interest in vocal music, to develop vocal, language, and acting skills, working on repertoire from opera, art song, music theater, original compositions, the American songbook, and international music. Admission is by non-competitive audition. All are welcome.",MUS 50.41,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25600,7 +25600,7 @@ MUS,MUS 50.42 Vocal Performance Lab II,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",['MUS50.41']
 MUS,MUS 50.43 Vocal Performance Lab III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-50-43,MUS50.43,"This course serves as a performance laboratory for voice students, or students with an interest in vocal music, to develop vocal, language, and acting skills, working on repertoire from opera, art song, music theater, original compositions, the American songbook, and international music. Admission is by non-competitive audition. All are welcome.",MUS 50.42,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26030,7 +26030,7 @@ MUS,MUS 50.43 Vocal Performance Lab III,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",['MUS50.42']
 MUS,MUS 51 Oral Tradition Musicianship,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-51,MUS51,"Through disciplined practice of West African, Afro-Caribbean, and Afro-Brazilian percussion-based music under the leadership of a master drummer, students will enter a musical world in which creating, mentoring, and communicating are all rooted in oral tradition. Weekly music making is integrated with discussions and audio-visual materials that culturally contextualize the musical traditions being performed.",None.,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26460,7 +26460,7 @@ MUS,MUS 51 Oral Tradition Musicianship,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 52.01 Conducting and Artistic Direction,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-52-01,MUS52.01,"This course provides a practical introduction and the theoretical underpinnings for the art of conducting and study of the musical score. At the center of this endeavor is the analysis of music through the lens of the conductor-scholar, which develops in the expression of music through gesture. Students will be required to attend weekly workshops in the art of conducting, as well as in the study and analysis of three major works of contrasting styles. The course culminates in a final conducting workshop with professional musicians.","Two courses from MUS 21-23, and one course from MUS 6, 10, 11, or 40-44, or permission of the instructor",Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26884,7 +26884,7 @@ MUS,MUS 52.01 Conducting and Artistic Direction,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>","['MUS21', 'MUS22']"
 MUS,MUS 52.02 Applied Conducting,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-52-02,MUS52.02,"This is a practical, movement based course. The conducting curriculum will focus on score study and physical movement, tested through conducting labs with live musicians. The conducting curriculum will be supplemented by readings, projects, and seminar-style discussions of musical entrepreneurship, music business, and music-making in the 21st century.","MUS 20, or permission of the instructor.",Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27308,7 +27308,7 @@ MUS,MUS 52.02 Applied Conducting,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",['MUS20']
 MUS,MUS 52.03 The Art of Conducting: An Introduction to Choral and Orchestral Conducting,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-52-03,MUS52.03,"This course provides a practical introduction and the theoretical underpinnings for the art of conducting and study of the musical score. At the center of this endeavor is the analysis of music through the lens of the conductor-scholar, which develops in the expression of music through gesture. Students will be required to attend weekly workshops in the art of conducting, as well as in the study and analysis of three major works from the choral and orchestral repertoire. In this course, the students will have the opportunity to conduct Dartmouth’s choral and orchestral ensembles (Glee Club, Handel Society, and Dartmouth Symphony Orchestra).",MUS 20or permission of the instructor.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27738,7 +27738,7 @@ MUS,MUS 52.03 The Art of Conducting: An Introduction to Choral and Orchestral Co
 </form>
 
 </body>
-</html>"
+</html>",['MUS20']
 MUS,MUS 52.04 The Modern Conductor: An Introduction to Wind and Chamber Conducting,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-50-mus-52/mus-52-04,MUS52.04,"This is a practical, movement based course. The conducting curriculum will focus on score study and physical movement, tested through conducting labs, practicums, and exams with live musicians. Students will have the opportunity to conduct the Dartmouth College Wind Ensemble, the Hanover High School Band, and various chamber ensembles in rehearsal and/or performance.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28160,7 +28160,7 @@ MUS,MUS 52.04 The Modern Conductor: An Introduction to Wind and Chamber Conducti
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 53.01 Keyboard Individual Instruction: Classical and Jazz Piano I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-53-01,MUS53.01,Keyboard Individual Instruction: Classical and Jazz Piano,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28584,7 +28584,7 @@ MUS,MUS 53.01 Keyboard Individual Instruction: Classical and Jazz Piano I,https:
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 53.02 Keyboard Individual Instruction: Classical and Jazz Piano II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-53-02,MUS53.02,Keyboard Individual Instruction: Classical and Jazz Piano,MUS 53.01,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29010,7 +29010,7 @@ MUS,MUS 53.02 Keyboard Individual Instruction: Classical and Jazz Piano II,https
 </form>
 
 </body>
-</html>"
+</html>",['MUS53.01']
 MUS,MUS 53.03 Keyboard Individual Instruction: Classical and Jazz Piano III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-53-03,MUS53.03,Keyboard Individual Instruction: Classical and Jazz Piano III,MUS 53.02,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29440,7 +29440,7 @@ MUS,MUS 53.03 Keyboard Individual Instruction: Classical and Jazz Piano III,http
 </form>
 
 </body>
-</html>"
+</html>",['MUS53.02']
 MUS,"MUS 54.01 Woodwind Individual Instruction: Flute, Oboe, Clarinet, Bassoon, Saxophone",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-54-01,MUS54.01,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29864,7 +29864,7 @@ MUS,"MUS 54.01 Woodwind Individual Instruction: Flute, Oboe, Clarinet, Bassoon, 
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,"MUS 54.02 Woodwind Individual Instruction: Flute, Oboe, Clarinet, Bassoon, Saxophone",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-54-02,MUS54.02,,MUS 54.01,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30290,7 +30290,7 @@ MUS,"MUS 54.02 Woodwind Individual Instruction: Flute, Oboe, Clarinet, Bassoon, 
 </form>
 
 </body>
-</html>"
+</html>",['MUS54.01']
 MUS,"MUS 54.03 Woodwind Individual Instruction: Flute, Oboe, Clarinet, Bassoon, Saxophone",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-54-03,MUS54.03,,MUS 54.02,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30720,7 +30720,7 @@ MUS,"MUS 54.03 Woodwind Individual Instruction: Flute, Oboe, Clarinet, Bassoon, 
 </form>
 
 </body>
-</html>"
+</html>",['MUS54.02']
 MUS,"MUS 55.01 Brass Individual Instruction: Trumpet, French Horn, Trombone, Tuba",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-55-01,MUS55.01,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31144,7 +31144,7 @@ MUS,"MUS 55.01 Brass Individual Instruction: Trumpet, French Horn, Trombone, Tub
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,"MUS 55.02 Brass Individual Instruction: Trumpet, French Horn, Trombone, Tuba",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-55-02,MUS55.02,,MUS 55.01,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31570,7 +31570,7 @@ MUS,"MUS 55.02 Brass Individual Instruction: Trumpet, French Horn, Trombone, Tub
 </form>
 
 </body>
-</html>"
+</html>",['MUS55.01']
 MUS,"MUS 55.03 Brass Individual Instruction: Trumpet, French Horn, Trombone, Tuba",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-55-03,MUS55.03,,MUS 55.02,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32000,7 +32000,7 @@ MUS,"MUS 55.03 Brass Individual Instruction: Trumpet, French Horn, Trombone, Tub
 </form>
 
 </body>
-</html>"
+</html>",['MUS55.02']
 MUS,"MUS 56.01 String Individual Instruction: Violin, Viola, Cello, Bass Viol, Electric Bass, Classical and Electrical Guitar",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-56-01,MUS56.01,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32424,7 +32424,7 @@ MUS,"MUS 56.01 String Individual Instruction: Violin, Viola, Cello, Bass Viol, E
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,"MUS 56.02 String Individual Instruction: Violin, Viola, Cello, Bass Viol, Electric Bass, Classical and Electrical Guitar",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-56-02,MUS56.02,,MUS 56.01,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32850,7 +32850,7 @@ MUS,"MUS 56.02 String Individual Instruction: Violin, Viola, Cello, Bass Viol, E
 </form>
 
 </body>
-</html>"
+</html>",['MUS56.01']
 MUS,"MUS 56.03 String Individual Instruction: Violin, Viola, Cello, Bass Viol, Electric Bass, Classical and Electrical Guitar",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-56-03,MUS56.03,,MUS 56.02,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33280,7 +33280,7 @@ MUS,"MUS 56.03 String Individual Instruction: Violin, Viola, Cello, Bass Viol, E
 </form>
 
 </body>
-</html>"
+</html>",['MUS56.02']
 MUS,MUS 57.01 Voice Individual Instruction,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-57-01,MUS57.01,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33704,7 +33704,7 @@ MUS,MUS 57.01 Voice Individual Instruction,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 57.02 Voice Individual Instruction,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-57-02,MUS57.02,,MUS 57.01,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34130,7 +34130,7 @@ MUS,MUS 57.02 Voice Individual Instruction,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['MUS57.01']
 MUS,MUS 57.03 Voice Individual Instruction,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-57-03,MUS57.03,,MUS 57.02,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34560,7 +34560,7 @@ MUS,MUS 57.03 Voice Individual Instruction,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['MUS57.02']
 MUS,MUS 58.01 Percussion Individual Instruction,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-58-01,MUS58.01,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34984,7 +34984,7 @@ MUS,MUS 58.01 Percussion Individual Instruction,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 58.02 Percussion Individual Instruction,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-58-02,MUS58.02,,MUS 58.01,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35410,7 +35410,7 @@ MUS,MUS 58.02 Percussion Individual Instruction,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",['MUS58.01']
 MUS,MUS 58.03 Percussion Individual Instruction,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-58-03,MUS58.03,,MUS 58.02,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35840,7 +35840,7 @@ MUS,MUS 58.03 Percussion Individual Instruction,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",['MUS58.02']
 MUS,MUS 58.11 Sound Engineering I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-58-11,MUS58.11,"Students seeking advanced sound-engineering learning may enroll in this three-term course. Through weekly meetings, students will explore recording, mixing, and mastering processes tailored to the genre of music that they wish to work on. As a result of the course, students will create and release an original EP album. The final grade will be based on demonstrated individual achievement throughout each term and in a final project.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36264,7 +36264,7 @@ MUS,MUS 58.11 Sound Engineering I,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 58.12 Sound Engineering II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-58-12,MUS58.12,"Students seeking advanced sound-engineering learning may enroll in this three-term course. Through weekly meetings, students will explore recording, mixing, and mastering processes tailored to the genre of music that they wish to work on. As a result of the course, students will create and release an original EP album. The final grade will be based on demonstrated individual achievement throughout each term and in a final project.",MUS 58.11,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36690,7 +36690,7 @@ MUS,MUS 58.12 Sound Engineering II,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['MUS58.11']
 MUS,MUS 58.13 Sound Engineering III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-58-13,MUS58.13,"Students seeking advanced sound-engineering learning may enroll in this three-term course. Through weekly meetings, students will explore recording, mixing, and mastering processes tailored to the genre of music that they wish to work on. As a result of the course, students will create and release an original EP album. The final grade will be based on demonstrated individual achievement throughout each term and in a final project.",MUS 58.12,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37116,7 +37116,7 @@ MUS,MUS 58.13 Sound Engineering III,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['MUS58.12']
 MUS,MUS 59 Ensemble Performance and Leadership,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59,MUS59,"Students participating in Hopkins Center music ensembles may enroll in this three-term course to develop additional knowledge and skills in ensemble performance, music history and theory, and organization. Students will work with their ensemble director to create an individual portfolio consisting of musicianship topics taken over three terms of ensemble study (see assessment below). The final grade will be based on demonstrated individual achievement in the chosen topics and in a final project or performance.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37534,7 +37534,7 @@ MUS,MUS 59 Ensemble Performance and Leadership,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 59.11 Coast Jazz Orchestra I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-11,MUS59.11,This topic is for Ensemble Performance and Leadership for students in the Coast Jazz Orchestra.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37958,7 +37958,7 @@ MUS,MUS 59.11 Coast Jazz Orchestra I,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 59.12 Coast Jazz Orchestra II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-12,MUS59.12,This topic is for Ensemble Performance and Leadership for students in the Coast Jazz Orchestra.,MUS 59.11,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38384,7 +38384,7 @@ MUS,MUS 59.12 Coast Jazz Orchestra II,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.11']
 MUS,MUS 59.13 Coast Jazz Orchestra III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-13,MUS59.13,This topic is for Ensemble Performance and Leadership for students in the Coast Jazz Orchestra.,MUS 59.12,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38814,7 +38814,7 @@ MUS,MUS 59.13 Coast Jazz Orchestra III,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.12']
 MUS,MUS 59.21 Dartmouth College Glee Club I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-21,MUS59.21,This topic is for Ensemble Performance and Leadership for students in the Dartmouth College Glee Club.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -39238,7 +39238,7 @@ MUS,MUS 59.21 Dartmouth College Glee Club I,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 59.22 Dartmouth College Glee Club II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-22,MUS59.22,This topic is for Ensemble Performance and Leadership for students in the Dartmouth College Glee Club.,MUS 59.21,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -39664,7 +39664,7 @@ MUS,MUS 59.22 Dartmouth College Glee Club II,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.21']
 MUS,MUS 59.23 Dartmouth College Glee Club III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-23,MUS59.23,This topic is for Ensemble Performance and Leadership for students in the Dartmouth College Glee Club.,MUS 59.22,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40094,7 +40094,7 @@ MUS,MUS 59.23 Dartmouth College Glee Club III,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.22']
 MUS,MUS 59.31 Dartmouth College Gospel Choir I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-31,MUS59.31,This topic is for Ensemble Performance and Leadership for students in the Dartmouth College Gospel Choir.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40518,7 +40518,7 @@ MUS,MUS 59.31 Dartmouth College Gospel Choir I,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 59.32 Dartmouth College Gospel Choir II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-32,MUS59.32,This topic is for Ensemble Performance and Leadership for students in the Dartmouth College Gospel Choir.,MUS 59.31,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40944,7 +40944,7 @@ MUS,MUS 59.32 Dartmouth College Gospel Choir II,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.31']
 MUS,MUS 59.33 Dartmouth College Gospel Choir III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-33,MUS59.33,This topic is for Ensemble Performance and Leadership for students in the Dartmouth College Gospel Choir.,MUS 59.32,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -41374,7 +41374,7 @@ MUS,MUS 59.33 Dartmouth College Gospel Choir III,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.32']
 MUS,MUS 59.41 Handel Society of Dartmouth College I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-41,MUS59.41,This topic is for Ensemble Performance and Leadership for students in the Handel Society of Dartmouth College.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -41798,7 +41798,7 @@ MUS,MUS 59.41 Handel Society of Dartmouth College I,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 59.42 Handel Society of Dartmouth College II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-42,MUS59.42,This topic is for Ensemble Performance and Leadership for students in the Handel Society of Dartmouth College.,MUS 59.41,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -42224,7 +42224,7 @@ MUS,MUS 59.42 Handel Society of Dartmouth College II,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.41']
 MUS,MUS 59.43 Handel Society of Dartmouth College III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-43,MUS59.43,This topic is for Ensemble Performance and Leadership for students in the Handel Society of Dartmouth College.,MUS 59.42,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -42654,7 +42654,7 @@ MUS,MUS 59.43 Handel Society of Dartmouth College III,https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.42']
 MUS,MUS 59.51 Dartmouth Symphony Orchestra I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-51,MUS59.51,This topic is for Ensemble Performance and Leadership for students in the Dartmouth Symphony Orchestra.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -43078,7 +43078,7 @@ MUS,MUS 59.51 Dartmouth Symphony Orchestra I,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 59.52 Dartmouth Symphony Orchestra II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-52,MUS59.52,This topic is for Ensemble Performance and Leadership for students in the Dartmouth Symphony Orchestra.,MUS 59.51,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -43504,7 +43504,7 @@ MUS,MUS 59.52 Dartmouth Symphony Orchestra II,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.51']
 MUS,MUS 59.53 Dartmouth Symphony Orchestra III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-53,MUS59.53,This topic is for Ensemble Performance and Leadership for students in the Dartmouth Symphony Orchestra.,MUS 59.52,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -43934,7 +43934,7 @@ MUS,MUS 59.53 Dartmouth Symphony Orchestra III,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.52']
 MUS,MUS 59.61 Dartmouth College Wind Ensemble I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-61,MUS59.61,This topic is for Ensemble Performance and Leadership for students in the Dartmouth College Wind Ensemble.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -44358,7 +44358,7 @@ MUS,MUS 59.61 Dartmouth College Wind Ensemble I,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 59.62 Dartmouth College Wind Ensemble II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-62,MUS59.62,This topic is for Ensemble Performance and Leadership for students in the Dartmouth College Wind Ensemble.,MUS 59.61,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -44784,7 +44784,7 @@ MUS,MUS 59.62 Dartmouth College Wind Ensemble II,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.61']
 MUS,MUS 59.63 Dartmouth College Wind Ensemble III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-63,MUS59.63,This topic is for Ensemble Performance and Leadership for students in the Dartmouth College Wind Ensemble.,MUS 59.62,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -45214,7 +45214,7 @@ MUS,MUS 59.63 Dartmouth College Wind Ensemble III,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.62']
 MUS,MUS 59.71 Dartmouth College Marching Band I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-71,MUS59.71,This topic is for Ensemble Performance and Leadership for students in the Dartmouth College Marching Band.,,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -45642,7 +45642,7 @@ MUS,MUS 59.71 Dartmouth College Marching Band I,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 59.72 Dartmouth College Marching Band II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-72,MUS59.72,This topic is for Ensemble Performance and Leadership for students in the Dartmouth College Marching Band.,59.71,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -46072,7 +46072,7 @@ MUS,MUS 59.72 Dartmouth College Marching Band II,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.71']
 MUS,MUS 59.73 Dartmouth College Marching Band III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-59-73,MUS59.73,This topic is for Ensemble Performance and Leadership for students in the Dartmouth College Marching Band.,MUS 59.72,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -46502,7 +46502,7 @@ MUS,MUS 59.73 Dartmouth College Marching Band III,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",['MUS59.72']
 MUS,MUS 60 Studies in Musical Performance: Keyboard,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-60,MUS60,"This course consists of the intensive private study of a small number of selected works through their performance. Beyond technical mastery of the instrument, emphasis is placed upon the relation between performance problems (dynamics, phrasing, rubato) and multi-level analysis (harmonic, structural, stylistic). In addition to private instruction for one ninety-minute period each week, the student will be required to present a one-hour recital and to provide either written or oral program notes.",MUS 53 and permission of the instructor.,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -46932,7 +46932,7 @@ MUS,MUS 60 Studies in Musical Performance: Keyboard,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>","['MUS53', 'IP']"
 MUS,MUS 61 Studies in Musical Performance: Woodwinds,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-61,MUS61,(see details underMUS 60),MUS 54 and permission of the instructor.,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -47362,7 +47362,7 @@ MUS,MUS 61 Studies in Musical Performance: Woodwinds,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>","['MUS54', 'IP']"
 MUS,MUS 62 Studies in Musical Performance: Brass,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-62,MUS62,(see details underMUS 60),MUS 55 and permission of the instructor.,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -47792,7 +47792,7 @@ MUS,MUS 62 Studies in Musical Performance: Brass,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>","['MUS55', 'IP']"
 MUS,MUS 63 Studies in Musical Performance: Strings,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-63,MUS63,(see details underMUS 60),MUS 56 and permission of the instructor.,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -48222,7 +48222,7 @@ MUS,MUS 63 Studies in Musical Performance: Strings,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>","['MUS56', 'IP']"
 MUS,MUS 64 Studies in Musical Performance: Voice,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-64,MUS64,(see details underMUS 60),MUS 57 and permission of the instructor.,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -48652,7 +48652,7 @@ MUS,MUS 64 Studies in Musical Performance: Voice,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>","['MUS57', 'IP']"
 MUS,MUS 65 Studies in Musical Performance: Percussion,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-53-mus-69-individual-instruction-program/mus-65,MUS65,(see details underMUS 60),MUS 58 and permission of the instructor.,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -49082,7 +49082,7 @@ MUS,MUS 65 Studies in Musical Performance: Percussion,https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>","['MUS58', 'IP']"
 MUS,MUS 70 Perspectives in Music Performance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-70-mus-79-foreign-study-courses/mus-70,MUS70,"This course combines the study of music with an intensive exposure to musical performance. Students attend concerts, examine works selected from the repertoire, and keep a journal of concert observations. Performance practices of various historical style periods are reviewed in their historical context, including such factors as the circumstances of composition, the place of the work within a composer's total output, and the contribution of individual works to the development of musical form and style.",MUS 20.,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -49506,7 +49506,7 @@ MUS,MUS 70 Perspectives in Music Performance,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",['MUS20']
 MUS,MUS 71 The History of Music in England,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-70-mus-79-foreign-study-courses/mus-71,MUS71,"A close examination of the circumstances in which music has been composed and performed in England from early times to the present. Course topics include the effects of ruling monarchs and changing religious affiliations on musical life, the rise of music societies, and the influence of music from Continental Europe such as opera and the Italian madrigal. Students will study works by Dunstable, Tallis, Dowland, Byrd, Purcell, Handel, Elgar, Walton, Britten, and Tippett.",MUS 20.,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -49930,7 +49930,7 @@ MUS,MUS 71 The History of Music in England,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['MUS20']
 MUS,MUS 74 The History of Music in Central Europe,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-70-mus-79-foreign-study-courses/mus-74,MUS74,"This course takes advantage of our study in Vienna to explore the sites and environs where many of the composers and performers we will study were born, worked and died. Reading and listening assignments will be augmented by day trips and overnight excursions to Salzburg, Prague and other locales. Local guest lecturers who are experts on various aspects of Central European musical and intellectual history will join us throughout the course.",MUS 20,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -50354,7 +50354,7 @@ MUS,MUS 74 The History of Music in Central Europe,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",['MUS20']
 MUS,"MUS 82 Special Study in History, Musicology, Ethnomusicology",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-80-mus-99/mus-82,MUS82,,,ART.,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -50782,7 +50782,7 @@ MUS,"MUS 82 Special Study in History, Musicology, Ethnomusicology",https://dartm
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 83 Special Study in Composition and Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-80-mus-99/mus-83,MUS83,,,ART.,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -51210,7 +51210,7 @@ MUS,MUS 83 Special Study in Composition and Theory,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 84 Special Study in Performance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-80-mus-99/mus-84,MUS84,,,ART.,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -51638,7 +51638,7 @@ MUS,MUS 84 Special Study in Performance,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 86 Other Special Studies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-80-mus-99/mus-86,MUS86,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -52062,7 +52062,7 @@ MUS,MUS 86 Other Special Studies,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 87 Special Studies in Music Abroad (Individual Instruction on Music FSP),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-80-mus-99/mus-87,MUS87,MUS 87may count as an elective but may not be used as a substitute for the Individual Instruction Program.,,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -52485,7 +52485,7 @@ MUS,MUS 87 Special Studies in Music Abroad (Individual Instruction on Music FSP)
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 88 Honors,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-80-mus-99/mus-88,MUS88,"The Honors Program provides an opportunity for work of greater scope and depth than the Music Department’s standard course offerings. Honors projects typically take the form of independent work that is undertaken over at least two terms, and supervised by one or more members of the music faculty. Students are awarded one course credit for successful completion of this course at the end of the second term of work. Students register for MUS-088 and receive a grade of “ON” (ongoing) at the end of the term. Students do not register for the subsequent term. A final grade will replace the “ON” at the end of the subsequent term at which time the coursework must be completed.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -52909,7 +52909,7 @@ MUS,MUS 88 Honors,https://dartmouth.smartcatalogiq.com/en/current/orc/department
 </form>
 
 </body>
-</html>"
+</html>",[]
 MUS,MUS 99 Proseminar,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses/mus-80-mus-99/mus-99,MUS99,"Fulfilling the Music Major Culminating Experience, this advanced seminar (offered once a year, during the fall term) calls on senior music majors to apply the knowledge they have acquired throughout their Dartmouth education. Each year, the course will be organized around a broad theme that relates to the instructor’s specialization, placing students in dialogue with contemporary developments that are shaping our field.",Permission of the instructor,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -53339,4 +53339,4 @@ MUS,MUS 99 Proseminar,https://dartmouth.smartcatalogiq.com/en/current/orc/depart
 </form>
 
 </body>
-</html>"
+</html>",['IP']

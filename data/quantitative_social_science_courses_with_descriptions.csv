@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 QSS,QSS 15 Introduction to Data Analysis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-15,QSS15,"Methods for transforming raw facts into useful information. Directed toward students with an aptitude for mathematics. Emphasis is placed on the understanding, use, and both oral and written interpretation of exploratory data analysis within the rules of scientific method. With permission from the responsible department, QSS 015 may be used to satisfy some pre-medical, natural science, and social science departmental requirements in mathematics, statistics, and methodology. Limited enrollment.Because of the large overlap in material covered, no student may receive credit for more than one of the coursesECON 10,ENVS 10,GOVT 10,MATH 10,PSYC 10,QSS 15, andSOCY 10, except by special petition to the Committee on Instruction.","MATH 3or higher, or permission.",QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -427,7 +427,7 @@ QSS,QSS 15 Introduction to Data Analysis,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",['MATH3']
 QSS,QSS 17 Data Visualization,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-17,QSS17,"Big data are everywhere – in government, academic research, media, business, and everyday life. To tell the stories hidden behind blizzards of data, effective visualization is critical. This course primarily teaches R, a free software environment for statistical computing and graphics, which is widely regarded as one of the most versatile and flexible tools for data visualization and, more broadly, data science. Students completing the course will know how to “wrangle” and visualize data critical to their scientific endeavors.",,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -849,7 +849,7 @@ QSS,QSS 17 Data Visualization,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 18 Introduction to Game Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-18,QSS18,"Game theory is used to study how individuals and organizations interact strategically, and this course introduces game theory with a focus on political science applications. Game theory is a standard tool in the social sciences, and insights from game theory are essential to understanding many facets of politics, such as political party competition, legislative politics, international relations, and the provision of public goods. Among other topics, the course will cover normal and extensive form games, Nash equilibria, imperfect information, mixed strategies, and, if time permits, the basics of games with incomplete information. A course in game theory will change the way that one views the world.",,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1271,7 +1271,7 @@ QSS,QSS 18 Introduction to Game Theory,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 19 Advanced Data Visualization,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-19,QSS19,"Data visualization represents a crucial form for communication of scientific findings to the broader public. TheQSS 19advanced data visualization course maximizes students' abilities to communicate social science research through advanced graphical representations, including many of the more advanced forms of visualization suitable for the web. Javascript, HTML widgets, dashboards, and animated plots designed for social media and the web will be covered at length. Students will execute projects, building their own web-based dashboards and visualizations designed to communicate patterns in data, translating and transforming the results of real-world research.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1687,7 +1687,7 @@ QSS,QSS 19 Advanced Data Visualization,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 20 Modern Statistical Computing,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-20,QSS20,"This course is meant to build upon your introductory programming course and to equip you with the computing literacy to conduct social science research in the age of “big data.” This has two core components. First is learning the background tools (e.g., Github; Latex; working on the command line) to conduct transparent and reproducible research. Second is learning programming skills essential for social science in the big data era, with a focus on using Python for various applied tasks as well as R for tasks like data visualization and SQL for tasks like working with the relational databases that form the backbone of many real-world government and commercial datasets.","COSC 1,ENGS 20",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2117,7 +2117,7 @@ QSS,QSS 20 Modern Statistical Computing,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",['COSC1']
 QSS,QSS 30 Special Topics in Quantitative Social Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30,QSS30,"This course focuses on a particular topic of interest to students pursuing coursework in quantitative social science. The topics covered byQSS 30will span economics, political science, sociology, and other fields. The specific topic of the course will change with each offering, and students may therefore take this course more than once.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2533,7 +2533,7 @@ QSS,QSS 30 Special Topics in Quantitative Social Science,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.01 Sports Analytics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-01,QSS30.01,"Sports organizations are becoming increasingly aware that analytics are an important component of team success.  This course will introduce students to various statistical techniques used in modern sports analysis and in particular will teach participants how statistical methods can be used to analyze game outcomes and evaluate players and strategies.  The course will include lectures, in-class exercises using the R statistical computing environment, and guest speakers from the sports industry.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2953,7 +2953,7 @@ QSS,QSS 30.01 Sports Analytics,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.02 Computational Text Analysis for the Social Sciences,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-02,QSS30.02,"Language is the medium for politics and political conflict. Candidates debate during elections. Representatives write laws. Nations negotiate peace treaties. Clerics issue Fatwas. Citizens express their opinions about politics on social media sites. These examples, and many others, suggest that to understand what politics is about, we need to know what political actors are saying and writing. This course introduces techniques to collect, analyze, and utilize large collections of text for social science inferences.  Students will also have the opportunity to develop their programming abilities.
 \fWe will explore a range of datasets from the text ofThe Federalist Papersto the millions of tweets sent to and from members of Congress.",,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
@@ -3377,7 +3377,7 @@ QSS,QSS 30.02 Computational Text Analysis for the Social Sciences,https://dartmo
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.03 Experiments in Politics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-03,QSS30.03,"This class is a lab-style seminar in which we will design, field, and analyze an experimental study. Our goal is to publish a scholarly article about our findings in a peer-reviewed journal of political science - an ambitious project that will require a substantial commitment from each student. Flexibility will also be essential since the course will evolve during the semester based on the needs of the project.The subject of the experimental study varies term to term and will be determined prior to the beginning of classes. Although the experimental study will vary each term, students may not repeat this course for credit.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3799,7 +3799,7 @@ QSS,QSS 30.03 Experiments in Politics,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.04 Evolutionary Game Theory and Applications,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-04,QSS30.04,"Pioneered by John Maynard Smith and others, evolutionary game theory has become an important approach to studying a wide range of biological and social problems, such as microbial interactions and animal behavior. In evolutionary game dynamics, the fitness of individuals depends on the relative abundance of all individual types in the population, and higher-fitness individual types tend to increase in abundance. This course introduces basic concepts in evolutionary game theory, including evolutionarily stable strategies, replicator dynamics, finite populations, and games on networks, along with applications to social evolution, particularly to understanding human cooperation.",MATH 3,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4223,7 +4223,7 @@ QSS,QSS 30.04 Evolutionary Game Theory and Applications,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",['MATH3']
 QSS,QSS 30.05 Topics in Digital History: U.S. History Through Census Data,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-05,QSS30.05,"This course focuses on using data from historical censuses (1850-2000) to examine U.S. history. We will discuss what the census tells us about the past, the role of the census in policy-making, and the history of the census. The course comprises four units: race, (im)migration, work, and family. For each, you will learn how to find, analyze, and visualize census data using R and how to write about quantitative historical analysis in a digital medium.",,QDS; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4645,7 +4645,7 @@ QSS,QSS 30.05 Topics in Digital History: U.S. History Through Census Data,https:
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,"QSS 30.06 By the Numbers: Race, Incarceration and Politics",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-06,QSS30.06,"More than half a century after the height of the Civil Rights Movement, inequalities between black Americans and white Americans persist. Across a myriad of measures---including health, employment, income, wealth, education, and incarceration---black Americans are fundamentally different than whites. Leveraging contemporary data and modern quantitative techniques, we evaluate black-white racial gaps by the numbers and among other things consider how racial inequalities in the United States might alter the American political landscape.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5067,7 +5067,7 @@ QSS,"QSS 30.06 By the Numbers: Race, Incarceration and Politics",https://dartmou
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.07 Simulating Social Systems: Complexity and Society,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-07,QSS30.07,"In this course we will learn the science and art of ""agent-based modeling,"" the simulation of social phenomena with computer models. Social outcomes seem complex, but that complexity often results from many agents following very simple rules. We will discover the science of spontaneous social order, learning to program in a simple computer language for writing social simulations, and studying models by sociologists, economists, psychologists, political scientists, philosophers, historians, and even computer scientists and physicists.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5487,7 +5487,7 @@ QSS,QSS 30.07 Simulating Social Systems: Complexity and Society,https://dartmout
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.08 Misperceptions in Politics: When Do They Matter and Why?,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-08,QSS30.08,"Many citizens hold misperceptions about political facts. When and why do they matter? This course examines the causes and consequences of misperceptions, strategies for correcting misperceptions, and the tools scholars use to study misperceptions scientifically. These tools include surveys, experiments, and a widely used statistical computing program (R). Students will work together (with the instructor) to design, execute, and report an original experimental study of misperceptions.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5910,7 +5910,7 @@ QSS,QSS 30.08 Misperceptions in Politics: When Do They Matter and Why?,https://d
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.09 Data Wrangling,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-09,QSS30.09,"This course is a survey of methods for extracting and processing data. It will cover data architectures (ontologies, metadata, pipeline and open source resources), database theory, data warehouses, the electronic medical record, various file formats including audio, and video, data security and cloud resources. Students will gain skills working with Big Data using software such as SQL, APACHE Hadoop and Python.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6330,7 +6330,7 @@ QSS,QSS 30.09 Data Wrangling,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.12 Quantitative Literary Criticism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-12,QSS30.12,"Digitization of vast numbers of texts and rapid advances in computational methods are enabling new forms of criticism in all areas of literary study. Classics was an early adopter of digital technologies, and computation is now pervasive throughout the field, as illustrated by flagship projects such as the Perseus Digital Library. Beyond the familiar examples of digitized texts and simple word searches, scholars and students also benefit from an ever-growing array of sophisticated quantitative tools, and from increasing engagement with diverse technical disciplines – natural language processing, data science, even bioinformatics. Through a survey of recent research at the intersection of Latin literature and the digital humanities, this course will introduce you to the state of the art in quantitative literary criticism. To ground our methodological investigations, we will explore a diverse selection of Latin poetry, including epic (Vergil, Lucan, and Catullus), elegy (Catullus), and comedy (Plautus), and sample some less famous later authors, such as Paul the Deacon and Vitalis of Blois, who were influenced by classical antecedents. At each turn, we will examine the interplay between traditional (close reading, philology, theory) and data-driven analyses of Latin literature and consider how quantitative methods can support humanistic inquiry. Along the way, you will gain hands-on experience with powerful computational tools and be introduced to now ubiquitous critical approaches, such as intertextuality and reception studies. Assigned readings will be in English translation using bilingual Latin-English editions; in addition to reading all of the English, students with Latin will be responsible for understanding and translating “micro samples” of the original texts. The course assumes no prior computational background.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6752,7 +6752,7 @@ QSS,QSS 30.12 Quantitative Literary Criticism,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.13 Sociology of Mental Health,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-13,QSS30.13,"Poor mental health and mental illness are often viewed as biological flaws. Sociologists, however, argue that mental illness is socially constructed, and that population mental health is profoundly shaped by social conditions. In this course, we will explore sociological understandings of mental health and illness. We will focus on a range of topics, including: the social construction of mental illness, how social inequality contributes to mental health, and how society responds to the mentally ill.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7172,7 +7172,7 @@ QSS,QSS 30.13 Sociology of Mental Health,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.15 Neighborhoods and Health,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-15,QSS30.15,"Just as conditions within our homes have important implications for our health, conditions in the neighborhoods surrounding our homes also can have major health effects. Social, economic, and environmental features of neighborhoods have been linked with mortality, general health status, disability, birth outcomes, chronic conditions, obesity, depression, injuries, violence, health behaviors and more. In this course, we consider whether and how the characteristics of neighborhoods shape the physical and mental health of individuals, and how neighborhoods contribute to persistent health disparities. Special attention will be devoted to conceptual and methodological challenges to detecting the prevalence and magnitude of ‘neighborhood effects’ on health. Not open to students who have received credit forSOCY 79.12.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7592,7 +7592,7 @@ QSS,QSS 30.15 Neighborhoods and Health,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.16 Cultural Analytics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-16,QSS30.16,"This course is an introductory course and assumes no prior knowledge of literary studies, critical approaches, statistics, or data analysis. It provides an overview of emergent quantitative methods and theories used by humanists to study data in text and text as data. As we examine these objects, we'll ask questions about the differences, in terms of methodology and interpretive practices, between the social sciences and the humanities. In developing answers to these questions, we will explore recent quantitative methods alongside traditional methods of humanistic inquiry. The goal of the course is to enable students to evaluate data, methods, and interpretations produced from quantitative research in the humanities and to conduct their own research.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8014,7 +8014,7 @@ QSS,QSS 30.16 Cultural Analytics,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.17 Unstalling the Stalled Revolution: Gender (In)equality at Work and at Home,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-17,QSS30.17,"The nature of work, family life, and gender relations has changed dramatically over the last half century. This course examines these trends, with a focus on implications for gender inequality in society. We will focus on patterns in paid labor force participation and family life in the United States, and discuss the major debates surrounding the causes and consequences of such trends. We will also pay attention to how these patterns look across different races, ethnic groups, and socioeconomic status, as well as briefly examine how these trends compare to other countries. We will conclude by exploring the implication of gender inequality for families, as well as work-family policy debates.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8436,7 +8436,7 @@ QSS,QSS 30.17 Unstalling the Stalled Revolution: Gender (In)equality at Work and
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.18 Quantitative Approaches to Peace and Justice,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-18,QSS30.18,"In this course, you will be introduced to the quantitative study of peace, violence, and justice. We will cover the theories, methods, findings, and shortcomings in cutting-edge analyses of conflict resolution, transitional justice, and reconciliation. Throughout the process, we’ll discuss issues of measurement, causal inference, and research ethics. You will also learn and begin to employ foundational skills in data science, R, causal inference, and statistical analysis.",,Dist:INT or SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8858,7 +8858,7 @@ QSS,QSS 30.18 Quantitative Approaches to Peace and Justice,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.19 Data and Bodies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-19,QSS30.19,"In this course we will take a multi-modal approach to understanding relationships between “datafication” and human bodies. Today’s “Datafication” is a process of transforming diverse processes, qualities, actions and phenomena into forms that are machine-readable by digital technologies, but the act of turning humans and human bodies into quanta of information has a long history. We will be using art, new media, history, information science, and more to think through the impact that datafication has on how we understand ourselves and others. Particular attention will be paid to the ways in which data has historically been used in racializing and gendering ways, and the role that quantification of people has been integral to the development of the Western nation-state.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9278,7 +9278,7 @@ QSS,QSS 30.19 Data and Bodies,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.20 Election Polling,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-20,QSS30.20,"The results of opinion polls often dominate election and campaign coverage and alter the behavior of politicians in modern democracies. Although surveys are more common than in the past, they vary considerably in terms of quality. To better understand the potential sources of error, this course introduces students to survey research methods with an emphasis on the election polling techniques used by social scientists to study political attitudes and policy preferences. A primary goal of the course is to help students understand fundamental concepts like sampling or responses rates as well as best practices for designing questionnaires and response options. The class will also cover advanced topics such as survey experiments, nonprobability panels, statistical power, and post-stratification weighting among others. During the course, students will explore and analyze public opinion patterns in survey data archives before ultimately writing and programming an original election-related study. Learning survey methodology should be particularly useful for anyone who plans to (A) take more advanced quantitative methodology courses, (B) write an honors thesis, (C) serve as a research assistant, (D) attend graduate school, or (E) work in professional areas that make use of opinion data, including campaigns and elections, consulting, law, journalism, education, business, health care, policy evaluation, or government.",,Dist:QDS; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9700,7 +9700,7 @@ QSS,QSS 30.20 Election Polling,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.21 Social Justice and Computing,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-21,QSS30.21,"This course draws on feminist and queer scholarship to examine the intricate relationship between datafication, ubiquitous computing, and social justice, highlighting the politics and impacts of data-driven processes and big data on human lives. One of the key highlights of WGSS engagements with computing history is the focus on the politics and impacts of data-driven processes and big data on human lives. The course will provide a brief introduction to histories of computing and data-driven practices within the Anglo-American tradition, including discussions of the roles that ethics and biopolitics play within these histories. We will explore ways that privacy/security, algorithmic processes, computational environmental impacts, and design have exploited the most vulnerable while increasing affordances for the most privileged. We will also spend significant time learning about new data/computational justice initiatives and develop a robust understanding of how social justice issues like prison abolition, climate change, and equitable health outcomes are at the core of understanding computational cultures. No Computer Science or Data Science background is required, but the course will entail learning about some of the technical history within both fields. Similarly, there are no WGSS prerequisites for the cours but students will be responsibly for learning about anti-racist feminist and queer methods and insights.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10120,7 +10120,7 @@ QSS,QSS 30.21 Social Justice and Computing,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.22 Computational Comparative Literature,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-22,QSS30.22,"There are around 7,000 languages spoken across the world, yet only 500 of these are used in the digital world and even fewer are supported by fundamental digital infrastructures. Computational methods for analyzing language are being implemented across a growing range of domains, but do those methods work equally well for all types of languages and texts? And how can these methods be combined with existing ways of reading to illuminate how language works, what we can do with language, and what language does to us? In this course, we will apply insights from cultural studies and comparative literature to investigate how history, language, and culture shape our digital practices. We will develop a comparative and cultural critical perspective on digitization and text analysis practices as we learn about and contrast different methods of analyzing modern languages and literatures. No prior experience of programming, statistics or literary theory and criticism is expected.",,Lang:LRP; Dist:INT or LIT,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10542,7 +10542,7 @@ QSS,QSS 30.22 Computational Comparative Literature,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.23 Ethnoracial Identities in Politics and Society,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-23,QSS30.23,"This course focuses on understanding ethnoracial identities that may not fit into preexisting ethnoracial categories and the unique quantitative challenges of studying and understanding these groups. The goals of the course are to have a more nuanced understanding of ethnoracial identities beyond existing categories, and how to apply those nuances to quantitative work. The topics we will focus on include: 1) Ambiguities of Whiteness, 2) Ambiguities of Blackness, and 3) Multi-ethnoracial identities. We will study these topics primarily through a quantitative lens. The culminating project will be centered on how to quantitatively study populations when labels do not exist to capture complex identities.",,Dist:QDS; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10964,7 +10964,7 @@ QSS,QSS 30.23 Ethnoracial Identities in Politics and Society,https://dartmouth.s
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 30.24 Advanced Policy Research,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-30-24,QSS30.24,"Lawmakers often craft public policies to address perceived problems. Determining whether policies or other types of social inventions trulywork(i.e., cause the intended effects) entails program evaluation and related forms of policy analysis. This applied research seminar focuses on designing and conducting empirical programmatic evaluations with an emphasis on research design principles that make documenting cause and effect relationships more successful.",,Dist:QDS; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11386,7 +11386,7 @@ QSS,QSS 30.24 Advanced Policy Research,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 36 Mathematical Models in the Social Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-36,QSS36,"Disciplines such as anthropology, economics, sociology, psychology, and linguistics all now make extensive use of mathematical models, using the tools of calculus, probability, game theory, network theory, often mixed with a healthy dose of computing. This course introduces students to a range of techniques using current and relevant examples. Students interested in further study of these and related topics are referred to the courses listed in the Mathematics and Social Sciences program.","MATH 13,MATH 20",TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11811,7 +11811,7 @@ QSS,QSS 36 Mathematical Models in the Social Science,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",['MATH13']
 QSS,QSS 41 Analysis of Social Networks,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-41,QSS41,"Students will gather and analyze data on a variety of networks (institutions, communities, elites, friendship systems, kinship systems, trade networks, and the like). Techniques of analysis may include graph theory, text analysis, multidimensional scaling and cluster analysis, and a variety of special models. Not limited to students in the major.",,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12231,7 +12231,7 @@ QSS,QSS 41 Analysis of Social Networks,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 45 Artificial Intelligence and Machine Learning for Social Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-45,QSS45,"This course introduces contemporary methods in machine learning for social scientific inquiry. The growth in AI has produced a technological arms race between the generation of information and media versus its analysis. As a consequence of this arms race, standard computational tools like text-mining approaches regularly used by social scientists to analyze data are often insufficient for many tasks that involve AI-generated material, such as identifying misinformation in podcasts and YouTube videos. Analyzing this data is crucial for the next generation of computational social science, and to understand evolving digital ecosystems.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12651,7 +12651,7 @@ QSS,QSS 45 Artificial Intelligence and Machine Learning for Social Science,https
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,"QSS 54 Change, Context, and Causality: Intermediate Quantitative Data Analysis for Sociologists",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-54,QSS54,"Sociologists and other social scientists are often interested in understanding causal and dynamic social processes such as:“How do the places we live, work, and play get under the skin and affect health and well-being across the life course?”“Does upward social class mobility change one’s political attitudes?”“What social currents are responsible for changes in support for same-sex marriage across historical time?”“Are long-standing racial inequalities declining, persisting, or increasing in recent years?”Many of these questions are methodologically difficult to answer with observational (non-experimental) data, and they require that we get a handle on the study of change, context, and causality. You likely have learned how to answer questions like these with standard OLS (linear) regression techniques and cross-sectional data, which remain useful tools in social scientists’ methodological toolbox. But these techniques are also quite limited, and impose strict assumptions that do not allow us to meet many of our goals, adequately answer our questions, or provide stringent tests of our theories and hypotheses.In this course, we’ll pick up where introductory statistics courses leave off, and get an introduction to more advanced statistical methods for observational data, including but not limited to: regression for categorical dependent variables, fixed and random effects models, and hierarchical linear modeling. This course will be a mix of seminar and lecture, where we will be focused on understanding how we can use these methods to better meet our goals and answer our research questions. Put differently, this course is less focused on going “under the hood” and more focused on “how to drive”—specifically, we will interrogate the assumptions and use of these statistical methods in the social sciences and learn how to implement these methods using STATA. This will include: discussion of core methodological assumptions and limitations, how to apply these statistical methods in different settings, and learning when specific methods are appropriate tools and when they are not. We will explore these issues through student-led discussions, hands-on data analysis, and dissecting the application of these methods in academic journal articles. As part of this course, you will be exposed to (and critique) a wide range of sociological research published in our major disciplinary journals. The course will culminate in an independent research project where students will analyze data and use the one or more of the modeling techniques discussed during the term to answer a sociological research question of their choosing.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13079,7 +13079,7 @@ QSS,"QSS 54 Change, Context, and Causality: Intermediate Quantitative Data Analy
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 80 Research Seminar in Quantitative Social Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-80,QSS80,"This course offers a qualified student the opportunity to undertake an original research project under the direction of a faculty member, either in seminar format if there are a sufficient number of students enrolled in the course during a given quarter or on an individual basis otherwise.  Each student will write a formal paper embodying the results of the research and present it at the end of the quarter.QSS 80is a required component of the Minor in QSS. Students are encouraged to takeQSS 80after completing other minor requirements, or concurrently with the QSS Chair’s permission.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13495,7 +13495,7 @@ QSS,QSS 80 Research Seminar in Quantitative Social Science,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 81 Major Thesis Research,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-81,QSS81,"This course is part of the two-track major in QSS. Students in the honors thesis track of the major register forQSS 81in the fall quarter of their fourth year. Participating in this course requires thesis research and engagement during the fall, winter, and spring terms of a student's last academic year on campus. Students applying to write an honors thesis in QSS should have at time of application an overall GPA of 3.5 or higher.Students registering forQSS 81receive a grade of “ON” (ongoing) at the end of the fall term.  A final letter grade will replace the “ON” at the end of the term at which a student’s thesis is completed.  Students who wish to receive two credits for honors thesis research register forQSS 81in the fall and then forQSS 88in either the following winter or spring.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13918,7 +13918,7 @@ QSS,QSS 81 Major Thesis Research,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 82 One Quarter QSS Research Project,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-82,QSS82,"Students completing a one-quarter research project in QSS, either as part of a major or minor, must register for this course in their fourth year on campus.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14340,7 +14340,7 @@ QSS,QSS 82 One Quarter QSS Research Project,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 QSS,QSS 88 Independent Study in Quantitative Social Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences/qss-88,QSS88,"Each QSS major must complete an honors thesis by taking QSS88 for credit at some point during the student’s thesis year, and this course will in general be taken in the winter quarter.  During the chosen quarter, each student will work on an independent research project under the direction of one or more faculty members, who will meet with the student regularly, usually weekly.   All QSS theses will be graded and presented in accordance with Dartmouth College rules and guidelines that have been established by the QSS Steering Committee. This course is repeatable as many times as the student would like to repeat it. The guidelines are available at the QSS website.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14756,4 +14756,4 @@ QSS,QSS 88 Independent Study in Quantitative Social Science,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",[]

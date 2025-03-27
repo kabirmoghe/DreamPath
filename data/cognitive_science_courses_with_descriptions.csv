@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 COGS,COGS 1 Introduction to Cognitive Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-1,COGS1,"Cognitive Science aims to understand how the mind works by using tools and insights from a variety of fields including experimental psychology, computer science, linguistics, vision science, philosophy, anthropology, behavioral economics, and neuroscience. This course will introduce you to many of the major tools and theories from these areas as they relate to the study of the mind. We will tour mental processes such as perception, reasoning, memory, attention, imagery, language, intelligence, decision-making, and morality, and discover many strange and amazing properties of mind.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -424,7 +424,7 @@ COGS,COGS 1 Introduction to Cognitive Science,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 2 Cognitive Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-2,COGS2,"This course provides a comprehensive overview of cognitive psychology, the scientific study of mental processes: how people acquire, store, transform, use, and communicate information. Topics may include perception, attention, language, memory, reasoning, problem solving, decision-making, and creativity.",PSYC 1orPSYC 6or COGS 01,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -854,7 +854,7 @@ COGS,COGS 2 Cognitive Psychology,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",['COGS01']
 COGS,COGS 11.04 Face Perception,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-11-04,COGS11.04,"Faces are one of the richest sources of information for non-verbal communication. Through faces we recognize identity and infer the emotional and mental states of others, as well as where they are directing their attention. This course will focus on the neural mechanisms for face perception and how these mechanisms facilitate rapid extraction of cues that facilitate social interaction. Particular relevance will be put on the neural systems for representation of person knowledge.  In addition to weekly readings, students will have a written exam at the end of the course.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1282,7 +1282,7 @@ COGS,COGS 11.04 Face Perception,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 21 Introduction to Computational Neuroscience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-21,COGS21,"Your brain is composed of low-precision, slow, sparsely-connected computing elements, yet it outperforms any extant computer on tasks ranging from perception to planning. Computational Neuroscience has as its twin goals the scientific understanding of how brains compute thought, and the engineering capability to reconstruct the identified computations. Topics in the class included anatomical circuit design, physiological operating rules, evolutionary derivation, mathematical analyses, and emergent behavior, as well as development of applications from robotics to medicine.",,SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1710,7 +1710,7 @@ COGS,COGS 21 Introduction to Computational Neuroscience,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 25 Philosophy of Cognitive Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-25,COGS25,"What is the mind and how can we model it? Cognitive science offers a distinctive approach to some of the great philosophical questions about the mind. But what does it tell us? This course will cover the classical foundations of cognitive science, and some of the more recent developments in the field. We will study the computational theory of the mind and its implications, connectionism, theories of embodiment, dynamical systems, and recent statistical approaches to cognition. (Not open to students who received credit for PHIL 010/COGS 11.01.)","One Philosophy course, or permission of the instructor.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2140,7 +2140,7 @@ COGS,COGS 25 Philosophy of Cognitive Science,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 COGS,COGS 26 Philosophy and Computers,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-26,COGS26,The accomplishments of artificial intelligence research and the widespread use of computers in our society confront us with many interesting philosophical questions. What are the limits of artificial intelligence? Could computers ever think or feel? Is the Turing test a good test? Are we really computers? Are there decisions computers should never make? Do computers threaten our privacy in special ways? This course will consider such issues in order to explore the philosophical implications of computing. Open to all classes.,"One Philosophy course, one Cognitive Science course, one Computer Science course, or permission of the instructor.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2570,7 +2570,7 @@ COGS,COGS 26 Philosophy and Computers,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 COGS,COGS 31 Educational Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-31,COGS31,"How do we learn? How can modern educational settings harness recent innovations concerning the essence of human learning? Educational psychology provides a foundation for applying the psychological principles that underlie learning in both formal and informal educational settings. In this course, we will explore the multitude of ways that people learn, the effects of different types of teaching strategies on learning, and the impact of individual differences on learning. We will also explore assessment, creativity and problem solving, as well as cultural and motivational influences on learning across diverse educational situations. Underlying the course will be an account of the way the human mind works, changes, and adapts in different settings. This includes the home, the school, the university and any context in which explicit or implicit education takes place. Open to all classes.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2992,7 +2992,7 @@ COGS,COGS 31 Educational Psychology,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 32 STEM Learning and Education,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-32,COGS32,"How do we learn, understand, and teach science, technology, engineering, and math (the STEM disciplines)? In this class, we will explore the nature and development of the scientific mind; how we formulate theories, design experiments, and understand scientific, technological, and mathematical concepts; and how we learn and teach related skills in the classroom, addressing the debate about the effectiveness of direct instruction and hands-on approaches. Open to all classes.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3418,7 +3418,7 @@ COGS,COGS 32 STEM Learning and Education,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 33 The Reading Brain: Education and Development,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-33,COGS33,"The majority of children entering first grade do not know how to read; the majority of children leaving first grade do know how to read, at least at a basic level. What is involved in the amazing development of the ability to make meaning of marks on a page? What goes on in the brain during reading and learning to read? We explore answers to these questions and more in this introduction to reading as we investigate the roles of orthography, phonology, semantics, syntax, and comprehension in reading. We focus on the development of reading behaviors, the brain bases of reading skills, and how scientific discoveries can inform educational practices. Open to all classes.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3846,7 +3846,7 @@ COGS,COGS 33 The Reading Brain: Education and Development,https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 34 Development in the Exceptional Child,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-34,COGS34,"What is an ""exceptional"" child? How might an exceptional child think about and experience the world? What is happening inside the brain of an exceptional child? We will learn about specific types of exceptionality likely to be encountered in the classroom, including attention deficit/hyperactivity disorder, autism spectrum disorders, depression, dyscalculia, specific language impairment, dyslexia, and dysgraphia. In exploring exceptionality, we will focus on behaviors that define the exceptional child; different approaches to learning, viewing the world, and interacting with others that characterize exceptional children; the brain bases of atypical or exceptional development; and how scientific knowledge affects educational practice. Open to all classes.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4274,7 +4274,7 @@ COGS,COGS 34 Development in the Exceptional Child,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 44 Artificial Intelligence,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-44,COGS44,"An introduction to the field of Artificial Intelligence. Topics include games, robotics, motion planning, knowledge representation, logic and theorem proving, probabilistic reasoning over time, understanding of natural languages, and discussions of human intelligence.",COSC 10.COSC 30is recommended.,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4704,7 +4704,7 @@ COGS,COGS 44 Artificial Intelligence,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['COSC10']
 COGS,COGS 45 Computational Cognitive Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-45,COGS45,"Human cognition is characterized by remarkable intellectual feats, but also frustrating failures. What general principles determine what minds can and can’t achieve? In this course, we treat cognition as computation and construct artificial systems to model cognitive strengths and weaknesses. Part of each class will be spent in lecture and part will be spent working directly with computational models in active learning exercises that use neural networks for hands-on exploration.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5130,7 +5130,7 @@ COGS,COGS 45 Computational Cognitive Science,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 50 Topics in Cognitive Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-50,COGS50,"This course is a mid-level topical course in Cognitive Science. Course offerings will touch on disciplines across the cognitive sciences. Potential course subtitles may be Cognitive Development, Mental and Brain Representation, Evolution of Brain and Mind, toRationality, Language and Culture, or Machine Models of Mind. Course offerings will change each term.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5546,7 +5546,7 @@ COGS,COGS 50 Topics in Cognitive Science,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 50.03 Introduction into Cognitive Linguistics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-50-03,COGS50.03,"This course provides an introduction to cognitive linguistics, a field that investigates the relationship between language and human cognition. Cognitive linguistics emphasizes the role of our bodies and brains in shaping our understanding and use of language. The course explores how our physical experiences and cognitive abilities affect language structure and use. For instance, our attentional biases add nuances to our word choices in spatial and temporal constructions, and our physical experiences influence our expression of mental and emotional concepts. Throughout the course, we will cover major cognitive linguistic concepts, including metaphor, categorization, frame semantics, goal bias, and prototype theory. Additionally, we will examine how these and other cognitive linguistic concepts can be applied to a variety of real-world phenomena, such as online media, humor, second language learning, and even gesticulation. The course format incorporates lectures, reading discussions, practical exercises, creative assignments, and a research project. Students will employ diverse research methods, including behavioral experiments, linguistic corpora analysis, and interviews.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5972,7 +5972,7 @@ COGS,COGS 50.03 Introduction into Cognitive Linguistics,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 50.04 Theories of Consciousness,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-50-04,COGS50.04,"Conscious experience is at once both completely familiar and utterly mysterious: how is it that electrical activity in a lump of grey matter – the brain – gives rise to the Technicolor phenomenology of our conscious experience? If human beings are just biological machines, then how is possible that we have a subjective point of view on the world? Why are we not just mindless robots, that produce behavior in light of stimulations from the environment, but lack any inner awareness or consciousness? In this class we will read, and bring together in conversation, cutting edge work from philosophy, psychology, and the neurosciences on the nature of consciousness.","One Philosophy course, one Cognitive Science course, or permission of the instructor",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6402,7 +6402,7 @@ COGS,COGS 50.04 Theories of Consciousness,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 COGS,COGS 50.05 Psycholinguistics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-50-05,COGS50.05,"The deceptively simple tasks of perceiving and producing language require the performance of complicated and often overlapping functions at high speeds. How can we study the representations and processes that make language possible as they interact in the black box that is the human mind? The goal of this course is to provide a broad understanding of research focusing on how the human mind structures, stores and accesses linguistic information. 
 Not open to students who have received credit for LING 50.01.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
@@ -6832,7 +6832,7 @@ Not open to students who have received credit for LING 50.01.</p>
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 50.06 Computational Psych of Language,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-50-06,COGS50.06,"Computational approaches are becoming increasingly prevalent in cognitive science and psychology as they allow us to leverage advances in robust datasets and computing power to investigate aspects of human cognition and behavior such as language. This course seeks to address the processing of language in the mind and brain through computational modeling. The goal of this course is to provide a broad understanding of research utilizing computational psycholinguistics to investigate how the human mind acquires, stores, and accesses language. This course will also serve as an introduction to methodology utilized in this field and provide hands-on opportunities to produce research focusing on language processing.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7254,7 +7254,7 @@ COGS,COGS 50.06 Computational Psych of Language,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 50.07 Aphasiology and the Neurobiology of Language,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-50-07,COGS50.07,"What happens when language is lost or impaired through injury or degeneration? In this course, we will first cover traditional models of brain and language, and compare them with current research linking linguistic processing to neurobiological mechanisms. We will then focus on classification of types of aphasia, covering symptoms and causes of each. We will investigate how disordered language is intertwined with general cognition, and how it is separate. Language breakdown will be analyzed at each level of representation and processing to provide a general understanding of aphasia and associated disorders.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7682,7 +7682,7 @@ COGS,COGS 50.07 Aphasiology and the Neurobiology of Language,https://dartmouth.s
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 50.08 Modeling Mind and Behavior,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-50-08,COGS50.08,"You will actively engage in the scientific process of hypothesis testing that combines the disciplines of neuroscience, behavioral science, statistics/machine learning to understand the mechanisms of mind and behavior. The course will review computational approaches to modeling the mind by walking through the steps of hypothesis formation, experimental design, statistical analysis and theory development requiring skills in research methods, programming and scientific writing.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8102,7 +8102,7 @@ COGS,COGS 50.08 Modeling Mind and Behavior,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 50.09 Computational Models of Social Cognition,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-50-09,COGS50.09,"This course explores ways of thinking about models in cognitive science. The course will follow three themes, with the goal of developing your ability to analyze what different modeling approaches reflect about our views of the mind and of the world. The content-theme of the course will be computational models of social cognition, which will involve other topics in cognitive science to build the foundations. The theoretical-theme will be framing models as epistemological expressions, which will emphasize thinking deeply about the philosophy and practice of modeling. The methodological-theme will be probabilistic programming, which will give you a skillset for building cognitive models.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8528,7 +8528,7 @@ COGS,COGS 50.09 Computational Models of Social Cognition,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 80 Major Seminar in Cognitive Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-80,COGS80,"This seminar is required for majors. Each week a member of Dartmouth’s faculty working in diverse areas of cognitive science will present current work in a lunchtime seminar. Prior to the lecture you will work through related papers as a group in preparation, and the day following the lecture you will meet with the professor to discuss the material further. This seminar will prepare you for independent research in Cognitive Science.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8950,7 +8950,7 @@ COGS,COGS 80 Major Seminar in Cognitive Science,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 81 Major Seminar in Cognitive Science II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-81,COGS81,"This is the second year ofCOGS 80.  Each week a member of Dartmouth’s faculty working in diverse areas of cognitive science will present current work in a lunchtime seminar. Prior to the lecture you will work through related papers as a group in preparation, and the day following the lecture you will meet with the professor to discuss the material further. This seminar will prepare you for independent research in Cognitive Science.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9376,7 +9376,7 @@ COGS,COGS 81 Major Seminar in Cognitive Science II,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 85 Independent Study and Research,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-85,COGS85,This course offers qualified students of cognitive science the opportunity to pursue work on a topic of special interest through an individually designed program. Requires permission of the instructor and the Chair.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9798,7 +9798,7 @@ COGS,COGS 85 Independent Study and Research,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 86 Honors Research,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-86,COGS86,COGS 86andCOGS 87consist of independent research and writing on a selected topic under the supervision of a Program member who acts as advisor. Open to honors majors in Cognitive Science. Permission of the thesis advisor and the Chair required.Students are awarded one course credit for successful completion of this course upon completion of COGS-087. Students register for COGS-086 and receive a grade of “ON” (ongoing) at the end of the term.  Students then register for COGS-087 the subsequent term to complete the coursework. A final grade will replace the “ON” in COGS-086 upon completion of COGS-087.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10221,7 +10221,7 @@ COGS,COGS 86 Honors Research,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 COGS,COGS 87 Honors Thesis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science/cogs-87,COGS87,COGS 86andCOGS 87consist of independent research and writing on a selected topic under the supervision of a Program member who acts as advisor. Open to honors majors in Cognitive Science. Permission of the thesis advisor and the Chair required.Students are awarded one course credit for successful completion of this course. Students who have registered for COGS-086 register for COGS-087 to complete the coursework. A final grade will replace the “ON” for COGS-086 upon completion of this course for a total of 2 credits for COGS-086 and COGS-087.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10644,4 +10644,4 @@ COGS,COGS 87 Honors Thesis,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",[]

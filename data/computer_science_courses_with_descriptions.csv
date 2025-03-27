@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 COSC,COSC 1 Introduction to Programming and Computation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-1,COSC1,"This course introduces computational concepts that are fundamental to computer science and are useful for the sciences, social sciences, engineering, and digital arts. Students will write their own interactive programs to analyze data, process text, draw graphics, manipulate images, and simulate physical systems. Problem decomposition, program efficiency, and good programming style are emphasized throughout the course. No prior programming experience is assumed.",,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -418,7 +418,7 @@ COSC,COSC 1 Introduction to Programming and Computation,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 2 Programming for Interactive Audio-Visual Arts,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-2,COSC2,"This course presents topics related to interactive visual art generated on a computer. Although it briefly covers computer-generated media art, the course focuses on the programming skills required for creating interactive works. Rather than using commercial software, students write their own programs, using the Processing language, to create interactive visuals and compositions. The course introduces fundamental concepts of how to represent and manipulate color, two-dimensional shapes, images, motion, and video. Coursework includes short programming assignments to practice the concepts introduced during lectures and projects to explore visual compositions. The course assumes no prior knowledge of programming. This course is not open to students who have passedCOSC 1orENGS 20or who have received credit for one of these courses via the Advanced Placement exam or the local placement exam.",,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -840,7 +840,7 @@ COSC,COSC 2 Programming for Interactive Audio-Visual Arts,https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 10 Problem Solving via Object-Oriented Programming,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-10,COSC10,"Motivated by problems that arise in a variety of disciplines, this course examines concepts and develops skills in solving computational problems. Topics covered include abstraction (how to hide details), modularity (how to decompose problems), data structures (how to efficiently organize data), and algorithms (procedures for solving problems). Laboratory assignments are implemented using object-oriented programming techniques.",COSC 1orENGS 20or placement through AP or local placement.,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1262,7 +1262,7 @@ COSC,COSC 10 Problem Solving via Object-Oriented Programming,https://dartmouth.s
 </form>
 
 </body>
-</html>"
+</html>",['COSC1']
 COSC,COSC 16 Introduction to Computational Neuroscience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-16,COSC16,"Your brain is composed of low-precision, slow, sparsely-connected computing elements, yet it outperforms any extant computer on tasks ranging from perception to planning. Computational Neuroscience has as its twin goals the scientific understanding of how brains compute thought, and the engineering capability to reconstruct the identified computations. Topics in the class included anatomical circuit design, physiological operating rules, evolutionary derivation, mathematical analyses, and emergent behavior, as well as development of applications from robotics to medicine.","One ofPSYC 1,PSYC 6,COSC 1, orENGS 20.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1692,7 +1692,7 @@ COSC,COSC 16 Introduction to Computational Neuroscience,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",['COSC1']
 COSC,COSC 19.01 Writing about Technology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-19-01,COSC19.01,"This course serves as an introduction to both the theory and practice of writing effectively about technology. Designed specifically for students with a technical background, the course will mix readings and discussion, drawing from a wide variety of canonical examples of this type of prose, with writing assignments oriented toward improving the students’ craft.",COSC 1,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2110,7 +2110,7 @@ COSC,COSC 19.01 Writing about Technology,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",['COSC1']
 COSC,COSC 19.02 Security Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-19-02,COSC19.02,"This course covers cybersecurity systems engineering principles of design. Students will learn the foundational and timeless principles of cybersecurity design and engineering.  They will learn why theories of security come from theories of insecurity, the important role of failure and reliability in security, the fundamentals of cybersecurity risk assessment, the building blocks of cybersecurity, intrusion detection design, and advanced topics like cybersecurity situational understanding and command and control.  The course develops the student's ability to understand the nature and source of risk to a system, prioritize those risks, and then develop a security architecture that addresses those risks in a holistic manner, effectively employing the building blocks of cybersecurity systems—prevention, detection, reaction, and attack-tolerance.  The student will learn to think like a cyberattacker so that they can better design and operate cybersecurity systems.  Students will attain the skill of systematically approaching cybersecurity from the top down and the bottom up and have confidence that their system designs will be effective at addressing the full spectrum of the cyberattack space. The course also addresses how the cybersecurity attack and defense landscape will evolve so that the student is not simply ready to address today’s problems, but can quickly adapt and prepare for tomorrow’s. The course is important at any stage in a student’s curriculum: whether at the beginning to enable the student to grok the big picture before diving into the details, at the end as a capstone, or in the middle to help integrate the skills learned so far.",COSC 1,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2532,7 +2532,7 @@ COSC,COSC 19.02 Security Engineering,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['COSC1']
 COSC,"COSC 20 Motion Study: Using Motion Analysis for Science, Art and Medicine",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-20,COSC20,"Motion Capture is the process of recording movement in physical space and transforming that information into a digital form that can be analyzed and adapted. Recent technological advances have increased the use of motion capture in movies, cartoon animation, and scientific applications. In this class, students will learn the foundations of this new field from basic anatomical principles of motion to how motions express a variety of human qualities (e.g., status, emotion). Students will work with a motion capture system to record and analyze their own movement to gain a hands-on understanding of how motion capture can enhance art and science.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2952,7 +2952,7 @@ COSC,"COSC 20 Motion Study: Using Motion Analysis for Science, Art and Medicine"
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 21 Foundations of Digital Design,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-21,COSC21,"This projects-based course will familiarize students with the fundamentals of digital design, including layout, typography, composition, color theory, and process. Foundational concepts and the universal principles of design will be explored through extensive analyses and a series of design projects. No previous art or technical experience is required. Work is evaluated on a set of technical and aesthetic criteria and class participation. Plan to meet during every X-Hour.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3372,7 +3372,7 @@ COSC,COSC 21 Foundations of Digital Design,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 22 3D Digital Modeling,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-22,COSC22,"This projects-based lab course teaches the principles and practices of 3D modeling. Anyone with an interest in learning how models and environments in film, games, and VR applications are made, this course is for you.  We focus on modeling, shading, textures, lighting, and rendering, along with some dynamics, special effects, and animation. Students create environments and a fully rigged character model while learning their way around a state-of-the-art 3D animation program. Work will be evaluated on a set of technical and aesthetic criteria. Assignments are given weekly. Plan to meet every X-Hour. No prior experience, coding or drawing skills needed.COSC 22and COSC 24 can be taken in any order.",,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3792,7 +3792,7 @@ COSC,COSC 22 3D Digital Modeling,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 23.01 Augmented and Virtual Reality Design,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-23-01,COSC23.01,"This hands-on projects-based course exposes students to the aesthetic, technical, and societal issues surrounding the emerging frontiers of digitally mediated realities. Students learn the fundamentals of augmented and virtual reality design and are introduced to interactive development for VR/AR. COSC 23.01 andCOSC 63.01 have class together and work together on teams. Designers in this course create assets and design the UI/UX while developers build interactive digital tools, games, and visualizations. This course is not open to students who have received credit forCOSC 29.22 orCOSC 89.22.",COSC 22,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4214,7 +4214,7 @@ COSC,COSC 23.01 Augmented and Virtual Reality Design,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",['COSC22']
 COSC,COSC 24 Computer Animation: The State of the Art,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-24,COSC24,"This hands-on course focuses on state-of-the-art computer animation, presenting techniques and principles of traditional animation and how they apply to 3D computer animation, motion capture, and dynamic simulations. Facial and full-body animation are covered through projects, readings, and presentations. Students will complete weekly assignments and a create short animation of their choosing. Students are given models and add weight, force, timing, and spacing to bring the models to life and simulate real-world physics. No prior experience needed.COSC 22andCOSC 24can be taken in any order.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4634,7 +4634,7 @@ COSC,COSC 24 Computer Animation: The State of the Art,https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 25.01 Intro to UI/UX Design I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-25-01,COSC25.01,"COSC 25.01 is a hands-on projects-based course that teaches the concepts, principles, and practice of User Interface (UI) and User Experience (UX) Design. It is designed for students with an interest in any form of design, although we focus on the UI/UX of digital tools (e.g. mobile, web, tablets). No previous experience or coding skills needed.  Grading is based on weekly assignments, reflections, readings, and in-class exercises that build on each other and are intended to teach the foundational skills and thinking of UI/UX design. This team-based course requires a significant amount of time outside class.  Students are encouraged (but not required) to takeENGS 12prior to taking this course.Some students will go on to take COSC 25.02, an Independent Study course that allows students to put the skills learned in COSC 25.01 into practice as a designer in the DALI Lab or through work on another project.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5055,7 +5055,7 @@ COSC,COSC 25.01 Intro to UI/UX Design I,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 25.02 Intro to UI/UX Design II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-25-02,COSC25.02,"This Independent Study course offers students who have taken COSC 25.01 a chance to put what they learned in the classroom into practice.  Students might work as a designer in the DALI Lab or on another project. In addition to completing a project as a designer, students design and build an online portfolio.",COSC 25.01and Instructor Permission is required.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5477,7 +5477,7 @@ COSC,COSC 25.02 Intro to UI/UX Design II,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>","['COSC25.01', 'IP']"
 COSC,COSC 27 Projects in Digital Arts,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-27,COSC27,"This is the culminating course for the Digital Arts Minor. Students complete projects in digital arts, including: computer animations; games, VR/AR applications, interactive digital installations and media. Students work in small teams to complete work of a high production quality or work that incorporates innovations in technology.  Grades are based on aesthetic and technical criteria along with teamwork and adherence to weekly milestones.",COSC 22and eitherCOSC 24orCOSC 23.01,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5899,7 +5899,7 @@ COSC,COSC 27 Projects in Digital Arts,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>","['COSC22', 'COSC24']"
 COSC,COSC 28 Advanced Projects in Digital Arts,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-28,COSC28,"This independent study course is for students who have completed all the courses in the Digital Arts minor and want to continue working on projects in digital arts or for students who want to stretch their skills in a new way. Projects may include computer animations, interactive digital arts, installations, or research projects. Students work alone or in teams. This course may be taken twice.",COSC 27and permission of the instructor is required.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6317,7 +6317,7 @@ COSC,COSC 28 Advanced Projects in Digital Arts,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>","['COSC27', 'IP']"
 COSC,COSC 29 Topics in Digital Arts,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-29,COSC29,"This course studies an advanced topic in Digital Arts that is not covered in the regular curriculum. Students may take this course multiple times, subject to the restriction that the topics are distinct.",Vary according to the topic. Consult with the instructor.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6735,7 +6735,7 @@ COSC,COSC 29 Topics in Digital Arts,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 29.04 Impact Design,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-29-04,COSC29.04,"This innovative, team-based, project course is about impact--what it is, how you experience it, how you create it, how you measure it.  We focus on designing products and experiences for community partners as part of the Social Impact Practicum program.  Rather than looking at how we can solve a problem, we look at how we can create delight for users. Students will learn how to combine core principles from human psychology with the tools of design to create products and user experiences that promote engagement, adoption, and learning. Past community partners have included the Hartford Autism Regional Program (HARP) and the Aging Resource Center.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7157,7 +7157,7 @@ COSC,COSC 29.04 Impact Design,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 29.05 Digital Fabrication,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-29-05,COSC29.05,"Artists, designers, creators, and makers increasingly use digital fabrication methods in both two and three dimensions as a means of designing, rapid prototyping and manufacturing. This class uses digital fabrication tools in a studio setting. Students learn digital fabrication through a series of 2D and 3D design projects and through critical discussions of the aesthetic, sociological and practical implications of integrating digital tools and materiality into the design and build process.Students will have hands-on training in the process of creating and converting computer generated drawings and models into physical objects through the use of 2D and 3D scanners, laser-cutters, wire benders, cnc routers and 3D printers. No previous experience needed.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7574,7 +7574,7 @@ COSC,COSC 29.05 Digital Fabrication,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 29.06 Digital Tangible User Interfaces,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-29-06,COSC29.06,"As computation becomes ubiquitous, we find interactive digital devices scattered around our homes, as integral parts of our living environments, including smart appliances, interactive architectural elements, toys, and interactive artworks. Digital Tangible User Interfaces (TUIs) are an approach to Human-Computer Interaction (HCI) where computation is embedded into objects we can interact with. One challenge of the TUIs is how to create a seamless interface between users and digital information so that the user can naturally interact with the daily product and their living environment. This course will focus on the theory, process, and practice of building intelligent objects and spaces. Students will be required to design and implement tangible user interface projects by using physical computing tools (Arduino) and computer languages such as Processing.",COSC 1orCOSC 2,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7996,7 +7996,7 @@ COSC,COSC 29.06 Digital Tangible User Interfaces,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['COSC1']
 COSC,COSC 30 Discrete Mathematics in Computer Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-30,COSC30,"This course develops the mathematical foundations of computer science that are not calculus-based. It covers basic set theory, logic, mathematical proof techniques, and a selection of discrete mathematics topics such as  combinatorics (counting),  discrete probability, number theory,and graph theory. The mathematics is frequently motivated using computer science applications.","Math 3 andCOSC 10; or Math 3, Instructor Permission, and eitherCOSC 1orENGS 20.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8420,7 +8420,7 @@ COSC,COSC 30 Discrete Mathematics in Computer Science,https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>","['MATH3', 'COSC10']"
 COSC,COSC 31 Algorithms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-31,COSC31,"A survey of fundamental algorithms and algorithmic techniques, including divide-and-conquer algorithms, dynamic programming, randomized algorithms, greedy algorithms, and graph algorithms. Presentation, implementation and formal analysis, including space/time complexity and proofs of correctness, are all emphasized.",COSC 10andCOSC 30. Students who have not takenCOSC 30but have a strong mathematical background may take COSC 31 with the instructor's permission.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8842,7 +8842,7 @@ COSC,COSC 31 Algorithms,https://dartmouth.smartcatalogiq.com/en/current/orc/depa
 </form>
 
 </body>
-</html>"
+</html>","['COSC10', 'COSC30']"
 COSC,COSC 32 Advanced Algorithms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-32,COSC32,"This course follows up on our basic undergraduate-level algorithms course, covering a number of advanced topics and ideas in algorithm design and analysis. You will learn about the use of advanced data structures, amortized analysis, randomization, linear programming, and approximation. The focus will be on methodology and broadly-applicable fundamental principles, rather than specific problem domains.",An undergraduate-level course in Algorithms (such as COSC 31) and strong mathematics background.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9264,7 +9264,7 @@ COSC,COSC 32 Advanced Algorithms,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>","['COSC31', 'IP']"
 COSC,COSC 34 Randomized Algorithms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-34,COSC34,"Randomness is one of the key resources in algorithm design. Many problems have faster algorithms if randomization is allowed, and indeed, for certain problems randomness is essential. The course will introduce the probability basics, the fundamental tools, and provide multiple applications in machine learning, big data, optimization, etc. Not open to students who have received credit forCOSC 49.10.","COSC 31,COSC 30.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9686,7 +9686,7 @@ COSC,COSC 34 Randomized Algorithms,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['COSC31']
 COSC,COSC 35 Data Stream Algorithms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-35,COSC35,"This course studies algorithms that process massive amounts of data; so massive that they will not fit in a computer’s storage. The course will cover a wide variety of techniques for summarizing such large amounts of data into succinct “sketches” that nevertheless retain important and useful information. The course starts from the basics, assuming only a basic knowledge of algorithms, and builds up to advanced techniques from recent research. The necessary mathematical tools are developed within the course.",COSC 31or permission of the instructor.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10104,7 +10104,7 @@ COSC,COSC 35 Data Stream Algorithms,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['COSC31']
 COSC,COSC 36 Approximation Algorithms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-36,COSC36,"Many problems arising in computer science are NP-hard and therefore we do not expect efficient algorithms for solving them exactly. This has led to the study of approximation algorithms where algorithms are supposed to run fast but can return approximate solutions. This course provides a broad overview of the main techniques involved in designing and analyzing such algorithms. It also explores connections between algorithms and mathematical fields such as algebra, geometry, and probability.","A first course on algorithms and mathematical maturity to read and write proofs will be assumed.  Courses:COSC 31,COSC 30.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10526,7 +10526,7 @@ COSC,COSC 36 Approximation Algorithms,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>","['COSC31', 'COSC30']"
 COSC,COSC 37 Information Theory in Computer Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-37,COSC37,"This course introduces students to information theory, a mathematical formalism for quantifying and reasoning about communication. While traditionally a part of electrical engineering, it has found several powerful applications in the theory of algorithms and complexity and adjacent fields such as combinatorics and game theory. The first third of the course will teach students the basics of information theory (Shannon entropy, mutual information, Kullback-Liebler divergence). The rest of the course will sample topics from error correcting codes, communication complexity, data structures, and optimization, in each case highlighting applications of information theory.",COSC 31orCOSC 30plus permission of the instructor (based on strong mathematical background),Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10948,7 +10948,7 @@ COSC,COSC 37 Information Theory in Computer Science,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>","['COSC31', 'IP']"
 COSC,COSC 39 Theory of Computation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-39,COSC39,"This course serves as an introduction to formal models of languages and computation. Topics covered include finite automata, regular languages, context-free languages, pushdown automata, Turing machines, computability, and NP-completeness.","COSC 30and/orCOSC 31. Students who have not takenCOSC 30and/or 31, but have a strong mathematical background, may take COSC 39 with the instructor's permission.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11370,7 +11370,7 @@ COSC,COSC 39 Theory of Computation,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['COSC30']
 COSC,COSC 40 Computational Complexity,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-40,COSC40,"This course covers the basics of computational complexity, whose broad goal is to classify computational problems into classes based on their inherent resource requirements. Five key computational resources are studied: time, space, nondeterminism, randomness, and interaction. Key concepts studied include reductions, the polynomial hierarchy, Boolean circuits, pseudorandomness and one-way functions, probabilistic proof systems, and hardness of approximation.",COSC 39or equivalent. Students need to be familiar with the formalism of the Turing Machine and with the notion of NP-completeness.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11788,7 +11788,7 @@ COSC,COSC 40 Computational Complexity,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['COSC39']
 COSC,COSC 49 Topics in Algorithms and Complexity,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-49,COSC49,"This course studies an advanced topic in algorithms and complexity that is not covered in the regular curriculum. Students may take courses under this rubric multiple times, subject to the restriction that the topics are distinct. The subject material under this rubric differs from course to course depending on the instructor. Please refer to individual courses for detailed instruction.",Vary according to the topic.  Consult with the instructor.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12210,7 +12210,7 @@ COSC,COSC 49 Topics in Algorithms and Complexity,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 49.04 Concurrent Algorithms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-49-04,COSC49.04,"We consider problems where multiple processes have to coordinate their activities to accomplish a task. For an example, suppose that there are many sensing agents on an aircraft and each agent, based on its reading of the environment, has a recommendation on whether the aircraft should keep straight, turn left, or turn right. Since different agents can have different recommendations, we would want a protocol by which they can arrive at an ""agreement"" on whether the plane should go left, right, or straight. How hard is it to design such a protocol? It turns out that if you want the protocol to be fault-tolerant, i.e., the protocol works correctly even if one of the agents stops communicating, it is impossible to design a correct protocol (under certain reasonable assumptions about the system).In the course, we will look at several fascinating coordination problems and solve them for several models of distributed computing: shared-memory versus message passing, synchronous versus asynchronous, fault-free versus fault-tolerant. We design algorithms, and prove lower bounds or even impossibility results.There will be weekly homework and a final exam.Prerequisite:COSC 31(Undergraduate Algorithms) or equivalent, and an interest in algorithms/theory.","COSC 31(Undergraduate Algorithms) or equivalent, and an interest in algorithms/theory.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12635,7 +12635,7 @@ COSC,COSC 49.04 Concurrent Algorithms,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['COSC31']
 COSC,COSC 49.06 Approximation Algorithms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-49-06,COSC49.06,"Many problems arising in computer science are NP-hard and therefore we do not expect polynomial time algorithms solving them exactly. This has led to the study of approximation algorithms where one relaxes the goal to return approximate solutions. Over the past three decades, a beautiful theory of approximation algorithms has emerged. This course will provide a broad overview of the main techniques and will often deep dive into the state-of-the-art.",COSC 31,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13057,7 +13057,7 @@ COSC,COSC 49.06 Approximation Algorithms,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",['COSC31']
 COSC,COSC 49.07 21st Century Algorithms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-49-07,COSC49.07,"The new century has brought us a new class of computational problems and paradigms, and to tackle them a suite of new algorithmic ideas have emerged. In this course, we will look at a collection of such ideas which are fundamental and yet not covered in a first course in undergraduate algorithms. (For instance, in fact, almost all algorithms covered in CS 31 are from last century). A rough set of problems and ideas are: random sampling algorithms, sketching algorithms, streaming algorithms, clustering algorithms, learning algorithms, etc, etc.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13477,7 +13477,7 @@ COSC,COSC 49.07 21st Century Algorithms,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 49.08 Information Theory in Computer Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-49-08,COSC49.08,"This course introduces students to information theory, a mathematical formalism for quantifying and reasoning about communication. While traditionally a part of electrical engineering, it has found several powerful applications in the theory of algorithms and complexity and adjacent fields such as combinatorics and game theory. The first third of the course will teach students the basics of information theory (Shannon entropy, mutual information, Kullback-Liebler divergence). The rest of the course will sample topics from error correcting codes, communication complexity, data structures, and optimization, in each case highlighting applications of information theory.",COSC 31orCOSC 30plus permission of the instructor (based on strong mathematical background),,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13895,7 +13895,7 @@ COSC,COSC 49.08 Information Theory in Computer Science,https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>","['COSC31', 'IP']"
 COSC,COSC 49.09 Introduction to Computational Topology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-49-09,COSC49.09,"Topology is the art of studying shapes without precise measurements. It is not surprising then that topology has found many applications in computer science, both in theoretical and applied research including algorithms and complexity theory, data analysis, robotics, computer graphics, etc., where often the input data is geometrically constrained, or noisy due to measurement errors. The course serves as an introduction to the rapidly growing area(s) of computational topology.",CS30 and CS31 and (MATH22 or MATH24 or Instructor Permission),Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14317,7 +14317,7 @@ COSC,COSC 49.09 Introduction to Computational Topology,https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>","['COSC30', 'COSC31', 'MATH22']"
 COSC,COSC 49.10 Randomized Algorithms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-49-10,COSC49.10,"Randomness is one of the key resources in algorithm design. Many problems have faster algorithms if randomization is allowed, and indeed, for certain problems randomness is essential. The course will introduce the probability basics, the fundamental tools, and provide multiple applications in machine learning, big data, optimization, etc.","A first course on algorithms and mathematical maturity to read and write proofs will be assumed.  Courses:COSC 31,COSC 30.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14739,7 +14739,7 @@ COSC,COSC 49.10 Randomized Algorithms,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>","['COSC31', 'COSC30']"
 COSC,COSC 49.11 Metric Embedding and Sketching,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-49-11,COSC49.11,"In data analysis we can often assume the input is drawn from a metric space associated with some well-behaved distance function. In such scenario one can hope to find an alternative representation — an embedding — of the input data without sacrificing the distance information too much. To our surprise, not only this is possible, but often times one can also perform a sketching to reduce the size and amount of the data required. This seminar-style course is aimed to introduce the various ways to encode metric spaces in a succinct fashion with minimal distortion, suitable for their algorithmic purposes. Naturally, due to the vast amount of work and literature in the area, the topics covered in this class will be biased towards the interest and expertise of the instructor.","COSC 30,COSC 31, and at least one course in probability (i.e. Math 20 or COSC 49.10).COSC 36is recommended.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15161,7 +15161,7 @@ COSC,COSC 49.11 Metric Embedding and Sketching,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>","['COSC30', 'COSC31', 'COSC49.10']"
 COSC,COSC 49.12 Topics in Computational Topology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-49-12,COSC49.12,"Planar graphs are among the most well-studied graph classes since the beginning of graph theory and algorithm design. Planar graphs can manifest in computational problems as networks, meshes, or terrains that are geometric and low-dimension in nature, which unsurprisingly find many applications in computer graphics, visualization, vehicle routing, and shape analysis. This graduate-level seminar-style course is aimed to introduce a vast array of tools for planar graphs, ranging from combinatorial to geometric to spectral to algorithmic and beyond. Naturally, due to the sheer amount of work and literature in the area, the topics covered in this class will be biased towards the interest and expertise of the instructor.","COSC 30or Math 38 and Math 22, Math 24 orCOSC 70or Instructor Permission. Knowledge in algorithms (COSC 31) is strongly recommended.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15583,7 +15583,7 @@ COSC,COSC 49.12 Topics in Computational Topology,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>","['COSC30', 'MATH22', 'COSC70']"
 COSC,COSC 50 Software Design and Implementation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-50,COSC50,"Techniques for building large, reliable, maintainable, and understandable software systems. Topics include UNIX tools and filters, programming in C, software testing, debugging, and teamwork in software development. Concepts are reinforced through a small number of medium-scale programs and one team programming project.",COSC 10,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16007,7 +16007,7 @@ COSC,COSC 50 Software Design and Implementation,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",['COSC10']
 COSC,COSC 51 Computer Architecture,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-51,COSC51,"The architecture and organization of a simple computer system is studied. Topics covered include how information is represented in memory, machine-language instructions and how they can be implemented at the digital logic level and microcode level, assembly language programming, and input/output operations. Speedup techniques, such as pipelining and caching, are also covered.","COSC 1,ENGS 20, or placement through the Advanced Placement exam or the local placement exam.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16429,7 +16429,7 @@ COSC,COSC 51 Computer Architecture,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['COSC1']
 COSC,COSC 52 Full-Stack Web Development,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-52,COSC52,"The Web is a powerful delivery tool for complex real-time applications.  This is an introduction to full stack Web application development — the approach of integrating numerous techniques and technologies to build modern Web applications.  Topics include: static pages, Internet protocols, layout, markup, event-driven asynchronous programming, deployment, security, scalability, and user experience. Projects include building real-time Web applications with front-end UIs and server-side APIs.",COSC 10,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16851,7 +16851,7 @@ COSC,COSC 52 Full-Stack Web Development,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",['COSC10']
 COSC,COSC 55 Security and Privacy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-55,COSC55,"The migration of important social processes to distributed, electronic systems raises critical security and privacy issues. Precisely defining security and privacy is difficult; designing and deploying systems that provide these properties is even harder. This course examines what security and privacy mean in these settings, the techniques that might help, and how to use these techniques effectively. Our intention is to equip computer professionals with the breadth of knowledge necessary to navigate this emerging area.",COSC 50or instructor permission.COSC 51andCOSC 30are recommended.,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17273,7 +17273,7 @@ COSC,COSC 55 Security and Privacy,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",['COSC50']
 COSC,COSC 56 Digital Electronics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-56,COSC56,"This course teaches classical switching theory including Boolean algebra, logic minimization, algorithmic state machine abstractions, and synchronous system design. This theory is then applied to digital electronic design. Techniques of logic implementation, from Small Scale Integration (SSI) through Application-Specific Integrated Circuits (ASICs), are encountered. There are weekly laboratory exercises for the first part of the course followed by a digital design project in which the student designs and builds a large system of his or her choice. In the process, Computer-Aided Design (CAD) and construction techniques for digital systems are learned.",ENGS 20orCOSC 1andCOSC 10,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17697,7 +17697,7 @@ COSC,COSC 56 Digital Electronics,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>","['COSC1', 'COSC10']"
 COSC,COSC 57 Compilers,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-57,COSC57,"Techniques for automatic translation of programming languages are discussed. The course includes a brief survey of various techniques and formalisms that can be used for describing the syntax and semantics of programming languages, for describing abstract and concrete machine architectures, and for describing program translation and transformation. This course includes a project to construct a compiler that will translate a program written in a high-level language into machine code for a conventional-architecture machine.",COSC 50.COSC 51is recommended.,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18119,7 +18119,7 @@ COSC,COSC 57 Compilers,https://dartmouth.smartcatalogiq.com/en/current/orc/depar
 </form>
 
 </body>
-</html>"
+</html>",['COSC50']
 COSC,COSC 58 Operating Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-58,COSC58,"This course studies how computer operating systems allocate resources and create virtual machines for the execution of user jobs. Topics covered include storage management, scheduling, concurrent processing, shared access to files, synchronization, and data protection. Both abstract models and actual examples of operating systems will be studied.",COSC 50andCOSC 51,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18541,7 +18541,7 @@ COSC,COSC 58 Operating Systems,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>","['COSC50', 'COSC51']"
 COSC,COSC 59 Principles of Programming Languages,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-59,COSC59,"This course provides a study of the principles of programming languages. The course will focus on the similarities and differences among imperative, functional, logical, and object-oriented programming languages. Topics include formal definitions of languages and tools for automatic program translation, control structures, parameter passing, scoping, types, and functions as first-class objects. For each language category, implementation issues will be discussed, and program development strategies illustrated through programming exercises.","COSC 10,COSC 30andCOSC 51are recommended.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18963,7 +18963,7 @@ COSC,COSC 59 Principles of Programming Languages,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 60 Computer Networks,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-60,COSC60,"This course focuses on the communications protocols used in computer networks: their functionality, specification, verification, implementation, and performance; and how protocols work together to provide more complex services. Aspects of network architectures are also considered. Laboratory projects are an integral part of the course in which networking concepts are explored in depth.",COSC 30andCOSC 50;COSC 51is recommended,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19385,7 +19385,7 @@ COSC,COSC 60 Computer Networks,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>","['COSC30', 'COSC50']"
 COSC,COSC 61 Database Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-61,COSC61,"This course studies the management of large bodies of data or information. This includes schemes for the representation, manipulation, and storage of complex information structures as well as algorithms for processing these structures efficiently and for retrieving the information they contain. This course will teach the student techniques for storage allocation and deallocation, retrieval (query formulation), and manipulation of large amounts of heterogeneous data. Students are expected to program and become involved in a project in which they study important aspects of a database system: ways to organize a distributed database shared by several computers; transactions that are processed locally and globally; robustness guarantees of the stored data against failure; security and data integrity guarantees from unauthorized access; privacy; object-oriented schemes for multimedia data; indexing, hashing, concurrency control, data mining, data warehousing, mobile databases and storage file structures.","COSC 50or equivalent, as approved by instructor.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19807,7 +19807,7 @@ COSC,COSC 61 Database Systems,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",['COSC50']
 COSC,COSC 62 Applied Cryptography,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-62,COSC62,"Cryptography is the fundamental building block for establishing and maintaining trustworthy connections and communications in the Internet; it's the first line of defense for keeping adversaries from spying on credit card numbers being sent to Amazon or on whistleblower reports sent to journalists.  This course will examine what's in this toolkit: symmetric ciphers, public-key cryptography, hash functions, pseudorandomness.  To enable the well-cultured computer scientist to understand how these tools are used in the real world, this course will cover these topics from multiple perspectives: theoretical foundations, use in practical computing, implementation and management challenges, weaknesses and attacks, censorship circumvention, public policy questions, and prospects for the future.","COSC 30,COSC 50.COSC 51andCOSC 55are recommended.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20229,7 +20229,7 @@ COSC,COSC 62 Applied Cryptography,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>","['COSC30', 'COSC50']"
 COSC,COSC 63 Programming Parallel Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-63,COSC63,"Multi-core processors are now ubiquitous in most personal computers. These are the fundamental computer-engineering building blocks for high-performance servers, blade farms, and cloud computing. In order to utilize these devices in large systems they must be interconnected through networking and collectively programmed. This hands-on system-engineering course offers students the opportunity to explore problem-solving techniques on a high-performance multi-computer containing quad-core processors. The course involves weekly programming laboratories that teach POSIX thread, UDP and TCP network, and MPI style programming techniques. These techniques are explored in the context of scalable problem solving methods applied to typical problems in science and engineering ranging from client-server sensing and data repositories, to numerical methods, gaming and decision support. All laboratories will be conducted in the C programming language and proficiency in C is required. Enrollment is limited to 30 students.",ENGS 20orCOSC 50.,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20653,7 +20653,7 @@ COSC,COSC 63 Programming Parallel Systems,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['COSC50']
 COSC,COSC 63.01 Augmented and Virtual Reality Development,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-63-01,COSC63.01,"This hands-on projects-based course is for developers who have completedCOSC 10. It covers the technical, aesthetic, and societal issues surrounding the emerging frontiers of digitally mediated realities. Students learn the fundamentals of augmented and virtual reality development, while working in small interdisciplinary teams with digital arts students who are concurrently enrolled in COSC 23.01.COSC 63.01 and COSC 23.01 have class together and work together on teams. Developers in this course build interactive digital tools, games, and visualizations, while designers create assets and the interface. This course will also address the sociological implications of the technology. This course is not open to students who have received credit forCOSC 29.22 orCOSC 89.22.",COSC 10,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21075,7 +21075,7 @@ COSC,COSC 63.01 Augmented and Virtual Reality Development,https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>",['COSC10']
 COSC,COSC 65 Smartphone Programming,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-65,COSC65,"This course teaches students how to design, implement, test, debug and publish smartphone applications. Topics include development environment, phone emulator, key programming paradigms, UI design including views and activities, data persistence, messaging and networking, embedded sensors, location based services (e.g., Google Maps), cloud programming, and publishing applications. Concepts are reinforced through a set of weekly programming assignments and group projects.",COSC 10,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21499,7 +21499,7 @@ COSC,COSC 65 Smartphone Programming,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['COSC10']
 COSC,COSC 66 Game Development Principles Applied In Educational/Serious Games,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-66,COSC66,"Digital games are a growing platform for education, entertainment, and visualization with a myriad of technological and theoretical challenges. This course explores the concepts and techniques involved in developing real-time 2D and 3D games, as well as the opportunities and constraints when applied to the field of serious games in areas such as education, healthcare, scientific visualization, emergency planning and response, government, and engineering. Topics include: 2d and 3d game engines, game ai, procedural generation, real-time rendering pipelines, game physics, shaders, game programming patterns, networked games, state synchronization, and game mechanics. Projects include building games from scratch such as an online multiplayer game with a server-side component.",COSC 10or permission of the Instructor,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21921,7 +21921,7 @@ COSC,COSC 66 Game Development Principles Applied In Educational/Serious Games,ht
 </form>
 
 </body>
-</html>"
+</html>",['COSC10']
 COSC,COSC 67 Introduction to Human-Computer Interaction,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-67,COSC67,"This course provides the fundamentals of human-computer interaction, including human factors, usability, user-centered design, prototyping, and usability evaluation. Students will learn the skills and knowledge to identify users’ needs and limitations through observations and interviews. They will experience rapid prototyping and will learn common HCI evaluation techniques, such as qualitative and quantitative methods, to evaluate their designs and implementations. Additionally, students will be exposed to the state-of-the-art research within HCI.",COSC 10,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22343,7 +22343,7 @@ COSC,COSC 67 Introduction to Human-Computer Interaction,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",['COSC10']
 COSC,COSC 68 Advanced Operating Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-68,COSC68,"This course covers advanced topics in operating systems, including issues such as thehardware/software interface, operating-system structure, CPU scheduling, concurrency, virtual memory, interprocess communication, file systems, protection, security, fault tolerance, and transaction processing. The course also considers many of these topics in the context of distributed systems.","A grade of B+ or better inCOSC 58/258, or passing an examination administered by the department to demonstrate competency in the material ofCOSC 58/258.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22765,7 +22765,7 @@ COSC,COSC 68 Advanced Operating Systems,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",['COSC58']
 COSC,COSC 69 Topics in Computer Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-69,COSC69,"This course studies an advanced topic in computer systems that is not covered in the regular curriculum. Students may take courses under this rubric multiple times, subject to the restriction that the topics are distinct. The subject material under this rubric differs from course to course depending on the instructor. Please refer to individual courses for detailed instruction.",Vary according to the topic.  Consult with the instructor.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23185,7 +23185,7 @@ COSC,COSC 69 Topics in Computer Systems,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 69.08 All Things Wireless,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-69-08,COSC69.08,This is a topics course about use and development of wireless devices.,COSC 60.,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23607,7 +23607,7 @@ COSC,COSC 69.08 All Things Wireless,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['COSC60']
 COSC,COSC 69.11 Mobile X,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-69-11,COSC69.11,"Mobile X is an upper-level course on mobile computing and ubiquitous systems, covering a broad range of advanced and interdisciplinary topics in mobile systems, networking, and applications. All these topics focus on tackling unique challenges faced on bringing computation, networking, and applications to the mobile computing platform -- a platform that is constrained in form factor, energy, and computation power. Example topics include mobile communication and networking, mobile human-to-computer interaction (HCI), mobile learning/AI, mobile health, and mobile security.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24027,7 +24027,7 @@ COSC,COSC 69.11 Mobile X,https://dartmouth.smartcatalogiq.com/en/current/orc/dep
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 69.13 Multirobot Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-69-13,COSC69.13,"Multirobot Systems is a seminar-course that will explore why multirobot systems are important, the extra challenges that need to be addressed, and the current state of the art in deploying multiple robots.Students will learn the computational aspects of multiagent and multirobot systems, including sensing, coordination, and communication, and will have the opportunity to develop and evaluate a behavior on a real multirobot system.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24449,7 +24449,7 @@ COSC,COSC 69.13 Multirobot Systems,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 69.14 Functional Programming in Haskell,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-69-14,COSC69.14,"This course teaches a different approach to programming. In functional programming, we treat programs like values. The type of that value tells you what the program might do and restricts the possible buggy programs that don’t do what you want them to do. In Haskell, you direct the type system to help improve your productivity, and your code’s maintainability, by ensuring that certain bugs yield uncompilable code. Haskell programming is a recommended skill, regardless of whether you have a direct need for it. Programming in Haskell is not difficult, but has a steep learning curve when attempting to learn it on your own. Hence this course won’t be easy, but it will help you through the difficult part. We use the latest GHC compiler, which is the most commonly used Haskell compiler in industry.",COSC 10.COSC 30is recommended.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24867,7 +24867,7 @@ COSC,COSC 69.14 Functional Programming in Haskell,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",['COSC10']
 COSC,COSC 69.15 Robotics Perception Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-69-15,COSC69.15,"This seminar course focuses on the issues and approaches to process and fuse data from robotics perception systems to enable robot autonomy, e.g., self-driving cars. The course will be very hands-on: some preliminary assignments will immerse you in the robotics world and how to process the sensor data for situational awareness. Through selected papers taken from the literature, students will learn different aspects of robotics perception systems, including computer vision, simultaneous localization and mapping, and machine learning. In addition, students will learn how to critically analyze a paper and how to effectively communicate a research work, by writing a summary on each paper, and presenting and discussing papers in class. Towards the end, students will work in a team on a final project that involves the use of a mobile robot with an RGBD camera and LIDAR. The professor will draw from his experiences in robotic research to enrich the material with aspects of active research problems, such as robot exploration for search and rescue and environmental coral reef monitoring using underwater robots.",COSC 70/70.01 (formerly COSC 11).COSC 50is recommended.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25285,7 +25285,7 @@ COSC,COSC 69.15 Robotics Perception Systems,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",['COSC70']
 COSC,COSC 69.16 Basics of Reverse Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-69-16,COSC69.16,"Frequently, the source code for an important operating system component, malware, or piece of commercial software is not available. This course explores the art and science of reverse engineering such systems to discover how they work, how they connect to other systems, and how they may be controlled. In this course, you will develop an understanding of how systems and development tool chains are built ""under the hood"". You will learn to read compiled binaries without available source code, to recover program logic, and to modify (de)compiled binaries. We will seek to understand the challenges of reverse engineering larger programs, and of automating reverse engineering.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25701,7 +25701,7 @@ COSC,COSC 69.16 Basics of Reverse Engineering,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 69.17 Software Security,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-69-17,COSC69.17,"While software forms the backbone of modern computer systems, it is a prime target for cyberattacks. Cybercriminals are constantly exploring their vulnerabilities and deploying illegitimate code to accomplish their malicious goals. This course is designed to provide students with the comprehensive understanding of software security, both fundamental principles and low-level details of real-world offense and defense within software systems. Topics span vulnerability detection, exploitation mitigation, malware analysis, reverse engineering, and more.","COSC 50, 51, familiarity with C language and system programming (e.g., system calls), and linux-based operating systems and programming environment is recommended.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26123,7 +26123,7 @@ COSC,COSC 69.17 Software Security,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>","['COSC50', 'COSC51']"
 COSC,COSC 69.18 HackLab: Binary Program Analysis for Software Attacks and Defenses,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-69-18,COSC69.18,"Modern software keeps expanding in terms of size, application domains, users, and quantity of processed information. As a result of this, the attack surface and range of vulnerabilities targeted by attackers increases on a constant basis. Simultaneously, while humans reason about programs at the source-code level, a set of abstractions designed by humans for humans, computers execute machine code: a translation of source code into low-level instructions. This course sheds light on the discrepancies between source code and what computers actually execute, and examines some of the root causes and inner-workings of several common classes of software vulnerability, how these can be exploited to take control of remote systems, how those can be addressed and how to scale their detection and mitigation by leveraging automated program analysis techniques. Students will learn the practice and theory of ethical hacking through hands-on program analysis problems, Capture-The-Flag (CTF) competition challenges, exploitation and defense techniques as well as state-of-the-art research models. By studying the attack surface of modern software, students will learn how to build stronger, more sophisticated and more adequate defense strategies.",Students must completeCOSC 50or obtain instructor permission before taking this course.,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26545,7 +26545,7 @@ COSC,COSC 69.18 HackLab: Binary Program Analysis for Software Attacks and Defens
 </form>
 
 </body>
-</html>"
+</html>",['COSC50']
 COSC,COSC 70 Foundations of Applied Computer Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-70,COSC70,"This course introduces core computational and mathematical techniques for data analysis and physical modeling, foundational to applications including computational biology, computer vision, graphics, machine learning, and robotics. The approaches covered include modeling and optimizing both linear and nonlinear systems, representing and computing with uncertainty, analyzing multi-dimensional data, and sampling from complex domains. The techniques are both grounded in mathematical principles and practically applied to problems from a broad range of areas. Not open to students who have received credit forCOSC 70.01.","MATH 3, COSC1 required,COSC 10recommended",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26967,7 +26967,7 @@ COSC,COSC 70 Foundations of Applied Computer Science,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>","['MATH3', 'COSC1']"
 COSC,COSC 71 Numerical Methods in Computation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-71,COSC71,"A study and analysis of important numerical and computational methods for solving engineering and scientific problems. The course will include methods for solving linear and nonlinear equations, doing polynomial interpolation, evaluating integrals, solving ordinary differential equations, and determining eigenvalues and eigenvectors of matrices. The student will be required to write and run computer programs.","COSC 1andCOSC 10, orENGS 20;ENGS 22orMATH 23, or equivalent.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27391,7 +27391,7 @@ COSC,COSC 71 Numerical Methods in Computation,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>","['COSC1', 'COSC10']"
 COSC,COSC 72 Accelerated Computational Linguistics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-72,COSC72,"The study of human language from a computational perspective. This accelerated course has programming background equivalent to that provided byCOSC 1as a prerequisite. This course will survey formal models for representing linguistic objects, and statistical approaches to learning from natural language data. We will pay attention to the use of computational techniques to understand the structure of language, as well as practical engineering applications like speech recognition and machine translation. Students will implement simple algorithms for several key tasks in language processing and learning.",COSC 01,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27815,7 +27815,7 @@ COSC,COSC 72 Accelerated Computational Linguistics,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",['COSC01']
 COSC,COSC 73 Computational Aspects of Digital Photography,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-73,COSC73,"Computational photography lies at the intersection of photography, computer vision, image processing, and computer graphics. At it’s essence, it is about leveraging the power of digital computation to overcome limitations of traditional photography. The course will cover the optics of cameras and sensors, how cameras form images, and how we can represent them digitally on a computer. We will focus on software techniques like image processing algorithms for photography, high-dynamic-range photography and tone mapping, and the math and algorithms behind popular image manipulation tools like Photoshop. Coursework will include taking some photos and implementing several algorithms to manipulate those photos in weekly programming assignments (in C  ). We will also read, present and discuss recent research papers in the field. By the end of the term, students should have an understanding of the capabilities and limitations of photography today, and have sufficient background to implement new solutions to photography challenges.",COSC 10andCOSC 70;COSC 50is recommended or instructor permission,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28237,7 +28237,7 @@ COSC,COSC 73 Computational Aspects of Digital Photography,https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>","['COSC10', 'COSC70']"
 COSC,COSC 74 Machine Learning and Statistical Data Analysis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-74,COSC74,"This course provides an introduction to statistical modeling and machine learning. Topics include learning theory, supervised and unsupervised machine learning, statistical inference and prediction, and data mining. Applications of these techniques to a wide variety of data sets will be described.","COSC 1orENGS 20;COSC 70/70.1(formerly COSC 11), orMATH 22, orMATH 24.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28659,7 +28659,7 @@ COSC,COSC 74 Machine Learning and Statistical Data Analysis,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>","['COSC1', 'COSC70']"
 COSC,COSC 75 Introduction to Bioinformatics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-75,COSC75,"Bioinformatics is broadly defined as the study of molecular biological information, and this course introduces computational techniques for the analysis of biomolecular sequence, structure, and function. While the course is application-driven, it focuses on the underlying algorithms and information processing techniques, employing approaches from search, optimization, pattern recognition, and so forth. The course is hands-on: programming lab assignments provide the opportunity to implement and study key algorithms.","COSC 10;COSC 70/70.01 (formerly COSC 11), orMATH 22, orMATH 24.COSC 30is recommended.",Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29081,7 +29081,7 @@ COSC,COSC 75 Introduction to Bioinformatics,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>","['COSC10', 'COSC70']"
 COSC,COSC 76 Artificial Intelligence,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-76,COSC76,"An introduction to the field of Artificial Intelligence. Topics include games, robotics, motion planning, knowledge representation, logic and theorem proving, probabilistic reasoning over time, understanding of natural languages, and discussions of human intelligence.",COSC 10.COSC 30is recommended.,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29503,7 +29503,7 @@ COSC,COSC 76 Artificial Intelligence,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['COSC10']
 COSC,COSC 77 Computer Graphics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-77,COSC77,"This course provides a broad introduction to the mathematical and programmatic foundations of computer graphics, including modeling, rendering (drawing), and animating three-dimensional scenes. Topics include digital image representation, two- and three-dimensional shape representations (e.g. parametric curves and surfaces, meshes, subdivision surfaces), geometrical transformations (e.g. rotations, scales, translations, and perspective projection), rigging and skinning, the rasterization pipeline, ray tracing, illumination and shading models, texturing, and light & visual perception. Coursework typically includes a mix of programming assignments, quizzes/hand-written work, assigned readings, and a final project. Knowledge of basic linear algebra and programming skills are assumed.",COSC 50;COSC 70/70.01 (formerly COSC 11) orMATH 22/24; or instructor permission if the above two prereqs not fulfilled.,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29925,7 +29925,7 @@ COSC,COSC 77 Computer Graphics,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>","['COSC50', 'COSC70']"
 COSC,COSC 78 Deep Learning,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-78,COSC78,"This course provides an introduction to deep learning, a methodology to train hierarchical machine learning models using large collections of examples. Deep learning is a special form of machine learning where rich data representations are simultaneously learned with the model, thus eliminating the need to engineer features by hand.The course begins with a comprehensive study of feedforward neural networks, which are the model of choice for most hierarchical representation learning algorithms. Other models covered in this course include convolutional neural networks, restricted Boltzmann machines, autoencoders, sparse codes. Several lectures are devoted to discuss strategies to improve the bias-variance tradeoff, such as regularization, data augmentation, pre-training, dropout, and multi-task learning. The course also studies modern applications of deep learning, such as image categorization, speech recognition, and natural language processing.",COSC 74,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30347,7 +30347,7 @@ COSC,COSC 78 Deep Learning,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",['COSC74']
 COSC,COSC 81 Principles of Robot Design and Programming,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-81,COSC81,"This course is a hands-on introduction to robotics. Students will build robots, program robots, and learn to mathematically model and analyze manipulation and locomotion tasks. Topics include kinematics and dynamics of rigid-body motion, motion planning, control, mechanics of friction and contact, grasping, sensing, uncertainty in robotics, and applications of robots.","COSC 70/70.01 (formerly COSC 11), or COSC 01 and Math 22/24.COSC 10andCOSC 50are recommended.",Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30769,7 +30769,7 @@ COSC,COSC 81 Principles of Robot Design and Programming,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",['COSC70']
 COSC,COSC 83 Computer Vision,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-83,COSC83,"This course provides an introduction to computer vision, the art of teaching computers to see. Topics include image formation, feature detection, segmentation, 3D reconstruction from multiple views, motion estimation, and object recognition.","COSC 1orENGS 20; COSC 70/70.01 (formerly COSC 11), orMATH 22, orMATH 24.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31191,7 +31191,7 @@ COSC,COSC 83 Computer Vision,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>","['COSC1', 'COSC70']"
 COSC,COSC 84 Mathematical Optimization and Modeling,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-84,COSC84,"Planning, scheduling, and design problems in large organizations, economic or engineering systems can often be modeled mathematically using variables satisfying linear equations and inequalities. This course explores these models: the types of problems that can be handled, their formulation, solution, and interpretation. It introduces the theory underlying linear programming, a natural extension of linear algebra that captures these types of models, and also studies the process of modeling concrete problems, the algorithms to solve these models, and the solution and analysis of these problems using a modeling language. It also discusses the relation of linear programming to the more complex frameworks of nonlinear programming and integer programming. These paradigms broaden linear programming to respectively allow for nonlinear equations and inequalities, or for variables to be constrained to be integers.","COSC 1orENGS 20; COSC 70/70.01 (formerly COSC 11), orMATH 22orMATH 24; or permission of the instructor.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31613,7 +31613,7 @@ COSC,COSC 84 Mathematical Optimization and Modeling,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>","['COSC1', 'COSC70']"
 COSC,COSC 86 Computational Structural Biology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-86,COSC86,"Computational methods are helping provide an understanding of how the molecules of life function through their atomic-level structures, and how those structures and functions can be applied and controlled. This course will introduce the wide range of complex and fascinating challenges and approaches in computational structural biology, and will give hands-on experience applying and implementing some important methods.",COSC 10or permission of the instructor.,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32035,7 +32035,7 @@ COSC,COSC 86 Computational Structural Biology,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",['COSC10']
 COSC,COSC 87 Rendering Algorithms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-87,COSC87,"This class is intended for students interested in obtaining a deep technical understanding of the physically based rendering techniques used to produce photorealistic images in animated films, visual effects, or architectural and product visualizations.Students will learn how light behaves and interacts with objects in the real world and how to translate the underlying math and physics into practical algorithms for creating photorealistic images. The course will provide a detailed treatment of the industry-standard Monte Carlo methods for light transport simulation, such as path tracing, bidirectional path tracing, and photon mapping.Each major topic will also be accompanied by a programming assignment where students implement these algorithms within their own software framework to obtain practical experience. Additional coursework includes quizzes/handwritten exercises and assigned readings. At the end of the term, each student will work on a self-directed final project that extends their rendering software with additional features of their own choosing with the goal of creating a photorealistic image.",COSC 70/70.01 (formerly COSC 11) andCOSC 50; or Instructor's Permission.,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32457,7 +32457,7 @@ COSC,COSC 87 Rendering Algorithms,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>","['COSC70', 'COSC50']"
 COSC,COSC 89 Topics in Applied Computer Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89,COSC89,"This course studies an advanced topic in applied Computer Science that is not covered in the regular curriculum. Students may take courses under this rubric multiple times, subject to the restriction that the topics are distinct. The subject material under this rubric differs from course to course depending on the instructor. Please refer to individual courses for detailed instruction.",Vary according to the topic. Consult with the instructor.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32877,7 +32877,7 @@ COSC,COSC 89 Topics in Applied Computer Science,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 89.11 Cognitive Computing with Watson,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-11,COSC89.11,"Building a computer program capable of answering questions with human-level competence has been one of the grand challenges of Artificial Intelligence. IBM’s Watson system has achieved remarkable results. This class will explore the AI methods used in Watson. Topics include: natural language processing, knowledge representation, automated reasoning, machine learning, and information retrieval. Students will work in teams to develop applications that use Watson as a Cloud Service in some novel way. This class will be one of few in the world to use Watson, helping to shape the future of “Cognitive Computing.”The class will focus on projects and group work that culminates in building a novel application for question answering. Student teams will benefit from drawing on experience from various other classes, including data mining, information retrieval, natural-language processing, mobile computing and entrepreneurship.Understanding the strengths and limitations of current question-answering technology will be key to a successful application. We will read and discuss research publications on various aspects of the technology, primarily focused on the Watson system.",COSC 50,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33301,7 +33301,7 @@ COSC,COSC 89.11 Cognitive Computing with Watson,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",['COSC50']
 COSC,COSC 89.13 Robot Motion Planning,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-13,COSC89.13,"This is a small advanced seminar course in robotic motion planning.  Topics to be covered include configuration space, forwards and inverse kinematics, differential kinematics, representations for motion planning, and classical planning algorithms including cell-decomposition and probabilistic methods.","COSC 1,COSC 10,MATH 8",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33726,7 +33726,7 @@ COSC,COSC 89.13 Robot Motion Planning,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>","['COSC1', 'COSC10', 'MATH8']"
 COSC,COSC 89.14 Research Topics in Human-Computer Interaction,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-14,COSC89.14,"This is a topics course in Human-computer Interaction. The course is designed to introduce students to advanced HCI research methods and techniques, including observation, design, implementation, and evaluation. It will also expose students to state-of-the-art research topics in HCI, including interaction techniques, actuated interfaces, ubiquitous computing, context-aware computing, tangible interfaces, mobile interfaces, and wearable interfaces. This course involves a mix of lectures given by professor and students with a major focus on the discussion of selected papers from ACM SIGCHI or ACM UIST Conference Proceedings.","COSC 67, COSC 167",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34148,7 +34148,7 @@ COSC,COSC 89.14 Research Topics in Human-Computer Interaction,https://dartmouth.
 </form>
 
 </body>
-</html>"
+</html>",['COSC67']
 COSC,COSC 89.17 Health Informatics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-17,COSC89.17,"Our health is everywhere. It is aff\u000Bected by how, where, and who we live, work & play with (i.e. biological, behavioral, social, and environmental factors). The explosion of data digitization{captured both outside `in the wild' and within the healthcare delivery system, allows us to understand and address the many factors a\u000Bffecting the complexity of our health. Today, health & healthcare data is continuously being generated by healthcare delivery systems, organizations, or users and can be accessed through devices, databases, or the web (e.g., APIs). Deriving information and knowledge to improve and support health requires health informatics. Data science plays an active role as a profession and within its research eff\u000Borts in informing and developing all aspects of health informatics: data capture, data storage, and data analytics.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34568,7 +34568,7 @@ COSC,COSC 89.17 Health Informatics,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 89.18 Computational Methods for Physical Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-18,COSC89.18,"The Physical Computing course introduces students to mathematical concepts and algorithmic techniques for developing computational approaches to simulate, optimize, design, and control various physical systems. Course topics cover fundamental numerical approaches for modeling and simulating rigid body, soft body, and cloth, as well as design and optimization algorithms for drones and soft robots. The materials will be illustrated using examples and applications from physics-based animation, robot design, fashion design, and 3D printing.",COSC 10,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34990,7 +34990,7 @@ COSC,COSC 89.18 Computational Methods for Physical Systems,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>",['COSC10']
 COSC,COSC 89.19 Machine Learning for Robotics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-19,COSC89.19,"Machine Learning for Robotics is a course mixed with lectures, students’ presentations, and assignments that explore machine learning techniques for robotics applications. After a review of some supervised and unsupervised machine learning techniques, we will focus on some specific ones, currently popular in robotics, including reinforcement and deep learning. Students will have the opportunity to use machine learning frameworks for some robotics problems.
 \f\f",COSC 11 and COSC 50,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
@@ -35415,7 +35415,7 @@ COSC,COSC 89.19 Machine Learning for Robotics,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>","['COSC11', 'COSC50']"
 COSC,COSC 89.20 Data Science for Health,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-20,COSC89.20,"Data science is being employed across diverse fields to improve human sensing and health. However, there are still many untapped opportunities. This course will cover state-of-the-art methods for data acquisition and analysis, with an emphasis on interpretation of behavioral and physiological data. Students will develop their skills by reading, presenting, and critiquing seminal research papers in the health space. The course will also include assignments and a group project to reinforce concepts and methods widely used in data science.",COSC 74or instructor permission,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35837,7 +35837,7 @@ COSC,COSC 89.20 Data Science for Health,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",['COSC74']
 COSC,COSC 89.21 Data Mining and Knowledge Discovery,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-21,COSC89.21,"This course introduces the basic concepts, principles, methods, implementation techniques, and applications of data mining. The course covers all the steps required to turn raw data into meaningful insights, including: obtaining and cleaning data, pattern discovery, and data visualisation. Throughout the course, students will work on data mining projects using real-world data to gather hands-on experience. The course will be taught in Python.","COSC 10; adequate knowledge of probability and statistics through a course such asCOSC 74or Math 10, or the permission of the instructor.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36259,7 +36259,7 @@ COSC,COSC 89.21 Data Mining and Knowledge Discovery,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>","['COSC10', 'COSC74']"
 COSC,COSC 89.23 Network Science and Complex Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-23,COSC89.23,"Many of the systems that surround us are complex. These systems span almost every scientific field of inquiry, from biological to social, and computational sciences. To understand the behavior of complex systems, we must study not only the parts but the emergent behavior that arises from such systems when the parts act together. Complex systems are by definitions highly interconnected, therefore, at the core of studying complex systems is understanding networks. This seminar is an introduction to the main concepts of networks and complex systems, and their applications. The topics covered in this course will include: network topologies, network dynamics, motifs, dynamic systems, attractors, and chaos. The seminar mainly involves reading and discussing seminal, and ongoing, works in this field, but we will also be doing hands-on modeling and studying toy and real networks using Python.","COSC 10; Math 3, adequate knowledge of probability and statistics through a course such asCOSC 74or Math 10.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36687,7 +36687,7 @@ COSC,COSC 89.23 Network Science and Complex Systems,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>","['COSC10', 'MATH3', 'COSC74']"
 COSC,COSC 89.24 Logic and Artificial Intelligence,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-24,COSC89.24,"The goal of this topics course is to study the foundations of different types of logic used commonly in artificial intelligence. Logic forms the basis for many types of reasoning used by humans – researchers in AI have extended classical logic over the years to numerous more “exotic” logics. This course will cover the foundations of a host of classical and non-classical logics, a number of interesting logics developed by by AI researchers for common-sense reasoning, and applications of those logics.","COSC 76, COSC 176, or permission of the instructor.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37105,7 +37105,7 @@ COSC,COSC 89.24 Logic and Artificial Intelligence,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",['COSC76']
 COSC,COSC 89.25 GPU Programming and High Performance Computing,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-25,COSC89.25,"The GPU Computing course introduces students to the basic programming and algorithmic techniques for developing the modern parallel computer code for high-performance computing applications. Course topics will cover the fundamentals for GPU (CUDA) and CPU (multi-threading) parallel programming, parallel computer architecture, parallel data structures, parallelizable linear algebra, conjugate gradient and multigrid solvers, particle systems and N-body problems, and vectorization. The materials will be illustrated using large-scale computing examples and applications from computer graphics, computational physics, and machine learning.",This course assumes an understanding of multi-variable calculus and linear algebra and proficiency in C++ programming. Students are recommended to take COSC 70 as a prerequisite or to show equivalent understanding and comfortableness with the associated materials.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37527,7 +37527,7 @@ COSC,COSC 89.25 GPU Programming and High Performance Computing,https://dartmouth
 </form>
 
 </body>
-</html>"
+</html>",['COSC70']
 COSC,COSC 89.26 Security and Privacy in the Lifecycle of IoT for Consumer Environments,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-26,COSC89.26,"We are entering an era of Smart Things, in which everyday objects become imbued with computational capabilities and the ability to communicate with each other and with services across the Internet.  Indeed, the Internet of Things now involves the deployment of Smart Things in everyday residential environments – houses, apartments, hotels, senior-living facilities – resulting in Smart Homes. Although Smart Things offer many potential benefits, they can also create unsafe conditions and increase risk of harm to persons and property. This course explores the key security and privacy challenges required for the vision of Smart Homes to be safely realized, with an explicit focus on consumer-facing “things” where end-user privacy and usability are essential. It will take a holistic approach to the entire lifecycle of security, privacy, and usability challenges from the perspective of the everyday consumer who interacts with Smart Things (intentionally or unintentionally) in a residential setting. Students will read, present, and discuss papers from the research literature; write a survey paper about a subset of the research literature; and conduct a security analysis of a current commercial “smart thing”. Guest lecturers will join the class, weekly, to share expertise from both industry and research.","Required:COSC 50, and experience or willingness to read technical research literature. Useful: COSC 55, 58, 60, 62, 67, 91.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37945,7 +37945,7 @@ COSC,COSC 89.26 Security and Privacy in the Lifecycle of IoT for Consumer Enviro
 </form>
 
 </body>
-</html>"
+</html>","['COSC50', 'IP']"
 COSC,COSC 89.27 Security and Privacy of Machine Learning,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-27,COSC89.27,"Today we see applications of machine learning almost everywhere we look – in the domains of autonomous driving, medical diagnosis, fraud detection, etc. While the use of machine learning is increasing in our day-to-day lives, these techniques also pose significant threats to security and data privacy. This course will explore recent academic research at the intersection of machine learning, security, and data privacy that demonstrates the risks adversaries pose to machine learning systems. The research papers explored in this course would cover attacks on machine learning systems as well as defense techniques to mitigate such attacks. Students will read, analyze, and discuss research papers, write summaries, take notes, and undertake a term-long research project.",COSC 74. Assumes that students understand basics of machine learning. Knowledge of security & privacy useful but not required if students are willing/able to learn background materials on their own.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38363,7 +38363,7 @@ COSC,COSC 89.27 Security and Privacy of Machine Learning,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 89.28 Computational Healthcare,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-28,COSC89.28,"Machine Learning (ML) lies at the core of a wide range of healthcare applications spanning from diagnosis to delivery of care. This course gives an overview of challenges and opportunities for ML in the era of digital health. We will explore advanced ML methods for healthcare and medicine through research papers. Specifically, we will cover recent successes of natural language processing, time-series analysis, and transfer learning to advance healthcare research. Students will choose and complete a course project, write a project report, and make project presentations at the end of the course. The course also requires the students to analyze, present, and discuss research papers.The course is open to graduate and ambitious undergraduate students who are interested to gain hands-on experience in applied ML research. The course is designed to enable students to improve their technical communication and review skills and explore new research directions. It is important to note that this course will be conducted like a seminar (i.e. there are no formal lectures). We assume students are willing and able to learn some necessary background materials on their own. There will be office hours outside of scheduled class lectures.",COSC 74or instructorâs permission. This course assumes that the students are familiar with the basics of machine learning and deep learning.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38782,7 +38782,7 @@ COSC,COSC 89.28 Computational Healthcare,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",['COSC74']
 COSC,COSC 89.29 Music and Artificial Intelligence,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-29,COSC89.29,"This course explores artificial intelligence (AI) for creating and consuming music. Through weekly readings and exercises, students will create music and art with AI-based systems and develop the critical skills to evaluate the outputs of creative AI. Starting with the history of algorithmic art and music, students will explore issues of digital music representation, generative music, computational creativity, and AI-based music production. The goal is to generate original works using algorithms, such as neural networks.","MUS008, CS001 or CS002",DIST:TAS; WCult:WC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -39206,7 +39206,7 @@ COSC,COSC 89.29 Music and Artificial Intelligence,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",['COSC1']
 COSC,COSC 89.30 Topics in Video Understanding,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-30,COSC89.30,"Video understanding is an area of research that helps machines understand video content by recognizing and localizing different actions or events appearing in a video. Videos have multiple sensory information, including visual, acoustic, and meta information. This class is designed to help students better understand recent trends in video understanding. In particular, we will explore the state of the arts in deep learning for video understanding, especially with multimodality. Students will learn by reading, presenting, and discussing recently published papers. Students will also propose and complete a term project to solve a video understanding problem.",COSC 78,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -39628,7 +39628,7 @@ COSC,COSC 89.30 Topics in Video Understanding,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",['COSC78']
 COSC,COSC 89.31 Deep Learning Generalization and Robustness,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-31,COSC89.31,"This course will be an extended version ofCOSC 78/278 Deep Learning. It is mostly project-based, and it aims to bridge the gap between machine learning course materials and recent developments in machine learning research. The course begins by covering the basics of model training and inference. From there, the course proceeds to discuss various concepts of generalization, different types of robustness issues associated with generalization (e.g., adversarial robustness, out-of-distribution robustness, model poisoning, etc.), and the connections between (robust) generalization to the design of multiple regularization and normalization strategies.",COSC 74/274,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40050,7 +40050,7 @@ COSC,COSC 89.31 Deep Learning Generalization and Robustness,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",['COSC74']
 COSC,COSC 89.32 Multi-modalities Generative AI,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-32,COSC89.32,"This advanced course delves into the exciting field of Multi-modalities Generative AI, where students will explore the convergence of multiple data modalities such as text, image, and audio to create sophisticated and expressive AI models. This course is divided into two equally important components. The first half will consist of a lecture series that systematically covers fundamental concepts and technologies in generative AI. This segment aims to establish a solid theoretical foundation while facilitating hands-on learning through practical demonstrations with open-source examples. The second half of the course will be an interactive reading group, where students delve into influential papers and engage in in-depth discussions. This segment is designed to foster critical thinking, encourage exploration of the latest research in multi-modal generative AI.Students will undertake a term project directly related to Multi-modalities Generative AI. This project will provide an opportunity to apply the acquired knowledge and skills, fostering creativity and innovation in the development of multi-modal generative models. By combining a lecture series, engaging reading group discussions, and a practical term project, this course aims to equip students with a well-rounded understanding of multi-modal generative AI and the ability to contribute meaningfully to this rapidly evolving field.","COSC 78/278. This course assumes students have basic knowledge in Deep Learning, being able to build, modify and train a deep learning model.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40474,7 +40474,7 @@ COSC,COSC 89.32 Multi-modalities Generative AI,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,"COSC 89.33 The Dark Side of AI/ML: Machine Learning Security, Privacy, Fairness, and Interpretability",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-89-33,COSC89.33,"The goal of this course is to equip students to responsibly deploy machine learning tools in an unfair and adversarial world. We will survey the vulnerabilities of mainstream machine learning models and algorithms to manipulation, privacy leakage, and unfairness. We will then assess the conditions under which we can understand, interpret, or measure our models’ predictions with respect to each of these vulnerabilities. Finally, we will address the feasibility and limitations of appropriate countermeasures. Our course will build towards a final project assignment where students are given the opportunity to develop their own research projects in this emerging field.","Before taking this course, all students are expected to have completed an advanced undergraduate machine learning course such as COSC 74, 78, 83 or the graduate course equivalent.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40896,7 +40896,7 @@ COSC,"COSC 89.33 The Dark Side of AI/ML: Machine Learning Security, Privacy, Fai
 </form>
 
 </body>
-</html>"
+</html>",['COSC74']
 COSC,"COSC 91 Writing, Presenting, and Evaluating Technical Papers in Computer Science",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-91,COSC91,"Students will learn how to write technical papers in computer science, how to present technical papers in a conference-talk setting, and how program committees and journal editors evaluate technical papers. Writing topics include the proper use of technical typesetting software, organization of technical papers, and English usage. Students will write technical papers, produce official course notes, and give oral presentations. Enrollment limited.",Each student must submit a short expository piece to be evaluated by the instructor at the start of the course; only those students meeting a required level of competence will be permitted to take the course for a grade. Students should also have a Computer Science background sufficient to understand research papers.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -41316,7 +41316,7 @@ COSC,"COSC 91 Writing, Presenting, and Evaluating Technical Papers in Computer S
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 COSC,COSC 94 Reading Course,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-94,COSC94,Advanced undergraduates occasionally arrange with a faculty member a reading course in a subject not occurring in regular courses.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -41732,7 +41732,7 @@ COSC,COSC 94 Reading Course,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 98.01 Senior Design and Implementation Project I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-98-01,COSC98.01,"Participation in a software engineering group project to meet a real-world need. Group members are responsible for all aspects of a software system, including iterative requirements analysis, design, implementation, and testing. The course also stresses customer interactions, documentation, process, and teamwork. The result is a software product of significant scope and significant benefit to a user base.Open only to students pursuing a major in Computer Science or a modified major with Computer Science as the primary part.  98.01 and 98.02 constitute a two course sequence, and they must be taken in consecutive terms, either fall/winter or winter/spring, normally in the senior year.Students are awarded one course credit for successful completion of this course upon completion of COSC-98.02 Students register for COSC-98.01 and receive a grade of “ON” (ongoing) at the end of the term.  Students then register for COSC-98.02 the subsequent term to complete the coursework. A final grade will replace the “ON” in COSC-98.01 upon completion of COSC-98.02.","At least two courses from COSC 50-69 or at least three courses from COSC 50-89, or permission of instructor.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -42152,7 +42152,7 @@ COSC,COSC 98.01 Senior Design and Implementation Project I,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 COSC,COSC 98.02 Senior Design and Implementation Project II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-98-02,COSC98.02,"Participation in a software engineering group project to meet a real-world need. Group members are responsible for all aspects of a software system, including iterative requirements analysis, design, implementation, and testing. The course also stresses customer interactions, documentation, process, and teamwork. The result is a software product of significant scope and significant benefit to a user base.Open only to students pursuing a major in Computer Science or a modified major with Computer Science as the primary part. 98.01 and 98.02 constitute a two course sequence, and they must be taken in consecutive terms, either fall/winter or winter/spring, normally in the senior year.Students are awarded one course credit for successful completion of this course. Students who have registered for COSC-98.01 register for COSC-98.02 to complete the coursework. A final grade will replace the “ON” for COSC-98.01 upon completion of this course for a total of 2 credits for COSC-98.01 and COSC-98.02.",COSC 98.01,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -42572,7 +42572,7 @@ COSC,COSC 98.02 Senior Design and Implementation Project II,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",['COSC98.01']
 COSC,COSC 99.01 Thesis Research I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-99-01,COSC99.01,"Individual research on a topic along with a thesis advisor. Permission of the Undergraduate Program Director and thesis advisor required. Open only to students pursuing a major in Computer Science or a modified major with Computer Science as the primary part. COSC 99.01 and 99.02 constitute a two-course sequence and must be taken in two consecutive terms, either fall/winter or winter/spring, normally in the senior year.  In order to receive credit for COSC 99.01 and 99.02, a written thesis must be approved by the thesis advisor. A final grade will replace any ‘ON’ for COSC 99.01 and COSC 99.02 after the faculty vote in the spring term.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -42988,7 +42988,7 @@ COSC,COSC 99.01 Thesis Research I,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 COSC,COSC 99.02 Thesis Research II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate/cosc-99-02,COSC99.02,"Individual research on a topic along with a thesis advisor. Permission of the Undergraduate Program Director and thesis advisor required. Open only to students pursuing a major in Computer Science or a modified major with Computer Science as the primary part. COSC 99.01 and 99.02 constitute a two-course sequence and must be taken in two consecutive terms, either fall/winter or winter/spring, normally in the senior year.  In order to receive credit for COSC 99.01 and 99.02, a written thesis must be approved by the thesis advisor. A final grade will replace any ‘ON’ for COSC 99.01 and COSC 99.02 after the faculty vote in the spring term.",COSC 99.01,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -43406,4 +43406,4 @@ COSC,COSC 99.02 Thesis Research II,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['COSC99.01']

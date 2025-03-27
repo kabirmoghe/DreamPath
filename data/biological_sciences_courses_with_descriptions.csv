@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 BIOL,BIOL 3 Mindful Physiology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-3,BIOL3,"As defined by the Zen Master Thich Naht Hanh, “Mindfulness is the awareness of what is happening inside and around us in the present moment.” This course introduces basic physiology to help students increase their understanding of and appreciation for the biological mechanisms occurring inside and around their bodies. This course also teaches basic research principles to enable students to critically evaluate research studies on the physiological effects of mindfulness. To deepen students’ understanding of mindfulness and the scientific research examined, enrolled students will engage in mindfulness practices throughout the term.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -424,7 +424,7 @@ BIOL,BIOL 3 Mindful Physiology,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 BIOL,BIOL 9 Researching Cellular Mysteries,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-9,BIOL9,"Students in this course will apply the scientific method to answer questions in Biology through discovery-based laboratory experiences. Lecture topics will cover the structure and function of DNA, RNA, and proteins. Class meetings will occur in the laboratory, where students will perform and analyze experiments designed to address novel questions in Biology. These experiments will generate new, previously unobserved findings. Open to all students without prerequisite.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -850,7 +850,7 @@ BIOL,BIOL 9 Researching Cellular Mysteries,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 BIOL,BIOL 11 The Science of Life,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-11,BIOL11,"Biology, like all of science, is a problem-solving endeavor. This course introduces students to a major problem in biology and considers it from many different perspectives, viewpoints and biological levels of organization. Along the way, students are exposed to many of the major concepts in biology, from molecules to ecosystems. Each offering will address a different major problem.  No prerequisites.BIOL 11(The Science of Life) is one pathway for entering the Biology curriculum.BIOL 11counts toward the major if it is taken anytime during the first year (including after taking one or more Foundation courses) or as the first biology course. Only one offering ofBIOL 11may be taken for credit. Students interested in the subject matter of Biology Foundation courses may wish to take the Biology Placement test (available in Canvas) to help them make decisions about course selection.To help students determine if they are sufficiently prepared to enter a foundation course directly, the Biology department has established an online self-assessment exam for students.  Students who have any concerns about their preparedness should takeBIOL 11before enrolling in a foundation course.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1273,7 +1273,7 @@ BIOL,BIOL 11 The Science of Life,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 BIOL,BIOL 11.03 Emerging Infectious Diseases: How Microbes Rule the World,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-11-03,BIOL11.03,"Emerging infectious diseases, which have shaped the course of humanity and caused untold suffering and death, will continue to challenge society as long as humans and microbes co-exist. This course will explore why infectious diseases emerge and re-emerge. The viruses, bacteria and eukaryotes that cause these diseases continually evolve in response to their hosts. Dynamic interactions between rapidly evolving infectious agents and changes in the environment and in host behavior provide such agents with favorable new ecological niches. In addition, dramatic increases in the worldwide movement of people and goods drive the globalization of disease.",No prerequisites,SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1702,7 +1702,7 @@ BIOL,BIOL 11.03 Emerging Infectious Diseases: How Microbes Rule the World,https:
 </form>
 
 </body>
-</html>"
+</html>",[]
 BIOL,BIOL 11.07 Major Events in the History of Life and the Human Genome,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-11-07,BIOL11.07,"Over the course of the last 4.5 billion years, life has faced a number of challenges, and in response has evolved a number of remarkable innovations.  These innovations are written in DNA, and thus molecular fossils for many of the major events in the history of life can be found within our very own genomes.  This course will survey the human nuclear and mitochondrial genomes, using a gene or region from a chromosome as a “ticket” to a particularly important event or process in the history of life including the origin of life itself (Chromosome 14), the advent of protein synthesis (Chromosome 22), the invention of DNA (Chromosome 8), the rise of atmospheric oxygen (mitochondrion), the origin of species (Chromosome 2), the origin of animals and the rise of macroecology (Chromosome 12), and the origin of humans and human language (Chromosome 7).",No prerequisites.,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2128,7 +2128,7 @@ BIOL,BIOL 11.07 Major Events in the History of Life and the Human Genome,https:/
 </form>
 
 </body>
-</html>"
+</html>",[]
 BIOL,BIOL 11.08 Animal Minds,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-11-08,BIOL11.08,"Darwin claimed that other species share the same “mental powers” as humans, only to different degrees. This course will examine the evidence for Darwin’s claim, focusing on the evolutionary, neural, and molecular basis of animal cognition. We will ask how and why organisms behave as they do, exploring the ways in which evolution has adapted organisms’ information gathering, perception, learning ability, memory, and decision making to both their physical and social world. Key examples will be drawn from navigation, tool-use, communication, and cultural imitation. An overarching emphasis will be placed on the active process of scientific discovery, especially how strong inference and multiple competing hypotheses enable scientists to make discoveries.",No prerequisites,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2556,7 +2556,7 @@ BIOL,BIOL 11.08 Animal Minds,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 BIOL,BIOL 12 Cell Structure and Function,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-12,BIOL12,"BIOL 12will provide a foundation in the fundamental mechanisms that govern the structure and function of eukaryotic cells. Topics include membrane transport, energy conversion, signal transduction, protein targeting, cell motility and the cytoskeleton, and the cell cycle. Emphasis will be placed on discussion of the experimental basis for understanding cell function. The laboratory section will provide students with hands-on experience in modern laboratory techniques including microscopy, cell fractionation, and protein purification.  Open to all students without prerequisite. Biology 19 is a foundation course equivalent of Biology 12. Note:BIOL 12,BIOL 13,BIOL 14,BIOL 15,BIOL 16may be taken in any order.",,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2982,7 +2982,7 @@ BIOL,BIOL 12 Cell Structure and Function,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 BIOL,BIOL 13 Gene Expression and Inheritance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-13,BIOL13,"This course provides a foundation in genetics and molecular biology. Topics covered include the flow of genetic information from DNA to RNA to protein, transmission of genetic information from one generation to the next and the molecular mechanisms that control gene expression in bacteria and eukaryotes. These concepts will be integrated into a discussion of contemporary problems and approaches in molecular genetics. Laboratories utilize basic molecular biology techniques to further investigate topics discussed in lecture.  Open to all students without prerequisite. Note:BIOL 12,BIOL 13,BIOL 14,BIOL 15,BIOL 16may be taken in any order.",,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3408,7 +3408,7 @@ BIOL,BIOL 13 Gene Expression and Inheritance,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 BIOL,BIOL 14 Physiology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-14,BIOL14,"This course introduces students to the complexity of organisms by studying how their different organ systems strive to maintain internal homeostasis in the face of different environmental demands. The adaptive responses of selected organisms (humans, different animals and plants) to a variety of environmental factors will be studied from the molecular, cell, tissue, organ, and systems level of organization. Some of the topics to be covered include biological control systems (hormones, neurons) and coordinated body functions (circulation, respiration, osmoregulation, digestion). All systems studied will be integrated by analyzing how different organisms adapt to living in extreme environments (deserts, high altitude) or facing changing environmental demand (navigation, exercise). Open to all students without prerequisite. Note:BIOL 12,BIOL 13,BIOL 14,BIOL 15,BIOL 16may be taken in any order.",,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3834,7 +3834,7 @@ BIOL,BIOL 14 Physiology,https://dartmouth.smartcatalogiq.com/en/current/orc/depa
 </form>
 
 </body>
-</html>"
+</html>",[]
 BIOL,BIOL 15 Genetic Variation and Evolution,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-15,BIOL15,"This course examines fundamental population-level processes and mechanisms that give rise to diversity of living organisms. The class will explore the interplay of evolutionary forces acting on genetic variation for both single-gene traits and complex traits determined by multiple genes and environmental conditions. Evolution of the human population will serve as the main study system. The class periods will include problem-solving sessions and hands-on activities on experimental evolution, observational data analyses and computer-based evolutionary inferences. Open to all students without prerequisite. Note:BIOL 12,BIOL 13,BIOL 14,BIOL 15,BIOL 16may be taken in any order.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4260,7 +4260,7 @@ BIOL,BIOL 15 Genetic Variation and Evolution,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 BIOL,BIOL 16 Ecology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-16,BIOL16,"This course examines fundamental concepts in the rapidly developing areas of ecology. These topics include the factors that limit the distributions and abundances of organisms, the effects that organisms have on ecosystems, the integration of ecosystems around the globe, and the conservation of species diversity. The class will also explore how the behavior and physiology of individual organisms shape both local and global patterns of distribution and abundance. Laboratories focus on experimental and quantitative analyses of local ecosystems, with an emphasis on field studies.  Open to all students without prerequisite. Note:BIOL 12,BIOL 13,BIOL 14,BIOL 15,BIOL 16may be taken in any order.",,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4686,7 +4686,7 @@ BIOL,BIOL 16 Ecology,https://dartmouth.smartcatalogiq.com/en/current/orc/departm
 </form>
 
 </body>
-</html>"
+</html>",[]
 BIOL,BIOL 21 Population Ecology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-21,BIOL21,"This course explores the description of populations, population growth, and the determination of abundance. Examples will be drawn from a diversity of plant and animal taxa to illustrate the broad scope of population ecology, including its role as a foundation for evolutionary ecology and community ecology, and its contributions to applied problems in conservation biology, pest management, human demography, and the management of harvested populations. Throughout, this course will emphasize the development of verbal, graphical, and mathematical models to describe populations, generate predictions, test hypotheses, and formalize theory. No student may receive course credit for bothBIOL 21andBIOL 51.  Offered in alternate years.",BIOL 15orBIOL 16,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5108,7 +5108,7 @@ BIOL,BIOL 21 Population Ecology,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",['BIOL15']
 BIOL,BIOL 22 Methods in Ecology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-22,BIOL22,"This course is an introduction to sampling and survey methodologies for populations and communities in both aquatic and terrestrial environments. The course will be divided into week-long modules, each focusing on a particular group of organisms in the environment. A great deal of emphasis will be placed on hypothesis generation, experimental design and statistical analysis. Participation in the laboratory/field component is both required and critical as one of the primary benefits of this course will be ""on the ground"" training in field methods.",BIOL 16,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5536,7 +5536,7 @@ BIOL,BIOL 22 Methods in Ecology,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",['BIOL16']
 BIOL,BIOL 23 Social Evolution: Cooperation and Construction Among Animal Architects,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-23,BIOL23,"For the evolution of social life, cooperation raises a fundamental problem. Indeed, Darwin regarded cooperation as one of the greatest puzzles for his theory of evolution. If natural selection favors individuals that selfishly maximize their own reproductive success, then why should organisms cooperate at all? Yet evidence for cooperation is ubiquitous in many social animals, from insects to humans. This course will explore how and why cooperation evolves, with the goal of understanding general ecological and evolutionary principles, especially the conditions under which social organisms work together to help one another despite competition and conflicting interests. A central theme of the course will be cases of cooperation in which social animals architecturally construct their surroundings, by building long-lasting shelters.",BIOL 15orBIOL 16,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5964,7 +5964,7 @@ BIOL,BIOL 23 Social Evolution: Cooperation and Construction Among Animal Archite
 </form>
 
 </body>
-</html>"
+</html>",['BIOL15']
 BIOL,BIOL 24 Vertebrate Zoology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-24,BIOL24,"This course will examine origins, diversity, structure and function within and among the vertebrate classes (including fish, amphibians, reptiles, birds and mammals). We will consider the evolution of the vertebrate body plan and innovations associated with common organ systems (e.g., skeletal, muscular, digestive, sensory, etc.) shared by different taxa. In addition, we will consider specialization of form and function to the diverse ecology of vertebrates as well as the manner in which very different taxa cope with similar habitats and environmental demands. In so doing, we will draw on evolutionary principles such as adaptation, convergent and parallel evolution and evolutionary constraints. The course will primarily consist of lecture and readings with examination of specimens and opportunities for off-campus field trips. Offered in alternate years.",BIOL 15orBIOL 16,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6392,7 +6392,7 @@ BIOL,BIOL 24 Vertebrate Zoology,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",['BIOL15']
 BIOL,BIOL 25 Introductory Marine Biology and Ecology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-25,BIOL25,"A course designed both for biology majors and other students interested in the interrelationships between marine organisms and their physical and biological environments. The course emphasizes the marine environment as an ecosystem with special focus on communities in coastal margin, open ocean, and deep sea habitats ranging from polar to tropical latitudes. Applied issues relevant to human impact and conservation in marine ecosystems will also be covered. Offered in alternate years.","One from amongBIOL 12/BIOL 19,BIOL 13,BIOL 14,BIOL 15, orBIOL 16",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6820,7 +6820,7 @@ BIOL,BIOL 25 Introductory Marine Biology and Ecology,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",['BIOL12']
 BIOL,BIOL 26 Global Change Biology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-26,BIOL26,"We live in the Anthropocene era in which humans have an outsize effect on the environment. In this course, we will apply ecological concepts to understand the consequences of environmental changes for species and ecosystems. Through discussing scientific literature and exploring long term ecological datasets, we will investigate how humans have altered the environment and the repercussions for biogeochemical cycling and species distributions, phenology, and interactions. We will also evaluate solutions for mitigating these consequences.","BIOL 16,ENVS 2or GEOG 3",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7248,7 +7248,7 @@ BIOL,BIOL 26 Global Change Biology,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>","['BIOL16', 'ENVS2']"
 BIOL,BIOL 27 Animal Behavior,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-27,BIOL27,"Behavioral sciences are extremely broad and the study of animal behavior requires an interdisciplinary approach that integrates psychology, ecology, evolutionary biology, neural science and the underpinnings of learning and memory science. We will draw on each of these fields as we explore topics ranging from signaling and cognition to mating behaviors and sexual selection to foraging and optimality theory. We will consider how proximate and ultimate causality structure behavior throughout the animal kingdom. Thus, the course will take an evolutionary approach to understand behavior in vertebrates and insects and other invertebrates; in fresh water and marine systems, and in terrestrial groups. Offered in alternate years.",BIOL 15orBIOL 16or instructor permission,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7676,7 +7676,7 @@ BIOL,BIOL 27 Animal Behavior,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",['BIOL15']
 BIOL,BIOL 28 Macroevolution,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-28,BIOL28,"Macroevolution focuses on the evolutionary process from the perspective of the species and through the lens of deep time. More specifically, it focuses on the issue of whether life is organized hierarchically, and if so, can selection occur at any/all of these other levels, in addition to the level of the organism. This course is especially well suited for discussion and question, as the definition of macroevolution, as well as its very existence, is under intense discussion by both microevolutionists and macroevolutionists alike. Topics covered include punctuated equilibrium, species-level selection, homology, and mass extinctions.","One fromBIOL 12/BIOL 19,BIOL 13,BIOL 14,BIOL 15,BIOL 16, orEARS 2; or instructor permission.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8106,7 +8106,7 @@ BIOL,BIOL 28 Macroevolution,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",['BIOL12']
 BIOL,BIOL 29 Biostatistics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-29,BIOL29,"The course will cover basic descriptive statistics, simple probability theory, the fundamentals of statistical inference, regression and correlation, t-tests, one-way analysis of varience, basic analyses of frequency data and non-parametric statistics, and the general philosophy of experimental design. We will explore these topics from the perspective of biological applications. Examples will be drawn from all sub-disciplines of biology (e.g. biochemical kinetics, development, physiology, ecology, and evolution).",Two courses in biology numbered 11 or higher.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8534,7 +8534,7 @@ BIOL,BIOL 29 Biostatistics,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>","['BIOL11', 'BIOL11']"
 BIOL,BIOL 31 Physiological Ecology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-31,BIOL31,"What factors determine the distribution and abundance of organisms? What are the consequences of climate change for biological communities? This course is an exploration of environmental effects on fundamental physiological processes in plants and animals. Abiotic factors, such as temperature and water availability, interact with biotic forces, such as predation, herbivory, and competition, to constrain the ability of organisms to survive, grow, and reproduce. Physiological solutions that allow success in one environment may preclude it in another. This course seeks to build up from physiological principles to understand characteristics of populations, communities, and ecosystems. Laboratories will challenge students to generate and test their own hypotheses using contemporary theoretical frameworks and modern research apparatus. Offered in alternate years.","One from amongBIOL 12/BIOL 19,BIOL 13,BIOL 14,BIOL 15, orBIOL 16",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8962,7 +8962,7 @@ BIOL,BIOL 31 Physiological Ecology,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['BIOL12']
 BIOL,BIOL 35 Cellular and Molecular Neuroscience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-35,BIOL35,"This course focuses on cellular and molecular mechanisms that underlie the development and function of the nervous system. The course focuses on three phases of cellular neuroscience: 1) Developmental neuroscience including cell division, migration, and survival; 2) Neural communication including the function of ion channels and synaptic plasticity; and 3) Molecular mechanisms of neurological diseases and therapeutic approaches.  Lectures are supplemented by in class discussion and exploration of techniques for studying cellular neuroscience including microscopy, electrophysiology, advanced genetic approaches, and animal models used to study the nervous system and neurological disorders.","One from amongBIOL 12/BIOL 19,BIOL 14,PSYC 6.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9392,7 +9392,7 @@ BIOL,BIOL 35 Cellular and Molecular Neuroscience,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['BIOL12']
 BIOL,BIOL 37 Endocrinology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-37,BIOL37,"The molecular, biochemical, genetic and physiologic aspects of the endocrine system will be explored with an emphasis on human and mammalian biology. We will use examples of pathobiology arising from dysfunction of this system to draw attention to the normal modes of endocrine regulation. Topics will be drawn from seminal publications in the biomedical literature. The course will employ a hypothesis-based, problem-solving paradigm, involving, in part, the study of experimental techniques used in investigation.",BIOL 12/BIOL 19. A prior course that emphasizes genetics is recommended. Otherwise permission of instructor.,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9820,7 +9820,7 @@ BIOL,BIOL 37 Endocrinology,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",['BIOL12']
 BIOL,BIOL 40 Biochemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-40,BIOL40,"This course studies molecular structure and function from a biochemical point of view, emphasizing the biochemistry of proteins, lipids, and carbohydrates. Topics include protein structure and function, enzymes and enzyme kinetics, lipids and membranes, and carbohydrates and cell walls. The participation of these biomolecules in metabolism is also discussed, and focuses on the metabolic pathways of glycolysis, glucogenesis, fatty acid oxidation, amino acid catabolism, the TCA cycle, and oxidative phosphorylation. The course concludes with a look at the integration of metabolism in mammals. Students with credit forCHEM 41may not receive credit forBIOL 40.",BIOL 12/BIOL 19andCHEM 52orCHEM 58or permission of the instructor.,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10248,7 +10248,7 @@ BIOL,BIOL 40 Biochemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/de
 </form>
 
 </body>
-</html>"
+</html>","['BIOL12', 'CHEM52']"
 BIOL,"BIOL 41 Cells into Organs: Assembly, Function and Disease",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-41,BIOL41,"How do cells organize into the myriad forms of tissues and work together to perform specific physiological functions? In this course, we will use epithelial tissues as an example to explore these fundamental questions. Epithelia are among the most common types of tissue organization in animals. They line the cavities, ducts and surfaces of all the major organ systems and provide a variety of functions such as secretion, protection and sensing. During development, epithelial tissues also function in morphogenetic processes that guide the formation of body patterns. Defects in epithelial growth control and function play a major role in human diseases such as cystic fibrosis and cancer. The goal of this course is to understand the form, dynamics and function of epithelial tissues, and how dysregulation of epithelia can lead to various human diseases.",BIOL 12/BIOL 19or instructor permission,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10676,7 +10676,7 @@ BIOL,"BIOL 41 Cells into Organs: Assembly, Function and Disease",https://dartmou
 </form>
 
 </body>
-</html>"
+</html>",['BIOL12']
 BIOL,BIOL 42 Biology of the Immune Response,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-42,BIOL42,"This course will consider immunoglobulin structure, antigen-antibody reactions, complement, hypersensitivity, immunogenetics, immunodeficiency, tumor immunology and therapy, and autoimmunity.","BIOL 12/BIOL 19orBIOL 13, or permission of the instructor.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11104,7 +11104,7 @@ BIOL,BIOL 42 Biology of the Immune Response,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",['BIOL12']
 BIOL,BIOL 43 Developmental Biology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-43,BIOL43,"The course of study will take a comparative approach in dissecting the molecular, cellular and genetic basis of animal embryogenesis and other processes of development.  The course will analyze the sequential steps of fertilization; specification events of early embryogenesis and basic development of the germ layers; body plan specification; morphogenesis; neurogenesis; stem cells; cell type specification and differentiation; tissue development leading to organ differentiation; and gametogenesis.",BIOL 12/BIOL 19orBIOL 13,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11526,7 +11526,7 @@ BIOL,BIOL 43 Developmental Biology,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['BIOL12']
 BIOL,BIOL 45 Molecular Biology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-45,BIOL45,"This course will build upon the material presented inBIOL 13with in depth analysis of the molecular mechanisms underlying fundamental processes including DNA replication, transcription and translation in bacteria and eukaryotes. Key regulatory events that influence gene expression will be discussed including the function of promoters and enhancers, chromatin structure and epigenetics, RNA mediated silencing and mRNA processing. Emphasis will be placed on understanding how molecular techniques are used to elucidate critical aspects of these processes. Selected papers from the primary literature will be presented to illustrate current advances.",BIOL 13,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11954,7 +11954,7 @@ BIOL,BIOL 45 Molecular Biology,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",['BIOL13']
 BIOL,BIOL 46 Microbiology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-46,BIOL46,"A lecture, discussion, and laboratory course considering the biology of microorganisms, with emphasis on bacteria. Topics such as structure, function, genetics, and metabolism of bacterial cells will be covered. The ecological role of various species of microorganisms will also be discussed.","BIOL 12/BIOL 19,BIOL 13, orBIOL 16",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12382,7 +12382,7 @@ BIOL,BIOL 46 Microbiology,https://dartmouth.smartcatalogiq.com/en/current/orc/de
 </form>
 
 </body>
-</html>"
+</html>",['BIOL12']
 BIOL,BIOL 47 Genomics: From Data to Analysis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-47,BIOL47,"Massive amounts of genomic data pervade 21st century life science. Physicians now assess the risk and susceptibility of their patients to disease by sequencing the patient’s genome. Scientists design possible vaccines and treatments based on the genomic sequences of viruses and bacterial pathogens. Better-yielding crop plants are assessed by sequencing their transcriptomes. Moreover, we can more fully explore the roots of humanity by comparing our genomes to those of our close ancestors (e.g., Neanderthals, Denisovans). In this course, students will address real-world problems using the tools of modern genomic analyses. Each week students will address a problem using different types of genomic data, and use the latest analytical technologies to develop answers. Topics will include pairwise genome comparisons, evolutionary patterns, gene expression profiles, genome-wide associations for disease discovery, non-coding RNAs, natural selection at the molecular level, and metagenomic analyses.",BIOL 13ORBIOL 15,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12810,7 +12810,7 @@ BIOL,BIOL 47 Genomics: From Data to Analysis,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",['BIOL13']
 BIOL,"BIOL 48 Disease, The Environment, and Human History",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-48,BIOL48,"Most diseases result from either environmental challenges that individuals face or the constitution of the individuals’ genomes.  For example, health challenges like obesity, diabetes and allergies can result from changes in the human diet, and infectious diseases like flus, Lyme disease and even bubonic plague are exacerbated by environmental changes that humans have made to our environment.  Diseases as varied as dementia, various cancers, sickle cell anemia and cystic fibrosis result from past genetic changes in humans that may have actually been favored in some contexts. Moreover, humans and their pathogens continually change in response to one another. In this course, we will place various human diseases in these broader contexts to explore their sources and ultimate causes, and we will consider the implications of this exploration for how science can shape better public policy to produce better health outcomes for individual patients and the public health system more broadly.","One from among Biol 12/BIOL 19, Biol 13, Biol 14, Biol 15, Biol 16, or instructor permission",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13238,7 +13238,7 @@ BIOL,"BIOL 48 Disease, The Environment, and Human History",https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>",['BIOL12']
 BIOL,BIOL 50 Advanced Topics in Ecology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-50,BIOL50,"Different offerings of this course will cover one or more specific advanced topics in ecology.  Material will be presented in a manner designed to encourage student participation and problem solving.  Each offering will focus on cutting edge approaches to studying the behavior of various organisms in multiple contexts.  Assignments will be based on readings from the current literature working with modern data sets, and solving real-world problems in ecological biology.  Students may take more than one offering of this course.",,Dist: SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13658,7 +13658,7 @@ BIOL,BIOL 50 Advanced Topics in Ecology,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 BIOL,BIOL 50.01 Ecotoxicology and Environmental Health,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-50-01,BIOL50.01,"This course will examine the ecological impacts of environmental contaminants. Anthropogenic chemicals will be considered in terms of sources, fate and transport in air, water, and soil, and exposure pathways and effects on organisms. Chemicals will include inorganic as well as organic contaminants (e.g. mercury, lead, arsenic, PCBs, DDT, PFASs). Focus will be on individual, population, community, and ecosystem level effects. The class will use a combination of lectures, paper presentations, and discussions.",BIOL 16and one from amongBIOL 21-BIOL 32,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14080,7 +14080,7 @@ BIOL,BIOL 50.01 Ecotoxicology and Environmental Health,https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>","['BIOL16', 'BIOL21']"
 BIOL,BIOL 50.02 Ecology of Infectious Disease,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-50-02,BIOL50.02,"This advanced undergraduate seminar will explore the dynamics of infectious disease through the lens of ecological science while providing training in writing and reviewing research proposals. We will begin by carefully reading case studies from the literature to develop content mastery and strategies for identifying important research questions. Groups of students will then write research proposals, practice the art of constructive peer review, and participate in a mock grant review panel.","BIOL 16and one from amongBIOL 21-31,BIOL 46orBIOL 48",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14508,7 +14508,7 @@ BIOL,BIOL 50.02 Ecology of Infectious Disease,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>","['BIOL16', 'BIOL21']"
 BIOL,BIOL 51 Advanced Population Ecology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-51,BIOL51,"This course explores theory and data regarding properties of biological populations. Topics of lectures and analytical exercises include: descriptions of abundance, dispersion, and demographic schedules; applying life tables and matrix models to understand population growth and age structure; life history theory; influence of endogenous feedbacks and exogenous forces on population dynamics; spatial patterns and processes; and contributions of population ecology to applied issues in conservation, pest management, human demography, and the management of harvested populations. No student may receive course credit for bothBIOL 21andBIOL 51.  Offered in alternate years.",BIOL 16and one course from amongBIOL 22-BIOL 32,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14930,7 +14930,7 @@ BIOL,BIOL 51 Advanced Population Ecology,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>","['BIOL16', 'BIOL22']"
 BIOL,BIOL 55 Ecological Research in the Tropics I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-55,BIOL55,"The Biology Foreign Studies Program (BIOL 55,BIOL 56,BIOL 57) exposes students, through intensive, full-immersion study, to Earth's most diverse biological communities.BIOL 56is a continuation ofBIOL 55; these courses comprise the first two-thirds of the FSP, and focus on land (tropical forests) and tropical freshwater ecosystems in Costa Rica.BIOL 57focuses on coral reef ecosystems in the Caribbean. Students are challenged to know, understand and appreciate the diversity of form and function in organisms, and the interactions that generate the often-spectacular patterns they see in the field. Habitats in Costa Rica include lowland rain forest, cloud forest, dry forest, montane forest, alpine paramo, streams and wetlands. The schedule is full, including fieldwork, laboratories, lectures and discussions, with emphasis on original research, mostly in small groups of 2-3. Faculty and advanced graduate TAs share field accommodations with students, and are in continuous contact as mentors, day and evening, throughout the program. Students master field and analytical methods (including hypothesis testing, statistical and software skills) for observational and experimental research. We pursue a great variety of research topics, including plant-pollinator and plant-herbivore interactions, processes driving coral reef structure (and coral reef decline), determinants of species distributions, animal behavior, and conservation ecology. Students practice the classic scientific approach: making observations, asking testable questions, generating hypotheses, developing experimental protocols, collecting data, making statistical inferences, writing scientific papers, and presenting seminars. Research papers are published in an annual book. Accommodations are at field stations in Costa Rica, and at a marine laboratory in the Caribbean.  Acceptance into Program is required.  In addition,BIOL 15&BIOL 29are recommended.","BIOL 16, one course from amongBIOL 21-BIOL 32; acceptance into program, BIOL 15 and BIOL 29 recommended",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15358,7 +15358,7 @@ BIOL,BIOL 55 Ecological Research in the Tropics I,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>","['BIOL16', 'BIOL21', 'IP']"
 BIOL,BIOL 56 Ecological Research in the Tropics II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-56,BIOL56,A continuation ofBIOL 55. SeeBIOL 55for a description of the Biology Foreign Study Program.,BIOL 55(taken in same term),Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15786,7 +15786,7 @@ BIOL,BIOL 56 Ecological Research in the Tropics II,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",['BIOL55']
 BIOL,BIOL 57 Ecological Research on Coral Reefs,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-57,BIOL57,"Field and laboratory investigations of marine organisms and coral reef communities. Lecture and research topics include studies of algae, aquatic plants, invertebrates, and fish, with emphasis on populations, species interactions, community structure and energetics, and reef conservation and management. The course is based at the Little Cayman Research Center, Little Cayman Island. Scuba diving is optional. SeeBIOL 55for an overview of the Biology Foreign Study Program.",BIOL 55andBIOL 56(taken in same term),Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16214,7 +16214,7 @@ BIOL,BIOL 57 Ecological Research on Coral Reefs,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>","['BIOL55', 'BIOL56']"
 BIOL,BIOL 58 Advanced Community Ecology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-58,BIOL58,"This course will examine the various mechanisms structuring ecological communities of plants and animals. The course will consist of regular lectures, readings from the primary literature, and individual projects. Topics to be covered include simple two-species interactions (e.g. predation, competition, parasitism, mutualisms), simultaneous multispecies interactions, food web structure, regulation of species diversity on ecological and evolutionary time scales, community succession, and biogeography. Emphasis will be placed on the development of mathematical models and their relationship to empirical studies. Offered in alternate years.",BIOL 15andBIOL 16and one from amongBIOL 21-BIOL 32,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16642,7 +16642,7 @@ BIOL,BIOL 58 Advanced Community Ecology,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>","['BIOL15', 'BIOL16', 'BIOL21']"
 BIOL,BIOL 59 Advanced Biostatistics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-59,BIOL59,"Different offerings of this course will cover one or more specific advanced topics in statistics and experimental design, as applied to biological systems. Each offering will focus on different statistical approaches that can be used in the analyses of biological data sets. Students may take more than one offering of this course.",BIOL 29,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17064,7 +17064,7 @@ BIOL,BIOL 59 Advanced Biostatistics,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['BIOL29']
 BIOL,BIOL 60 Advanced Topics in Evolution,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-60,BIOL60,"Different offerings of this course will cover one or more specific advanced topics in evolutionary biology.  Material will be presented in a manner designed to encourage student participation and problem solving.  Each offering will focus on cutting edge approaches to studying evolution in various contexts.  Assignments will be based on readings from the current research literature, working with modern data sets, and solving real-world problems in evolutionary biology.  Students may take more than one offering of this course.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17484,7 +17484,7 @@ BIOL,BIOL 60 Advanced Topics in Evolution,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 BIOL,BIOL 60.01 Evolutionary Ecology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-60-01,BIOL60.01,"Theodosius Dobzhansky said ""nothing in biology makes sense except in the light of evolution."" Evolutionary ecology explores the fundamental and diverse role of evolutionary process in the natural world. We will explore the importance of natural and sexual selection acting in natural communities on land and in the water. Lecture topics will include the evolution of life history variation, competition, predation, behavior, physiology, migration and dispersal, and molecular evolution. Because the course covers a wide range of topics, students should have a solid foundation in basic ecology and evolution prior to takingBIOL 60.01.","One from the following:BIOL 21-BIOL 32,BIOL 47orBIOL 48",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17912,7 +17912,7 @@ BIOL,BIOL 60.01 Evolutionary Ecology,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['BIOL21']
 BIOL,BIOL 60.02 Evolution of Sex,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-60-02,BIOL60.02,"Despite the many benefits of asexual reproduction, the vast majority of eukaryotes reproduce sexually. How sex evolved, and how it persists despite its many associated costs, are major unanswered questions in evolutionary biology. We will explore the diversity of sexual reproduction and related evolutionary phenomena with a focus on critically evaluating current research and theory in this area.","BIOL 15and at least 1 from amongBIOL 21,BIOL 23,BIOL 24,BIOL 27,BIOL 28,BIOL 32,BIOL 37,BIOL 47or instructor permission",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18340,7 +18340,7 @@ BIOL,BIOL 60.02 Evolution of Sex,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>","['BIOL15', 'BIOL21']"
 BIOL,BIOL 63 RNA: The Real Secret of Life,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-63,BIOL63,"Legend has it that after the discovery of the structure of DNA Francis Crick announced to the patrons of the Eagle Pub in Cambridge, England that they had discovered the secret of life.  But what has been learned since this February day in 1953 is that although DNA is the bedrock of modern molecular biology, it is actually RNA that allowed for the emergence of life, and isthecentral molecule in life’s Central Dogma.  Indeed, with the application of new deep sequencing technologies we are discovering that much of the genome is transcribed into functional RNA that does not code for proteins, but instead is involved in gene regulation and genomic architecture, in addition to the maintenance of genome integrity and even possibly the evolution of morphological complexity. In fact, the very question of “what is a gene?” is even being reconsidered, as the fundamental unit of genomic organization appears not to be the classical DNA-based “gene” but instead is the RNA-based transcript.  In this course we will explore these issues and more through lectures, literature discussions, student-led presentations, and student writing assignments.","One from amongBIOL 40,BIOL 41,BIOL 43,BIOL 45,BIOL 47orCHEM 41",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18768,7 +18768,7 @@ BIOL,BIOL 63 RNA: The Real Secret of Life,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['BIOL40']
 BIOL,BIOL 66 Molecular Basis of Cancer,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-66,BIOL66,"In this course we will explore how cancer develops on a cellular level. Using primary literature as a guide, we will examine the basic cellular processes malignant tumors exploit to promote their rapid, invasive growth and ultimately disease. Topics that will be considered include the genetic factors that initiate cancer cell formation, cell cycle regulation, programmed cell death, cell signaling, angiogenesis, cytoskeletal rearrangements as well as how current cancer therapies work on a cellular level.","BIOL 12/BIOL 19andBIOL 13and one from amongBIOL 40,BIOL 41,BIOL 43,BIOL 45orCHEM 41",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19196,7 +19196,7 @@ BIOL,BIOL 66 Molecular Basis of Cancer,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>","['BIOL12', 'BIOL13', 'BIOL40']"
 BIOL,BIOL 69 Cell Signaling,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-69,BIOL69,"This course will focus on how signals are transmitted from the cell surface into changes in cellular function. Detailed analysis of specific membrane receptors, second-messenger systems, and protein kinases will be presented as well as how these components are integrated into larger ""systems"" such as apoptosis, metabolic signaling, synaptic transmission, and sensory transduction. Particular emphasis will be on the biochemical analysis of the pathways and their individual components as well as how these pathways are impaired in certain disease states. The course will consist of lectures and weekly discussions of recent primary literature.","BIOL 12/BIOL 19andBIOL 13and at least one from amongBIOL 37,BIOL 40,BIOL 41,BIOL 43,BIOL 45,CHEM 41",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19624,7 +19624,7 @@ BIOL,BIOL 69 Cell Signaling,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>","['BIOL12', 'BIOL13', 'BIOL37']"
 BIOL,BIOL 70 Biologic Lessons of the Eye,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-70,BIOL70,"The eye is unique. Unlike organs hidden deep within the body the transparent nature of the visual axis permits the direct observation of its living tissues without invasive surgery or imaging. Accordingly, the study of vision has yielded many far-reaching biologic insights which will be explored in this course. The course will conclude with a 10-14 day visit to Aravind Eye Hospital in Tamilnadu to present research and observe the delivery of eye care in India.","BIOL 12/BIOL 19andBIOL 13, one fromBIOL 40,BIOL 41,BIOL 45,CHEM 41and instructor permission.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20052,7 +20052,7 @@ BIOL,BIOL 70 Biologic Lessons of the Eye,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>","['BIOL12', 'BIOL13', 'BIOL40', 'IP']"
 BIOL,BIOL 71 Current Topics in Cell Biology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-71,BIOL71,"See listings for individual offerings,BIOL 71.01 and 71.02.","BIOL 12/BIOL 19andBIOL 13and one from amongBIOL 40,BIOL 41,BIOL 43,BIOL 45,CHEM 41",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20474,7 +20474,7 @@ BIOL,BIOL 71 Current Topics in Cell Biology,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>","['BIOL12', 'BIOL13', 'BIOL40']"
 BIOL,BIOL 71.01 Microtubule Dynamics and Motor Functions in Cell Biology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-71-01,BIOL71.01,"This course will examine how cells use microtubules to establish cell shape, move organelles, and segregate chromosomes during cell division. We will also cover current techniques employed for studying microtubules, microtubule-associated proteins (MAPs), and microtubule-dependent motor proteins. Each topic listed will be introduced and explored via lectures, review articles, and discussion of landmark paper(s) or papers from current literature. The overriding goal will be to improve your ability to critically analyze and evaluate original research data presented in the form of papers published in the scientific literature. Student participation during the course is critical to ensure that we have an active and productive discussion of the topics. The course will culminate in students working in small groups on the molecular basis of diseases linked to defects in MAPs or motor proteins.","BIOL 12orBIOL 19andBIOL 13and one from amongBIOL 40,BIOL 41,BIOL 43,BIOL 45,CHEM 41.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20902,7 +20902,7 @@ BIOL,BIOL 71.01 Microtubule Dynamics and Motor Functions in Cell Biology,https:/
 </form>
 
 </body>
-</html>"
+</html>","['BIOL12', 'BIOL13', 'BIOL40']"
 BIOL,BIOL 71.02 Cell Biology Across Scales,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-71-02,BIOL71.02,"This course investigates the size relationships between cellular components using “back-of-the-envelope” techniques to develop intuitions about biological problems. The course consists of lectures, in-class exercises, and primary literature discussion. Content is organized by a central motivating question (ex. “How many mitochondria does a cell need?”). The goal is to improve biological numeracy and to consider cell biological questions quantitatively. Active participation will be essential. The course will culminate in small group presentations on scaling questions.","BIOL 12orBIOL 19andBIOL 13and one from amongBIOL 40, BIOL 41,BIOL 43,BIOL 45,CHEM 41",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21330,7 +21330,7 @@ BIOL,BIOL 71.02 Cell Biology Across Scales,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>","['BIOL12', 'BIOL13', 'BIOL40']"
 BIOL,BIOL 72 Foundations of Epidemiology I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-72,BIOL72,"Epidemiology is the science of studying and understanding the patterns of disease occurrence in human populations with the ultimate goal of preventing human disease. This course is the first in a two-part sequence that aims to build mastery of fundamental epidemiological theory and methods for research. Topics will include introductions to population characteristics and disease frequencies, epidemiological study designs, measures of excess risk associated with specific exposures, and inferring causality in exposure-disease relationships.",BIOL 29,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21758,7 +21758,7 @@ BIOL,BIOL 72 Foundations of Epidemiology I,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['BIOL29']
 BIOL,BIOL 73 Foundations of Epidemiology II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-73,BIOL73,"Epidemiology is the science of studying and understanding the patterns of disease occurrence in human populations with the ultimate goal of preventing human disease. This course is the second in a two-part sequence. Building off of concepts covered in Foundations of Epidemiology I, it aims to develop an in-depth understanding of population characteristics and disease frequencies, epidemiological study designs, measures of excess risk associated with specific exposures, and inferring causality in exposure-disease relationships.",BIOL 72and permission of instructor.,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22186,7 +22186,7 @@ BIOL,BIOL 73 Foundations of Epidemiology II,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>","['BIOL72', 'IP']"
 BIOL,BIOL 74 Current Topics in Neurobiology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-74,BIOL74,Seminar course on selected topics in cellular and molecular neurobiology focusing on the connection between molecule and malady in diseases ranging from developmental psychiatric conditions like autism and schizophrenia to neurodegenerative conditions such as Alzheimer’s Disease and multiple sclerosis. We will focus on connecting basic research with outstanding questions in the field.  Students may take more than one offering of this course.,"BIOL 35/PSYC 35(formerly BIOL 49/PSYC 46) or two from the followingBIOL 40,BIOL 41,BIOL 43,BIOL 45,PSYC 6, PSYC 65",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22608,7 +22608,7 @@ BIOL,BIOL 74 Current Topics in Neurobiology,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",['BIOL35']
 BIOL,"BIOL 74.01 Development, Plasticity and Dysfunction of the Synapse",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-74-01,BIOL74.01,"Seminar class in neurobiology focusing on synaptic transmission and neurobiological diseases of development and aging. Papers will introduce class to details of methods including optogenetics, microscopy, genetic manipulations and electrophysiology. Major questions in the field of neurobiology will be introduced through recent high-impact papers and live lectures and interviews with off-campus research labs that authored the paper. We will focus on connecting basic research to neurological diseases such as Parkinson’s, ALS, Epilepsy and Autism.","Two from amongBIOL 12,BIOL 13,BIOL 14, BIOL 49,BIOL 35,PSYC 6,PSYC 35, PSYC 46, PSYC 65",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23036,7 +23036,7 @@ BIOL,"BIOL 74.01 Development, Plasticity and Dysfunction of the Synapse",https:/
 </form>
 
 </body>
-</html>"
+</html>","['BIOL12', 'BIOL12']"
 BIOL,BIOL 74.02 Diseases of the Nervous System,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-74-02,BIOL74.02,"This course will investigate the cellular basis of several common neurodegenerative diseases including Alzheimer’s, demyelinating disorders and ALS. For each we will take a holistic approach to understand the: 1) cell types and pathways that are dysfunctional, 2) mechanisms of disease presentation, heterogeneity and patient prognosis and 3) current state of the scientific literature. Commonalities will be studied to understand how dysfunction in multicellular interactions results in a degenerative cascade of mind and body.","Two from among:BIOL 12,BIOL 13,BIOL 14,BIOL 35, BIOL 49,PSYC 6,PSYC 35, PSYC 46, PSYC 65",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23464,7 +23464,7 @@ BIOL,BIOL 74.02 Diseases of the Nervous System,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>","['BIOL12', 'BIOL12']"
 BIOL,BIOL 76 Advanced Genetics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-76,BIOL76,"Methods and strategies for the analysis of gene structure, function and genetic interactions. The course will examine how the genetic manipulation of model organisms, including yeast, Drosophila,C. elegans, and mouse, is used to explore the mechanisms of fundamental biological processes such as cell division, development, and intercellular communication. Emphasis will be placed on the application of classical genetic methods, including mutant screens, recombination and complementation analysis, genetic mosaics, and the use of conditional mutations. Modern molecular-based approaches, including gene knockout, gene dosage and misexpression studies will also be included. Three hours of lecture and one hour of discussion per week.","BIOL 12/BIOL 19andBIOL 13and one from amongBIOL 40,BIOL 41,BIOL 43,BIOL 45,BIOL 47,CHEM 41or instructor permission",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23892,7 +23892,7 @@ BIOL,BIOL 76 Advanced Genetics,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>","['BIOL12', 'BIOL13', 'BIOL40']"
 BIOL,BIOL 78 Molecular Mysteries of Human Biology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-78,BIOL78,"Knowledge of molecular mechanisms allows new approaches to understanding human biology and disease. This course will explore the normal and abnormal biology of several human conditions relying on biochemistry, molecular genetics, and physiology as tools of inquiry. Examples will be drawn from the histories of Mona Lisa, Michel-Eugène Chevreul, Otto Warburg, Hendrickje Stöffels, Steve Jobs, Paul Cézanne, Pearl Buck, Auguste D and Luigi Cornaro among others.","BIOL 13andBIOL 40(orCHEM 41) or permission of instructor. A prior course on some aspect of mammalian physiology is recommended (e.g.BIOL 2,BIOL 14orBIOL 37). Priority will be given to senior Biology majors.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24320,7 +24320,7 @@ BIOL,BIOL 78 Molecular Mysteries of Human Biology,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>","['BIOL13', 'BIOL40']"
 BIOL,BIOL 95 Independent Research in Biology I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-95,BIOL95,"Original and independent investigation of a biological problem with associated study of primary literature sources under the supervision of a faculty member for one academic term. Open only to Dartmouth Biology majors and minors. Projects may include research in laboratory settings, field work, modeling, data mining, or development of new methodologies that will further understanding of a relevant basic or applied biological problem. May be taken as one course in the major by students not enrolled in the honors program. Students electing bothBIOL 95andBIOL 97may count only one among the seven courses in the area of concentration. In no case may a student elect more than two courses amongBIOL 95, 96, 97, and 98.","At least three Biology courses numbered 11 or above, a 2.67 average in previous biology courses, and permission of the Undergraduate Committee and the supervising instructor. The application and research proposal must be submitted at least one month prior to the beginning of the term in which the course is to be elected.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24744,7 +24744,7 @@ BIOL,BIOL 95 Independent Research in Biology I,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>","['BIOL11', 'IP']"
 BIOL,BIOL 96 Independent Research in Biology II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-96,BIOL96,"A second term of original and independent investigation of a biological problem under the supervision of faculty member. Open only to Dartmouth Biology majors who have satisfied the requirements forBIOL 95and who wish to continue their independent research for a second term. Does not count for credit in the major.  In no case may a student elect more than two courses amongBIOL 95, 96, 97, and 98.",Satisfactory completion ofBIOL 95(including research paper) and permission of the Undergraduate Committee and the supervising instructor(s). The application and research proposal must be submitted at least one month prior to the beginning of the term in which the course is to be elected.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25168,7 +25168,7 @@ BIOL,BIOL 96 Independent Research in Biology II,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>","['BIOL95', 'IP']"
 BIOL,BIOL 97 Honors Research in Biology I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-97,BIOL97,"Original and independent investigation of a biological problem with associated study of primary literature sources under the supervision of a faculty member. Open only to Dartmouth Biology majors. Projects may include research in laboratory settings, field work, modeling, data mining, or development of new methodologies that will further understanding of a relevant basic or applied biological problem. Required of honors students as part of the major. Students takingBIOL 95andBIOL 97may count only one of these courses toward the elective courses for their major. In no case may a student elect more than two from courses amongBIOL 95, 96, 97, and 98. Students who have completed or are takingBIOL 97may enroll and receive college credit forBIOL 99during spring term of their senior year.Students are awarded one course credit for successful completion of this course at the end of the third term of study. Students subsequently register forBIOL 98and continue with their coursework into a third term.  Students do not register for a third term. A final grade will replace the “ON” for both BIOL 098 and this course upon completion of this course at the end of the third term of coursework.","At least two Biology courses numbered 20 or above, a 3.0 average in previous Biology courses, and permission of the Undergraduate Committee and the supervising instructor, obtained at least one month prior to the beginning of the term in which the course is to be elected.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25593,7 +25593,7 @@ BIOL,BIOL 97 Honors Research in Biology I,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>","['BIOL20', 'BIOL20', 'IP']"
 BIOL,BIOL 98 Honors Research in Biology II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-98,BIOL98,"Original and independent investigation of a biological problem with associated study of primary literature sources under the supervision of a faculty member. Open only to Dartmouth Biology majors. Projects may include research in laboratory settings, field work, modeling, data mining, or development of new methodologies that will further understanding of a relevant basic or applied biological problem.BIOL 98does not count for credit in the major.  In no case may a student elect more than two courses amongBIOL 95, 96, 97, and 98. Students who have completed or are enrolled inBIOL 98may enroll and receive college credit forBIOL 99during spring term of their senior year.Students are awarded one course credit for successful completion of this course. Students who have registered forBIOL 97register for this course and continue with their coursework into a third term. Students do not register for a third term. A final grade will replace the “ON” for bothBIOL 97and this course upon completion of this course at the end of the third term of coursework.",BIOL 97,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26018,7 +26018,7 @@ BIOL,BIOL 98 Honors Research in Biology II,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['BIOL97']
 BIOL,BIOL 99 Senior Seminar in Biology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate/biol-99,BIOL99,"This course will focus on presentation techniques and critical evaluation of other students' research and presentations. Students who have conducted independent research will present background information related to their research projects, develop seminars based on their own findings, and receive feedback. All students takingBIOL 97are encouraged to enroll in this course. The course does not count towards the major.",Senior standing and previous or current enrollment inBIOL 97,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26442,4 +26442,4 @@ BIOL,BIOL 99 Senior Seminar in Biology,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",['IP']

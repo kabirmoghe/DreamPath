@@ -1,0 +1,418 @@
+{
+  "Computer Science": [
+    {
+      "text": "click here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/computer-science/cosc-computer-science-undergraduate"
+    }
+  ],
+  "African and African American Studies": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/african-and-african-american-studies/aaas-african-and-african-american-studies"
+    }
+  ],
+  "Anthropology": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/anthropology/anth-anthropology"
+    }
+  ],
+  "Art History": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/art-history/arth-art-history"
+    }
+  ],
+  "Asian Societies, Cultures, and Languages": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/asian-societies-cultures-and-languages/ascl-asian-societies-cultures-and-languages"
+    }
+  ],
+  "Biological Sciences": [
+    {
+      "text": "click here. ",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/biological-sciences/biol-biological-sciences-undergraduate"
+    }
+  ],
+  "Biological Chemistry": [
+    {
+      "text": "click here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/"
+    }
+  ],
+  "Biophysical Chemistry": [
+    {
+      "text": "click here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/"
+    }
+  ],
+  "Chemistry": [
+    {
+      "text": "click here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/"
+    }
+  ],
+  "Ancient History": [
+    {
+      "text": "here",
+      "url": "http://dartmouth.smartcatalogiq.com/current/orc/Departments-Programs-Undergraduate/Classics-Classical-Studies-Greek-Latin/CLST-Classical-Studies"
+    },
+    {
+      "text": "here",
+      "url": "http://dartmouth.smartcatalogiq.com/current/orc/Departments-Programs-Undergraduate/Classics-Classical-Studies-Greek-Latin/GRK-Greek"
+    },
+    {
+      "text": "here",
+      "url": "http://dartmouth.smartcatalogiq.com/current/orc/Departments-Programs-Undergraduate/Classics-Classical-Studies-Greek-Latin/LAT-Latin"
+    }
+  ],
+  "Classical Archaeology": [
+    {
+      "text": "here",
+      "url": "http://dartmouth.smartcatalogiq.com/current/orc/Departments-Programs-Undergraduate/Classics-Classical-Studies-Greek-Latin/CLST-Classical-Studies"
+    },
+    {
+      "text": "here",
+      "url": "http://dartmouth.smartcatalogiq.com/current/orc/Departments-Programs-Undergraduate/Classics-Classical-Studies-Greek-Latin/GRK-Greek"
+    },
+    {
+      "text": "here",
+      "url": "http://dartmouth.smartcatalogiq.com/current/orc/Departments-Programs-Undergraduate/Classics-Classical-Studies-Greek-Latin/LAT-Latin"
+    }
+  ],
+  "Classical Languages and Literatures": [
+    {
+      "text": "here",
+      "url": "http://dartmouth.smartcatalogiq.com/current/orc/Departments-Programs-Undergraduate/Classics-Classical-Studies-Greek-Latin/CLST-Classical-Studies"
+    },
+    {
+      "text": "here",
+      "url": "http://dartmouth.smartcatalogiq.com/current/orc/Departments-Programs-Undergraduate/Classics-Classical-Studies-Greek-Latin/GRK-Greek"
+    },
+    {
+      "text": "here",
+      "url": "http://dartmouth.smartcatalogiq.com/current/orc/Departments-Programs-Undergraduate/Classics-Classical-Studies-Greek-Latin/LAT-Latin"
+    }
+  ],
+  "Classical Studies": [
+    {
+      "text": "here",
+      "url": "http://dartmouth.smartcatalogiq.com/current/orc/Departments-Programs-Undergraduate/Classics-Classical-Studies-Greek-Latin/CLST-Classical-Studies"
+    },
+    {
+      "text": "here",
+      "url": "http://dartmouth.smartcatalogiq.com/current/orc/Departments-Programs-Undergraduate/Classics-Classical-Studies-Greek-Latin/GRK-Greek"
+    },
+    {
+      "text": "here",
+      "url": "http://dartmouth.smartcatalogiq.com/current/orc/Departments-Programs-Undergraduate/Classics-Classical-Studies-Greek-Latin/LAT-Latin"
+    }
+  ],
+  "Cognitive Science": [
+    {
+      "text": "click here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/cognitive-science/cogs-cognitive-science"
+    }
+  ],
+  "Comparative Literature": [
+    {
+      "text": "click here. ",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/comparative-literature/colt-comparative-literature-undergraduate"
+    }
+  ],
+  "Earth Sciences": [
+    {
+      "text": "click here. ",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/earth-sciences/ears-earth-sciences-undergraduate"
+    }
+  ],
+  "Russian": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/2022/orc/departments-programs-undergraduate/russian-language-and-literature/russ-russian-language-and-literature/"
+    }
+  ],
+  "Russian Area Studies": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/2022/orc/departments-programs-undergraduate/russian-language-and-literature/russ-russian-language-and-literature/"
+    }
+  ],
+  "Economics": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics"
+    }
+  ],
+  "Biomedical Engineering Sciences": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate"
+    }
+  ],
+  "Engineering Physics": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate"
+    }
+  ],
+  "Engineering Sciences": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate"
+    }
+  ],
+  "English": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/english-and-creative-writing/engl-and-crwt-english-and-creative-writing-courses"
+    }
+  ],
+  "Film and Media Studies": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies"
+    }
+  ],
+  "French": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/fren-french"
+    },
+    {
+      "text": "here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/frit-french-and-italian-in-translation"
+    },
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/ital-italian"
+    }
+  ],
+  "French Studies": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/fren-french"
+    },
+    {
+      "text": "here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/frit-french-and-italian-in-translation"
+    },
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/ital-italian"
+    }
+  ],
+  "Italian": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/fren-french"
+    },
+    {
+      "text": "here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/frit-french-and-italian-in-translation"
+    },
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/ital-italian"
+    }
+  ],
+  "Italian Studies": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/fren-french"
+    },
+    {
+      "text": "here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/frit-french-and-italian-in-translation"
+    },
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/ital-italian"
+    }
+  ],
+  "Romance Languages": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/fren-french"
+    },
+    {
+      "text": "here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/frit-french-and-italian-in-translation"
+    },
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/ital-italian"
+    }
+  ],
+    "Romance Languages": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/fren-french"
+    },
+    {
+      "text": "here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/frit-french-and-italian-in-translation"
+    },
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/french-and-italian-languages-and-literatures/ital-italian"
+    }
+  ],
+  "Geography": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/geography/geog-geography/"
+    }
+  ],
+  "German Studies": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/german-studies/germ-german-studies"
+    }
+  ],
+  "Government": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/government/govt-government/"
+    }
+  ],
+  "History": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/history/hist-history"
+    },
+    {
+      "text": "here",
+      "url": "https://history.dartmouth.edu/undergraduate/course-schedule"
+    }
+  ],
+  "Latin American, Latino, and Caribbean Studies": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/latin-american-latino-and-caribbean-studies/lacs-latin-american-and-caribbean-studies"
+    },
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/latin-american-latino-and-caribbean-studies/lats-latino-studies"
+    }
+  ],
+  "Linguistics": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/linguistics/ling-linguistics"
+    }
+  ],
+  "Mathematics": [
+    {
+      "text": "click here. ",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate"
+    }
+  ],
+  "Music": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/music/mus-music-undergraduate-courses"
+    }
+  ],
+  "Native American Studies": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/native-american-and-indigenous-studies/nais-native-american-and-indigenous-studies/"
+    }
+  ],
+  "Philosophy": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy"
+    }
+  ],
+  "Astronomy": [
+    {
+      "text": "click here. ",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate"
+    },
+    {
+      "text": "here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate"
+    }
+  ],
+  "Physics": [
+    {
+      "text": "click here. ",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate"
+    },
+    {
+      "text": "here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate"
+    }
+  ],
+  "Neuroscience": [
+    {
+      "text": "click here.",
+      "url": "http://dartmouth.smartcatalogiq.com/en/current/orc/Departments-Programs-Undergraduate/Psychological-and-Brain-Sciences/PSYC-Psychological-and-Brain-Sciences"
+    }
+  ],
+  "Psychology": [
+    {
+      "text": "click here.",
+      "url": "http://dartmouth.smartcatalogiq.com/en/current/orc/Departments-Programs-Undergraduate/Psychological-and-Brain-Sciences/PSYC-Psychological-and-Brain-Sciences"
+    }
+  ],
+  "Quantitative Social Science": [
+    {
+      "text": "here.",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/quantitative-social-science/qss-quantitative-social-sciences"
+    }
+  ],
+  "Religion": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/religion/rel-religion"
+    }
+  ],
+  "Sociology": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/sociology/socy-sociology"
+    }
+  ],
+  "Hispanic Studies": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/spanish-and-portuguese-languages-and-literatures/span-spanish/"
+    },
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/spanish-and-portuguese-languages-and-literatures/port-portuguese/"
+    }
+  ],
+  "Romance Studies": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/spanish-and-portuguese-languages-and-literatures/span-spanish/"
+    },
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/spanish-and-portuguese-languages-and-literatures/port-portuguese/"
+    }
+  ],
+  "Studio Art": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art"
+    }
+  ],
+  "Theater": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater"
+    }
+  ],
+  "Women's, Gender & Sexuality Studies": [
+    {
+      "text": "here",
+      "url": "https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies"
+    }
+  ]
+}

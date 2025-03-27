@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 SART,SART 15 Drawing I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-15,SART15,"In this introductory course, major and non-major students will explore the issues of mark, line, scale, space, light and composition. Students will develop a critical facility to discuss the work presented in class. Although the majority of work will be from the observed form, such as still life and the human figure, non-observational drawing will also be emphasized. Various kinds of media, including charcoal, ink and pencil will be used. Supplemental course fee required. Enrollment limited.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -424,7 +424,7 @@ SART,SART 15 Drawing I,https://dartmouth.smartcatalogiq.com/en/current/orc/depar
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 16 Sculpture I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-16,SART16,"This course emphasizes the creation and critique of sculpture. Three-dimensional design concepts and various elements of sculpture such as form, space, surface, and time, will be discussed. Students will develop an understanding of different materials and techniques in conjunction with the aesthetics of each medium. This course focuses on an individual approach to creative problem solving, with students developing skills and vocabulary to critique their own sculpture and the sculpture of others. Supplemental course fee required. Enrollment limited. No prerequisites.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -850,7 +850,7 @@ SART,SART 16 Sculpture I,https://dartmouth.smartcatalogiq.com/en/current/orc/dep
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.01 Collage: Bridging the Gap,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-01,SART17.01,"An exploration of the design and construction of imagery through the medium of collage. Students will work in mixed media collage materials from a variety of subject matter with a focus on the development of critical abilities and an individual esthetic. Assignments will make use of collage as a connection between two-dimensional and three-dimensional artwork, addressing collage work in relationship to drawing, painting, relief sculpture, photography and architecture.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1270,7 +1270,7 @@ SART,SART 17.01 Collage: Bridging the Gap,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.03,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-03,SART17.03,,,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1692,7 +1692,7 @@ SART,SART 17.03,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.07 THE PASSIONATE PURSUIT OF COLOR,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-07,SART17.07,"Students in this course will explore the use of color as a language to construct and find meaning in a fully realized work of art that captures both internal and external realities. A variety of traditional as well as digital drawing media and techniques will be encouraged. Emphasis will be on testing the boundaries between the flat picture plane and the mysterious illusion of pictorial space, between sensuous details and the overall unity of each work of art.No prerequisites required. Counts towards the major and may be substituted for Drawing II",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2113,7 +2113,7 @@ SART,SART 17.07 THE PASSIONATE PURSUIT OF COLOR,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.08 Digital Drawing,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-08,SART17.08,"This class will explore the connection of hand drawing and digital drawing to create original images. Students will explore the implications, opportunities and technical issues of using the computer as a drawing tool and combine computer-generated drawings with those done by hand.  Drawings may combine layering, collaging and converting 3D form to 2D hand drawings using PhotoShop, Illustrator and Rhino software, among others. Supplemental course fee required. Enrollment limited.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2539,7 +2539,7 @@ SART,SART 17.08 Digital Drawing,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.09 The Photographer as Activist: Making Art Inspired by the Hood Museum's Collection,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-09,SART17.09,"This course examines photography's evolving role as protagonist for raising awareness of important social and political issues of our time, such as war and its aftermath, the politics of gender and family, and the sustainable landscape.  Meetings in the Bernstein Study Center will focus on the study of specific photographs and the processes and techniques employed; these explorations will form the basis for individual photographic projects, culminating in a creative portfolio or book. Students will develop a critical framework for the cultivation of visual literacy and the understanding of photography's importance as witness to human experience.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2959,7 +2959,7 @@ SART,SART 17.09 The Photographer as Activist: Making Art Inspired by the Hood Mu
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.11 Embodied Magic: Drawing into Life,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-11,SART17.11,"Embodied Magic: Drawing into LifeStarting from close observation, this class will explore possibilities for translating the wide and vibrant world into two-dimensional drawing and painting, and for translating two-dimensional works into sequential and moving images.  We will investigate interrelationships between embodied magic, improvisation, disciplined daily practice, and finished work.  Athletes, dancers, musicians, graphic designers, complete beginners, animators, fans of sequential art, and other assorted students from a variety of backgrounds and interests are welcome.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3380,7 +3380,7 @@ SART,SART 17.11 Embodied Magic: Drawing into Life,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.12 Art Practices Across Media,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-12,SART17.12,"This course examines strategies used by artists who work across a range of media. We will start with a critical inquiry into theoretical and practical methods: how do ideas determine the choice of material and the shape they take?  Further explorations will address the socio-political dimension of art-making and how it enables interventions and interruptions of the historical, cultural, and individual sphere. In the spirit of its subject, this class will ask students to utilize multiple media with the goal of visualizing the relation between material and concept.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3800,7 +3800,7 @@ SART,SART 17.12 Art Practices Across Media,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.13 Drawing with Van Gogh,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-13,SART17.13,"Students learn to draw as Vincent Van Gogh did throughout various stages of his life, with similar instruction, purpose and drawing materials.  The class will see and draw from the art that influenced him, work from subject matter similar to his, and experiment with his particular techniques.  Students will copy a range of Van Gogh drawings, draw directly from life as he did, and read many of his extraordinary letters.  At the end of the term, each student will develop a suite of drawings, embodying their own idea of how Van Gogh's work might have further evolved.  Supplemental course fee required. All levels of drawing experience welcome.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4220,7 +4220,7 @@ SART,SART 17.13 Drawing with Van Gogh,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.14 Reinventing Architecture: Design and Social Action,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-14,SART17.14,"By thinking more broadly about the populations served and more expansively about collaborative initiatives, designers can take on an important role in addressing the significant challenges we face in a rapidly changing and developing world. This course will include a series of drawing/media/design assignments that will serve as concentrated exercises in the investigation of architectural and spatial concepts and projects for challenged communities on the local, national and international levels. A wide array of design tools will be utilized and students will work both individually and collaboratively with classmates.  Course requirements will consist of the completion of drawing, model making and analysis assignments associated with each of the phases of the course. A substantial part of many class sessions will be dedicated to working on these assignments in the studio, thus attendance will be critical to the successful completion of the course. There will be a time commitment required outside of class to complete most assignments and additional assignments will also be made explicitly for completion outside of class. Field trips, site visits and visiting experts will be an integral component of the course.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4641,7 +4641,7 @@ SART,SART 17.14 Reinventing Architecture: Design and Social Action,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.15 3D Design and Digital Fabrication,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-15,SART17.15,"This course is an introduction to basic three dimensional design principles and the relationship between structure and space. Students will learn fundamentals of design ideologies to design and construct objects and structures that use cutting edge computer modeling and 3D fabrication processes to create forms ranging from everyday utilitarian objects to structures for specific sites on campus. Material investigations and problem solving skills to design innovative solutions to real world problems will be undertaken. Computer drawing and fabrication using the program Illustrator, and 3D modeling with Rhino, 3D Printers and CNC Routers will be taught and used. Students will develop skills needed to communicate design concepts and develop personal approaches to design as well as to construct them. The projects include forms based on aesthetic as utilitarian design.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5067,7 +5067,7 @@ SART,SART 17.15 3D Design and Digital Fabrication,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,"SART 17.16 Personal Iconography & the Public Debate: Text, Image and Form",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-16,SART17.16,"This class will give students the chance to explore the relationship of what you want to say to how you say it in art, with a strong focus on combining image, text and material. How do text and image work together to create art that engages and demands its place in the public exchange of non-art related ideas? Making use of research students will work in the studio to realize their ideas. Students will make broadsides at the Book Arts Workshop in Baker-Berry, and create a public intervention at a place of their choosing.Supplemental course fee required. Enrollment is limited.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5488,7 +5488,7 @@ SART,"SART 17.16 Personal Iconography & the Public Debate: Text, Image and Form"
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.17 Handmade Cinema,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-17,SART17.17,"“This course will explore non-conventional, artisanal modes of experimental and avant-garde cinema that focus on the materiality of moving image media formats. By utilizing a variety of techniques--direct image and sound manipulation on 16 mm film, hand-processing, ray-o-grams, animation, special effects, and live-projector performance--students will gain total filmmaker toolsets through constructing a series of exercises that will screen publicly. In addition to producing personal projects, students will complete a series of short papers that build upon our screenings, readings, and discussions to locate handmade cinema within historical and cultural contexts.”",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5910,7 +5910,7 @@ SART,SART 17.17 Handmade Cinema,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.18 Art & Activism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-18,SART17.18,"This course will look at various international and domestic artists to examine how contemporary visual art can be a form of social activism.Instead of working in one medium, students will have the opportunity to experiment with multiple media like drawing, painting, digital photography & collage, and video. The focus of the course will be on art practices in the context of social activism and its potential to interrupt conventions surrounding history, culture, identity and politics. In the spirit of its subject, students will utilize a range of media with the goal of visualizing the relation between medium and concept, art and thought, self and world.Some of the questions we will be asking are: how do we identify issues and formulate questions in visual terms?  What are the advantages and disadvantages, limitations and possibilities of each medium? How do we make aesthetic choices based on a particular subject? And to what extend do materials and artistic practices have an impact on our ideas? Supplemental course fee required",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6336,7 +6336,7 @@ SART,SART 17.18 Art & Activism,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.19 Cut and Paste Cinema,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-19,SART17.19,"Using principles of both animation and editing, this course will explore the results of combination in cut and paste cinema in conjunction with the history of collage--from classic uses in painting, photomontage, architecture, and literature to contemporary functions via mash-ups, samples, and digital manipulation. Through producing projects, screening films, and discussing readings, we will explore the varying possibilities of forming new meanings via the pairing of found elements.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6764,7 +6764,7 @@ SART,SART 17.19 Cut and Paste Cinema,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.20 Video Art,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-20,SART17.20,"This theory/practice studio course explores the medium of video as an art form. Through a survey of historical and contemporary works, students will examine how history, access, culture and technological shifts have influenced and changed how artists work with the moving image and time-based media. From early portable video rigs and live video to the use of animation, netart, streaming video, and memes, the course will unpack role that film, video, sound, writing, performance, abstraction, installation, structure, streaming and narrative forms have played in their work. Students create individual video projects to develop their artistic voice and point of view; they engage with properties that distinguish video art practices while completing a series of creative experiments in order to develop a personal media vocabulary. Students will use video art to expand our understanding of time, space, sound, representation, and narrative.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7192,7 +7192,7 @@ SART,SART 17.20 Video Art,https://dartmouth.smartcatalogiq.com/en/current/orc/de
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.21 Water In the Lake: Real Events for the Imagination,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-21,SART17.21,"This class, based on the bookWater in the lake: Real Events for the Imagination(1979) by Kenneth Maue, fuses cinema, the studio arts, sound, and theatre with the natural landscape in an intense study of improvisation, collectivity, and collaboration in conjunction with the environment.  Looking at religion, law, science, and politics as a way to consider cinema, sound, land art, site specificity, performance, and the unfolding of real time events within the artistic context, we will gain the critical capacity to understand intersections of cinema, performance art, video art, land art, and sonic practice. Through viewing films, listening to sounds, and studying works of art spanning painting, sculpture, installation, site-specific practice, and performance, we will inspire and provide critical/historical contexts for your personal work in the course.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7612,7 +7612,7 @@ SART,SART 17.21 Water In the Lake: Real Events for the Imagination,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.22 On Earth: Art The Anthropocene,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-22,SART17.22,"The Anthropocene is a new geologic era that has been defined as the present epoch in which the earth’s systems and biodiversity are being slowly disrupted by the impact of humans on the earth. This theory/practice, studio course engages with contemporary art to explore creative practices related to the topic. Through the production of artworks students will investigate the profound role art and design can play to address and expand current related dialogues.This course will explore what it mean to consider humans as a geological agent and how artists and designers can engage with the shifting perceptions of our surroundings. Creative projects that are open to the use of a range of media center on practical techniques that may include; mapping, the production of data visualization, journaling, and collaborative exercises. The course content builds through interrelating topics such as: new understandings of time, space, and scale; the concept of worlding; the use of scientific data to interpret planetary systems; the influence of the techno-sphere on human sensing and perceptions of “the natural”, and a redefinition of kin in a posthumanist era.The course serves neither as a comprehensive study of the Anthropocene nor as an art historical survey. It is instead an introductory exploration into ways to consider the Anthropocene in order to cultivate and reinforce new forms of flexible creative and critical thinking.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8038,7 +8038,7 @@ SART,SART 17.22 On Earth: Art The Anthropocene,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.23 Book Publication Lab,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-23,SART17.23,"This special topics studio course will provide students an opportunity to engage in research, conceptualization, design thinking, and execution of collaborative print projects. Strategies in design research, investigation, form-making will all be discussed along with techniques in page layout, typography for book and editorial layouts, risography, zines, self-publishing, and bookmaking. It will function as a creative laboratory, providing an opportunity to be immersed in and mindful of a range of collaborative creative processes. Through fast-paced exercises, readings, and studio projects, students will develop skills to create with others and test the boundaries of ways to give form to new ideas and strategies to generate content. Outcomes will include both digital and analog print methods. This course is designed as an interdisciplinary exploration for students in studio art and from other departments such as english and creative writing, music, languages, and the sciences. Supplemental course fee required. Enrollment limited.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8458,7 +8458,7 @@ SART,SART 17.23 Book Publication Lab,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 17.24 What is Architecture? 10/10,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-17-24,SART17.24,"This course focuses on addressing the question “What is Architecture?” within the context of liberal arts education, through topics such as: light and the immaterial, details and processes of making (craftmanship), structure and engineering, materiality and resources (site-specificity), form, interdependence and symbiosis, composition and systems, representation, future practices, among others. It consists of 10 lectures and 10 relevant exercises/small projects. Students are expected to actively participate in the course through presentations, discussions, and the design exercises. Students will work individually and in teams. Supplemental course fee required.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8884,7 +8884,7 @@ SART,SART 17.24 What is Architecture? 10/10,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 20 Drawing II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-20,SART20,"This course will reinforce drawing techniques and strategies learned in Drawing I with an emphasis on discipline and increased mastery. Personal development, critical thinking and the student's relationship to materials, subjects and techniques will be emphasized. Supplemental course fee required. Enrollment limited.",SART 15.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9312,7 +9312,7 @@ SART,SART 20 Drawing II,https://dartmouth.smartcatalogiq.com/en/current/orc/depa
 </form>
 
 </body>
-</html>"
+</html>",['SART15']
 SART,SART 21 Sculpture II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-21,SART21,"Sculpture II is an in-depth approach to the conceptual and physical aspects of making sculpture. Techniques such as woodworking and welding, along with the exploration of unconventional materials, will be used. Contemporary ideas involving installation, outdoor and site specific work will be explored in the cultural context of making sculpture today. Supplemental course fee required. Enrollment limited.",SART 16,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9740,7 +9740,7 @@ SART,SART 21 Sculpture II,https://dartmouth.smartcatalogiq.com/en/current/orc/de
 </form>
 
 </body>
-</html>"
+</html>",['SART16']
 SART,SART 22 Figure Drawing,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-22,SART22,"A course based on drawing the human form. Most work will be done from direct observation. Attention will be paid to issues of mark, light, volume, space, and composition. Students will consider the complex relationship of perception, invention, and visual structure in the context of working from the figure. Supplemental course fee required. Enrollment limited.",SART 15,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10168,7 +10168,7 @@ SART,SART 22 Figure Drawing,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",['SART15']
 SART,SART 23 Figure Sculpture,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-23,SART23,"Sculpture through direct observation, and learning to translate perceived form into sculptural form using the figure as subject is the emphasis of this class. Importance is placed on the fundamental sculptural principles of proportion, volume, and gesture, along with the relationship between the physical and psychological aspects of the human form and its contextual presentation. Modeling directly in clay, as well as plaster casts, and other additive processes and materials will be explored. Supplemental course fee required. Enrollment limited.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10588,7 +10588,7 @@ SART,SART 23 Figure Sculpture,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 25 Painting I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-25,SART25,"Painting I is an introductory class in oil painting techniques, painting language, and critical thinking. Major topics that will be covered include: basic color theory, color mixing, paint application, and color composition. A variety of subjects such as still life, non-observational invention, and the human figure will be emphasized. Supplemental course fee required. Enrollment limited.",SART 15,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11016,7 +11016,7 @@ SART,SART 25 Painting I,https://dartmouth.smartcatalogiq.com/en/current/orc/depa
 </form>
 
 </body>
-</html>"
+</html>",['SART15']
 SART,SART 26 Printmaking I: Lithography,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-26,SART26,"Lithography. An introduction to lithographic techniques, using stones and metal plates, b/w and color printing. Class sessions will consist of demonstrations, critiques, individual instruction, and work periods. Students will also see original prints by master artists (past and present) in the outstanding collection of Dartmouth's Hood Museum. This course may be repeated for credit by permission of the Chair. Supplemental course fee required. Enrollment limited.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11436,7 +11436,7 @@ SART,SART 26 Printmaking I: Lithography,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 27 Printmaking I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-27,SART27,"The course offers an introduction to the technical fundamentals in print media focusing on some of the following: etching, stencil printing (screen printing and/or risography), relief, monoprinting, as well as zine and artist books. Processes vary based on subtitle and explore a range of materials which may include wood, linoleum, copper, pronto plates, photopolymer, and acrylic plates to be printed in multiples and/or as unique variations. The course expands a student's capacity for developing images through two-dimensional design and conceptual processes. We will examine historical and contemporary printmaking results (using the Hood Museum and Rauner’s outstanding collections), while exploring methods of making and experimenting with analog and digital print formats. This course asks students to consider printmaking in a contemporary context through technique and discussion. You will be encouraged to discover new methods of practice, including collaborative work, unfamiliar materials, and a hybridity of tools/processes. Printmaking is a unique intersection of Painting, Drawing, Sculpture, Photography, Architecture and Visual Communication. Supplemental course fee required. Enrollment limited.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11862,7 +11862,7 @@ SART,SART 27 Printmaking I,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 28 Printmaking II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-28,SART28,"The intermediate course in print media offers an intensive exploration of printmaking methods. Print media provides a mode to visually communicate personal, political and conceptual themes. Students will concentrate on an advanced level on two or more printmaking processes, which may include etching, screen printing, relief, monoprinting, risography, and/or artist books. Students will be encouraged to discover new methods of practice, collaboration, and a hybridity of tools/processes. Students will hone technical skills and craft through experimentation, developing a body of both process and refined work. Discussions will address the expansive nature of contemporary fine art printmaking. Students develop individual portfolios. Supplemental course fee required. Enrollment limited.",SART 26 orSART 27. Supplemental course fee required. Enrollment limited.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12290,7 +12290,7 @@ SART,SART 28 Printmaking II,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",['SART26']
 SART,SART 29 Photography I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-29,SART29,"An introductory darkroom course concentrating on the fundamentals of operating and understanding a camera: black & white film processing and printmaking techniques, and the use of the camera as a tool of creative expression. Through lectures, readings, discussions, and critiques, students develop the ability to think and participate in critical contemporary art discourse regarding images and image making. The class culminates in a final project focused on conceptual content and fine printing skills. Supplemental course fee required. Enrollment limited.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12716,7 +12716,7 @@ SART,SART 29 Photography I,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 30 Photography II - The Nature of Photography,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-30,SART30,"This intermediate studio course deconstructs the complexity of the contemporary photographic world. The course is an investigation into the aesthetic and theoretical implications of digital photography and the underlying principles, languages, and tools of photographic media. Assignments, visiting artists, lectures, reading discussions, and critiques will interrelate to inform the development of the individual voice of each student. We will investigate the memetic and fragmenting qualities of photography, the existential implications of what it means to use the medium to stop time, the power of imaging aesthetics to seduce and activate the viewer, the photograph as data and evidence, all with an emphasis on how perspective (cultural/societal background) and context (from a social media feed to a museum wall) inform the impact a photograph can have on a range of audience(s). Technical emphasis is centered on; digital workflow from camera input and digital darkroom editing, to final screen-based output (the projection, a digital monitor, the activated presentation, the moving still, etc…). We will also work collectively on a book project. Throughout the course, students will simultaneously hone their critical thinking and technical skills and examine the evolving nuances of broader image culture in line with contemporary art world trends, all in order to develop their photographic voice and the ability to think and participate in critical contemporary art discourse. Enrollment limited. Supplemental course fee required.",SART 29.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13144,7 +13144,7 @@ SART,SART 30 Photography II - The Nature of Photography,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",['SART29']
 SART,SART 31 Painting II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-31,SART31,"This class is a continuation of Painting I. Students will be exposed to more complex ideas about color including color as emotion, impression, and construction. More distinction will be made between indirect and direct painting techniques. Students will also begin to form a personal relationship with the formal choices they wish to address. Supplemental course fee required. Enrollment limited.",SART 25,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13572,7 +13572,7 @@ SART,SART 31 Painting II,https://dartmouth.smartcatalogiq.com/en/current/orc/dep
 </form>
 
 </body>
-</html>"
+</html>",['SART25']
 SART,SART 65 Architecture I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-65,SART65,"A disciplined development of skills needed to communicate architectural ideas. Factors such as climate, site, orientation, program, materials, and structure are studied in the process of designing structures and buildings. The course will concentrate on developing student ability to translate architectural concepts into two-dimensional and three-dimensional representations. Free-hand drawing, the use of architectural drafting tools, and model making will be emphasized. Along with more traditional media, the computer will also be used as a design and communications tool. Supplemental course fee required. Enrollment limited.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13998,7 +13998,7 @@ SART,SART 65 Architecture I,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 66 Architecture II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-66,SART66,"Students will continue the study of architectural design by exploring the organization of space, manipulation of light, and the experience of time in the creation of architecture. Experimentation in the language and vocabulary of architecture, as expressed through drawings, models, and the digital media will be emphasized. Contextual, cultural, economic, and technological conditions will be discussed in relationship to designs. Review of student work will take the form of presentations made to the class and guest critics. Supplemental course fee required. Enrollment limited.",SART 65. Supplemental course fee required.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14426,7 +14426,7 @@ SART,SART 66 Architecture II,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 68 Architecture III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-68,SART68,"As an extension of Intermediate Architecture, this course will offer advanced students the opportunity to explore architectural design issues in more depth. Students will use analytical and expressive skills developed in previous coursework to undertake more complex and thorough investigations in architecture. Can be repeated for credit. Supplemental course fee required. Enrollment limited.",SART 66.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14854,7 +14854,7 @@ SART,SART 68 Architecture III,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",['SART66']
 SART,SART 71 Drawing III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-71,SART71,"In this course, students will develop a personal voice through the language of drawing. Commitment and discipline are mandatory and expected, commensurate with students' increased responsibility in shaping their trajectory of learning. Contemporary issues and materials will take an increased role in informing the students' decisions. Critical thinking and decision-making will be emphasized. Observational drawing, abstraction, figuration and more unconventional techniques are all open to students. Supplemental course fee required. Enrollment limited.",SART 20.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15282,7 +15282,7 @@ SART,SART 71 Drawing III,https://dartmouth.smartcatalogiq.com/en/current/orc/dep
 </form>
 
 </body>
-</html>"
+</html>",['SART20']
 SART,SART 72 Painting III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-72,SART72,"In this course, students will develop a cohesive body of work that addresses their aesthetic and subjective concerns. More attention will be given to contemporary artists and contemporary painting strategies and techniques. Commitment and discipline are mandatory and expected, commensurate with students' increased role in shaping their course of study. Critical thinking and decision-making will be stressed, as well as awareness of the contemporary dialogue in painting. Supplemental course fee required. Enrollment limited.",SART 31,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15710,7 +15710,7 @@ SART,SART 72 Painting III,https://dartmouth.smartcatalogiq.com/en/current/orc/de
 </form>
 
 </body>
-</html>"
+</html>",['SART31']
 SART,SART 73 Sculpture III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-73,SART73,"This course focuses on advanced problems in sculpture, with an emphasis on the development of a personal language. Individual growth through self- examination and self-discipline will be encouraged. Contemporary issues, as well as the history of sculpture will be discussed. Students are expected to develop a strong work ethic in the studio. Supplemental course fee required. Enrollment limited.",SART 21,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16138,7 +16138,7 @@ SART,SART 73 Sculpture III,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",['SART21']
 SART,SART 74 Printmaking III,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-74,SART74,"The advanced course in print media will be self-directed based on the students interests and offers an intensive inquiry of printmaking methods and visual narratives. This is an opportunity for experimentation and risk-taking with materials and tools, a refinement of printmaking applications while adding further research and concept exploration to develop a personal voice. Work will be presented in both installation and portfolio platforms. Discussions will address the expansive nature of contemporary fine art printmaking. Students develop individual portfolios. Supplemental course fee required. Enrollment limited.",SART 28. Supplemental course fee required.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16566,7 +16566,7 @@ SART,SART 74 Printmaking III,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 75 Photography III - Contemporary Photography & Research,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-75,SART75,"While interwoven with Photography 2, the emphasis of this course is on building an increasingly independent artistic-research practice with focused critiques and individualized assignments. It will center around a single self-driven problem that will constitute the term's work. The student will have the opportunity to concentrate on one subject, to investigate new techniques of photographic craft, hone critique and critical thinking skills, and to employ the camera as a means toward the making of a personal, creative statement. Enrollment limited. Supplemental course fee required.",SART 30.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16994,7 +16994,7 @@ SART,SART 75 Photography III - Contemporary Photography & Research,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",['SART30']
 SART,SART 76 Senior Seminar I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-76,SART76,"The first half of the two-term culminating experience in Studio Art. The seminar is devoted to developing critical skills and a body of work predicated upon a student's ability to conceive, structure, sustain, and resolve an individual course of study in painting, drawing, printmaking, sculpture, photography, or architecture. Work will be reviewed by the faculty and an outside examiner. Supplemental course fee required.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17420,7 +17420,7 @@ SART,SART 76 Senior Seminar I,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 SART,SART 77 Senior Seminar II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-77,SART77,"A continuation ofSART 76, with the additional expectation that each student will present at the conclusion of the term the body of work that will be his/her thesis. The thesis must be judged by the Studio Art faculty to be technically and aesthetically sound. From this work a selection will be made for the senior exhibition. Continuous individual and group critiques will be given of student work by the principal instructor, department faculty, and visiting artists. Supplemental course fee required.",SART 76.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17848,7 +17848,7 @@ SART,SART 77 Senior Seminar II,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",['SART76']
 SART,SART 90 Independent Study,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/studio-art/sart-studio-art/sart-90,SART90,Students who have completed all levels of instruction within a given area may propose and carry out an independent project in that area. This project must be supported and supervised by a faculty member. The project proposal must be submitted in writing and approved by the Chair. Supplemental course fee required.,,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18274,4 +18274,4 @@ SART,SART 90 Independent Study,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]

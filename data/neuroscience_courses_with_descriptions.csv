@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 PSYC,PSYC 1 Introductory Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-1,PSYC1,"This course provides an introduction to the scientific study of the mind, brain, and behavior. Emphasis is placed upon the basic psychological processes of perception, consciousness, cognition, memory, and motivation as well as development, personality, individual differences, social behavior, and psychological disorders.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -424,7 +424,7 @@ PSYC,PSYC 1 Introductory Psychology,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 6 Introduction to Neuroscience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-6,PSYC6,"This course provides students with an introduction to the fundamental principles of neuroscience. The course will include sections on cellular and molecular neuroscience, neurophysiology, neuroanatomy, and cognitive neuroscience. Neuroscience is a broad field that is intrinsically interdisciplinary. As a consequence, the course draws on a variety of disciplines, including biochemistry, biology, physiology, pharmacology, (neuro)anatomy and psychology. The course will begin with in-depth analysis of basic functions of single nerve cells. We will then consider increasingly more complex neural circuits, which by the end of the course will lead to an analysis of the brain mechanisms that underlie complex goal-oriented behavior.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -850,7 +850,7 @@ PSYC,PSYC 6 Introduction to Neuroscience,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 7 First-Year Seminars in Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-7,PSYC7,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1272,7 +1272,7 @@ PSYC,PSYC 7 First-Year Seminars in Psychology,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,"PSYC 10 Experimental Design, Methodology, and Data Analysis Procedures",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-10,PSYC10,"This course covers the various ways in which empirical information is obtained and analyzed in psychology and neuroscience. Statistical techniques covered will include ways to describe center and spread, t-tests, linear regression, chi-square, and complex analysis of variance (ANOVA), as well as use of a common statistical program to analyze data. This course is the preferred preparation forPSYC 11, Laboratory in Psychological Science.","PSYC 1orPSYC 6(may be taken concurrently). Because of the large overlap in material covered, no student may receive credit for more than one of the coursesECON 10,GOVT 10,MATH 10,PSYC 10,QSS 15, orSOCY 10except by special petition. Cannot be taken concurrently withPSYC 11.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1700,7 +1700,7 @@ PSYC,"PSYC 10 Experimental Design, Methodology, and Data Analysis Procedures",ht
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PSYC,PSYC 11 Laboratory in Psychological Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-11,PSYC11,"Progress in psychological science depends upon the analysis and thoughtful interpretation of results from well-designed experiments.  In this course you will learn how to think critically about this research process, first through a series of guided readings and exercises.  In the second part of the course you will design, carry out, and analyze your own original experimental research project as part of a small team and then present your work in a public forum and as a written journal-style manuscript.","PSYC 1orPSYC 6, andPSYC 10. Cannot be taken concurrently withPSYC 10.",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2128,7 +2128,7 @@ PSYC,PSYC 11 Laboratory in Psychological Science,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>","['PSYC1', 'PSYC10']"
 PSYC,PSYC 15 Impact Design,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-15,PSYC15,"This innovative, team-based, project course is about impact--what it is, how you experience it, how you create it, how you measure it.  We focus on designing products and experiences for community partners as part of the Social Impact Practicum program.  Rather than looking at how we can solve a problem, we look at how we can create delight for users. Students will learn how to combine core principles from human psychology with the tools of design to create products and user experiences that promote engagement, adoption, and learning. Past community partners have included the Hartford Autism Regional Program (HARP) and the Aging Resource Center.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2550,7 +2550,7 @@ PSYC,PSYC 15 Impact Design,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 21 Perception,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-21,PSYC21,"Our senses are our windows to the world, and the scientific study of the senses is one of the oldest sub-disciplines in experimental psychology. This course introduces students to the fundamental workings of our senses of vision, hearing, touch, taste and smell. The course includes careful consideration of experimental methodology as well as content.",PSYC 1orPSYC 6,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2978,7 +2978,7 @@ PSYC,PSYC 21 Perception,https://dartmouth.smartcatalogiq.com/en/current/orc/depa
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 22 Learning,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-22,PSYC22,"Learning is a fundamental process of behavior change that is essential for survival. In this course, we will approach the study of learning primarily focusing on Pavlovian and instrumental conditioning procedures. Generally, this course focuses on the psychological principles that underlie learning, memory, and behavior. In addition, we will also cover material examining the neural systems underlying these processes. The main goal of this course is for students to develop a strong understanding of theory and research in the area of learning and behavior.",PSYC 1orPSYC 6,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3406,7 +3406,7 @@ PSYC,PSYC 22 Learning,https://dartmouth.smartcatalogiq.com/en/current/orc/depart
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 23 Social Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-23,PSYC23,"This course is an introduction to social psychological theory and research. Specific topics include perception of self and others (e.g., attitudes, emotions), interpersonal relations (e.g., attraction, altruism, conformity, aggression), and group dynamics (e.g., decision making, intergroup conflict). Within those contexts, emphasis is placed on how we construe situations around us and how those situations influence us in ways we may not realize.",PSYC 1,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3834,7 +3834,7 @@ PSYC,PSYC 23 Social Psychology,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 24 Abnormal Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-24,PSYC24,"This course explores various types of psychopathology, with a focus on characteristics, diagnosis, etiology, and treatment. We will examine psychopathology from a variety of perspectives and will discuss current research on specific disorders. The experience of psychopathology will be illustrated using case histories and video footage to better understand the realities and challenges for those who are diagnosed.",PSYC 1,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4262,7 +4262,7 @@ PSYC,PSYC 24 Abnormal Psychology,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 25 Developmental Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-25,PSYC25,"We will examine the social and cognitive development of children from infancy to adolescence. We will also consider the implications of psychological research and theory for parenting, and for social and legal policies that affect young children. Film and videotape materials will be used to illustrate examples of infant and child behavior.",PSYC 1,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4690,7 +4690,7 @@ PSYC,PSYC 25 Developmental Psychology,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 28 Cognitive Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-28,PSYC28,"This course provides a comprehensive overview of cognitive psychology, the scientific study of mental processes: how people acquire, store, transform, use, and communicate information. Topics may include perception, attention, language, memory, reasoning, problem solving, decision-making, and creativity.","PSYC 1,PSYC 6, orCOGS 1",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5120,7 +5120,7 @@ PSYC,PSYC 28 Cognitive Psychology,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 32 Introduction to Programming for Psychological Scientists,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-32,PSYC32,"Studying the mind is an increasingly computational endeavor.  Modern psychological laboratories use computers to administer experiments, collect data, analyze data, create figures, write papers, and share their work with the world. Related and analogous approaches are used in fields as diverse as finance, art, biomedical science, law, and many others. In this course we will use hands-on training experiences, problem sets, and mini research projects to introduce students to a sampling of the computational tools employed in cutting-edge psychological research. A focus of the course will be on “open science” practices that enable scientists to share and clearly document each aspect of the scientific process.","PSYC 11required,MATH 1orMATH 3recommended.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5542,7 +5542,7 @@ PSYC,PSYC 32 Introduction to Programming for Psychological Scientists,https://da
 </form>
 
 </body>
-</html>"
+</html>",['PSYC11']
 PSYC,PSYC 35 Cellular and Molecular Neuroscience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-35,PSYC35,"This course focuses on cellular and molecular mechanisms that underlie the development and function of the nervous system. The course focuses on three phases of cellular neuroscience: 1) Developmental neuroscience including cell division, migration, and survival; 2) Neural communication including the function of ion channels and synaptic plasticity; and 3) Molecular mechanisms of neurological diseases and therapeutic approaches.  Lectures are supplemented by in class discussion and exploration of techniques for studying cellular neuroscience including microscopy, electrophysiology, advanced genetic approaches, and animal models used to study the nervous system and neurological disorders.",PSYC 6,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5972,7 +5972,7 @@ PSYC,PSYC 35 Cellular and Molecular Neuroscience,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['PSYC6']
 PSYC,PSYC 36 Systems Neuroscience with Laboratory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-36,PSYC36,"The primary focus of this course is the physiological basis of behavior from a systems perspective. Such topics as localization of function, neural models, and the physiological bases of sensory/motor systems, learning/memory, and spatial cognition are considered. The laboratory introduces the student to the anatomy and physiology of the mammalian central nervous system and to some of the principal techniques used in systems and behavioral neuroscience. Not open to students who have received credit for PSYC 065.",PSYC 6,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6400,7 +6400,7 @@ PSYC,PSYC 36 Systems Neuroscience with Laboratory,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",['PSYC6']
 PSYC,PSYC 37 Behavioral Neuroscience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-37,PSYC37,"We are complex organisms that perform complex behaviors. In this course we will explore the neurological underpinnings of behavior. Some topics we will cover include the neural control of life-sustaining behaviors such as eating and drinking. In addition, we will explore how the brain contributes to the display of other complex behaviors such as sexual behavior and responding to stress. We will use the text, primary research articles and case studies to examine the relationship between brain and behavior. Not open to students who have received credit for PSYC 045.",PSYC 6,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6828,7 +6828,7 @@ PSYC,PSYC 37 Behavioral Neuroscience,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['PSYC6']
 PSYC,PSYC 38 Cognitive Neuroscience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-38,PSYC38,"In Cognitive Neuroscience, we survey the neural basis of a variety of cognitive phenomena that are the heart of human experience: how we perceive and attend to the world around us; how we remember and forget our experiences; how we listen, communicate, and understand through language and music; how we reason, evaluate, and decide under risk and uncertainty; how we represent our thoughts and those of others; how we lose and gain consciousness through sleeping and waking; how we develop, learn, and adapt. To do this, we take a multidisciplinary approach that spans disciplines including psychology, neuroscience, computer science, biomedical engineering, and philosophy. We will also learn about classic and cutting-edge scientific methods including psychophysics, functional neuroimaging, electrophysiology, optogenetics, machine learning, and brain-computer interfaces. All in all, this course represents a blend of neurobiology (brain) and psychology (behavior). It aims to provide necessary background knowledge for scientific frontiers related to understanding human neuroscience and behavior.Not open to students who have received credit for PSYC 027.",PSYC 1orPSYC 6,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7257,7 +7257,7 @@ PSYC,PSYC 38 Cognitive Neuroscience,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 40 Introduction to Computational Neuroscience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-40,PSYC40,"Your brain is composed of low-precision, slow, sparsely-connected computing elements, yet it outperforms any extant computer on tasks ranging from perception to planning. Computational Neuroscience has as its twin goals the scientific understanding of how brains compute thought, and the engineering capability to reconstruct the identified computations. Topics in the class included anatomical circuit design, physiological operating rules, evolutionary derivation, mathematical analyses, and emergent behavior, as well as development of applications from robotics to medicine.","One of:PSYC 1,PSYC 6,COSC 1, orENGS 20.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7687,7 +7687,7 @@ PSYC,PSYC 40 Introduction to Computational Neuroscience,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 43 Emotion,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-43,PSYC43,"Emotions define human experience. When you ask someone how they are, they tell you how they arefeeling. We formulate our life goals in terms of emotions, striving to obtain happiness, while avoiding regret. Emotions such as love, pride, contempt, and shame shape our social relationships, both as individuals and as groups. When our emotions go badly awry, we suffer debilitating mental illnesses such as depression and anxiety. Although emotions play a central role in our lives, studying them scientifically presents profound challenges. They seem intuitively hidden, elusive, messy, and hard to evoke or quantify in a laboratory. Despite these challenges, researchers have developed a thriving science of our emotional lives, which you will learn about in this course. We will begin by considering the origins of emotion, both biological and cultural. Subsequently we will examine how emotions manifest themselves in our bodies and brains, change dynamically over time, shape our social interactions, influence our cognition, and affect our mental health. Finally, we will consider ongoing theoretical debates in emotion science, and where the field could and should go next.",PSYC 1orPSYC 6,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8115,7 +8115,7 @@ PSYC,PSYC 43 Emotion,https://dartmouth.smartcatalogiq.com/en/current/orc/departm
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 50 Issues in Neuroscience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-50,PSYC50,Courses with this number consider topics in the field of neuroscience. Topics are treated at an intermediate level and the focus will be on topics not covered in detail inPSYC 36or 37. The selection of issues is at the discretion of the instructor.,,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8535,7 +8535,7 @@ PSYC,PSYC 50 Issues in Neuroscience,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 50.01 Neuroscience of Mental Illness,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-50-01,PSYC50.01,"The goal of this course is to explore the neuroscience of mental disorders. The ways in which we conceptualize and categorize psychopathology is changing rapidly, particularly as we gain insights into the neurological correlates of mental illness. We will review the characteristics of specific mental disorders and then delve into current neuroscientific research. We will focus in particular on the fundamental processes underlying psychopathology so that we can gain a better understanding of neurological relationships amongst seemingly disparate disorders. Although the class is focused on neuroscience, mental disorders cannot be fully understood without considering the experience of those suffering from these disorders. To better understand the experience of mental illness, we will watch a series of films and read a personal account of mental illness. This course requires a strong background in neuroscience; at minimum, successful completion ofPSYC 6.",PSYC 6,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8963,7 +8963,7 @@ PSYC,PSYC 50.01 Neuroscience of Mental Illness,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",['PSYC6']
 PSYC,PSYC 50.02 Decision Making: Linking Behavior to Brain,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-50-02,PSYC50.02,"In our daily lives we are faced with many decisions: what to eat for lunch, whether to spend the next hour on Instagram or on homework, or what courses to take next quarter. Some of those decisions require gradual deliberation while others can be made quickly. Nevertheless, to make any decision we rely on external information and what outcomes we expect from those decisions. Decisions are easy to make if information is complete and the outcomes are certain. But how does the brain combine different sources of partial information to make decisions in the face of uncertain outcomes?  In this course we will examine decision making from both behavioral and neurobiological points of view. Specifically, we will learn about different methods used in psychology, economics, and neuroscience (e.g. operant conditioning, game theory, reinforcement learning, prospect theory, electrophysiology, neuroimaging) to study decision making at various levels, from cognitive processes to underpinning neural activity and mechanisms.",PSYC 1orPSYC 6,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9391,7 +9391,7 @@ PSYC,PSYC 50.02 Decision Making: Linking Behavior to Brain,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 50.03 Neuroethology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-50-03,PSYC50.03,"Neuroethology is the mechanistic and evolutionary approach to the study of animal behavior (‘ethology’) and its underlying neural circuit processes. A central theme of neuroethology is its focus specifically on behaviors that have been honed by natural selection (like mate selection, communication, locomotion). Often, this can be best understood in model organisms that have unique and highly specialized adaptations. In this course we will ask questions such as, how do bats echolocate? Does birdsong give us insight into how the human brain acquires language? What can a crab teach us about plasticity in the nervous system? Through a combination of readings, video content, and in-class discussion, we will examine general principles of nervous system function highlighted by each model organism. Classes will contain a mix of lectures, discussion, activities, and student presentations.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9813,7 +9813,7 @@ PSYC,PSYC 50.03 Neuroethology,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 50.07 Exotic Sensory Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-50-07,PSYC50.07,"Ever wonder what it’s like to be a cat, or a fish, or a bat, or an octopus? Without careful consideration of another animal’s sensory capacities, cognitive capabilities, and social situation, we risk inappropriately ascribing our own human characteristics and motivations to them when explaining their behavior (i.e. anthropomorphization). This course explores the “umwelts” or sensory self-worlds of non-humans, using concepts from information theory to deconstruct what they may be perceiving.","PSYC 1orPSYC 6, andPSYC 10",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10235,7 +10235,7 @@ PSYC,PSYC 50.07 Exotic Sensory Systems,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>","['PSYC1', 'PSYC10']"
 PSYC,PSYC 50.08 Neurobiology of Learning and Memory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-50-08,PSYC50.08,"This course will discuss the neurobiology of learning and memory from cognitive, behavioral, and cellular neuroscience perspectives. The goal of the course is to better understand the neurobiological mechanisms and brain systems that underlie learning and memory processes.  A fundamental understanding of membrane and synaptic potentials is strongly recommended",PSYC 6or instructor permission,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10663,7 +10663,7 @@ PSYC,PSYC 50.08 Neurobiology of Learning and Memory,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>",['PSYC6']
 PSYC,"PSYC 50.09 Motivation, Drugs, and Addiction",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-50-09,PSYC50.09,"This course will explore how the brain controls our motivation to pursue goals and how drugs of abuse hijack those systems. We will learn about some historical perspectives of motivation as well as modern neuroscience work showing how areas of the brain might contribute to motivations. In the process, we will explore in detail how narcotic drugs (opioids, stimulants, alcohol, cannabis) act in the brain and the mechanisms underlying the transition from drug use to addiction.",PSYC 6,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11091,7 +11091,7 @@ PSYC,"PSYC 50.09 Motivation, Drugs, and Addiction",https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",['PSYC6']
 PSYC,PSYC 50.10 Brainwaves,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-50-10,PSYC50.10,"From the very first electrical recordings of the human brain in the 1920s it became clear that the brain generates rhythmic, wave-like patterns of neural activity. Studying these “brainwaves” has resulted in major advances across multiple areas of neuroscience and psychology: in understanding fundamental brain processes underlying memory, attention, and predictive processing, in creating consumer devices and brain-machine interfaces that seek to improve different areas of brain function, and in cutting-edge diagnosis and treatment of a number of brain disorders. This course provides an introduction to the phenomenon of brainwaves. Using a combination of textbook readings, primary research articles, and in-class discussion, we will explore the neural basis of brainwaves, their significance for brain function and dysfunction, and evaluate their potential for applications in consumer and clinical devices. You will learn to describe different aspects of brainwaves using precise terminology, to interpret and critically evaluate brainwave data and claims made on the basis of such data, and situate their significance in the broader context of fundamental and applied neuroscience.","PSYC 21, PSYC 27,PSYC 28, orPSYC 38",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11519,7 +11519,7 @@ PSYC,PSYC 50.10 Brainwaves,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",['PSYC21']
 PSYC,PSYC 50.14 Functional Neuroimaging of Psychiatric Disorders,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-50-14,PSYC50.14,"Functional brain imaging has revolutionized the study of systems-level behavioral neuroscience and psychiatric disorders, through the ability to localize and characterize distributed brain activity directly associated with perception, cognition, emotion and behavior in disorders where there are not gross brain lesions. This course will introduce students to translational neuroimaging methods at the interface of neuroscience, psychology and medicine. It will cover recent and ongoing advances in our understanding of fronto-limbic-subcortical brain circuitry across the range of psychiatric disorders (e.g. mood disorders, anxiety disorders, psychotic disorders, personality disorders, addictions). It will discuss new, emerging biological (as opposed to descriptive) taxonomies and conceptualizations of mental illness and its treatment. It will explore the implications of such knowledge for issues such as consciousness, meaning, free will, emotion, resilience, and religiosity. It will incorporate clinical observations, scientific data and readings, and examine future directions in brain-mind medicine.",PSYC 1orPSYC 6,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11941,7 +11941,7 @@ PSYC,PSYC 50.14 Functional Neuroimaging of Psychiatric Disorders,https://dartmou
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 50.15 Sleep and Sleep Disorders,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-50-15,PSYC50.15,"Sleep is a bodily function that is preserved among all animal species.  Sleep is essential for life and optimal functioning.  This course will examine the neuroanatomical and neurophysiologic underpinnings of sleep.  Normal and disordered sleep will be discussed.  The pathologic processes that disrupt normal sleep and lead to disordered sleep in human beings will also be examined.  The consequences of disordered sleep, inadequate sleep or poor-quality sleep on individuals and society as a whole will be discussed.",PSYC 1orPSYC 6,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12369,7 +12369,7 @@ PSYC,PSYC 50.15 Sleep and Sleep Disorders,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 51 Issues in Information Processing,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-51,PSYC51,"Courses with this number consider topics from the areas of perception, memory, cognition, and quantitative models from the point of view of information processing. Material is treated at an intermediate level on a set of issues not covered in Psychology 21 and 28. Selection of issues is left to the discretion of the instructor, but specific emphasis is given to methodology. Enrollment limited to 35 students.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12789,7 +12789,7 @@ PSYC,PSYC 51 Issues in Information Processing,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 51.01 The Neuroscience of the mind-body problem,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-51-01,PSYC51.01,"Neuroscience has learned a great deal about how neurons function, and Psychologists have learned a lot about the contents and processes of the mind. But we lack a deep understanding of the bridge that must link these two sides of the ""mind-body"" problem. We do not yet fully understand (1) how information is processed, transformed and communicated by neurons, (2) how consciousness can be realized in physical neuronal activity, or (3) how mental events realized in physical brain events can be causal of subsequent mental and physical events. This course will focus on what is known about the neural code and the neural bases of consciousness, mental causation and free will and what is not yet understood. We will focus on reading original research articles and chapters from books that attempt to get at these deep and challenging conceptual and empirical issues.  A particular focus will be the relationship of attentional processing to consciousness, and its neural bases. Students will be expected to write up critiques of readings, and present on topics of common interest.","PSYC 6,PSYC 21, orPSYC 28",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13211,7 +13211,7 @@ PSYC,PSYC 51.01 The Neuroscience of the mind-body problem,https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>",['PSYC6']
 PSYC,PSYC 51.02 Face Perception,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-51-02,PSYC51.02,"Faces are one of the richest sources of information for non-verbal communication. Through faces we recognize identity and infer the emotional and mental states of others, as well as where they are directing their attention. This course will focus on the neural mechanisms for face perception and how these mechanisms facilitate rapid extraction of cues that facilitate social interaction. Particular relevance will be put on the neural systems for representation of person knowledge.  In addition to weekly readings, students will have a written exam at the end of the course.",PSYC 1orPSYC 6,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13641,7 +13641,7 @@ PSYC,PSYC 51.02 Face Perception,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 51.09 Human Memory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-51-09,PSYC51.09,"Knowing how our brains organize and spontaneously retrieve memories is at the heart of understanding the basis of the ongoing internal dialog of our conscious thoughts.  Put simply, our memories make uswho we are.  The field of human memory also has a practical side.  For example, how much should we trust eyewitness testimony?  Or, should you cram for tomorrow's exam or get a good night's sleep instead?  We will examine a range of classic and cutting-edge experimental results and theories that form the foundation of our current understanding of how we learn and remember.",PSYC 1orPSYC 6,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14063,7 +14063,7 @@ PSYC,PSYC 51.09 Human Memory,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 51.12 Visual Intelligence,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-51-12,PSYC51.12,"How is our perceptual experience shaped by our memories, attention, and culture? When looking around the world, we have the impression that we perceive a true image that faithfully reproduces the physical properties of the world. However, perception is a construction of what's really out there, and our visual system constantly makes smart guesses and complex inferences about what we are likely to be perceiving.In this course, we will learn how our own memories, attention, and cultural background influence our perception of people, objects, scenes, and emotions; what optical illusions reveal about the visual system; what and why we forget certain things but remember others; what the failures of visual attention mean in real-life contexts (e.g., mammography, or the TSA), and how experience shapes our ability to see.",PSYC 1or 6; andPSYC 10,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14486,7 +14486,7 @@ PSYC,PSYC 51.12 Visual Intelligence,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>","['PSYC1', 'PSYC10']"
 PSYC,PSYC 51.13 Psycholinguistics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-51-13,PSYC51.13,"The deceptively simple tasks of perceiving and producing language require the performance of complicated and often overlapping functions at high speeds. How can we study the representations and processes that make language possible as they interact in the black box that is the human mind? The goal of this course is to provide a broad understanding of research focusing on how the human mind structures, stores and accesses linguistic information. 
 Not open to students who have received credit for LING 50.01.",LING 1orCOGS 1or Instructor Permission,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
@@ -14918,7 +14918,7 @@ Not open to students who have received credit for LING 50.01.</p>
 </form>
 
 </body>
-</html>"
+</html>",['LING1']
 PSYC,PSYC 51.14 Sustainable Choices: Understanding Human Cognition To Save The Planet,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-51-14,PSYC51.14,"Every choice we make in our daily life has an impact on the environment we live in and on life on earth in general. While perceiving this impact is impossible in most cases, the enormous human population and globalization make the cumulative impact of every simple choice very profound. In this multi-disciplinary course, we explore how human activities affect life on earth in terms of climate change, biodiversity, deforestation, pollution, etc., in order to learn about the intricate link between our everyday choices and eco-sustainability, as well as how physical and biological laws limit or improve our ability to be sustainable. This course is focused on learning about the impact of our choices as it is focused on learning about heuristics/biases that humans exhibit when making those choices and how these heuristics/biases emerge in the brain. The course brings together ideas from Neuroscience, Psychology, Economics, Physics, and Biology among other fields to teach students about how and to what extent decisions we face in everyday life, directly or indirectly, influence life on earth, and how negative impacts can be mitigated by understanding the neural bases of human decision making.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15338,7 +15338,7 @@ PSYC,PSYC 51.14 Sustainable Choices: Understanding Human Cognition To Save The P
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 51.15 Social Perception,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-51-15,PSYC51.15,"In a fleeting glance, we can identify a person, infer their emotional state, determine their gender, estimate their age, assess their attractiveness, and surmise the focus of their thoughts. Social perception is fundamental to social interaction in humans as well as other animals.  This course will examine social perception in humans and other species and in doing so will touch on issues including functional specialization, neurocognitive development, and evolution. Faces have received much of the attention in social perception and we’ll spend significant time on face perception, but we’ll also cover body perception, biological motion perception, voice perception, and some of the various types of social perception in non-human animals. We will draw on a range of approaches including psychophysics, neuropsychology, single-cell recording, transcranial magnetic stimulation, fMRI, and twin studies.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15758,7 +15758,7 @@ PSYC,PSYC 51.15 Social Perception,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 51.16 Computational Models of Behavior,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-51-16,PSYC51.16,"Psychology and neuroscience have long sought to learn how brains function — such as, how we make decisions and learn from experience — by studying behavior during cognitive tasks. But how much can behavioral data really reveal abouthowthe brain does what it does? This endeavor has been revolutionized by the development ofcomputational models of behavior,mathematically defined algorithms describing mental processes that generate behavioral outputs from sensory and internal variables. In this approach, quantitative behavioral data can be compared to simulated behavior from models, and the model parameters can be fit to empirical data.The goal of this course is to understand how computational models of behavior can be used to gain insight into psychological and neural processes. We will focus on canonical models of decision making and reinforcement learning. We will place emphasis on conceptual issues such as the purpose and logic of computational modeling and its role in experimental science.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16186,7 +16186,7 @@ PSYC,PSYC 51.16 Computational Models of Behavior,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 52 Issues in Learning and Development,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-52,PSYC52,"Courses with this number consider several important sub-fields of learning and psychological development. Material is treated at an intermediate level on a set of issues not covered in Psychology 22 and 25. Selection of issues is left to the discretion of the instructor, but they will be selected with emphasis upon the psychological principles emerging from the study of humans and animals in the context of learning, early experience, and maturations. Enrollment limited to 35 students.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16606,7 +16606,7 @@ PSYC,PSYC 52 Issues in Learning and Development,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 52.04 Adolescent Risk Behaviors: Corporate and Environmental Influences,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-52-04,PSYC52.04,"Chronic health conditions (like cancer and heart disease) kill the majority of people worldwide. Those diseases result, in part, from use of products—e.g., tobacco, alcohol, & convenience food—that are produced and marketed worldwide by multinational corporations.  This course centers around how corporations influence unhealthy product consumption during childhood and adolescence. This course describes the theoretical basis for these influences, the science used to establish corporate products as a cause of youth behavior, and how governments try to limit the influence through regulation. The study will cover tobacco, alcohol, drug use, homicide/suicide, food/obesity, and risky sex.",PSYC 1,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17034,7 +17034,7 @@ PSYC,PSYC 52.04 Adolescent Risk Behaviors: Corporate and Environmental Influence
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 52.06 Typical and Atypical Neurodevelopment,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-52-06,PSYC52.06,"Approximately one trillion synapses are formed each day during the first three years of life, many of which are pruned away by age five.  What is happening in the brain during these formative years? The goal of this course is to provide insight into the neural basis of human cognition by examining the “tabula rasa” of the human brain and how it changes over the first few years of typical and atypical development. Throughout the course, we will wrestle with questions regarding which facets of our neural machinery and cognitive abilities are innate vs. acquired. We will discuss the development of specific cognitive capacities (e.g. learning to read, recognize faces, pay attention, communicate, socialize) from the perspective of individuals with typical developmental trajectories in each of these domains, as well as from the perspective of individuals with difficulties in each domain (e.g. dyslexia, prosopagnosia, ADHD, autism). This course will draw upon your prior knowledge of psychology, cognitive neuroscience, and neurobiology, and will explore classic and cutting-edge peer-reviewed scientific studies of developmental psychology, neurodevelopment, cognitive development.","One of the following:PSYC 6,PSYC 21, PSYC 27,PSYC 28, orPSYC 38",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17456,7 +17456,7 @@ PSYC,PSYC 52.06 Typical and Atypical Neurodevelopment,https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",['PSYC6']
 PSYC,PSYC 52.07 Educational Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-52-07,PSYC52.07,"How do we learn? How can modern educational settings harness recent innovations concerning the essence of human learning? Educational psychology provides a foundation for applying the psychological principles that underlie learning in both formal and informal educational settings. In this course, we will explore the multitude of ways that people learn, the effects of different types of teaching strategies on learning, and the impact of individual differences on learning. We will also explore assessment, creativity and problem solving, as well as cultural and motivational influences on learning across diverse educational situations. Underlying the course will be an account of the way the human mind works, changes, and adapts in different settings. This includes the home, the school, the university and any context in which explicit or implicit education takes place. Open to all classes.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17878,7 +17878,7 @@ PSYC,PSYC 52.07 Educational Psychology,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 52.08 STEM Learning and Education,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-52-08,PSYC52.08,"How do we learn, understand, and teach science, technology, engineering, and math (the STEM disciplines)? In this class, we will explore the nature and development of the scientific mind; how we formulate theories, design experiments, and understand scientific, technological, and mathematical concepts; and how we learn and teach related skills in the classroom, addressing the debate about the effectiveness of direct instruction and hands-on approaches. Open to all classes.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18300,7 +18300,7 @@ PSYC,PSYC 52.08 STEM Learning and Education,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 52.09 The Reading Brain: Education and Development,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-52-09,PSYC52.09,"The majority of children entering first grade do not know how to read; the majority of children leaving first grade do know how to read, at least at a basic level. What is involved in the amazing development of the ability to make meaning of marks on a page? What goes on in the brain during reading and learning to read? We explore answers to these questions and more in this introduction to reading as we investigate the roles of orthography, phonology, semantics, syntax, and comprehension in reading. We focus on the development of reading behaviors, the brain bases of reading skills, and how scientific discoveries can inform educational practices. Open to all classes.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18728,7 +18728,7 @@ PSYC,PSYC 52.09 The Reading Brain: Education and Development,https://dartmouth.s
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 53 Issues in Social Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-53,PSYC53,"Courses with this number consider several important sub-fields of social psychology.  Material is treated at an intermediate level on a set of issues that are not covered in Psychology 23.  Selection of issues is left to the discretion of the instructor, but specific emphasis is given to individual and group attitudes, modes of interpersonal communication, and behavior control in humans and animals.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19148,7 +19148,7 @@ PSYC,PSYC 53 Issues in Social Psychology,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 53.02 Social Perception,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-53-02,PSYC53.02,"In a fleeting glance, we can identify a person, infer their emotional state, determine their gender, estimate their age, assess their attractiveness, and surmise the focus of their thoughts. Social perception is fundamental to social interaction in humans as well as other animals.  This course will examine social perception in humans and other species and in doing so will touch on issues including functional specialization, neurocognitive development, and evolution. Faces have received much of the attention in social perception and we’ll spend significant time on face perception, but we’ll also cover body perception, biological motion perception, voice perception, and some of the various types of social perception in non-human animals. We will draw on a range of approaches including psychophysics, neuropsychology, single-cell recording, transcranial magnetic stimulation, fMRI, and twin studies.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19568,7 +19568,7 @@ PSYC,PSYC 53.02 Social Perception,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 53.10 Social and Affective Motivations in Decision-making,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-53-10,PSYC53.10,"Why do we tip restaurant servers, cab drivers, and coffee baristas?  Why does our grocery shopping behavior change when we are hungry?  This course will explore the social and affective motivations that influence how we make everyday decisions from the diverse perspectives of psychology, economics, and neurobiology.  This course will provide an introduction to how social psychological constructs and feelings can be modeled using tools from decision theory (e.g., value & uncertainty) and how these processes might be instantiated in the brain.  Topics to be covered include other-regarding preferences (e.g., trust, reciprocity, fairness, and altruism), affective motivations (e.g., risk, dread, regret, and guilt), and social considerations (e.g., reputation, conformity, and social-comparison).","PSYC 23, PSYC 27, orPSYC 28",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19996,7 +19996,7 @@ PSYC,PSYC 53.10 Social and Affective Motivations in Decision-making,https://dart
 </form>
 
 </body>
-</html>"
+</html>",['PSYC23']
 PSYC,PSYC 53.12 The Behavior of Groups,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-53-12,PSYC53.12,"Much of your life is spent in groups: families, classes, teams, cliques, Greek organizations, work teams.  Have you ever wondered what’s going on under the surface or how you can make your groups function better?  Although these groups may be dissimilar in size, format, and function, the psychological processes involved are surprisingly consistent.  This course will analyze psychological theories of group interaction including conformity, competition, conflict, leadership, negotiation, communication, power dynamics, status orders, initiation rites, ostracism, expectation states, and stereotypes.  Readings will include classics such as Zimbardo’s Stanford Prison experiment, Tajfel’s minimalist groups paradigm, Sherif’s Robber’s Cave experiment, Whyte’s Street Corner Society, and Pennington’s Social Psychology of Behavior in Small Groups. Assignments will involve several reading analyses, a final exam, and—of course—a group project.",PSYC 1,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20418,7 +20418,7 @@ PSYC,PSYC 53.12 The Behavior of Groups,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 53.13 Social Neuroscience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-53-13,PSYC53.13,"This class will focus on the principles of social neuroscience (SCN) and survey a broad array of topics in the field. Social neuroscience attempts to answer social science questions, such as ‘why does rejection hurt?’ and ‘is empathy innate?’ with neuroscience methods, such as brain imaging and neuropharmacology.",PSYC 1orPSYC 6,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20840,7 +20840,7 @@ PSYC,PSYC 53.13 Social Neuroscience,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 53.14 Social Neurocognition,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-53-14,PSYC53.14,"This course will provide students with a thorough background in the emergent field of social cognitive neuroscience. A broad range of social phenomena will be examined at multiple levels. First, at the social level including experience and behaviors. Second, at the cognitive level which deals with information processing systems. And lastly, at the neural level which deals with brain/neuronal bases of the first two levels. Topics include joint action, animal and human communication, and altered social functioning in psychiatric and neurological disorders. These topics will be discussed at both general and specific (article) levels.",PSYC 1orPSYC 6,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21268,7 +21268,7 @@ PSYC,PSYC 53.14 Social Neurocognition,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 53.15 Positive Psychology and Resilience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-53-15,PSYC53.15,"This course will provide an overview of the field of Positive Psychology.  Students will be provided with opportunities to learn theory and research pertaining to the psychology of human strengths, assets, abilities, and resilience. Recent empirical research will be reviewed, and students will be asked to apply the information in written assignments and class discussion. Topics will include: subjective well-being and positive emotions; optimal performance; personal fulfillment; optimal medical health; resilience; emotional intelligence; creativity; optimism; hope; self-efficacy; goals and life commitments; wisdom; humility/ compassion/ altruism; forgiveness; gratitude; love; moral motivation and the virtues (strengths of character); intrinsic motivation and flow; social support; positive coping; spirituality, meaning and purpose in life; the civic virtues (altruism, volunteerism, “prosocial” behavior).",PSYC 1orPSYC 6,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21696,7 +21696,7 @@ PSYC,PSYC 53.15 Positive Psychology and Resilience,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 54 Issues in Applied Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-54,PSYC54,"Courses in this number consider several important sub-fields of applied psychology, such as environmental psychology and consumer behavior. Material is treated at an intermediate level. Selection of issues is left to the discretion of the instructor, but they will be selected with emphasis upon the extension of established psychological principles to problems of contemporary society. Enrollment limited to 35 students.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22116,7 +22116,7 @@ PSYC,PSYC 54 Issues in Applied Psychology,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 54.02 Health Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-54-02,PSYC54.02,"This course will explore the relationship between psychology and health.  We will study clinical psychology research and treatment contributions to 1) health promotion; 2) chronic physical illness; and 3) interaction with the US healthcare system. This course utilizes a multi-modal learning approach and will include lectures, readings, small and large group class discussions, videos, guest speakers, and self-reflection of each student’s own health behavior. Through in-depth study of topics such as lifestyle and health, stress, cancer and palliative care, chronic physical pain, and insomnia, we will explore illness and the individual/family, adherence/self-management, and medical treatment issues including doctor/patient/medical system aspects of care.",PSYC 1orPSYC 6,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22538,7 +22538,7 @@ PSYC,PSYC 54.02 Health Psychology,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 54.03 Forms of Therapy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-54-03,PSYC54.03,"Each year, millions of people vow to make a change.  Some may wish to end their habit of procrastination, others to improve a significant relationship, or still others may commit to combat a mental illness.  Whatever their goal, people often discover how challenging personal change can be.  At its core, clinical psychology facilitates such change through the scientific application of psychological principles.  The purpose of this course is to introduce you to various scientifically-validated modalities of individual psychotherapy, with an emphasis on how psychotherapies utilize psychological principles to produce change.  Over the course of the semester we also will explore special topics in the field of clinical psychology such as: human connection, empathy, emotion, ethics, psychological assessment, pharmacological treatments, and treatment evaluation.",PSYC 24,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22966,7 +22966,7 @@ PSYC,PSYC 54.03 Forms of Therapy,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",['PSYC24']
 PSYC,PSYC 54.04 Forensic Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-54-04,PSYC54.04,This course introduces students to the various ways psychology relates to the law and its systems and processes. The course focuses on the role of the forensic psychologist in the criminal justice system and other workplaces. It also focuses on the tools and responsibilities of a forensic psychologist.,,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23392,7 +23392,7 @@ PSYC,PSYC 54.04 Forensic Psychology,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 54.05 Neuromarketing and Consumer Neuroscience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-54-05,PSYC54.05,"How do measures of the brain and body map onto a brand marketer’s return on a research investment? This course focuses on the history and topics related to the nascent, yet burgeoning, cross-disciplinary field of consumer neuroscience and new technological advances in marketing related to neuromarketing. The course will provide a unique vantage on the multiple academic and applied histories of the field, its ethical ramifications, along with general perspectives focusing on current practices and potential future directions, including the implications of predicting mass consumer behavior from small test samples. Students will have the opportunity to engage with some of the most notable academic and practitioners in the field and will participate in a capstone project of original research applying theory and utilizing psycho physiological tools applied in real-world neuromarketing research.","PSYC 1and one of:PSYC 21, PSYC 27,PSYC 28,PSYC 38; orPSYC 6",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23820,7 +23820,7 @@ PSYC,PSYC 54.05 Neuromarketing and Consumer Neuroscience,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>","['PSYC1', 'PSYC21']"
 PSYC,PSYC 54.07 Clinical Science Practicum,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-54-07,PSYC54.07,"This course is designed to provide students with an experiential learning opportunity by applying knowledge and skills gained in the classroom to actual work settings while under both site and academic supervision.  Students who have an interest in clinical psychology will learn about the different facets of working in a social service, mental health, or other community setting while assessing their own skills and suitability for this kind of graduate work or employment experience.   Students will spend up to 10 hours/wk at their practicum site and will be mentored onsite.  Additional supervision will be provided by a clinical science faculty member during regularly scheduled class times and didactic instruction will be offered to complement and enhance work that is completed at practicum sites.",PSYC 24and instructor permission,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24242,7 +24242,7 @@ PSYC,PSYC 54.07 Clinical Science Practicum,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>","['PSYC24', 'IP']"
 PSYC,PSYC 54.08 Leadership,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-54-08,PSYC54.08,"What makes a great leader?  Why would others follow you?  A century of psychological research clarifies the traits, skills and behaviors of effective leaders, including how they attract, influence, develop and empower followers to excel in different situations.  Readings will explain the psychological science; classroom demonstrations, guest leader interviews, case study discussions and small group challenges will illuminate it.  Outside the classroom, weekly leadership practice assignments will reinforce core concepts, increase self-awareness, and develop leadership capabilities, all in support of a community impact initiative that each student will select, plan and lead (courage required).  Your instructor will apply three decades of experience in developing thousands of leaders at all levels on multiple continents, to guide and challenge you to develop your science-based leadership potential.",PSYC 1or permission of instructor,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24672,7 +24672,7 @@ PSYC,PSYC 54.08 Leadership,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 60 Principles of Human Brain Mapping with fMRI,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-60,PSYC60,"This course is designed to introduce students to the theoretical and practical issues involved in conducting functional magnetic resonance imaging (fMRI) experiments of cognitive and behaviorally-related brain activity. Participants will gain an understanding of the physiological principles underlying the fMRI signal change, as well as the considerations for experimental design. The course will include firsthand exposure to the scanning environment and data collection procedures. Participants will be provided conceptual and hands-on experience with image processing and statistical analysis. At the completion of this course, it is expected that participants will be prepared to critique, design, and conduct fMRI studies; appreciate limitations and potentials of current fMRI methods and techniques; and better understand the broad range of expertise required in an fMRI research program. The course is designed to provide the participant with intensive, hands-on instruction. As a result, enrollment in the course will be limited. Knowledge of MR physics, signal processing, or the UNIX/Linux operating system is not a prerequisite.",Instructor permission through the department website,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25100,7 +25100,7 @@ PSYC,PSYC 60 Principles of Human Brain Mapping with fMRI,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PSYC,PSYC 62 Principles of Human Electrophysiology: Using Brain Waves to Understand the Mind,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-62,PSYC62,"The goal of this course is to provide an introduction to the methodologies of human electroencephalogram (EEG) and event-related potentials (ERPs). The course will cover what EEG is (i.e., what type of brain signals we are measuring and how), how to design ERP experiments, how to prepare an EEG subject and record data, basic EEG and ERP analysis such as artifact rejection, filtering, and computing ERPs. The class will also cover how to present ERP data and interpret ERP components.",,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25520,7 +25520,7 @@ PSYC,PSYC 62 Principles of Human Electrophysiology: Using Brain Waves to Underst
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 63 Experimental Study of Human Interaction,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-63,PSYC63,"Insight into how human brains work in their most ubiquitous and biologically meaningful context, social interaction, has remained largely elusive. This course ventures into this “dark matter” of social neuroscience, pursuing the question of what constitutes a meeting of minds. Conceptual and methodological challenges of studying human interaction are dealt with in-class discussions, laboratories, and small group research projects on selected topics. Students will be expected to design, run, analyze, and write up an interaction study answering a question of their choosing. Example research projects include but are not limited to studies of human interactive behavior in the real world, the lab, simulated scenarios, or on social media.","PSYC 11,PSYC 23, and instructor permission through the department website",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25942,7 +25942,7 @@ PSYC,PSYC 63 Experimental Study of Human Interaction,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>","['PSYC11', 'PSYC23', 'IP']"
 PSYC,PSYC 70 Neuroscience Research,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-70,PSYC70,"This course is offered every term and is designed to enable Neuroscience majors early in their course of study to engage in independent laboratory research under the direction of a neuroscience faculty member.  Students are required to write a final report that describes the goal of the project, their research, and what they learned from their experience.  This course may count in the neuroscience major as an elective numbered above 20, but cannot fulfill the requirement for electives numbered above 40.  It cannot be used towards the culminating experience.  Students may take up to three terms of independent/honors research (PSYC 70,PSYC 90, PSYC 91) but only two terms may be counted for credit towards the major.  More advanced students who have taken at least two core neuroscience courses should enroll inPSYC 90.","PSYC 6.  Submission of the Checklist for enrolling in Independent Research, which includes approval from the advisor.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26366,7 +26366,7 @@ PSYC,PSYC 70 Neuroscience Research,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>","['PSYC6', 'IP']"
 PSYC,PSYC 80.01 Neuroscience of Reward,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-80-01,PSYC80.01,"Much of the life of humans and other animals revolves around reward, whether engaging in basic pleasures like food and sex or enjoying more complex things like music. This course will introduce conceptual frameworks to understand reward as a phenomenon that is distinct from other features of goal-directed behavior. We will then discuss recent advances in neuroscience research that are helping us to understand the basic brain mechanisms that make things pleasurable, including anatomical pathways, neurotransmitter systems, and dynamics of neural activity.",PSYC 6and one ofPSYC 37or PSYC 45: and instructor permission through the department website,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26790,7 +26790,7 @@ PSYC,PSYC 80.01 Neuroscience of Reward,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>","['PSYC6', 'PSYC37', 'IP']"
 PSYC,PSYC 80.02 Neuroeconomics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-80-02,PSYC80.02,"Neuroeconomics is an emerging field in which a combination of methods from neuroscience, psychology, and economics is used to better understand how we make decisions. In this seminar course, we learn about economic and psychological theories that are used to investigate and interpret choice behavior, and mental and neural processes that underlie decision making. We also examine how recent neurobiological discoveries are used to refine decision theories and models developed in psychology and economics. During this course, students will read and discuss the most current research findings in neuroeconomics. They will also learn to develop new ideas/hypotheses and design experiments to test those ideas/hypotheses, or to use their knowledge to inform society about the implications of findings in the field of neuroeconomics.",Instructor permission through the department website,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27214,7 +27214,7 @@ PSYC,PSYC 80.02 Neuroeconomics,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PSYC,PSYC 80.04 The Weight Among Us: What Neuroscience Can Teach Us About Obesity,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-80-04,PSYC80.04,"In 1995, ~56% of adults in the US were overweight or obese. Fast-forward ~25 years and the prevalence has increased to 70%. Over this time period there have been significant advances in the scientific understanding of obesity, yet many questions remain unanswered. In this course, students will examine, through the lens of neuroscience, how successes, failures and challenges in obesity research inform the prevention, management, and treatment of obesity.","PSYC 6and one of the following:PSYC 37or  PSYC 45 (recommended), instructor may waivePSYC 37/45 for qualified students; and instructor permission via the department website.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27632,7 +27632,7 @@ PSYC,PSYC 80.04 The Weight Among Us: What Neuroscience Can Teach Us About Obesit
 </form>
 
 </body>
-</html>"
+</html>","['PSYC6', 'PSYC37', 'IP']"
 PSYC,"PSYC 80.05 Mind, Brain, and Health",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-80-05,PSYC80.05,"What does the mind have to do with physical health? In this course, we explore the idea that the mind and brain influence physiological processes related to mental and physical health alike. How we conceptualize ourselves and our place in the world sets the stage for how we interpret life events and make decisions. This conceptualization also governs how our bodies respond to stressors and other environmental conditions.",PSYC 1orPSYC 6; 4 other PSYC/PSNS courses; and instructor permission via the department website.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28050,7 +28050,7 @@ PSYC,"PSYC 80.05 Mind, Brain, and Health",https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PSYC,PSYC 80.06 Advanced Seminar on Brain Evolution,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-80-06,PSYC80.06,"For the first 200 million years of mammalian evolution, most animals’ brain sizes were highly predictable from their body size. In the past four million years, an evolutionary blink of the eye, primates rapidly evolved brains that are several times larger than previously would have been predicted for their body size. How did this occur? What are the effects of these substantial brain changes? What are the contents of human brains, and how do they differ from the brains of other primates (and other mammals, and non-mammals)? Evolution acts on genes, not on organisms; what are the genetic factors that have been identified in recent primate brain growth? What relationships may obtain between anatomical and functional brain characteristics? What mechanisms are at play, including extrinsic factors and evolutionary “pressures”? What differential predictions do various theories make, and how are they tested? How would we know if a hypothesis is false; how do we know if they are falsifiable? The class will critically examine a set of related topics including brain structure, anthropology, evolution, genetics, development, cognition, race, intelligence.",PSYC 1orPSYC 6; and instructor permission via the department website,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28474,7 +28474,7 @@ PSYC,PSYC 80.06 Advanced Seminar on Brain Evolution,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>","['PSYC1', 'IP']"
 PSYC,PSYC 80.07 Neuroscience and Artificial Intelligence,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-80-07,PSYC80.07,"The brain is capable of processing complex information to generate flexible behavior across a wide range of changing conditions. Neuroscience has been a source of inspiration for the field of Artificial Intelligence (AI) in its development of machines that can learn and act, especially for AI architectures using neural networks and deep learning. In turn, developments in AI have provided models which are being used to better understand the brain’s computational functions.This seminar course will examine this reciprocal interaction between neuroscience and AI. A focus will be on a historical overview on how ideas in neuroscience and psychology shaped early AI. We will also examine how the AI tools offer approaches to study brain function (often referred to as “NeuroAI” in the current research literature). Seminar discussions will be based on readings that include a mix of classic and modern research papers and reviews, and book chapters.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28898,7 +28898,7 @@ PSYC,PSYC 80.07 Neuroscience and Artificial Intelligence,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 81.04 Neural Basis of Human Imagination,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-81-04,PSYC81.04,"The capacities that set humans apart in kind, not just in degree, from all other known animals include, in part, capacities and propensities for art, music, analogical reasoning, abstract thought, creativity, the spontaneous generation and use of symbols, the ability to reason abstractly about others and about events, as well as the ability to manipulate symbols recursively and syntactically. This course will explore the hypothesis that all these modes of human behavior and cognition share a common root cause in our brains. We will focus in particular on the human capacity to imagine. We can, for example, construct a representation of a thing, say an airplane, or an event, say a planned party, and then go about making real that which we imagined. How is this capacity to imagine and creatively plan realized in the brain? Where did it first appear in the human lineage? What is the relationship of imagining to other important capacities, such as attention, volition, consciousness, planning and executive control? The goal of this course is to try to answer such questions by reading empirical and theoretical papers and chapters that try to account for what it is that makes the human mind human, by looking at distinctive aspects of processing in the human brain.","One of the following:PSYC 6,PSYC 21,PSYC 28; and instructor permission through the department website.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29316,7 +29316,7 @@ PSYC,PSYC 81.04 Neural Basis of Human Imagination,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>","['PSYC6', 'IP']"
 PSYC,PSYC 81.08 Animal Cognition,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-81-08,PSYC81.08,"Can rats empathize with others, or experience regret? Can birds grasp the intentions of others, or imagine the future? Do dogs deliberately deceive their human companions? This seminar will explore the cognitive abilities of a range of animals through the careful analysis of behavior, defining rigorous and measurable criteria for inferring complex behaviors, and contrasting them with simpler alternatives. We will draw on neural data, asking if phenomena such as creativity, mental time travel, and theory of mind can be detected based on the observation of brain activity. Finally, we will consider questions relevant to human health: can mice become schizophrenic, chronically depressed, or develop post-traumatic stress disorder? Lively discussion in the classroom is encouraged.","PSYC 22orPSYC 28, and instructor permission through the department website",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29740,7 +29740,7 @@ PSYC,PSYC 81.08 Animal Cognition,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>","['PSYC22', 'IP']"
 PSYC,PSYC 81.09 Storytelling with Data,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-81-09,PSYC81.09,"Humanity creates nearly 350 TB of data each day, and much of it is freely available for us to download.  But making sense of that staggering amount of text, video, audio, and other forms of data is like drinking from a firehose: the sheer quantity of data makes it tricky to make sense of what itmeans.  In this course we will study how to find, clean, analyze, make sense of, and communicate about complex data.In addition to helping you to build up your data science toolbox, the course is centered around telling engaging, compelling, (often) entertaining, and, above all, clear “stories” about data.  This will require considering your audience’s mindset, goals, motivations, and backgrounds, and then leveraging those considerations to develop effective ways of conveying the major plot points.",Instructor permission through the department website,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30158,7 +30158,7 @@ PSYC,PSYC 81.09 Storytelling with Data,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PSYC,PSYC 81.10 Neural Bases of Attention and Consciousness,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-81-10,PSYC81.10,"This course will cover the relationship between volitionally attending and consciousness, particularly in the domain of human visual processing. By consciousness we mean that which is currently subjectively experienced. The relationship between attention and consciousness appears to be very tight; that which we choose to attend to we are conscious of, and that which we are conscious of we could choose to attend to in the next moment. We will examine what is known about the neural bases of the different types of attention, with a particular focus on 'endogenous attention,' which is the mode of attending that is under volitional control. We will at the same time examine what is known about the neural bases of visual consciousness, with a particular focus on those aspects of neural processing that are modulated by volitionally attending to a stimulus or not. In addition to one main text (""The Quest for Consciousness"" by Christof Koch) we will read scientific papers that place useful constraints on the neural bases of volitional attention and visual consciousness.","PSYC 1orPSYC 6; andPSYC 11or a lab course that is a part of the Neuroscience major, and permission through the department website.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30576,7 +30576,7 @@ PSYC,PSYC 81.10 Neural Bases of Attention and Consciousness,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>","['PSYC1', 'PSYC11']"
 PSYC,PSYC 81.11 Real-World Scene Perception,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-81-11,PSYC81.11,"We experience our visual environment as a seamless, immersive panorama. Yet, each view of this environment is discrete and fleeting, separated by expansive eye movements and discontinuous views of our surroundings. How does the brain build a unified representation of an immersive, real-world visual environment? This course will discuss the scientific literature of real-world visual scene understanding.  The topics we will cover in this course cut across human, animal, and computational studies, addressing questions such as: What are the circuits and mechanisms that enable the recognition of a visual scene from just one glance? How are the representational dimensions of visual scenes mapped onto the surface of the brain? How can our understanding of human scene perception guide machine vision systems?","One of:PSYC 6,PSYC 21, orPSYC 28, and instructor permission through the department website",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30994,7 +30994,7 @@ PSYC,PSYC 81.11 Real-World Scene Perception,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>","['PSYC6', 'IP']"
 PSYC,"PSYC 81.12 Using Naturalistic Stimuli, Brain Imaging, and Big Data Methods to Understand Human Cognition",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-81-12,PSYC81.12,"Natural human experience involves a continuous stream of incoming stimuli in a rich context of prior knowledge and expectations.  Traditionally, experimental psychology attempts to reduce this complexity using controlled experiments that vary a single, experimental variable and hold other, control variables constant.  Human cognition, however, develops to extract information and guide behavior based on uncontrolled, naturalistic stimuli in an ecologically rich environment.  In this seminar we will examine a new approach to experimental cognitive research that uses uncontrolled, naturalistic stimuli and discovers structure and meaning in the brain activity and behavioral responses they evoke using advanced computational methods from machine learning and big data analysis.  We will discuss the advantages of this new approach for studying complex and ecological cognition and the limitations of the current state-of-the-art.  Throughout the course we will consider future directions and challenges for extending this approach into new domains of cognition, developing richer naturalistic stimulation paradigms, and developing more powerful methods for discovering the structure of information in real world events and environments.","Permission of instructor.  Background in psychological and brain imaging research methods, computer science, and machine learning will be helpful, but students need not have background in all of these areas.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31412,7 +31412,7 @@ PSYC,"PSYC 81.12 Using Naturalistic Stimuli, Brain Imaging, and Big Data Methods
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PSYC,PSYC 81.13 Persuasion and Propaganda,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-81-13,PSYC81.13,"We all change our minds about various issues over the course of our lives. This course will examine how minds are changed. What are the most effective means of changing someone's mind? How do people attempt to persuade one another of the rightness or wrongness of a position? How do governments use propaganda and other forms of inculcation to convince people of the rightness of their positions? How do advertisers manipulate consumers into wanting to buy their products? How do religions and cults convince people to dedicate their lives and resources to their cause? What happened in cases of collective transformation of a society that to us, now, seem irrational, as happened, for example, in the rise of nazism? What are the roles of conformity, peer pressure, and force in enhancing mindsets and belief systems. What role do dissenters play in the propagation of ideas, and the limits placed on inculcation and mind control? This seminar is exploratory and discussion-based. We will view media and read articles or books outside of class and then discuss associated ideas in class. There will be one or two oral presentations in front of the class, and associated writing projects, in which the student deeply investigates some aspect of one of the questions above.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31828,7 +31828,7 @@ PSYC,PSYC 81.13 Persuasion and Propaganda,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 83.07 The Problem of Other Minds,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-83-07,PSYC83.07,"Success in a social world requires understanding other people’s thoughts and feelings. Yet, other people’s mental states are not directly observable: you cannot see a thought or touch a feeling. Nonetheless, humans are actually quite proficient in inferring these invisible, internal states of mind. How do we accomplish these mind-reading feats? This course will address this question, which is known as ‘the problem of other minds.’ We will tackle ‘the problem of other minds’ from multiple angles, relying heavily on neuroscience and psychology research, as well as a few foundational papers from philosophy. Specifically, we will address questions such as: Do specialized portions of the brain accomplish mental state inference? When do mind-reading skills develop in children and are humans the only species that can represent other minds? Why do some people, such as individuals with autism spectrum disorder (ASD), experience difficulties in understanding others? What leads to biases in mental state inference, such as anthropomorphism  (when people attribute mental states to inanimate objects) and dehumanization (when people under attribute mental states to humans)?","PSYC 1,PSYC 10, and instructor permission through the department website",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32246,7 +32246,7 @@ PSYC,PSYC 83.07 The Problem of Other Minds,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>","['PSYC1', 'PSYC10', 'IP']"
 PSYC,PSYC 83.08 Social And Neural Networks,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-83-08,PSYC83.08,"Networks exert profound influences on our lives. We are each embedded within social networks that influence our emotional wellbeing, the information we can access, and even which diseases we might catch. Likewise, each of us has a complex network of neurons embedded within our head: our brain. The structures of these neural networks reflect our cognitive abilities, mental health, and how we form our social networks. Despite the superficial dissimilarities between these types of networks, we can use a common framework – graph theory – to describe and understand both social and neural networks. This course will explore social psychology and neuroscience through the lens of networks, providing students with novel perspectives on and powerful tools for analyzing these subjects. Students will come away with a firm grasp of graph theory, social networks, brain networks, and artificial neural networks.","PSYC 1orPSYC 6, andPSYC 10or equivalent, and one of the following:PSYC 23,PSYC 38, a course in the PSYC 53 series, orPSYC 60; and instructor permission through the department website",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32664,7 +32664,7 @@ PSYC,PSYC 83.08 Social And Neural Networks,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>","['PSYC1', 'PSYC10', 'PSYC23', 'IP']"
 PSYC,PSYC 83.09 Neurobiology of Social Intelligence,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-83-09,PSYC83.09,"A deep understanding of any social species requires a neurobiological understanding of how and why brains interact. In this culminating seminar, we will critically examine the social contexts that forged and continue to shape human intelligence. We will be considering evolutionary, comparative, game-theoretic, computational, developmental, and pathological aspects of our social intelligence from a neurobiological perspective. The goal is to gain insight into how humans became such big-brained other-regarding apes, and how our brains developmentally construct and pathologically lose socio-cognitive faculties, as seems to be the case in certain psychiatric and neurological disorders. Students will be expected to read and critically assess the neuroscientific literature and explore empirical opportunities for new insights into the neurobiology of human social intelligence.",PSYC 1orPSYC 6,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33082,7 +33082,7 @@ PSYC,PSYC 83.09 Neurobiology of Social Intelligence,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>",['PSYC1']
 PSYC,PSYC 84.05 The Power of Beliefs,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-84-05,PSYC84.05,"How do beliefs affect clinical outcomes?  This course provides an in-depth examination of the role of beliefs and expectations in the manifestation of psychological symptoms and their treatment.  Topics to be covered include the psychological and biological bases of pharmacological placebo effects, the mechanisms underlying psychotherapy (e.g., patient and provider expectations), and also how cultural expectations impact how psychological symptoms are experienced (e.g., hallucinations, delusions, and somatization).",PSYC 1orPSYC 6; and instructor permission through the department website,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33506,7 +33506,7 @@ PSYC,PSYC 84.05 The Power of Beliefs,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>","['PSYC1', 'IP']"
 PSYC,PSYC 84.06 Organizational Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-84-06,PSYC84.06,"How do some organizations unleash remarkable creativity, teamwork, job satisfaction, and performance, while others struggle, stagnate, become toxic and/or fail?  Through active engagement with case studies, simulation challenges, external experts, and project-based learning we will find out.  This seminar will explore how the attitudes, motivations and behavior of individuals and groups affect organizational performance, and the psychological science that helps explain why.  We will discover how the best leaders use their power and influence to shape their organization’s culture and build organizational systems that place the right talent in the right roles, empower high-performing teams, improve processes, develop capabilities, and reward the right behaviors.  Students will derive practical science-based insights they can use to strengthen the teams, clubs, and organizations to which they belong.",PSYC 1orPSYC 6; and one of the following:PSYC 23or 28 or 53.12 or 54.08; and Instructor Permission via the Department Website,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33934,7 +33934,7 @@ PSYC,PSYC 84.06 Organizational Psychology,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>","['PSYC1', 'PSYC23', 'IP']"
 PSYC,PSYC 86.01 Selective Developmental Deficits,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-86-01,PSYC86.01,"Cognitive neuropsychology relies on selective deficits to shed light on the organization of the brain.  In the past, nearly all selective deficits reported in the neuropsychological literature involved brain-damaged patients who lost particular abilities, but many selective deficits due to failures of development have been identified in recent years.  These include deficits affecting computations concerned with color, faces, objects, spatial abilities, music, language, reading, number, and memory.  This course will discuss the theoretical basis of selective deficits, examine the cognitive and neural profiles of particular selective developmental deficits, and consider the more general implications of selective developmental deficits and the research opportunities they present.",Permission through the department website,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34358,7 +34358,7 @@ PSYC,PSYC 86.01 Selective Developmental Deficits,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PSYC,PSYC 86.04 Bucci Fellows Seminar in Advanced Neuroscience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-86-04,PSYC86.04,"This seminar provides advanced undergraduates the opportunity to participate in the exploration of the cutting edge of neuroscience research through the vehicle of the Annual Meeting of the Society for Neuroscience (SfN). The conference program serves as a syllabus and roadmap for the most up-to-date techniques and discoveries in the field of neuroscience. The seminar will explore topics and issues informed by the scheduled presentations at the meeting, allowing student learning to keep pace with the current research and knowledge of leading international experts in neuroscience. The culmination of the course will involve travel to the Annual Meeting of SfN with over 30,000 neuroscientists. This experience is designed to make neuroscience “come alive,” and to provide students with valuable opportunities to take part in a scientific conference, meet world-renowned researchers, prospective graduate mentors, and possible future employers. Students will also have the chance to develop important professional skills through critical evaluation of research, exposure to different presentation styles, and preparation of an in-depth research paper and oral presentations. This seminar is offered in honor of the late Professor David Bucci and his dedication to innovative undergraduate teaching in Neuroscience. Thanks to the generosity of the donors to the David Bucci Fellows Fund, all travel expenses for students will be covered by Bucci Fellowships.","PSYC 6and instructor permission through the department website.  Students interested in the course should contact the instructor prior to the course registration period. Students will be asked to complete a brief application stating their interest in the course, what they hope to get out of the course, courses completed in Neuroscience/Psychology, and any prior/current research experience. Advanced students (Seniors, then Juniors) majoring in Neuroscience or Psychology will be given priority for enrollment. A code of conduct will also be developed by and for the students to guide their participation at the conference as ambassadors of Dartmouth College.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34782,7 +34782,7 @@ PSYC,PSYC 86.04 Bucci Fellows Seminar in Advanced Neuroscience,https://dartmouth
 </form>
 
 </body>
-</html>"
+</html>","['PSYC6', 'IP']"
 PSYC,PSYC 86.05 Future Directions in Psychological Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-86-05,PSYC86.05,"Psychology and neuroscience are ever evolving. Textbooks, with their hundreds of pages, are continually edited, making way for new areas of research previously unstudied. What is on the horizon for these fields? In this culminating seminar, we will look at the ways these fields are breaking new ground in deepening our knowledge of the human mind, the research that foreshadowed those changes, and the role of interdisciplinarity. We will also discuss the implications of these new directions in terms of how we grapple with the deepest psychological questions – What does it mean to be human? How should we treat others? How do minds connect? And how should science, itself, change to become more robust, open and objective? Throughout the class, we will discuss the important and challenging ethical implications of these new frontiers.",PSYC 1and instructor permission via the department website,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35200,7 +35200,7 @@ PSYC,PSYC 86.05 Future Directions in Psychological Science,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>","['PSYC1', 'IP']"
 PSYC,PSYC 88 Independent Psychology Research,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-88,PSYC88,"This course is designed to enable qualified students to engage in independent laboratory or field research under the direction of a PBS faculty member. Students are required to write a final report of their research. Students may take up to three terms of independent research (or one term of independent research and two terms of honors research), but no more than two terms of 88, 89, or a combination of 88s and 89s may count toward the eight required courses for the major. This course may not be used to fulfill the upper-level (60 or above) major requirement.","PSYC 1orPSYC 6, andPSYC 10, andPSYC 11. Submission of the Checklist for enrolling in Independent Research, which includes approval from the advisor.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35624,7 +35624,7 @@ PSYC,PSYC 88 Independent Psychology Research,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>","['PSYC1', 'PSYC10', 'PSYC11', 'IP']"
 PSYC,PSYC 89.01 Honors Psychology Research I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-89-01,PSYC89.01,"This course is designed to enable especially qualified Psychology majors, usually seniors, to engage in honors laboratory or field research under the direction of a faculty member.  No more than two terms of 88, 89, or a combination of 88s and 89s may count toward the eight required courses for the major. This course may be used to fulfill the upper-level (60 or above) major requirement. Students are awarded one course credit for successful completion of this course once they complete the Psychology Honors Program requirements, generally at the end of the spring term. Students subsequently register for PSYC 89.02. Although students must register for two terms of Honors Psychology Research (PSYC 89.01 and PSYC 89.02), honors research coursework extends over three terms.  Students do not register for a third term. A final grade will replace the “ON” for both this course and PSYC 89.02 upon completion of the Psychology Honors program requirements.  See the description of the Psychology Honors program for additional information.","PSYC 1,PSYC 10, andPSYC 11. A 60-level course is strongly recommended. Submission of the checklist for enrolling in Honors Research, which includes approval from the advisor. The checklist is available on the department website.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36048,7 +36048,7 @@ PSYC,PSYC 89.01 Honors Psychology Research I,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>","['PSYC1', 'PSYC10', 'PSYC11']"
 PSYC,PSYC 89.02 Honors Psychology Research II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-89-02,PSYC89.02,"Psychology Honors students register for PSYC 89.02 as their second term of honors research. Students are awarded one course credit for successful completion of this course once they complete the Psychology Honors Program requirements, generally at the end of the spring term. Students register for this course after PSYC 89.01. Students register for only two terms, though honors research coursework extends over three terms. A final grade will replace the “ON” for both PSYC 89.01 and this course upon completion of the Psychology Honors Program requirements.",PSYC 89.01,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36472,7 +36472,7 @@ PSYC,PSYC 89.02 Honors Psychology Research II,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",['PSYC89.01']
 PSYC,PSYC 90 Independent Neuroscience Research,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-90,PSYC90,"This course is designed to enable Neuroscience majors to engage in independent laboratory research under the direction of a Neuroscience faculty member.  Students are required to write a final report of their research.  Students may take up to three terms of independent research (or one term of independent and two terms of honors research), but only two terms may be counted for credit towards the major.  If two terms are taken, one may count towards the major culminating experience and the second may count as an elective numbered above 20, but cannot be used to fulfill the major requirement for electives numbered above 40.","PSYC 6,PSYC 10, two of the four core courses required for the major and submission of the Checklist for enrolling in Independent Research, which includes approval from the advisor.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36896,7 +36896,7 @@ PSYC,PSYC 90 Independent Neuroscience Research,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PSYC,PSYC 91.01 Honors Neuroscience Research I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-91-01,PSYC91.01,"This course is designed to enable qualified Neuroscience majors (whose major GPA is above 3.3), usually seniors, to engage in honors laboratory or field research under the direction of a faculty member. Students must take two terms of Honors Research (PSYC 91.01 and PSYC 91.02).  No more than two terms of 90, 91, or a combination of 90s and 91s may count toward the required courses for the major.  Since honors students take PSYC 91.01 and PSYC 91.02, one may count towards the upper-level (60 or above) culminating experience requirement for the major and the second may count as an elective numbered above 20, but cannot be used to fulfill the major requirement for electives numbered above 40.  Students are awarded one course credit for successful completion of this course once they complete the Neuroscience Honors Program requirements, generally at the end of the spring term. Students subsequently register for PSYC 91.02. Although students must register for two terms of Honors Neuroscience Research (PSYC 91.01 and PSYC 91.02), honors research coursework extends over three terms.  Students do not register for a third term. A final grade will replace the “ON” for both this course and PSYC 91.02 upon completion of the Neuroscience Honors program requirements.  Please see the description of the Neuroscience Honors program for additional information.","PSYC 6; andPSYC 10orBIOL 29. Submission of the checklist for enrolling in Honors Research, which includes approval from the advisor. The checklist is available on the department website.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37320,7 +37320,7 @@ PSYC,PSYC 91.01 Honors Neuroscience Research I,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>","['PSYC6', 'PSYC10', 'IP']"
 PSYC,PSYC 91.02 Honors Neuroscience Research II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-91-02,PSYC91.02,"Neuroscience Honors students register for PSYC 91.02 as their second term of honors research.  Students are awarded one course credit for successful completion of this course once they complete the Neuroscience Honors Program requirements, generally at the end of the spring term. Students register for this course after PSYC 91.01. Students register for only two terms, though honors research coursework extends over three terms. A final grade will replace the “ON” for both PSYC 91.01 and this course upon completion of the Neuroscience Honors Program requirements.  See full course description listed with PSYC 91.01 and the Neuroscience Honors program description for more details.",PSYC 91.01,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37744,7 +37744,7 @@ PSYC,PSYC 91.02 Honors Neuroscience Research II,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",['PSYC91.01']
 PSYC,PSYC 92.01 Senior Thesis in Psychology I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-92-01,PSYC92.01,"This course is designed to enable Psychology majors, usually seniors, to engage in laboratory or field thesis research under the direction of a faculty member.  No more than two terms of 88, 92, or a combination of 88s and 92s may count toward the eight required courses for the major. This course may be used to fulfill the upper-level (60 or above) culminating requirement. Students are awarded one course credit for successful completion of this course once they complete the Psychology thesis requirements, generally at the end of the spring term. Students subsequently register for PSYC 92.02.  A final grade will replace the “ON” for both this course and PSYC 92.02 upon completion of the Psychology thesis requirements.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38166,7 +38166,7 @@ PSYC,PSYC 92.01 Senior Thesis in Psychology I,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 PSYC,PSYC 92.02 Senior Thesis in Psychology II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/psychological-and-brain-sciences/psyc-psychological-and-brain-sciences/psyc-92-02,PSYC92.02,"Psychology Senior Thesis students register for PSYC 92.02 as their second term of research. Students are awarded one course credit for successful completion of this course once they complete the thesis requirements, generally at the end of the spring term. Students register for this course after PSYC 92.01. A final grade will replace the “ON” for both PSYC 92.01 and this course upon completion of the Psychology thesis requirements.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38588,4 +38588,4 @@ PSYC,PSYC 92.02 Senior Thesis in Psychology II,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]

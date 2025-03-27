@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 ENGS,ENGS 1 Everyday Technology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-1,ENGS1,"This course is intended to take the mystery out of the technology that we have grown to depend on in our everyday lives. Both the principles behind and examples of devices utilizing electricity, solid and fluid properties, chemical effects, mechanical attributes and other topics will be discussed. In the associated lab project, students will dissect, analyze, (and possibly revive!) a broken gadget or appliance of their choosing. This course has no prerequisite, but enrollment may be limited.",,TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -418,7 +418,7 @@ ENGS,ENGS 1 Everyday Technology,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 1.01 Mathematical Concepts in Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-1-01,ENGS1.01,This course introduces prospective engineering students to mathematical concepts relevant in engineering while emphasizing the solving of engineering problems rather than mathematical derivations and theory. All topics are driven by engineering applications taken directly from core engineering courses. The course includes hands-on laboratory exercises as well as a thorough introduction to Matlab.,,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -838,7 +838,7 @@ ENGS,ENGS 1.01 Mathematical Concepts in Engineering,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,"ENGS 2 Integrated Design: Engineering, Architecture, and Building Technology",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-2,ENGS2,"An introduction to the integrated design of structures and the evolving role of architects and engineers. The course will investigate the idea that design excellence is very often the result of deep collaboration between engineers, architects, and builders and that it is only in relatively recent history that a distinction between these areas of expertise has existed. The historical, social, and architectural impact of structures will be explored and several structures and their designers will be studied in depth. Enrollment limited to 50 students. No Prerequisite.",,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1258,7 +1258,7 @@ ENGS,"ENGS 2 Integrated Design: Engineering, Architecture, and Building Technolo
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 3 Materials: The Substance of Civilization,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-3,ENGS3,"With the exception of ideas and emotions, materials are the substance of civilization. From the ""Iceman's"" copper ax to indium phosphide gallium arsenide semiconductor lasers, materials have always defined our world. We even name our epochs of time based on the dominant material of the age: Stone Age, Bronze Age, Iron Age and now Silicon Age. In addition to discussing the nature and processing of metals, polymers, ceramics, glass and electronic materials, this course will analyze the dramatic developments in civilization directly resulting from advances in such materials. The text Stephen Sass'sThe Substance of Civilizationwill be used in the course. Enrollment limited to 50 students per section. No Prerequisite.",,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1678,7 +1678,7 @@ ENGS,ENGS 3 Materials: The Substance of Civilization,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 4 Technology of Cyberspace,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-4,ENGS4,"This course will cover some basic concepts underlying the 'information superhighway.' The technologies of high speed networking have stimulated much activity within the federal government, the telecommunications and computer industries, and even social science and popular fiction writing. The technical focus will be on communications technologies, information theory, and the communications requirements of video (standard and ATV), speech (and other audio), text data. Social economic and policy issues will be an integral part of the course. Enrollment limited to 30 students.",,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2098,7 +2098,7 @@ ENGS,ENGS 4 Technology of Cyberspace,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 5 Healthcare and Biotechnology in the 21st Century,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-5,ENGS5,"Technologies that will impact healthcare in the 21st century are explored, including biology, robotics, and information. Biotechnologies are explored that will be used for the treatment of diseases and the regeneration of missing organs and limbs. Robotics will be explored that will replace parts. This will include artificial organs, robots as replacement for human parts, the human genome project, gene therapy, biomaterials, genetic engineering, cloning, transplantation (auto, allo and xeno), limb regeneration, man-machine interfaces, robotics, prosthetic limbs, artificial organs and joints. This section will also cover ethical issues related to the above topics and issues regarding the FDA and the approval of new medical treatments. We will discuss going beyond normal with respect to the senses, muscles and creating wings. Enrollment is limited to 75 students. No Prerequisite.",,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2518,7 +2518,7 @@ ENGS,ENGS 5 Healthcare and Biotechnology in the 21st Century,https://dartmouth.s
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 6 Technology and Biosecurity,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-6,ENGS6,"This course will introduce students to the technologies used to combat biological threats to security ranging from pandemic influenza to bioterrorism. In particular, this course will explore the dual role that technology plays in both enhancing and destabilizing security. Specific technologies covered include the use of nanotechnology, synthetic biology, and mass spectrometry. The course considers questions such as: Where can technological solutions have the greatest impact? When can defensive technologies have offensive applications? And, how can we balance the need to regulate potentially dangerous technologies against the need for academic freedom and high tech innovation? This course has no prerequisite, but enrollment is limited to 30 students.",,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2938,7 +2938,7 @@ ENGS,ENGS 6 Technology and Biosecurity,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 7 First-Year Seminars in Engineering Sciences,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-7,ENGS7,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3354,7 +3354,7 @@ ENGS,ENGS 7 First-Year Seminars in Engineering Sciences,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 8 Materials in Sports Equipment,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-8,ENGS8,"Sports equipment uses almost every type of material imaginable, as athletes and designers leverage state-of-the-art materials to maximize human efficiency, performance, comfort and safety. As something most people have some familiarity with, active Dartmouth students in particular, it is an excellent subject for an exploration of material characteristics, selection, design, and failure. This course will introduce materials science concepts in a way that is accessible and useful for the non-major. It will exercise student's critical thinking, quantitative and communication skills. In-class demonstrations will allow students to explore material behavior and differences between materials 'hands-on' and possible field trips or lab visits will introduce them to some engineering test methods. Finally, this course will demystify terms used by manufacturers and salespeople, and help students, as athletes and consumers, make informed equipment choices. Enrollment is limited to 40 students. No prerequisite.",,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3774,7 +3774,7 @@ ENGS,ENGS 8 Materials in Sports Equipment,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 9 Everyday Technology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-9,ENGS9,"This course is intended to take the mystery out of the technology that we have grown to depend on in our everyday lives. Both the principles behind and examples of devices utilizing electricity, solid and fluid properties, chemical effects, mechanical attributes and other topics will be discussed. In the associated lab project, students will dissect, analyze, (and possibly revive!) a broken gadget or appliance of their choosing. This course has no prerequisite, but enrollment is limited to 50 students.",,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4194,8 +4194,8 @@ ENGS,ENGS 9 Everyday Technology,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
-ENGS,ENGS 11 The Way Things Work: A Visual Introduction to Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-11,ENGS11,"Students will explore and compare engineered systems and processes in the world around them. They will sketch and build models to help them understand and communicate. Each week, students will learn new sketching and visual communication techniques that they will use to visually explain how engineered systems or processes work. Students will also maintain a sketchbook to practice new sketching techniques. After being exposed to some basic engineering principles students will further investigate specific engineered systems through sketching, research, disassembly, and building. They will communicate their findings visually.",None,Dist:ART,"
+</html>",[]
+ENGS,ENGS 11 The Way Things Work: A Visual Introduction to Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-11,ENGS11,"Students will explore and compare engineered systems and processes in the world around them. They will sketch and build models to help them understand and communicate. Each week, students will learn new sketching and visual communication techniques that they will use to visually explain how engineered systems or processes work. Students will also maintain a sketchbook to practice new sketching techniques. After being exposed to some basic engineering principles students will further investigate specific engineered systems through sketching, research, disassembly, and building. They will communicate their findings visually.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
 <head><meta http-equiv=""Cache-Control"" content=""no-cache"" /><title>
@@ -4617,7 +4617,7 @@ ENGS,ENGS 11 The Way Things Work: A Visual Introduction to Engineering,https://d
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 12 Design Thinking,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-12,ENGS12,"A foundation course on the cognitive strategies and methodologies that form the basis of creative design practice. Design thinking applies to innovation across the built-environment, including the design of products, services, interactive technology, environments, and experiences. Topics include design principles, human need-finding, formal methodologies, brainstorming, heuristics, thinking by analogy, scenario building, visual thinking, and study of experienced thinkers. Weekly projects and exercises in a variety of media provide practice and development of students' personal creative abilities. Enrollment limited to 20 students. No prerequisite.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5037,7 +5037,7 @@ ENGS,ENGS 12 Design Thinking,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 13 Virtual Medicine and Cybercare,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-13,ENGS13,"There is a revolution in technology that is occurring in health care. This new technology will dramatically change how health care is delivered in the future. This course will cover topics related to the virtual human created from bits. This will include virtual reality, augmented reality and datafusion, computer simulation, advanced 3D and 4D imaging techniques, the operating room of the future, minimally invasive surgery, space medicine, teleoperations, telemedicine and telesurgery, internet 2 and cyber-space, artificial intelligence and intelligent agents applied to medicine, and the national library of medicine virtual human project. We will also discuss the FDA approval of computer simulators, robotic surgeons, and the ethics of robots doing surgery. In addition we will discuss the medical library of the future, teleconferencing and the use of interactive media in healthcare education. We will also discuss computerized patient records (CPR) and clinical information systems. Enrollment limited to 48. No prerequisite.",,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5457,7 +5457,7 @@ ENGS,ENGS 13 Virtual Medicine and Cybercare,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 14 The Science and Engineering of Music,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-14,ENGS14,"Almost everyone enjoys some forms of music, but few are familiar with the science and engineering that make music possible.  In this course students are invited to explore the making of music from technical and scientific perspectives.  In particular this covers aspects of acoustics, the workings of musical instruments, and selected aspects of musical theory and audio engineering.  Students in the course explore music with many in-class demonstrations and hands-on experimentation.  Course topics include how sound is recorded and stored digitally, the composition of sound from a musician's point of view (pitch, chords, harmony and melody) and from an engineer's point of view (frequency, harmonics).  The relationships between these two perspectives are then explored.  This course does not require proficiency in either music or any particular instrument. Enrollment is limited to 75 students.",,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5877,7 +5877,7 @@ ENGS,ENGS 14 The Science and Engineering of Music,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 15 Undergraduate Investigations in Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-15,ENGS15,An original investigation in a phase of science or engineering under the supervision of a member of the staff. Students electing the course will be expected to have a proposal approved by the department chair and to meet weekly with the staff member supervising the investigation. The course is open to undergraduates who are not majoring in engineering. A report describing the details of the investigation must be filed with the department chair and approved at the completion of the course.\f,Permission of department chair (a one-page proposal submission is required and must be submitted for approval prior to the end of the term preceding the term in which the course will be taken).,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6300,7 +6300,7 @@ ENGS,ENGS 15 Undergraduate Investigations in Engineering,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 ENGS,ENGS 15.01 Senior Design Challenge I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-15-01,ENGS15.01,"The Senior Design Challenge is a two-term course designed to serve as a senior capstone experience for Dartmouth students across all majors. Students in this project-based course will practice human-centered design, developing not only the skills, but also the creative confidence to apply their liberal arts education to make a positive difference in the world beyond Dartmouth. Students will work in interdisciplinary teams on projects that will be determined in partnership with organizations in the Upper Valley. The project topics will be designed to give students some flexibility in determining the specific problem on which to focus, while ensuring client responsiveness and substantial fieldwork opportunities. Enrollment is limited.Students are awarded one course credit for successful completion of this course upon completion of ENGS-15.02. Students register for ENGS-15.01 and receive a grade of “ON” (ongoing) at the end of the term.  Students then register for ENGS-15.02 the subsequent term to complete the coursework. A final grade will replace the “ON” in ENGS-15.01 upon completion of ENGS-15.02.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6721,7 +6721,7 @@ ENGS,ENGS 15.01 Senior Design Challenge I,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 15.02 Senior Design Challenge II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-15-02,ENGS15.02,"The Senior Design Challenge is a two-term course designed to serve as a senior capstone experience for Dartmouth students across all majors. Students in this project-based course will practice human-centered design, developing not only the skills, but also the creative confidence to apply their liberal arts education to make a positive difference in the world beyond Dartmouth. Students will work in interdisciplinary teams on projects that will be determined in partnership with organizations in the Upper Valley. The project topics will be designed to give students some flexibility in determining the specific problem on which to focus, while ensuring client responsiveness and substantial fieldwork opportunities. Enrollment is limited.Students are awarded one course credit for successful completion of this course. Students who have registered for ENGS-15.01 register for ENGS-15.02 to complete the coursework. A final grade will replace the “ON” for ENGS-15.01 upon completion of this course for a total of 2 credits for ENGS-15.01 and ENGS-15.02.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7142,7 +7142,7 @@ ENGS,ENGS 15.02 Senior Design Challenge II,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 15.03 The Ecosystem for Bio-Innovation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-15-03,ENGS15.03,"We are living through biology’s century: global pandemics; $100 genomes; bio-reactor beef; plastic-eating engineered microbes…and we still have 80 years to go.This course is built around the basic idea that biotechnology is changing the world, but will only reach its greatest potential—technologically, economically, ethically—if we learn to guide it as a complex ecosystem of inter-dependent actors. Biotech hubs thrive where there is a dense milieu of intellectual and financial capital from top universities, academic medical centers, entrepreneurs, and venture capital. This course aims to ensure that future leaders—physicians, scientists, journalists, lawyers, financiers, patients, legislators—understand the ways that scientific advances, innovation policy, and entrepreneurship feed one another.Taught by a biotech venture capital investor, this is an inter-disciplinary course designed to empower students with the context and confidence to go deeper than news headlines that fail to seeboththe ‘forest’andthe ‘trees’. The term will unfold in a cumulative manner. We begin with a diagnosis and overview of the Ecosystem for Bio-Innovation, and then go deeper into the institutions and players that cross-pollinate within this ecosystem, focusing on healthcare (e.g. mRNA vaccines, genetic disease treatments) while making note of biotechnology’s far broader impact on our society and planet. Each week of the course will focus on one theme, while also introducing new intellectual frameworks, plus real-world cases to help concretize key concepts. We will bring material to life through a combination of lecture, Socratic learning, student projects, guest speakers, and in-class debates, always infusing our time together with a sense of the scientific, economic, political, and ethical choices at stake. Final projects will allow students to critically apply coursework toward a cutting-edge area of biotechnology.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7564,7 +7564,7 @@ ENGS,ENGS 15.03 The Ecosystem for Bio-Innovation,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 15.04 Computing Before Electronics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-15-04,ENGS15.04,"In this course we explore the computational techniques by which society survived and thrived before the advent of the integrated circuit and the electronic calculator.  From the commerce of early civilizations until the last third of the 20th century, there was a progression of mechanical calculating gadgets, some simple – some quite ingenious and complex.  Among these we will study slide rules, planimeters, integrators, digital adding machines, nomographs, and other special charts and graphical techniques.  We will also cover celestial navigation, which in its day was a particularly important application of calculation; technical drawing and perspective, the precursors to computer graphics; and cryptography, whose computational requirements helped propel us into the electronic age.  Laboratory sessions will give students direct experience using antique and period calculating instruments, plus the opportunity to create their own calculating devices.","Introductory Calculus (Math 3, or equivalent, or permission)",Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7992,7 +7992,7 @@ ENGS,ENGS 15.04 Computing Before Electronics,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",['MATH3']
 ENGS,"ENGS 15.05 Blockchain Explored: Promise, Pitfalls and Plumbing",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-15-05,ENGS15.05,"This course will explore blockchains – how they work, how they have been used, and how they are affecting society in finance, information sharing, and law.  Blockchain technology and its applications have been hyped and condemned with equal fervor.  We will examine the phenomenon from a number of perspectives, and aim to provide all participants, no matter what their background or level of technical skill, with both some hands-on experience in working with blockchain-based software and some understanding of the place of applications such as cryptocurrencies, NFTs and DAOs in contemporary America.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8408,7 +8408,7 @@ ENGS,"ENGS 15.05 Blockchain Explored: Promise, Pitfalls and Plumbing",https://da
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 15.06 Technology Entrepreneurship,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-15-06,ENGS15.06,"This course introduces students from all majors, including science, engineering, and humanities to the fundamentals of entrepreneurship as applied to the commercialization of new technologies.Through case studies, readings, lectures, projects, and engagement with class guests the course will provide instruction and perspective on the process entrepreneurs take to start, resource, adapt and grow innovative technology-based ventures and help develop students’ understanding of their own interest in pursuing careers in the field.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8825,7 +8825,7 @@ ENGS,ENGS 15.06 Technology Entrepreneurship,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 15.07 Research Methods for Human-Centered Design,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-15-07,ENGS15.07,"Research to inform Human-Centered design draws from a variety of disciplines (chiefly Human Factors and User Research) to solve complex, ambitious problems in technology design. The process across fields is the same: leveraging empathy and psychological research principles to bring human needs and experience into product design and development.This course will cover a range of research methods that apply to product design, predominantly through the lens of digital products (but applicable to other technologies). Key primary research methods will include contextual inquiry, expert interviews, diary studies, usability testing, cognitive walk throughs, A/B testing, and surveys.In order to ground these methods in theory, as well as provide practical experience, the course will be a blend of lecture, readings, discussion, and projects. The course is ideal for students with a social science background and an interest in applying this discipline to technology, or students who have had an introduction to research methods for product design and an interest in learning more. A background in statistical or data analysis is helpful but not compulsory.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9243,7 +9243,7 @@ ENGS,ENGS 15.07 Research Methods for Human-Centered Design,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 15.08 AI Demystified: A Roadmap To Understand Evolving Technologies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-15-08,ENGS15.08,"AI Demystified unfolds the pivotal world of Artificial Intelligence (AI), spotlighting its multifaceted applications and theoretical concepts across diverse sectors such as healthcare and commerce. This course, while demystifying AI, delves deep into its practical and ethical aspects, aligning with its impactful presence in our daily lives and future. Through a combination of illuminative lectures, hands-on coding sessions, weekly assignments, and a group project, students traverse through AI’s principles, applications, and societal impacts, culminating in a wholesome learning experience tailored for AI beginners and prospective professionals, and preparing them to adeptly navigate our increasingly AI-infused future.",COSC 1orENGS 20. A working knowledge of Python is recommended. Students will be expected to have an elementary knowledge of Python by the end of week 2. Materials will be provided to support this.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9661,7 +9661,7 @@ ENGS,ENGS 15.08 AI Demystified: A Roadmap To Understand Evolving Technologies,ht
 </form>
 
 </body>
-</html>"
+</html>",['ENGS20']
 ENGS,ENGS 15.09 Design Ethics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-15-09,ENGS15.09,"Every physical and digital artifact in the human-built environment is the product of a design process, and every decision that designers make—from how to gather research information, to what materials to use—carries ethical implications. That is, every choice that designers make has the potential to shape the distribution of benefits and harms. Yet, very often, designers are not fully aware of these ethical implications and are not trained to navigate the complex ethical dilemmas that they encounter in their work. Consequently, we are surrounded by objects and systems that perpetuate social injustices and environmental destruction. This course integrates philosophical theorizing and design practice, exploring the moral, social, and environmental responsibilities of designers in, e.g., product design, engineering design, UI/UX design, and other related fields. Through readings, group discussions, short lectures, case studies, guest speakers, and hands-on projects, students will learn to critically analyze and apply ethical principles in the context of design. Along the way, students will develop not only a deeper understanding of the role of design in shaping our world, but also the skills needed to become more thoughtful and responsible designers.","Any one of:ENGS 12,ENGS 21, orCOSC 25.01",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10079,7 +10079,7 @@ ENGS,ENGS 15.09 Design Ethics,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",['ENGS12']
 ENGS,ENGS 15.10 Narrative Design for Innovators,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-15-10,ENGS15.10,"Innovators cannot avoid narrative. It simply comes with the territory. Would you have heard of Apple if it didn’t break through with a powerful THINK DIFFERENT brand? Or what about Theranos? Would they have risen (and fallen) so quickly if it weren’t for a captivating idea about changing healthcare with just one drop of blood? In both of these cases, would the founders have been so iconic without their infamous black turtlenecks?Innovation, scale, and story go hand in hand. As the innovator brings their idea to the world, they have a number of questions to consider: how do I communicate what’s so game-changing about this idea? How do I tell my story so investors and advocates trust me to bring this innovation to market? How do I build a brand my audience identifies with (and wants to buy)? How do I build a company culture that recruits and retains the best talent — and rallies people to make a positive impact on the world?These are all designed objects with narrative at the core, which we’ll learn to craft.We’ll explore how traditional design processes and mindsets used to create digital and physical artifacts can be applied to the narrative artifact. Building on this foundation, we’ll also expand the designers’ toolkit with new methods of research, analysis, and craft specific to the narrative dimension of design work.From Airbnb to Tesla, Beyonce to Taylor Swift, we’ll go way beyond “marketing” and analyze case studies of how the world’s most impactful innovators use diverse narrative strategies to grow traction around their ideas and achieve their goals.Students will then get to try their hand at applying these strategies to design impact-focused narratives through practice projects. For the midterm project, student groups will redesign Budweiser to speak to a modern story of masculinity. For the culminating project of the course, students will design and pitch narrative objects to real-world founders to help them launch their new-to-world businesses.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10500,7 +10500,7 @@ ENGS,ENGS 15.10 Narrative Design for Innovators,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 15.11 Design & Education,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-15-11,ENGS15.11,"This course explores intellectual synergies between design and education including three explicit intersections: how design methods help us create better learning experiences; how design pedagogies can be valuable to the instruction of non-design subjects; and how human-centered design might help us address persistent problems in education systems. In an attempt to practice what it preaches, this course does not use the standard letter grading system–please inquire with the instructor about implications for your minors/modifications.",Recommended: ENGS 12 or ENGS 21; or any EDUC course,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10918,7 +10918,7 @@ ENGS,ENGS 15.11 Design & Education,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 ENGS,ENGS 16 Biomedical Engineering for Global Health,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-16,ENGS16,"The past 20 years have seen an incredible amount of high-tech medical advances, but to what degree have these impacted the health of those living in the developing world? The potential for years of life gained through biomedical technology is tremendous in some of the world’s poorest regions, but appropriate design requires an understanding of the clinical, political, and cultural landscape, and a clean-slate approach to developing low-cost, effective tech. This course offers an exciting opportunity to understand how to design solutions for the most important health challenges of the developing world. Learning goals will be achieved through hands-on experience, including: a laboratory component where we deconstruct, design and build a low-cost medical device, case study discussions on successful global health innovations, and several “teardowns” of common medical devices. Lecturers from Thayer, Tuck, TDC and Geisel will cover complimentary topics in clinical medicine, healthcare delivery, innovation and medical imaging. A final project will bring everything together by addressing a real health problem with a prototype of a low-cost tech solution.  Enrollment is limited to 40 students.",,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11338,7 +11338,7 @@ ENGS,ENGS 16 Biomedical Engineering for Global Health,https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 17 Electronics for Musicians,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-17,ENGS17,"From public address systems to recording performances and the creation of synthetic sounds, electronic technology permeates the making of music in many ways. In this course we propose to familiarize students with the technology behind the production of music. The course will cover analog electronics from microphone to speaker, digital electronics from the acquisition of sounds, their digital processing and their digital synthesis. This course is targeted to undergraduate students in music but is open to all students with an interest in the topic. Students will learn through in-class exploration and through labs. The course will conclude with students completing a project of their choice demonstrating their mastery of the subject.",,TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11758,7 +11758,7 @@ ENGS,ENGS 17 Electronics for Musicians,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,"ENGS 17.04 Making Music: The Art, Science, and Symbolism of Musical Instruments",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-17-04,ENGS17.04,"A hands-on course in which students working in groups build and assemble simple musical instruments with the aim of understanding how materials, technologies, craftsmanship, and cultural knowledge interact in the conception, design, and production of diverse instruments around the world. Merging the methodologies of engineering and materials science with the approaches of arts and humanities, the course explores from an interdisciplinary perspective the social meanings and powers ascribed to musical instruments, and the way that instruments have come to function as potent symbols of personal, cultural, and political identity.",,WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12180,7 +12180,7 @@ ENGS,"ENGS 17.04 Making Music: The Art, Science, and Symbolism of Musical Instru
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 18 System Dynamics in Policy Design and Analysis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-18,ENGS18,"This course introduces systems dynamics, an approach to policy design and analysis based upon feedback principles and computer simulation. The approach is useful for gaining an understanding of the underlying structural causes of problem behavior in social, economic, political, environmental, technological, and biological systems. Goals of this approach are to gain better understanding of such problem behaviors and to design policies aimed at improving them. Lectures and exercises illustrate applications of the approach to real, current problems such as urban decay, resource depletion, environmental pollution, product marketing and distribution, and agricultural planning in an expanding population. The similarity and transferability of underlying feedback characteristics among various applications is emphasized. No prior engineering or computer science experience is necessary.",MATH 3,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12602,7 +12602,7 @@ ENGS,ENGS 18 System Dynamics in Policy Design and Analysis,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>",['MATH3']
 ENGS,ENGS 19.01 Future of Energy Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-19-01,ENGS19.01,"Energy production, distribution, and use is central to human activity. In many quarters, there is growing appreciation for the nexus among energy, climate change, the environment, and economic development. This course will focus on futures of energy as they impact, and are impacted by, these drivers.   The course uses model-based approaches to develop global-scale energy scenarios and to explore the potential evolution of current and potential energy options in both localized and global settings.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13022,7 +13022,7 @@ ENGS,ENGS 19.01 Future of Energy Systems,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 20 Introduction to Scientific Computing,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-20,ENGS20,"This course introduces concepts and techniques for creating computational solutions to problems in engineering and science. The essentials of computer programming are developed using the C and Matlab languages, with the goal of enabling the student to use the computer effectively in subsequent courses. Programming topics include problem decomposition, control structures, recursion, arrays and other data structures, file I/O, graphics, and code libraries. Applications will be drawn from numerical solution of ordinary differential equations, root finding, matrix operations, searching and sorting, simulation, and data analysis. Good programming style and computational efficiency are emphasized. Although no previous programming experience is assumed, a significant time commitment is required. Students planning to pursue the engineering sciences major are advised to takeENGS 20. Students considering the computer science major or majors modified with computer science should takeCOSC 1andCOSC 10.  Enrollment is limited to 50 students. May not be taken under the non-recording option.",MATH 3and prior or concurrent enrollment inMATH 8,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13444,7 +13444,7 @@ ENGS,ENGS 20 Introduction to Scientific Computing,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>","['MATH3', 'MATH8']"
 ENGS,ENGS 21 Introduction to Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-21,ENGS21,"The student is introduced to engineering through participation, as a member of a team, in a complete design project. The synthesis of many fields involving the laws of nature, mathematics, economics, management, and communication is required in the project. Engineering principles of analysis, experimentation, and design are applied to a real problem, from initial concept to final recommendations. The project results are evaluated in terms of technical and economic feasibility plus social significance. Lectures are directed toward the problem, and experiments are designed by students as the need develops. Enrollment limited to 50 students in 15 Fall and 16 Winter; and 64 students for 16 Spring.",MATH 3or equivalent,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13866,7 +13866,7 @@ ENGS,ENGS 21 Introduction to Engineering,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",['MATH3']
 ENGS,ENGS 22 Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-22,ENGS22,"The student is introduced to the techniques of modeling and analyzing lumped systems of a variety of types, including electrical, mechanical, reacting, fluid, and thermal systems. System input will be related to output through ordinary differential equations, which will be solved by analytical and numerical techniques. Systems concepts such as time constant, natural frequency, and damping factor are introduced. The course includes computer and laboratory exercises to enhance the students' understanding of the principles of lumped systems. Students will develop the ability to write MATLAB code. Enrollment is limited to 35 in fall and 50 students for winter and summer.","MATH 13,PHYS 14, andENGS 20",TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14288,7 +14288,7 @@ ENGS,ENGS 22 Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departm
 </form>
 
 </body>
-</html>"
+</html>","['MATH13', 'PHYS14', 'ENGS20']"
 ENGS,ENGS 23 Distributed Systems and Fields,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-23,ENGS23,"A study of the fundamental properties of distributed systems and their description in terms of scalar and vector fields. After a summary of vector-field theory, the formulation of conservation laws, source laws, and constitutive equations is discussed. Energy and force relations are developed and the nature of potential fields, wave fields, and diffusion fields examined. A survey of elementary transport processes is given. Particular attention is given to the relation between the description of systems in terms of discrete and distributed parameters. Applications are chosen primarily from fluid mechanics, electromagnetic theory, and heat transfer. Includes a set of laboratories.","ENGS 22, or equivalent",TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14710,7 +14710,7 @@ ENGS,ENGS 23 Distributed Systems and Fields,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",['ENGS22']
 ENGS,ENGS 24 Science of Materials,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-24,ENGS24,"An introduction to the structure/property relationships that govern the mechanical, the thermal, and the electrical behavior of solids (ceramics, metals, and polymers). Topics include atomic, crystalline, and amorphous structures; x-ray diffraction; imperfections in crystals; phase diagrams; phase transformations; elastic and plastic deformation; free electron theory and band theory of solids; and electrical conduction in metals and semiconductors. The laboratory consists of an experimental project selected by the student and approved by the instructor. Enrollment limited to 60 students.",PHYS 14andCHEM 5,TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15132,7 +15132,7 @@ ENGS,ENGS 24 Science of Materials,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>","['PHYS14', 'CHEM5']"
 ENGS,ENGS 25 Introduction to Thermodynamics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-25,ENGS25,"The fundamental concepts and methods of thermodynamics are developed around the first and second laws. The distinctions among heat, work, and energy are emphasized. Common processes for generating work, heat, refrigeration, or changing the physical or chemical state of materials are analyzed. The use of thermodynamic data and auxiliary functions, such as entropy, enthalpy, and free energy, is integrated into the analysis. The numerous problems show how theoretical energy requirements and the limitations on feasible processes can be estimated. Enrollment is limited to 60 students.","MATH 13,PHYS 13,ENGS 20orCOSC 1andCOSC 10",TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15554,7 +15554,7 @@ ENGS,ENGS 25 Introduction to Thermodynamics,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>","['COSC1', 'COSC10']"
 ENGS,ENGS 26 Control Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-26,ENGS26,"The course treats the design of analog, lumped parameter systems for the regulation or control of a plant or process to meet specified criteria of stability, transient response, and frequency response. The basic theory of control system analysis and design is considered from a general point of view. Mathematical models for electrical, mechanical, chemical, and thermal systems are developed. Feedback control system design procedures are established using root-locus and frequency-response methods.",ENGS 22,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15976,7 +15976,7 @@ ENGS,ENGS 26 Control Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",['ENGS22']
 ENGS,ENGS 27 Discrete and Probabilistic Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-27,ENGS27,"This course is an introduction to probabilistic methods for modeling, analyzing, and designing systems. Mathematical topics include the fundamentals of probability, random variables and common probability distributions, basic queueing theory, and stochastic simulation. Applications, drawn from a variety of engineering settings, may include measurement and noise, information theory and coding, computer networks, diffusion, fatigue and failure, reliability, statistical mechanics, ecology, decision making, and robust design.",MATH 8and eitherENGS 20orCOSC 1andCOSC 10.PHYS 13orCHEM 5recommended.,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16398,7 +16398,7 @@ ENGS,ENGS 27 Discrete and Probabilistic Systems,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>","['MATH8', 'ENGS20', 'COSC10']"
 ENGS,ENGS 28 Embedded Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-28,ENGS28,"A vast number of everyday products, from home appliances to automobiles, are controlled by small embedded computers, invisible to the user. This course introduces, at an elementary level, the three basic components of all such embedded systems: sensors to measure the physical environment, actuators to produce the system behavior, and a microcontroller that processes the sensor data and controls the actuators. Topics: microcontroller architecture and programming, writing embedded software, analog- to-digital and digital-to-analog conversion, interfacing sensors and actuators, and data communication. There are daily in-class design exercises and weekly labs. Enrollment is limited.",ENGS 20orCOSC 10; andPHYS 14(may be taken concurrently),Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16826,7 +16826,7 @@ ENGS,ENGS 28 Embedded Systems,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>","['ENGS20', 'PHYS14']"
 ENGS,ENGS 29 Computer-Aided Design and Kinematics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-29,ENGS29,"This course introduces computer-aided design and kinematics applied to study the geometry of motion in linkage systems that are components of machines ranging from vehicle suspensions to robotic arms. The principles and methods introduced include capturing design intent in parametric models, design communication with mechanical  drawings, computer-based kinematic design, and design validation with rapid prototyping. A series of project-based learning activities focus on the design of linkage  mechanisms to control the leg movements of walking machines where the objective is to transform the rotation of an input crank into a desired walking movement for the legs. The course aims to develop spatial and geometric thinking abilities while practicing mechanical design within constraints and building prototypes of increasingly  complicated walking mechanisms. The lessons and projects examine technologies that surround us and art that explores the boundary of mechanical animals and life.",ENGS 021,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17254,7 +17254,7 @@ ENGS,ENGS 29 Computer-Aided Design and Kinematics,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",['ENGS021']
 ENGS,ENGS 30 Biological Physics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-30,ENGS30,"Introduction to the principles of physics and engineering applied to biological problems. Topics include the architecture of biological cells, molecular motion, entropic forces, enzymes and molecular machines, and nerve impulses.","CHEM 5,PHYS 13andPHYS 14(or equivalent).PHYS 14(or equivalent) may be taken concurrently. Students with strong quantitative skills who have takenPHYS 3andPHYS 4can enroll with permission of the instructor.",TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17678,7 +17678,7 @@ ENGS,ENGS 30 Biological Physics,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>","['CHEM5', 'PHYS13', 'PHYS14']"
 ENGS,ENGS 31 Digital Electronics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-31,ENGS31,"This course teaches classical switching theory including Boolean algebra, logic minimization, algorithmic state machine abstractions, and synchronous system design. This theory is then applied to digital electronic design. Techniques of logic implementation, from Small Scale Integration (SSI) through Application-Specific Integrated Circuits (ASICs), are encountered. There are weekly laboratory exercises for the first part of the course followed by a digital design project in which the student designs and builds a large system of his or her choice. In the process, Computer-Aided Design (CAD) and construction techniques for digital systems are learned. Enrollment is limited to 60 students.",ENGS 20orCOSC 1andCOSC 10.,TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18102,7 +18102,7 @@ ENGS,ENGS 31 Digital Electronics,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",['ENGS20']
 ENGS,ENGS 32 Electronics: Introduction to Linear and Digital Circuits,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-32,ENGS32,"Principles of operation of semiconductor diodes, bipolar and field-effect transistors, and their application in rectifier, amplifier, waveshaping, and logic circuits. Basic active-circuit theory. Introduction to integrated circuits: the operational amplifier and comparator, to include practical considerations for designing circuits with off-the shelf components. Emphasis on breadth of coverage of low-frequency linear and digital networks, as well as on high order passive and active filter design. Laboratory exercises permit ""hands-on"" experience in the analysis and design of simple electronic circuits. The course is designed for two populations: a) those desiring a single course in basic electronics, and b) those that need the fundamentals necessary for further study of active circuits and systems.","ENGS 22, or equivalent background in basic circuit theory.",TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18526,7 +18526,7 @@ ENGS,ENGS 32 Electronics: Introduction to Linear and Digital Circuits,https://da
 </form>
 
 </body>
-</html>"
+</html>",['ENGS22']
 ENGS,ENGS 33 Solid Mechanics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-33,ENGS33,"After a brief review of the concepts of rigid body statics, the field equations describing the static behavior of deformable elastic solids are developed. The concepts of stress and strain are introduced and utilized in the development. Exact and approximate solutions of the field equations are used in the study of common loading cases, including tension/compression, bending, torsion, pressure, and combinations of these. In the laboratory phase of the course, various methods of experimental solid mechanics are introduced. Some of these methods are used in a project in which the deformation and stress in an actual load system are determined and compared with theoretical predictions. The course includes several computer exercises designed to enhance the student's under-standing of the principles of solid mechanics.",MATH 13andPHYS 13,TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18948,7 +18948,7 @@ ENGS,ENGS 33 Solid Mechanics,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>","['MATH13', 'PHYS13']"
 ENGS,ENGS 34 Fluid Mechanics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-34,ENGS34,"We interact with fluids every day. From complex systems such as cars, airplanes, and chemical plants, to simple devices like a bike pump, our world is filled with engineering applications that make use of the principles of fluid mechanics. This course surveys the fundamental concepts, phenomena, and methods in fluid mechanics, as well as their application in engineered systems and in nature. Emphasis is placed on the development and use of conservation laws for mass, momentum, and energy, as well as on the empirical knowledge essential to the understanding of many fluid dynamic phenomena. Examples are drawn from mechanical, chemical, civil, environmental, biomedical, and aerospace engineering.",ENGS 23or equivalent,TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19372,7 +19372,7 @@ ENGS,ENGS 34 Fluid Mechanics,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",['ENGS23']
 ENGS,ENGS 35 Biotechnology and Biochemical Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-35,ENGS35,"A consideration of the engineering and scientific basis for using cells or their components in engineered systems. Central topics addressed include kinetics and reactor design for enzyme and cellular systems; fundamentals, techniques, and applications of recombinant DNA technology; and bioseparations. Additional lectures will provide an introduction to metabolic modeling as well as special topics. The course is designed to be accessible to students with both engineering and life-science backgrounds. This course has a graduate section, see ENGS 160.  Enrollment is limited to 25 students.","MATH 3,CHEM 5,BIOL 12orBIOL 13or permission",TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19794,7 +19794,7 @@ ENGS,ENGS 35 Biotechnology and Biochemical Engineering,https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>","['MATH3', 'CHEM5', 'BIOL12']"
 ENGS,ENGS 36 Chemical Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-36,ENGS36,"This course will expose students to the fundamental principles of chemical engineering and the application of these principles to a broad range of systems. In the first part of the course, aspects of chemical thermodynamics, reaction kinetics, and transport phenomena will be addressed. These principles will then be applied to a variety of systems including industrial, environmental, and biological examples.","ENGS 22,ENGS 25;CHEM 5",TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20216,7 +20216,7 @@ ENGS,ENGS 36 Chemical Engineering,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>","['ENGS22', 'CHEM5']"
 ENGS,ENGS 37 Introduction to Environmental Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-37,ENGS37,"A survey of the sources, measurement techniques, and treatment technologies relating to environmental pollution resulting from the activities of humans. The course will be technology-focused, but will also touch on topics related to the implementation of technology in the real world such as public perception, policy and legislation, and choosing between technological alternatives. Technological and other issues will be addressed relating to water pollution, air pollution, solid wastes, and the fate and transport of pollutants in the environment. Consideration of each area will include general background and key concepts, detailed design examples of importance in the area, and case studies/current topics. The course will include guest lectures.","MATH 3andCHEM 5, or equivalent, or permission",TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20638,7 +20638,7 @@ ENGS,ENGS 37 Introduction to Environmental Engineering,https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>","['MATH3', 'CHEM5']"
 ENGS,ENGS 41 Sustainability and Natural Resource Management,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-41,ENGS41,"Natural resources sustain human productivity. Principles of scientific resource management are established, including mathematical model development based on material balances and decision making based on dynamical and stochastic systems. Three generic categories of resource are analyzed: exhaustible, living, and renewable. In the first category we emphasize the life-cycle of exploitation including exhaustion, exploration and substitution. In the living category we explore population dynamics under natural and harvested regimes, for fisheries, fowl and forests. The renewable case of water is treated in terms of quantity and quality. Finally, air quality management is considered through the lens of assimilative capacity. Throughout, the intersection of natural processes and economic incentives is explored with dynamical systems theory, computer simulations, and optimization techniques. Case studies illustrate contemporary management problems and practices.","MATH 23orENGS 22, andENGS 37",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21061,7 +21061,7 @@ ENGS,ENGS 41 Sustainability and Natural Resource Management,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>","['ENGS22', 'ENGS37']"
 ENGS,ENGS 43 Environmental Transport and Fate,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-43,ENGS43,"Introduction to movement and transformation of substances released into the natural environment. Fundamentals of advection, dispersion, and reaction. Aggregation and parameterization of various mixing processes leading to dispersion at larger spatial and temporal scales. Importance of inhomogeneity, anisotropy, and stratification in natural media. Basic principles are illustrated by application to atmospheric, ground water, river, estuarine, coastal, and oceanic pollution problems. Case studies include urban smog, acid rain, Chernobyl fall-out, and stratospheric ozone depletion.",MATH 13;ENGS 37or permission,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21485,7 +21485,7 @@ ENGS,ENGS 43 Environmental Transport and Fate,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>","['MATH13', 'ENGS37']"
 ENGS,ENGS 44 Sustainable Design,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-44,ENGS44,"An interdisciplinary introduction to the principles of design for sustainability, with emphasis on the built environment. Through lectures, readings, discussions, and a major design project, students will learn to design buildings and other infrastructure with low to no impact on the environment. Emphasis is on creative thinking, strategies for managing the complexity of the product life-cycle of the infrastructure, and the thorough integration of human and economic aspects in the design. Homework and project activities provide practice in relevant engineering analyses. Enrollment is limited to 20 students",ENGS 21andENGS 22orSART 65,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21907,7 +21907,7 @@ ENGS,ENGS 44 Sustainable Design,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>","['ENGS21', 'ENGS22']"
 ENGS,ENGS 45 Sustainable Urban Systems (Berlin),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-45,ENGS45,"Today, more than 50% of the world population lives in cities on less than 2% of the planetary surface. This urbanization is expected to remain a megatrend for the next decades. The resulting concentration of infrastructure and activities has created human ecosystems distinct from natural ecosystems, and their future depends not only on their internal sustainability but also on symbiotic interactions with the natural ecosystems on which they ultimately depend. This engineering course addresses the technological aspects of urban sustainability, including energy procurement, energy consumption and green energy, air quality, water supply, use and treatment, building infrastructure, transportation, resource conservation, decarbonization, city planning and the role of automation and information technology in modern sustainable cities. In the context of the triple bottom line (the framework that considers financial, social and environmental impacts), the course further addresses, but to a lesser extent, the aspects of sustainable economics, socio-ethical aspects of urban sustainability and cities as a hub for innovation.",MATH 3orMATH 8;PHYS 13; andENGS 37(ENGS 37may be taken concurrently),Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22329,7 +22329,7 @@ ENGS,ENGS 45 Sustainable Urban Systems (Berlin),https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>","['MATH3', 'PHYS13', 'ENGS37']"
 ENGS,ENGS 46 Advanced Hydrology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-46,ENGS46,"A survey of advanced methods used to analyze the occurrence and movement of water in the natural environment. The watershed processes controlling the generation of runoff and streamflow are highlighted, and used to explore the transport and fate sediment and contaminants in watersheds.  Throughout the course the ideas and concepts are explored through the primary literature, with emphasis given to methods of observation, measurement, data analysis, and prediction.",MATH 3andEARS 16orEARS 33or BIOL 53 orENGS 43or permission of instructor,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22753,7 +22753,7 @@ ENGS,ENGS 46 Advanced Hydrology,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",['ENGS43']
 ENGS,ENGS 50 Software Design and Implementation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-50,ENGS50,"Techniques for building large, reliable, maintainable, and understandable software systems. Topics include UNIX tools and filters, programming in C, software testing, debugging, and teamwork in software development. Concepts are reinforced through a small number of medium-scale programs and one team programming project.",COSC 10or equivalent.,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23177,7 +23177,7 @@ ENGS,ENGS 50 Software Design and Implementation,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",['COSC10']
 ENGS,ENGS 52 Introduction to Operations Research,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-52,ENGS52,"Basic concepts of optimization are introduced as aids in systematic decision-making in engineering contexts. Deterministic optimization is developed in the form of linear and integer programming and their extensions. Probabilistic models are introduced in terms of Markov chains, queuing and inventory theory, and stochastic simulation. The course emphasizes the application of these methods to the design, planning, and operation of complex industrial and public systems.",MATH 8andMATH 22or equivalent,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23599,7 +23599,7 @@ ENGS,ENGS 52 Introduction to Operations Research,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>","['MATH8', 'MATH22']"
 ENGS,ENGS 53 Intro to Quantum Technologies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-53,ENGS53,"In the early 1900s, quantum mechanics replaced the classical understanding of physics, leading to the first quantum revolution that harnessed quantum mechanical phenomena to create innovative new technologies like transistors and lasers. Today, we are witnessing the second quantum revolution, which requires exploiting quantum mechanics fully by isolating and controlling quantum systems. This course aims to prepare students for this second revolution and the transformative technologies that will be developed, which will significantly impact the future of electrical engineering, materials science, and computation. Through hands-on experience with actual quantum systems, we will explore the use of quantum mechanics in sensing, communication, and computation to develop an intuition for the subject and its applications.",MATH 22orENGS 23orPHYS 22,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24017,7 +24017,7 @@ ENGS,ENGS 53 Intro to Quantum Technologies,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['ENGS23']
 ENGS,ENGS 56 Introduction to Biomedical Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-56,ENGS56,"This course will survey applications of engineering principles to medical diagnosis/treatment of disease, monitoring/measurement of physiological function, and rehabilitation/replacement of body dysfunction. Case studies will be used to highlight how engineering has advanced medical practice and understanding. Examples will be drawn from bioinstrumentation, bioelectricity, biotransport, biomaterials, and biomechanics. While investigations will focus primarily on the engineering aspects of related topics, issues surrounding patient safety, public policy and regulation, animal experimentation, etc. will be discussed as appropriate.","ENGS 22,PHYS 13andPHYS 14(PHYS 14may be taken concurrently)",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24439,7 +24439,7 @@ ENGS,ENGS 56 Introduction to Biomedical Engineering,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>","['ENGS22', 'PHYS13', 'PHYS14']"
 ENGS,ENGS 57 Intermediate Biomedical Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-57,ENGS57,"The basic biomedical engineering concepts introduced inENGS 56will serve as the foundation for exploring technology in a clinical environment. The specific clinical setting to be explored will be the operating room (OR). This course will introduce a variety of surgical procedures and technologies from an engineering perspective. Areas of focus will include patient monitoring, biophysical tissue properties, general surgical instrumentation, tissue cutting and binding technologies, and optical visualization technologies. In addition, state-of-the-art procedures employing image-guided, minimally invasive, laparoscopic, and robot-assisted surgical technologies will be discussed. The first half of the term will include weekly seminars presented by surgeons describing a particular surgical procedure, the technologies currently used and a surgeon's ""wish-list"". During the second half of the term, students will undertake a design project aimed at developing a technology that addresses a specific need within the OR. Enrollment is limited to 18 students.",ENGS 23andENGS 56or equivalent,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24861,7 +24861,7 @@ ENGS,ENGS 57 Intermediate Biomedical Engineering,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>","['ENGS23', 'ENGS56']"
 ENGS,ENGS 58 Introduction to Protein Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-58,ENGS58,"Engineered biomolecules are powering an array of innovations in biotechnology, and this course will familiarize students with key developments in the field. An overview of foundational principles will cover concepts such as the central dogma of biology, atomic scale forces in protein structures, and protein structure-function relationships. Strategies for modifying protein structures will be surveyed, with a particular emphasis on genetic techniques. The development of proteins with practical utility will be highlighted using case studies.",ENGS 35orCHEM 41,DIST: TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25284,7 +25284,7 @@ ENGS,ENGS 58 Introduction to Protein Engineering,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['ENGS35']
 ENGS,ENGS 59 Basic Biological Circuit Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-59,ENGS59,"This course will provide a comprehensive introduction to the design, modeling, and experimental implementation of synthetic bio-molecular circuits in living cells at an undergraduate level. Simple but sophisticated synthetic biological circuits will be implemented and tested in microbial cells in the laboratory including those involving molecular amplification, regulatory feedback loops with biological nonlinearities, and robust analog circuits. Computer aided design, modeling, and simulation will use CADENCE, an industry standard electronic circuit design laboratory tool. It will show them how to design, model, and fit actual experimental biological data such that engineering circuit theory and biological experiment agree.","ENGS 22or permission of instructor. Experience in Molecular Biology is useful (e.g.ENGS 35,BIOL 45, &BIOL 46or equivalent) but not necessary.",Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25706,7 +25706,7 @@ ENGS,ENGS 59 Basic Biological Circuit Engineering,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",['ENGS22']
 ENGS,ENGS 60 Introduction to Solid-State Electronic Devices,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-60,ENGS60,"In this course the physical and operational principles behind important electronic devices such as the solar cell and transistor are introduced. Semiconductor electron and hole concentrations and carrier transport are discussed. Carrier generation and recombination including optical absorption and light emission are covered. P-N junction operation and its application to diodes, solar cells, LEDs, and photodiodes is developed. The field-effect transistor (FET) and bipolar junction transistor (BJT) are then discussed and their terminal operation developed. Application of transistors to bipolar and CMOS analog and digital circuits is introduced. The course is primarily intended for students interested in electronics, including digital, analog, power and energy, both at component and integrated circuit levels. The course may also be useful to students interested in electronic materials, device microfabrication and communications.",ENGS 23,TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26128,7 +26128,7 @@ ENGS,ENGS 60 Introduction to Solid-State Electronic Devices,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",['ENGS23']
 ENGS,ENGS 61 Intermediate Electrical Circuits,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-61,ENGS61,"This course will build onENGS 32, providing a foundation for transistor- level analog and digital circuit design. The course will start with an introduction to the semiconductor industry and how it has dramatically altered the modern way of life, resulting in diverse technologies such as telecommunications, lighting and transportation. This will lead into basic semiconductor theory and CMOS device models, two-port linearized models, and finally single- and multi-stage amplifiers with applications motivated by wireless communications and biomedical instrumentation. The second half of the class will focus on digital circuits. Topics will include designing and optimizing complex static CMOS devices in terms of energy, delay, and area of computational blocks and memory arrays. The class will have weekly labs and a final project that will utilize modern computer-aided tools. The course will prepare the student for advanced study of highly-integrated electrical circuits.",ENGS 32,TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26550,7 +26550,7 @@ ENGS,ENGS 61 Intermediate Electrical Circuits,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",['ENGS32']
 ENGS,ENGS 62 Microprocessors in Engineered Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-62,ENGS62,"Microprocessors and microcomputers are central components in an ever-increasing number of consumer, industrial, and scientific products. This course extends the experimental design methodology developed in Engs 50 to state-of-the-art System-on-Chip (SoC) architectures and explores the principles behind advanced embedded systems. SoC devices are highly-integrated components that combine high-performance multi-core processors, with Field Programmable Gate Array (FPGA), and a broad selection of industry standard peripheral interfaces -- all within a single chip. Students are introduced to concepts of event-driven finites state machines, peripheral interfacing via the processor and the FPGA fabric, and advanced hardware-software co-design tools that speed the design process. The course is based on a sequence of laboratory projects that incorporate SoC programming practices and debugging strategies, interrupt handling, FPGA and bus interfaces, and attached peripheral devices.",ENGS 50,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26972,7 +26972,7 @@ ENGS,ENGS 62 Microprocessors in Engineered Systems,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",['ENGS50']
 ENGS,ENGS 64 Engineering Electromagnetics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-64,ENGS64,"Conceptual development, techniques and engineering applications in electrostatics, magnetostatics and magnetic induction; displacement current and Maxwell’s equations; transmission line analysis; propagation, reflection, refraction and dispersion of electromagnetic waves.",ENGS 23,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27394,7 +27394,7 @@ ENGS,ENGS 64 Engineering Electromagnetics,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['ENGS23']
 ENGS,ENGS 65 Engineering Software Design,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-65,ENGS65,"As a successor toENGS 20, this course covers intermediate topics in programming and software design with an emphasis on engineering applications. Students will learn software design principles and basic data structures. Topics covered will include object-oriented design, user interface design, lists, stacks, queues, binary trees, hash tables, and simulation. Students will learn techniques for developing maintainable, extensible, and understandable software.",ENGS 20orCOSC 1andCOSC 10,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27816,7 +27816,7 @@ ENGS,ENGS 65 Engineering Software Design,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",['ENGS20']
 ENGS,ENGS 66 Discrete Mathematics in Computer Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-66,ENGS66,"This course develops the mathematical foundations of computer science that are not calculus-based. It covers basic set theory, logic, mathematical proof techniques, and a selection of discrete mathematics topics such as  combinatorics (counting),  discrete probability, number theory,and graph theory. The mathematics is frequently motivated using computer science applications.","COSC 1,ENGS 20, or placement through the Advanced Placement exam",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28240,7 +28240,7 @@ ENGS,ENGS 66 Discrete Mathematics in Computer Science,https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",['ENGS20']
 ENGS,ENGS 67 Programming Parallel Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-67,ENGS67,"Multi-core processors are now ubiquitous in most personal computers. These are the fundamental computer-engineering building blocks for high-performance servers, blade farms, and cloud computing. In order to utilize these devices in large systems they must be interconnected through networking and collectively programmed. This hands-on system-engineering course offers students the opportunity to explore problem-solving techniques on a high-performance multi-computer containing quad-core processors. The course involves weekly programming laboratories that teach POSIX thread, UDP and TCP network, and MPI style programming techniques. These techniques are explored in the context of scalable problem solving methods applied to typical problems in science and engineering ranging from client-server sensing and data repositories, to numerical methods, gaming and decision support. All laboratories will be conducted in the C programming language and proficiency in C is required. Enrollment is limited to 30 students.",ENGS 20orCOSC 50(formerly COSC 23),TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28664,7 +28664,7 @@ ENGS,ENGS 67 Programming Parallel Systems,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['ENGS20']
 ENGS,ENGS 68 Introduction to Communication Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-68,ENGS68,"This course provides an introduction to communication systems. The focus is on the deterministic aspects of analog and digital systems. The student is introduced to modeling and analyzing signals in the time and frequency domains. Modulation techniques are addressed as well as, sampling, multiplexing, line coding, pulse shaping. Recent developments in communication systems are briefly discussed.","ENGS 22,ENGS 27andENGS 92strongly recommended.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29086,7 +29086,7 @@ ENGS,ENGS 68 Introduction to Communication Systems,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 69 Smartphone Programming,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-69,ENGS69,"This course teaches students how to design, implement, test, debug and publish smartphone applications. Topics include development environment, phone emulator, key programming paradigms, UI design including views and activities, data persistence, messaging and networking, embedded sensors, location based services (e.g., Google Maps), cloud programming, and publishing applications. Concepts are reinforced through a set of weekly programming assignments and group projects. Enrollment is limited to 50 students.",COSC 10,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29510,7 +29510,7 @@ ENGS,ENGS 69 Smartphone Programming,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['COSC10']
 ENGS,ENGS 71 Structural Analysis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-71,ENGS71,"An introduction to the behavior of structural systems (including examples of buildings, space structures, and mechanical systems), with an emphasis on modeling and approximating behavior. Classical and computational analysis methods for structural load flow through basic three-dimensional structures; methods of approximating the response of planar structures; methods of determining deformations in planar, statically determinate structure; actions and deformations in statically indeterminate structures, using both flexibility/compatibility methods and stiffness/equilibrium methods (including an introduction to matrix methods). A structural system of choice will be redesigned to improve performance.",ENGS 20orCOSC 1andCOSC 10andENGS 33,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29932,7 +29932,7 @@ ENGS,ENGS 71 Structural Analysis,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>","['ENGS20', 'COSC10', 'ENGS33']"
 ENGS,ENGS 72 Applied Mechanics: Dynamics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-72,ENGS72,"The fundamentals of dynamics with emphasis on their application to engineering problems. Newtonian mechanics including kinematics and kinetics of particles and rigid bodies, work, energy, impulse, and momentum. Intermediate topics will include Lagrange's equations, energy methods, Euler's equations, rigid body dynamics, and the theory of small oscillations.",ENGS 22,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30354,7 +30354,7 @@ ENGS,ENGS 72 Applied Mechanics: Dynamics,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",['ENGS22']
 ENGS,ENGS 73 Materials Processing and Selection,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-73,ENGS73,"In this course the basic concepts of materials science introduced inENGS 24are applied to a variety of materials problems and processes. The course will treat processes and principles relevant to both mechanical and electrical engineering applications. Topics include solidification and crystal growth, joining and bonding techniques, deformation processing, surface coatings and thin film deposition, polymer processing, composite materials, magnetic and dielectric materials, powder metallurgy and ceramics processing, materials selection, failure processes, and quality control. The course will involve laboratory exercises and field trips to local industry. Materials applications will be considered on a case study basis, including aerospace and automotive structures, consumer goods, and high performance sports equipment, electric components, VLSI circuit fabrication and packaging.",ENGS 24andENGS 33or equivalent,TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30776,7 +30776,7 @@ ENGS,ENGS 73 Materials Processing and Selection,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>","['ENGS24', 'ENGS33']"
 ENGS,ENGS 75 Physical Product Design and Development: Prototype to Production,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-75,ENGS75,"ENGS 75is a blended laboratory and lecture course on the practices and analyses that guide the design and development of physical, engineered products.  The scope addresses consumer and industrial mechanical and electro-mechanical products, including those with embedded electronics, biomedical instruments and devices (including drug delivery systems), chemical processing equipment, and more.   Lectures will introduce engineering design and development practices, methods, and tools that are relevant from product inception, through prototyping, and into eventual production.  Emphasis is placed on design for manufacturing, robustness, and environmental impact.  Students will be challenged to synthesize creative and disciplined strategies that apply these practices and methods in each of two design projects.  Working in a team-based environment they will identify needs and value, then plan, design, develop, and test prototypes.  SolidWorks will be used extensively for models of individual components and assemblies.  Students will prepare presentations and written reports of progress and deliverables at key milestones.  Readings from texts and case studies, along with several guest lectures from visiting professionals, are included as well.","ENGS 21plus one of the following:ENGS 31,ENGS 32,ENGS 33,ENGS 35,ENGS 36,ENGS 37, orENGS 56. Experience with SolidWorks is helpful but not required.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31198,7 +31198,7 @@ ENGS,ENGS 75 Physical Product Design and Development: Prototype to Production,ht
 </form>
 
 </body>
-</html>"
+</html>","['ENGS21', 'ENGS31']"
 ENGS,ENGS 76 Machine Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-76,ENGS76,"An introduction to the analysis and synthesis of mechanical components and systems. Lecture topics focus on design and analysis of mechanical components subject to static and fatigue loading conditions, deformation, and buckling. Power transmission shafting, bearings, and gears will be studied in detail. A survey of design requirements for other components - springs, screws, belts, clutches, brakes, roller chains, and welded and riveted connections - will be provided. The class includes laboratory sessions for developing practical skills in design fabrication. A term project emphasizes the synthesis of a working machine to complete a specified task. The project involves the design or selection of components studied, and includes fabrication and demonstration of the machine. Solid modeling software is used as a design tool. Enrollment is limited to 25 students.","ENGS 21,ENGS 33, and proficiency with solid modeling software",TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31620,7 +31620,7 @@ ENGS,ENGS 76 Machine Engineering,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>","['ENGS21', 'ENGS33']"
 ENGS,ENGS 84 Reading Course,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-84,ENGS84,"Advanced undergraduates occasionally arrange with a faculty member a reading course in a subject not occurring in the regularly scheduled curriculum. This course can only be elected once and eitherENGS 84or 85 may be used toward the Engineering Sciences major, but not both.","Permission of the department chair. (Proposed courses should include a full syllabus, resources and student evaluation methods and must be submitted for approval prior to the end of the term preceding the term in which the course will be taken.)",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32038,7 +32038,7 @@ ENGS,ENGS 84 Reading Course,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 ENGS,ENGS 85.04 Hybrid Powertrain System Design,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-85-04,ENGS85.04,"The course involves a term-long project designing components and subsystems for a hybrid powertrain system. With information sessions and interactive brainstorming meetings, the students will gain practical understanding of the iterative design process, including prototyping and testing. In the second part of the course, this knowledge will be sequentially applied to design components of three specific subsystems of the powertrain, viz. the engine power block, the transmission system, and the engine management system. The design process will incorporate constraints such as cost, manufacturability, and compatibility with other system components (mechanical, electrical, thermal, and fluid interactions).",,TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32458,7 +32458,7 @@ ENGS,ENGS 85.04 Hybrid Powertrain System Design,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 85.05 Biological Circuit Engg I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-85-05,ENGS85.05,"This course will provide a comprehensive introduction to the design, modeling, and experimental implementation of synthetic bio-molecular circuits in living cells. Simple synthetic biological circuits will be implemented and tested in microbial cells in the laboratory including those involving regulatory feedback loops and robust analog circuits. Computer aided design, modeling, and simulation will use CADENCE, an industry standard electronic circuit design tool.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32874,7 +32874,7 @@ ENGS,ENGS 85.05 Biological Circuit Engg I,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 85.06 Biological Circuit Engg II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-85-06,ENGS85.06,"This course will provide advanced techniques for the design, modeling, and experimental implementation of complex synthetic biological circuits. Advanced & complex synthetic circuits will be designed and tested in bacteria in the laboratory. Computer aided design, modeling, and simulation will use CADENCE, an industry standard electronic circuit design tool. Applications of synthetic biology to medicine and biotechnology will be discussed. In addition, the students will be expected to design a synthetic biological circuit with feedback and control techniques for a class project.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33290,7 +33290,7 @@ ENGS,ENGS 85.06 Biological Circuit Engg II,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 85.07 Practical Electrified Vehicle Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-85-07,ENGS85.07,"Implementation of electric vehicles, including hybrid-electric vehicles (HEVs), battery electric vehicles (BEVs), and plug-in hybrid electric vehicles (PHEVs) requires a wide range of engineering skills. This course focuses on practical aspects of this challenge that are rarely addressed in standard engineering curricula, including high-power wiring, circuit protection, electrical safety, and battery system safety. The course is designed to be accessible to both electrical and mechanical engineers. It draws on principles from both fields and fills in some of the gaps between the usual fields of expertise of each group, enabling them to work together more effectively.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33710,7 +33710,7 @@ ENGS,ENGS 85.07 Practical Electrified Vehicle Engineering,https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>",[]
 ENGS,ENGS 85.09 Introduction to Computational Materials Science and Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-85-09,ENGS85.09,"Computational modeling in materials science is a powerful tool that allows discovery of new materials and exploration of materials theory. This course introduces the use of computational modeling to understand and predict materials behavior, properties and processes. The course will introduce a series of common materials modeling approaches from molecular dynamics to Monte-Carlo simulations and Density Functional Theory. All methods will be illustrated using use cases from various fields of materials science (e.g.,Li-ion batteries, structural alloys, …). The students will learn to apply these methods hands-on on specific problems writing code and using open-source codes. A strong emphasis will be on the critical assessment of the limits of the models.","ENGS 24,ENGS 20, and working knowledge of ordinary and partial differential equations. Students not meeting the prerequisites and non-engineering majors may seek instructor permission.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34128,7 +34128,7 @@ ENGS,ENGS 85.09 Introduction to Computational Materials Science and Engineering,
 </form>
 
 </body>
-</html>"
+</html>","['ENGS24', 'ENGS20', 'IP']"
 ENGS,ENGS 85.11 Computer-Aided Design and Kinematics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-85-11,ENGS85.11,"This course introduces computer-aided design and kinematics applied to study the geometry of motion in linkage systems that are components of machines ranging from vehicle suspensions to robotic arms. The principles and methods introduced include capturing design intent in parametric models, design communication with mechanical  drawings, computer-based kinematic design, and design validation with rapid prototyping. A series of project-based learning activities focus on the design of linkage  mechanisms to control the leg movements of walking machines where the objective is to transform the rotation of an input crank into a desired walking movement for the legs. The course aims to develop spatial and geometric thinking abilities while practicing mechanical design within constraints and building prototypes of increasingly  complicated walking mechanisms. The lessons and projects examine technologies that surround us and art that explores the boundary of mechanical animals and life.",ENGS 21,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34546,7 +34546,7 @@ ENGS,ENGS 85.11 Computer-Aided Design and Kinematics,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",['ENGS21']
 ENGS,ENGS 85.12 Electric Energy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-85-12,ENGS85.12,"Electric energy sources, systems, and applications are essential for reducing climate impacts of energy and for engineering high-performance systems and products.  This course builds skills for designing and working with electric energy, including AC and DC electrical power and energy calculations; an overview of power systems; electric motor fundamentals and applications; electric power applications and opportunities for electrifications; electrical safety; and power distribution in building. Several laboratory exercises are included.",ENGS 22andENGS 32or instructor permission,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34964,7 +34964,7 @@ ENGS,ENGS 85.12 Electric Energy,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>","['ENGS22', 'ENGS32']"
 ENGS,ENGS 86 Independent Project,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-86,ENGS86,An individual research or design project carried out under the supervision of a member of the staff. Students electing this course will be expected to carry out preliminary reading during the preceding term. A major written report and oral presentation will be submitted at the completion of the course.ENGS 86may be counted as an elective in the major ifENGS 89is taken as the culminating experience. Only one of eitherENGS 86or 88 may be used in satisfaction of the combined A.B. major and B.E. degree requirements.,Senior standing in the engineering sciences major or Bachelor of Engineering standing and permission of the department chair is required. (One-page proposal submission required and must be submitted for approval prior to the end of the term preceding the term in which the course will be taken.),,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35382,7 +35382,7 @@ ENGS,ENGS 86 Independent Project,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 ENGS,ENGS 87 Undergraduate Investigations,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-87,ENGS87,"An original investigation in a phase of science or engineering under the supervision of a Thayer School faculty member. Students electing the course will be expected to carry out preliminary reading during the preceding term and to meet weekly with the individual supervising the investigation. The course is open to qualified students intending to completeENGS 86or 88 and who have three or fewer terms remaining in their undergraduate (AB) program. Instructor and faculty advisor permissions are required, and it may be elected only once. A report describing the details of the investigation must be filed with the instructor and approved at the completion of the course. Grading is CT/NC and the course does not fulfill any major requirements, BE requirements, nor distributive requirements.  A proposal is required. The template is available on the Engineering website and must be submitted for approval prior to the end of the term preceding the term in which the course will be taken.",Permission of the department chair. (One-page proposal submission required and must be submitted for approval prior to the end of the term preceding the term in which the course will be taken.),,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35800,7 +35800,7 @@ ENGS,ENGS 87 Undergraduate Investigations,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 ENGS,ENGS 88 Honors Thesis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-88,ENGS88,Honors version ofENGS 86. A course normally elected by honors students in one term of the senior year. The student will conduct a creative investigation suitable to the major subject under the supervision and guidance of a member of the staff. Students electing this course will be expected to begin the project work at least one term prior to electingENGS 88and may choose to conduct the preliminary investigation underENGS 87. A major written report and oral presentation will be submitted at the completion of the course.ENGS 88may be counted as an elective in the major ifENGS 89is taken as the culminating experience. Only one of eitherENGS 86or 88 may be used in satisfaction of the combined A.B. major and B.E. degree requirements.,permission of the chair of the Honors program,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36218,7 +36218,7 @@ ENGS,ENGS 88 Honors Thesis,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 ENGS,ENGS 89 Engineering Design Methodology and Project Initiation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-89,ENGS89,"This course explores elements of the engineering design process as a means of enhancing student ability in problem definition; development and evaluation of creative alternatives, application and methods of technical and economic analysis, identification and application of ethical and legal constraints, and effective presentation of technical information. Design projects are developed from specifications submitted by industry and other organizations and are pursued over the course of two quarters as a team project, 89/90. Written and oral proposal and progress report are required for the design project during the term. A project advisor is required for each design team to serve as consultant to the team's efforts.ENGS 89, is the first unit of a two-term course sequence 89/90 that must be taken consecutively.\f","Prior to enrollment in ENGS 89, at least six engineering courses must be completed. These includeENGS 21plus five additional courses numbered 22 to 76 (excluding 75) and 91 and above.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36637,7 +36637,7 @@ ENGS,ENGS 89 Engineering Design Methodology and Project Initiation,https://dartm
 </form>
 
 </body>
-</html>"
+</html>","['ENGS22', 'ENGS23', 'ENGS24', 'ENGS25', 'ENGS27']"
 ENGS,ENGS 90 Engineering Design Methodology and Project Completion,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-90,ENGS90,"This course is the second unit in the two-course, team engineering design sequence 89/90. The objective of the course is to develop the student's professional abilities by providing a realistic project experience in engineering analysis, design, and development. Students continue with the design teams formed inENGS 89to complete their projects. Design teams are responsible for all aspects of their respective projects, which involve science, innovation, analysis, experimentation, economic decisions and business operations, planning of projects, patents, and relationships with clients. Mid-term and final oral presentations and written reports are required. A faculty member is assigned to each design team to serve as consultant to the team's efforts.\fStudents register for ENGS-090 and typically receive a final letter grade at the end of the term. Students who wish to take the FE Exam in the spring as part of their coursework receive a grade of “ON” (ongoing) at the end of the term. These students do not register for the subsequent term. A final grade will replace the “ON” once the FE Exam is completed.",ENGS 89,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37058,7 +37058,7 @@ ENGS,ENGS 90 Engineering Design Methodology and Project Completion,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",['ENGS89']
 ENGS,ENGS 91 Numerical Methods in Computation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-91,ENGS91,"A study and analysis of important numerical and computational methods for solving engineering and scientific problems. The course will include methods for solving linear and nonlinear equations, doing polynomial interpolation, evaluating integrals, solving ordinary differential equations, and determining eigenvalues and eigenvectors of matrices. The student will be required to write and run computer programs.","ENGS 20orCOSC 1andCOSC 10;ENGS 22orMATH 23, or equivalent.",QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37482,7 +37482,7 @@ ENGS,ENGS 91 Numerical Methods in Computation,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>","['ENGS20', 'ENGS22']"
 ENGS,ENGS 92 Fourier Transforms and Complex Variables,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-92,ENGS92,"Survey of a number of mathematical methods of importance in Engineering and Physics with particular emphasis on the Fourier transform as a tool for modeling and analysis. Orthogonal function expansions, Fourier series, discrete and continuous Fourier transforms, generalized functions and sampling theory, complex functions and complex integration, Laplace, Z, and Hilbert transforms. Computational Fourier analysis. Applications to linear systems, waves, and signal processing.",MATH 46orENGS 22andENGS 23or the equivalent,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37906,7 +37906,7 @@ ENGS,ENGS 92 Fourier Transforms and Complex Variables,https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>","['ENGS22', 'ENGS23']"
 ENGS,ENGS 93 Statistical Methods in Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-93,ENGS93,"The application of statistical techniques and concepts to maximize the amount and quality of information resulting from experiments. After a brief introductory summary of fundamental concepts in probability and statistics, topics considered will include probability distributions, sampling distributions, estimation and confidence intervals for parameters of statistical distributions, hypothesis testing, design and analysis of variance for single and multiple-factor experiments, regression analysis, estimation and confidence intervals for parameters of non-statistical models, and statistical quality control.",MATH 13or equivalent,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38328,7 +38328,7 @@ ENGS,ENGS 93 Statistical Methods in Engineering,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",['MATH13']
 ENGS,ENGS 96 Mathematical Foundations for Machine Learning,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/engineering-sciences/engs-engineering-sciences-undergraduate/engs-96,ENGS96,"Mathematics for Machine Learning aims to lay the mathematical foundation that are key to understanding the motivations and the implementation ML algorithms. This course will cover the following four broad topics; namely, vector calculus, probability theory, matrix algebra and optimization, in so far as they are used in ML algorithms. The course will conclude with application of these topics to four prototypical ML tasks/algorithms – two in supervised learning (regression using linear models and classification using support vector machine), and two in unsupervised learning (clustering using expectation maximization (EM) and dimensionality reduction using Principal Component Analysis (PCA).  Programming at the level of Python and ML software packages (PyTorch, Tensorflow, etc.) will be used to supplement the understanding of the mathematics and algorithms, though the focus of the course will be on developing mathematical foundations and intuitions for the ML algorithms, rather than on developing large-scale applications of ML algorithms.","ENGS 20orCOSC 10, andMATH 8.MATH 20andMATH 22are recommended but not mandatory.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38750,4 +38750,4 @@ ENGS,ENGS 96 Mathematical Foundations for Machine Learning,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>","['ENGS20', 'MATH8']"

@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 PHIL,PHIL 1 Introduction to Philosophical Topics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1,PHIL1,"Students will engage with central topics, debates and methods in philosophical inquiry. Emphasis is placed on developing critical reading and analytical writing skills.  Readings may draw on both historical and contemporary sources.",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -418,7 +418,7 @@ PHIL,PHIL 1 Introduction to Philosophical Topics,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 1.01 The Problems of Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-01,PHIL1.01,"This course acquaints the student with some of the fundamental problems in at least three main areas of Philosophy: Theory of Knowledge, Metaphysics, and Ethics. Questions treated in lectures normally include: Can we know anything, and, if so, how? Does God exist? What is the relation between mind and body? Are our actions free or determined? What makes an act morally right or wrong? Some attention will be paid to the ways in which answers to these questions can be combined to create philosophical systems or total world views. The readings might include both contemporary essays and classic works by such philosophers as Plato, Descartes, and Hume.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -838,7 +838,7 @@ PHIL,PHIL 1.01 The Problems of Philosophy,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 1.02 Existentialist Ethics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-02,PHIL1.02,"Inescapable freedom– this is what the existentialists held to be the mark of the human condition.  Despite this shared view, however, they each proposed distinct and novel ways of understanding this freedom and its ethical import. To uncover the richness of their analyses of the human condition, the class will explore the complexity of freedom through the lens of core existentialist topics such as radical responsibility, transcendence, nothingness, alterity, inter-subjectivity, finitude, and the absurd.",,DIST: TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1258,7 +1258,7 @@ PHIL,PHIL 1.02 Existentialist Ethics,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 1.03 Philosophy and Economics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-03,PHIL1.03,"What makes an economic system fair or unfair?  What does it mean to be economically rational?  How should we evaluate public policy?  How do we know when things go better or worse for a person?  This course will explore a range of fundamental issues in ethics and political philosophy that have deep implications for economic analysis including distributive justice, well-being, and rationality.  It will also examine philosophical perspectives on economic efficiency and social choice theory.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1678,7 +1678,7 @@ PHIL,PHIL 1.03 Philosophy and Economics,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,"PHIL 1.04 God, Darwin, and the Cosmos",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-04,PHIL1.04,"This course will examine the relation between science and religion. The course will consider evolution, creationism, and intelligent design. Topics will include the compatibility of Darwinism and theism, and the question whether “Intelligent Design” is a scientific theory. The course will consider questions such as ‘Is the Big Bang evidence for or against the existence of God?’ and ‘Is the fact that the universe is life-permitting evidence for the existence of God?",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2104,7 +2104,7 @@ PHIL,"PHIL 1.04 God, Darwin, and the Cosmos",https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,"PHIL 1.05 Reasons, Values, Persons",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-05,PHIL1.05,"We will consider such questions as:  What makes a life worth living?  What makes a life a good life?  What, if anything, makes a life a meaningful life? What, if anything, are the grounds of values? What is a person? What relation, exactly, do you bear to the person who first enrolled in this course?  What is freedom? Are you free?  What, if anything, do personhood, freedom and morality have to do with one another?",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2524,7 +2524,7 @@ PHIL,"PHIL 1.05 Reasons, Values, Persons",https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 1.06 Classic and Experimental Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-06,PHIL1.06,"What is God and does she exist? What can we know and what should we believe? Do we have free will? What action is the morally right action? Who or what deserves our care and concern? These fundamental questions about human existence have gripped deep thinkers, from bearded sages to college students, for centuries. What makes this course unique is that we explore these questions and others through readings from traditional philosophical texts and experimental approaches, to see how these questions can be approached by both philosophical and psychological perspectives.",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2944,7 +2944,7 @@ PHIL,PHIL 1.06 Classic and Experimental Philosophy,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,"PHIL 1.07  Life, Death, Relationships, and Meaning",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-07,PHIL1.07,"In this course we will philosophize about what is valuable and how to live a life, asking how our answers to those questions are affected by the fact that lives don’t go on forever.",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3370,7 +3370,7 @@ PHIL,"PHIL 1.07  Life, Death, Relationships, and Meaning",https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 1.08 Philosophy of Time & Time Travel,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-08,PHIL1.08,"On the one hand, time is completely familiar.  On the other, it is a total mystery.  As you might expect, the combination makes for good philosophy.  In this course, we will study a variety of philosophical puzzles concerning the nature of time.  Is time an illusion?  Does time pass?  Is the present special?  Is time travel  possible?  Do the past and future exist? Does time have a direction? What is spacetime?  What are the special and general theories of relativity? What do they imply about the nature of time?",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3796,7 +3796,7 @@ PHIL,PHIL 1.08 Philosophy of Time & Time Travel,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,"PHIL 1.09 Science, Superstition, and Skepticism",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-09,PHIL1.09,"Most of us believe that matter is made up of atoms, that smoking causes emphysema, and that the universe is billions of years old. Few believe that Virgos are hot-tempered, that you can see the future through a crystal ball, or that baking soda cures AIDS. We often hear that the difference between such beliefs is that one sort is based on science and the other isn’t. But what makes a method of inquiring into the world distinctively scientific? And what makes us justified in believing on the basis of these methods? This course is an introduction to the philosophical theory of knowledge that focuses on the knowledge that science is purported to offer. Possible topics include competing theories of justification, scientific induction, the nature of explanation, probability, scientific ‘revolutions’, the goals of science, trust in scientific authority, and skepticism.",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4222,7 +4222,7 @@ PHIL,"PHIL 1.09 Science, Superstition, and Skepticism",https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,"PHIL 1.10 Minds, Meanings, and Images",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-10,PHIL1.10,"Most things don’t mean anything. How is it that the contents of language and mental states can mean something? How do images represent or depict their objects? What do different answers to such questions tell us about the nature of minds, consciousness, and representation? What do different answers presuppose about reality and our capacity to know it? This course will focus on historical answers to such questions with an eye toward comparing common reference points in contemporary philosophy.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4642,7 +4642,7 @@ PHIL,"PHIL 1.10 Minds, Meanings, and Images",https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,"PHIL 1.11 True, Beautiful, Nasty: Philosophy and The Arts",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-11,PHIL1.11,"Art is often cast as a pleasant distraction, but artists are lionized, ostracized, imprisoned, and even killed. Devotion to sub-genres of music, video games, literature, and street art builds and divides communities. What explains the role of the arts, and artists, in society, and what should their role be? How do positive (nice!) and negative (nasty!) aesthetic responses affect art’s function? Might art be an important, yet non-scientific, approach to understanding our world?",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5062,7 +5062,7 @@ PHIL,"PHIL 1.11 True, Beautiful, Nasty: Philosophy and The Arts",https://dartmou
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 1.12 Philosophy and Tragedy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-12,PHIL1.12,"Since antiquity philosophers have concerned themselves with tragic drama and its world-view. Why is this powerful and peculiar art-form regarded as both a rival to philosophy and also a site of significant philosophical activity? What philosophical insights or ethical developments are made possible through the depiction of suffering and grief? How does tragedy impact our understanding of human agency and the place of fate and chance in human life? Authors considered may include Homer, Sophocles, Euripides, Plato, Aristotle, Shakespeare, Racine, Beuchner, Hegel, Schopenhauer, Nietzsche, Camus, Miller, Nussbaum, Williams.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5482,7 +5482,7 @@ PHIL,PHIL 1.12 Philosophy and Tragedy,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 1.13 The Historical Philosophy of W.E.B. Du Bois,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-13,PHIL1.13,"This course will examine the historical philosophy of the towering Black scholar and great freedom fighter of the 20th Century. We shall engage in close readings of Du Bois’ classic work, “The Souls of Black Folk” (1903) as well as subsequent essays in his magisterial corpus, especially his classic autobiography, “Dusk of Dawn” (1940).",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5900,7 +5900,7 @@ PHIL,PHIL 1.13 The Historical Philosophy of W.E.B. Du Bois,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,"PHIL 1.14 Knowledge, Truth, and Power",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-14,PHIL1.14,"How does and how should social position – race, gender, class – affect our beliefs? What roles does trust play, and ought it to play, in knowledge? How is power implicated in what we can know and in who can be epistemic authorities? Are some agents unjustly epistemically disadvantaged, and if so, how? How ought we to shape our communal interpretive resources? Social epistemology is the study of socially shared beliefs. Some of its core concerns include testimony, disagreement, and the nature of group commitment.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6320,7 +6320,7 @@ PHIL,"PHIL 1.14 Knowledge, Truth, and Power",https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 1.15 Selves and Stories,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-15,PHIL1.15,"Humans are narrators, making sense of themselves and their world. But what are narratives and how do they function? How do narratives engage emotions, desires, and imagination? What sorts of elements belong to narratives? What role does narration play in self-construction? Is it important to have ‘a life-story’? Are narratives an important part of authentic or ethical living? How do narratives differ from other forms of communicative or literary expression? How do individual narratives and social narratives interact? Can narratives serve as arguments or reasons or justifications or explanations? How do narratives figure in human inquiry, human agency, and moral responsibility?",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6740,7 +6740,7 @@ PHIL,PHIL 1.15 Selves and Stories,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,"PHIL 1.16 Morality, Freedom, and the Mind",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-16,PHIL1.16,"In this course, we will focus on classic philosophical questions about morality, freedom, and the mind. We all have to address moral questions in our everyday lives, but how should we go about answering them? What makes actions right and wrong—is it the consequences of the action, or the principle followed, or something else? We all feel like we are free when we make important decisions. But does it make sense to think we might have free will, given that we are natural creatures, in a world governed by deterministic physical and biological laws? If we don’t have free will, can we be held morally responsible for our actions? Finally, we all think of ourselves not just as physical beings, but as thinking things—as beings who are aware of our world, who have beliefs, thoughts, and hopes. But what is the mind—and what are beliefs, thoughts, hopes? Can the mind be understood as identical with the brain, or mental events as events in the brain? If not, how can talk about the mental be understood? We will examine a variety of approaches to these three central topics through both historical and contemporary philosophical texts.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7160,7 +7160,7 @@ PHIL,"PHIL 1.16 Morality, Freedom, and the Mind",https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,"PHIL 1.17 Race and Modernity: W.E.B. DuBois, James Baldwin, Lorraine Hansberry",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-17,PHIL1.17,"This course will examine the classical works of three towering modern intellectuals: W.E.B. Du Bois, James Baldwin, and Lorraine Hansberry. We will wrestle with the rich formulations, subtle arguments, and courageous visions of three Black thinkers who continue to speak with power and passion to our turbulent times.",,Dist:LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7582,7 +7582,7 @@ PHIL,"PHIL 1.17 Race and Modernity: W.E.B. DuBois, James Baldwin, Lorraine Hansb
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,"PHIL 1.18 The Self in Philosophy, Psychology, and Neuroscience",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-18,PHIL1.18,"What makes you, YOU? Is it the sum of your memories, or your brain, or perhaps an immortal soul? In this course, we will cross the centuries together to examine ancient and modern theories of personal identity in philosophy and consider also current empirical perspectives from the cognitive sciences. You will discover canonical readings from historical and contemporary sources in multiple philosophical traditions and discuss how famous clinical cases challenge our thinking about the self.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8008,7 +8008,7 @@ PHIL,"PHIL 1.18 The Self in Philosophy, Psychology, and Neuroscience",https://da
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,"PHIL 1.19 Identity, Liberalism, and Democracy",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-19,PHIL1.19,"What would a just form of democracy look like in a pluralistic society that involves people with diverse identities and values? What policies and laws should the state adopt to counter discrimination and social inequality, and how do they fit (or conflict) with ideals of liberalism? What are social identities, and how do they operate? How are social identities mobilized in different social movements, such as forms of fascism and populism? In this interdisciplinary course, we will examine these and other questions about social identity and its relation to ideals of liberalism, democracy, and justice.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8430,7 +8430,7 @@ PHIL,"PHIL 1.19 Identity, Liberalism, and Democracy",https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 1.20 Buddhist Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-20,PHIL1.20,"Buddhists see philosophy not just as a study of reality or the meaning of life, but as a useful step in overcoming all forms of suffering and realizing the existential happiness of a buddha. This course will survey the four main Buddhist philosophical schools; highlight the differences in their phenomenology, onto-epistemology, and ethics; and explore their views on the nature of consciousness, identity, perception, wisdom, and happiness. It will also touch upon Buddhist dialectical reasoning and analytical meditations aimed at developing insight into the nature of mind and its lifeworld.",,DIST:TMV; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8858,7 +8858,7 @@ PHIL,PHIL 1.20 Buddhist Philosophy,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 1.21 An Introduction to the Problems of Philosophy Through Literature,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-21,PHIL1.21,"Literature has long looked to philosophy for ideas, and philosophy has returned the favor by using on literature as a forum to explore those same ideas. In the spirit of this relationship, this course introduces traditional philosophical questions through literature. These include the demands of morality, the conditions of love, the existence of God, the possibility of knowing other minds, the existence of moral dilemmas, and the authority of tradition. Each will be introduced through a work of literature—a novel, a short story, a play, a film, an opera—and then expounded on in a work of philosophy. We will be interested in both better understanding these issues and assessing the possibilities of symbiosis between philosophy and art.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9278,7 +9278,7 @@ PHIL,PHIL 1.21 An Introduction to the Problems of Philosophy Through Literature,
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 1.22 Africana Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-1-22,PHIL1.22,"Africana Philosophy is an area of philosophical inquiry that addresses problems faced and raised by the African diaspora. This course delves into arguments by thinkers who are responding to experiences of colonization, slavery, and other forms of racial injustice. By exploring the contributions of thinkers across the African diaspora within this introductory course, students will engage with the concepts, principles, and arguments that define this field.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9704,7 +9704,7 @@ PHIL,PHIL 1.22 Africana Philosophy,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 3 Reason and Argument,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-3,PHIL3,"An introduction to informal logic with special attention to the analysis of actual arguments as they arise in daily life as well as in legal, scientific, and moral reasoning. Along with the analysis and criticism of arguments, the course will also consider the methods for constructing arguments that are both logically correct and persuasive. Open to all classes.",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10130,7 +10130,7 @@ PHIL,PHIL 3 Reason and Argument,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 4 Philosophy and Gender,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-4,PHIL4,"This course will focus primarily on the following questions:  What is feminism?  What is sexism?  What is oppression?  What is gender?  Is knowledge gendered?  Is value gendered?  What is a (gendered) self? What would liberation be?  In exploring these issues, we will examine the ways feminist theorists have rethought basic concepts in core areas of philosophy such as ethics, social and political philosophy, metaphysics, epistemology, philosophy of law, and philosophy of mind. Open to all classes.",,Dist:TMV; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10558,7 +10558,7 @@ PHIL,PHIL 4 Philosophy and Gender,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 4.01 Feminist Perspectives on Reproductive Ethics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-4-01,PHIL4.01,"This class focuses on ethical issues concerning human reproduction.  Some of these issues are familiar: Is abortion moral?  Is sex-selection ethical?  Other issues may be less familiar:  Does prenatal testing express a negative message about living with disability?  Is there anything wrong with aiming to have a deaf child? Yet other issues have arisen with the commercialization and globalization of reproduction: Is there anything wrong with selling one’s reproductive labor? Is it ethical to ‘outsource’ pregnancy to Indian surrogates? We will start by looking backward to ethical issues around the introduction of contraception; we will end by looking forward, to the promise of same-sex reproduction through in vitro-gametogenesis, and reproduction via artificial gestation.  While we will consider numerous perspectives on each issue, special consideration will be given to feminist viewpoints.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10980,7 +10980,7 @@ PHIL,PHIL 4.01 Feminist Perspectives on Reproductive Ethics,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 5 Philosophy and Medicine,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-5,PHIL5,"An examination of some philosophical issues in the field of medicine. Primary focus will be on the moral issues that arise in dealing with individual patients, e.g., paternalism, informed consent, euthanasia, and abortion. There will also be an attempt to clarify such important concepts as death, illness, and disease. Open to all.",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11406,7 +11406,7 @@ PHIL,PHIL 5 Philosophy and Medicine,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 6 Logic and Language,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-6,PHIL6,"This course introduces contemporary sentential logic and predicate logic. Both the theory of logic and its application to ordinary language are developed. Topics include symbolization, truth tables, truth trees, interpretations, and derivations. Each week one lecture, three quiz days, and three afternoon individualized discussion sessions are offered (normally MWF 4:45-5:15pm). The individual discussion sessions allow students to pursue their questions and obtain feedback on quizzes on a one-on-one basis. The self-pacing aspect of the course allows students who have difficulty to receive more assistance and those who do not need as much assistance to move ahead more quickly. Open to all classes.",,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11832,7 +11832,7 @@ PHIL,PHIL 6 Logic and Language,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 7 First-Year Seminars in Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-7,PHIL7,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12254,7 +12254,7 @@ PHIL,PHIL 7 First-Year Seminars in Philosophy,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 8 Introduction to Moral Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-8,PHIL8,"An introduction to the foundations and nature of ethics. Questions may include:  What is the good life? What is it for something to have value? Are there acts that ought never to be done, no matter the consequences? Is ethics objective or relative to different perspectives? We inevitably make assumptions whenever we offer ethical verdicts about particular cases. This course aims to think systematically about those assumptions. Open to all classes.",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12680,7 +12680,7 @@ PHIL,PHIL 8 Introduction to Moral Philosophy,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 9 Applied Ethics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-9,PHIL9,"An examination of the ethical dimensions of some contemporary controversies. Topics will vary from year to year but may include: business, death, discrimination, the environment, gender, law, media, race, sex, technology, and war. The course may be taken more than once for credit with permission of the instructor. Open to all classes. No prerequisites.",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13100,7 +13100,7 @@ PHIL,PHIL 9 Applied Ethics,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 9.01 Reproductive Ethics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-9-01,PHIL9.01,"What do we owe human life, once it has begun to develop? Is a woman morally required to continue gestating a fetus, once it has begun developing?  Does the answer depend upon whether or not the fetus is a person?  Some forms of assisted reproduction yield a surplus of human embryos.  Is using these embryos for research moral? Is it moral to dispose of them?  What may we do in the interest of creating human life?  We tend to grant people broad procreative liberty. Should deaf couples be allowed to select for deafness?  And what about choosing enhanced traits for our children?  Some people worry we are facing a future where the rich can design their babies – choosing to create a musical prodigy or a baby Einstein – but the poor cannot.  If so, is distributive justice the only concern about such a future?",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13526,7 +13526,7 @@ PHIL,PHIL 9.01 Reproductive Ethics,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 9.02 Environmental Ethics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-9-02,PHIL9.02,"This course provides a general introduction to ethical problems concerning the environment. The course will cover some standard positions in the field, including biocentrism (the thesis that all living organisms have intrinsic moral worth) and ecocentrism (the thesis that entire natural systems have intrinsic moral worth). Topics considered may include:  the ethics of food; the ethics of climate change; the moral status of non-human animals; population, consumption, and sustainability; GMOs and organic food; our duties to other persons, including future persons; and the difficulty of formulating comprehensive climate policy.",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13952,7 +13952,7 @@ PHIL,PHIL 9.02 Environmental Ethics,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 9.04 The Ethics of Food Choice and Food Policy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-9-04,PHIL9.04,"In this course, we will consider ethical questions for food production, food consumption and food policy. How do ethical values interact with our food choices? Should we support the production of local and organic food? If so, why? If not, why not? Are there compelling moral reasons to adopt a vegetarian or vegan diet? Is it possible to be an ethical omnivore? Do current production practices or food policies have a disproportionately negative impact on some populations? How, if at all, should practices or conditions in the food industry influence our behavior as consumers? In the course of our discussions, we will consider the ethics of harm, distributive justice, complicity, death and obligations to future generations.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14372,7 +14372,7 @@ PHIL,PHIL 9.04 The Ethics of Food Choice and Food Policy,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,"PHIL 9.06 Friends, Lovers, and Comrades: Ethical Issues of Special Relationships",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-9-06,PHIL9.06,"This course will investigate philosophical issues that arise in our relationships with other people. What kind of attitude is love? What makes someone a genuine friend? Is partiality to one's friends and family morally justifiable? Is patriotism? What are the moral responsibilities of sex? Readings from classic and contemporary sources, including Plato, Aristotle, Pufendorf, Hume, Kant, Freud, and Beauvoir.",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14798,7 +14798,7 @@ PHIL,"PHIL 9.06 Friends, Lovers, and Comrades: Ethical Issues of Special Relatio
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,"PHIL 9.07 Ethics of Freedom, Paternalism, and Intervention",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-9-07,PHIL9.07,"We will begin by considering foundational issues in the morality of attempts to steer actors (people as well as states) towards better outcomes.  We apply the resulting theories to concrete issues such as speech, health, drugs, guns, dangerous pursuits, incarceration, and intervention in the affairs of other nations.",,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15218,7 +15218,7 @@ PHIL,"PHIL 9.07 Ethics of Freedom, Paternalism, and Intervention",https://dartmo
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 9.08 Ethics and Information Technology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-9-08,PHIL9.08,"How do we understand moral agency and moral responsibility in the context of the internet? What rights, protections, and obligations govern, or should govern, social media? Readings and discussions will include: privacy, harm, surveillance, consent, pornography, freedom of expression, accountability, anonymity, games, violence, and activism.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15638,7 +15638,7 @@ PHIL,PHIL 9.08 Ethics and Information Technology,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 11 Ancient Greek and Roman Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-11,PHIL11,Students will study the origins of Western philosophical thought as it emerges in classical Greece and Rome from 6th century BCE through the 4th century CE. Topics may include: the methods and value of philosophy; the fundamental nature of reality; the possibility of knowledge; the roles of logic and mathematics in inquiry; philosophy of biology; philosophy of medicine; moral psychology and human action; virtue and human flourishing; political philosophy; fatalism; death.,"One Philosophy course, orCLST 3, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16060,7 +16060,7 @@ PHIL,PHIL 11 Ancient Greek and Roman Philosophy,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 12 Medieval and Renaissance Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-12,PHIL12,"Inspired by classical philosophy, Jewish and Islamic thought, and Christian doctrine, medieval philosophy (from, roughly, the 4th-15th centuries) strives to reconcile its various influences while making creative contributions and great strides in philosophy of religion, logic, natural philosophy, philosophy of mind and metaphysics. The late medieval period paves the way for intellectual revolutions in the philosophy of science, philosophy of religion and political theory of the Renaissance period (roughly the 14th â 16th centuries).","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16482,7 +16482,7 @@ PHIL,PHIL 12 Medieval and Renaissance Philosophy,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 12.01 Medieval Philosophy of Language and Reality,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-12-01,PHIL12.01,"Does language mirror reality? Are linguistic expressions reliable guides to truth? If not, why not? If so, how can we best approach the study of reality through language? Medieval philosophers make great strides in logic, semantics and metaphysics in their attempts to answer such questions. Topics considered in the course may include signification, the logic of predication, the nature and number of categories, analogy, substance and accident, existence and essence, universals, and the status of relations.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16904,7 +16904,7 @@ PHIL,PHIL 12.01 Medieval Philosophy of Language and Reality,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 13 Early Modern Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-13,PHIL13,"Early modern philosophy is western European philosophy mostly of the 17th and 18th centuries, sometimes indicated as spanning from the early writings of Descartes (c. 1619) to the publication of Kant'sCritique of Pure Reason(1781). It encapsulates the break from prior Scholastic and Renaissance traditions in philosophy and science and becomes hugely influential in setting the agenda of western philosophy—in epistemology, metaphysics, philosophy of mind, ethics, political philosophy, etc.—through the 20th century and up to today.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17326,7 +17326,7 @@ PHIL,PHIL 13 Early Modern Philosophy,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 13.01 17th Century Rationalists,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-13-01,PHIL13.01,"A study of central themes in the works of the three most celebrated philosophers of the seventeenth century: Descartes, Spinoza and Leibniz. Metaphysics and epistemology will be our focus, and the topics we’ll explore include mind, matter, necessity, contingency, truth, causation, space, time, knowledge, reason and the existence of God. We’ll approach their philosophy through a variety of their texts, in English translation, including treatises, papers, dialogues, letters and unpublished drafts and notes.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17748,7 +17748,7 @@ PHIL,PHIL 13.01 17th Century Rationalists,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 13.02 British Empiricism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-13-02,PHIL13.02,"The Empiricists believed that concepts and knowledge are sourced exclusively in the senses. This position found its most detailed presentation in John Locke (1632-1704), George Berkeley (1685-1753), and David Hume (1711-1776). It led to a picture of the mind, how it relates to the world, and how this leads to knowledge that is still influential today. This course develops that picture, with an eye to the philosophical context in which it came about and its influence on subsequent generations. In addition to Locke, Berkeley, and Hume, other (mainly British) writers considered might include Thomas Hobbes, Margaret Cavendish, Anne Conway, Catharine Cockburn, Gottfried Wilhelm Leibniz, Damaris Masham, Frances Hutcheson, Thomas Reid, and Mary Shepard.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18176,7 +18176,7 @@ PHIL,PHIL 13.02 British Empiricism,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 13.03 The British Moralists,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-13-03,PHIL13.03,"During the late Seventeenth and Eighteenth Centuries, Britain was the site of especially vigorous and fertile debates about some central issues in moral philosophy. This course explores those debates, including: the nature of moral judgment, the objectivity of moral principles, the dynamics of the moral sentiments, the motivational potential of moral responses, the freedom of the will, and the moral characteristics of the sexes.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18598,7 +18598,7 @@ PHIL,PHIL 13.03 The British Moralists,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 16 Late Modern Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-16,PHIL16,"In this course students will engage with figures and topics from the period initiated by Kant'sCritique of Pure Reasonin 1781 and ending, roughly, with Nietzsche's last work in 1888. Figures may include: Kant, Herder, Schleiermacher, Reinhold, Schelling, Schlegel, Fichte, Hegel, Schopenhauer, Kierkegaard, Feuerbach, Marx, Bolzano, Brentano, Meinong, Mill, and Nietzsche. Topics may include: idealism and realism, materialism, social and political philosophy, religion, value, existentialism, psychologism, logic, semantics, philosophy of cognition, and philosophical methodology.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19020,7 +19020,7 @@ PHIL,PHIL 16 Late Modern Philosophy,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 16.01 Self-Consciousness in German Idealism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-16-01,PHIL16.01,Our theories of action and knowledge are condemned to fail if they are not guided by a philosophically fundamental inquiry into the nature of self-consciousness.  Kant maintains a modest version of this thesis.  Fichte and Hegel make it the key to their ambitious systematic philosophies.  This course aims to isolate and evaluate the basic insights that animate German Idealism.,"One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19442,7 +19442,7 @@ PHIL,PHIL 16.01 Self-Consciousness in German Idealism,https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 16.02 Kant on Moral, Legal, and Political Philosophy",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-16-02,PHIL16.02,"According to Kant’s influential account of morality, how an agent understands her own actions determines their moral status.  An act that is innocuous in its external guise might be morally problematic because of its internal principle.  Kant supplements this with an account of how we ought to relate to other persons in external respects.  This “doctrine of right” offers a compelling alternative to more widely known political and legal philosophies.  This class will provide a unified introduction to both parts of Kant’s attempt to understand the normative implications of agency.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19864,7 +19864,7 @@ PHIL,"PHIL 16.02 Kant on Moral, Legal, and Political Philosophy",https://dartmou
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 16.03 Hegel and Marx,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-16-03,PHIL16.03,"This course concerns two towering figures of the nineteenth century, Hegel and Marx. Our goal is to explore their contrasting views of modern society, especially the modern market economy. We begin with Hegel’sPhilosophy of Right, an attempt to show that modern society promotes human freedom. We then turn to Marx’sParis ManuscriptsandCapital, considering his case for the revolutionary overthrow of this society. Topics discussed along the way may include private property, individual rights, human nature, alienation, exploitation, civil society, democracy, false consciousness, and ideology critique.","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20286,7 +20286,7 @@ PHIL,PHIL 16.03 Hegel and Marx,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 16.04 Kant’s Theoretical Project,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-16-04,PHIL16.04,"This is a course in the foundations of Kant’s entire philosophical project, with special focus on themes that are central to theCritique of Pure Reason.  Discussions may include the nature of reflexive critique, the role of faculties in such a project, Kant’s response to skepticism, the nature and status of logic, Kant’s philosophy of mathematics, transcendental idealism, Kant’s identification and justification of the most basic categories of our thought, and the role of reason in inquiry.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20708,7 +20708,7 @@ PHIL,PHIL 16.04 Kant’s Theoretical Project,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 19 History of 19th/20th Century Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-19,PHIL19,"This course treats philosophical topics and figures in the rich and influential period that spans the 19th and 20th centuries. Topics may include: subjectivity, agency, power, atomism, idealism, positivism, critiques of metaphysics, ideology, psychologism, the unconscious, intentionality, consciousness, analysis, naturalism and modality. Prerequisite: One course in philosophy or permission of the instructor.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21130,7 +21130,7 @@ PHIL,PHIL 19 History of 19th/20th Century Philosophy,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 19.01 Wittgenstein,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-19-01,PHIL19.01,"An investigation of Ludwig Wittgenstein's philosophy, its sources, and its enduring significance. The main line of the course traces the logical atomism of his early years through his rejection of it as dogmatic and the subsequent development of his thoughts about meaning, mind, language games, and rule-following. Other topics might include his philosophy of mathematics, his remarks on color, or his aesthetics and value theory.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21552,7 +21552,7 @@ PHIL,PHIL 19.01 Wittgenstein,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 19.02 Transcendental Philosophy in Husserl and Heidegger,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-19-02,PHIL19.02,"Transcendental philosophy seeks to uncover conditions for the possibility of experience. This course will study the ways in which Husserl and Heidegger develop and refine Kant’s transcendental project in the course of their phenomenological investigations, in part by broadening the range of human experience that is subject to philosophical scrutiny. Time will be one focus of the course, as we seek to reconstruct Heidegger’s claim that different conceptions of time yield different understandings of what it is to be.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21974,7 +21974,7 @@ PHIL,PHIL 19.02 Transcendental Philosophy in Husserl and Heidegger,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 19.03 Positivism and Ordinary Language Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-19-03,PHIL19.03,"As the natural sciences developed and branched off from philosophy, philosophers faced the question: What is left for philosophy to do? This crisis led philosophers in the positivist and ordinary language traditions to reexamine the role of philosophy, the boundaries between the meaningful and the nonsensical, and the possibility of metaphysics. In this class, we will study the motivations, methods, and results of each approach, as well as examining prominent criticisms raised against them.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22402,7 +22402,7 @@ PHIL,PHIL 19.03 Positivism and Ordinary Language Philosophy,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 19.04 American Pragmatism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-19-04,PHIL19.04,"This course will be examination of the origins and development of Pragmatism as a distinctly American school of thought developing novel approaches to thinking about knowledge, truth, the role of metaphysics in philosophy, religion, and aesthetics. The course will cover such thinkers as W.E.B. Du Bois, William James, C.S. Pierce, John Dewey, and Jane Addams, and may also examine how these thinkers influenced future generations through more contemporary neo-Pragmatist thinkers.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22824,7 +22824,7 @@ PHIL,PHIL 19.04 American Pragmatism,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 22 Feminism and Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-22,PHIL22,"This course examines the relationship between feminism and philosophy. The focus is on such questions as: Is the Western philosophical canon inherently sexist? How should feminist philosophers read the canon? Are Western philosophical concepts such as objectivity, reason, and impartiality inherently masculinist concepts? The course may focus on either the ways in which feminists have interpreted great figures in the history of philosophy (e.g., Plato, Aristotle, Descartes, Hume, Kant, Nietzsche), or on the ways in which feminists have rethought basic concepts in core areas of philosophy (e.g., epistemology, ethics, metaphysics, political philosophy, philosophy of science), or both. Open to all classes.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23252,7 +23252,7 @@ PHIL,PHIL 22 Feminism and Philosophy,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 23 Art and Aesthetics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-23,PHIL23,"What is art, and what’s the point of it? Does it help us understand the world better or enjoy it more? Does art distract us from what is really important? What is beauty, and ought the arts aim at producing it? What are representation, expression, and realism, and how do they figure in different art forms? The course addresses combinations of these questions through both reading philosophy and engaging with artwork.","One Philosophy course, or permission of the instructor.",ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23680,7 +23680,7 @@ PHIL,PHIL 23 Art and Aesthetics,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 23.01 Ethics and the Arts,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-23-01,PHIL23.01,"From novels, films, and television to painting, sculpture, and symphonies, the influence of art on our character, our values, and how we see the world is pervasive. This raises a number of important philosophical questions at the intersection of ethics and the philosophy of art. Do both moral properties like goodness and aesthetic properties like beauty exist only ""in the eye of the beholder"", or are one or both of them more objective? Can we learn things about what is good and right, or how to be better people from reading great literature or seeing important paintings? How might the moral character of a work of art affect its aesthetic merit? IsBirth of a Nation, for example, a worse film because of its racism?","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24102,7 +24102,7 @@ PHIL,PHIL 23.01 Ethics and the Arts,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 23.02 Philosophy and the Cinematic Arts,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-23-02,PHIL23.02,"Moving images introduce new questions and problems in philosophy of art, and they offer new perspectives on old ones. How does film differ from the other arts? Do moving images represent time, and if so, do they do it in a pictorial manner? In what critical, aesthetic, and representational respects does cinema differ from theater, painting, and the other mimetic arts? Did cinema introduce new possibilities for realism into artistic practice? How should we understand the tangled relationship between photography and cinema? How does the study of moving images relate to problems in other areas of philosophy, like the philosophy of mind and the philosophy of language?","One Philosophy course, or permission of the instructor.",Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24524,7 +24524,7 @@ PHIL,PHIL 23.02 Philosophy and the Cinematic Arts,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 23.03 Art and Its Nature,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-23-03,PHIL23.03,"What is the nature of art? Can ‘art’ be defined, or do attempts at definition illegitimately constrain creative innovation in the arts? What sorts of things are paintings, songs, or works of literature? How are they related to things such as colored canvases, scores, the cultural context, artists, and audiences? Are there important differences in kind among arts like painting, literature, and music? This course will investigate these and other questions about the definition and ontology of art.","One Philosophy course, or permission of the instructor.",Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24946,7 +24946,7 @@ PHIL,PHIL 23.03 Art and Its Nature,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 24 Law and Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-24,PHIL24,Legal practice raises a wide range of questions of interest to philosophers.  Some concern how best to understand central concepts invoked in laws:  What are contracts? What is free speech? Other questions concern what kinds of laws and legal institutions we should have: What kinds of laws should regulate hate speech? When is the state justified in using coercion to enforce laws?  Still other questions concern law itself: How are legal norms related to moral norms?,"One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25368,7 +25368,7 @@ PHIL,PHIL 24 Law and Philosophy,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 25 Philosophy of Cognitive Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-25,PHIL25,"What is the mind and how can we model it? Cognitive science offers a distinctive approach to some of the great philosophical questions about the mind. But what does it tell us? This course will cover the classical foundations of cognitive science, and some of the more recent developments in the field. We will study the computational theory of the mind and its implications, connectionism, theories of embodiment, dynamical systems, and recent statistical approaches to cognition. (Not open to students who received credit for PHIL 010/COGS 11.01.)","One Philosophy course, or permission of the instructor.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25792,7 +25792,7 @@ PHIL,PHIL 25 Philosophy of Cognitive Science,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 26 Philosophy and Computers,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-26,PHIL26,The accomplishments of artificial intelligence research and the widespread use of computers in our society confront us with many interesting philosophical questions. What are the limits of artificial intelligence? Could computers ever think or feel? Is the Turing test a good test? Are we really computers? Are there decisions computers should never make? Do computers threaten our privacy in special ways? This course will consider such issues in order to explore the philosophical implications of computing. Open to all classes.,"One Philosophy course, one Cognitive Science course, one Computer Science course, or permission of the instructor.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26222,7 +26222,7 @@ PHIL,PHIL 26 Philosophy and Computers,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 27 Philosophy of Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-27,PHIL27,"In this course students examine the history, practices, methods and assumptions of the natural and social sciences. Topics may include:  the objects and methods of scientific inquiry; causation and explanation; the structure and function of laws and theories; the role of mathematics and models in science; scientific representation; induction and probability; scientific revolutions; the intersections of science and value; and the sociology of science.","One Philosophy course, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26650,7 +26650,7 @@ PHIL,PHIL 27 Philosophy of Science,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 28 Phenomenology and Existentialism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-28,PHIL28,"This course examines the traditions of phenomenology and existentialism, primarily through a study of German, Austrian, and French philosophy from the first half of the twentieth century, but also including more recent work inspired by these traditions. Major historical figures covered in this course may include: Franz Brentano, Edmund Husser!, Martin Heidegger, Maurice Merleau-Ponty, Jean-Paul Sartre, Simone de Beauvoir, and Emmanuel Levinas. Special topics may include: the nature of subjectivity or consciousness; theories of intentionality; phenomenology and post-phenomenology; historicity; freedom and responsibility; existentialist theories of oppression; and existentialist ethics.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27072,7 +27072,7 @@ PHIL,PHIL 28 Phenomenology and Existentialism,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 28.01 Heidegger's Being and Time,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-28-01,PHIL28.01,"This course will focus on Heidegger’s Being and Time. Topics to be discussed include: the foundations of metaphysics, knowing-how vs. knowing-that, agency, practical reason, social identity, social ontology, philosophical methodology, and the phenomenology of everyday experience.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27494,7 +27494,7 @@ PHIL,PHIL 28.01 Heidegger's Being and Time,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 28.02 Phenomenology and the Mimetic Arts,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-28-02,PHIL28.02,"Phenomenology offers a distinctive approach to philosophical problems because it is centered on unpacking the structure and content of experience. This course introduces students to phenomenological methods, and then focuses these techniques on the mimetic arts. The arts of imitation – figurative painting and sculpture, photography, film, theater, and so on – are particularly phenomenologically interesting. Experiences of them are complex because they involve awareness of the representations as well as what they represent, among other things. As such, they are both excellent candidates for phenomenological analysis, as well as test cases for phenomenological methods. This course will consider both classical and contemporary thinkers in the phenomenological tradition, as well as their critics.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27916,7 +27916,7 @@ PHIL,PHIL 28.02 Phenomenology and the Mimetic Arts,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 28.03 20th Century Existentialism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-28-03,PHIL28.03,"This course studies the twentieth-century existentialist tradition of philosophy, focusing on questions about the nature of human existence, anxiety, authenticity, bad faith, freedom, responsibility, death, our relationship to others and to our own bodies, and features of our experience that arise in virtue of being racialized or gendered. Central philosophers in this tradition include Martin Heidegger, Jean-Paul Sartre, Simone de Beauvoir, and Franz Fanon, and we may also examine works of literature or film that illustrate these ideas.","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28338,7 +28338,7 @@ PHIL,PHIL 28.03 20th Century Existentialism,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 29 Philosophy of Logic and Mathematics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-29,PHIL29,"Logic and philosophy of mathematics are ancient fields of study and have also flowered in recent times. Courses in this rubric study principles, results and methods of logic (whether in 'classical' or 'non-classical' systems) or philosophical issues concerning the interpretation of logic and mathematics (e.g., whatjustifiesthe rules of inference? what is mathematicsabout?what is logical or mathematicaltruth?what does a proofprove?).Emphasis may be historical or contemporary.","One Philosophy course, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28760,7 +28760,7 @@ PHIL,PHIL 29 Philosophy of Logic and Mathematics,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 29.01 Of Time and Necessity: Philosophy of Logic,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-29-01,PHIL29.01,"Often we reason about what is now, actually the case. But often we also reason about what was or will be. Or about what could or might or would have been; or about what must be, even if some things could have been otherwise. What are the correct rules for this? What, if anything, makes them correct? We shall develop some elementary parts of modal and temporal logic and consider their interpretation and philosophical significance.","One Philosophy course, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29182,7 +29182,7 @@ PHIL,PHIL 29.01 Of Time and Necessity: Philosophy of Logic,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 29.02 The Infinite,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-29-02,PHIL29.02,"Infinity is an indispensable concept for mathematics. Arithmetic deals with infinitely many natural numbers, geometry with infinitely long lines, calculus with infinitely small changes, and set theory with multiple levels of infinity. But the infinite raises distinctive philosophical problems. Just what is our concept of the infinite? A completed totality larger than any finite totality? Something that extends beyond all bounds? What justifies us in applying this concept? Are there larger and smaller levels of infinity? How many? Moreover, how are we to deal with the paradoxes that arise from the concept? The infinite also has a related, but arguably distinct use in certain philosophical debates where it is used to denote ideas of perfection or completeness, e.g. of the divine or human reason. What is the relationship between this notion of the infinite and its use in mathematics? Readings will include historical and contemporary sources, from Aristotle to Cantor to today.","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29604,7 +29604,7 @@ PHIL,PHIL 29.02 The Infinite,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 30 Epistemology and Methodology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-30,PHIL30,"This course deals with the nature of inquiry.  Which methods of inquiry should we rely on? Can we know or understand anything? Of what value are knowledge and understanding?  Topics covered may include skepticism, the methodologies of science, mathematics and philosophy, the social nature of knowledge, self-knowledge, the nature of memory and knowledge of the past.","One Philosophy course, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30032,7 +30032,7 @@ PHIL,PHIL 30 Epistemology and Methodology,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 31 Metaphysics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-31,PHIL31,"This course will focus on one or more central topics in metaphysics, possibly including the existence and nature of the divine, the infinite, free will, personal identity, the self, actions and intentions, space and time, change, the nature of properties, truth, necessity and modality.","One Philosophy course, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30454,7 +30454,7 @@ PHIL,PHIL 31 Metaphysics,https://dartmouth.smartcatalogiq.com/en/current/orc/dep
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 31.01 Space and Time,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-31-01,PHIL31.01,"In this course, we will consider some historically significant questions about the nature of space, time and spacetime. How are space, time and change related? Is space some kind of substance or container for events? Or is space a relation between things? Is time mind-dependent? How, if at all, is motion or persistence through space and time possible? Are the past, present and future equally real? Is time travel possible?","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30876,7 +30876,7 @@ PHIL,PHIL 31.01 Space and Time,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 31.04 Realism and AntiRealism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-31-04,PHIL31.04,"In this course, we will explore a portion of the complex web of debates between realists and antirealists.  Questions we will consider include: What is realism? On what bases do we commit to the existence of something? To what extent, if any, are objects of experience and inquiry (e.g. colors, values, natural laws, numbers) independent of the mind? What role, if any, does the mind play in the construction or conception of meanings, properties or things? What role does language play in determining ontological commitments? What is truth? What, if anything, do distinct conceptions of meaning, objectivity and truth suggest about the nature of reality or about the mind's capacity to determine or to know what is real?","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31298,7 +31298,7 @@ PHIL,PHIL 31.04 Realism and AntiRealism,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 31.05 Time, Truth and Fate",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-31-05,PHIL31.05,If it’s already true that I’ll die in an avalanche tomorrow or else that I won’t—logic says it’s one or the other—is it pointless to take precautions? Is everything fated to happen as it does? Is the future open? Can we change the past? Is anything real apart from the present? Does the present exist? Does the truth about time require different rules of logic? We’ll draw on sources from Aristotle to today.,"One Philosophy course, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31720,7 +31720,7 @@ PHIL,"PHIL 31.05 Time, Truth and Fate",https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 31.06 Free Will, Agency and Responsibility",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-31-06,PHIL31.06,"What sorts of agents are we? Do we have free will? Are we ever truly the authors of our actions? Does science—whether physics or psychology or neuroscience—promise to give us the answers? What are the consequences for moral responsibility? The metaphysical, scientific and social dimensions of these classic questions in philosophy run deep through their history and are focal points of contemporary discussion.","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32142,7 +32142,7 @@ PHIL,"PHIL 31.06 Free Will, Agency and Responsibility",https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 31.07 The Social World,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-31-07,PHIL31.07,"Our world is rife with social entities such as money, states, clubs, and corporations. But what are these things? They seem as real as trees or mountains, yet at least some seem to be constructed by our beliefs and practices in ways that other physical things are not. This course explores questions about what social objects and social groups are, how they differ from natural objects, and how we can acquire knowledge of them.","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32564,7 +32564,7 @@ PHIL,PHIL 31.07 The Social World,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 31.08 Puzzles of the Material World,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-31-08,PHIL31.08,"The world around us seems to be populated with familiar objects of all sorts: plants and animals, tables and chairs, rivers and mountains. Yet a range of puzzles and paradoxes have been raised to do with the vagueness of ordinary objects, their relationship to the matter that makes them up, and the apparent rivalry between scientific and everyday descriptions of the world. Might ordinary objects be an illusion? What does the material world truly contain? Can we save our common-sense view of the world?","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32986,7 +32986,7 @@ PHIL,PHIL 31.08 Puzzles of the Material World,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 31.09 Metaphysics of Race,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-31-09,PHIL31.09,"Are human races social or biological? Do races have essences? Why does race have such a grip on our identities and on who holds power in society? This course examines the social construction of race as well as how racial categories interact with human biology and psychology. Racial categories, undoubtedly, impact people’s lives. We shall investigate what these racial categories really are and whether we can (or should) eliminate them for a more just society.","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33408,7 +33408,7 @@ PHIL,PHIL 31.09 Metaphysics of Race,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 32 Intermediate Logic,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-32,PHIL32,"An investigation of three branches of symbolic logic: first-order predicate logic with identity, sentential modal logic, and predicate modal logic. Topics to be covered may include Russell's theory of definite descriptions; the treatment of non-denoting terms in logics known as ""free logics;"" investigations of various modalities, involving pairs of concepts such as necessity and possibility, being obligatory and being permitted, and being known and being believed; Kripke-style ""possible world"" semantics.","PHIL 6, or MATH 39 orMATH 69, or permission of the instructor.",QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33830,7 +33830,7 @@ PHIL,PHIL 32 Intermediate Logic,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",['PHIL6']
 PHIL,PHIL 34 Language and Thought,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-34,PHIL34,"Studies of language and cognition play central and defining roles in the history and development of philosophy. Students will investigate the nature of language and its relations to logic, thought and reality.  Specific topics may include theories of signs, meaning, reference, truth, and speech acts.  Other possibilities include necessity, analyticity, tensed statements, counterfactual conditionals, indexicals, pragmatics, metaphor, intentionality and vagueness.","One Philosophy course, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34252,7 +34252,7 @@ PHIL,PHIL 34 Language and Thought,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 35 Mind and Psychology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-35,PHIL35,"The mind is both a part of the world and the source of our perspectives on it. A variety of approaches to understanding the mind consider such questions as: What is consciousness? What is it to think about things? How does the world as we know it through the sciences allow for conscious, thinking creatures to exist? Are there unconscious thoughts and desires? Can psychology, neuroscience, philosophy and psychiatry help us answer these questions?","One Philosophy course, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34674,7 +34674,7 @@ PHIL,PHIL 35 Mind and Psychology,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 35.01 Theories of Consciousness,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-35-01,PHIL35.01,"Conscious experience is at once both completely familiar and utterly mysterious: how is it that electrical activity in a lump of grey matter – the brain – gives rise to the Technicolor phenomenology of our conscious experience? If human beings are just biological machines, then how is possible that we have a subjective point of view on the world? Why are we not just mindless robots, that produce behavior in light of stimulations from the environment, but lack any inner awareness or consciousness? In this class we will read, and bring together in conversation, cutting edge work from philosophy, psychology, and the neurosciences on the nature of consciousness.","One Philosophy course, one cognitive science course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35104,7 +35104,7 @@ PHIL,PHIL 35.01 Theories of Consciousness,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 36 Metaethics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-36,PHIL36,"This course explores foundational questions about ethics.   For instance: What, if anything, makes an ethical judgment correct? Are ethical facts created or discovered? Can ethical judgments ever be objectively true, or are they only true ""from a point of view?"" How are ethical judgments related to natural science and the picture of the world it offers us? How can we come to justified beliefs about ethics?","One Philosophy course, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35526,7 +35526,7 @@ PHIL,PHIL 36 Metaethics,https://dartmouth.smartcatalogiq.com/en/current/orc/depa
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 37 Ethical Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-37,PHIL37,"This course is broadly concerned with questions about what is right, good and virtuous.  Some instances of the course will treat abstract questions.  For example: Are moral principles universal or relative to a particular group? Is an act right just in case it maximizes happiness? Do we have good reason to be moral? More focused instances might include: Do we have duties to non-humans? When is it morally permissible to kill a person?","One Philosophy course, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35954,7 +35954,7 @@ PHIL,PHIL 37 Ethical Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 37.01 Consequences and Contracts,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-37-01,PHIL37.01,"Ethical theory begins with questions about the foundations of morality: Why should I care about other people at all? It then asks very general questions about what shape our duties to self and others should take: Given that I owe something to other people, do I owe them pleasure? Happiness? To help them pursue their projects? To solicit their consent? This class is devoted to two systems of answers to these questions. The first, consequentialism, holds that the moral status of an action is primarily a matter of whether it brings about good or bad consequences. The second, contractualism, understands moral principles as grounded in a hypothetical contract between agents.","One Philosophy course, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36376,7 +36376,7 @@ PHIL,PHIL 37.01 Consequences and Contracts,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 37.02 Morality Critics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-37-02,PHIL37.02,"For most of its history morality has had vociferous critics. These critics argue that morality’s claims are illusory, ungrounded, or corrosive to human happiness. This course will examine some relatively recent examples of these arguments, including classic critiques from Marx, Nietzsche, and Freud, the “anti-theory” movement represented by Anscombe, Foot, and Williams, as well as recent work on evolution, error theory, the revision of normative concepts, and the possibility of ethics without ethical theory.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36796,7 +36796,7 @@ PHIL,PHIL 37.02 Morality Critics,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHIL,PHIL 38 Social and Political Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-38,PHIL38,"Through the study of classical and contemporary texts in political and social theory, we will consider such issues as how and to what extent (if at all) political authority can be justified, what the criteria are for distributive justice, and how social and political inequalities (such as those based on race and gender) should be conceptualized and addressed.","One Philosophy course, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37218,7 +37218,7 @@ PHIL,PHIL 38 Social and Political Philosophy,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 38.01 Equality, Justice, and Democracy",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-38-01,PHIL38.01,"What is the nature of equality? How much does equality matter in ethics and politics? And why (if at all) does equality matter in the first place? This course concerns these and related questions about the role of equality in evaluating the social and political world. One of our central concerns will be how equality relates to other (purportedly important) ethical and political values, including justice, democracy, and freedom.","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37646,7 +37646,7 @@ PHIL,"PHIL 38.01 Equality, Justice, and Democracy",https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 38.02 Ethics, Politics, and the Law",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-38-02,PHIL38.02,"This interdisciplinary course will examine normative issues about ethics, politics, and the law. Specific questions studied might include the following: When is the state justified in using coercive force to secure compliance with the law? How should we proceed with those who disagree with us about normative questions within a democratic, pluralistic society? Are there correct answers to normative questions at all, and (if so) how might we improve in learning about them?","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38070,7 +38070,7 @@ PHIL,"PHIL 38.02 Ethics, Politics, and the Law",https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 38.03 Race, Justice, and the Law",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-38-03,PHIL38.03,"The last few years has seen increased calls for “racial justice” by a range of actors across the USA. How should we evaluate these calls? For example: what exactly is racial justice? What would it mean for our society to achieve more of it? And what methods for achieving it are (and are not) permissible in a pluralistic, democratic society? We will approach these and related questions by engaging with theories of racial justice, general theories of justice, and theories of race and racism. As part of our discussion, we will also engage with debates about more specific social/political issues tied to debates about racial justice, including such issues as mass incarceration, the foundations of criminal law, affirmative action, antidiscrimination law, propaganda, ideology critique, and political speech.","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38500,7 +38500,7 @@ PHIL,"PHIL 38.03 Race, Justice, and the Law",https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 38.04 Markets, Justice, and the State in the History of Political Thought",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-38-04,PHIL38.04,"This course surveys the views of some important figures in the history of political philosophy and political economy about markets, justice, and the state.  We will focus on Plato, David Hume, Adam Smith, Jean-Jacques Rousseau, and G.W.F. Hegel, though we will look at some contemporary work as well.","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38922,7 +38922,7 @@ PHIL,"PHIL 38.04 Markets, Justice, and the State in the History of Political Tho
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 38.05 Black Political Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-38-05,PHIL38.05,"This class examines main ideas and key thinkers within African American, Black American, and Africana political theory. This course compares goals, viewpoints, and strategies of various African American political and social movements of resistance and social and political voices that helped to shape them. Rather than proceeding chronologically, the course is structured around thematic units designed to give a foundational understanding of the development of Africana, Black American, and African American thought on a series of major socio-political topics, such as class, nationality, race, white supremacy, gender, body politics, and culture. The course is structured to give students an understanding of these topics and the multiplicity of methods employed in Black socio-political theory and philosophy.","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -39352,7 +39352,7 @@ PHIL,PHIL 38.05 Black Political Theory,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 39 Critical Theory and Post-Structuralism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-39,PHIL39,"This course examines themes in 20th and 21st century French and German philosophy, with a focus on critical social theory of the Frankfurt School and French post-structuralism, and contemporary work inspired by these traditions.  Figures covered in this course may include:  Adorno, Horkheimer, Habermas, Foucault, Deleuze, Derrida, and Honneth. Topics may include:  the dialectic of enlightenment; the critique of power; the Frankfurt School; structuralism and post-structuralism; and the problem of modernity.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -39774,7 +39774,7 @@ PHIL,PHIL 39 Critical Theory and Post-Structuralism,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 39.01 Foucault,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-39-01,PHIL39.01,"This course will focus on the work of Michel Foucault. Foucault’s work, which combined historical and philosophical inquiry in innovative ways, helped shape many discussions across the humanities and social sciences in the second half of the twentieth century, and continues to be influential today. We will discuss Foucault’s thinking about a range of topics, including ones such as genealogy, power, discourse, sexuality, biopolitics, truth, knowledge, subjectivity, social identity, agency, and philosophical methodology.","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40196,7 +40196,7 @@ PHIL,PHIL 39.01 Foucault,https://dartmouth.smartcatalogiq.com/en/current/orc/dep
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 40 Race, Gender, Sexuality",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-40,PHIL40,"This course focuses on the critical examination of race, gender, sexuality, and other intersecting categories of identity, oppression and resistance such as class, nationality, and dis/ability. Prerequisite: One course in philosophy or permission of the instructor","One Philosophy course, or permission of the instructor.",Dist:TMV; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40618,7 +40618,7 @@ PHIL,"PHIL 40 Race, Gender, Sexuality",https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 45 Special Topics in Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-45,PHIL45,The content of this course varies from term to term. See individual topic descriptions for details.Prerequisite: One Philosophy course or permission of the instructor.,"One Philosophy course, or permission of the instructor.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -41036,7 +41036,7 @@ PHIL,PHIL 45 Special Topics in Philosophy,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 45.01 Paradoxes and Puzzles,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-45-01,PHIL45.01,"Paradoxes have played influential roles in philosophical investigations since antiquity. Paradoxes figure both in arguments for important philosophical theses and in (alleged) refutations of substantive positions. This course considers a selection of celebrated paradoxes along with important attempts to solve them. Students will consider topics in a variety of fields, possibly including philosophy of language, logic, ethics, decision theory, metaphysics, epistemology, and philosophical methodology.","One Philosophy course, or permission of the instructor.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -41454,7 +41454,7 @@ PHIL,PHIL 45.01 Paradoxes and Puzzles,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 45.02 God, Belief, and Evil",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-45-02,PHIL45.02,"God is supposed to be a perfect being: all-knowing, all-powerful, and perfectly good. Famously, there are 'proofs' of God's existence, and 'proofs' to show the opposite. What should we think? This class explores the question of God's nature and existence, and what it means for human belief and action. What are the divine attributes? How strong are the arguments for or against God's existence? Can religious belief be rational? How could a perfect God permit evil? Can there be morality without God?","One Philosophy course, or permission of the instructor.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -41872,7 +41872,7 @@ PHIL,"PHIL 45.02 God, Belief, and Evil",https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 45.03 Consent in Philosophy and Law,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-45-03,PHIL45.03,"What is consent? Despite its enormous moral and legal centrality, the idea of consent seems flawed in important ways. It is not obvious what counts as consent, or what makes it reasonable to believe in consent. Consent can be coerced, or unwilling. Ideally, consent and refusal are instantaneous powers conferring recognized permission or obligation on recipients. In real life, however, particularly for women, consent and refusal can be ignored, dismissed, misunderstood, or deemed irrelevant. We will examine the concept of consent in legal theory and moral philosophy to move towards a better understanding of it in sexual contexts.","One Philosophy course, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -42294,7 +42294,7 @@ PHIL,PHIL 45.03 Consent in Philosophy and Law,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 45.04 Embodied Cognition,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-45-04,PHIL45.04,"This course critically examines approaches in the philosophy of mind and cognitive science that see our psychological capacities as importantly dependent on our bodily form and abilities, and our environmental surroundings. We will examine how this view of mind as essentially ‘embodied and embedded’ arose in reaction to the classical ‘cognitivist’ paradigm in cognitive science that understands psychological capacities in terms of computational processes implemented by the brain, consider various ways in which the body and environment might contribute to explanations of cognition, and look at the prospects and challenges for embodied cognitive science in various domains.","One Philosophy course, or permission of the instructor.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -42712,7 +42712,7 @@ PHIL,PHIL 45.04 Embodied Cognition,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50 Advanced Seminar in Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50,PHIL50,This course may be offered in any term and the content varies; see individual topic descriptions.,"Two Philosophy courses, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -43140,7 +43140,7 @@ PHIL,PHIL 50 Advanced Seminar in Philosophy,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.09 Personal Identity and the Self,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-09,PHIL50.09,"What sorts of beings are we? Embodied psychologies? Thinking animals? Moral agents? Narrative constructs? The metaphysical questions are abiding ones because of their intrinsic interest, and also because of their rich connections to developing theories of human biology, psychology, value, freedom, and agency. We will investigate which features, if any, are essential to the sorts of beings we are. We will ask after the grounds for existence and persistence of such beings across time (e.g. biological capacities, self-reflective capacities, rational agency). We will consider models of self-constitution, self-knowledge and self-deception. If time permits, the course will conclude with an exploration of the impact of psychological fragmentation on personhood, self-constitution and agency.","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -43562,7 +43562,7 @@ PHIL,PHIL 50.09 Personal Identity and the Self,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 50.14 Property, Markets, and Capitalism",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-14,PHIL50.14,"Property is a fundamental topic in political philosophy, legal theory and the social sciences. This course integrates philosophical theories of property rights with social scientific perspectives on social cooperation and economic perspectives on private law.  It explores the implications of recent work in these areas for broader questions about economic inequality, the fairness of market outcomes, constitutional limitations on state authority, and the proper balance between private control and public regulation.","Two Philosophy courses, or permission of the Instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -43984,7 +43984,7 @@ PHIL,"PHIL 50.14 Property, Markets, and Capitalism",https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.15 Neuroethics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-15,PHIL50.15,"The brain is the seat of who we are. This course will examine ethical issues that arise from our growing understanding of the brain, and our consequent ability to monitor and manipulate it. We will discuss timely issues such as cognitive enhancement, the ethics of brain interventions, drugs, and neural gene therapies, and the possibility of mindreading. Later in the course we will examine the ways in which our growing knowledge of the biological basis of moral cognition may or may not have effects on our moral theorizing.","Two Philosophy courses, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -44406,7 +44406,7 @@ PHIL,PHIL 50.15 Neuroethics,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.17 Global Expressive Rights,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-17,PHIL50.17,"Does the right to free speech have boundaries? Philosophical defenses of the right to free speech, developed in the context of the town square and the printing press, have yet to catch up with the revolution in communication brought about by the Internet. Technological innovations such as social media have made it possible to communicate instantaneously with hundreds of millions of people around the world and have, for purposes of regulating speech, rendered national boundaries virtually irrelevant. There is now an urgent need to determine how to assess and protect the values of free speech in this global context. Questions we will discuss include: Is there a universal human right to freedom of expression? If so, what is the philosophical basis for it? What are its limits? Does it protect racist hate speech as well as political dissent? How should the different free speech regimes currently in effect in different countries be reconciled in cases of conflict?","Two Philosophy courses, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -44829,7 +44829,7 @@ PHIL,PHIL 50.17 Global Expressive Rights,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.18 Animal Minds,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-18,PHIL50.18,"This course focuses on questions about the minds of nonhuman animals. We will consider what kind of thought, if any, is possible for beings that lack language. Can animals have propositional thought? What limits are there on the contents of nonlinguistic thought? We will also consider other aspects of mentality: Can animals feel pain? Can they suffer? Are they conscious? Finally, we will consider the ethical implications of the answers we find to the above questions.","Two Philosophy courses, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -45257,7 +45257,7 @@ PHIL,PHIL 50.18 Animal Minds,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.20 The Social Mind,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-20,PHIL50.20,"This course addresses the question of how we understand other people’s behaviour.  It examines contemporary philosophical theories concerning how we think about another’s thoughts, and related questions such as whether this ability is unique humans, universal across cultures, and how it may develop.    The course is strongly interdisciplinary, drawing on sources from developmental psychology, neuroscience and anthropology, to support philosophical arguments.  However, no prior knowledge of these fields is required to take the course.","Two Philosophy courses, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -45679,7 +45679,7 @@ PHIL,PHIL 50.20 The Social Mind,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.21 Current Research in Social/Political Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-21,PHIL50.21,"What kind of society should we aim to have? Andwhyshould we aim to havethatkind of society as opposed to some other kind? And are thereobjectively rightanswers to these two previous questions, or are there ultimately only answers that are correctrelative toa given social/historical framework? These three abstract questions have long been at the heart of social/political philosophy, from Aristotle and Plato to the present day. They are also questions that matter tremendously to a wide range of citizens in our increasingly globalized world: a world in which different societies, with different cultures, different social/political structures, and different moral values come into increased contact with other. This course will be focused on these three interconnected questions. It will be an advanced discussion-based seminar, and will involve multiple visiting speakers. All students will be expected to have at least two previous courses in philosophy or in political theory.","Two Philosophy courses, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -46103,7 +46103,7 @@ PHIL,PHIL 50.21 Current Research in Social/Political Philosophy,https://dartmout
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.22 Value,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-22,PHIL50.22,"What is it for something to be valuable or disvaluable?  Are there irreducible truths about value?  Are knowledge and achievement per se valuable?  Or can their value ultimately be explained by the value of happiness?  Are persons valuable in a way that cannot be captured by the sum total of their happiness, knowledge, and the like?  What role should truths about value play in ethics as a whole?","Two Philosophy courses, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -46531,7 +46531,7 @@ PHIL,PHIL 50.22 Value,https://dartmouth.smartcatalogiq.com/en/current/orc/depart
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.23 Virtue Ethics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-23,PHIL50.23,"Contemporary virtue ethics arises out of a long and illustrious history in which ethics focuses on moral character traits. Do virtues (e.g. honesty, courage) exist? If so, what are they? Are they dispositions grounded in nature, traits acquired by education and training, or some combination of both? How are virtues related to practical deliberation, action and emotions? How are virtues related to human flourishing? How promising is virtue ethics relative to other approaches in normative ethics?","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -46953,7 +46953,7 @@ PHIL,PHIL 50.23 Virtue Ethics,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.24 Moral Epistemology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-24,PHIL50.24,"Ethical disagreements range from the ethics of abortion to foundational questions about the basic structure of ethics (such as whether or not consequentialism is true). What is the significance of such disagreements for deciding what to believe in ethics? Do moral disagreements provide support for moral skepticism? How, if at all, can we make progress in ethical inquiry? Parallel questions, as they arise in other domains (e.g. mathematics, political philosophy, and epistemology itself) will be examined.","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -47381,7 +47381,7 @@ PHIL,PHIL 50.24 Moral Epistemology,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.25 Moral Sentimentalism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-25,PHIL50.25,"Sentimentalists believe that moral judgments are based on affective states—roughly, emotions—and that the institution of morality is in some sense a construction out of these states. What are the origins of moral approbation and disapprobation? Is there such a thing as a “moral sense”? What role does sympathy or empathy play in moral psychology? How are moral sentiments related to practical deliberation? Are moral judgments the product of reason or passion? How do complex moral attitudes evolve? What role do social forces play in shaping moral sentiments? Is there empirical evidence for or against sentimentalism? What are the implications of moral sentimentalism for non-cognitivist approaches to moral discourse? Readings will include both classic sentimentalist texts of the 18th Century—Shaftesbury, Hutcheson, Hume, and Smith—and their latter-day descendants.","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -47803,7 +47803,7 @@ PHIL,PHIL 50.25 Moral Sentimentalism,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.26 Philosophy and the Quantum World,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-26,PHIL50.26,"Many striking claims have been made on the basis of quantum mechanics—that the future is undetermined, that an object can be in two places at once, that consciousness has a special causal role, that the future can affect the past, and so on. Quantum mechanics is an incredibly powerful theory; but it is also a deeply troubled theory, and it is far from obvious what it says. In this course we will study quantum theory, its central difficulty (the measurement problem), and options for avoiding the difficulty. We will also evaluate philosophical claims that have been made on the basis of quantum mechanics. No acquaintance with modern physics will be presupposed.","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -48225,7 +48225,7 @@ PHIL,PHIL 50.26 Philosophy and the Quantum World,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.27 Categories,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-27,PHIL50.27,"What is there? What are the most fundamental kinds of beings and how are they related to nonfundamental beings? Is it possible to develop a system of categories to identify the highest genera of being and to map the basic structure of reality? Do categories sort extramental entities or concepts or cognitive structures? Are they determined by logic or language? Philosophy is rich with competing attempts to develop categorical systems of reality, cognition, and meaning. This course will examine both historical and contemporary approaches to categories and their importance, including skeptics of the entire undertaking. Authors to be considered may include Plato, Aristotle, Aquinas, Ockham, Suárez, Kant, Frege, Husserl, Heidegger, Ryle, Chisholm, Strawson, Dummett, Westerhoff, Lowe, and Brandom.","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -48647,7 +48647,7 @@ PHIL,PHIL 50.27 Categories,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.28 Philosophy of Time,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-28,PHIL50.28,"In this seminar we will explore the nature of time and temporal phenomena. Topics include: Does time pass? Do the past and future exist? What light does special relativity shed on the nature of the present? Is an object fully present at a time, or only a temporal part of it? What explains the temporal asymmetries of our experience? Could the world be fundamentally non-temporal?","Two Philosophy courses, or permission of the Instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -49069,7 +49069,7 @@ PHIL,PHIL 50.28 Philosophy of Time,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.30 Freedom of Expression,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-30,PHIL50.30,"What does it mean to express oneself? Are there special reasons not to limit people’s freedom of expression? If protecting freedom of expression is profoundly important, does this mean that even hate speech (for example) must be protected? What limits can there be? These are some of the questions we will take up in this class. The first part of the course will study foundational questions about the nature and value of freedom of expression. The second part of the course will then examine specific topics including obscenity, pornography, hate speech, privacy, and corporate speech. We will conclude with a critical discussion of several recent Supreme Court decisions on freedom of expression.","Two Philosophy courses, or permission of the Instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -49491,7 +49491,7 @@ PHIL,PHIL 50.30 Freedom of Expression,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.31 Classics of Modern Aesthetics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-31,PHIL50.31,"This course introduces students to philosophical aesthetics and the philosophy of art through some of the central works of those fields from the 18th Century onwards. Potential questions include: the nature of aesthetic pleasure, the special features of aesthetic judgments, the beautiful and the sublime, the moral potential of art, the relationship between art and freedom, the characteristic aims of art, what makes an experience aesthetic, and the role of symbolism in the arts.","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -49913,7 +49913,7 @@ PHIL,PHIL 50.31 Classics of Modern Aesthetics,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.32 Love and Respect,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-32,PHIL50.32,"Morality seems to involve distinctive attitudes toward other people-distinctive ways of feeling and regarding other people. What are these distinctive attitudes of moral consideration? In this course we examine two candidates: love and respect. We will consider both the question of what these attitudes ultimately involve, when and why they are merited, and the prospects for moral systems built around them.","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -50335,7 +50335,7 @@ PHIL,PHIL 50.32 Love and Respect,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.33 Necessity and Possibility,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-33,PHIL50.33,"Modal talk is central to a great range of philosophical discussions, in areas from ethics to metaphysics to philosophy of mind and philosophy of science. But talk about what is possible or necessary is puzzling. For, as Hume noted, we never seem to observe anything like necessity in the world. Can talk about what is necessary or possible be true or false? If so, are there parts of reality (other possible worlds, or essences or modal properties of this world) that make it true? Or should modal talk be understood as doing something other than attempting to describe features of the universe? And how can we come to acquire modal knowledge—given that we don’t seem to observe modal facts? This course will examine a range of positions in the metaphysics and epistemology of modality.","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -50757,7 +50757,7 @@ PHIL,PHIL 50.33 Necessity and Possibility,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.34 Experiencing Time,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-34,PHIL50.34,"Perplexity about the nature of time has evolved in lock step with worries about temporal experience. Somehow, we experience time passing, we differentiate now from later and before, and we do all of this while passing through time. Experience of time can be a window onto time itself, but that window might be muddy. Perhaps we fail to understand time because of how we experience it, or perhaps the best way to understand time is to attend to how we experience it.","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -51179,7 +51179,7 @@ PHIL,PHIL 50.34 Experiencing Time,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 50.35 Mind, Language, and Morality",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-35,PHIL50.35,"This course examines questions about the connection between mind, language, and normative domains such as morality, politics, and law. For example: how should we understand normative language that seems to be fundamentally about prescribing ways of acting, rather than about describing reality? Are moral judgments more a matter of emotion, or of belief? Can we reconcile a commitment to moral objectivity with our best scientific understanding of moral thought and talk? This course will engage such questions from a fundamentally interdisciplinary perspective, engaging with work from philosophy, cognitive science, linguistics, and psychology. In so doing, we will explore how empirical work can inform philosophical inquiry, and how philosophical inquiry can continue to guide ongoing research in the cognitive sciences. Students will be encouraged to work in interdisciplinary teams to create their own co-authored research.","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -51603,7 +51603,7 @@ PHIL,"PHIL 50.35 Mind, Language, and Morality",https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.36 Propaganda,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-36,PHIL50.36,"Communication pushes people around. Sentences, stories, pictures, graphs, and maps can all convey information. But they can also convince, enthrall, enrage, (dis)empower, and (de)humanize. This course focuses on how communicative acts and ideologies have this power. It considers some linguistic, political, epistemological, psychological, and aesthetic aspects of such acts. And it considers examples of the phenomenon as diverse as political ads, literature, film, painting, pornography, slurs, compliments and even course syllabi.","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -52025,7 +52025,7 @@ PHIL,PHIL 50.36 Propaganda,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.37 Self-Consciousness,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-37,PHIL50.37,"This seminar examines leading proposals for understanding self-consciousness, self-knowledge, and their significance in the philosophy of mind, philosophy of action, and theories of the self.  We will address questions such as these:  How are ‘I’-thoughts properly conceived?  Are they irreducible, or is there some way in which they can be explained in other terms?  In what sense, if any, are you directly acquainted with your own states of mind?  Is self-knowledge perceptual?  Is it constitutive of one’s status as a rational being?  How should our answers to these and related questions affect how we conceive of the self and its capacities?","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -52447,7 +52447,7 @@ PHIL,PHIL 50.37 Self-Consciousness,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 50.38 Epistemologies of Oppression, Ignorance, and Resistance",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-38,PHIL50.38,"This course will survey epistemological questions that are centered around epistemic oppression, ignorance, and resistance, including: How can we define oppression, ignorance, and resistance? What epistemic harms, wrongs, and/or advantages do oppression, ignorance, and resistance give rise to? What forms of resistance can be used to counter epistemic injustices and oppression? What alternative epistemologies should we consider?","Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -52869,7 +52869,7 @@ PHIL,"PHIL 50.38 Epistemologies of Oppression, Ignorance, and Resistance",https:
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 50.39 Simulation and Reality,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-50-39,PHIL50.39,The rapid development of virtual reality suggests that simulated worlds and simulated agents may become feasible. This raises a number of philosophical questions. Could the world I am living in be simulated? Can I know whether I am living in a simulation? Is a virtual world necessarily an illusion? Are simulated harms real harms? Could life in a virtual world be meaningful? Some of these issues are (relatively) new; others extend and sharpen traditional philosophical debates.,"Two Philosophy courses, or permission of the instructor.",Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -53297,7 +53297,7 @@ PHIL,PHIL 50.39 Simulation and Reality,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 60 Foreign Study in Philosophy I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-60,PHIL60,Credit for this course is awarded to students who have successfully completed a Philosophy course at the University of Edinburgh while a member of the Dartmouth Foreign Study Program at the University of Edinburgh.,"Two Philosophy courses, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -53725,7 +53725,7 @@ PHIL,PHIL 60 Foreign Study in Philosophy I,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 61 Foreign Study in Philosophy II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-61,PHIL61,Credit for this course is awarded to students who have successfully completed a Philosophy course at the University of Edinburgh while a member of the Dartmouth Foreign Study Program at the University of Edinburgh.,"Two Philosophy courses, or permission of the instructor.",TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -54153,7 +54153,7 @@ PHIL,PHIL 61 Foreign Study in Philosophy II,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80 Culminating Experience in Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80,PHIL80,"This course may be offered in any term and the content varies. This advanced seminar is designed to be a culminating experience for majors in Philosophy, although properly qualified students in other disciplines may also be admitted. In every case admission requires the permission of the instructor.",Requires the permission of the instructor.,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -54581,7 +54581,7 @@ PHIL,PHIL 80 Culminating Experience in Philosophy,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.01 Kant's Critique of Pure Reason,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-01,PHIL80.01,"A close study of this epoch-making work, which has set the agenda for many sub-fields of philosophy since its publication in 1781.  Kant observes that philosophy, in contrast to mathematics and natural science, cannot point to any results that are acknowledged by all able practitioners.  Thus, philosophy has made no progress.  Kant proposes a method and foundation for philosophy that will change that.This advanced seminar is designed to be a culminating experience for majors in Philosophy, although properly qualified students in other disciplines may also be admitted.",Requires the permission of the instructor.,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -55004,7 +55004,7 @@ PHIL,PHIL 80.01 Kant's Critique of Pure Reason,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.05 Metametaphysics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-05,PHIL80.05,"In this course, we will examine the nature and methods of metaphysics. Are ontological debates genuine debates, or do at least some of them involve pseudo-questions or merely terminological disputes? If they are genuine questions, how can we best find answers to them—or must the answers remain unknowable? Is there a privileged conceptual system for revealing the true ‘structure of reality’? We will address these and other questions, with texts from Carnap and Quine through to the present.",Requires the permission of the instructor.,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -55426,7 +55426,7 @@ PHIL,PHIL 80.05 Metametaphysics,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.06 Images!,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-06,PHIL80.06,"This course uses tools from the philosophy of language, philosophy of mind, and philosophy of art to understand non-linguistic representation and its significance. Topics include the nature of depiction, pictorial realism, mental imagery, maps, diagrams, and models.",Requires the permission of the Instructor.,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -55848,7 +55848,7 @@ PHIL,PHIL 80.06 Images!,https://dartmouth.smartcatalogiq.com/en/current/orc/depa
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 80.12 Free Will, Responsibility and the Brain",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-12,PHIL80.12,"Do we have free will? Does brain science show that we do or do not? How does moral responsibility depend on freedom? Can we be responsible if we are merely physical mechanisms? Can we blame people for their actions? This course will explore the philosophical questions and neuroscientific literature regarding free will, and will address the implications of this debate for law and society",Requires the permission of the instructor.,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -56270,7 +56270,7 @@ PHIL,"PHIL 80.12 Free Will, Responsibility and the Brain",https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 80.13 Love, Respect, and Moral Obligation",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-13,PHIL80.13,"A survey of closely connected questions about the attitudes of love and respect, as well as the distinctive moral duties associated with each. Questions will include: What is distinctive about the attitudes of love and respect? Do we have universal duties of respect for all persons? If so, what do these duties entail for us? How is the partiality of an attitude like love to be reconciled with the impartiality of respect?",Requires the permission of the instructor.,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -56692,7 +56692,7 @@ PHIL,"PHIL 80.13 Love, Respect, and Moral Obligation",https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 80.14 Kant on Being, Goodness, and Beauty",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-14,PHIL80.14,"This course will cover Kant’s accounts of what it is to judge of something that itis, that it isgood, and that it isbeautiful.  By far the most time will be devoted to the first of these accounts (his so-called theoretical philosophy), since it serves as a foundation for all of the rest.  Coverage of the latter two will focus on how all three accounts are unified in a single system of philosophy.",Requires the permission of the instructor.,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -57120,7 +57120,7 @@ PHIL,"PHIL 80.14 Kant on Being, Goodness, and Beauty",https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.15 Epistemic Normativity,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-15,PHIL80.15,"This seminar is on foundational issues in contemporary epistemology, focusing on questions about the nature and grounds of epistemic normativity. Possible topics include: the relationship between epistemic rationality and reasons for belief, whether or not epistemic justification is ultimately dependent on our psychologies or practical interests, the relationship between truth and epistemic justification, and the bearing of general metanormative theorizing on our understanding of normativity within epistemology.",Requires the permission of the instructor.,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -57548,7 +57548,7 @@ PHIL,PHIL 80.15 Epistemic Normativity,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.16 Plato's (Super)Naturalism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-16,PHIL80.16,"Platonists, ancient and contemporary alike, commit themselves to the existence of abstract, nonphysical, intelligible beings (e.g. numbers, properties, propositions) in addition to concrete, spatiotemporal, perceptibles (e.g. horses, vases, mountains) . For Plato, in particular, changeless, intelligible beings are metaphysically and epistemologically prior to changing, perceptibles.  The supernatural is prior to the natural. We will attempt to reconstruct and to assess (a) Plato’s reasons for positing and privileging supernatural entities; (b) his view of how, if at all, the “two worlds” interact; (c) his view of how, if at all, we are to understand or to explain the natural in terms of the supernatural; and (d) the prospects for “natural science” as Plato understands them.",Requires the permission of the instructor.,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -57970,7 +57970,7 @@ PHIL,PHIL 80.16 Plato's (Super)Naturalism,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 80.17 Unity, Necessity, Infinity: Themes from Leibniz",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-17,PHIL80.17,This seminar is a study of three great philosophical topics in Leibniz's work and their contemporary counterparts.,Requires the permission of the instructor.,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -58392,7 +58392,7 @@ PHIL,"PHIL 80.17 Unity, Necessity, Infinity: Themes from Leibniz",https://dartmo
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.18 Beauty,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-18,PHIL80.18,"Beauty is the preeminent aesthetic value, and plumbing its depths is one of philosophy's oldest occupations. Is beauty an objective feature of the world or merely ""in the eye of the beholder""? How do we judge something to be beautiful? What is the relationship between beauty and pleasure? Can art be beautiful? Can nature? What is the relationship between beauty and other values, like justice and virtue? Readings may include Plato, Aristotle, Plotinus, Augustine, Shaftesbury, Hutcheson, Hume, Kant, Schiller, Hegel, Schopenhauer, Nietzsche, G. E. Moore, Iris Murdoch, Mary Mothersill, Arthur Danto, and Alexander Nehamas.",Requires the permission of the instructor.,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -58820,7 +58820,7 @@ PHIL,PHIL 80.18 Beauty,https://dartmouth.smartcatalogiq.com/en/current/orc/depar
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.19 Quine,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-19,PHIL80.19,"W.V.O. Quine was one of the most influential and systematic philosophers of the 20th century. His insights have had deep and lasting effects on epistemology, philosophy of science, philosophy of language, metaphysics and philosophy of logic. In this class we will work through some of Quine’s most influential papers and arguments, and will try to understand the underlying systematic commitments of his views.",Requires the permission of the instructor.,TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -59242,7 +59242,7 @@ PHIL,PHIL 80.19 Quine,https://dartmouth.smartcatalogiq.com/en/current/orc/depart
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.20 Controversies in Feminist Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-20,PHIL80.20,"This seminar explores controversies in contemporary feminist philosophy over such issues as pornography and prostitution, sexual coercion and consent, the social construction of gender, and the intersections of gender with race, class, sexual orientation, disability, and other group-based identities.",Requires the permission of the instructor.,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -59664,7 +59664,7 @@ PHIL,PHIL 80.20 Controversies in Feminist Philosophy,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.21 Philosophical Methodology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-21,PHIL80.21,"What does philosophical inquiry involve? Whatshouldit involve? What are the best ways to make progress in philosophy? Are the best methods for making progress in one area of philosophy (e.g. metaphysics) different from the best methods in another area (e.g. ethics)? Does the idea of philosophical progress even make sense? This course will address these and other questions about the nature of philosophy and philosophical methodology. Possible approaches to be discussed include conceptual analysis, philosophical naturalism, genealogy, ideology critique, phenomenology, thought experiments, and thea priori.",Requires the permission of the instructor.,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -60086,7 +60086,7 @@ PHIL,PHIL 80.21 Philosophical Methodology,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.22 Secondary Qualities,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-22,PHIL80.22,"Secondary qualities – colors, sounds, smells, tastes, and touches – raise important problems in the philosophy of mind, epistemology and metaphysics. For many reasons, they seem less objective, and more tied to experience, than the traditionally primary qualities like shapes and masses do. Would colors exist in a world without color perceivers? Would sounds exist without hearers? How do the problems with understanding color relate to those for taste, touch and smell? How are secondary qualities related to primary qualities? This course will consider both historical and contemporary attempts to grapple with the primary/secondary quality distinction.",Requires the permission of the instructor.,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -60508,7 +60508,7 @@ PHIL,PHIL 80.22 Secondary Qualities,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.23 Philosophy and the Quantum World,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-23,PHIL80.23,"Many striking claims have been made on the basis of quantum mechanics—that the future is undetermined, that an object can be in two places at once, that consciousness has a special causal role, that the future can affect the past, and so on. Quantum mechanics is an incredibly powerful theory; but it is also a deeply troubled theory, and it is far from obvious what it says. In this course we will study quantum theory, its central difficulty (the measurement problem), and options for avoiding the difficulty. We will also evaluate philosophical claims that have been made on the basis of quantum mechanics. No acquaintance with modern physics will be presupposed.",Requires the permission of the instructor.,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -60930,7 +60930,7 @@ PHIL,PHIL 80.23 Philosophy and the Quantum World,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 80.24 The Real, the True, and the Vaguely",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-24,PHIL80.24,"What is truth? What conception of reality does truth involve? Should we think of truth or reality as transcending the limits of our evidence? Should we conceive of them as always tied to a perspective? Is truth an all-or-nothing matter, or might there be borderline cases? Could there be no definite fact of the matter about the way the world is? We’ll address such questions using historical and contemporary sources.",Requires the permission of the instructor.,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -61352,7 +61352,7 @@ PHIL,"PHIL 80.24 The Real, the True, and the Vaguely",https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.25 Imagination,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-25,PHIL80.25,"The study of imagination has a long, rich philosophical history. Recently, there has been an explosion of interest in the topic. In this course, we will consider efforts to understand what imagination is and what role imagination plays in the cognitive and emotional lives of experiencers, inquirers, and agents. How is imagination related to perception, belief, pretense, supposition, and desire? What role does imagination play in emotions and in actions? How free is imagination? Can we imagine the impossible? What do we learn about imagination by considering how we engage (or are resistant to engage) in fictional imaginings? How do imagination and creativity interact? Can we rely on imagination to learn or to come to know something new? If so, how? If not, why not? Readings will be drawn from both historical and contemporary sources.",Requires the permission of the instructor.,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -61774,7 +61774,7 @@ PHIL,PHIL 80.25 Imagination,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.26 Conceptual Ethics and Conceptual Engineering,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-26,PHIL80.26,"Some have argued that a central and legitimate job of philosophy involves conceptual ethics and conceptual engineering: that is, work in determining what sorts of language or concepts we should use, and how we should use them. In this course we will examine the motivations for thinking of philosophy in this way. We will go on to consider questions such as: How is conceptual engineering possible, and how could it lead to philosophical progress? To what extent can past philosophical debates be reconceived as involved in conceptual negotiation? What are the signs that conceptual (re-)engineering is needed? How can and should this sort of work be done? What view(s) of concepts are involved in undertaking this work—and is it better to think of this work at the conceptual or linguistic level? What criteria can and should we employ in evaluating concepts, or conceptual systems? Is conceptual engineering even possible—and if so, how can we do it?",Requires the permission of the instructor.,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -62196,7 +62196,7 @@ PHIL,PHIL 80.26 Conceptual Ethics and Conceptual Engineering,https://dartmouth.s
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.27 Marx and Marxism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-27,PHIL80.27,"An introduction to the thought of Karl Marx and themes from his work. Areas of focus may include Marx’s account of alienation and exploitation, his materialist theory of history, his critique of liberalism, his theory of ideology, his conception of freedom and morality and Marxist analyses of culture. Particular attention will be paid to Marx’s relevance to contemporary questions in social and political philosophy.This advanced seminar is designed to be a culminating experience for majors in Philosophy, although properly qualified students in other disciplines may also be admitted.",Requires the permission of the instructor.,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -62619,7 +62619,7 @@ PHIL,PHIL 80.27 Marx and Marxism,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,"PHIL 80.28 Reasons, Value, and Well-Being",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-28,PHIL80.28,"Many otherwise divergent moral theories agree that we have reason to create and sustain value (or “the good”).  How should we understand the concept that plays this central role in ethics?  Might there actually be two different concepts that are often called by the same name?  We face many questions about which sorts of things (pleasure, knowledge, virtue, and beauty) have intrinsic or final value.  Well-being plays a central role in theories of value.  What is well-being?  And what distinguishes it from ‘impersonal’ values, if there are any?This advanced seminar is designed to be a culminating experience for majors in Philosophy, although properly qualified students in other disciplines may also be admitted.",Requires the permission of the instructor.,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -63042,7 +63042,7 @@ PHIL,"PHIL 80.28 Reasons, Value, and Well-Being",https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.29 The Ethics of Neuroscience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-29,PHIL80.29,"This course delves deeply into some of the main questions in neuroethics. We will focus on selected issues in the ethics of neuroscience, including cognitive and moral enhancement, disorders of consciousness, and the ethics of neural interventions. Readings will include both philosophical work in neuroethics and relevant seminal papers in neuroscience.This advanced seminar is designed to be a culminating experience for majors in Philosophy, although properly qualified students in other disciplines may also be admitted.",Requires the permission of the instructor.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -63461,7 +63461,7 @@ PHIL,PHIL 80.29 The Ethics of Neuroscience,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 80.30 Theories of Judgment,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-80-30,PHIL80.30,"This course examines historically important theories of judgment through a contemporary lens.  In what sense is judgment an act?  How does judgment relate to assertion, belief, and knowledge?  Is judgment a unifying act of synthesis?  Or can we judge by taking an attitude toward a single object?  How does a judgment such as ‘the cat is on the mat’ differ from a mere collection such as {‘cat’, ‘mat’, ‘on top of’}?  Traditional theories of judgment span topics that today fall into the philosophy of mind, epistemology, philosophy of logic, and metaphysics.  Some instances of this course will focus on contemporary theories.  Historical figures may include Plato, Aristotle, Descartes, Arnauld, Leibniz, Kant, Fichte, Bolzano, Brentano, Mill, Husserl, Frege, and Russell.This advanced seminar is designed to be a culminating experience for majors in Philosophy, although properly qualified students in other disciplines may also be admitted.",Requires the permission of the instructor.,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -63884,7 +63884,7 @@ PHIL,PHIL 80.30 Theories of Judgment,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 87 Research in Philosophy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-87,PHIL87,"The purpose of Philosophy 87 is to provide opportunity for a student to do advanced work on a topic that the student has studied in a regularly offered course, or to study a topic not normally covered in a regularly offered course. In order to enroll in Philosophy 87, a student must prepare a brief (one page) proposal which describes what the student wishes to study and accomplish by taking this research course. All proposals for Philosophy 87 must be reviewed by the faculty of the Department after having been provisionally approved by the faculty member who is the prospective director. Students should consult with faculty members who might serve as advisors in the preparation and submission of a proposal. Independent study proposals must be submitted to the Chair of the department by the end of the seventh week of the term prior to the elected term. Philosophy 87 may be taken more than once, but at most, one election will count toward satisfaction of the requirements of the major.",Requires the permission of the Chair.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -64308,7 +64308,7 @@ PHIL,PHIL 87 Research in Philosophy,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 89 Honors Program I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-89,PHIL89,"Open only to Philosophy senior majors who are participating in the Honors Program. The Honors Program is designed for qualified students interested in doing intensive and individualized work in philosophy. Only those students who have successfully completed the Honors Program are eligible to receive major standings of Honors or High Honors. The program is divided into three stages: the Junior Honors Seminar, preparation and submission of a thesis proposal, and Honors thesis writing. All students who register for the Philosophy Major and who expect to have the necessary cumulative averages (3.50 in Philosophy and 3.33 overall) are invited to join the Junior Honors Seminars. In order to be accepted for Honors thesis writing, a student must successfully complete a Junior Honors Seminar, maintain or attain by the end of the Junior year the required grade point averages, and have a thesis proposal approved by the Philosophy Department by the end of the term in residence prior to commencement of thesis writing.To complete a two-term thesis, qualified students are enrolled inPHIL 89for the fall term andPHIL 90for the winter term of their senior year. In extraordinary cases, a student may be permitted to write a winter-spring or fall-spring thesis. In such cases, students are expected to consult with the Chair of the department during the junior year and to request special accommodations when submitting their senior thesis proposals. Only one term of the Honors Program may count towards satisfying the major requirements. Honors Program grades are assigned retroactively at the end of Spring term.Students are awarded one course credit for successful completion of this course at the end of the third term of study. Students subsequently register for PHIL-090 and continue with their coursework into a third term.  Students do not register for a third term. A final grade will replace the “ON” for both PHIL-090 and this course upon completion of this course at the end of the third term of coursework.",Requires the permission of the Chair.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -64734,7 +64734,7 @@ PHIL,PHIL 89 Honors Program I,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHIL,PHIL 90 Honors Program II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/philosophy/phil-philosophy/phil-90,PHIL90,"Open only to Philosophy senior majors who are participating in the Honors Program. The Honors Program is designed for qualified students interested in doing intensive and individualized work in philosophy. Only those students who have successfully completed the Honors Program are eligible to receive major standings of Honors or High Honors. The program is divided into three stages: the Junior Honors Seminar, preparation and submission of a thesis proposal, and Honors thesis writing. All students who register for the Philosophy Major and who expect to have the necessary cumulative averages (3.50 in Philosophy and 3.33 overall) are invited to join the Junior Honors Seminars. In order to be accepted for Honors thesis writing, a student must successfully complete a Junior Honors Seminar, maintain or attain by the end of the Junior year the required grade point averages, and have a thesis proposal approved by the Philosophy Department by the end of the term in residence prior to commencement of thesis writing.Students are awarded one course credit for successful completion of this course. Students who have registered for PHIL-089 register for this course and continue with their coursework into a third term.  Students do not register for a third term. A final grade will replace the “ON” for both PHIL-089 and this course upon completion of this course at the end of the third term of coursework.",Requires the permission of the Chair.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -65159,4 +65159,4 @@ PHIL,PHIL 90 Honors Program II,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",['IP']

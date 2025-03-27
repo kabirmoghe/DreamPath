@@ -10,7 +10,7 @@ import os
 from prompts import *
 from college_info_retrieval import produce_courses_for_major
 from rapidfuzz import process, fuzz
-
+import re
 # Set the OpenAI API key
 load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
@@ -144,8 +144,7 @@ def get_departments_for_topic(topic, score_cutoff=80):
     response = chain.invoke({"topic": topic})
     response_text = response.content if hasattr(response, 'content') else str(response)
 
-    # Processes departments from response
-    raw_departments = [t.strip() for t in response_text.split(",")]
+    raw_departments = [t.strip() for t in re.findall(r"'(.*?)'", response_text)]
     known_departments = pd.read_csv("data/dartmouth_majors.csv")["Major"].tolist()
     departments = []
 

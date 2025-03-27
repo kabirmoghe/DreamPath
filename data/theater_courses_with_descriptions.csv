@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 THEA,THEA 1 Introduction to Theater,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-1,THEA1,"As a set of staged practices rich with social context, theater has sought to document, engage, and affect communities. This course introduces and explores theater from page to stage as a live performing art. Topics include the relationship between theater and society (historical and contemporary), dramatic structure, theatrical representation, and the crafts of theater artists such as directors, designers, playwrights, and actors. We will also engage with live performances and video archives of past performances.",,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -418,7 +418,7 @@ THEA,THEA 1 Introduction to Theater,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 7 First-Year Seminars in Theater,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-7,THEA7,Consult special listings.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -834,7 +834,7 @@ THEA,THEA 7 First-Year Seminars in Theater,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.08 Creativity and Collaboration,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-08,THEA10.08,"Creativity and collaboration are concepts found in all disciplines and regularly requested, although rarely taught. In this course, students will have the opportunity to develop creative abilities through experiences in performance-based arts, and apply these in a collaborative project. Faculty artists active in movement and theater design will teach the course, which is open to students with no performance experience, as well as those looking for a new approach to existing skills.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1254,7 +1254,7 @@ THEA,THEA 10.08 Creativity and Collaboration,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,"THEA 10.25 Music, Design, and Creativity",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-25,THEA10.25,"This introductory class breaks new ground by making music, rather than text, the driving force behind design for the performing arts. After being introduced to the principles of design, students will create visual artworks inspired by personal responses to specific pieces of music. Students will then create designs specific to dance, concert design, musical theatre, and opera. Various forms of idea-sharing will be taught, including collage, sketching, rough modeling, and painting. No previous experience required.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1674,7 +1674,7 @@ THEA,"THEA 10.25 Music, Design, and Creativity",https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.26 Sound Design,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-26,THEA10.26,"The purpose of this course is to develop our listening skills. To broaden our understanding of music and noise and how to talk about them. To investigate how sound works with both text and movement. To understand how sound can create context, tension, release, and surprise. To explore designing collaboratively. Projects include creating soundscapes and scoring short works.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2096,7 +2096,7 @@ THEA,THEA 10.26 Sound Design,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.27 Latinx Stage and Screen,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-27,THEA10.27,"This course will examine the Latinx stage and screen, focusing specifically on musicals that portray Latinx lives. We will focus on canonical works—including West Side Story, Zoot Suit, and Hamilton—in order to deepen our knowledge of their form, production history, historical reception, and contemporary place in American culture. We will take an interdisciplinary approach, drawing our reading assignments from the fields of Ethnic Studies, American Studies, Performance Studies, and Film and Media Studies, in order to analyze these productions as they traveled from stage to screen (and sometimes, back to the stage) and the representational and cultural politics involved in that shift. Finally, we will explore not only the musicals themselves, but also the historiography that has informed our understanding of them. Writing assignments will ask the students to reflect on the evolution of scholarly arguments regarding these canonical works.",,Dist:SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2518,7 +2518,7 @@ THEA,THEA 10.27 Latinx Stage and Screen,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.28 Musical Theater Writing,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-28,THEA10.28,"A musical tells a story with words and music. Beyond those basic parameters, any limitations around what a musical can and cannot be are up for debate. This multi-disciplinary class is open to composers, lyricists, songwriters, playwrights, directors, actors, singers, poets and musicians of any background. The objective is to investigate music theater by making it ourselves. In addition to looking at the past present and future of American musical theater we will engage a broad exploration musical storytelling, across many aesthetic sensibilities and time periods. The class requires weekly creative output in addition to reading and listening outside of class.  Students must be willing to work across the boundaries of their own disciplines to generate lyrics, songs and scenes. The class will establish a generous inter-disciplinary working environment which values creative risks, collaboration and inventiveness.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2940,7 +2940,7 @@ THEA,THEA 10.28 Musical Theater Writing,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.29 Text Analysis: Tools for Interpretation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-29,THEA10.29,"A dramatic text is like a musical score. In order to understand a play, a theater artist must first learn to “read music.” This course will focus on the tools that allow an artist to understand the dramatic “score” and ultimately to translate the playwright’s words into action on stage. The playwright’s tools: Style, Setting, Mood, Theme, Environment, Character, Language, Action, Objective, Obstacles, will be defined and discussed.  The reading list will include plays by Henrik Ibsen, August Strindberg, Katori Hall, William Shakespeare, Lynn Nottage, Caryl Churchill, and others. This course is relevant for all theater artists regardless of area of specialization.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3360,7 +3360,7 @@ THEA,THEA 10.29 Text Analysis: Tools for Interpretation,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.30 Theater of Ideas: Britain and France,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-30,THEA10.30,"An exploration of the main intellectual movements, dramatic forms, and playwrights that shaped the evolution of British and French theatre in the post war period. Particular attention given to modern drama history, theory, and performance and how they relate to the wider social and political context. Writers drawn from some of the following: Osborne, Pinter, Stoppard, Churchill, Hare, Bennett ,Ravenhill, Sartre, Beckett, Genet, Cixous and Mnouchkine, Koltes, Reza, and Ndiaye.",,Dist:LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3782,7 +3782,7 @@ THEA,THEA 10.30 Theater of Ideas: Britain and France,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.32 Acting for Musical Theater II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-32,THEA10.32,"This course is a continuation of the study of Musical Theater, building on the curriculum of Acting for Musical Theater I. The class will further the student’s technique in building character for this genre from various periods and styles. Acting techniques using American Musical Theater of the 1930s through the 1950s will be studied, as well as voice and speech techniques for Shakespearean texts. The course will culminate in a staged reading of scenes from a contemporary musical(s), performed before an invited audience.",THEA 35: Acting for Musical Theater,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4204,7 +4204,7 @@ THEA,THEA 10.32 Acting for Musical Theater II,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.34 Disability Arts and Activism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-34,THEA10.34,"""Disability Arts and Activism"" examines radical disability resistance through the lens of culture and performance to ask the central question: how does disability art make cultural change? Students will learn a history of disability activism as well as the impacts of disability policy and politics across the stage and streets. Using the frame of Disability Justice, students will develop analytic skills to unpack normative conceptions around bodies, visibility, and representation across multiple forms of difference such as size, race, nation, class, gender, and sexuality. We will explore the performance involved in protest, alongside the protest present in disability cultural forms, such as\u202Fdance, sports, theater, music, and visual art. The course culminates in a research project that crafts an intervention into a local art space to build radical accessibility.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4626,7 +4626,7 @@ THEA,THEA 10.34 Disability Arts and Activism,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.35 Jazz Dance for Theatre,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-35,THEA10.35,"An exploration of movement for the theater. Ranging from realism to the ridiculous, from the pedestrian street scene to the full-blown dream ballet. With emphasis rooted in, but not limited to, Jazz Dance. This class will explore key, yet basic fundamentals of movement for living theater.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5046,7 +5046,7 @@ THEA,THEA 10.35 Jazz Dance for Theatre,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.45 Arab Theatre,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-45,THEA10.45,"This class is a survey of the main trends and themes in Arab theatre from the mid-19th century to contemporary times. Students will be introduced to some of the main playwrights, actors and directors who helped define the art in the Arab world over the last century and a half.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5468,7 +5468,7 @@ THEA,THEA 10.45 Arab Theatre,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.51 Black Theatre & Storytelling Workshop in XR: Reimagining The Purple Flower (1928),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-51,THEA10.51,"Recognizing the intrinsic value of Black lives and Black storytelling across media platforms, this course will explore the staging of Black theatre texts in virtual reality (VR) and related XR technology.  Participants will explore VR technology at the intersection of Black cultural storytelling through the performance of monologues and scenes as well as design/tech, music and movement culminating into a pilot production of Marita Bonner’sThe Purple Flower(1928), a non-realistic, one-act play that pushes the boundaries of theatrical staging.  No prior experience or pre-requisites required.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5890,7 +5890,7 @@ THEA,THEA 10.51 Black Theatre & Storytelling Workshop in XR: Reimagining The Pur
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.55 The Making of 21st Century Exhibits: Curating a National Black Theater Museum/Institution,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-55,THEA10.55,"This course is designed for those interested in theatre and performance, African American studies, history, and culture. Students will study influences on the development of black theater and performance in the USA as well as processes for preserving, curating, and exhibiting culture in institutions, examining how museum concepts intersect and/or collide with representations of black history and culture. In collaboration with the Hattiloo Theatre in Memphis and the DeVos Institute of Arts Management, who are drafting plans for an institution devoted to black theatre practitioners, students will determine and develop content for an interactive venue. They will consider strategies for the use of technology and live exhibits, involving black communities in exhibits and curation, and providing access to diverse communities. Projects and findings will be shared with the institution’s developers and will be considered in their ongoing plans. The course will include a visit to the National Museum of African American History and Culture in Washington.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6313,7 +6313,7 @@ THEA,THEA 10.55 The Making of 21st Century Exhibits: Curating a National Black T
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.56 Black Theatre Workshop: The August Wilson Experience,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-56,THEA10.56,"Using legendary playwright, August Wilson’s ten-play cycle of African Americans' experiences throughout American history as our inspiration, this course provides hands-on, experiential learning of acting, script analysis, and theatrical production. With no previous performance, design, or production experience required, students will read Wilson’s plays and related commentary with opportunities to perform selected scenes from the Wilson cycle while exploring possibilities for design and technical elements. In this process-oriented course, students also learn basic acting techniques by strengthening observation and listening skills, risktaking, imagination, improvisation, concentration, exploration of self, voice, and body. Activities include textual analysis of Wilson’s plays and related works as well as documenting and revising performance philosophy and process. While providing a safe space for exploring the roles we play in our daily lives and taking on the roles of others in given or imagined circumstances,students will learn widely accepted theories, practices, and terminology of the actor’s craft in order to facilitate the practice, writing, and discussion of acting and producing Wilson’s plays and others.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6735,7 +6735,7 @@ THEA,THEA 10.56 Black Theatre Workshop: The August Wilson Experience,https://dar
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.57 Dance Theatre of Harlem Workshop: Collaborative Storytelling Through Movement,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-57,THEA10.57,"Synthesizing aspects of cultural storytelling, theater, movement, activism and biography, this course is focused on the creation of new performance work. Students will have a rare opportunity to engage with the singular Dance Theatre of Harlem (DTH) during their summer residency at Dartmouth College. This course explores the company’s relationship and history with ballets that tell a story and the potential for collaborative storytelling across platforms. During THEA 10.57, students will also create, collaborate,  and organize performances of their own movement-based works.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7157,7 +7157,7 @@ THEA,THEA 10.57 Dance Theatre of Harlem Workshop: Collaborative Storytelling Thr
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.64 Feminist and Queer Africa on Stage & Screen,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-64,THEA10.64,"This course explores representations of feminist and queer Africa in theatre, dance, and film. How do female-identified, nonbinary, and/or queer African artists use creative expression to navigate and challenge neocolonial, heteropatriarchal regimes and advance ideas of LGBTQIA  rights and gender equality? Although several countries will be considered during the term, Kenya and Uganda receive a particular emphasis. All students are welcome; no prior knowledge of Africa and/or theories of gender and sexuality are needed.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7580,7 +7580,7 @@ THEA,THEA 10.64 Feminist and Queer Africa on Stage & Screen,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.65 Performeras on the Latin American Stage,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-65,THEA10.65,"This course provides an overview of women's dramatic writing and cultural expression from Latin America and considers how these texts intersect, reflect, disrupt or resist canonical literary movements in Latin America. Course content includes traditional dramatic forms as well as non-literary, visual and performative forms of expression.  By examining works of very diverse ranges, we will also challenge society’s and the authors’ conceptualizations of Latin American women as a way to critique underlying issues of race, class, gender, and other power structures.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8002,7 +8002,7 @@ THEA,THEA 10.65 Performeras on the Latin American Stage,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.68 Staging Rebellion. Dissidence in Latinx American Theatre,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-68,THEA10.68,"This course follows the history of theatre in the Latinx Americas (encompassing a hemispheric approach) for social change. Students will learn about Theatre of the Oppressed, guerilla theatre in all its forms used throughout Latin America and Latinx communities, playwrights writing about social justice issues, and activist performance. We will focus on plays and performances that have as their central theme rebellion and the rebel as we question the nature of rebellion, its manifestations, and consequences.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8424,7 +8424,7 @@ THEA,THEA 10.68 Staging Rebellion. Dissidence in Latinx American Theatre,https:/
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.71 Plays OnStage: Acting Comedy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-71,THEA10.71,"An advanced acting class in the art of performing comedy. Building on the basics of Acting I, this course will examine how the fundamentals of acting are adapted to playing a heightened comedic text.  Students will be introduced to a broad range of comedic performance, past and present, from sketch comedy to standup to films and television, developing a vocabulary of reference points, styles, and approaches to be applied in their rehearsals of the text.  The course will culminate in a public presentation of the play. Roles may be shared.",THEA 30: Acting I. Equivalent performance courses or experience will be considered on an individual basis.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8846,7 +8846,7 @@ THEA,THEA 10.71 Plays OnStage: Acting Comedy,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.72 Classical French Comedy Made Modern; Molière Past and Present,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-72,THEA10.72,"Molière is France’s best known and most universally loved playwright.  Over three hundred years after his death, his plays continue to dominate the French stage and stages across the world.  In this course, we will explore Molière’s creative genius to understand his profound and lasting influence.  The last third of the course will be devoted to an in-depth study of “Molière in the Park,” a theatre company in Brooklyn founded in 2019. Not open to students who have received credit forFREN 40.04. This course will be taught in English.",,Dist:INT or ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9268,7 +9268,7 @@ THEA,THEA 10.72 Classical French Comedy Made Modern; Molière Past and Present,h
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,"THEA 10.84 Performing Histories, Performing Us",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-84,THEA10.84,"Performing Histories, Performing Usis an interactive course, taught by scholar artist, Dr. Monica White Ndounou, with a residency component with actor/writer/director Roger Guenveur Smith. The course utilizes performance as a tool to interrogate, examine and explore the concept of history, particularly at the intersection of culture and performance. This course uses traditional and nontraditional archives and multiple platforms to illuminate the possibilities for performing histories; performing us.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9690,7 +9690,7 @@ THEA,"THEA 10.84 Performing Histories, Performing Us",https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 10.90 Contemporary Theater and Performance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-10-90,THEA10.90,"This course explores the world of contemporary theater and performance. Readings of plays, performance texts, and articles are paired with viewings of recorded, live, and virtual work. Collaborative projects revolve around scene work and devised theater. Students will develop an appreciation for the breadth of new and recent national and international performance. All of this work is theatrical, but none of it is traditional theater. Topics include devised theater, virtual performance, theater as activism and social practice, eco-performance, movement performance, and interactive work that centers the spectator's experience. Open to all classes; this course is required for class of 2021 senior theater majors.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10110,7 +10110,7 @@ THEA,THEA 10.90 Contemporary Theater and Performance,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 12 The Tragedy and Comedy of Greece and Rome,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-12,THEA12,"The course studies in translation selected works of Aeschylus, Sophocles, Euripides, Seneca (tragedy), Aristophanes and Plautus (comedy), and some of their central themes and questions: law, community, revenge, passion, and justice. We will approach them both as texts and as scripts/librettos, considering their relationship to other types of performance (ritual, rhetoric, music, dance) and genres (history, philosophy) as well as to theatrical space. There will be practical workshop opportunities for those interested. Open to all classes.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10532,7 +10532,7 @@ THEA,THEA 12 The Tragedy and Comedy of Greece and Rome,https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 15 Theatre and Society I: Classical and Medieval Performance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-15,THEA15,"This course explores selected examples of world performance during the classical and medieval periods in Western Europe and eastern Asia.  Plays to be discussed might include those by Aeschylus, Sophocles, Euripides, Aristophanes, Seneca, Plautus, Terence, and Zeami. Through the reading and discussion of primary and secondary texts, we seek to situate selected performance texts within their sociopolitical and artistic contexts. Open to all classes.",,Dist:INT or ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10952,7 +10952,7 @@ THEA,THEA 15 Theatre and Society I: Classical and Medieval Performance,https://d
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 16 Theatre and Society II: Early Modern Performance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-16,THEA16,"This course explores selected examples of world performance during the early modern period (fourteenth through the eighteenth centuries). Plays to be discussed might include those by Shakespeare, Calderón, Sor Juana de la Cruz, Molière, Racine, Marivaux, and Carlo Gozzi. Through the reading and discussion of primary and secondary texts, we seek to situate selected performance texts within their sociopolitical and artistic contexts.",,Dist:INT or ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11372,7 +11372,7 @@ THEA,THEA 16 Theatre and Society II: Early Modern Performance,https://dartmouth.
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 17 Theatre and Society III: 19th and 20th Century Performance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-17,THEA17,"This course explores selected examples of world performance in the 19th and 20th century. Plays to be discussed might include those by Ibsen, Strindberg, Chekhov, Lorca, Ionesco, Beckett, Williams, Miller, and Brecht, as well as contemporary U.S. playwrights such as Suzan-Lori Parks and Charles Mee. Through the reading and discussion of primary and secondary texts, we seek to situate selected performance texts within their sociopolitical and artistic contexts.",,Dist:INT or ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11792,7 +11792,7 @@ THEA,THEA 17 Theatre and Society III: 19th and 20th Century Performance,https://
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 18 Russian and East European Theater,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-18,THEA18,"This course is devoted to Russian drama and theater from the 19th through the 21st century. We will read eight plays that are central to the Russian literary and theatrical tradition and then discuss their most significant interpretations on both the Russian and the world stage. The meetings will be conducted in a non-traditional format. In our examination of the plays, we will attempt to model the process of stage production in accordance with the principles developed by Konstantin Stanislavsky-a celebrated Russian director whose approach to theater transformed acting in Russia and beyond. The course will culminate in the production of a play by a Russian playwright which students themselves will cast, direct, and design. All readings are in English.",,Dist:LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12214,7 +12214,7 @@ THEA,THEA 18 Russian and East European Theater,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 19 Human Rights and Performance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-19,THEA19,"What can theatre do for human rights, and human rights for theatre? How do playwrights translate violations of human rights to the stage? Through class discussion and creative exercises, we will explore selected plays from around the world that address human rights through various genres and dramatic forms, including theatre of testimony, documentary theatre, realism, allegory, and surrealism. Open to all classes.",,Dist:INT or ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12634,7 +12634,7 @@ THEA,THEA 19 Human Rights and Performance,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,"THEA 21 Race, Gender, and Performance",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-21,THEA21,"Students will explore the perspectives of contemporary Latina/o, Asian American, Black, and Native American theater artists/performers. Our examination will also consider the socio-historical and political contexts engaged through these artists' works. We will also consider the relationship between the construction of identity and strategies of performance used by playwrights/performers to describe race, gender, sexuality, class, subjectivity, and ideas of belonging. Texts examined will include works by Moraga, Highway, Wilson, Parks, Gotanda, and Cho.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13056,7 +13056,7 @@ THEA,"THEA 21 Race, Gender, and Performance",https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,"THEA 22 Black Theater, U.S.A.",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-22,THEA22,"This course will examine African American playwrights, drama, and theater from 1959 to the present. Further exploration will focus on the impact of civil rights, the Black Arts movement, and cultural aesthetics on the form, style, and content of African American plays. Readings will include plays of Hansberry, Baldwin, Baraka, Kennedy, Childress, Shange, Wolfe, Wilson, Parks and others. Open to all classes.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13478,7 +13478,7 @@ THEA,"THEA 22 Black Theater, U.S.A.",https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 23 Postcolonial African Drama,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-23,THEA23,"This course explores selected theatre and performance traditions of sub-Saharan Africa. How do African playwrights negotiate and transform the colonial legacy of Western drama, and how do they use theater to challenge neocolonial regimes and to advance ideas of democracy, human rights, and gender equality? Plays from Nigeria, South Africa, Kenya, and Uganda receive special emphasis. No prior knowledge of African studies or theater is necessary, just a willingness to expand critical and creative horizons.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13900,7 +13900,7 @@ THEA,THEA 23 Postcolonial African Drama,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 24 Asian Performance Traditions,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-24,THEA24,"This course studies the performance traditions of Asia, focusing on China, Japan, Indonesia and India. Classical forms studied include Noh, Bunraku, Beijing opera, Sanskrit drama, Balinese dance and Javanese puppet theater. Attention is paid to social, religious and aesthetic influences on these traditions, theories on which they are based, the history behind the theatrical practices, and training and dramatic techniques. Students gain an appreciation of the rich variety and scope of theatrical conventions of Asia.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14322,7 +14322,7 @@ THEA,THEA 24 Asian Performance Traditions,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 25 Solo Performance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-25,THEA25,"This course will introduce and engage the history, texts, topics, theoretical guideposts, and landmark figures/performances central to the genre of solo performance. Working between critical examination and practice, participants will analyze the form and content of leading solo performers while also composing a series of short exercises that activate solo performance strategies and methods. The course will culminate in the creation of a participant's self-authored, short solo performance piece.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14744,7 +14744,7 @@ THEA,THEA 25 Solo Performance,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 26 Movement Fundamentals I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-26,THEA26,"An introduction to movement for the stage, this course will animate the interplay between anatomy, movement theories and performance. Through exploration of physical techniques, improvisation and movement composition, students will experience a fundamental approach to using the body as a responsive and expressive instrument. Assignments will include readings, written work, class presentations, mid-term exam and final paper.",,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15164,7 +15164,7 @@ THEA,THEA 26 Movement Fundamentals I,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 27 Movement Fundamentals II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-27,THEA27,"A continuation ofTHEA 26, this class will explore further the relationship between efficient and expressive movement and body connectivity. Contact improvisation, conditioning, kinesiology and movement repertoire form the foundation from which the class will explore individual performance. Assignments include readings, written work, class presentations and a final paper.",THEA 26; equivalent experience may be considered. Contact instructor for details.,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15586,7 +15586,7 @@ THEA,THEA 27 Movement Fundamentals II,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['THEA26']
 THEA,THEA 28 Dance Composition,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-28,THEA28,"An in-depth study of the principles of dance composition leading to choreographic projects. Students will receive training in both dance composition and criticism, developing the requisite tools for choreography while acquiring the vocabulary for sophisticated choreographic analysis. Reading and writing assignments on contemporary issues in dance will be the departure for students' theoretical and creative exploration. To this end the class will concentrate on individual student choreography. Students' class work will be performed in an informal showing at the conclusion of the term. Open to all classes.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16006,7 +16006,7 @@ THEA,THEA 28 Dance Composition,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 29 Dance Theater Performance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-29,THEA29,"Students will examine movement theories and techniques, utilizing these elements to create physical language while developing enhanced ensemble skills. Emphasis will be placed on the creation of a dance theater ensemble piece, which culminates the term in a final performance. The creative process, collaboration, and individual performance are key components of the experience. Readings in Dance Studies and critical reviews of performances are included to contextualize the course’s creative work.Open to all classes.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16426,7 +16426,7 @@ THEA,THEA 29 Dance Theater Performance,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 30 Acting I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-30,THEA30,"This course is open to all students. No theater experience is necessary.To achieve success as a performing artist, an actor must commit to building an ensemble based on respect and mutual understanding and to embracing the notion that empathy is at the heart of the actor’s art. Students will be encouraged to explore their creative abilities on a journey of self-discovery in order to build this sense of ensemble. Through individual and group exercises, students will be introduced to the techniques necessary to play a character believably and honestly. The class will culminate with scene presentations from realistic American plays by authors of diverse cultural backgrounds.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16847,7 +16847,7 @@ THEA,THEA 30 Acting I,https://dartmouth.smartcatalogiq.com/en/current/orc/depart
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 31 Acting II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-31,THEA31,"Acting II is an advanced scene study class that focuses on developing a process for performing non-realistic, “heightened” acting texts.  Students will encounter plays that present unique challenges for actors in terms of language, physicality, characterization, style, content and text analysis.  The class will structurally fuse the traditionally separate disciplines of acting, voice, and movement into a comprehensive unit by approaching the text simultaneously from these three perspectives. The work will proceed from the assumption that the actor’s performance must emerge from an expressively free and integrated instrument.",THEA 30: Acting I,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17270,7 +17270,7 @@ THEA,THEA 31 Acting II,https://dartmouth.smartcatalogiq.com/en/current/orc/depar
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 35 Acting for Musical Theater,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-35,THEA35,"This course will introduce students to the techniques used by actors/singers to play musical theater scenes believably, honestly and dynamically. Basic acting techniques will be taught as well as work in singing, text analysis, movement and speech. Students will begin with individual songs, then prepare, rehearse and present two-person musical scenes fromCompany, The Color Purple, West Side Story, Side Show, Into the Woods, Hamilton, Passion, In the Heights, She Loves Me, Follies, and others.",THEA 30: Acting I,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17692,7 +17692,7 @@ THEA,THEA 35 Acting for Musical Theater,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 36 The Speaking Voice for the Stage,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-36,THEA36,"This course is an examination of the principles and practice of freeing the natural voice. It proceeds from the notion that ""voice"" and ""acting"" are inseparable. Although it is an introduction to the use of voice in the theater, it is in no way limited to the actor. A specific progression of exercises will be presented to facilitate freeing the body of tensions, discovering the natural breath, releasing vibrations of sound from the body, and opening the channel for sound (throat, jaw, tongue). Resonance, vocal freedom, and articulation will also be explored. Techniques for accessing emotional and psychological truth will be practiced as fundamental to the actor's creative process. A groundwork will be laid for physical and vocal presence. Each student will be responsible for the development and practice of a vocal warm-up. A variety of speaking assignments will be made to develop confidence, presence, and emotional expressivity. Text materials utilized will emerge from self-scripted autobiographical storytelling. A strong commitment to the work is necessary to explore what it means to find one's voice. Open to all classes.\f",THEA 30: Acting I,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18117,7 +18117,7 @@ THEA,THEA 36 The Speaking Voice for the Stage,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 40 Technical Production,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-40,THEA40,"An introduction to the technical aspects of live theater, exploring both traditional and modern approaches. Topics include the stage and its equipment, materials and construction of scenic and property items, lighting, sound, rigging, design, stage management, and more. This course includes both lectures and hands-on learning. Open to all students and classes.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18537,7 +18537,7 @@ THEA,THEA 40 Technical Production,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 41 Stage Management,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-41,THEA41,"An introductory course in the theories, techniques, and practices of stage managing a production from its initial stages to the conclusion of the run. Plays, musicals, opera, dance, and touring productions will be examined from the perspective of the stage manager. Working with directors, choreographers, and other members of the production team will be discussed as well as calling shows. Students will acquire practical experience through assignments on Department of Theater productions. Open to all classes.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18957,7 +18957,7 @@ THEA,THEA 41 Stage Management,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 42 Scene Design I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-42,THEA42,"An introduction to the basics of scenic design through weekly projects in scale models, drawings, research, lighting and storyboards. Students will also study the collaborative process among scene designers, directors, costume and lighting designers. Suitable for students interested in theater, visual and video art, installation, film, architecture, and sculpture. Students will have the opportunity to assist student and faculty scene designers on Department of Theater productions. Open to all classes.",,ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19377,7 +19377,7 @@ THEA,THEA 42 Scene Design I,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 44 Lighting Design,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-44,THEA44,"An introduction to the practical and artistic elements of theatrical lighting design. The course will include topics in color theory, form, movement, composition, and the creative process. Through analyzing the script and studying light in nature, film, and art, students will prepare projects that explore the possibilities of light in the theater. Students will have the opportunity to work on Department of Theater productions with faculty and student lighting designers. Lectures, discussions, design projects, and critiques. Open to all classes.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19797,7 +19797,7 @@ THEA,THEA 44 Lighting Design,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 48 Costume Design,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-48,THEA48,"An introductory course in the appreciation of the costume design process as part of the dramatic production. Through weekly projects, students will study the principles of line, texture, and color as well as the history of costume from the Renaissance through the eighteenth century. Lectures, design projects, and critiques. Open to all classes.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20217,7 +20217,7 @@ THEA,THEA 48 Costume Design,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 50 Playwriting I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-50,THEA50,"The aim of this course is for each student to write the best one-act play they are capable of writing. It is open to students both with a theater background and those without. This course will involve a number of creative exercises, the preparation of a scenario, the development of the material through individual conferences, and the reading and discussion of the student's work in seminar sessions. Open to all classes. Limited enrollment.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20637,7 +20637,7 @@ THEA,THEA 50 Playwriting I,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 51 Playwriting II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-51,THEA51,A continuation ofTHEA 50: Playwriting I.,THEA 50: Playwriting I,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21059,7 +21059,7 @@ THEA,THEA 51 Playwriting II,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 53 Writing for Musical Theatre,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-53,THEA53,"This course will cover the principles of musical theatre writing for book writers and lyricists from plot, storyline, character, character arcs, utilizing the anatomy of the American Musical structure. The course will be part lecture (Chalk Talk), part incubator (Lab) and will combine theory and practice and engage modern musical theatre writing collaborative methodologies towards the creation of an adaptation for a musical theatre outline/treatment.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21481,7 +21481,7 @@ THEA,THEA 53 Writing for Musical Theatre,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 54 Directing,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-54,THEA54,"An introductory course in directing for the stage.  This class will focus primarily on text analysis and basic actor coaching techniques, culminating in staging scenes by authors from diverse cultural backgrounds. Particular attention will be paid to methods for building a creative ensemble based on respect and mutual understanding. Open to all classes.",THEA 30or equivalent experience.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21904,7 +21904,7 @@ THEA,THEA 54 Directing,https://dartmouth.smartcatalogiq.com/en/current/orc/depar
 </form>
 
 </body>
-</html>"
+</html>",['THEA30']
 THEA,THEA 60 Classical Performance I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-60,THEA60,"This course is taught by the LAMDA faculty.THEA 60is an intensive course in classical theater training focused on acting (including improvisation), movement (including movement theater, clown and historic dance), and voice (including singing). Texts include Shakespeare and either Jacobean or Restoration plays. This typical British conservatoire experience is designed for students interested in acting, directing, playwriting, design, stage management, dramaturgy or criticism. Offered only as a part of the Theater Foreign Study Program in London. This course is graded as credit/no credit.","One theater history course is required: eitherTHEA 15, 16, or 17. In addition, one theater practice course is required: either THEA 10 (with Chair's approval), 25, 26, 27, 28, 29, 30, 35, 36, 40, 41, 42, 44, 48, or 50.",ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22326,7 +22326,7 @@ THEA,THEA 60 Classical Performance I,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>","['THEA15', 'THEA10']"
 THEA,THEA 61 Classical Performance II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-61,THEA61,A continuation of Classical Performance I. This course is graded credit/no credit.,"One theater history course is required: eitherTHEA 15, 16, or 17. In addition, one theater practice course is required: either THEA 10 (with Chair's approval), 25, 26, 27, 28, 29, 30, 35, 36, 40, 41, 42, 44, 48, or 50.",ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22748,7 +22748,7 @@ THEA,THEA 61 Classical Performance II,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>","['THEA15', 'THEA25']"
 THEA,THEA 62 Plays in Performance-Perception and Analysis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-62,THEA62,"Offered only as a part of the Theater Foreign Study Program in London, this seminar integrates the study of theater with the experience of plays in performance. By providing intense, comparative experience of playgoing, the course intends to broaden students' knowledge of the dramatic repertoire, to heighten their awareness of production approaches and values, and to encourage them to develop considered critical response to theater. Students attend a number of required performances and in addition attend performances of their own choosing - normally a total of three plays per week. Productions will represent a variety of periods and styles of playwriting, and a similarly diverse range of production companies and approaches to performance. Weekly seminar meetings will focus on critical responses to plays and productions, with background provided by guests from the professional theater (directors, writers, performers, designers, critics). Students will maintain journals and provide brief written critiques.","One theater history course is required: eitherTHEA 15, 16, or 17. In addition, one theater practice course is required: either THEA 10 (with Chair's approval), 25, 26, 27, 28, 29, 30, 35, 36, 40, 41, 42, 44, 48, or 50.",Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23170,7 +23170,7 @@ THEA,THEA 62 Plays in Performance-Perception and Analysis,https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>","['THEA15', 'THEA10']"
 THEA,THEA 65 Summer Theater Lab,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-65,THEA65,"This experiential class is designed to explore the development of new work for the theater. Students will participate actively in three exciting aspects of our summer production season: 1) VoxLab, a one-week festival of new projects initiated by Dartmouth alumni, 2) the Frost and Dodd Student Play Festival, and 3) the New York Theatre Workshop’s annual summer residency.This course is designed for students with some level of familiarity and experience with theater; please contact instructor for details.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23597,7 +23597,7 @@ THEA,THEA 65 Summer Theater Lab,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 80 Independent Study,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-80,THEA80,"This course is designed to enable qualified students, who have completed the appropriate supporting coursework, to engage in independent study in theater under the direction of a member of the department. A student should consult with the faculty member with whom they wish to work as far in advance as possible, and not later than the term immediately preceding the term in which the independent study is to be pursued",Course admission is determined by a proposal process; contact the Chair or visit the dept website for details.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24015,7 +24015,7 @@ THEA,THEA 80 Independent Study,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 90 Contemporary Theater Practice,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-90,THEA90,"This course seeks to explore the contemporary world of theater. Through contemporary play readings and collaboration projects that revolve around scene work and devised theater, students develop an appreciation for the breadth of new work being developed and produced in the field. In class, we also focus on the 'nuts and bolts' of the theater industry and share helpful information needed to enter the industry. Course materials include articles on experimental theater companies and their current practices; contemporary plays; and live performances. This course is mandatory for senior theater majors.",Open to Theater Majors and Modified Majors only.,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24443,7 +24443,7 @@ THEA,THEA 90 Contemporary Theater Practice,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 THEA,THEA 91 The Honors Thesis I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-91,THEA91,"An Honors project, which normally encompasses two terms, must include a thesis or thesis project. This course must be elected by all honors candidates. For acceptance into this course, please see the section in the ORC on the Theater Honors Program. Students are awarded one course credit for successful completion of this course, and receive a grade for the course at the end of the term. Students then subsequently register forTHEA 92in order to continue with their Honors Program study in a second term.","For details on the Honors Thesis acceptance process, please see the section in the ORC on the Theater Honors Program and/or visit the Department of Theater website.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24862,7 +24862,7 @@ THEA,THEA 91 The Honors Thesis I,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 THEA,THEA 92 The Honors Thesis II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/theater/thea-theater/thea-92,THEA92,"An Honors project, which normally encompasses two terms, must include a thesis or thesis project. This course must be elected by all honors candidates. For acceptance into this course, please see the section in the ORC on the Theater Honors Program. Students are awarded one course credit for successful completion of this course. Students enrolling in this course have already completed one term of Honors Program study, and are registering for this course in order to continue their Honors Program work in a second term.",THEA 91: The Honors Thesis I,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25284,4 +25284,4 @@ THEA,THEA 92 The Honors Thesis II,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]

@@ -9,7 +9,8 @@ function LoadingSpinner({ message }) {
   const subtitleBases = [
     "Finding courses that match your interests",
     "Discovering classes aligned with your post-grad goals",
-    "Selecting courses for your career aspirations"
+    "Selecting courses for your career aspirations",
+    "Building your DreamPath"
   ];
 
   // Dynamic ellipsis effect

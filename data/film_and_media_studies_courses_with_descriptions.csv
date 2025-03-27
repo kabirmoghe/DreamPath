@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 FILM,FILM 1 Introduction to Film: From Script to Screen,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-1,FILM1,"This course examines all the processes which go into the creation of a film, from its inception as a treatment and screenplay to its distribution as a film. Experts (writers, directors, actors, cinematographers, and distributors) may talk on various areas of expertise. The course will offer an in-depth analysis of different kinds of films and the key technical and critical concepts used in understanding them. Open to all classes.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -424,7 +424,7 @@ FILM,FILM 1 Introduction to Film: From Script to Screen,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 3 Introduction to Digital Arts and Culture,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-3,FILM3,"Digital technology is a key component of culture. Looking at popular media, science fiction,computer games, and artists' projects, students will learn important approaches to digital culture including: the history of the computer as a medium;the conceptual history of interactivity; the development of film, design,animation, and hypermedia; the history of artificial reality; and how visions of the future may change our sense of identity and what constitutes our physical bodies.",,WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -850,7 +850,7 @@ FILM,FILM 3 Introduction to Digital Arts and Culture,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 7 First-Year Seminars in Film and Media Studies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-7,FILM7,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1272,7 +1272,7 @@ FILM,FILM 7 First-Year Seminars in Film and Media Studies,https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 20 Film History I (Silent to Sound),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-20,FILM20,Detailed history of film from its origins to early sound films. Among the major topics to be addressed are: pre-cinematic devices and early cinema; the rise of the feature film; the tradition of silent comedy; the rise of the studio and star systems; European movements and their influence; the coming of sound. Prerequisite to the major in Film and Media Studies. Open to all classes.,,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1698,7 +1698,7 @@ FILM,FILM 20 Film History I (Silent to Sound),https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 21 Film History II (1930-60),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-21,FILM21,A detailed history of film beginning with the golden age of the U.S. studio system and its major genres. Among the topics and films considered will be the rise of sound film; Hollywood in the 30s; the impact of World War II; neo-realism; film noir; the blacklist; the impact of television and the decline of the studio system; Japanese cinema; the emergence of European auteurs; beginnings of the French New Wave. Open to all classes.,,Dist:INT or ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2124,7 +2124,7 @@ FILM,FILM 21 Film History II (1930-60),https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 22 Film History III (1960 to 1990),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-22,FILM22,"A detailed history of film beginning with the French New Wave and its impact on American and international cinema. Among the topics and films to be considered will be the interrogation of genres in this period; the rise of alternative models of production; independent and radical film in the United States, Europe, and the Third World; new national cinemas (Eastern Europe in the 60's, Australian and New German film in the 70's, and Soviet, Chinese, and British film in the 80's). Open to all classes.",,Dist:INT or ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2544,7 +2544,7 @@ FILM,FILM 22 Film History III (1960 to 1990),https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 23 Film History IV (1990-present),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-23,FILM23,"This class surveys a variety of national cinemas and their artistic, social, political, and industrial contexts from the period of 1990 to the present. Focus will be on the mutual influences among cinemas during this period, international co-productions, and the ways in which specific national cinema contexts interface with globalized economies and distribution in post-colonial political environments. Some attention will be given to post- French New Wave art film movements, such as Denmark's Dogme group; to the cross-over of east Asian cinemas, such as Hong Kong cinema, to the west; to East European and German cinema since the break-up of the Soviet Union; and to the appeal of Indian cinema to diasporic communities in North America.",,Dist:INT or ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2964,7 +2964,7 @@ FILM,FILM 23 Film History IV (1990-present),https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 30 Documentary Videomaking,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-30,FILM30,"This documentary workshop will explore in depth the rich world of nonfiction film and video production. Working in groups, students will tackle a variety of technological, asthetic, and ethical issues intrinsic to the medium. Each group will produce one 10-minute non-fiction film. The class will utilize standard professional production models, which require intense collaborative teamwork and the distribution of tasks and responsibilities. It will culminate in a screening in Loew Auditorium in the Black Family Visual Arts Center.  Open to all classes.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3390,7 +3390,7 @@ FILM,FILM 30 Documentary Videomaking,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 31 Filmmaking I: Basic Elements of Film,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-31,FILM31,"An introduction to the theory and technique of film-making combining comprehensive analysis of significant works in various film styles with practical exercises in production. The course aims to provide a basic understanding of the film-making process-from script to screen. Students will work in 16mm and portable video for experience in scriptwriting, directing, cinematography, acting, and editing. Readings will include introductory film history, film theory and criticism, screenplays, and essays on new aesthetics in film and video. Limit 12",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3810,7 +3810,7 @@ FILM,FILM 31 Filmmaking I: Basic Elements of Film,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 32 Filmmaking II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-32,FILM32,"A workshop course in film production, with students, working alone or in collaboration, required to complete a project for showing at the end of the term. Weekly class meetings will include analysis of film classics and work in progress, as well as critical discussions with visiting professionals.Limit 12",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4230,7 +4230,7 @@ FILM,FILM 32 Filmmaking II,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 33 Writing for the Screen I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-33,FILM33,An analysis of the creative writing process as related to film and other media. A variety of styles will be explored and the potential of specific content for a visual medium will be examined. Each student will be expected to complete a script for a work of at least twenty minutes as a term project. Permission will be granted by the instructor on the basis of material submitted before the end of fall term.,,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4656,7 +4656,7 @@ FILM,FILM 33 Writing for the Screen I,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 34 Writing for the Screen II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-34,FILM34,"A continuation ofFILM 33in which the student is expected to complete a full-length screenplay begun in that course. Continued work on the methods of writing, particularly on character development and plot rhythms. Permission is granted by the instructor and if you have taken Film Studies 33.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5082,7 +5082,7 @@ FILM,FILM 34 Writing for the Screen II,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 35 Animation: Principles and Practice,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-35,FILM35,"This studio course will introduce the expansive possibilities of the animated film through a series of exercises in drawn, cut-out, object and digital animation techniques as well as an extended final project that will screen publicly. Class screenings, critiques, and visiting artist presentations will supplement in-class demonstrations. Students should expect to devote serious time to the coursework (up to 20 hours per week). Permission of the instructor is required-granted first day of course.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5508,7 +5508,7 @@ FILM,FILM 35 Animation: Principles and Practice,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 36.01 Experimental Videomaking (Autobiography),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-36-01,FILM36.01,"This course covers the basics of developing a personal video from idea through realization, while emphasizing ideas outside traditional narrative or documentary forms. Students are encouraged to develop their own forms of aesthetic expression. Students show and critique their work in class in preparation for a final project and public screening.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5928,7 +5928,7 @@ FILM,FILM 36.01 Experimental Videomaking (Autobiography),https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 36.03 TV Production,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-36-03,FILM36.03,"In this introductory course, students will learn hands-on the fundamental aspects of television production.  Studying camera, sound, editing, writing, and producing techniques, students will engage in critical discussion of these techniques and will develop technical production abilities.  Students will explore the culture of the media professional through a series of group assignments which stress productive collaboration, objective criticism and analysis, and professional ethics.  Students will use their knowledge and skills to create several short television productions both inside and outside of the studio, culminating in a publicly presented group project.  Dist: Art.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6344,7 +6344,7 @@ FILM,FILM 36.03 TV Production,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 37 Directing for the Camera,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-37,FILM37,"Directing for the Camera investigates the directorial process of translating the written script to the screen. Students analyze, rehearse, shoot and edit narrative scenes from existing or original screenplays. The exercises are critiqued and comparisons are then made between the existing works and the exercises. Students work in crews rotating between the roles of director, camera, and sound. Special attention is also given to lighting, cinematography, and audio recording.Limit 12",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6771,7 +6771,7 @@ FILM,FILM 37 Directing for the Camera,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 39 Advanced Videomaking: Group Documentary,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-39,FILM39,,,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7191,7 +7191,7 @@ FILM,FILM 39 Advanced Videomaking: Group Documentary,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 39.01 Advanced Videomaking: Documentary and Experimental,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-39-01,FILM39.01,"A workshop course in advanced digital videomaking, with students, working in pairs or groups, required to complete a short (10-minute or less) broadcast-quality documentary or experimental video for screening at the end of the term. Class meetings will focus on conceptualizing, preparing, and completing the various stages of pre-production, production, and post-production, with extensive in–class critiques.Prerequisite: Film Studies 30, 31, 36, or significant experience shooting and editing digital video. Permission granted by the professor after the first day of class.","FS 30, or FS 31, or FS 32, or FS 36, or FS 37, or FS 44.04, or FS 44.07, or FS 48.02, or FS 51, or previous digital video experience. Instructor permission required.",Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7614,7 +7614,7 @@ FILM,FILM 39.01 Advanced Videomaking: Documentary and Experimental,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",['FILM30']
 FILM,FILM 40 Theories and Methodologies of Film and Media Studies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-40,FILM40,"This course is designed to introduce film and media studies majors to some of the field's major scholarly methodologies and their theoretical value in explaining how texts, industries, creative artists, and audiences participate in the meaning-making processes. Students will read scholarship and participate in projects that illuminate how meaning is created and negotiated at the levels of industrial production, artistic creation of texts, and audience knowledge and engagement. The screenings, readings, and assignments will ask the student to think about the relations among his/her own position as a scholar, as an audience member, and as a creative artist. This knowledge provides a foundation for critical thinking skills necessary for the student's success in the major. The course is designed for students who have had some introductory exposure to the principles of film and/or television aesthetics and production techniques, but before they have completed their upper division major requirements.All Film majors and Film modified majors should take this course no later than their junior year.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8034,7 +8034,7 @@ FILM,FILM 40 Theories and Methodologies of Film and Media Studies,https://dartmo
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.01 Infernal Affairs: Police on Film,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-01,FILM41.01,"An examination of the concept and use of genre with focus on a particular genre. How are the genres determined and how useful structurally and historically is genre as a concept of classification? What constitutes a genre? What is the relationship between periods and genres? Between genre and the Hollywood film? This course will consider genre as both an aesthetic concept and an economic one, producing stabilization and variation in product. The roles of repetition and variation, stability and change. Genres may include the western, the crime movie, the women's film, the musical, family melodrama, the film noir or other genre-related topics such as film and literature. May be repeated for credit with a different topic.",,Dist:LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8454,7 +8454,7 @@ FILM,FILM 41.01 Infernal Affairs: Police on Film,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,"FILM 41.02 Shades of Noir: Film, Fiction, Politics",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-02,FILM41.02,"“Film Noir” evokes memories of stylish, cynical, black-and-white movies from the 1940s and 1950s—melodramas about private eyes, femmes fatales, criminal gangs, and lovers on the run. In this course, we will examine noir in relation to its many contexts: the hard-boiled fiction of Chandler and Hammett; the experience of dislocation and alienation that reflect the exile status of many central-European professionals who worked in the US film industry in the 1940s; and Hollywood blacklisting and censorship during the anti-Communist witch hunt. The course will also trace the pervasive presence of noir and its continuing appeal for artists and audiences throughout the world. Because of its artistic and political complexity, noir is a key term for the study of US postwar cultural history: noir narratives revolve around questions of racial and national identity, around the postwar crisis of masculinity, and the convergence of modernism and mass culture.",,Dist:INT or ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8876,7 +8876,7 @@ FILM,"FILM 41.02 Shades of Noir: Film, Fiction, Politics",https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.04 Ethnographic Film,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-04,FILM41.04,"Ethnographic film crosses the boundaries of academic anthropology and popular media. This course will address the construction of meaning in ethnographic films in relation to the parallel concerns of anthropology. We will consider approaches to film style, the relation of visual media to ethnographic representation, and the challenges visual forms poses to written ethnographies. The class will appeal to anthropology and film students as well as students interested in the politics of cross-cultural representation.",,Dist:INT or SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9304,7 +9304,7 @@ FILM,FILM 41.04 Ethnographic Film,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.06 Bond and Beyond,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-06,FILM41.06,"This course will focus on the way changing definitions of Britishness are worked through in the espionage genre as seen in British film (James Bond, The Spy who Came in From the Cold) and television (The Avengers, The Prisoner) in the 1960s. Some of the topics to be discussed include the evolution of 1960s British film from the ""kitchen sink"" dramas of the early 60s to the Pop-stylishness of Swinging London; the relationship between film and novel, and between discrete texts and on-going series; the impact of Hollywood on British production and the lure of the American market.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9724,7 +9724,7 @@ FILM,FILM 41.06 Bond and Beyond,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.07 Cinema and the Graphic Novel,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-07,FILM41.07,"This course will use historical case studies to examine formal, thematic, and stylistic convergences between cinema and comics. We will analyze a variety of graphic narratives that demonstrate the interdependence of the two forms throughout their histories, particularly in matters of framing, editing, lighting effects, and narrative forms. NOTE: I assign drawing homework each week; no prior drawing experience is required.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10150,7 +10150,7 @@ FILM,FILM 41.07 Cinema and the Graphic Novel,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.08 The Cinematic City,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-08,FILM41.08,"This course tracks a quintessentially modern character type--the flâneur/flâneuse--as s/he navigates the cinematic metropolis. Films ranging from early actualities to science fiction, gangster films, musical comedy, andfilm noirwill present the flâneur as a compromised figure who walks a fine line between resistance to the city's rhythms and complicity with its reorganization of subjectivity, affect, collective life, and the senses.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10570,7 +10570,7 @@ FILM,FILM 41.08 The Cinematic City,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.09 History of Animation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-09,FILM41.09,"This course is an introduction to the history and development of the field of animation. We will explore this subject from various perspectives: by chronology, from its prehistory before the invention of film to the present day; by form. including, method and medium; by culture, comparing the US to Japan, Russia, Europe and others; by subject; and by personality, concentrating on the figures who have shaped the art form and continue to influence it through their example. Students are expected to bring an enthusiastic interest in the medium, and to devote serious effort to reading about, viewing, researching and discussing animation and the artists who have created it.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10996,7 +10996,7 @@ FILM,FILM 41.09 History of Animation,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.10 Global Gothic,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-10,FILM41.10,"The Aesthetics of Horror in Japanese and Western Cinema The Japanese tradition of stories about ghosts, spirit possession, demonic visitations and strange psychological phenomena has a rich, complex history that has intersected with Western traditions in productive ways. Beginning with a consideration of theories of the uncanny, the gothic, and the fantastic, this course will explore the techniques filmmakers in Japan and the West have used to create an aesthetics of horror. We will also examine the ideological significance of tales of the weird and supernatural – what they tell us about moral values or about personal and social conceptions of identity.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11416,7 +11416,7 @@ FILM,FILM 41.10 Global Gothic,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.11 Genre: History of Visual Music,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-11,FILM41.11,"This course introduces the history of visual music, the exploration of the relationship between music and abstract imagery. Students will investigate this subject from its predecessors to current day-tracing the constantly expanding practices of visual music through painting, cinema, performance, and installation-form intuitive sketch films to complex algorithmic works.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11844,7 +11844,7 @@ FILM,FILM 41.11 Genre: History of Visual Music,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.12 Screwball Comedy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-12,FILM41.12,"This course examines the rise of the classic Hollywood screwball comedy, 1934-1944, and its enduring impact. Occasionally thought of as “a sex comedy without sex,” the screwball comedy blends slapstick, farce, and lunacy with sophisticated, rapid-fire dialogue and abundant wit. Starting with the early entries likeIt Happened One Night(1934) andMy Man Godfrey(1936), the course includes such classics asHis Girl Friday(1940),Ball of Fire(1940), andThe Lady Eve(1941). Screenings are accompanied by primary and secondary texts that focus on the wide-ranging meanings that the genre has held over time in literature, film history, and theory.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12264,7 +12264,7 @@ FILM,FILM 41.12 Screwball Comedy,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.13 Women in Musicals,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-13,FILM41.13,"This course traces the representations of women in the American musical genre from the 1930s to the present. We will look at the presentation of singing and dancing as labor; demands made on women’s bodies in the musical form (including the use of doubles to produce “ideal” bodies); ethnic heritage displayed or disguised; the way the genre can undermine or explicitly challenge normative gender expectations; the representation of historical figures in musical biographies, including those underrepresented in previous eras – for example, African American performers and non-performers (women directors, songwriters, etc.).  This course is not open to students who have received credit for Film 07.12",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12684,7 +12684,7 @@ FILM,FILM 41.13 Women in Musicals,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.14 The Western,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-14,FILM41.14,"Explores the development of the Western genre from its beginnings in pre-cinematic culture and silent cinema through its maturation in the Classical Hollywood era (1930s to 1950s), its path toward revisionism in the 1960s and 1970s, and its fluttering obsolescence ever since. Historical analysis of this most prolific, and most ""American,"" of Hollywood genres provides a singularly nation-centered perspective on changing U.S. culture, ideologies, and sensibilities.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13104,7 +13104,7 @@ FILM,FILM 41.14 The Western,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.15 20th-Century American Film Comedy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-15,FILM41.15,"Though tragedy is a more respected genre, comedy emanates from the same source: the recognition of a gap between what is, and what ought to be. This course will enrich our understanding of how this predicament was negotiated on American screens during the cinema's first full century, from Keaton, Normand, and Chaplin through Hepburn and Jerry Lewis. Course combines several key approaches to US comedy: its cultural/countercultural bent, its development as a Hollywood genre, and its representations of women and gender.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13524,7 +13524,7 @@ FILM,FILM 41.15 20th-Century American Film Comedy,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.16 Space and Genre,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-16,FILM41.16,"This course explores representations of space and place in Hollywood genres. We will examine the musical, the melodrama, and film noir to discern how space informs and complicates their conventions; discuss how cinematic representation of specific spaces (the apartment, the city, the hotel) blurs genre boundaries; and consider how race, gender, and sexuality influence cinematic representations of spaces. Students will produce their own video essays to intervene in current scholarly debates on cinema, genre, and spatial representation.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13944,7 +13944,7 @@ FILM,FILM 41.16 Space and Genre,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.17 Water In the Lake: Real Events for the Imagination,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-17,FILM41.17,"This class, based on the bookWater in the lake: Real Events for the Imagination(1979) by Kenneth Maue, fuses cinema, the studio arts, sound, and theatre with the natural landscape in an intense study of improvisation, collectivity, and collaboration in conjunction with the environment.  Looking at religion, law, science, and politics as a way to consider cinema, sound, land art, site specificity, performance, and the unfolding of real time events within the artistic context, we will gain the critical capacity to understand intersections of cinema, performance art, video art, land art, and sonic practice. Through viewing films, listening to sounds, and studying works of art spanning painting, sculpture, installation, site-specific practice, and performance, we will inspire and provide critical/historical contexts for your personal work in the course.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14366,7 +14366,7 @@ FILM,FILM 41.17 Water In the Lake: Real Events for the Imagination,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.18 Latinx-ploitation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-18,FILM41.18,"This course serves as an introduction to the history of Latinx cinema, Latinx film spectatorship, and exploitation cinema in the United States. Latinx audiences have long been an interest and target of the Hollywood studios. Since the beginning of sound in film, the studios grappled with reaching this linguistically and culturally-diverse demographic. Since the late 20th century, the studios have widely acknowledged the box office power of that group. Time and again, however, the Hollywood industry has failed to accurately identify and engage Latinx peoples on both sides of the US-Mexico border. Applying theories of racialized spectatorship and performance and film genre and authorship, we will interrogate this historically troubled relationship and grapple with its consequences for Latinx representation and inclusion in American cinema.  \f\\f",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14788,7 +14788,7 @@ FILM,FILM 41.18 Latinx-ploitation,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.19 The Musical,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-19,FILM41.19,"This course introduces students to the history and evolution of the musical film. From the beginnings of sound cinema, the musical has entertained diverse audiences. While its popularity has at times waned, the musical continues to appear on 21st century movie screens. What accounts for the musical’s popularity in different moments in the past? What have been its central themes and cultural preoccupations? How have filmmakers developed a cinematic language in order to lend musicals expression? And what kinds of theoretical paradigms have scholars employed in order to better understand the genre’s evolution?",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15214,7 +15214,7 @@ FILM,FILM 41.19 The Musical,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.20 Special Effects in Film History,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-20,FILM41.20,"“Special visual effects” has many meanings in cinema. When we use the term in the twenty-first century, we usually refer to computer-generated fantasy images of otherworldly creatures or impossible locales. However, the history of special visual effects begins with the basic technologies of photographically filmed moving pictures, and effects—whether matte shots using optical printers in post-production, rear- or front-projection process shots done live on-set, in-camera mattes and mirror shots, or “creature” effects controlled by wires, puppetry, robotics, or remotes—have served many purposes besides generating fantasy worlds. Beginning in the 1890s, the magician and filmmaker Georges Melies used editing, photographic processes, elaborate puppets, and ornate costumes and sets to take viewers up to the moon or down to the bottom of the sea. Only two decades later, however, processes similar to those utilized by Melies were primarily employed to film realistic-looking settings at a fraction of the cost of location shooting. Today, scholars of special visual effects try to answer historical as well as technical questions about what has motivated the incredible innovations of “FX,” the forms they take, and the functions they perform for producers and viewers. What determines these different uses of special effects? How have these processes and practices developed in the US film industry and among independent creators? And how do the standards of realism and plausibility—the standards by which special effects are traditionally judged—change depending on the era, the technologies being employed, and the culture in and for which films are made? This course will place us in the thick of such contemporary scholarly debates about special effects and their history. By viewing key examples of special effects cinema from the past century (primarily from US films) and reading what historians have argued about the significance of these films, students will learn to write and think in these terms and to develop their own educated stances on the topic—to participate as full partners in these scholarly debates. Students will also learn to consider such conditions as industrial history and cultural change as factors in the development of special effects as well as what these effects mean to their viewers.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15640,7 +15640,7 @@ FILM,FILM 41.20 Special Effects in Film History,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 41.21 Music and Media in Everyday Life,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-21,FILM41.21,"This course lends an ear to the roles and power of musical media in the new millennium. Prominent themes include: new media’s purported democratizing effects on the production, circulation, and consumption of sound; the changing roles, responsibilities, and relevance of musicians and media artists in the digital age; and the potential for musical and social media to redraw the boundaries human experience, ethics, memory, and identity at large.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16068,7 +16068,7 @@ FILM,FILM 41.21 Music and Media in Everyday Life,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,"FILM 41.22 Feminist and Queer Video Art: ""I’m asking – does it exist? What is it? Whom is it for?""",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-41-22,FILM41.22,"John Perreault, the first openly gay art critic at the Village Voice, published the phrase “I’m asking – does it exist? What is it? Whom is it for?” as the subtitle of an article on ""Gay Art"" for Artforum in 1980. Expanding upon Perreault’s nuanced consideration of how art works accumulate identities and address particular audiences, this undergraduate course will explore feminist and queer moving image-making practices in the United States between the 1950s-1990s. While eschewing a strictly chronological approach, we will consider art practices in relation to specific historical thresholds, from the intensification of nonviolent direct action in the 1950s and 1960s, to the Stonewall rebellions of 1969, to the emergence of AIDS activism in the late 1980s and 1990s. We will consider the term video expansively, inclusive of TV art, installation, and video’s dialogue with film, holography, and print publications. This course leaves open what feminist and queer art practices look like and perform, and what methodologies might be most useful in writing about them. However, the course aims to challenge the ways in which art historical narratives, including alternative ones, have eclipsed the role of artists of color. Students will be required to reflect upon video footage and on readings in a series of short papers and assignments. Shorter videos will be screened in class, but some weeks require an extra screening during the X-hour session.",,Dist: ART; WCult: CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16490,7 +16490,7 @@ FILM,"FILM 41.22 Feminist and Queer Video Art: ""I’m asking – does it exist?
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 42.02 New Waves,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-02,FILM42.02,"In the 1950s and 1960s, the French New Wave changed the course of film history. French new wave directors were mostly film critics who became filmmakers. Their films merged documentary and fiction, mixed film genres, and reveled in a profound knowledge of the history of the medium. A quintessential youth movement, the FNW inspired new waves in Hong Kong, Iran, Yugoslavia, Czechoslovakia, and the US, among other countries. We will alternate screenings, readings, and discussions of new wave films from these different countries.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16910,7 +16910,7 @@ FILM,FILM 42.02 New Waves,https://dartmouth.smartcatalogiq.com/en/current/orc/de
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 42.03 New Latin American Cinema,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-03,FILM42.03,"With emergence of filmmakers such as Alejandro Inarrirtu (Mexico), Lucrecia Martel (Argentina), and Jose Padilha (Brazil), the last decade has seen a creative boom in Latin American cinema that includes art house cinema, blockbusters, documentary, and experimental film. Beginning with a quick overview of key forerunners, this course will focus on the major directors, genres and aesthetic trends that characterize the new Latin American cinema. On the one hand, we will pay special attention to the distinct national cinemas:the different historical and cultural contexts out of which they emerge; and the different aesthitics that this gives rise to.",,Dist:INT,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17332,7 +17332,7 @@ FILM,FILM 42.03 New Latin American Cinema,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 42.08 Asian Animation as Socio-Political Artifact,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-08,FILM42.08,"Because animated films have traditionally been targeted at children, animators in Asia have often been able to side-step much of the political control exercised by some of their more centralized governments to create sophisticated artistic works that speak as much to educated adults as they do to children. The course will feature the most interesting of these works from China, Japan, and Korea, and students will analyze them within a socio-political and cultural context. Particular attention will be paid to the development of both originality and argumentation in student papers and class participation.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17754,7 +17754,7 @@ FILM,FILM 42.08 Asian Animation as Socio-Political Artifact,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 42.09 African Cinema,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-09,FILM42.09,"This course focuses on the cinemas of Francophone Africa. We will examine early Western filmic representations of Africans as savages devoid of culture and history. We will then examine how African filmmakers have challenged those images by creating new depictions of their societies, offering Africa through African eyes. We will explore the social, historical, and political contexts of these films and explore their aesthetic and narrative characteristics. We will discuss issues and theories related to the definition of the so-called third world cinema, postcolonial cinema, and postmodern cinema.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18176,7 +18176,7 @@ FILM,FILM 42.09 African Cinema,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 42.13 Global Documentary and Transnational Cinema,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-13,FILM42.13,"Since the Lumière Brothers first began dispatching camera operators around the world to shoot actualité films over a century ago, documentary film and video have played a major historical role in constructing and mediating popular understandings of the global. This course considers that history, from its origins in ethnographic documentary to contemporary IMAX films and YouTube videos.  In assessing the wider implications of documentary’s relation to the global, selected transnational fiction films will also be screened and discussed.",,Dist:INT or ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18596,7 +18596,7 @@ FILM,FILM 42.13 Global Documentary and Transnational Cinema,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 42.14 Mexican Cinema,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-14,FILM42.14,"This course serves as an introduction to Mexican cinema and the global system of filmmaking in which it developed. We will examine the history of Mexican film, filmmaking practices, aesthetics and business concerns, as well as audiences inside and outside of Mexico. One central point of inquiry will be the extent to which Mexican cinema was truly ""national."" We will question the concept of “national cinema” all the while analyzing the extent to which issues in Mexican politics, society, and culture were reflected on and influenced by the screen. The transnationality of Mexican film will be central to our investigation as we examine the influence of the United States and Hollywood during Mexican cinema’s development. Students will learn about the various styles and genres of Mexican film and the theories with which film scholars have interpreted them. Among the filmmakers to be studied are Sergei Eisenstein, Fernando de Fuentes, Emilio “El Indio” Fernandez, Luis Buñuel, Alfonso Arau, Maria Novaro, Natalia Almada, Guillermo del Toro, Alfonso Cuarón, and Alejandro Gonzales-Iñárritu. Proficiency in Spanish is not required.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19024,7 +19024,7 @@ FILM,FILM 42.14 Mexican Cinema,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,"FILM 42.15 Nothing is True and Everything is Possible: Politics, Media, and Religion in Post-Soviet Russia",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-15,FILM42.15,"In 1987, the Soviet Union was the largest political entity on the planet. Four years later, it had vanished from the map entirely. In this interdisciplinary course, you will learn about the ‘new Russia’ that has emerged in the three decades since that stunning collapse. Drawing on a wide variety of resources in English translation—from Russian films and novels to YouTube videos and social media posts—you will navigate the diverse technologies and media products that are helping to shape contemporary Russian identity. You will explore, for example, the ‘violent entrepreneurship’ of oil oligarchs, the cynicism of state-funded television propagandists, and the avant-garde theatrics of Moscow’s feminist dissidents. Your study of Putin’s Russia should also allow us to discuss some of the most pressing questions facing citizens in a democracy today: What is the nature of truth in the digital age? How do content creators and media consumers determine what is credible? What factors and forces are shaping the messages we consume through our televisions, tablets, and smartphones, and how can we learn to critically evaluate these messages in order to lead better lives?",,Dist:LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19446,7 +19446,7 @@ FILM,"FILM 42.15 Nothing is True and Everything is Possible: Politics, Media, an
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 42.16 Cinema of Black Protest,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-16,FILM42.16,"This course considers Black histories of protest in conjunction with the history of Black representation in film. We will analyze historical documents, scholarly articles, legal cases and historical accounts of the major moments in Black resistance in the United States. We will begin with the protests against lynching in the early twentieth century and the Civil Rights and Black power era of the 1970′s Blaxploitation film genre through contemporary independent films. We will discuss issues of race and gender, racism, sexuality and homophobia as well as misogyny and sexism in Black representation. Students will be expected to watch and discuss films as well as read scholarly articles on race theory, queer theory, feminist theory and cultural criticism.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19868,7 +19868,7 @@ FILM,FILM 42.16 Cinema of Black Protest,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,"FILM 42.17 Of Golems, Vampires, and Robots: The Haunted Screen of Weimar Cinema (in English)",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-17,FILM42.17,"Weimar Cinema prefigures the rise of the Third Reich, but it also reacts to the trauma of the lost War, and to the fear of changes brought on by modernity: secularization, industrialization, urbanization, the rise of the “new woman,” and changing forms of sexuality. In this course, we will meet the most famous of these uncanny cinematic creations and study them in the larger cultural and social context that marked the transition from the demise of the German Kaiser to the advent of the Führer.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20290,7 +20290,7 @@ FILM,"FILM 42.17 Of Golems, Vampires, and Robots: The Haunted Screen of Weimar C
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,"FILM 42.18 Migration, Mobility and the Movies: German Film in Global Context",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-18,FILM42.18,European borders have become a popular setting in world cinema since the development of global tourism and the recently declared “international immigration crisis”.“Not open to students who have received credit for GERM 043”,,Dist:INT or ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20713,7 +20713,7 @@ FILM,"FILM 42.18 Migration, Mobility and the Movies: German Film in Global Conte
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 42.19 The Middle East in Film: Picturing the Past and Present,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-19,FILM42.19,"How may films serve as a starting point for revisiting the past and rethinking the present? In what ways may representations of the Middle East differ over time and across places? And why do the stories told by filmmakers in documentaries, historical dramas, and other cinematic productions matter? Movies depicting the Middle East routinely draw mass audiences and consequently shape popular perceptions of the region the world over. The very same films, however, are all too often understood by many people as mere entertainment. In this class, we will consider what movies, if treated critically, may teach us about Middle East history. Beginning with a brief introduction to film and media studies, we will contemplate where the Middle East fits into this field of inquiry. Once establishing how we will approach movies and the Middle East throughout the term, we will navigate a number of key themes together, from war, memory, and migration to (mis)information, revolution, and representation. Along the way, we will watch everything from indie films to big budget blockbusters. Regardless of the exact form these projects assume, all of the pictures we explore will generate debate and discussion around the past and present. Among the topics we will cover are the Israeli-Palestinian conflict, European colonialism, and America’s legacy in the Arab world. To assist us on this journey across the Middle East and well beyond its boundaries, we will engage several primary sources, with motion pictures at the forefront. These thought-provoking items will empower us to partake in conversations that traverse languages, national borders, historical eras, and artistic genres, enabling us to view the Middle East in an entirely new way.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21141,7 +21141,7 @@ FILM,FILM 42.19 The Middle East in Film: Picturing the Past and Present,https://
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 42.20 The Berlin School (in English),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-20,FILM42.20,"This course examines the contemporary German film movement known as the ""Berlin School,"" a group of approximately a dozen filmmakers with more than 40 features to their credit. Dissecting the everyday reality of post-wall Germany, this counter-cinema draws on Italian Neo-Realism, the New German Cinema, and contemporary international independent film to advocate radical notions of realism and narrative conventions, challenging viewers to rethink political filmmaking in a national and transnational environment. Screenings will include films by key filmmakers associated with the Berlin School as well as by Luchino Visconti, Wim Wenders, Kelly Reichardt, Apichatpong Weerasethakul, and others.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21569,7 +21569,7 @@ FILM,FILM 42.20 The Berlin School (in English),https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 42.21 Afro/Black Paris in Film and Life,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-21,FILM42.21,"This course takes students on a journey, not to an actual place per se in France, but rather through a lived experience, known as “Afro/Black Paris.” Paris, an historical site of freedom from racial enslavement, has long been a contested home and homeland for Africans and their descendants, that is, diverse people racialized as black whose presence in Paris results from colonization, exile, expatriation, and im/migration, including African Americans. The City of Light is arguably one of the most beautiful and exciting destinations in the world. However, all that glitters is not gold. Matters of race and anti-blackness co-exist with a variety of myths, narratives, and representations of Paris and France as color-blind and race-free. Through French film, students will explore these and related issues and thereby gain a broader understanding of pressing social questions, involving anti-racism, belonging, inequality, racism, and their intersections. This course follows a lecture-discussion format.",,Dist:INT or SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21997,7 +21997,7 @@ FILM,FILM 42.21 Afro/Black Paris in Film and Life,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 42.22 Moviegoing in America,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-22,FILM42.22,"This course serves as an introduction to the history of moviegoing in the United States. Students will learn about the earliest moviegoing spaces and trace the social, cultural, and technological dynamics of when and how the places of moviegoing changed over time. The course will introduce and extend discussions of various theories of spectatorship, including feminist theories and critical race theory, in order to better understand the experiences of peoples of color, immigrants, and women in this history. Students will learn how to apply these theories to the analysis of film and to their own archival and ethnographic research projects.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22417,7 +22417,7 @@ FILM,FILM 42.22 Moviegoing in America,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,"FILM 42.23 Travelers, Tourists, and Sojourners: Mobility in the Movies",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-23,FILM42.23,"In this class, we study film as an aesthetic and political medium. Referring to works on cinematic space and spectatorship theory, we explore how directors construct and deconstruct spaces, nations, and borders in their audience’s imagination. We analyze cinema spectatorship as a travel experience and investigate how geopolitical depictions rely on narratives, images, and imaginations. We study travelling as the possibility for transnational encounters of disparate groups of people and not only assess who is crossing international borders – seafarers, colonizers, immigrants, refugees, commuters, or tourists – but also examine who is welcome to cross, who is welcome to stay, who is expelled and who might have to die, according to genre conventions in global cinema. In road movies, westerns, and recent migration and tourist films, we will focus on themes of pleasure, coming-of-age, and self-fulfillment, as well as conflict, power differentials, (neo-)colonialism, and displacement. In our comparison of European and American films, we will explore similarities and differences in debates surrounding mobility, national identity, indigeneity, film-induced tourism, and human rights.",,Dist:INT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22839,7 +22839,7 @@ FILM,"FILM 42.23 Travelers, Tourists, and Sojourners: Mobility in the Movies",ht
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,"FILM 42.24 Race, Class, Gender and Sexuality in Contemporary Brazilian Film",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-42-24,FILM42.24,"In this course film will be viewed as text and used to analyze discourses around race, sex, gender; and class in contemporary Brazil. It is the hope that film will offer students an additional cultural context to critically examine the development of nation and national ideologies such as ""the myth of racial democracy."" Class discussions based on scholarly readings and film screenings will focus on how Brazilians view themselves and the construction and function of social institutions within the contemporary nation",,Dist:INT; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23261,7 +23261,7 @@ FILM,"FILM 42.24 Race, Class, Gender and Sexuality in Contemporary Brazilian Fil
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 43.01 Women Make Movies: Women and Film Authorship,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-43-01,FILM43.01,"Women have worked in the film industry since its very beginnings, yet it is a popular conception that this is a recent phenomenon. This course will examine how women participated in the mainstream American film industry from the 1890's to the present as producers, directors, writers, photographers, fashion designers, performers, and audiences. Concept about female authorship, as well as historical questions about the cultural, social, and industrial contexts for women's power in the industry, will be explored. Films made by prominent women producers, directors, and writers will be screened.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23683,7 +23683,7 @@ FILM,FILM 43.01 Women Make Movies: Women and Film Authorship,https://dartmouth.s
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,"FILM 43.02 Family Matters: Pedro Almodovar, Gender Reversals, and New Communities",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-43-02,FILM43.02,"Pedro Almodóvar Caballero, Spain's most internationally acclaimed filmmaker will be studied in this course as representative of what critics have termed the New Spanish Cinema Movement.  Almodóvar's filmmaking, both in aesthetic and cultural terms, addresses issues which will appeal to students interested in understanding how culture, politics, and aesthetics get entangled in ways that “queer” gender identity, family structures, notions of community and the societal expectations and limitations surrounding them. The course will also compare his work with other contemporary filmmakers that have reconfigured in their films the boundaries of “family.”",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24105,7 +24105,7 @@ FILM,"FILM 43.02 Family Matters: Pedro Almodovar, Gender Reversals, and New Comm
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 43.04 Hitchcock,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-43-04,FILM43.04,"This course examines important Hitchcock films produced in both the UK and the US, from three perspectives:Hitchcock as a cinematic pioneer, an innovator in film form and style;Hitchcock as anauteurwhose thematic and aesthetic concerns link his films in overt and covert ways; andHitchcock’s films as cultural documents that engage deeply with questions of democracy, individual rights versus communal concerns, mass culture, sexuality, and gender.Critical and theoretical texts on Hitchcock (including historical, feminist, and theoretical interpretations of his work) will be read and discussed along with the films. Your work will be evaluated based on your application of concepts and interpretive strategies from the readings to Hitchcock’s work, your ability to develop productive research questions about his films, and your curiosity, scholarly energy, and creativity. Participation in daily discussions is mandatory.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24530,7 +24530,7 @@ FILM,FILM 43.04 Hitchcock,https://dartmouth.smartcatalogiq.com/en/current/orc/de
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 43.05 Truffaut and Godard,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-43-05,FILM43.05,"This course will examine the films, careers, and legacies of two critics and directors who were fundamental to the French New Wave and its legacy:  Francois Truffaut and Jean-Luc Godard.  Each is an indelible figure in film and media history. The two were at first close colleagues and then diverged radically, both as filmmakers and as people.  Considering their respective careers in relation to one another will place their films into new historical relief. We will survey the important body of film criticism that each produced before becoming a renowned director, along with historical and analytical writings about both. Most importantly, we will examine major films and other media texts (such as television programs) that each created. Our goal will be to understand the phenomena known as ""Truffaut"" and ""Godard"" in relation to the development of auteur methodologies, assumptions, and practices. We will also consider the broad international influence of both directors, especially in film form and style. In addition to in-class lectures and screenings, the course will include a range of online and reserve assignments (films, readings, discussions). Two short papers, a research paper, and a final exam will be assigned.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24950,7 +24950,7 @@ FILM,FILM 43.05 Truffaut and Godard,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 44.01 Handmade Cinema,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-44-01,FILM44.01,"This course will explore non-conventional, artisanal modes of experimental and avant-garde cinema that focus on the materiality of moving image media formats.  By utilizing a variety of techniques--direct image and sound manipulation on 16 mm film, hand-processing, ray-o-grams, animation, special effects, and live-projector performance--students will gain total filmmaker toolsets through constructing a series of exercises that will screen publicly.  In addition to producing personal projects, students will complete a series of short papers that build upon our screeings, readings, and discussions to locate handmade cinema within historical and cultural contexts.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25372,7 +25372,7 @@ FILM,FILM 44.01 Handmade Cinema,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 44.02 Cut and Paste Cinema,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-44-02,FILM44.02,"Using principles of both animation and editing, this course will explore the results of combination in cut and paste cinema in conjunction with the history of collage--from classic uses in painting, photomontage, architecture, and literature to contemporary functions via mash-ups, samples, and digital manipulation. Through producing projects, screening films, and discussing readings, we will explore the varying possibilities of forming new meanings via the pairing of found elements.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25794,7 +25794,7 @@ FILM,FILM 44.02 Cut and Paste Cinema,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 44.03 Filming the Landscape,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-44-03,FILM44.03,This class will study and compare representations of the American landscape through the history of film and painting as well as the depiction of landscape and environmental issues manifested through television and video. Students will be required to complete a short film or video every two weeks referencing sites visited.,,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26214,7 +26214,7 @@ FILM,FILM 44.03 Filming the Landscape,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 44.04 Sound: Practice and Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-44-04,FILM44.04,"Through the analysis of soundtracks and the creation of soundtracks, this course will explore the history of film sound and the way theories of sound reproduction continue to influence the development of sound technology and the practical choices made by sound recorders, mixers and editors. We will look at early sound films, 70s breakthroughs (Altman, Murch), and the imaginary soundscapes of science fiction and horror films.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26634,7 +26634,7 @@ FILM,FILM 44.04 Sound: Practice and Theory,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 44.06 Storytelling in the Digital Age,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-44-06,FILM44.06,"How can you use storytelling as a creative strategy for the digital age? Learn how to craft experiences through the power of story across a variety of media forms. Creative assignments explore fundamental storytelling elements and tactics, and interrogate how form impacts content. In the final project, students will push the boundaries of storytelling and content creation to develop a concept pitch for a project of their own design.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27060,7 +27060,7 @@ FILM,FILM 44.06 Storytelling in the Digital Age,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 44.07 Docu-Fantasy and the Speculative Narrative in Multi-Ethnic Cinema,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-44-07,FILM44.07,"This course traces the evolution of the speculative narrative in non-fiction film in multi-ethnic and marginal filmmakers. We look at the work of Vietnamese, African-American, and German filmmakers in order to analyze how their works were part of a movement that affirm the validity of dreams, and function to expand the filmic imagination past traditional conceits of reality and realism. Final projects may be in any chosen genre, including, but not limited to, abstract imagery, documentary films, installations or experimental formats that invoke the theme “docu-fantasy”.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27480,7 +27480,7 @@ FILM,FILM 44.07 Docu-Fantasy and the Speculative Narrative in Multi-Ethnic Cinem
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 44.08 The Art of Adaptation and Storytelling,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-44-08,FILM44.08,"This theoretical and practice-based course is a study of the conversion of oral, historical and fictional narratives into stage drama, cinema and literary texts. Special attention will be given to the cultural and political implications of cross-generic transformation, formulaic conventions and concepts of “genre,” “crossover appeal” and “adaptation.” Throughout the term, the intersections of race, culture and economics will be regularly questioned. Black cultural storytelling in various mediums and genres will be examined to serve as a point of entry into discussion of cultural worldview and storytelling in order to aid and encourage students to explore the theories, concepts and practice of adaptation from multiple, diverse vantage points and areas of interest. Building upon the adaptations they created in the first half of the quarter, students begin translating their stories visually in the “production” phase of the course. They assess how emotional information is translated in the original form and invent new ways of translating this content in their new visual format. Final projects can be interactive stage pieces, video installations or films.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27902,7 +27902,7 @@ FILM,FILM 44.08 The Art of Adaptation and Storytelling,https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 44.09 Cinematography I: Lighting and Composition,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-44-09,FILM44.09,"The primary focus of Cinematography I is to explore lighting and composition as an extension of cultural identity to explore how to use the apparatus of the camera to tell a compelling story visually.  In addition, we look at the elements of composition, aesthetic style, and lighting that factor into a visually compelling narrative. Whether fiction or non-fiction, or all around experimental, we ask the question- how can we use cameras to provoke emotional, visceral and even intellectual responses in the viewer. The course introduces students to the artistic and technical language used across analog and digital platforms but emphasizes experience. Students also gain practice in the following areas: Mechanical Camera Control and Operation, Lighting, Principles of Color, Exposure, Resolution/Depth of Field, Movement and Composition. Student mastery of these concepts is reinforced through dynamic class exercises and a final project. Additionally, students develop a sense of visual style and learn to interpret the appropriate application of it according to story or product.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28328,7 +28328,7 @@ FILM,FILM 44.09 Cinematography I: Lighting and Composition,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 44.10 Writing for Television,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-44-10,FILM44.10,"This workshop course introduces students to the art and craft of writing for television. We're living in the midst of the (second) Golden Age of Television. More and more Americans are turning away from the traditional movie theater experience and embracing long form, character driven, small screen stories. In the film world, directors are king, but in television, the writers reign. It is their vision that gets put on the screen. Throughout the course, each student will workshop and develop a thirty minute pilot script and Show Bible, as well as read and analyze contemporary pilot scripts to see what exactly makes a pilot",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28750,7 +28750,7 @@ FILM,FILM 44.10 Writing for Television,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 44.12 The Idea of Africa: Deconstructing Race in the Iconography of a Continent,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-44-12,FILM44.12,"This course will consider the mapping of race onto the idea of Africa and how Africa came to constitute a unique racial category. We will therefore conduct an “archeology of race” and engage the argument by historians of race in Africa that Africa was a major laboratory of race. Our primary material will consist of motion pictures, in an effort to reckon with the role of motion pictures as prime technologies of racial othering and their deep imbrications in colonial projects.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29178,7 +29178,7 @@ FILM,FILM 44.12 The Idea of Africa: Deconstructing Race in the Iconography of a 
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 44.13 Writers’ Room,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-44-13,FILM44.13,"This course is modeled after a professional TV writers’ room. At the start of the course, the class will come up with a concept for a five episode television show. Then, each student will take turns fulfilling the various roles: showrunner, staff writer, and writer’s assistant. The course focuses on the art of co-writing, the technique of writing for someone else’s idea and in someone else’s voice, and the tools to be an effective leader and delegator. Throughout the course, the students will collaborate on five short episodes, as well as an individual final portfolio. Readings will include episodic scripts from successful television shows. Feel free to reach out to me for more reading recommendations at any time.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29598,7 +29598,7 @@ FILM,FILM 44.13 Writers’ Room,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 45 U. S. Television History,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-45,FILM45,"This course will examine the history of television as an emerging technology; its dynamic interaction with government, private industry, and audiences; and its impact on society and culture. It will include a consideration of both pre-television media (especially radio) and new media (cyber-culture) as they inform a historical understanding of TV. The norms and practices of the network era (1955-1985) will be positioned as a functional middle-ground, much in the way that classical Hollywood Cinema (1920-1960) serves as middle-ground in motion picture history. Students will be encouraged to develop their capacity for a critical distance from contemporary media via this historicized approach. Open to all classes. Limited to 50 students.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30024,7 +30024,7 @@ FILM,FILM 45 U. S. Television History,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 46.01 Television and Histories of Gender,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-46-01,FILM46.01,"This class examines the ways American commercial television has historically “assumed” gendered positionings of its audience, as well as operates as one of the strongest cultural touchstones of gendered identity in patriarchal, consumer society. After tracing television’s place in the construction of gendered ideals through the history of the situation comedy, we examine “gender-specific” genres, such as sports, westerns, cop shows, and soap operas. Representative programs will be screened, and feminist essays on television history/theory are among assigned readings.Open to all students.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30446,7 +30446,7 @@ FILM,FILM 46.01 Television and Histories of Gender,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 46.04 Broadcast Journalism and Electronic Journalism History,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-46-04,FILM46.04,"The history of broadcast and electronic journalism in the United States, from telegraphy to the internet, focusing on the development of and changes to its fundamental relation to the public sphere. We will pursue a contextualized historical understanding of the formats, aesthetics, economics, and industrial organization of these media, in addition to case studies of specific debates, events, and individuals that have conditioned the impact of these media on society. We will invite speakers who have worked in these media industries and/or these histories. Students will be expected to create a digital video project and to write analytical papers, including a research paper.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30866,7 +30866,7 @@ FILM,FILM 46.04 Broadcast Journalism and Electronic Journalism History,https://d
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 46.06 Topics in Television: Cop TV,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-46-06,FILM46.06,Police shows have been important part of broadcasting in the US since before the beginning of television. This course explores how police shows have evolved over the last seven decades; the changing representations of police and procedures; the use of the genre to deal with “social problems”; fiction versus non-fiction programs; how these programs reflect real world controversies involving police; how the development of this genre reflects changes in the history of broadcasting. Throughout we will look at films that influenced the style and content of these programs.,,WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31286,7 +31286,7 @@ FILM,FILM 46.06 Topics in Television: Cop TV,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 46.07 Television and New Media,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-46-07,FILM46.07,"This course examines the transformation of television in both its commercial and public-service forms by the rise of the internet as a mass medium, YouTube and participatory culture, and most recently, social networks and mobile communication. On the one hand, it will show, digital technologies and computer networks have disrupted the historical power relations between television networks and their audiences, enabling viewers to watch programming whenever and wherever they like, to avoid commercials, and to become producers themselves; yet at the same time, networks and advertisers are quickly finding new ways to adapt older business models and forms of storytelling to today's multi-platform media environment. Attention is paid to questions of agency in the control of programming flows and consumption; the shift from ratings to analytics, the emergence of transmedia storytelling as a production model; new forms of digital aesthetics (e.g.,  “slow TV”); and celebrity, branding, and neoliberal citizenship.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31706,7 +31706,7 @@ FILM,FILM 46.07 Television and New Media,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,"FILM 46.08 Television Without Borders: Local Communities, Global Audiences",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-46-08,FILM46.08,"Considers television as a transnational medium from the first international broadcasts of the late 1950s to its digital descendants in the early twenty-\uFB01rst century. As television genres and formats continue to mutate and proliferate (digital downloads, streaming, etc.), the course addresses fundamental questions about its nature as a medium of mass communication: What is television for, today?",,Dist:INT or ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32132,7 +32132,7 @@ FILM,"FILM 46.08 Television Without Borders: Local Communities, Global Audiences
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 46.09 Critical Approaches to Media Production,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-46-09,FILM46.09,"The course analyzes and discusses various production practices in U.S. media industries. Through readings, audiovisual materials, and guest speakers from a wide array of media positions, we will explore various phases of media production in film, television, live events, journalism, and more. In particular, we will focus on dynamics involving race, gender, and sexuality in the labor of media production, as well as in the media products themselves. Overall, the course considers the ways in which media production and representations simultaneously reflect and reinforce social stratification and inequalities. Students should emerge from this course with a strong understanding of hierarchies of labor in media production, a practical sense of everyday practices in a diverse array of media production fields, as well as a firm understanding of the media’s effects on and interaction with identity politics. This course is intended to provide a 360- degree (over)view of media production.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32558,7 +32558,7 @@ FILM,FILM 46.09 Critical Approaches to Media Production,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 46.10 Transmissions: Histories and Theories of Broadcast Sound,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-46-10,FILM46.10,"This course traces the history of broadcast sound from its inception through the golden age of radio, the use of sound and music in television and film, and into the current internet age. With its focus on sound and music, this course addresses an often-underexamined aspect of media history. We will explore a variety of different concepts and approaches used to analyze mediated music and discuss how concepts central to media studies—including text, audience, genre, industry, ideology and identity—function when applied to sound. At the end of the course, students will turn theory into practice through writing, recording and producing an episode of their own podcast.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32980,7 +32980,7 @@ FILM,FILM 46.10 Transmissions: Histories and Theories of Broadcast Sound,https:/
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 46.11 Introduction to Media Industries Studies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-46-11,FILM46.11,"This seminar provides an in-depth look at the American media industry and Los Angeles based Production culture in particular, examining its history, theory and practice. The course investigates the collaborative creative process, its employment practices, work cultures and the mythologies that underlie them. After a brief historical and theoretical overview, the course will focus on the various media workers and their relationship to and role in the creative process. Topics are clustered around different sectors of production, past and present, to allow an exploration of the industry through the perspective of the people who have shaped it.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33400,7 +33400,7 @@ FILM,FILM 46.11 Introduction to Media Industries Studies,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.01 Video Mashups,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-01,FILM47.01,"Individually, in pairs, and in groups, students edit short videos that appropriate, quote, and re-contextualize images and sounds from other sources. These collages include movie trailer mashups, political videos, supercuts, and music videos. In addition to readings, there will be screenings of avant-garde and documentary found footage films as well as a wide variety of digital video mashups. No prior editing experience required.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33826,7 +33826,7 @@ FILM,FILM 47.01 Video Mashups,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.02 Theory and Practice of Editing,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-02,FILM47.02,"This course covers formal and stylistic techniques in editing along with how to approach the overall organization of a film.  Assignments include creative film exercises, film screenings and contextual readings.  In addition, throughout the term students will work towards the completion of a final project that will be showcased in a public screening.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34246,7 +34246,7 @@ FILM,FILM 47.02 Theory and Practice of Editing,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.05 History of Documentary,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-05,FILM47.05,"Documentary film combines nonfiction with an aesthetic aspiratio. This course will explore achievement in the documentary, raising issues about the influence of documentary upon political persuasion,historical memory, the status of film as evidence and its utility as a means of investigation. We will look at film from a broad range of styles, viewpoint and eras. Documentary represents an alternative to the dominant entertainment cinema and as such, frequently addresses controversial issues directly. Students should be prepared to explore sensitive issues of race, class and gender raised by non-fiction film.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34666,7 +34666,7 @@ FILM,FILM 47.05 History of Documentary,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,"FILM 47.06 Audio-Vision: Film, Music, Sound",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-06,FILM47.06,"This interdisciplinary course explores the intersection of Film, Music and Sound, navigating alternatively through the history of film and music from both perspectives, proposing a dual approach to film and music, imaging and sound. The course alternates topics of cinema, music and sound and requires extensive viewing and listening, weekly readings and class discussions.Topics ranging from sound experiments of the early avant-garde, through Visual Music, visual sound, audiovisual arts, experimental audiovisual installations and live arts practices will be studied along classic Hollywood, European and Asian films. Focusing on the connections between filmmakers, composers and artists, while tracing the evolution of audio-vision and its interconnections with music composition and sound innovation. The course structure is a double helix interconnected history of film and modern music from 1895 till today.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35088,7 +35088,7 @@ FILM,"FILM 47.06 Audio-Vision: Film, Music, Sound",https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.07 Migration Stories,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-07,FILM47.07,"With over 50 million displaced people today, migration is one of the most compelling problems of our time. Filmic and literary representations of migration focus on borders, different types of migrants, and their border crossing experiences. We will study migration from Latin America to the U.S.; from Africa and Eastern Europe to Western Europe; and internal migration within these countries. We will also analyze how Hollywood cinema itself creates images and values that drive migration.",,Dist:INT or ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35510,7 +35510,7 @@ FILM,FILM 47.07 Migration Stories,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.16 Film Festivals,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-16,FILM47.16,"Film festivals have become increasingly important institutions of film culture, even what one programmer called “an alternative distribution network.” Though invented in Europe in the 1930s, festivals are now a worldwide phenomenon encompassing art, commerce, tourism, and cultural identities. Festivals often provide meeting points for critics, directors, producers, distributors, actors, audiences, and others. Students will undertake case studies of individual film festivals from around the world.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35930,7 +35930,7 @@ FILM,FILM 47.16 Film Festivals,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.17 Race and Place and Los Angeles Media,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-17,FILM47.17,"The purpose of this course is to examine the range of media produced by, for, and about the multicultural populations of Los Angeles.  We will look at the film, music, television, and digital media produced by, for, and about indigenous people and people of color in the city and consider the role that racialized communities play in the circulation of images of Los Angeles in local, national, and global networks. Topics will include the following: colonialism; intersections of race, class, gender, sexuality, religion, and nation; alternative modes of production, distribution, and spectatorship.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36350,7 +36350,7 @@ FILM,FILM 47.17 Race and Place and Los Angeles Media,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.19 Krieger's Virtual Girlfriend: Japanese Anime and the idea of the Post-human,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-19,FILM47.19,"An examination of major trends in popular visual culture in Japan since the 1980s focused on the growth in production and distribution of animated films, tv series, and video games. Screenings will include works by Miyazaki Hayao, Rintaro, Takahata Isao, and Kon Satoshi. Readings will include both critical and historical sources that will provide the social and economic contexts for the development of the anime industry, theories of animation, and the global impact of Japanese popular culture.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36772,7 +36772,7 @@ FILM,FILM 47.19 Krieger's Virtual Girlfriend: Japanese Anime and the idea of the
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.20 Curating and Microcinema,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-20,FILM47.20,"Curating and Microcinema. This course provides an introduction to the practice of curating film and video-from shorts programs, to retrospective screenings, to moving-image installations and exhibitions of production artwork. Through a series of on-campus presentations, readings, screenings, and discussions, the course will prepare students for final projects in which groups of students organize moving-image events for members of the community.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37192,7 +37192,7 @@ FILM,FILM 47.20 Curating and Microcinema,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.21 Scenes from the City: Urbanism and Modern American Visual Culture,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-21,FILM47.21,"From silent films toMad Men, the American city has been the site through which “modern” identities have been imagined and created. This course draws on Cultural Geography and Film and Media Studies in order to interrogate this development. Through a variety of readings and screenings of films and TV shows, we will be examining American downtowns, suburbs, and homes as sites for the construction of classed, racialized, sexualized and gendered identities in three different time periods: the early 20th century, the post WWII era, and the contemporary period. We will interrogate such topics as: the real and imagined role of “shopping” women and gender in the shaping of modern downtowns; the relationship between the American suburb, new sexual identities and the filmPillow Talk; and how a particular nostalgia for the past that has led to the popularity of such shows asMad Mencan also be seen on the streets of Hanover (neo-traditional urbanism).",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37614,7 +37614,7 @@ FILM,FILM 47.21 Scenes from the City: Urbanism and Modern American Visual Cultur
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.22 Buddhism and Film,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-22,FILM47.22,"“What is Buddhism?” “How can it be something expressed in and through the medium of film?” and “What actually constitutes a Buddhist film?” After an introductory survey of central topics in Buddhism, this course will explore the cinematic presentation of Buddhist religion, philosophy, practices, saints, and institutions. By learning to watch films critically from a Buddhist perspective, students will explore the process through which we create the meaning in films and everyday life. Open to all.",,Dist:TMV; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38037,7 +38037,7 @@ FILM,FILM 47.22 Buddhism and Film,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.23 Berlin--New York--Hollywood: A Cultural History of Exile,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-23,FILM47.23,"This course focuses on the condition of exile. It takes as its main example “one of the largest and most dramatic mass migrations to this country in the twentieth century,” namely that of some 130,000 German-speaking refugees who arrived on these shores between 1933 and 1945. The course will examine several of the most significant areas that were influenced by this vital cultural shift: the American academy and intellectual life; the film industry (“Weimar on the Pacific,” as Hollywood was sometimes called); and, more generally, the political and cultural debates concerning the “German Question,” i.e., what to do with Germany after the war. We will explore how the exiles viewed their role and how they viewed the interplay between American and European culture.",,Dist:INT or ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38457,7 +38457,7 @@ FILM,FILM 47.23 Berlin--New York--Hollywood: A Cultural History of Exile,https:/
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.24 Race & Gender in American Film,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-24,FILM47.24,"This course is an introduction to the history of race and gender in American film. These fundamental social constructs in American life have been central to the development of American film narrative from the beginnings of cinema at the turn of the twentieth century. In turn, American films have profoundly shaped the ways that we think about race and gender and racialized and gendered beings. We will analyze the shifting and situational meanings of race and gender throughout the twentieth century, and in particular, how they have been influenced by the forces of history, including wars, economic depressions, and social movements. While we will focus our attention on Hollywood cinema of the “golden age”, the period from the 1920s-1960, we will also spend significant time considering American independent cinema and the post-classical period of filmmaking from the 1960s to the present. In our consideration of race and racialized peoples, we will include African Americans, Native Americans, Asian Americans and Latinos. Our discussions of gender will be expansive to include not just women and femininity, but men and masculinity as well.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38879,7 +38879,7 @@ FILM,FILM 47.24 Race & Gender in American Film,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.25 Black Noir,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-25,FILM47.25,"In this course, we will study black American literature that focuses the noir genre on black people themselves. We will read gritty, urban crime novels that attempt to expose inequities in black American lives and dispel the notion that a descent from whiteness results in blackness. Rather, the black people in these texts exist in darkness because they are living in alienated communities. We shall investigate how the noir genre is altered when “noirs” are the subjects and the authors. In addition to primary texts, the course will engage critical responses to these works.",,Dist:LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -39301,7 +39301,7 @@ FILM,FILM 47.25 Black Noir,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.26 Film and Fashion: Dressing the Part,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-26,FILM47.26,"This course examines the interrelations between film, costuming, and fashion cultures. We will look at theories of fashion, “the fashioned body,” and costume, reading them against trends in fashionable dress, body image, and fashion subcultures, as well as against histories of film costuming and spectacle. Screenings include media texts from different historical periods that reflect or have influenced fashion of their time and/or represent interesting challenges for costuming.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -39721,7 +39721,7 @@ FILM,FILM 47.26 Film and Fashion: Dressing the Part,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.27 The Hollywood Studio System,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-27,FILM47.27,This course explores the historical foundations of the Hollywood Studio System (1925-1960) in relation to how creative decisions were made and practices of production and promotion were enacted in the business of industrial film production during that era.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40137,7 +40137,7 @@ FILM,FILM 47.27 The Hollywood Studio System,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.28 Queer Cinema,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-28,FILM47.28,What constitutes queer aesthetics and politics today? How does it relate to fights for LGBTQ rights? And how have these questions been represented on screen? This course will address these questions by introducing students to the history and theory of “Queer Cinema” broadly construed. We will pay particular attention to the aesthetic strategies and political interventions of filmmakers who use film to address broader debates in queer theory and LGBTQ history.,,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40557,7 +40557,7 @@ FILM,FILM 47.28 Queer Cinema,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.29 Latinx Stage and Screen,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-29,FILM47.29,"This course will examine the Latinx stage and screen, focusing specifically on musicals that portray Latinx lives. We will focus on canonical works—including West Side Story, Zoot Suit, and Hamilton—in order to deepen our knowledge of their form, production history, historical reception, and contemporary place in American culture. We will take an interdisciplinary approach, drawing our reading assignments from the fields of Ethnic Studies, American Studies, Performance Studies, and Film and Media Studies, in order to analyze these productions as they traveled from stage to screen (and sometimes, back to the stage) and the representational and cultural politics involved in that shift. Finally, we will explore not only the musicals themselves, but also the historiography that has informed our understanding of them. Writing assignments will ask the students to reflect on the evolution of scholarly arguments regarding these canonical works.",,Dist:SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40979,7 +40979,7 @@ FILM,FILM 47.29 Latinx Stage and Screen,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.30 Black Looks: A Survey of Race and Representation in Cinema and Visual Media,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-30,FILM47.30,"This course surveys the evolution of race and representation in visual media.  Special attention will be given to black subjects and the socio-economic, historical and political factors that feed into depictions of black life, dominant tropes within these historic depictions, and the aesthetics of emergent voices that help to shape a new black subjectivity on screen. Students are encouraged to draw connections between discourse about black subjectivity with that of identities through doing “close readings” of screen representations and images.  In their final projects, students write about and create work relating to black subjects or the broader theme of race and representation in visual media.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -41401,7 +41401,7 @@ FILM,FILM 47.30 Black Looks: A Survey of Race and Representation in Cinema and V
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.31 Sounding Out Power and Dissent,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-31,FILM47.31,"How does authority reach the ear? What are the sonic features of speaking truth to power? Who shapes the ways we hear, and where might we learn to listen differently? This course sounds out displays of authority as well as how we can act against such structures by turning to representations of the auditory in both literature and cinema. As we consider questions of sound and its reproduction, we will work across geographical contexts to determine which concerns resonate widely and what role acoustics, or the specific properties of a space, might play. Readings will come from writers such as Valeria Luiselli, María Sonia Cristoff, Franz Kafka, Frantz Fanon, and Severo Sarduy, while films will range fromFitzcarraldotoSorry to Bother You.",,Dist:INT,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -41823,7 +41823,7 @@ FILM,FILM 47.31 Sounding Out Power and Dissent,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.32 Sounds of Totalitarianism and Resistance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-32,FILM47.32,"This course is dedicated to exploring how twentieth-century music and culture became entangled in the political and social conditions of governments. We will read foundational scholarship in Fascist Studies, musicology, media and sound studies that takes into account the multifaceted nature and deeply rooted legacy of totalitarian states. Our goal is to understand how composers, performers, filmmakers and audiences have reckoned with authoritarian politics and to develop a nuanced understanding of politics’ role in music and media, both historical and contemporary.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -42245,7 +42245,7 @@ FILM,FILM 47.32 Sounds of Totalitarianism and Resistance,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,"FILM 47.33 Performing Histories, Performing Us",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-33,FILM47.33,"Performing Histories, Performing Usis an interactive course, taught by scholar artist, Dr. Monica White Ndounou, with a residency component with actor/writer/director Roger Guenveur Smith. The course utilizes performance as a tool to interrogate, examine and explore the concept of history, particularly at the intersection of culture and performance. This course uses traditional and nontraditional archives and multiple platforms to illuminate the possibilities for performing histories; performing us.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -42667,7 +42667,7 @@ FILM,"FILM 47.33 Performing Histories, Performing Us",https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 47.34 International Cinema and WWII,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-34,FILM47.34,"The cinema plays a pivotal role in creating and defining our understanding of the past. Through viewings and close analysis of classic international films, this course explores historical representations of the Second World War. We will consider how the war has been remembered, interpreted, and represented in the cinemas of different European, Asian, and North American countries. Note that a number of the films graphically depict violence and other upsetting topics.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -43087,7 +43087,7 @@ FILM,FILM 47.34 International Cinema and WWII,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,"FILM 47.35 Rita Moreno: Identity, Performance, Stardom",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-47-35,FILM47.35,"Rita Moreno is a Puerto Rican actress, singer, and dancer whose career has spanned the 20th and 21st centuries. She has worked across film, television, and theater, and most famously, starred inWest Side Story(1961) for which she won an Academy Award, the first Latina to do so. The course will explore her life and career as a means of exploring broader contexts of Latinx history and culture.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -43509,7 +43509,7 @@ FILM,"FILM 47.35 Rita Moreno: Identity, Performance, Stardom",https://dartmouth.
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 48.01 The Map,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-48-01,FILM48.01,"Maps involve Purposeful omission: they require compression; they are subjective in their emphasis and purposeful omission; they require compression; they are subjective in their emphasis and perspective; they are of the imagination and create illusions of space, time, and place. The Map, the group visits map collections, reads critical and historic essays, investigates digital maps and territories, and interviews artist, cartographers, and geographers, about their practices. Weekly assignments include several maps per week-fanciful, conceptual, and practical",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -43931,7 +43931,7 @@ FILM,FILM 48.01 The Map,https://dartmouth.smartcatalogiq.com/en/current/orc/depa
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 48.02 Video Art,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-48-02,FILM48.02,"This theory/practice studio course explores the medium of video as an art form. Through a survey of historical and contemporary works, students will examine how history, access, culture and technological shifts have influenced and changed how artists work with the moving image and time-based media. From early portable video rigs and live video to the use of animation, netart, streaming video, and memes, the course will unpack role that film, video, sound, writing, performance, abstraction, installation, structure, streaming and narrative forms have played in their work. Students create individual video projects to develop their artistic voice and point of view; they engage with properties that distinguish video art practices while completing a series of creative experiments in order to develop a personal media vocabulary. Students will use video art to expand our understanding of time, space, sound, representation, and narrative.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -44353,7 +44353,7 @@ FILM,FILM 48.02 Video Art,https://dartmouth.smartcatalogiq.com/en/current/orc/de
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 48.03 Data and Bodies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-48-03,FILM48.03,"In this course we will take a multi-modal approach to understanding relationships between “datafication” and human bodies. Today’s “Datafication” is a process of transforming diverse processes, qualities, actions and phenomena into forms that are machine-readable by digital technologies, but the act of turning humans and human bodies into quanta of information has a long history. We will be using art, new media, history, information science, and more to think through the impact that datafication has on how we understand ourselves and others. Particular attention will be paid to the ways in which data has historically been used in racializing and gendering ways, and the role that quantification of people has been integral to the development of the Western nation-state.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -44775,7 +44775,7 @@ FILM,FILM 48.03 Data and Bodies,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 48.04 Social Justice and Computing,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-48-04,FILM48.04,"This course draws on feminist and queer scholarship to examine the intricate relationship between datafication, ubiquitous computing, and social justice, highlighting the politics and impacts of data-driven processes and big data on human lives. One of the key highlights of WGSS engagements with computing history is the focus on the politics and impacts of data-driven processes and big data on human lives. The course will provide a brief introduction to histories of computing and data-driven practices within the Anglo-American tradition, including discussions of the roles that ethics and biopolitics play within these histories. We will explore ways that privacy/security, algorithmic processes, computational environmental impacts, and design have exploited the most vulnerable while increasing affordances for the most privileged. We will also spend significant time learning about new data/computational justice initiatives and develop a robust understanding of how social justice issues like prison abolition, climate change, and equitable health outcomes are at the core of understanding computational cultures. No Computer Science or Data Science background is required, but the course will entail learning about some of the technical history within both fields. Similarly, there are no WGSS prerequisites for the cours but students will be responsibly for learning about anti-racist feminist and queer methods and insights.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -45197,7 +45197,7 @@ FILM,FILM 48.04 Social Justice and Computing,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 48.05 Postcolonial Media,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-48-05,FILM48.05,"How has colonialism operated — and how does it continue to operate — through media? How have colonized people used media to resist colonialism in the past and how do they continue to do so today? What role can we play in undoing the relationship between media and colonialism as readers, critics, and makers? This course draws on digital humanities, media studies, postcolonial and decolonial theory, and Native American and Indigenous studies to examine the historical and ongoing relationship between colonialism and media. We will compare multiple geographic, cultural, and linguistic contexts (e.g., British colonialism in South Asia, European colonialism on the continent of Africa, and settler colonialism in the U.S.) to explore the long relationship between media and colonialism. Through our work, we will consider how it formed the past and how it continues to shape our present. Drawing on insights gleaned from this analysis, we will engage in the creation of media to experiment with the role it can play in resisting colonialism.",,Dist:INT or SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -45617,7 +45617,7 @@ FILM,FILM 48.05 Postcolonial Media,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 48.06 Media and Migration,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-48-06,FILM48.06,"The relationship between media and migration is a complex one. Media can, at once, facilitate migrants’ journeys and, at the same time, contribute to public discourse that aims to curtail migration. Our individual understanding of migration, personal relationships to it, and the viewpoints we have formed on immigration rights and policies are indelibly shaped by multiple forms of media, broadly construed: mainstream news media, social media, television and film, data visualization, infographics, and multimodal forms of communication. In this course, we will use the lenses of postcolonial studies and critical ethnic studies to examine the interplay of media and migration to collectively build our capacities as critical consumers of media and nuanced and empathetic thinkers about migration.",,Dist:INT or SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -46039,7 +46039,7 @@ FILM,FILM 48.06 Media and Migration,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 48.07 Analyzing Content: From Tik Toks to Tweets,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-48-07,FILM48.07,"The internet is awash with new popular cultural forms, from listicles and lolcats to Ted Talks and makeup tutorials. And yet scholars have only just begun to analyze this new digital “content”: what makes it unique, and how it is reshaping our culture. In this course, we’ll look at new forms of popular digital content in detail—reading tweets as closely as if they were poems, or exploring the substance of 100,000 Instagram images. We’ll survey the methods that have been developed, in different disciplines (media theory, art criticism, sociology), for analyzing content in this way, as well as those that have yet to be attempted (questions that haven’t been asked; material that hasn’t been addressed). To put theory into practice, students will develop 10-12 page research projects on popular digital artifacts of their choosing. They will also be introduced to computational methods of analyzing content, and have the opportunity to pursue these methods further.",,Dist:LIT,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -46462,7 +46462,7 @@ FILM,FILM 48.07 Analyzing Content: From Tik Toks to Tweets,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 49.02 Black Theatre & Storytelling Workshop in XR: Reimagining The Purple Flower (1928),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-49-02,FILM49.02,"Recognizing the intrinsic value of Black lives and Black storytelling across media platforms, this course will explore the staging of Black theatre texts in virtual reality (VR) and related XR technology.  Participants will explore VR technology at the intersection of Black cultural storytelling through the performance of monologues and scenes as well as design/tech, music and movement culminating into a pilot production of Marita Bonner’sThe Purple Flower(1928), a non-realistic, one-act play that pushes the boundaries of theatrical staging.  No prior experience or pre-requisites required.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -46884,7 +46884,7 @@ FILM,FILM 49.02 Black Theatre & Storytelling Workshop in XR: Reimagining The Pur
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 50.01 Cinematic Mirrors: Reflexivity and Authorship in Global Film History,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-50-01,FILM50.01,"This course investigates a trend in modernist and postmodernist cinema of reflexive films ormetafilms: films foregrounding the medium through themes, techniques, style, and formal methods that call attention to the artificiality of cinema. How authorship and the concept of the “auteur” affects production and reception of these films, how different national and political contexts impact their production, and how compatible metafilms are with mainstream commercial practice, are among the questions explored in the course.",,Dist:INT or ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -47304,7 +47304,7 @@ FILM,FILM 50.01 Cinematic Mirrors: Reflexivity and Authorship in Global Film His
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,"FILM 50.02 Race, Media, Celebrity",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-50-02,FILM50.02,"How is fame understood through racial difference?  This course explores the dynamic terrain of contemporary celebrity culture as it intersects with race.  Looking accross a range of media formats (music, television, and digital media) we will examine the construction of black celebrity from Barack Obama to Beyonce.  We will engage with the aesthetics and politics of black celebrity visibility, paying close attention to issues of gender, sexuality, and class.  Topics considered include celebrity performance, scandal, and fandom in U.S. public and popular culture.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -47726,7 +47726,7 @@ FILM,"FILM 50.02 Race, Media, Celebrity",https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 50.03 Topics in Film Theory: Exploring the Archive,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-50-03,FILM50.03,"This course will introduce students to new capacities for archival research and explore new directions of archival scholarship regarding film, television, and media history. Inspired by the turn to “preservation plus access” that characterizes many media archives today, this course will provide a set of perspectives from archivists, scholars, and film/video makers regarding new modalities of textual collections, availability, and delivery that promise to deepen media studies as a set of interdisciplinary research and production practices.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -48146,7 +48146,7 @@ FILM,FILM 50.03 Topics in Film Theory: Exploring the Archive,https://dartmouth.s
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 50.04 Video Games and the Meaning of Life,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-50-04,FILM50.04,"Video Games and the Meaning of Life is an interdisciplinary course that explores the modern human condition through the stories, designs, and soundscapes of digital games—from the perils of obedience (Hannah Arendt andThe Stanley Parable) to the metaphors of illness (Susan Sontag andThat Dragon, Cancer), from the deathless dreams of pacifism (Undertale) to the transnational rise of today’s billion-dollar e-Sports industry (League of Legends). All students are welcome; no gaming or musical experience needed.",,Dist:TMV; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -48568,7 +48568,7 @@ FILM,FILM 50.04 Video Games and the Meaning of Life,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 51 Game Design Studio,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-51,FILM51,"This course explores how innovative games are created and what elements go into the design of a good play experience. Games, be they console, networked, mobile, board, or pervasive, provide a versatile platform for design thinking and media practice. During the course, students create a host of game prototypes that address social issues. Students study the process of making games while developing actual game ideas, prototyping, play-testing, and documenting original, innovative game plans in a design journal.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -48988,7 +48988,7 @@ FILM,FILM 51 Game Design Studio,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 80 Independent Study,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-80,FILM80,This course is designed to enable qualified upperclass students to engage in independent study in film under the direction of a member of the Department. A student should consult with the faculty member with whom he or she wishes to work as far in advance as possible. A proposal for any independent project must be submitted by the appropriate deadline in the term immediately preceding the term in which the independent study is to be pursued. Permission of instructor required. The staff.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -49404,7 +49404,7 @@ FILM,FILM 80 Independent Study,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 93 Major Project,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-93,FILM93,"This course, limited to Film and Media Studies majors or as part of a modified major, involves an individual project in some aspect of film and television history, theory or practice. The subject of the project, the term, and the hours are to be arranged. Each project must be directed by a faculty member of the Department. The approval of the faculty member and the Chair must be secured in advance, not later than the term immediately preceding the term in which the project is to be undertaken. This is a two term project.Students are awarded one course credit for successful completion of this course at the end of the second term of work. Students register for FILM-093 and receive a grade of “ON” (ongoing) at the end of the term. Students do not register for the subsequent term. A final grade will replace the “ON” at the end of the subsequent term at which time the coursework must be completed.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -49821,7 +49821,7 @@ FILM,FILM 93 Major Project,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 95 Honors Project I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-95,FILM95,"A thesis, screenplay, or film production written under the supervision of a member of the Film and Media Studies Department. This course must be elected by all honors candidates. Permission of the Film and Media Studies Faculty required. Honors Projects are considered to be two-term projects. Students must register for each of the two terms to receive the Honors designation.Students are awarded one course credit for successful completion of this course at the end of the second term of study. Students subsequently register forFILM 96, and continue with their coursework into a second term. A final grade will replace the “ON” for both this course andFILM 96upon completionFILM 96.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -50238,7 +50238,7 @@ FILM,FILM 95 Honors Project I,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 FILM,FILM 96 Honors Project II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/film-and-media-studies/film-film-and-media-studies/film-96,FILM96,"A thesis, screenplay, or film production written under the supervision of a member of the Film and Media Studies Department. This course must be elected by all honors candidates. Permission of the Film and Media Studies Faculty required. Honors Projects are considered to be two-term projects. Students must register for each of the two terms to receive the Honors designation.Students are awarded one course credit for successful completion of this course. Students who have registered forFILM 95register for this course and continue with their coursework. A final grade will replace the “ON” for bothFILM 95and this course upon completion of this.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -50655,4 +50655,4 @@ FILM,FILM 96 Honors Project II,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]

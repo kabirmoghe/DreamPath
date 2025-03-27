@@ -71,13 +71,13 @@ Context:
     'Astronomy', 'Physics', 'Neuroscience', 'Psychology',
     'Quantitative Social Science', 'Religion', 'Sociology',
     'Hispanic Studies', 'Romance Studies', 'Studio Art', 'Theater',
-    "Womens Gender & Sexuality Studies"
+    'Womens Gender & Sexuality Studies'
 
 Task:
     Given the academic topic: "{topic}", return up to **3 departments** from the list above that are most likely to offer courses covering this topic.
 
     Only include departments from the provided list.
-    Return a comma-separated list of department names.
+    Return a comma-separated list of department names, with department names surrounded by single quotes.
 """
 
 # Extracting prerequisites for a given course

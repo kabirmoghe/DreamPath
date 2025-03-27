@@ -9,6 +9,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.common.exceptions import NoSuchElementException
 import requests
 from bs4 import BeautifulSoup
+import os
+import json
 
 CHROME_OPTIONS = Options()
 CHROME_OPTIONS.add_argument("--headless")
@@ -111,12 +113,12 @@ def get_dartmouth_degrees():
     df = pd.DataFrame(majors_data)
     return df
 
-def get_undergraduate_links_by_major(major_df, major_name):
+def retrieve_undergraduate_links_by_major(majors_df, major_name):
     """
     Navigates to a specific major's URL and finds all links to undergraduate courses.
     
     Args:
-        major_df (pandas.DataFrame): DataFrame containing major information
+        majors_df (pandas.DataFrame): DataFrame containing major information
         major_name (str): Name of the major to look up
         
     Returns:
@@ -124,7 +126,7 @@ def get_undergraduate_links_by_major(major_df, major_name):
     """
     # Get the URL for the specified major
     try:
-        major_url = major_df[major_df['Major'] == major_name]['URL'].values[0]
+        major_url = majors_df[majors_df['Major'] == major_name]['URL'].values[0]
     except (IndexError, KeyError):
         print(f"Major '{major_name}' not found in the DataFrame")
         return None
@@ -183,6 +185,44 @@ def get_undergraduate_links_by_major(major_df, major_name):
         driver.quit()
     
     return undergraduate_courses_links
+
+def load_undergraduate_links_by_major(major_raw):
+    major_undergraduate_links = None
+    undergraduate_links_path = 'data/undergraduate_links.json'
+
+    # Ensure directory exists
+    os.makedirs(os.path.dirname(undergraduate_links_path), exist_ok=True)
+
+    # If file doesn't exist, create it with empty JSON object
+    if not os.path.exists(undergraduate_links_path):
+        with open(undergraduate_links_path, 'w') as f:
+            json.dump({}, f)
+
+    # Load master links
+    with open(undergraduate_links_path, 'r+') as f:
+        undergraduate_links_master = json.load(f)
+
+    # Check if major exists in master links
+    if major_raw in undergraduate_links_master:
+        major_undergraduate_links = undergraduate_links_master[major_raw]
+        print(f"Loaded undergraduate links for '{major_raw}' from master bank.")
+
+    # If not, retrieve links
+    else:
+        print(f"Major '{major_raw}' not found in master bank; retrieving undergraduate links...")
+        majors_df = pd.read_csv('data/dartmouth_majors.csv')
+        major_undergraduate_links = retrieve_undergraduate_links_by_major(majors_df, major_raw)
+
+        # If retrieved links, add to master
+        if major_undergraduate_links:
+            undergraduate_links_master[major_raw] = major_undergraduate_links
+
+            with open(undergraduate_links_path, 'w') as f:
+                json.dump(undergraduate_links_master, f, indent=2)
+        else:
+            print(f"No undergraduate links found for '{major_raw}'")
+
+    return major_undergraduate_links
 
 def get_courses_by_link(courses_links):
     """
@@ -337,21 +377,22 @@ def get_course_descriptions(courses_list):
     
     return courses_with_descriptions
 
-def produce_courses_for_major(major):
-    majors_df = pd.read_csv('data/dartmouth_majors.csv')
-    undergraduate_links = get_undergraduate_links_by_major(majors_df, major)
+def produce_courses_for_major(major_raw):
+    # load undergraduate links either from master or retrieval
+    major_undergraduate_links = load_undergraduate_links_by_major(major_raw)
 
-    if undergraduate_links:
-        courses = get_courses_by_link(undergraduate_links)
+    # if undergraduate links found, get courses from links
+    if major_undergraduate_links:
+        courses = get_courses_by_link(major_undergraduate_links)
 
+        # if courses found, get descriptions
         if courses:
-            # Get course descriptions
             courses_with_descriptions = get_course_descriptions(courses)
-
-            return courses_with_descriptions
         else:
-            print("No courses found")
+            print(f"No courses found for {major_raw} from undergraduate links.")
             return None
+
+        return courses_with_descriptions
     else:
-        print(f"No undergraduate course links found for {major}")
+        print(f"No undergraduate links found for {major_raw}")
         return None

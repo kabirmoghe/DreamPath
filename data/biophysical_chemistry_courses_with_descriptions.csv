@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 CHEM,CHEM 5 General Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-5,CHEM5,"CHEM 5is the first course of a two-course sequence in general chemistry. This course introduces students to some fundamental principles of chemistry, including molecular and reaction stoichiometry, the properties of gases, solutions, chemical equilibria, acids and bases, an introduction to thermodynamic principles, and electrochemistry. This course also focuses on developing problem-solving skills. This course includes a required laboratory section that uses basic laboratory and experimental skills to illustrate fundamental chemical concepts, considers how to properly design experiments, and demonstrates how to interpret experimental data to reach meaningful scientific conclusions.An outline of topics for review of secondary school background in preparation forCHEM 5is available on the Department of Chemistry website. In addition, an optional self-guidedCHEM 5preparatory course is available on Canvas which can be completed prior to the start ofCHEM 5to further aid students in their preparation forCHEM 5.Students with a score of 4 or 5 on the AP Chemistry examination (or 6 or 7 on the IB exam, or A-level credit) are not eligible to enroll inCHEM 5and are instead placed intoCHEM 11.Supplemental course fee required.",,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -421,7 +421,7 @@ CHEM,CHEM 5 General Chemistry,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 6 General Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-6,CHEM6,"The second term of a two-course sequence to introduce the fundamental principles of chemistry, including chemical stoichiometry; the properties of gases, liquids, and solids; solutions; chemical equilibria; atomic and molecular structure; an introduction to thermodynamics; reaction kinetics; and a discussion of the chemical properties of selected elements. The laboratory work emphasizes physical-chemical measurements, quantitative analysis, and synthesis. An outline of topics for review of secondary school background in preparation for college general chemistry is available from the Department of Chemistry. Students who are eligible to receive credit-on-entrance forCHEM 5-6 may not enroll inCHEM 5-6 orCHEM 10for course credit without permission of the Department. Credit-on-entrance forCHEM 5-6 will be withdrawn for students who subsequently enroll inCHEM 5-6 orCHEM 10. Prerequisite forCHEM 5:MATH 3.",for Chem 6:MATH 3andCHEM 5.  Supplemental course fee required.,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -843,7 +843,7 @@ CHEM,CHEM 6 General Chemistry,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>","['MATH3', 'CHEM5']"
 CHEM,CHEM 7 First-Year Seminars in Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-7,CHEM7,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1259,7 +1259,7 @@ CHEM,CHEM 7 First-Year Seminars in Chemistry,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 10 Honors First-Year General Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-10,CHEM10,"CHEM 10is a general chemistry course for students with a strong background in chemistry and mathematics who may have an interest in majoring in the sciences. The course will cover selected general chemistry topics important for higher level chemistry courses. These include thermodynamics, reaction kinetics, quantum mechanics, and bonding. Laboratory work will emphasize physico-chemical measurements and quantitative analysis.CHEM 10is open only to first-year students and enrollment is limited. Students with a score of 5 on the AP Chemistry examination, and who also have credit on entrance (or the equivalent) for Mathematics 3 are automatically eligible to be considered for admission into Chemistry 10. Students who have credit on entrance (or the equivalent) for Mathematics 3, but who do not have a score of 5 on the AP Chemistry examination, and who wish to be considered for Chemistry 10 must take the Chemistry 10 Placement examination which is offeredonlyduring First-Year Orientation. Prerequisite: Credit on entrance forCHEM 5, or satisfactory performance on theCHEM 10Placement examination, and credit on entrance forMATH 3or the equivalent. Supplementary course fee required.  Students who complete Chemistry 10 will also be granted credit on entrance for Chemistry 5, if they have not already been granted such credit.",,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1679,7 +1679,7 @@ CHEM,CHEM 10 Honors First-Year General Chemistry,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 11 General Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-11,CHEM11,"CHEM 11is a one-term general chemistry course for students with a background in chemistry and is designed to complement material emphasized in high school Advanced Placement courses.CHEM 11focuses on topics including, thermodynamics, electrochemistry, reaction kinetics, quantum mechanics, and bonding at an introductory level. This course also includes a required laboratory section that emphasizes physicochemical measurements and quantitative analysis.Students with a score of 4 or 5 on the AP Chemistry examination (or 6 or 7 on the IB exam, or A-level credit) will be placed intoCHEM 11;  all other students interested inCHEM 11will take a placement examination to determine whether they are placed intoCHEM 11orCHEM 5.  Students who completeCHEM 11will also be granted credit on entrance for Chemistry 5.CHEM 11is not appropriate for students previously enrolled inCHEM 5,CHEM 6orCHEM 10Supplementary course fee required.",,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2102,7 +2102,7 @@ CHEM,CHEM 11 General Chemistry,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 40 Physical Chemistry of Biochemical Processes,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-40,CHEM40,"Topics in physical chemistry of relevance to fundamental biochemical processes. These will include the thermodynamic and spectroscopic characterization of macromolecular systems, ligand binding and adsorption equilibria, intermolecular interactions and the hydrophobic effect, and transport properties such as diffusion. Laboratory exercises apply these concepts to important biophysical problems, using calorimetric, spectroscopic and computational techniques.","CHEM 6(orCHEM 10) andPHYS 13(orPHYS 15, orPHYS 3andPHYS 4) andMATH 8, or permission of the instructor. Students with credit forCHEM 75are not eligible to receive credit for CHEM 40. Supplemental course fee required.",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2524,7 +2524,7 @@ CHEM,CHEM 40 Physical Chemistry of Biochemical Processes,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>","['CHEM6', 'PHYS13', 'MATH8']"
 CHEM,CHEM 41 Biological Chemistry I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-41,CHEM41,"This course is a one-term introduction to biochemistry presented from a chemical perspective. This course is intended for chemistry majors and uses specific examples to demonstrate and stress the role and integration of organic, inorganic and physical chemistry as applied to biochemical processes. This course also includes a required laboratory section that covers basic biochemical methods.Not open to students who have received credit for BIOL 040.Supplemental course fee required.","CHEM 52orCHEM 58, or permission of the instructor. Students with major credit forBIOL 40are not eligible to receive credit forCHEM 41. Supplemental course fee required.",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2949,7 +2949,7 @@ CHEM,CHEM 41 Biological Chemistry I,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['CHEM52']
 CHEM,CHEM 42 Biological Chemistry II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-42,CHEM42,"A one term advanced course with in-depth treatment of a number of important concepts in modern biological chemistry, including structural biology (both theoretical and experimental methods), protein folding, ligand binding, allostery, enzyme kinetics, and an introduction to molecular modeling and chemoinformatics. Laboratories will entail application of these methods/techniques.","CHEM 40(orCHEM 76), andCHEM 41, or permission of the instructor. Supplemental course fee required.",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3371,7 +3371,7 @@ CHEM,CHEM 42 Biological Chemistry II,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>","['CHEM40', 'CHEM41']"
 CHEM,CHEM 51 Organic Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-51,CHEM51,"The first term of a two-term introduction to the chemistry of carbon compounds. The lectures deal with the preparation, properties, and reactions of most of the important classes of organic compounds. There is considerable emphasis upon reaction mechanisms and some attention is given to naturally occurring substances of biological importance. The laboratory work will introduce the student to experimental techniques and instrumental methods including several types of chromatography and spectroscopy, organic synthesis, and the systematic identification of organic compounds.",CHEM 6(orCHEM 10). Supplemental course fee required.,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3793,7 +3793,7 @@ CHEM,CHEM 51 Organic Chemistry,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",['CHEM6']
 CHEM,CHEM 52 Organic Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-52,CHEM52,"The second term of a two-term introduction to the chemistry of carbon compounds. The lectures deal with the preparation, properties, and reactions of most of the important classes of organic compounds. There is considerable emphasis upon reaction mechanisms and some attention is given to naturally occurring substances of biological importance. The laboratory work will introduce the student to experimental techniques and instrumental methods including several types of chromatography and spectroscopy, organic synthesis, and the systematic identification of organic compounds.",CHEM 6(orCHEM 10).CHEM 51(orCHEM 57with permission of instructor) is a prerequisite toCHEM 52. Supplemental course fee required.,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4215,7 +4215,7 @@ CHEM,CHEM 52 Organic Chemistry,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>","['CHEM6', 'CHEM51']"
 CHEM,CHEM 57 Honors Organic Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-57,CHEM57,"The first term of a two-term introduction to the chemistry of carbon compounds intended for students planning a chemistry major or career of research in a chemically-related science, including medical science. The lectures deal with the preparation, properties, and reactions of most of the important classes of organic compounds. There is considerable emphasis on reaction mechanisms and some attention is given to naturally occurring substances of biological importance. Topics are covered in greater depth, both in lecture and in the textbook, than in theCHEM 51-52 sequence. The laboratory work introduces the student to experimental techniques and instrumental methods including several types of chromatographic and spectroscopy techniques, organic synthesis, and identification of organic compounds. Enrollment inCHEM 57-58 is limited.",Permission of instructor and either a grade of at least B+ inCHEM 6(or B inCHEM 10) or a high score on theCHEM 6credit test is required forCHEM 57.,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4637,7 +4637,7 @@ CHEM,CHEM 57 Honors Organic Chemistry,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 CHEM,CHEM 58 Honors Organic Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-58,CHEM58,"The second term of a two-term introduction to the chemistry of carbon compounds intended for students planning a chemistry major or career of research in a chemically-related science, including medical science. The lectures deal with the preparation, properties, and reactions of most of the important classes of organic compounds. There is considerable emphasis on reaction mechanisms and some attention is given to naturally occurring substances of biological importance. Topics are covered in greater depth, both in lecture and in the textbook, than in theCHEM 51-52 sequence. Building on the experimental techniques and instrumental methods introduced inCHEM 57, the laboratory work inCHEM 58involves a multi-step synthesis of an important chemical target molecule, emphasizing how synthetic organic chemistry is carried out and reported in a research setting. Enrollment inCHEM 57-58 is limited.",CHEM 57(orCHEM 51with permission of instructor) is a prerequisite toCHEM 58. Supplemental course fee required.,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5059,7 +5059,7 @@ CHEM,CHEM 58 Honors Organic Chemistry,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",['CHEM57']
 CHEM,CHEM 63 Environmental Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-63,CHEM63,"A study of the chemistry of natural environmental processes and the impact of human activities on the atmosphere, hydrosphere and lithosphere. The course will consider the chemistry of topics such as air pollution in the troposphere and stratosphere, pesticides and herbicides, environmental and human health impact of toxic metals, acquisition and use of energy resources, chemicals and cancer, and climate change. The laboratory consists of a term-long, team-based experimental project using instrumental analysis of environmental samples to investigate an environmental chemistry issue or problem.","CHEM 51orCHEM 57, or permission of the instructor. Supplemental course fee required.",Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5481,7 +5481,7 @@ CHEM,CHEM 63 Environmental Chemistry,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['CHEM51']
 CHEM,CHEM 64 Basic Inorganic Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-64,CHEM64,"A study of bonding, structure, physical and chemical properties, and chemical reactions of inorganic compounds. Examples will be drawn from main group and transition metal compounds. The laboratory will involve preparations of inorganic compounds which illustrate appropriate experimental techniques for syntheses and manipulations, and instrumental methods for characterization of inorganic compounds.","CHEM 51orCHEM 57, or permission of the instructor. Supplemental course fee required.",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5903,7 +5903,7 @@ CHEM,CHEM 64 Basic Inorganic Chemistry,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",['CHEM51']
 CHEM,CHEM 75 Physical Chemistry I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-75,CHEM75,"An examination of the laws of classical thermodynamics, followed by applications to the properties of gases, liquids, and solids, as well as to solutions, phase, and chemical equilibria. Chemical reaction thermodynamics and the kinetic theory of gases at equilibrium. An introduction to statistical thermodynamics, phenomenological transport and electrochemical reactions are discussed. Laboratories cover physical chemistry techniques drawn from these areas.","CHEM 6(orCHEM 10) andPHYS 13(orPHYS 15, orPHYS 3andPHYS 4) andMATH 8, or permission of the instructor. Supplemental course fee required.",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6325,7 +6325,7 @@ CHEM,CHEM 75 Physical Chemistry I,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>","['CHEM6', 'PHYS13', 'MATH8']"
 CHEM,CHEM 76 Physical Chemistry II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-76,CHEM76,"Topics in chemical reaction kinetics and the application of quantum mechanics to chemical bonding and spectroscopy. The examination of the fundamental ideas of quantum mechanics and their application to simple model systems such as the linear harmonic oscillator and a confined particle, and to atomic and molecular structure. Application of quantum theory to electronic, vibrational, rotational, and magnetic resonance spectroscopies. Laboratories cover physical chemistry techniques drawn from these areas.","CHEM 75andCHEM 64, or permission of the instructor. Supplemental course fee required.",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6747,7 +6747,7 @@ CHEM,CHEM 76 Physical Chemistry II,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>","['CHEM75', 'CHEM64']"
 CHEM,CHEM 80 Independent Study in Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-80,CHEM80,"An original and individual investigation under the supervision of a member of the faculty or staff. The project may involve either research or pedagogical development, with associated literature study. Students who continue the project into subsequent terms will receive a grade of “ON” (ongoing). Upon completion of the project, students will write a report and take an oral examination, after which a final grade in Chem 80 will be assigned.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7163,7 +7163,7 @@ CHEM,CHEM 80 Independent Study in Chemistry,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 87 Undergraduate Investigation in Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-87,CHEM87,"An original and individual investigation with associated literature study in one of the fields of chemistry under the supervision of a member of the staff. Students electing the course will carry out preliminary reading during the preceding term and normally participate in a weekly colloquium. Open to qualified majors and minors, normally seniors, with permission of the Chair. The course may be elected more than once, but may be counted only once in satisfying the minimum major requirements. It may be elected for the last term in residence only if elected previously, or if the student has been doing research outside of this course. Students electing the course write a report and take an oral examination at the end of the term in which they last elect the course.","Sufficient training in the area of chemistry to be investigated, and permission of the Chair",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7581,7 +7581,7 @@ CHEM,CHEM 87 Undergraduate Investigation in Chemistry,https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 CHEM,CHEM 87.01 Undergraduate Investigation in Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-87-01,CHEM87.01,"An original and individual investigation with associated literature study in one of the fields of chemistry under the supervision of a member of the faculty or staff. The course may be elected once more (Chem 87.02), but only Chem 87.01 may be counted in satisfying the minimum major requirements. It may be elected for the last term in residence only if the studenthas already been actively involved in the research project. Students electing the course but who do not continue in Chem 87.02 will write a report and take an oral examination at the end of the term, and receive a final grade.  Students who continue in Chem 87.02 will receive a grade of “ON” (ongoing).",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7997,7 +7997,7 @@ CHEM,CHEM 87.01 Undergraduate Investigation in Chemistry,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 87.02 Undergraduate Investigation in Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-87-02,CHEM87.02,"Normally, Chem 87.02 serves as a continuation of the investigation begun in Chem 87.01.  Students electing the course receive a grade of “ON” (ongoing) at the end of the term. Upon completion of the research project (which may extend into subsequent terms), students will write a report and take an oral examination, after which final grades for Chem 87.01 and Chem 87.02 will be assigned.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8413,7 +8413,7 @@ CHEM,CHEM 87.02 Undergraduate Investigation in Chemistry,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 91 Advanced Inorganic Chemistry: Catalysis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-91,CHEM91,"The role of metals in homogeneous and heterogeneous catalysis, with an emphasis on mechanisms of catalytic reactions. Applications to industrial processes, organic synthesis, and asymmetric synthesis will be discussed.","CHEM 64, and eitherCHEM 52orCHEM 58, or permission of the instructor",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8835,7 +8835,7 @@ CHEM,CHEM 91 Advanced Inorganic Chemistry: Catalysis,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>","['CHEM64', 'CHEM52']"
 CHEM,CHEM 92 Inorganic Biochemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-92,CHEM92,"The role of metal ions in biological systems. Topics include metal ion transport, storage, and interaction with proteins and nucleic acids; metalloproteins involved in oxygen trans-port and electron transfer; metalloenzymes involved in activation of oxygen and other substrates; and medicinal, toxicity, and carcinogenicity aspects of metals; as well as inorganic model chemistry of bioinorganic systems. Several physical methods are introduced, and their application to current research on the above topics is considered.","CHEM 64, andCHEM 41orBIOL 40, or permission of the instructor",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9257,7 +9257,7 @@ CHEM,CHEM 92 Inorganic Biochemistry,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>","['CHEM64', 'CHEM41']"
 CHEM,CHEM 93 Physical Organic Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-93,CHEM93,"Modern theories of organic reaction mechanisms, particularly the use of physical-chemical principles to predict the effect of changing reaction variables, especially reactant structures, on reactivity. Structure/property analyses will be used in assessing the stability and reactivity of various organic species.","CHEM 52orCHEM 58, or permission of the instructor",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9679,7 +9679,7 @@ CHEM,CHEM 93 Physical Organic Chemistry,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",['CHEM52']
 CHEM,CHEM 93.01 Physical Organic Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-93-01,CHEM93.01,"Modern theories of organic reaction mechanisms, particularly the use of physical-chemical principles to predict the effect of changing reaction variables, especially reactant structures, on reactivity. Structure/property analyses will be used in assessing the stability and reactivity of various organic species.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10099,7 +10099,7 @@ CHEM,CHEM 93.01 Physical Organic Chemistry,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 93.02 Advanced Organic Synthesis and Mechanisms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-93-02,CHEM93.02,"Advanced topics in organic chemistry, including: FMO theory, conformational analysis, stereoelectronic effects, and their effect on the stereochemical outcome of reactions.  Additional topics will include olefin addition reactions and various classes of pericyclic reactions.  Reaction mechanism, applications in synthesis, and the use of three-dimensional drawings will be emphasized.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10519,7 +10519,7 @@ CHEM,CHEM 93.02 Advanced Organic Synthesis and Mechanisms,https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 93.08 Introduction to Supramolecular Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-93-08,CHEM93.08,"Supramolecular Chemistry is a term coined by the Nobel laureate Jean-Marie Lehn, which means “chemistry beyond the molecules”. In supramolecular chemistry, weak and reversible noncovalent interactions are used to construct complex molecular architectures that would otherwise be almost impossible to synthesize. These interactions include hydrogen-bonding, metal coordination, hydrophobic forces, van der Waals forces, pi-p interactions, and electrostatic effects. We will be learning about these interactions and how to use them to make functional materials, such as molecular machines and muscles, self-healing polymers, diagnostics and sensing platforms, and even molecular memory devices!",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10939,7 +10939,7 @@ CHEM,CHEM 93.08 Introduction to Supramolecular Chemistry,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 94.05 Functional Nanomaterials: Synthesis and Applications,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-94-05,CHEM94.05,"This course focuses on synthesis, structure, and properties of nanomaterials. It begins with the introduction to the fundamental principles for understanding the size-dependent properties of materials that emerge at the nanoscale. It surveys a number of experimental techniques that can be utilized for observing and analyzing nanostructures, including X-ray techniques, scanning probe microscopy, and electron microscopy. It further details how strategies for synthesis, surface chemistry, and self-assembly can be utilized to control and tailor structure and properties of nanomaterials. Finally, the course highlights the applications of nanomaterials in chemical sensing, disease diagnosis and treatment, energy conversion and storage, and information storage. The class features a Wikipedia editing project, and visiting lectures highlighting modern technological applications of nanomaterials from PhD-level guest speakers.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11359,7 +11359,7 @@ CHEM,CHEM 94.05 Functional Nanomaterials: Synthesis and Applications,https://dar
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 94.06 Polymer Synthesis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-94-06,CHEM94.06,"Polymer synthesis is a senior-level course for undergraduate and graduate students desiring training in polymer chemistry. This course covers a broad spectrum of polymer synthesis methods, reaction mechanisms, and characterization methods. Students will actively participate in the learning process, which involves oral presentation and retrosynthesis practice.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11779,7 +11779,7 @@ CHEM,CHEM 94.06 Polymer Synthesis,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 95.01 Membrane Biophysics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-95-01,CHEM95.01,"The structure and function of cell membranes, with emphasis on the complex behavior of intrinsic membrane proteins and its relation to physical properties of the lipid bilayer.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12199,7 +12199,7 @@ CHEM,CHEM 95.01 Membrane Biophysics,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 95.02 Biomolecular Simulations,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-95-02,CHEM95.02,"An advanced treatment of modern computational approaches to the folding, structure, and dynamics of proteins and nucleic acids and their complexes. Topics include folding, searching algorithms, homology modeling, energy landscape deformation, and multi-dimensional searching.","CHEM 41andCHEM 42orCHEM 76, or permission of the instructor",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12618,7 +12618,7 @@ CHEM,CHEM 95.02 Biomolecular Simulations,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",['CHEM76']
 CHEM,CHEM 95.03 Biomolecular NMR,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-95-03,CHEM95.03,"The theoretical and practical aspects of the modern use of nuclear magnetic resonance in the study of biomolecules including peptides/proteins, synthetic and natural products, and nucleic acids will be developed.","CHEM 41andCHEM 42orCHEM 76, or permission of the instructor",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13036,7 +13036,7 @@ CHEM,CHEM 95.03 Biomolecular NMR,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",['CHEM76']
 CHEM,CHEM 95.05 Protein Crystallography,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-95-05,CHEM95.05,"Theoretical aspects for the determination of protein structures using X-ray crystallography. Topics will include a detailed description of crystal symmetry, diffraction theory, data collection and processing, and methods for solving the crystallographic phase problem.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13457,7 +13457,7 @@ CHEM,CHEM 95.05 Protein Crystallography,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 95.06 Enzymes,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-95-06,CHEM95.06,"Properties of enzymes that accelerate biochemical reactions, kinetic measurements to quantify enzymatic catalysis, methods to determine the mechanism of an enzymatic reaction, control and regulation of enzymatic activity, overview of the classes of enzymes and the reactions they catalyze.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13878,7 +13878,7 @@ CHEM,CHEM 95.06 Enzymes,https://dartmouth.smartcatalogiq.com/en/current/orc/depa
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 96 Special Topics in Physical Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-96,CHEM96,"An in-depth exploration of a specific topic in physical chemistry. This course provides an introduction into the areas of current research in the field. The course is offered at least once each year, but the content changes according to the chosen topic.CHEM 96.1 Quantum ChemistryCHEM 96.2 Statistical ThermodynamicsCHEM 96.3 Molecular SpectroscopyCHEM 96.4 Chemistry of MacromoleculesCHEM 96.7 Introduction to Materials ChemistryCHEM 96.8 Chemical Kinetics",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14299,7 +14299,7 @@ CHEM,CHEM 96 Special Topics in Physical Chemistry,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 96.01 Quantum Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-96-01,CHEM96.01,"An introduction to the quantum mechanics of molecular systems. Approximate methods for calculating the electronic structure of molecules are discussed. Particular emphasis is placed on molecular orbital methods at various ab-initio levels. Methods which include the effects of electron correlation will also be presented. Evaluation of such methods for studies of molecular geometry, conformational problems, thermochemical data, and spectroscopic parameters is presented. Other topics considered may include the electronic structure of hydrogen bonded systems and of excited states.","MATH 13andCHEM 76or equivalent, or permission of the instructor",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14721,7 +14721,7 @@ CHEM,CHEM 96.01 Quantum Chemistry,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>","['MATH13', 'CHEM76']"
 CHEM,CHEM 96.02 Statistical Thermodynamics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-96-02,CHEM96.02,"Elements of equilibrium statistical thermodynamics for classical and quantum mechanical systems, with applications to ideal gases, crystalline solids, imperfect gases and liquids.",MATH 13andCHEM 76or equivalent or permission of instructor,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15139,7 +15139,7 @@ CHEM,CHEM 96.02 Statistical Thermodynamics,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>","['MATH13', 'CHEM76']"
 CHEM,CHEM 96.03 Molecular Spectroscopy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-96-03,CHEM96.03,"A study of optical spectroscopy including selected topics from amongst point group theory, vibrational spectra of polyatomic molecules, electronic and vibronic spectra of molecules and rotational spectra. May be offered on tutorial basis.","CHEM 76or equivalent, or permission of the instructor",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15561,7 +15561,7 @@ CHEM,CHEM 96.03 Molecular Spectroscopy,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",['CHEM76']
 CHEM,CHEM 96.04 Chemistry of Macromolecules,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-96-04,CHEM96.04,Light scattering and other characterization techniques; thermodynamic and transport properties of macromolecular solutions. Structure-property correlations in amorphous and crystalline polymers.,CHEM 75or permission of the instructor,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15983,7 +15983,7 @@ CHEM,CHEM 96.04 Chemistry of Macromolecules,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",['CHEM75']
 CHEM,CHEM 96.05 Introduction to Statistical Thermodynamics and Molecular Simulations,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-96-05,CHEM96.05,An introduction to statistical mechanics and computer simulations of molecular liquids and solids. Discussions of fundamental concepts are complemented with demonstrations of computational and analytical methods for solving statistical mechanics problems.,,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16403,7 +16403,7 @@ CHEM,CHEM 96.05 Introduction to Statistical Thermodynamics and Molecular Simulat
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 96.06 Computational Methods in Chemistry and Biophysics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-96-06,CHEM96.06,"A project-based introduction to computational methods in chemistry, molecular biophysics and structural biology.  Projects will provide a practical introduction to data analysis and data visualization with python.   Molecular dynamics simulations, Monte Carlo simulations and quantum calculations will be used to explore topics in protein dynamics, polymer dynamics, and the conformational analysis of small molecules.   No prior coding experience is required.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16823,7 +16823,7 @@ CHEM,CHEM 96.06 Computational Methods in Chemistry and Biophysics,https://dartmo
 </form>
 
 </body>
-</html>"
+</html>",[]
 CHEM,CHEM 96.07 Introduction to Materials Chemistry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-96-07,CHEM96.07,"This course begins with a review of fundamental concepts in material science, provides an introduction to some of the more advanced concepts, especially in regard to nanomaterials and, finally, focuses on the chemistry involved both in production of modern materials and their uses. The latter topics include the chemistry of thin films, self-assembled chemical systems, surface chemistry and cluster chemistry.",Background in Chemistry equivalent toCHEM 76or Physics equivalent to PHYS 24 or Engineering equivalent toENGS 24or permission of instructor,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17245,7 +17245,7 @@ CHEM,CHEM 96.07 Introduction to Materials Chemistry,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>",['CHEM76']
 CHEM,CHEM 96.08 Chemical Kinetics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/chemistry/chem-chemistry-undergraduate/chem-96-08,CHEM96.08,"Kinetics of chemical reactions in various media: reaction rate expressions, mechanisms, elementary processes. Elementary theories of rate processes: activated complex theory, elementary collision theory, unimolecular decomposition. Such topics as diffusion control of reactions, catalysis and photochemistry will be treated as time allows.",MATH 13andCHEM 76or equivalent or permission of the instructor,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17663,4 +17663,4 @@ CHEM,CHEM 96.08 Chemical Kinetics,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>","['MATH13', 'CHEM76']"

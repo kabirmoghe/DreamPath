@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 ECON,"ECON 1 The Price System: Analysis, Problems, and Policies",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-1,ECON1,"Emphasis will be placed on problems and policies of current interest as they relate to resource use and the distribution of income and output. Students will receive an introduction to the theory of supply and demand in both product and factor markets in order to examine selected topics drawn from such areas as industrial organization and antitrust policy, labor economics, international trade, economic development, agriculture, urban problems, poverty and discrimination, public sector economics, and environmental problems.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -424,7 +424,7 @@ ECON,"ECON 1 The Price System: Analysis, Problems, and Policies",https://dartmou
 </form>
 
 </body>
-</html>"
+</html>",[]
 ECON,ECON 2 Economic Principles and Policies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-2,ECON2,"This is a general survey course for students who have had no previous college level economics and who do not plan to take further economics courses. It is divided between microeconomic concepts-supply and demand, labor and capital markets, tax incidence, comparative advantage, international trade, and benefit-cost analysis-and macroeconomic issues such as economic growth, unemployment inflation, national income and product accounting, the banking system, and monetary and fiscal policy. Applications to current policy issues will be emphasized throughout.ECON 2may be taken under the Non-Recording Option (NRO). It does not count towards the major or minor.","Students who have previously taken ECON 1 or who have been exempted from ECON 1 at matriculation may not enroll in ECON 2. Completion of ECON 2 does not, however, preclude subsequent enrollment in ECON 1.",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -846,7 +846,7 @@ ECON,ECON 2 Economic Principles and Policies,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 ECON,ECON 3 Essential Mathematics for Economic Analysis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-3,ECON3,"This course covers many of the same basic calculus topics as Math 3, but with the focus on developing an understanding of the mathematical structure of economics, since having mathematical skill is essential to the study of economics. Examples of economic applications of calculus topics include using derivatives to study consumer demand and labor productivity and using integrals to study income distributions.  Additionally, key statistical measures needed for econometrics classes, such as expected value and variance will be introduced.",Math 1,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1274,7 +1274,7 @@ ECON,ECON 3 Essential Mathematics for Economic Analysis,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",['MATH1']
 ECON,ECON 5 Adam Smith and Political Economy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-5,ECON5,"The eighteenth-century Scottish philosopher Adam Smith was one of the founders of ""political economy,"" the study of the interrelationship between society, government, and the economy. This course focuses on Smith's major ideas through his two important works, The Theory of Moral SentimentsandThe Wealth of Nations,and deals with such topics as the origins and consequences of economic growth, and the role of government in a commercial society.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1702,7 +1702,7 @@ ECON,ECON 5 Adam Smith and Political Economy,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 ECON,ECON 6 Personal Finance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-6,ECON6,"Managing one’s own finances is something most of us will need to do over the course of a lifetime.  Decisions like how much to borrow to fund education or how much to save for retirement, or the monthly budget choices we might make to balance necessary and desired spending with net income, all affect our personal well-being.  This course is designed to do three important things: 1) give students a basic grounding in financial literacy by learning some tools and principles of personal finance that can be used in daily life, 2) introduce students to empirical research on the ways households use the financial system with particular emphasis on understanding some behavioral biases and common mistakes people make, and 3) explore ways in which the financial system can be improved to make it easier and safer to use.  Over the course of the term, students will build their own personal finance portfolios incorporating their learning into their own individualized plans.Not open to students who have received credit forECON 26, 36, or 66.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2124,7 +2124,7 @@ ECON,ECON 6 Personal Finance,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 ECON,ECON 10 Introduction to Statistical Methods,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-10,ECON10,"This course introduces the student to the basic concepts and methods of statistics. It covers descriptive statistics and inference (estimation and hypothesis testing) for a single variable and for two variables. The probability theory required for these topics will be developed.Because of the large overlap in material covered, no student may receive credit for more than one of the coursesECON 10,ENVS 10,GOVT 10,LING 10,MATH 10,PSYC 10,PBPL 10,QSS 15, orSOCY 10.",ECON 1 andMATH 3(orMATH 1or ECON 3) are recommended,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2553,7 +2553,7 @@ ECON,ECON 10 Introduction to Statistical Methods,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",[]
 ECON,ECON 15 Political Economy of China,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-15,ECON15,"This course examines how politics, economics, and culture have shaped the modern Chinese economic policy. Course topics include the Mao era, the pathologies of socialism and central planning, and the post-Mao transition to the market. Special emphasis will be placed on how ""capitalism with Chinese characteristics"" affects innovation, entrepreneurship, and law. Students will be graded on class participation as well as original research.",ECON 1,Dist:INT or SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2981,7 +2981,7 @@ ECON,ECON 15 Political Economy of China,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",['ECON1']
 ECON,ECON 16 Regulation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-16,ECON16,"This course examines the history, politics and economics of market regulation in the United States. Class discussions will focus on the arguments for and against state intervention in the market. We will also explore the meaning of ""market failure"" and ""government failure"" in the context of financial markets, transportation, the environment, health care, and public utilities. Special emphasis will be placed on how regulation affects prices and why regulated firms may demand regulation. Students will be graded on class participation as well as original research.",ECON 1,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3411,7 +3411,7 @@ ECON,ECON 16 Regulation,https://dartmouth.smartcatalogiq.com/en/current/orc/depa
 </form>
 
 </body>
-</html>"
+</html>",['ECON1']
 ECON,ECON 17 Technological Progress and the Entrepreneurial Economy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-17,ECON17,"The course examines technological invention and innovation and the path of technological progress and economic growth.  Readings and discussion will develop understanding of the relation of new technology to science and cultural evolution and will describe the roles played, within economic and political systems, by inventors, entrepreneurs, companies, and finance when, from needs and opportunities, technologies emerge as creative new combinations.",ECON 1,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3833,7 +3833,7 @@ ECON,ECON 17 Technological Progress and the Entrepreneurial Economy,https://dart
 </form>
 
 </body>
-</html>"
+</html>",['ECON1']
 ECON,ECON 19 The Clash of Economic Ideas,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-19,ECON19,"Do the ideas of economists change the world? Or do major events change the ideas of economists? This course interweaves economic history with the history of economic thought to explore some of the major economic events that have changed our world over the past two centuries, such as the industrial revolution, the Great Depression, the collapse of socialism, and the globalization of the world economy. We will explore how the ideas of economists continue to influence how we think about how the economy works and the role of government in the economy. In particular, we will be studying the works of Adam Smith, Karl Marx, John Maynard Keynes, Friedrich Hayek, and Milton Friedman.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4249,7 +4249,7 @@ ECON,ECON 19 The Clash of Economic Ideas,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 ECON,ECON 20 Econometrics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-20,ECON20,"Econometrics is the statistical analysis of economic data. This course focuses on regression analysis (specification, estimation, and hypothesis testing) and problems and pitfalls in its application in economics. The course involves extensive use of the statistical program STATA and will enable students to implement their own empirical research projects in preparation for the culminating experience in the economics major.",ECON 10andMATH 3(or ECON 3 orMATH 8orMATH 11or MATH 12 orMATH 13),Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4677,7 +4677,7 @@ ECON,ECON 20 Econometrics,https://dartmouth.smartcatalogiq.com/en/current/orc/de
 </form>
 
 </body>
-</html>"
+</html>","['ECON10', 'ECON3']"
 ECON,ECON 21 Microeconomics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-21,ECON21,"This course is a study of the pricing and allocation process in the private economy. Topics include the theories of demand and production, and the determination of prices and quantities for commodities and factors of production in competitive and noncompetitive markets. Applications of the theory and its implications for empirical analysis are also considered.",ECON 1 andMATH 3(or ECON 3 orMATH 8orMATH 11or MATH 12 orMATH 13),Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5105,7 +5105,7 @@ ECON,ECON 21 Microeconomics,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>","['ECON1', 'ECON3']"
 ECON,ECON 22 Macroeconomics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-22,ECON22,"This course is concerned with the behavior of the economy as a whole, particularly fluctuations in economic activity. General equilibrium models are developed to analyze the determinants of GNP, unemployment, the rate of inflation, and the growth of output. The micro foundations of macro aggregates are developed, with special emphasis on the role of expectations. The analytic tools are used to evaluate monetary and fiscal policies and to understand current macroeconomic controversies.",ECON 1 andMATH 3(ECON 3 orMATH 8orMATH 11or MATH 12 orMATH 13),Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5533,7 +5533,7 @@ ECON,ECON 22 Macroeconomics,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>","['ECON1', 'MATH3', 'ECON3']"
 ECON,ECON 24 Development Economics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-24,ECON24,"This course uses economic analysis to understand contemporary issues in low-income countries. We consider why extreme poverty and hunger, child mortality, low-levels of education, gender inequality, environmental degradation, high fertility, and child labor are pervasive in the developing world. We also examine the economic consequences of globalization and infectious diseases such as malaria and HIV/AIDS. For each topic, we seek to understand the factors and constraints influencing decision-making in developing countries. We use this understanding to discuss the role of markets, civil organizations, government policy, and international institutions.",ECON 1 andECON 10,Dist:INT or SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5961,7 +5961,7 @@ ECON,ECON 24 Development Economics,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>","['ECON1', 'ECON10']"
 ECON,ECON 25 Competition and Strategy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-25,ECON25,"This course examines the strategies that businesses use in choosing prices, advertising, research and development, and mergers to maximize their profits. The course studies how business strategy is constrained by market competition and antitrust policy (government policy toward monopoly, collusion, and mergers). The analysis is conducted using game theory, empirical methods, and experimental methods.","ECON 1 andMATH 3(or ECON 3 orMATH 8orMATH 11or MATH 12 orMATH 13), ECON 10 and ECON 21",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6389,7 +6389,7 @@ ECON,ECON 25 Competition and Strategy,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>","['ECON1', 'ECON3', 'ECON10', 'ECON21']"
 ECON,ECON 26 The Economics of Financial Intermediaries and Markets,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-26,ECON26,"This course examines the nature and function of financial intermediaries (e.g., banks, mutual funds, and insurance companies) and of securities markets (e.g., the money and capital markets and the market for derivatives). It analyzes liquidity and risk management and studies the efficiency, stability, and regulation of the financial system.",ECON 1,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6817,7 +6817,7 @@ ECON,ECON 26 The Economics of Financial Intermediaries and Markets,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",['ECON1']
 ECON,ECON 27 Labor Economics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-27,ECON27,"This course studies the economic behavior of employers and employees as they interact in the labor market. The class will move beyond the basics of labor supply and demand to cover such topics as human capital investment, the structure and determinants of financial compensation and benefits packages, contract negotiations and arbitration. Additionally, since many of the pressing problems facing the United States are labor market issues, this course will provide a basis for better understanding of nationally-debated issues such as reforms of the welfare system, the income tax system, immigration policy, and affirmative action programs.",ECON 1.,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7245,7 +7245,7 @@ ECON,ECON 27 Labor Economics,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",['ECON1']
 ECON,ECON 28 Public Finance and Public Policy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-28,ECON28,"Government policies exert a pervasive influence over the economy and people’s wellbeing. This course first analyzes the economic effects of public policies in the areas of environmental pollution, social insurance, retirement income, health, and poverty alleviation. The course then studies how governments finance their operations, paying attention both to institutional details and the effects of tax systems on efficiency and inequality. Throughout, we use empirical evidence and economic reasoning to better understand economic tradeoffs involved in current and proposed policies, including health reform, universal basic income, wealth taxation, unemployment insurance, fundamental tax reform, and Social Security.",ECON 1,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7673,7 +7673,7 @@ ECON,ECON 28 Public Finance and Public Policy,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",['ECON1']
 ECON,ECON 29 International Finance and Open-Economy Macroeconomics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-29,ECON29,"This course covers introductory material in the area of international monetary theory and policy. It examines the behavior of international financial markets, the balance of payments and exchange rates, interactions between the balance of payments, the exchange rate and domestic economic activity and ways of organizing the international monetary system.",ECON 22,Dist:INT or SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8101,7 +8101,7 @@ ECON,ECON 29 International Finance and Open-Economy Macroeconomics,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",['ECON22']
 ECON,ECON 31 An Introduction to Behavioral Economics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-31,ECON31,"Behavioral economics seeks to enrich economics with insights, often drawn from other disciplines, that help us better the world by improving understanding of human decision making and its limitations. This course provides an overview of how behavioral economists go about doing this, and the extent to which we are making progress, with a focus on individual decision making. We start with the standard approach to behavioral economics-- augmenting a classical model with allowance for one or two among dozens of potential decision making biases or constraints at a time-- and build to prospects for grand unification of behavioral economics.","ECON 1, ECON 21",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8525,7 +8525,7 @@ ECON,ECON 31 An Introduction to Behavioral Economics,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>","['ECON1', 'ECON21']"
 ECON,ECON 32 Monetary Policy and the Macroeconomy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-32,ECON32,"This course will examine the key elements of a monetary policy framework, investigate how monetary policy decisions influence financial conditions and macroeconomic outcomes, and consider the practical challenges of monetary policymaking in a global context. Basic methods in time-series econometrics will be used to analyze macro data, construct forecasts. and assess current monetary policy strategies. Students will work together in teams, each of which will collect and analyze information for a specific country and give a series of oral presentations to the class.","ECON 1, ECON 10 and ECON 22",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8953,7 +8953,7 @@ ECON,ECON 32 Monetary Policy and the Macroeconomy,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>","['ECON1', 'ECON10', 'ECON22']"
 ECON,ECON 35 Games and Economic Behavior,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-35,ECON35,"Game theory is the study of decisions made in strategic settings.  The course introduces equilibrium concepts solving the infinite-regress problem (A’s decision depends on B’s which depends on A’s, and so forth) in increasingly complex environments.  A wealth of social-science applications are considered ranging from business competition to terrorism as well as lighter applications to sports and games.","ECON 1, ECON 10 and MATH 3 or ECON 3",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9381,7 +9381,7 @@ ECON,ECON 35 Games and Economic Behavior,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",['ECON3']
 ECON,ECON 36 Theory of Finance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-36,ECON36,"This course studies decision making under risk and uncertainty, capital budgeting and investment decisions, portfolio theory and the valuation of risky assets, efficiency of capital markets, option pricing, and problems of asymmetric information.","ECON 10,ECON 21",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9809,7 +9809,7 @@ ECON,ECON 36 Theory of Finance,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>","['ECON10', 'ECON21']"
 ECON,ECON 37 Gender and Family Issues in Modern Economies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-37,ECON37,This course examines the changing economic roles of women and men in modern economies and the trade-offs faced by households. The origins and persistence of these trade-offs are analyzed through the lenses of economic models. The ultimate objective is to provide you with the tools to critically address a wide range of real-world questions related to gender and family. For instance: How have technological changes in the home and the market transformed families? In what ways are families in the US becoming increasingly stratified? What forces led married women to enter paid employment? What forces might lead them to “opt-out”? What is the rationale for paid parental leave? Why some firms offer it? Should they?,"ECON 1, ECON 10",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10237,7 +10237,7 @@ ECON,ECON 37 Gender and Family Issues in Modern Economies,https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>","['ECON1', 'ECON10']"
 ECON,ECON 38 The Economics of Governments and Public Policy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-38,ECON38,"Fundamental questions in public finance concernwhenandhowgovernments should intervene in the economy. However, another fundamental question is:whydo governments do what they do? This course considers governments as economic actors. We will theoretically and empirically investigate how social decisions are made; why governments fail; why different levels of government (federal, state, local) fund different public goods and services; and how governments at different levels interact. Topics to be covered include externalities and public goods, political economy, and fiscal federalism. K-12 education in the United States will provide a detailed case study, though other applications may be considered from time to time. Course involves an empirical project.","ECON 1, ECON 10",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10665,7 +10665,7 @@ ECON,ECON 38 The Economics of Governments and Public Policy,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>","['ECON1', 'ECON10']"
 ECON,ECON 39 International Trade,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-39,ECON39,"This course deals with the causes and consequences of international trade and factor movements. Topics covered include theories of why nations trade, the consequences of trade for economic welfare and the distribution of income, the determinants of trade patterns, the tariff and other forms of commercial policy, trade policies of selected countries, and the formation of the multinational corporation.",ECON 1,Dist:INT or SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11093,7 +11093,7 @@ ECON,ECON 39 International Trade,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",['ECON1']
 ECON,ECON 41 Health Economics and Policy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-41,ECON41,"The goals of the course are: 1) to understand the economic forces that have created the current challenges in US healthcare; 2) to develop skills that enable you to determine what types of information, data, and analyses are needed to analyze the economics of health policies designed to expand coverage, improve quality, and contain costs; and 3) through in-class exercises and a project, to perform and present economic analysis of current topics relevant for state and federal health system reform. Not open to students who have received credit for ECON 071.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11521,7 +11521,7 @@ ECON,ECON 41 Health Economics and Policy,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 ECON,ECON 45 Environmental and Energy Economics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-45,ECON45,"This course examines environmental and energy issues from an economics perspective. The course begins by discussing fundamental concepts in environment economics including cost benefit analysis and economic valuation of the environment. We also explore issues of policy design from an efficiency perspective. The class is introduced to issues of energy economics, including oil, natural gas, and electricity markets, renewables policy, transportation policies, and climate change policies. Finally, the course examines environmental issues related to trade, development, public finance, and competitive strategy. Not open to students who have received credit for ECON 075",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11941,7 +11941,7 @@ ECON,ECON 45 Environmental and Energy Economics,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 ECON,ECON 57 Data Analysis for Economic Policy: Economics of Career and Family,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-57,ECON57,"This course examines the changing significance, timing, and meaning of career, family, and marriage, with special emphasis on the economic role of women and on determinants of gender gaps. For example, the gap between men’s and women’s earnings exists across the income distribution and the education distribution. But the gap is generally far greater for higher earners and for those with more education. Why? How do these gaps arise and what might reduce or eliminate them? Topics include the role of time controllability and compensating differentials; discrimination in pay in a host of circumstances; women’s bargaining skills; feedback mechanisms between household’s decisions and the labor market; children; parental leave policy; firm-level policies; childcare policies.","ECON 1, ECON 20 and ECON 21",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12369,7 +12369,7 @@ ECON,ECON 57 Data Analysis for Economic Policy: Economics of Career and Family,h
 </form>
 
 </body>
-</html>"
+</html>","['ECON1', 'ECON20', 'ECON21']"
 ECON,ECON 62 Topics in Macroeconomics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-62,ECON62,This seminar course will involve an in depth examination of selected topics that are of significance to the macro economy and economic growth. Topics will vary from year to year.  It will examine developments in the United States and other advanced and developing economies.  It will build on work done in Intermediate Macro (Econ 22) and Monetary Policy and the Economy (Econ 32) as well as the Financial Crisis (Econ 76).  It focuses especially on issues and trends in the macro-economy and movements in the business cycle that develop over time.  It is also possible to take an historical perspective on past macroeconomic developments including the Great Recession.  Will require writing a major paper. Not open to students who have received credit for ECON 042.,"ECON 20, ECON 21, ECON 22, ECON 29 and ECON 32",Dist:INT or SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12797,7 +12797,7 @@ ECON,ECON 62 Topics in Macroeconomics,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>","['ECON20', 'ECON21', 'ECON22', 'ECON29', 'ECON32']"
 ECON,ECON 64 Topics in Development Economics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-64,ECON64,"This seminar considers microeconomic aspects of the causes and consequences of extreme poverty in the developing world. Recent research on topics such as child labor, credit, education, environmental degradation, fertility, gender discrimination, health, HIV/AIDs, insurance, malnutrition, social capital, and technology adoption will be considered in depth. Topics vary from year to year. Students are required to write a major research paper. Not open to students who have received credit for ECON 044.","ECON 20, ECON 21, and ECON 24",Dist:INT or SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13225,7 +13225,7 @@ ECON,ECON 64 Topics in Development Economics,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>","['ECON20', 'ECON21', 'ECON24']"
 ECON,ECON 65 Topics in Industrial Organization,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-65,ECON65,"This course examines selected topics in business strategy and public policies designed to facilitate competition. These topics include market power, price discrimination, entry, product differentiation, vertical integration, regulation, and anti-trust. Students will discuss a broad range of papers on empirical industrial organization, apply concepts in a competitive strategy game, and write a major paper. Not open to students who have received credit for ECON 045.","ECON 20, ECON 21, ECON 22, ECON 25 and ECON 35",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13653,7 +13653,7 @@ ECON,ECON 65 Topics in Industrial Organization,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>","['ECON20', 'ECON21', 'ECON22', 'ECON25', 'ECON35']"
 ECON,ECON 66 Topics in Money and Finance,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-66,ECON66,A seminar course covering in depth such selected topics as the following: the theory of financial institutions; banking panics; the excess variability of asset prices; finance constraints and capital market imperfections; the theory of monetary policy; inflation and financial markets; debt and deficits. Will require writing a major paper. Not open to students who have received credit for ECON 046.,"ECON 20, ECON 21, ECON 22, ECON 26 and ECON 36",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14081,7 +14081,7 @@ ECON,ECON 66 Topics in Money and Finance,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>","['ECON20', 'ECON21', 'ECON22', 'ECON26', 'ECON36']"
 ECON,ECON 67 Topics in Labor Economics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-67,ECON67,"This seminar provides an in-depth examination of selected topics in labor economics, with an emphasis on recent empirical studies. Readings will vary from year to year, but areas studied will generally build on material introduced in Econ 27.  Will require writing a major empirical paper. Not open to students who have received credit for ECON 047.","ECON 20, ECON 21, ECON 22, ECON 27 and either ECON 24 or ECON 28 or ECON 37",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14509,7 +14509,7 @@ ECON,ECON 67 Topics in Labor Economics,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>","['ECON20', 'ECON21', 'ECON22', 'ECON27', 'ECON24']"
 ECON,ECON 68 Topics in Public Economics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-68,ECON68,"This seminar explores pressing public policy issues using the theoretical and empirical tools of public economics. The course begins with a review of research design and relevant econometric techniques. We then move on to in-depth explorations in selected topic areas, with a focus on the U.S. Topics vary from year to year but have recently included public goods and externalities; finance, accountability, and choice in K-12 education; behavioral and external effects of the cash and near-cash social safety net or of tax policy; and moral hazard and welfare impacts of social insurance. Will require writing a major empirical paper. Not open to students who have received credit for ECON 048.","ECON 20, ECON 21, ECON 22, ECON 28 and ECON 38",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14937,7 +14937,7 @@ ECON,ECON 68 Topics in Public Economics,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>","['ECON20', 'ECON21', 'ECON22', 'ECON28', 'ECON38']"
 ECON,ECON 69 Topics in International Economics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-69,ECON69,"This seminar will cover selected topics in international trade and finance beyond those covered inECON 29andECON 39. Offerings in the next few years are expected to include current research on (1) financial crises in emerging markets, (2) the role of trade, open capital markets, and financial development on growth in developing countries, (3) the determinants and consequences of foreign direct investment, (4) the impact of the multilateral trade agreements on world trade, and (5) issues related to globalization. Will require writing a major paper. Not open to students who have received credit for ECON 049.","ECON 20, ECON 21, ECON 22, ECON 29 and ECON 39",Dist:INT or SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15365,7 +15365,7 @@ ECON,ECON 69 Topics in International Economics,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>","['ECON20', 'ECON21', 'ECON22', 'ECON29', 'ECON39']"
 ECON,ECON 70 Immersion Experience in Applied Economics and Policy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-70,ECON70,"In Economics 70, students study a specific topic in applied economics or policy on campus and then engage with that topic during a two-week immersion off campus after the end of the exam period. Specific topics and destinations for the off-campus component vary by section. For details on how to enroll see: https://economics.dartmouth.edu/immersion-experience.",ECON 1,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15784,7 +15784,7 @@ ECON,ECON 70 Immersion Experience in Applied Economics and Policy,https://dartmo
 </form>
 
 </body>
-</html>"
+</html>",['ECON1']
 ECON,ECON 70.01 The Transition of Poland to a Market Economy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-70-01,ECON70.01,"Most economics courses taught in the US heavily emphasize the efficiency of markets and how individual decision-making, in freely functioning markets, can be modeled and understood. But there are a number of countries around the world whose economic organization is NOT mainly guided by markets; some of these economies remain partially controlled, or planned, where property and the means of production are formally government-owned and prices are centrally determined. This history of central planning has influenced the development of markets in much of Eastern Europe and the former Soviet Union; some economies have fully transitioned from planning to markets, while some lag significantly behind. In this class, students will study the history of the centrally-planned economic system and how it influenced economic development in Poland and we learn how Poland’s economy has transitioned to a market-oriented economy.",ECON 1,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16202,7 +16202,7 @@ ECON,ECON 70.01 The Transition of Poland to a Market Economy,https://dartmouth.s
 </form>
 
 </body>
-</html>"
+</html>",['ECON1']
 ECON,"ECON 70.02 China: The Country, The Companies and the People",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-70-02,ECON70.02,"China will study inclusive growth in China from three distinct perspectives: the aggregate, the company and the people. The aggregate/macro level will inform us about the economic mechanisms that are driving growth and inequality and how the policies and institutions are impacting them. From a company perspective, we will investigate how they operate in China. Finally, people are what ultimately we care about as social scientists. Therefore, we will make a central goal of the off-campus portion of Ec70 to interact with the Chinese population and to shed some light on all those important questions posed above that are very hard to grasp from the distance.",ECON 1,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16620,7 +16620,7 @@ ECON,"ECON 70.02 China: The Country, The Companies and the People",https://dartm
 </form>
 
 </body>
-</html>"
+</html>",['ECON1']
 ECON,ECON 70.03 Macroeconomics Policy in Latin America: Argentina and Chile,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-70-03,ECON70.03,"Latin America has been a region buffeted by major economic and political shocks over the past century (military coups to democratization, closed trade policies to openness, macroeconomic instability and hyperinflation to macroeconomic stability). Economies in the region have been marked by high levels of income inequality and an enormous variety of economic policies, from macroeconomic populism (taken to an extreme in Venezuela) to economic orthodoxy (Chile). This course explores these issues, focusing on why certain economic policies are chosen and the consequences, emphasizing the contrasting experiences of Chile and Argentina. While Chile has achieved economic growth and macroeconomic stability since the mid-1980s, Argentina has struggled to achieve the same outcome and has been beset by financial crises and currency collapses. This course emphasizes the economic policy choices that lead to such divergent outcomes and the political and economic obstacles to economic development, policy reform, and structural adjustment.",ECON 1,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17044,7 +17044,7 @@ ECON,ECON 70.03 Macroeconomics Policy in Latin America: Argentina and Chile,http
 </form>
 
 </body>
-</html>"
+</html>",['ECON1']
 ECON,ECON 70.04 Human Development in Peru,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-70-04,ECON70.04,"Peru, like many developing countries, is struggling to lift the income level of a vast part of its population. At the same time, economic progress is often achieved at the cost of environmental degradation. This course studies the drivers of under-development with an emphasis in finding avenues to achieve simultaneously economic and environmental progress. To explore this overarching theme, we will explore a broad range of topics which include (but are not limited to) (i) the informal economy, (ii) the rural-urban divide, (iii) underdevelopment and the environment and (iv) tourism. In addition to reading and discussing the literature on these topics, we will approach them via projects that students design and implement. Projects can have either a research goal or an operational one. In the latter case, the successful implementation of the project will have a positive impact on some local community in Peru.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17466,7 +17466,7 @@ ECON,ECON 70.04 Human Development in Peru,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 ECON,"ECON 70.06 Frauds, Panics, Crashes, and Bank Runs",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-70-06,ECON70.06,"This is an immersive course that will feature intensive group projects, presentations of academic papers, and original research on a topic within the theme of the course.  The theme of the course is to understand the conditions and human behavior that lead to large scale financial fraud, panics, market crashes and bank runs.  The course contains ethical themes as well as economic ones.  A Dartmouth education includes understanding why you should not engage in the behaviors profiled both from a rational and from an ethical point of view.  A Dartmouth economics education includes understanding how markets work and how they can fail and perhaps how structural and regulatory changes can improve market functioning.","ECON 1, ECON 10 and ECON 26 with ECON 20 recommended",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17890,7 +17890,7 @@ ECON,"ECON 70.06 Frauds, Panics, Crashes, and Bank Runs",https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>","['ECON1', 'ECON10', 'ECON26']"
 ECON,ECON 72 Fed Challenge,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-72,ECON72,"The College Fed Challenge is intended to help students become more knowledgeable about the Fed and the decision-making process of the Federal Open Market Committee (FOMC), the Federal Reserve’s monetary policy-setting group.  The cap for the class is 10 students by instructor permission (5 of the 10 will be chosen to go to the competition). Not open to students who have received credit for ECON 078.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18306,7 +18306,7 @@ ECON,ECON 72 Fed Challenge,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",[]
 ECON,ECON 73 The Political Economy of Development,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-73,ECON73,Why are some nations rich and others poor? Answering this question requires an understanding of the process of economic development and growth and also of the obstacles—predominantly political—that are placed in its way. This course develops such an understanding using the evidence of preindustrial Europe and China and building on the insights of Adam Smith. It then applies this understanding to analyze the problems of developing and developed countries today.,ECON 1,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18724,7 +18724,7 @@ ECON,ECON 73 The Political Economy of Development,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",['ECON1']
 ECON,ECON 76 Pandemics and Financial Crises,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-76,ECON76,"Topics covered will include (but are not limited to): the impact of the COVID pandemic, and subsequent recovery or lack of it and policy responses.  Monetary and fiscal policy responses including quantitative easing will be examined. Direct comparisons will be drawn with the Great Depression, the Great Recession and other financial crises.","ECON 1, ECON 10",Dist:INT or SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19152,7 +19152,7 @@ ECON,ECON 76 Pandemics and Financial Crises,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>","['ECON1', 'ECON10']"
 ECON,ECON 77 Social Entrepreneurship,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-77,ECON77,"This course provides an introduction to the theory and practice of social entrepreneurship, defined as the process of finding innovative, sustainable solutions to social problems, particularly those related to poverty.  Students will learn about the nature and causes of poverty, both domestically and internationally, and about the role that social entrepreneurs play in addressing poverty.  The course culminates with teams of students developing business models for their own social entrepreneurship ventures.",ECON 1,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19576,7 +19576,7 @@ ECON,ECON 77 Social Entrepreneurship,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['ECON1']
 ECON,ECON 80 Advanced Topics in Econometrics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-80,ECON80,"This course has two goals: (1) To further develop techniques that test for and remedy common problems associated with linear and non-linear regression analysis, and (2) to develop a practical understanding of how regression analysis can be used to examine the empirical relevance of economic theory.","ECON 20,ECON 21andECON 22with a grade of A- or better or permission of instructor",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20004,7 +20004,7 @@ ECON,ECON 80 Advanced Topics in Econometrics,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>","['ECON20', 'ECON21', 'ECON22']"
 ECON,ECON 81 Advanced Topics in Microeconomics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-81,ECON81,"This is an advanced course on the economics of information. The focus of the course is a rigorous mathematical treatment of the value of information, moral hazard, learning, adverse selection, and signaling. Applications to labor markets, corporate governance, financial markets, and insurance will be discussed.","ECON 20,ECON 21andECON 22with a grade of A- or better andMATH 8or permission of instructor",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20432,7 +20432,7 @@ ECON,ECON 81 Advanced Topics in Microeconomics,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>","['ECON20', 'ECON21', 'ECON22', 'MATH8']"
 ECON,ECON 82 Advanced Topics in Macroeconomics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-82,ECON82,"The purpose of this course is to study in depth selected topics in Macroeconomics. Topics will include consumption, savings and investment; dynamic inconsistency and the design of monetary and fiscal policies, multiple equilibria, bubbles and cycles, and economic growth.","ECON 20,ECON 21andECON 22with a grade of A- or better or permission of instructor",Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20860,7 +20860,7 @@ ECON,ECON 82 Advanced Topics in Macroeconomics,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>","['ECON20', 'ECON21', 'ECON22']"
 ECON,ECON 85 Independent Study in Economics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-85,ECON85,"This course is required of all majors in the Honors Program who do not initiate their honors work in their 40-level course; they will be expected to do the preliminary work on their Honors theses in this course. This course offers an opportunity for a student to do independent work under the direction of a member of the Department. For students who take this course in order to engage in independent study of a topic of interest rather than as a part of honors work, the prerequisite background will consist of all the regularly offered courses in the chosen field of study. Such a student will normally be expected to prepare, prior to the taking ofECON 85, a prospectus and a list of reading pertaining to the study he or she wishes to pursue.",Requires permission of the vice chair and of the department faculty member who will be advising the student.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21284,7 +21284,7 @@ ECON,ECON 85 Independent Study in Economics,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 ECON,ECON 87 Senior Thesis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-87,ECON87,"As explained above under 'Economics Honors Program', selected students will be invited to enroll inECON 87after they have completed their 40-level course. Alternatively, a student can initiate honors work inECON 85and then enroll inECON 87with the approval of the student's adviser and the vice chair. Honors students will normally takeECON 87in the term following their enrollment inECON 85, or alternatively, following their enrollment in a 40-level course in which a thesis has been started. Other majors who wish to write a non-Honors thesis for single course credit will be required to have as prerequisite background all regularly offered courses in the chosen field of study and may take the course in either the first or second terms of the senior year.","Requires permission of the vice chair, permission of the department faculty member who will be advising the student, and, in the case that the research was begun in a 40-level course, the permission of the faculty member who taught the 40-level course in which the thesis topic and the research were developed.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21708,7 +21708,7 @@ ECON,ECON 87 Senior Thesis,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>","['IP', 'IP', 'IP']"
 ECON,ECON 87.01 Senior Thesis in a Collaborative Setting,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/economics/econ-economics/econ-87-01,ECON87.01,"Most economics students that write an honors thesis start their idea for an honors thesis topic based on independent research project completed in an Economics culminating experience seminar (any 60-level course) or the honors courses (any 80-level course).This course is meant to provide assistance in completing an honors thesis in economics that goes well beyond just advice from a single advisor. Completing an honors thesis in a collaborative setting will involve tasks such as presenting your work at multiple stages, as well as contributing to your peers’ success by providing constructive feedback.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22130,4 +22130,4 @@ ECON,ECON 87.01 Senior Thesis in a Collaborative Setting,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]

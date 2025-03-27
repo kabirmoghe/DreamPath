@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 WGSS,WGSS 1 Intersections,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-1,WGSS1,"How have identity and difference formed our experiences and understandings of ourselves, the world we inhabit, and the world we envision? Students will investigate the categories sex, gender, sexuality, race, class, citizenship, and ability, how they are socially and historically constructed and in relation to one another. Students will be introduced to foundational concepts and theories to the study of women, gender, and sexuality, including canonical texts of Black and women of color feminisms, queer studies, transgender studies, disability studies, and transnational feminism. Students will explore contemporary issues in feminism, including reproductive justice, disability justice, carceral feminism, sexual violence, and transformative justice in the context of neoliberalism and empire in U.S. and global contexts. This introductory course is designed for prospective WGSS majors/minors but open to all.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -418,7 +418,7 @@ WGSS,WGSS 1 Intersections,https://dartmouth.smartcatalogiq.com/en/current/orc/de
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 2 Introduction to Queer Studies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-2,WGSS2,"This course will examine the ways in which ""deviant"" sexual and gender behavior and identities, and the political movements that emerge from them, have been conceptualized in U.S. culture. We will cover basic lesbian/gay/bisexual/transgender cultural and political history and the interplay between sexuality, gender, race, class, ethnicity, and economics. Students will be expected to work with primary documents (including novels and film), recent work in queer theory, and historical analysis. Open to all students. Not open to students who have received credit for WGSS 018.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -838,7 +838,7 @@ WGSS,WGSS 2 Introduction to Queer Studies,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 3 Global Race x Global Migration,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-3,WGSS3,"The racialized migrant is the dominant figure in contemporary global capitalism. This figure represents the contradiction at the heart of planetary dynamics, and is increasingly the node on which politics, economy, and culture turns. What would it mean to read the history of the globe from the figure of the racialized migrant? This course breaks away from the disciplinary categories and cartographies of area studies while pushing beyond Western racial epistemologies that have bracketed the study of migration and race. Instead, we attend to migration’s “corridors” “zones,” “circuits” and “ecologies” to understand the ways that race and contemporary mobility are made—across various terrestrial, aqueous, and aerial spaces—always in relation to the layered histories of colonial, imperial, and global formations.",,Dist:INT or SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1260,7 +1260,7 @@ WGSS,WGSS 3 Global Race x Global Migration,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 7 First-Year Seminar in Women's, Gender, and Sexuality Studies",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-7,WGSS7,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1682,7 +1682,7 @@ WGSS,"WGSS 7 First-Year Seminar in Women's, Gender, and Sexuality Studies",https
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 10 Sex, Gender, and Society",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-10,WGSS10,"How has current thinking about sex, gender, and sexuality formed our experiences and understandings of ourselves, the world we inhabit, and the world we envision? This course investigates basic concepts about sex, gender, and sexuality and considers how these categories intersect with issues of race, class, ethnicity, family, religion, age, and/or national identity. The course also considers the effects of sex, gender, and sexuality on participation in the work force and politics, on language, and on artistic expression. In addition to reading a range of foundational feminist texts, materials for analysis may be drawn from novels, films, the news, popular culture, and archival resources. Open to all students.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2102,7 +2102,7 @@ WGSS,"WGSS 10 Sex, Gender, and Society",https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 12 Feminist and Queer Theories and Methods,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-12,WGSS12,"How do feminist, queer, and racialized minoritarian subjects produce knowledge about inhospitable worlds, often against the limits of what is sayable, knowable, and thinkable? What makes a reading practice, text, or act feminist or queer? What makes critical knowledge critical? These are the questions that will guide our seminar on feminist ways of knowing. We work from two premises: knowledge is political, and theory helps us make sense of as well as transform the world. Each week is organized around a set of keywords and questions. The first half of the course builds a foundation in contemporary Western feminist and queer theory. We will explore gender, race, sexuality, difference, identity, subjectivity, bodies, temporality, and affect, among others. The second half of the course shifts to epistemology and methodology – what we know, how we know, and how we produce knowledge – as sites of contestation. Throughout the course, we will read texts engaging with ethnographic, visual, cultural, and historical analysis to become familiar with a variety of modes of knowledge production and interdisciplinary methods.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2522,7 +2522,7 @@ WGSS,WGSS 12 Feminist and Queer Theories and Methods,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 15 Roots of Feminisms: Texts and Contexts,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-15,WGSS15,"This course will examine pre-twentieth century texts and historical events that set important precedents for the development of contemporary feminist theories and practices. We will survey some of the writings that consolidate legitimated patriarchal/misogynist ideologies in Western worlds (e.g. Plato, Aristotle, the fathers of the Church, the philosophers of the eighteenth-century Enlightenment, Rousseau). We will analyze different ways in which women historically have articulated strategies of contestation and/or resistance to systems of power based on gender differentiation. Readings may include works by French medieval thinker Christine de Pizan; sixteenth-century Spanish cross-dresser Catalina de Erauso; seventeenth-century Mexican intellectual and nun Sor Juana Ines de la Cruz; Mary Wollstonecraft; Maria Stewart, the first African-American political woman writer; the nineteenth-century American suffragists; and anarchist leader Emma Goldman. Open to all students.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2942,7 +2942,7 @@ WGSS,WGSS 15 Roots of Feminisms: Texts and Contexts,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 16 Contemporary Issues in Feminism: Theory and Practice,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-16,WGSS16,"How do feminist, queer, and racialized minoritarian subjects move through and produce knowledge about inhospitable worlds, often against the limits of what is sayable, knowable, and thinkable? What makes a reading practice, text, or act feminist or queer? What makes critical knowledge critical? These questions will guide this seminar on feminist ways of knowing. Together we will explore the politics of knowledge and roles of theory in knowing and transforming the world.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3362,7 +3362,7 @@ WGSS,WGSS 16 Contemporary Issues in Feminism: Theory and Practice,https://dartmo
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 20.03 Introduction to the Study of Race, Migration, and Sexuality",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-20-03,WGSS20.03,"This course aims to deepen our understanding and appreciation of the ways in which race, migration and sexuality have shaped U.S. culture, social and legal thought, cultural institutions and art practice from the colonial era to the present. Race, migration, and sexuality are experienced differentially across all groups and individuals. They also have distinctive transnational and diasporic histories and practices. This course will focus on the various groups that have comprised the United States in a comparative and decolonial study aligned with the intersectional approach advocated by black feminists. Students will learn about issues of race, migration, and sexuality across time and space, as critical dimensions of the nation’s political and economic structures, within different ethnocultural traditions, and in aesthetic, performance practices. The central object is to weave diverse historical and cultural traditions into a larger synthesis of the meaning of race, migration and sexuality in North American life that is deftly attuned to power in all of its guises and establishmentarian logics.As a broad introduction to the multi- and inter-disciplinary studies in race, migration, and sexuality, the course will employ “a constellated approach” that will highlight the connections between our interdisciplinary programs with components of study in U.S. ethnicities, genders and indigeneities. It will enable students to think across the fields of Latinx, African, Native and Asian American Studies while also encouraging thinking in global, hemispheric, transnational and decolonial terms. The course will promote interest in border thinking across geographies and practices that demand a fundamental rethinking of existing paradigms with new questions, objects and analytics",,Dist:INT or SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3783,7 +3783,7 @@ WGSS,"WGSS 20.03 Introduction to the Study of Race, Migration, and Sexuality",ht
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 21.01 Slaves, Wives, & Concubines: Did Roman Women Have a History?",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-21-01,WGSS21.01,"This course is about the heterogeneous lived experience of women (slaves, freed slaves, lawful wives, daughters, prostitutes) during the Roman Republic and Empire. Roman women built and immortalized themselves and their families in funerary and civic monuments, endowing institutions like schools, and sometimes had coins bearing their portraits. We explore the larger institutional frameworks that gave meaning to their lives, and within this framework we investigate theri live choices over time.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4205,7 +4205,7 @@ WGSS,"WGSS 21.01 Slaves, Wives, & Concubines: Did Roman Women Have a History?",h
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 22.01 Gender and European Society from Antiquity to the Reformation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-22-01,WGSS22.01,"This course examines the roles of women and men in Western Europe from late Antiquity to the Reformation period. Emphasis will be placed on the intellectual and social strictures that had a long-term effect on the concept and role of gender in European society. Topics included are biological and mythological foundations of gender concepts; attitudes toward the body and sex in pre-Christian and Christian culture; sin and ecclesiastical legislation on sex and marriage; family life and education; the individual and kinship; heresy and charismatic religious movements; and the impact of social-economic development on gender in professional life. We will discuss the textual and visual sources for our inquiry, as well as the changing contemporary views on gender roles in pre-industrial Europe. Open to all classes. Not open to students who have previously takenHIST 42.",,Dist:TMV; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4627,7 +4627,7 @@ WGSS,WGSS 22.01 Gender and European Society from Antiquity to the Reformation,ht
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 23.01 Gender and Power in American History,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-23-01,WGSS23.01,"This course examines the history of men and women from the period of colonial settlement to the achievement of woman’s suffrage. We will explore the construction of gender particularly as it relates to social, political, economic, and cultural power. Topics will include: the role of gender in political thought and practice; the intersection of gender with categories of class and race; gender in the debate over slavery and the Civil War; and the rise and evolution of the woman’s rights movement. Open to sophomores, juniors and seniors.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5049,7 +5049,7 @@ WGSS,WGSS 23.01 Gender and Power in American History,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 23.02 American Women in the Twentieth Century,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-23-02,WGSS23.02,"This course is a multi-cultural multi-media history of American women from the Civil War to the present. We will discuss race and class tensions in the woman suffrage movement; women, labor and radicalism from the 1910s through the 1940s; civil rights, welfare rights, the rebirth of feminism in the 1960s and 1970s, and backlash politics from the 1950s to the 1980s. Open to all classes.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5471,7 +5471,7 @@ WGSS,WGSS 23.02 American Women in the Twentieth Century,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 24.01 Arab Feminisms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-24-01,WGSS24.01,"This course is an introduction to the history of feminism in the Arab world from the 19th century to the present. It examines some of the most important socioeconomic and political issues as well as aesthetic trends that were or continue to be central to feminist activism and cultural production in the region. Throughout the term students will engage with a wide range of primary sources (newspaper articles and op-eds, memoirs, novels, poems, photographs and films) that will help them develop a nuanced and critical understanding of the diverse and dynamic experiences of women in the Arab world.",,Dist:INT or LIT; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5893,7 +5893,7 @@ WGSS,WGSS 24.01 Arab Feminisms,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 24.02 Gender and The Modern Middle East and North Africa,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-24-02,WGSS24.02,"In this course, we will study histories of the modern Middle East and North Africa and examine the ways that issues relating to gender and sexuality have affected the politics and social worlds of the region over the course of the past several centuries. This course begins with the medieval Islamicate Empires — Mughal, Safavid, and Ottoman — and then moves through the end of empire, the colonial era, the establishment of the nation state, and the emergence of modern cultural, political, and religious movements. In doing so, we will situate the histories and social worlds of the region in a global frame, asking how global political and economic transformations have affected the region. At the same time that we attend closely to these histories, we will also examine the ways in which the category of “woman” has been mobilized in popular and political discourses in the 18th-21th centuries, paying particular attention to how Muslim and Middle Eastern women have been represented in various political discourses, as well as how they have represented themselves. Through close readings of both primary sources (in translation) and secondary literature — including historiographical, theoretical, and literary texts as well as film and music— we will also tackle the questions, controversies, and stereotypes that have animated debates in both scholarly and popular literature on such topics as the veil, feminism, revolution, human rights, LGBT issues, masculinity, and war.",,Dist:SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6315,7 +6315,7 @@ WGSS,WGSS 24.02 Gender and The Modern Middle East and North Africa,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 26.02 Women and American Radicalism Left and Right,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-26-02,WGSS26.02,"This course will trace the involvement of U.S. women in radical political movements from the mid-nineteenth century to the present including: Abolitionism; Anti-lynching; Socialist Trade Unionism; the Ku Klux Klan; the Communist Party; the National Welfare Rights Organization; the Civil Rights Movement; the New Left; the New Right; the direct-action wing of the anti-abortion movement; Earth First; and the neo-Nazi American Front. It will also examine the relationship between feminist ideologies and non-gender-specific radical political ideologies centered on race, class, and other social identifiers.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6737,7 +6737,7 @@ WGSS,WGSS 26.02 Women and American Radicalism Left and Right,https://dartmouth.s
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 26.03 History of Sexuality,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-26-03,WGSS26.03,"How have historical processes produced distinct sexual practices and identities over time? This course engages 300 years of a history that often evaded the historical record or was deliberately purged from it and asks how more traditional topics of U.S. historical inquiry—immigration, citizenship, economic organization, intellectual and artistic production, racialization, formal politics, law, religious practice—can yield new insights when sexual history is included as a legitimate dimension of analysis.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7159,7 +7159,7 @@ WGSS,WGSS 26.03 History of Sexuality,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 30.01 Women, Gender and Development",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-30-01,WGSS30.01,"This course examines gender as it relates to both women and men and as constituted by multiple factors such as place, space, class, sexuality, age, race, ethnicity, nationality, and culture-what some call categories of ""difference."" We will explore how these categories of difference shape women's and men's daily lives, our institutions, the spaces and places we live in, and the relationships between social groups in different places and between different places in the world.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7581,7 +7581,7 @@ WGSS,"WGSS 30.01 Women, Gender and Development",https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 30.04 Women, Work, and Wealth",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-30-04,WGSS30.04,"It is one of the most famous sentences in the English-language canon, a short-hand for the entire foundation of modern economics: “It is not from the benevolence of the butcher, the brewer, or the baker, that we expect our dinner,” wrote Adam Smith in his 1776 The Wealth of Nations, “but from their regard for their own interest.” But of course none of those men actually served the lifelong bachelor his dinner: his mother did, and whether she did so from benevolence, self-interest, or some less easily classified motivation, the field of political economy was defined by her exclusion from its questions and answers. This course interrogates the sexual and racial contracts at the heart of modern economic relations, and asks how returning mothers, wives, daughters, and servants to the history of capitalism alters our assumptions about economic man.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8001,7 +8001,7 @@ WGSS,"WGSS 30.04 Women, Work, and Wealth",https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 30.05 Maid in America: The Politics of Domestic Labor,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-30-05,WGSS30.05,"In Maid in America we study the representation, history, and rights of domestic workers in the Americas with a focus on the United States, Brazil, Mexico, Chile, and Argentina. Specifically, we look at representation and rights from artistic, legal, and sociological perspectives. Using the the theoretical frames of intersectional and transnational feminism we will analyze primary texts that include essays, manifestos, theater, and documentary film. Topics we will explore will include media representation and controlling images, migrant imaginaries, invisible labors, modern-day slavery, the feminization of migrant work, and labor organization and rights. The class will include a theater workshop component that will culminate in the public presentation of an original group performance titled: Making the Invisible Visible: The Politics of Domestic Labor.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8423,7 +8423,7 @@ WGSS,WGSS 30.05 Maid in America: The Politics of Domestic Labor,https://dartmout
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 31.01 Sex and the State in Latin America,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-31-01,WGSS31.01,"This course examines women’s movements in Latin America. Women in Latin America are perhaps the most highly mobilized population in the world. Throughout the region women have organized around myriad issues, including the right to vote, human rights, poverty, legal rights, anticommunism, the workplace, race, ethnicity and war. Women’s efforts to challenge fiercely repressive regimes, deeply entrenched norms of machismo and extreme poverty defy conventional stereotypes about women and provide us with inspiring examples of how to sustain hope during difficult times. The seminar will introduce students to recent scholarship on women’s movements in Latin America in the 20th century and seek to understand the emergence, evolution and outcomes of women’s movements in particular countries and cross-nationally.",,Dist:SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8845,7 +8845,7 @@ WGSS,WGSS 31.01 Sex and the State in Latin America,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 31.04 Women and Politics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-31-04,WGSS31.04,"This is a general course on women in politics. We will examine the role of women as politicians, activists, and voters. The course will examine a wide range of issue areas, including: female attitudes on war and conflict, the reactions of women to different kinds of campaign tactics and policy positions, the differing barriers women face to attaining elected office in different countries, and how the challenges thought to be faced by female political leaders compare with those faced by female business leaders. One key question we will explore concerns whether female politicians are treated differently than male politicians, and how that might affect their strategies for reelection and governance. Open to all students.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9267,7 +9267,7 @@ WGSS,WGSS 31.04 Women and Politics,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 33.01 Constructing Black Womanhood,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-33-01,WGSS33.01,"This course is a critical examination of the historical and contemporary status of black women in the United States, as presented in fiction, primary accounts, and social science literature. We will explore the nature, extent, and consequences of the multiple discriminations of race, sex, and class, as the context in which these women shaped their social roles and identities within the black community and the larger society. We will consider the themes of family, motherhood, and sexuality; educational, economic and political participation; aesthetics and religious traditions; and self and social images.Open to juniors and seniors.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9689,7 +9689,7 @@ WGSS,WGSS 33.01 Constructing Black Womanhood,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 33.03 Gender and Judaism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-33-03,WGSS33.03,"Examining the intersections between gender, religious practice, cultural identity, and personal belief, this class will draw upon contemporary gender theory, religious texts and contemporary interpretations of Jewish thought and culture to examine the construction of Jewish identity through a feminist lens.  Authors will include Alder, Boyarin, Heschel, Gilman, Peskowitz, Levitt and Biale.  The class will also investigate questions of race, ethnicity, assimilation and Jewish gender issues in popular culture, including films and the work of performers Cantor, Benny, Berg, Midler, and Sandler.",,Dist:TMV; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10111,7 +10111,7 @@ WGSS,WGSS 33.03 Gender and Judaism,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 33.05 Unstalling the Stalled Revolution: Gender (In)equality at Work and at Home,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-33-05,WGSS33.05,"The nature of work, family life, and gender relations has changed dramatically over the last half century. This course examines these trends, with a focus on implications for gender inequality in society. We will focus on patterns in paid labor force participation and family life in the United States, and discuss the major debates surrounding the causes and consequences of such trends. We will also pay attention to how these patterns look across different races, ethnic groups, and socioeconomic status, as well as briefly examine how these trends compare to other countries. We will conclude by exploring the implication of gender inequality for families, as well as work-family policy debates.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10533,7 +10533,7 @@ WGSS,WGSS 33.05 Unstalling the Stalled Revolution: Gender (In)equality at Work a
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 33.07 Love, Romance, Intimacy and Dating",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-33-07,WGSS33.07,"Why do you connect with some people and not others? What exactly is love? And how do you make smart romantic choices for yourself? In this course we examine the social aspects of love, romance, intimacy, and dating. Using sociological theories and methods, we will investigate how cultural beliefs and structural arrangements affect our most intimate feelings and experiences. Specific topics include virginity loss, adolescent sexual behavior, hooking up, dating, intimacy and polyamory.",,SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10955,7 +10955,7 @@ WGSS,"WGSS 33.07 Love, Romance, Intimacy and Dating",https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 34.02 Gender Identities and Politics in Africa,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-34-02,WGSS34.02,"This interdisciplinary course explores the constructions of gender identities in different African socio-cultural contexts. The emphasis is on contemporary Africa, although we will discuss some of the historical framework of these identities. We will read historical accounts of gender in some pre-colonial African societies, investigate the impact of colonialism, and examine gender in some anti-colonial movements. We will also analyze gender in urban and rural contexts, and address such questions as homosexuality and gay rights.",,Dist:INT; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11377,7 +11377,7 @@ WGSS,WGSS 34.02 Gender Identities and Politics in Africa,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 34.04 Sociology of Gender,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-34-04,WGSS34.04,"What is gender? This seminar examines multiple sociological perspectives on what it means to be a woman, man, boy, or girl in everyday life - including gender as a social structure, an identity, an ideology, and something people ""do."" Readings and discussions reflect a belief that diversity (race/ethnicity, class, age, sexuality, etc.) is central to the study of gender. Possible topics include: language, the body, science, the wage gap, education, and masculinity during young adulthood.",,SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11799,7 +11799,7 @@ WGSS,WGSS 34.04 Sociology of Gender,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 36.01 Gender in Cross-Cultural Perspective,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-36-01,WGSS36.01,"Sex (biological differences between men and women) and gender (social constructions of those differences) are not straightforward or natural, and it naturally follows that gender inequalities and gender oppression are also not straightforward and natural. Therefore, we will pay close attention to the issue of power - in terms of control and distribution of resources and the enforcement of gender roles and sexuality. We will also look at how Western gender ideals have been imposed on people in other parts of the world. We will talk about concepts, perceptions, images, stories, encounters, games, connections and disconnections. Finally, we will explore questions of practice and resistance.",,Dist:INT or SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12221,7 +12221,7 @@ WGSS,WGSS 36.01 Gender in Cross-Cultural Perspective,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 36.02 Mapping the Queer and Trans South,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-36-02,WGSS36.02,"Although by some accounts the American South is home to nearly 35% of the country’s LGBTQ  population, popular conception of the region is one of limited queer life. This course explores narratives and theories produced by queer and trans people in the South, alongside and within the broader colonial, carceral, and racial geographies of the region. We will look at how the American South is constructed as a meaningful entity, and how queer and trans people do or do not fit into that image. Readings and materials will include media representations of queer and trans people in the South, oral histories, memoirs, and poetry. How can an exploration of the queer and trans populations of the South destabilize normative regional conceptions? And what might a queer history/framing of the South—and a Southern framing of queerness/transness—offer to our understanding of the contemporary United States?",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12641,7 +12641,7 @@ WGSS,WGSS 36.02 Mapping the Queer and Trans South,https://dartmouth.smartcatalog
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 36.06 Gender and Sexuality in Asian American Literature,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-36-06,WGSS36.06,"Focusing on contemporary Asian American literature, film, and popular culture, this course emphasizes a diverse range of engagements with gender and sexuality that disrupts binary thinking on the topic. Through close analysis of cultural texts, students will examine the formation of Asian American genders and sexualities alongside histories of racialization, migration, and labor. Texts may include: Monique Truong'sThe Book of Salt, David Henry Hwang'sM Butterfly, R. Zamora Linmark'sRolling the R's, Justin Lin'sBetter Luck Tomorrow, as well as episodes ofBattlestar Galacticaand24. We will also read critical essays by Gayatri Gopinath, David Eng, Yen Le Espiritu, Karen Tongson, Lisa Nakamura, and Martin Manalansan.",,Dist:LIT,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13063,7 +13063,7 @@ WGSS,WGSS 36.06 Gender and Sexuality in Asian American Literature,https://dartmo
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 37.01 Female Monstrosities,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-37-01,WGSS37.01,"This course will explore how the concept of the female monster has been foundational to the construction of gender as well as of race, class, and sexuality. We will begin in Ancient Greece by analyzing female monstrosities like Medusa and Medea, as well as the Lilith figure from the Hebraic tradition, in order to then explore Black feminist reworkings of these figures. Particular attention will be paid to the figure of the witch and to the female vampire, as these figures travel from the heart of Europe to its peripheries in the modern world, to what Katherine McKittrick has termed the “demonic grounds.” The course will cover texts by authors that include Maryse Condé, Toni Morrison, Jewelle Gomez, and Octavia Butler. We will explore how these authors offer a feminist embrace of monsters as an imaginative way to combat heteropatriarchy as well as white supremacy.",,Dist:LIT; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13483,7 +13483,7 @@ WGSS,WGSS 37.01 Female Monstrosities,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 37.03 Social Justice and the City,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-37-03,WGSS37.03,"This course explores issues of social justice and cities in terms of the spatial unevenness of money and power within and among cities, between cities and their hinterlands, and between cities of the world. We will examine how multiple dynamic geographic processes produce spatial and social inequalities that make cities the locus of numerous social justice issues. We will also look at how urban communities and social groups are engaged in working for social change.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13905,7 +13905,7 @@ WGSS,WGSS 37.03 Social Justice and the City,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 37.04 Carceral Geographies: Explaining Mass Incarceration in the US,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-37-04,WGSS37.04,"Why are there so many people incarcerated in the United States and why are so many people in the US and beyond calling for an end to police violence, some even for the abolition of policing? Is mass incarceration an inevitable product of slavery and Jim Crow? Why did prisons expand in the United States as crime rates were going down? Was it the War on Drugs, or the long term effects of housing discrimination?",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14328,7 +14328,7 @@ WGSS,WGSS 37.04 Carceral Geographies: Explaining Mass Incarceration in the US,ht
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 40.01 Gender Topics in Native American Life,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-40-01,WGSS40.01,"This course will address a range of topics concerning gender that are of particular significance to indigenous communities.  These topics will be considered from historical, political, cultural and social perspectives.  In the context of this class, the term “indigenous” is a category that includes tribal nations of the United States including Hawaii, the First Nations of Canada, and the indigenous people of Australia and New Zealand.  The material is presented with particular concern for the diversity of indigenous groups and the variety of their own experiences and autochthony.  We will explore their responses to misconceptions of tribal gender roles and identities projected upon Native people by the agents and institutions of settler colonialism.  This approach opens a broader discussion about the many actions of indigenous communities to deconstruct and decolonize gender categories that are alien to the continuity, integrity, and vitality of their own traditions.  The interdisciplnary approach of this course will engage texts from philosophy, literature, semiotics, history, and policy, as well as gender studies from various socio-cultural perspectives.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14750,7 +14750,7 @@ WGSS,WGSS 40.01 Gender Topics in Native American Life,https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 40.02 10 Weeks, 10 Professors: #BlackLivesMatter",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-40-02,WGSS40.02,"This collaboratively taught course seeks to answer the call of activists around the country to examine racialization, state violence, and inequality in the context of the #BlackLivesMatter movement. To begin, it offers a context for the events in Ferguson, Missouri in 2014. Then, it situates those events in a broader history of race and racism in the United States. Finally, the course highlights black feminist and queer approaches to questions of trauma, community, politics, and survival.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15172,7 +15172,7 @@ WGSS,"WGSS 40.02 10 Weeks, 10 Professors: #BlackLivesMatter",https://dartmouth.s
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 40.03 Racial Justice,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-40-03,WGSS40.03,"This course introduces students to major contemporary racial justice debates. It also considers how theories of racial justice might better include the concerns of women of color as well as LGBT and trans persons of color. Throughout the course we will examine quesitons such as: What constitutes racial injustice? How is gender implicated in said injustice? What, if anything, do blacks and other people of color owe to one another? Should political possibility and pragmatism bound thinking regarding corrective racial justice?",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15594,7 +15594,7 @@ WGSS,WGSS 40.03 Racial Justice,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 40.04 Black Women's Activism, 1970-present",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-40-04,WGSS40.04,"In this course we will explore several genres of writing, grounded in an intellectual engagement with the creative, scholarly, and activist writing of Black women of all genders from 1970 to the present. How does Black women’s activism constitute a political intellectual tradition that impacts how we do research and pose questions? How does black women’s activism refigure the categories and categorization of knowledge and knowledge production? What does it mean to write oneself into existence if and when knowledge is premised on their epistemic and actual disappearance? This course approaches Black women’s intellectual and cultural production as one entry point into the project of creating from nothing, writing to become, writing as an act of survival, and writing to envision and practice new worlds. These are all vital skills in a rapidly transforming social, economic, political and climatic landscapes.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16016,7 +16016,7 @@ WGSS,"WGSS 40.04 Black Women's Activism, 1970-present",https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 40.05 Feminist and Queer Performance at the Limit of Action,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-40-05,WGSS40.05,"What counts as feminist and queer activism? This course challenges what we dominantly understand as activism—key to the emergence of feminist and queer theory and ethnic studies. Moving away from political actions centered in these disciplines, such as strikes, protests, and boycotts, this course will turn to visual and performance art works by artists of color, who consider other forms of action that arenotovertly visible, resistant, oppositional, agentive, militant, loud, and documentable. Each week, students will examine a performance at the limit of action,including passivity, silence, and endurance, alongside issues related to gender, sexuality, labor, and immigration among others. How might we approach and reconcile with performances that once again reify notions of racialized and gendered bodies as apolitical, passive, submissive, and compliant? Drawing on scholarship within black and women of color feminist criticism, queer theory, critical ethnic studies, Asian American Studies, and performance studies, this course will attune students to the role of aesthetics to interrogate and expand what we typically conceive of as activism, resistance, and survival from racialized, feminized, and queer positions.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16436,7 +16436,7 @@ WGSS,WGSS 40.05 Feminist and Queer Performance at the Limit of Action,https://da
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 41.01 Ocean Feminisms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-41-01,WGSS41.01,"This course introduces students to contemporary debates and conversations on Ocean feminisms in the Pacific. It weaves together literature, film, poetry and art from Oceanic feminist organizers and intellectuals in the Pacific to consider contemporary activism and movement building towards decolonization and Native Sovereignty across Oceania. In the class, we will examine the work and visions of Native feminists like Haunani Kay Trask, Teresia Teaiwa, Linda Tuhiwai Smith, and Kathy Jetnil Kijiner who highlight the anti and decolonial potential of Ocean feminisms in informing global movements for climate justice, demilitarization, body sovereignty, abolition, and land-based resurgence. We will also learn and engage with contemporary activists through a series of guest lectures and workshops focusing on transdisciplinary and creative oceanic methodologies.",,Dist:INT; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16856,7 +16856,7 @@ WGSS,WGSS 41.01 Ocean Feminisms,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 41.04 Muslim Feminism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-41-04,WGSS41.04,"This course introduces students to the diversity of feminist approaches on a transnational scale, by examining the movements, activism, media, literature, and Islamic debates produced in predominantly Muslim countries and beyond. We will interrogate concepts of transnationalism, feminism and modernity in terms of historical developments, theoretical usage, the context of colonialism, Islamic theologies, and the modern Muslim nation states. We will explore similarities and differences in women's experiences and feminist methodologies across global Muslim contexts. Course materials will be made up of several primary sources in translation that deal with intersectional issues such as religious and cultural practices, educational systems, politics, race and racism, socioeconomic class, legal rights for men and women, and marriage and the family.",,Dist:INT or SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17278,7 +17278,7 @@ WGSS,WGSS 41.04 Muslim Feminism,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 41.06 Transnational Feminisms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-41-06,WGSS41.06,"Transnational feminism, in its broadest vision, has been the project of “feminism without borders.” Rooted in intersectionality, justice, praxis, and solidarity, the banner of transnational feminism has assembled scholars and activists from diverse social and geopolitical positions through coalitions across global, regional, national, and local borders, both within and beyond the nation-state. This course begins with genealogies of global, women of color, and postcolonial or Third World feminisms and histories of movement-building from which transnational feminism emerged. Students will be introduced to themes of universalism, solidarity, positionality, and the problems with  speaking for “others,” especially Northern feminists representing women in the Global South. In the second part of the course, we turn to contemporary topics in transnational feminism, including globalization, development, war, militarism, labor, migration, climate change, and humanitarianism, and feminist mobilizing against injustice within and across borders.",,Dist:INT or SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17698,7 +17698,7 @@ WGSS,WGSS 41.06 Transnational Feminisms,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 42.05 Ethnography of Violence,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-42-05,WGSS42.05,"Violence is widely recognized as a problem in modern society, with policies and interventions to combat violence, or to employ it, dominating local and global politics. Yet the meaning of violence is seldom analyzed. Using an ethnographic lens, this course explores violence as both an embodied experience and a socially and culturally mediated event. We examine spectacular and everyday forms of violence in terms of manifestations of power, structures of inequality, perceptions of difference, and politics of representation. Ethnographic studies are drawn from, among others, Mozambique, Haiti, and Harlem. An introduction to the cultural anthropology of violence, this course raises key quesitons about violence in a globalized world and explores how to study it anthropologically. This course is not open to students who have received credit forANTH 12.03.",,Dist:INT or SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18120,7 +18120,7 @@ WGSS,WGSS 42.05 Ethnography of Violence,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 43.02 Sex, Celibacy, and the Problem of Purity: Asceticism and the Human Body in Late Antiquity",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-43-02,WGSS43.02,"Late Antiquity (c. 300-500 C.E.) was a time when Christians struggled to understand how gender, family life, and religion could intermesh. Did virgins get to heaven faster than those who marry? Can a chaste man and woman live together without succumbing to lust? Were men holier than women? What about women who behaved like men? This course examines the changing understanding of the body, marriage, sexuality, and gender within Christianity through reading saints’ lives, letters, polemical essays, and legal texts. Open to all classes.",,Dist:TMV; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18542,7 +18542,7 @@ WGSS,"WGSS 43.02 Sex, Celibacy, and the Problem of Purity: Asceticism and the Hu
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 43.03 Women and the Bible,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-43-03,WGSS43.03,"As contemporary Jewish and Christian communities of faith face the question of the role of women within their traditions, many turn to the Bible for answers. Yet the biblical materials are multivalent, and their position on the role of women unclear. This course intends to take a close look at the biblical tradition, both the Hebrew Bible (Old Testament) and the New Testament, to ask what the Bible does—and does not—say about women. Yet the course is called ""Women and the Bible,"" not ""Women in the Bible,"" and implicit in this title is a second goal of the course: not only to look at the Bible to see what it actually says about women but also to look at differing ways that modern feminist biblical scholars have engaged in the enterprise of interpreting the biblical text.",,Dist:TMV; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18964,7 +18964,7 @@ WGSS,WGSS 43.03 Women and the Bible,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 43.04 Goddesses of India,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-43-04,WGSS43.04,"This course will use both elite and popular Hindu religious texts in conjunction with contemporary sociological and anthropological accounts, scholarly analyses, visual art, and film to explore the diverse identities and roles of India's many goddesses, both ancient and modern. Special emphasis will also be given to the relationship between goddesses and women. Open to all classes.",,Dist:TMV; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19386,7 +19386,7 @@ WGSS,WGSS 43.04 Goddesses of India,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 43.06 Gender in Islam,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-43-06,WGSS43.06,"“Is Islam sexist?” “What does Islam really say about women?” This course seeks to dismantle the premises of these questions by asking who speaks for Islam, what makes something Islamic, and how are gender and gender roles constructed in Islamic texts and Muslim thought. We will make critical study of the constructions of gender, femininity, masculinity, sexuality, gender relations, marriage and divorce in classical and modern Islamic texts. In asking how Islamic notions of gender are constructed, we will examine both the roles religious texts have played in shaping Muslim life and how Muslim life in its cultural diversity affects readings of religious texts. We will read works of Muslim thought on gender relations in their historical contexts and in relation to one another. Through in-class discussions, critical reading exercises, and short essay assignments, students will strengthen their literacy on global gender issues, study religio-historical ideas on gender, analyze the role of texts in shaping gender in society, and vice versa.",,Dist:TMV; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19808,7 +19808,7 @@ WGSS,WGSS 43.06 Gender in Islam,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 43.07 The Black Church and Black Bodies: Race, Sexuality and Class in Religious Culture",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-43-07,WGSS43.07,"Black churches are challenged to better understand and respond to subjects that are often considered taboo.  This course will focus on ideas and approaches that have informed the historic and current Black Church around race, sexuality, and class (and their nexus).  Informed by Cultural Theory, it will consider how such churches have endeavored to understand, socialize, and in some instances, control Black bodies as well as some of the broader implications for critically assessing inequality, diversity, and social justice. Barnes.",,Dist:TMV; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20230,7 +20230,7 @@ WGSS,"WGSS 43.07 The Black Church and Black Bodies: Race, Sexuality and Class in
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 44.03 Women, Religion and Social Change in Africa",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-44-03,WGSS44.03,"This introductory, multidisciplinary course examines women's religions ideas, beliefs, concerns, actions, rituals and socio-cultural experiences in African societies and cultures from a comparative, historical and gender perspective. We will look at women's experiences of social change in African religions, the encounter with Islam, slavery, Christianity, and colonialism. We will analyze the articulations of economic and political power or lack of power in religious ideas as we ask questions such as: What are the different antecedents and circumstances in which women exercise or are denied agency, leadership, power and happiness in their communities? Texts will include nonfiction, fiction, and film narratives. Open to all students.",,Dist:SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20652,7 +20652,7 @@ WGSS,"WGSS 44.03 Women, Religion and Social Change in Africa",https://dartmouth.
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 44.07 The Struggle for Liberation: Women, Monasticism, and Buddhism",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-44-07,WGSS44.07,"This course will examine the relationship between women, monasticism, and Buddhism through an interdisciplinary and transnational perspective. We will begin in ancient India by examining the founding of the Order of Nuns; the monastic lives, spiritual poetry, and struggles of early Buddhist nuns; and the decline and death of the nuns’ order in India. Then we’ll move on to explore a wide range of topics from throughout the Buddhist world—such as the economic and political power of the nuns’ order in parts of East Asia; the death of the nuns’ order and the phenomenon of low-status “unofficial” nuns throughout much of Southeast Asia; the power of yoginis and other non-monastic spiritual roles for women in Tibet; the increasing phenomenon of Western nuns; and the feminist possibilities (or impossibilities) inherent in Buddhist doctrine. The term will conclude with a sustained look at the contemporary global movement to re-establish the valid ordination lineage for nuns throughout the world—a movement in which the voices arguing “for” and “against” are not always what one might presume them to be.",,Dist:INT; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21074,7 +21074,7 @@ WGSS,"WGSS 44.07 The Struggle for Liberation: Women, Monasticism, and Buddhism",
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 46.01 Philosophy and Gender,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-46-01,WGSS46.01,"This course will focus primarily on the following questions: What is feminism? What is sexism? What is oppression? What is gender? Is knowledge gendered? Is value gendered? What is a (gendered) self? What would liberation be? In exploring these issues, we will examine the ways feminist theorists have rethought basic concepts in core areas of philosophy such as ethics, social and political philosophy, metaphysics, epistemology, philosophy of law, and philosophy of mind. Open to all classes",,Dist:TMV; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21496,7 +21496,7 @@ WGSS,WGSS 46.01 Philosophy and Gender,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 47.03 Modern American Women Poets,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-47-03,WGSS47.03,"This course focuses on the emerging counter-tradition, within American modernism and within the larger tradition of poetry in English, of American women poets in the twentieth century. Taking our cue from Adrienne Rich, who ambiguously titles one book of essays On Lies, Secrets and Silences (is she for or against?), we will follow debates about what makes it possible to break previous silences--and to what degree and in what ways it is useful or satisfying to do so. Topics within this discussion will include sexuality, race, illness, literary modes, female literary succession, and relations with the literary tradition. We will read in the work of eight or nine poets and recent critical and theoretical writings, with some attention in the first weeks to important female and male precursors. The syllabus will include such writers as Edna St.Vincent Millay, HD, Gertrude Stein, Elizabeth Bishop, Gwendolyn Brooks, Sylvia Plath, Anne Sexton, Audre Lorde, Adrienne Rich, Marilyn Hacker, Louise Gluck, Rita Dove.Not open to students who have received credit forENGL 55.01.",,Dist:LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21919,7 +21919,7 @@ WGSS,WGSS 47.03 Modern American Women Poets,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 48.08 Desire and Difference in 19th Century British Fiction,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-48-08,WGSS48.08,"This course will examine the phenomenon of moral panic in nineteenth-century British literature and culture through two linked but distinctive forms of sexual subjectivity:  female heterosexuality and male homosexuality, connected forever in the 1885 Criminal Law Amendment Act that set the stage for the imprisonment of Oscar Wilde.  We will consider the relationship between realist and sensationalist literary forms to trace the emergence and regulation of distinctly modern sexual subjectivities in mid- and late-nineteenth-century Britain.",,Dist:LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22341,7 +22341,7 @@ WGSS,WGSS 48.08 Desire and Difference in 19th Century British Fiction,https://da
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 48.09 Nineteenth-Century British Women Writers,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-48-09,WGSS48.09,"For the first time in literary history, women writers found commercial and critical success in England during the nineteenth century. Women writers of this time were keen observers of the social codes that formed—and constrained—their identities. Though women wrote in many genres in this period, this course will focus on major novels of the nineteenth century because of the particular strategies female novelists used to open up hard questions about social identity, and particularly social possibilities for women. Questions about gender clearly implicate sexuality, class, ethnicity, race, and power, as well, in complex, compelling, and unexpected ways. We will read works by Jane Austen, Mary Shelley, Emily Brontë, Charlotte Brontë, Elizabeth Gaskell, and George Eliot, and we will end the class by reading substantial excerpts from the private, unpublished diaries of the women writers who published as “Michael Field.”",,Dist:LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22763,7 +22763,7 @@ WGSS,WGSS 48.09 Nineteenth-Century British Women Writers,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 49.06 Women and War in Modern Literature and Film,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-49-06,WGSS49.06,"This course examines literary, artistic, and cinematic narratives about war created by women to reflect on the meaning of femininity and womanhood in times of armed conflict. Gender is a social construct and the gender binary seems to become profoundly entrenched during war. Some of the questions that will be explored are: how does violence perpetuated by instances of armed aggression overlap with the violence perpetuated by already existing power structures (such as patriarchy)? How does violence redefine our understanding of gender difference in general and the category of “woman” in specific?",,Dist:INT or LIT; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23185,7 +23185,7 @@ WGSS,WGSS 49.06 Women and War in Modern Literature and Film,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 50.01 FQZ Feminist Queer Zones,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-50-01,WGSS50.01,"FQZ Feminist Queer Zonesprovides in-depth study of the exceptional richness of feminist and queer traditions in global francophone cultures. From nineteenth-century revolutionaries to the mid-twentieth century’s first-wave feminists; from reproductive rights and women’s suffrage to the explosive intersectionality of race, capitalism, post/colonialism, and feminism; the books read in this class help us understand sexuality, gender, and identity as they evolve over time and across historical, political, and sociocultural formations. The texts open upPOROUS ZONES—open fields and fluid sites of change, exchange, and interchange—that allow for various other forms of alternative thinking.Along with full book-length texts by Louise Michel, Simone de Beauvoir, Monique Wittig, Anne Garréta, and Françoise Vergès,FQZseeks to bridge the gap not only between theory and action, but also between reading and writing, and between art and life. We will participate in a unique pleasure-taking act—the opportunity to read single, long, complex texts over an extended period of time, sometimes spanning many weeks. By valuing slowness, leisure, and depth over speed, anxiety, and breadth, will have the opportunity to dwell with thinkers and writers long enough to do begin doing honor and justice to their life and work. A progression of alternating short creative and critical assignments will provide the framework for a hybrid final project that will represent a culminating multimedia work of personal-creative criticism.All readings and discussions are conducted in English. No prior knowledge or pre-requisites necessary. Readings, written assignments, and x-hours are offered in French for students seeking credit for the major or minor in French.",,Dist:INT or TMV; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23609,7 +23609,7 @@ WGSS,WGSS 50.01 FQZ Feminist Queer Zones,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 51.09 Young Adult Literature,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-51-09,WGSS51.09,"This course explores the genre of young adult fiction in the 20th and 21st centuries. While the course will begin with a brief consideration of the conventions and early history of the genre, most of the course will examine post-1970s (most American) young adult novels. We'll trave the evolution of the genre in relation to ideas of racial innocence, sentimentality, consent, queer childhood, and revolutionary girlhood, and position the novels within historical contexts such as the rise of mass incarceration, settler colonialism, fantasies of post-racial politics, and environmental disaster. At the end of the course, we'll consider how young adult novels have created not just reading but creative communities and explore the kinds of fan productions that have emerged in relation to young adult novels. The course will include critical and creative assignments. Texts may includeThe Hunger Games; theHarry Potterseries;Are You There God, It's Me Margaret; The Outsiders; The Astonishing Life of Octavian Nothing; Vivian Apple at the End of the World; Fangirl; Artistotle and Dante Discover the Secrets of the Universe; Absolutely True Diary of a Part-Time Indian; The Fault in Our Stars; Ship Breaker; Long Division; Monster; Akata Witch; Make Your Home Among Strangers.",,Dist:LIT; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24031,7 +24031,7 @@ WGSS,WGSS 51.09 Young Adult Literature,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 52.04 Arts Against Empire: Fictions of Revolution and Solidarity in the Americas,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-52-04,WGSS52.04,"Anticolonial struggle and movements for social justice have always been accompanied by a range of cultural practices, including fiction, art, music, film, murals, theater, graffitti and theory. This course explores that tradition of cultural activism considering attempts to narrate revolutionary formation, imagine solidarity, and write decolonial history. We will begin by examining revolutionary nationalist and anti-imperialist culture in the Americas—ranging from the memoirs of Che Guevara and Malcolm X to Nuyorican and Chicano Movement literature—in order to consider the formation of revolutionary subjects, and how 20th century ideas of revolution were raced and gendered. We will then consider how novelists, artists, photographers, filmmakers, and activists attempted to imagine solidarity with revolutionary movements and suffering others in the Americas, from Central America solidarity photography to performance art in solidarity with Guantanamo Bay prisoners. We will pay special attention to the work of feminist and queer solidarity artists, writers, and performers. Finally, we will examine contemporary activist cultural projects, such as PanAmerican public art road trips and hashtag-activism. Students will have the opportunity to produce a creative or multimedia final project.",,Dist:INT or LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24453,7 +24453,7 @@ WGSS,WGSS 52.04 Arts Against Empire: Fictions of Revolution and Solidarity in th
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 52.05 Women, Representation, Power: Writing India, Then and Now",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-52-05,WGSS52.05,"How are global relationships shaped by what and who we read? We come to these relationships with preconceptions, often created primarily from our encounters with others that are mediated through language. In this course, we will examine how knowledge is constructed through language using India as a case study. This course is directly related to Dartmouth’s program in Hyderabad, India. Our focus will be on the representation of women and female agency in this case study of India as we explore how knowledge is created, by whom, and to what ends. Language is a powerful instrument. We will analyze how language has been and is currently used to portray India, as we will think critically about how our perceptions of India have been shaped by what we have read, heard, and seen. Some questions we will address are: How have images of India been constructed over time? To what ends? What impact has colonialism had on how India was portrayed to the west? How did/do Indian writers use language to reclaim their country? How is feminism defined in India? How can we understand female agency in the Indian context? What role have women in India played and how has this female agency been incorporated into or excluded from representations of India developed into the subcontinent as well as outside of it?",,Dist:SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24873,7 +24873,7 @@ WGSS,"WGSS 52.05 Women, Representation, Power: Writing India, Then and Now",http
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 53.05 The Poetry and Rhetoric of Love, from Petrarch to Social Media",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-53-05,WGSS53.05,"What we call ""love poetry"" has generally been a way of expressing much more than the emotional and erotic fascination of one person with another. Often it seems to bypass the love-object altogether, and focuses instead on power relations or poetic achievement. Beginning with early examples, and moving on to contemporary and modern poems, our course will place love poems by men and women in the context of an ongoing poetic tradition, recent feminist criticism and theory, and talk about love and sex in recent popular culture. This last will include: excerpts from recent books about dating and seduction, film, contemporary song lyrics, dating websites, and campus culture.",,Dist:LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25297,7 +25297,7 @@ WGSS,"WGSS 53.05 The Poetry and Rhetoric of Love, from Petrarch to Social Media"
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 53.07 Language, Gender & Sexuality",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-53-07,WGSS53.07,"This course will introduce students to foundational and current thinking about the connections among language, gender, and sexuality, from readings in linguistics, sociolinguistics, linguistic anthropology, and feminist theory. A cross-cultural approach will characterize the class, and units will link language, gender and sexuality to themes such as power, (in)equality, and identity. Students will also be encouraged to consider the significance of gender and sexuality in the context of quotidian language use.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25719,7 +25719,7 @@ WGSS,"WGSS 53.07 Language, Gender & Sexuality",https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 56.03 Family Matters: Pedro Almodovar, Gender Reversals, and New Communities",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-56-03,WGSS56.03,"Pedro Almodóvar Caballero, Spain's most internationally acclaimed filmmaker will be studied in this course as representative of what critics have termed the New Spanish Cinema Movement.  Almodóvar's filmmaking, both in aesthetic and cultural terms, addresses issues which will appeal to students interested in understanding how culture, politics, and aesthetics get entangled in ways that “queer” gender identity, family structures, notions of community and the societal expectations and limitations surrounding them. The course will also compare his work with other contemporary filmmakers that have reconfigured in their films the boundaries of “family.”",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26141,7 +26141,7 @@ WGSS,"WGSS 56.03 Family Matters: Pedro Almodovar, Gender Reversals, and New Comm
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 57.01 Data and Bodies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-57-01,WGSS57.01,"In this course we will take a multi-modal approach to understanding relationships between “datafication” and human bodies. Today’s “Datafication” is a process of transforming diverse processes, qualities, actions and phenomena into forms that are machine-readable by digital technologies, but the act of turning humans and human bodies into quanta of information has a long history. We will be using art, new media, history, information science, and more to think through the impact that datafication has on how we understand ourselves and others. Particular attention will be paid to the ways in which data has historically been used in racializing and gendering ways, and the role that quantification of people has been integral to the development of the Western nation-state.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26563,7 +26563,7 @@ WGSS,WGSS 57.01 Data and Bodies,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 59.04 Race, Gender, and Performance",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-59-04,WGSS59.04,"Students will explore the perspectives of contemporary Latina/o, Asian American, Black, and Native American theater artists/performers. Our examination will also consider the socio-historical and political contexts engaged through these artists' works. We will also consider the relationship between the construction of identity and strategies of performance used by playwrights/performers to describe race, gender, sexuality, class, subjectivity, and ideas of belonging. Texts examined will include works by Moraga, Highway, Wilson, Parks, Gotanda, and Cho.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26985,7 +26985,7 @@ WGSS,"WGSS 59.04 Race, Gender, and Performance",https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 61.06 Feminist Perspectives on Reproductive Ethics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-61-06,WGSS61.06,"This class focuses on ethical issues concerning human reproduction.  Some of these issues are familiar: Is abortion moral?  Is sex-selection ethical?  Other issues may be less familiar:  Does prenatal testing express a negative message about living with disability?  Is there anything wrong with aiming to have a deaf child? Yet other issues have arisen with the commercialization and globalization of reproduction: Is there anything wrong with selling one’s reproductive labor? Is it ethical to ‘outsource’ pregnancy to Indian surrogates? We will start by looking backward to ethical issues around the introduction of contraception; we will end by looking forward, to the promise of same-sex reproduction through in vitro-gametogenesis, and reproduction via artificial gestation.  While we will consider numerous perspectives on each issue, special consideration will be given to feminist viewpoints.",,Dist:TMV,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27407,7 +27407,7 @@ WGSS,WGSS 61.06 Feminist Perspectives on Reproductive Ethics,https://dartmouth.s
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 62.02 A Global History of Sexual Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-62-02,WGSS62.02,"This course provides an introduction to the global history of sexual science from the late 19th Century through the mid-20th Century.  The beginnings of scientific approaches to sex, gender and sexuality were very diverse and thus we will read—among others—historical medical, psychiatric, anthropological, journalistic, philosophical and literary texts.  Scientific notions of sexuality did not simply migrate from the “West” to the “rest,” but developed as a result of complex, mutually constitutive interactions and global networks.  The field of sexual science emerged not just in Europe and North America but in a variety of places, such as India, Chile, or China.  Its proponents in different parts of the world were intensely aware of each other and interacted through publications, conferences, or travel. Moreover, proponents of sexual science in Europe and North America adopted notions forged in exchange with actors in Asia, Latin America and Africa, e.g., the US practice of gender reassignment surgery was heavily influenced by earlier Mexican cases or the German legal understanding of homosexuality was tested and contested in its colonial African courts.  We will study many figures who have been forgotten in contemporary work on sexuality or sexual science.  Some of these figures drew from the repressive legal, social and cultural discourses that limited sexual expression and gave the ideological grounds to discrimination and persecution.  But others—and they were at times the very same figures—connected to the liberating discourses, the power of which we are experiencing today.",,Dist:INT or SOC; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27827,7 +27827,7 @@ WGSS,WGSS 62.02 A Global History of Sexual Science,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 62.04 Women and the Making of Science,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-62-04,WGSS62.04,"This seminar course will consider the role of women in the history of science from two perspectives: first, women as the often eroticized objects of scientific inquiry and second, women as scientists or natural philosophers whose work was frequently derided or obscured behind the names of fathers, husbands, brothers, and/or coworkers. We will read primary texts in the anatomical, astronomical, mathematical, and physical sciences, along with contemporary theory on gender, science, and Anglo-American cultures. Please note that the construction of the gender binary and notions of biological race are very much at the fore of this course but are not taken as a ‘natural,’ given, or stable quality. The history of science is HUGE, so we’ll take two areas as focal points for the course: bodies as sites of knowledge and mathematical sciences.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28247,7 +28247,7 @@ WGSS,WGSS 62.04 Women and the Making of Science,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 65.04 Queer Visual Culture,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-65-04,WGSS65.04,"This seminar will look into the cultural history of queer aesthetics. The subjects are mostly moving images (cinema, TV and video), activist performances and some aspects of visual art. The starting-point is the simultaneous 'invention', disease mongering (pathologization) and 'emancipation' of homosexuality in the European fin de siècle and how it is negotiated in educational and feature films. The syllabus moves then to figurations of queerness in popular (and queer) imagination, for instance the 'Drag Queen' or the 'Vampire' with special attention on the AIDS crisis and will finally focus on gender-ambivalence, transgender, and gender-bending performances such Butch-Femme aesthetic or Glam-Rock. A general tension will be observed between 'The Epistemology of the Closet' (Sedgewick), Mainstreaming Queerness and an effort on part of activists to use queer visual culture as a tool for political intervention.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -28667,7 +28667,7 @@ WGSS,WGSS 65.04 Queer Visual Culture,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 65.06 Radical Sexuality: Of Color, Wildness, and Fabulosity",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgst-65-06,WGSS65.06,"This course examines how issues of race and sexuality are elemental to radical formulations of queer theory. We will begin with a deep study of U.S. feminist and queer of color critiques to understand how social formations are embroiled in nationalist, colonial as well as free market ideals and practices. Our focus on the quotidian and staged experiences of those who identify or are identified as an outsider, misfit, or the Other is an invitation to intensively analyze and perform what it means to be at once queer and gendered, queer of color, and queer and wild. From accents and affects to styling and production, we will read a range of manifestos, performances, literature, and art that conform to and yet also deviate from what is normal or acceptable in mainstream, U.S-American society. The key words in the title, ""Of Color, Wildness and Fabulosity,"" are suggestive of alternative queer practices in the U.S. and around the world that engage, exceed or even explode dominant categories of race, gender and sexuality. It explores, in other words, queer theory and praxis using diasporic perception or minority perspectives.",,Dist:INT or ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29087,7 +29087,7 @@ WGSS,"WGSS 65.06 Radical Sexuality: Of Color, Wildness, and Fabulosity",https://
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 65.07 Queer Popular Culture,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgst-65-07,WGSS65.07,"This course explores queer popular culture in the performing and media arts, from expressive visual and sonic cultures that include film, performance, music and television to museum and fashion shows, and street carnivals. We will look at conceptions of queerness that play with hyperbolic genders, sexualities and racializations, and interrogate their value, significance and meaning as cultural and/or political expressions. Is queer popular culture a way to sell LGBT life styles as metrosexual taste, or is it a way to challenge the heteronormative mandates set by the market, the state, and their regulatory institutions?",,Dist:INT or SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29507,7 +29507,7 @@ WGSS,WGSS 65.07 Queer Popular Culture,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 66 Special Topics in Women's, Gender, and Sexuality Studies",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66,WGSS66,This rubric catches courses that do not fit under other existing rubrics or have an experiential component. It should not appear in the ORC,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -29923,7 +29923,7 @@ WGSS,"WGSS 66 Special Topics in Women's, Gender, and Sexuality Studies",https://
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.01 Times of Crisis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-01,WGSS66.01,"In this course, we will engage in an interdisciplinary study of the topic of ""crisis"" in its many manifestations: from the erosion of justice, social inequities, and their effects on individuals, families, and communities to the exhilarating moment of transformation all moments of crisis offer.  We will debate and ground systemic analysis and change in the insights offered by critical social and gender-based theory, activism, and the arts.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30345,7 +30345,7 @@ WGSS,WGSS 66.01 Times of Crisis,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.02 Social Justice and Computing,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-02,WGSS66.02,"This course draws on feminist and queer scholarship to examine the intricate relationship between datafication, ubiquitous computing, and social justice, highlighting the politics and impacts of data-driven processes and big data on human lives. One of the key highlights of WGSS engagements with computing history is the focus on the politics and impacts of data-driven processes and big data on human lives. The course will provide a brief introduction to histories of computing and data-driven practices within the Anglo-American tradition, including discussions of the roles that ethics and biopolitics play within these histories. We will explore ways that privacy/security, algorithmic processes, computational environmental impacts, and design have exploited the most vulnerable while increasing affordances for the most privileged. We will also spend significant time learning about new data/computational justice initiatives and develop a robust understanding of how social justice issues like prison abolition, climate change, and equitable health outcomes are at the core of understanding computational cultures. No Computer Science or Data Science background is required, but the course will entail learning about some of the technical history within both fields. Similarly, there are no WGSS prerequisites for the cours but students will be responsibly for learning about anti-racist feminist and queer methods and insights.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -30767,7 +30767,7 @@ WGSS,WGSS 66.02 Social Justice and Computing,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 66.03 Transnational Migration: Critical Ethnic, Indigenous and Queer Crossings",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-03,WGSS66.03,"This course introduces undergraduate students in programs across the college to research practices, theories and methodologies commonly used in cultural analysis, with the intent of increasing their knowledge of the interdisciplinary fields of critical ethnic and gender studies around the theme of migration. Students will read a range of texts, performances, films and learn the different approaches that migration has come to shape transnational sensibility. The course is designed to individual research/analysis projects to emerge around various constellations of issues, such as where questions of ‘queer’ and ‘migrations’ intersect, or figures of diaspora, the undocumented and the transmigrant meet. This mode of investigation will enable students to develop research interests in cultural processes, discourses and forms across a range of historical periods, on diverse topics (neoliberalism, disability, humanitarian violence, security/securitization, war, terror, prison, border, law, etc.), and in conversation with interdisciplinary themes that are organized by the week. Students will be introduced to the key debates in the field as they interrogate social and political apparatuses of power (sexism, racism, classism, xenophobia, homophobia/heterosexism, transphobia, ableism, and others), and how those apparatuses determine which migrant bodies are recognized and valued both in the United States and the rest of the world.",,Dist:INT or ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31187,7 +31187,7 @@ WGSS,"WGSS 66.03 Transnational Migration: Critical Ethnic, Indigenous and Queer 
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.04 Introduction to Black Feminist Thought,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-04,WGSS66.04,"What is Black Feminist Thought? Why Black Feminist Thought? And just whom is Black Feminist Thought for? This course considers the disciplinary formations and political happenings of Black Feminist Thought in the United States—from its role in the university department to its presence on the ground. Highlighting interlocking issues related to gender, sexuality, race, and economics, we will mine political speeches, visual art, live performance, literature, and theoretical discourse.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -31609,7 +31609,7 @@ WGSS,WGSS 66.04 Introduction to Black Feminist Thought,https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.06 Bodies and Technologies in Asian American Popular Cultures,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-06,WGSS66.06,"From film, TV, and social media to the fringe punk scenes in between, this course explores the popular cultures of contemporary “Asian America.” By centering the bodies/embodied practices and technologies that produce Asian American popular cultures, we will ask historical questions about representation, power, and access, all with close attention to moving categories of race, gender, sexuality, class, and trans/nationalism. Ultimately, popular cultures—the critical, the joyful, and the terrible—will be our guide.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32029,7 +32029,7 @@ WGSS,WGSS 66.06 Bodies and Technologies in Asian American Popular Cultures,https
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.07 African Diaspora Women Writers,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-07,WGSS66.07,"This course will be organized around four themes prevalent in contemporary portrayals of Black women across the African diaspora. The themes,Body, Voice, Memory, andMovementprovide a center from which discussions of agency, representation and counter-narrative can be situated within a larger discourse of canon formation. We will explore various parts of the United States and the Caribbean through analyses of literature and visual culture, paying particular attention to shifting dialogues of culture and identity. Among the central questions posed will be: What constitutes a feminist ideology in black women’s literature? How are images of subjection and victimization re-appropriated by Black women writers and image-makers and utilized for their own empowerment? What are the penalties inherent when a Black woman “comes to voice” in the arena of self-representation?",,Dist:LIT; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32451,7 +32451,7 @@ WGSS,WGSS 66.07 African Diaspora Women Writers,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 66.08 Self, Subject, Photography",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-08,WGSS66.08,"Before the oft-reproduced social-media mechanism of the selfie, there existed (and still does) the artistic self-portrait. Utilized in the creative realm to create a representation of the artist as both subject and object, self-portraits can be whimsical, grim, tantalizing, performative, or combative. In this course we will examine gendered constructions of self- portraiture as they exist in poetry, memoir, and photography. Specifically, our task will be to examine the registers of possibility present when women use their bodies and stories to claim authorial space. Our goal during the term will be to think through all of the mechanisms of the self that are deployed in the context of artistic practice. Students will produce their own photographic self- portraits and write an analytical paper on a contemporary writer or visual artist.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -32873,7 +32873,7 @@ WGSS,"WGSS 66.08 Self, Subject, Photography",https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.09 Black Consciousness and Black Feminisms,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-09,WGSS66.09,"This seminar seeks to decenter mainstream (what bell hooks calls “imperialist, white supremacist, capitalist, [heteronormative], patriarchal”) thinking to understand the world differently.  Reading primary and scholarly texts from the US, Caribbean, and Africa about the Black Consciousness Movement and black feminisms, we will trace the evolution of thinking about race, gender, sexuality and their interrelationships through time and across space. Assignments include weekly reading response papers and an independent research project.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33295,7 +33295,7 @@ WGSS,WGSS 66.09 Black Consciousness and Black Feminisms,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.11 Black Elegies,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-11,WGSS66.11,"This course is structured around iterations of black grief within, but mostly beyond the genre of poetry. What curator Okwui Enwezor calls the contemporary “emergency of black grief” is over four centuries old. We will explore modes of release from black cultural producers who attend to the multiple losses sustained by black subjects. The resulting productions span the range of representation from dance, painting, photography, music, film, and craftwork. The course will be organized around three parts, each focusing on the sensorial:Sight, Sound, andTouch. Together we will consider what it means to mourn in an antiblack world resistant to acknowledging the violences endured by black subjects in the United States and beyond its borders.",,Dist:LIT; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -33717,7 +33717,7 @@ WGSS,WGSS 66.11 Black Elegies,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.13 Gender and Jewish-German Culture (in English),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-13,WGSS66.13,"In this class we will investigate different texts and representations of female experiences by Jewish authors from the Weimar Republic to the end of the 20th century.  The intersection of gender with Jewish German culture became one of the most important topics in cultural and literary research during the last decades. We will read and discuss lyrical and political, essayistic and autobiographical texts written by authors under extremely different political and historical circumstances; and we also will discuss theoretical and methodological problems in the field of Jewish German history and culture. Taught in English translation. Students taking the class for major or minor credit in German Studies will have the option to enroll in an additional German-language discussion section.",,Dist:LIT; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34139,7 +34139,7 @@ WGSS,WGSS 66.13 Gender and Jewish-German Culture (in English),https://dartmouth.
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.15 Feminist and Queer Africa on Stage & Screen,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-15,WGSS66.15,"This course explores representations of feminist and queer Africa in theatre, dance, and film. How do female-identified, nonbinary, and/or queer African artists use creative expression to navigate and challenge neocolonial, heteropatriarchal regimes and advance ideas of LGBTQIA  rights and gender equality? Although several countries will be considered during the term, Kenya and Uganda receive a particular emphasis. All students are welcome; no prior knowledge of Africa and/or theories of gender and sexuality are needed.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34560,7 +34560,7 @@ WGSS,WGSS 66.15 Feminist and Queer Africa on Stage & Screen,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 66.19 Eroticism, Love and Sensuality in Hispanic Film",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-19,WGSS66.19,"The contemporary topics to be studied in this course should be approached with an open mind and with the willingness to challenge our prior knowledge of the concepts.  In order to do so, critical thinking is of the utmost importance.  In this context, critical thinking implies the ability to question and destabilize most—if not all—of our preconceived ideas about eroticism, love, and sexualityu that are no longer functional, i.e., that do not help us better understand society and our fellow citizens.  As we explore a variety of subfields within contemporary Hispanic film, the course will offer you a set of conceptual tools that will help you deconstruct some of the symbolic foundations of our existence.  The course will address a series of topics ranging from: identifying ways that ""personal choice"" sometimes poses as a way of implementing one, single, heteronormative, monogamous, sex/gender morally safe model of behavior; thinking about the historicity of the normative, the deviant, or the perverse; discovering that the intersectional framing of gender creates an avenue for strong political and existential alliances; and making sure that the identities that fall under the umbrella of the Queer Nation (LGTBiQ peoples) do not become a label of marginality but instead get universalized as a mode of praxis that expands those borders, hence our study of love in relation to monstruosity, ageing, queer identities, prostitution, and pornography under this paradigm.",,Dist:ART; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -34982,7 +34982,7 @@ WGSS,"WGSS 66.19 Eroticism, Love and Sensuality in Hispanic Film",https://dartmo
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.20 Early Modern Literature and the History of Sexuality,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-20,WGSS66.20,"Throughout the twentieth century and especially since the 1970s, the literature and drama of the English Renaissance has provided a crucial archive for scholars studying the historical formation of sexuality, sex practices, and gender in pre-modern society. Shakespeare's sonnets, for example, with their erotic address to both a ""sweet boy"" (or ""master-mistress of my passion"") and the so-called Dark Lady, remain a flashpoint. On the English stage, cross-gender identification and same-gender romance was a constant presence, while in the streets of London, ""catamites,"" ""tribades,"" or acts of ""sodomy"" were supposed to be completely absent—from the eyes of the law, at least. What can the poetry and plays of William Shakespeare, Amelia Lanyer, Christopher Marlowe, Margaret Cavendish, John Donne, or Katherine Phillips teach us, not only about the historically-distant practices of the past, but about our methods, theories, terms and changing paradigms for studying such topics today? What does it mean to read imaginative literature as an archive within an historically contingent body of knowledge? Students should prepare to engage with significant primary and secondary historical readings as well as the social theories of Michel Foucault, Eve Sedgwick, and others.",,Dist:LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35404,7 +35404,7 @@ WGSS,WGSS 66.20 Early Modern Literature and the History of Sexuality,https://dar
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.21 Sex and Gender in Modern Europe,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-21,WGSS66.21,"Sex and gender have been central to the making of modern Europe. Over the last 250 years, Europeans constantly debated fundamental questions such as the “appropriate” roles of men and women; the definition of “healthy” and “deviant” sexualities; and the relationship between biology and social norms. By exploring a wide variety of historical sources, including essays, etiquette books, speeches, and memoirs, we will examine how these discussions profoundly shaped European thinking about politics, economics, imperialism, immigration, and everyday life. Open to all classes. Not open to students who have received credit forHIST 9.07.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -35826,7 +35826,7 @@ WGSS,WGSS 66.21 Sex and Gender in Modern Europe,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 66.22 Feminist and Queer Video Art: ""I’m asking – does it exist? What is it? Whom is it for?""",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-22,WGSS66.22,"John Perreault, the first openly gay art critic at the Village Voice, published the phrase “I’m asking – does it exist? What is it? Whom is it for?” as the subtitle of an article on ""Gay Art"" for Artforum in 1980. Expanding upon Perreault’s nuanced consideration of how art works accumulate identities and address particular audiences, this undergraduate course will explore feminist and queer moving image-making practices in the United States between the 1950s-1990s. While eschewing a strictly chronological approach, we will consider art practices in relation to specific historical thresholds, from the intensification of nonviolent direct action in the 1950s and 1960s, to the Stonewall rebellions of 1969, to the emergence of AIDS activism in the late 1980s and 1990s. We will consider the term video expansively, inclusive of TV art, installation, and video’s dialogue with film, holography, and print publications. This course leaves open what feminist and queer art practices look like and perform, and what methodologies might be most useful in writing about them. However, the course aims to challenge the ways in which art historical narratives, including alternative ones, have eclipsed the role of artists of color. Students will be required to reflect upon video footage and on readings in a series of short papers and assignments. Shorter videos will be screened in class, but some weeks require an extra screening during the X-hour session.",,Dist: ART; WCult: CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36248,7 +36248,7 @@ WGSS,"WGSS 66.22 Feminist and Queer Video Art: ""I’m asking – does it exist?
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.23 A Legacy of Tenderness:&quot; Black Women's Creative Archive,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-23,WGSS66.23,"This class studies the aesthetic/creative workings of 20th and 21st centuries Black women, who identify as/with feminism and womanism. We will prioritize the beauty of the often-understudied intersections of disability/crip, and trans and nonbinary, and intersex lived experiences and political praxis. Through visual art, poetry and prose, film, and music we will converse over Black ways of knowing and being beyond the normative. By the end of the quarter, we will be better able to articulate the general terrain of Black feminist and womanist creative works, with the hope of expanding (and deconstructing) the archive of Black Women's Studies.",,Dist: ART; WCult: W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -36670,7 +36670,7 @@ WGSS,WGSS 66.23 A Legacy of Tenderness:&quot; Black Women's Creative Archive,htt
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.24 Modern Jewish American Women Writers,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-24,WGSS66.24,"This course will explore the literature of Jewish American women from the late nineteenth century to the present; topics for discussion will include feminism, sexuality, identity politics, activisim, and literary transmission. Among the readings will be poetry, fiction, memoir, and essays by such writers as Lazarus, Antin, Yezierska, Stock, Stein, Olsen, Rukeyser, Paley, Ozick, Rich, Piercy, Levertov, Gluck, Goldstein, Wasserstein, Goodman, Klepfisz, Feinberg, Chernin.Enrollment limited to 20.",,Dist:LIT; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37092,7 +37092,7 @@ WGSS,WGSS 66.24 Modern Jewish American Women Writers,https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.25 Disability Arts and Activism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-25,WGSS66.25,"""Disability Arts and Activism"" examines radical disability resistance through the lens of culture and performance to ask the central question: how does disability art make cultural change? Students will learn a history of disability activism as well as the impacts of disability policy and politics across the stage and streets. Using the frame of Disability Justice, students will develop analytic skills to unpack normative conceptions around bodies, visibility, and representation across multiple forms of difference such as size, race, nation, class, gender, and sexuality. We will explore the performance involved in protest, alongside the protest present in disability cultural forms, such as\\u202Fdance, sports, theater, music, and visual art. The course culminates in a research project that crafts an intervention into a local art space to build radical accessibility.",,Dist:ART,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37514,7 +37514,7 @@ WGSS,WGSS 66.25 Disability Arts and Activism,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 66.26 Migration, Gender and Health in Latinx Communities",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-26,WGSS66.26,"This course uses an interdisciplinary approach to explore how Latinx people experience health inequities due to varying social inequalities across the life course. The course begins with a focus on the role Ethnic Studies and Latinx Studies can play towards improving the health conditions of Latinxs. Each subsequent section explores the social, economic, political and historical influences that place Latinx health in jeopardy. Sections of the course focus on Latinx migration and trauma, reproductive justice, workplace health hazards, nutrition and incarceration. The latter part of the course shifts to what can be done as a collective to improve the health and well-being of Latinx communities in the U.S.",,Dist:SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -37936,7 +37936,7 @@ WGSS,"WGSS 66.26 Migration, Gender and Health in Latinx Communities",https://dar
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.27 Disability and Madness in African American Literature and Film,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-27,WGSS66.27,"Disability and madness are often overlooked analytic and lived experience in African American Studies and African American criticism, though recent work in Black disability studies is shifting this. The goal of this course is to pull disability and madness to the center of course readings to understand the complexities of Black life, such as: grief, sexuality and gender identity, geography, and the impact of incarceration and institutionalization. Students will be asked to approach canonical texts (Passing,Beloved,The Color Purple) and less familar texts (A Visitation of Spirits) for messier re-readings, unraveling(s) and ravings that complicate Black life. Likewise, we will watch film adapations that also represent disability and madness on screen (Passing,Beloved,Native Son). Because disability and madness are recurrently represented visually, as is race, this course will trace representation from the page to the screen as part of a deeper understanding of how disability and race become co-constituted in American culture. Lastly, we will ask, again and again: what does disability and madness look like in literature? What images, language, etc., are used to represent disability and madness as it intersects with Blackness? And finally, what things are made possible through a disabled and mad lens? How are freedom, injury (and healing), and salvation better imagined through disability and madness?",,Dist:LIT; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38358,7 +38358,7 @@ WGSS,WGSS 66.27 Disability and Madness in African American Literature and Film,h
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 66.28 War, Nationalism, and Sexual Violence in Southeast Europe",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-28,WGSS66.28,"This course is designed to develop students’ critical thinking skills on the topics of war, nationalism, sexual violence, oppression, ethnicity, gender, class, and religion. Using intersectionality and interdisciplinarity as methodologies, the course aims to deconstruct ideological, cultural, and political entanglements in the context of Southeast Europe. The course intends to employ gender as a category of analysis to dismantle gender relations, positions of power, war tactics, national identity, socialism, politization of identity, and social mobilization. The course is a discussion-based class, during which students will have the opportunity to trace concepts through close and in-depth readings of key academic, institutional, and organizational texts.",,Dist:INT,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -38778,7 +38778,7 @@ WGSS,"WGSS 66.28 War, Nationalism, and Sexual Violence in Southeast Europe",http
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.29 Black Looks: A Survey of Race and Representation in Cinema and Visual Media,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-29,WGSS66.29,"This course surveys the evolution of race and representation in visual media.  Special attention will be given to black subjects and the socio-economic, historical and political factors that feed into depictions of black life, dominant tropes within these historic depictions, and the aesthetics of emergent voices that help to shape a new black subjectivity on screen. Students are encouraged to draw connections between discourse about black subjectivity with that of identities through doing “close readings” of screen representations and images.  In their final projects, students write about and create work relating to black subjects or the broader theme of race and representation in visual media.",,Dist:ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -39200,7 +39200,7 @@ WGSS,WGSS 66.29 Black Looks: A Survey of Race and Representation in Cinema and V
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 66.30 Trans Feelings, Feeling Trans",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-30,WGSS66.30,"In her germinal essay in trans studies, Susan Stryker writes that “transgender rage is a queer fury, an emotional response to conditions in which it becomes imperative to take up, for the sake of one’s own continued survival as a subject, a set of practices that precipitates one’s exclusion from a naturalized order of existence that to maintain itself as the only possible basis for being a subject.” In this class, we will explore the affective elements of trans experience and theory—including but not limited to rage, joy, loss, and love—through a survey of trans scholarship and trans stories from an intersectional, transnational, and multidisciplinary lens. Students will learn to apply thismode of critical affective analysis to media produced by trans people, and to anti-trans actors who use affective rhetoric to promote violence and oppression through appeals to emotions.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -39620,7 +39620,7 @@ WGSS,"WGSS 66.30 Trans Feelings, Feeling Trans",https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.31 Black Speculative Worlds,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-31,WGSS66.31,"This course will explore futuristic speculative worlds as they are imagined by major Black women writers in the field of science fiction and fantasy, specifically focusing on works by Octavia Butler, Nalo Hopkinson, and N.K. Jemisin. We will explore utopias/dystopias and post-apocalyptic alien worlds in order to interrogate the ways in which they reflect and comment on our own human condition. Understanding each literary text as a thought experiment in its own right, we will unpack various themes associated with the reconfiguring of the constructs of race, class, gender and sexuality as well as Black women’s reproductive rights and politics. We will closely analyze alien invasion contagion narratives that comment on the histories of slavery, settler colonialism, and imperialism, and that speak to the operations of white supremacy. Lastly, we will examine how a revisionist mode of writing functions as an essential part of Black feminist speculative thought.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40038,7 +40038,7 @@ WGSS,WGSS 66.31 Black Speculative Worlds,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.32 Framing Ecology and Gender,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-32,WGSS66.32,"At a time when women from Argentina to Mexico are at the forefront of a transnational fight for environmental justice, this course focuses on Latin America to explore how images of these struggles and others circulate and inform our perception of ecological crisis. As we study a range of media, we will attend to the ways in which visual objects illuminate the imbrications of gender and environment in order to investigate problems such as extractivism and neocolonialism. Concentrating on film, photography, television, visual art, and graphic novels, we will consider the potential of images to challenge, resist, or perpetuate environmental devastation and the concomitant marginalization of women and LGBTQIA  persons. Whether by exposing the toxicity of agribusiness in the Amazon or foregrounding enduring connections between heteronormativity and colonialism, the media and critical texts we will examine ask us to notice the inseparability of social and environmental violence. As we pay special attention to ecofeminism and the activism of Indigenous women across Latin America, we will search for new perspectives that allow us to imagine alternatives to capitalist environmental exploitation. This course is taught in English.",,Dist:ART; WCult:NW,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40460,7 +40460,7 @@ WGSS,WGSS 66.32 Framing Ecology and Gender,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.33 Gender and Policy Leadership,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-33,WGSS66.33,"This course uses case studies to provide a window into the decision-making processes leaders face when balancing their policy goals against the constraints imposed by the processes and institutions which frequently determine policy outcomes. Policy areas discussed include sexual harassment, healthcare access, and international sex work. By the end of the term, students will have drafted their own case study related to gender and policy leadership on a policy issue or policymaker of their choosing.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -40882,7 +40882,7 @@ WGSS,WGSS 66.33 Gender and Policy Leadership,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.34 Dangerous Intersections: Intersectionality Beyond Boundaries,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-34,WGSS66.34,"Intersectionality has become a prominent framework for understanding how social categories shape lived experiences. As an interpretative tool utilized across the social sciences and humanities, intersectionality interrogates how power is distributed along and across axes of inequality and privilege. Course readings, discussions, assignments, and assessments will focus on a wide range of social locations connected to race, ethnicity, gender, class, sexuality, religion, language, and disability, while also accounting for the multiplicity, nuance, ambiguity, and contradictions in how these social identity markers intersect. Engaging both theoretical and empirical works, this course will examine how simultaneous and interdependent dynamics between axes of inequality impact identity formation and life chances, relationships of marginality and privilege, social continuity,  social conflict, and social change. Additionally, this course will critically explore the challenges and advantages of intersectional analysis and the future of intersectionality’s theoretical, methodological, and epistemological capacities.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -41304,7 +41304,7 @@ WGSS,WGSS 66.34 Dangerous Intersections: Intersectionality Beyond Boundaries,htt
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 66.35 Living a Feminist Life: Archive, Text, Action",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-35,WGSS66.35,"This class will examine how “knowledge” about women’s, femmes’ and non-binary people’s lives have been constructed in text, and how this knowledge determines and impacts the choices we have and make about loving, working, thinking, and living. Over the first six weeks we’ll do a deep reading of Sara Ahmed’s book,Living a Feminist Life, putting her ideas in conversation with thinkers like Jamaica Kincaid, Audre Lorde, Gayatri Spivak, Valerie Solanas, Angela Davis, Jose Muñoz, and bell hooks. In the second half of the course, we’ll work togetherthrough discussion and student suggestions to construct a corpus ofwomen’s and femmes’ life “writing”—TV, poetry, music, journalism, memes, theory, and memoir—to discover how image and the written word continue to shape feminist lives, and how femmes’ and non-binary people’s lived experience in turn shapes feminist, pro-femme, and queer discourse. Through weekly short writing exercises, students will consider how their own intimate relationships—with parents, partners, children, neighbors, or friends—can become sites of intersectional feminist activism, and sources of strength and knowledge to be carried into the broader world of public engagement and intervention. In the final weeks of the course, we will think seriously about the relationship between learning and living, and collectively interrogate the boundary between writing and living as modes of feminist praxis.",,Dist:LIT; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -41726,7 +41726,7 @@ WGSS,"WGSS 66.35 Living a Feminist Life: Archive, Text, Action",https://dartmout
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.36 Histories of the Carceral State,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-36,WGSS66.36,"This course examines the construction of and resistance to the carceral state across United States history. How race and the law have shaped each other over time is the central question of the course, one we will parse alongside a focus on gender, sexuality, immigration, disability, and political economy. We will approach criminalization as a political, economic, and cultural process that reflects and reproduces dominant ideologies for those behind bars and those on the outside.",,Dist:SOC; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -42148,7 +42148,7 @@ WGSS,WGSS 66.36 Histories of the Carceral State,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 66.37 Gender and Sexuality in the Ancient Greek World,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-37,WGSS66.37,"How did the ancient Greeks think about sex, gender, and sexuality? Which behaviors and relationships were considered socially acceptable, and why? And what does it mean to seek out ancient Greek models for contemporary (queer) identities? This course examines the construction of gender and sexuality in ancient Greece, as well as its modern reception, through the study of written texts, material culture, and feminist and queer theory.",,Dist:LIT; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -42570,7 +42570,7 @@ WGSS,WGSS 66.37 Gender and Sexuality in the Ancient Greek World,https://dartmout
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 66.38 Leadership, Sex, and Gender in Politics and Business",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-66-38,WGSS66.38,"Why are there still so few women running companies, countries, and the governments?   Nearly everywhere in the world, gender equity continues to be an aspiration, rather than a reality, with no end in sight as to when a reasonable degree of parity will ever actually be achieved.  Despite widespread awareness of principles around the equality of women in the modern era, it continues to the be the exception rather than the rule for women to become corporate board members, C-suite members, partners in law firms, college presidents, tenured professors, political leaders, or leaders in nearly any kind of organization where pay and/or power are considerable.  Moreover, parity continues to be even more elusive for women of color and others who face “double difference” than for white women, and non-binary individuals face yet another set of hurdles with respect to equity.  Why is this the case?  How does it matter?  What would need to be done to change it?  And what are the roles of individuals versus institutions in instituting change?  We will be examining the latest scholarly research and real-world examples to grapple with these important questions through active discussion and through writing assignments, with a podcast project focused on educating the class on student-selected topics as a highlight of the quarter.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -42993,7 +42993,7 @@ WGSS,"WGSS 66.38 Leadership, Sex, and Gender in Politics and Business",https://d
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 67.01 Freud: Psychoanalysis, Jews, and Gender (in English)",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-67-01,WGSS67.01,"This course will examine how Freud’s own writings, his biography, and his biographers have \fshaped the perceptions of psychoanalysis as a specifically Jewish theory and practice.  Through \fa reading of Freud’s texts on gender, sexuality, and religion, we will trace the connects between psychoanalysis, Jewishness, and gender that have impacted theoretical discussion.  We will explore critique, including Horney, Reich, and Marcuse, and recent debate on the status of Freud in the U.S.",,Dist:SOC; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -43415,7 +43415,7 @@ WGSS,"WGSS 67.01 Freud: Psychoanalysis, Jews, and Gender (in English)",https://d
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 67.02 Modern Sex: Weimar Republic Germany 1918-1933 (in English),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-67-02,WGSS67.02,"This course explores conceptions of gender and sexuality in Weimar Republic Germany – up until today considered the “laboratory of modernity.” After a general introduction into Weimar Republic history and culture through the eyes of the American graphic novel Berlin: City of Stones, we will examine a variety of historical practices, theoretical reflections and artistic representations. We will read pioneering theoretical texts from the fields of psychoanalysis and sexology (e.g., by Magnus Hirschfeld and Wilhelm Reich) as well as literary texts (e.g., by the poet Else Lasker-Schuler). We will also analyze feature films (e.g., the silent film “Different from the Others”) and artwork (e.g., by George Grosz and Hannah Hoch) and discuss the status of the women’s and gay rights movements, and legislation concerning gender and sexuality. The class will focus on the close connections between political and cultural movements and also relate our readings to discussions of modernity and urbanity in general. Throughout this course we will investigate different perceptions and representations of sexuality, homosexuality, transvestitism, sexual reproduction, prostitution, marriage and love. These theoretical discussions and artistic representations still continue to impact our discussions today, e.g., in political controversies about abortion or gay marriage. All readings and discussions are in English.",,Dist:LIT; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -43837,7 +43837,7 @@ WGSS,WGSS 67.02 Modern Sex: Weimar Republic Germany 1918-1933 (in English),https
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 67.04 Humanities and Human Rights: Thoughts on Community,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-67-04,WGSS67.04,"This course will focus on the deep connections between democracy and the role of the arts in the public sphere.  We will focus on the work of artists who deem that the role of their creations is to generate dialogue around issues of social justice. We will study the work of writers,  filmmakers, documentarians, photographers, and poets, individuals, who make ""energy"" (intellectual energy) usable in different places and contexts.  This course will cross disciplinary boundaries and follow the ""comparative method"" scrupulously.  We will be reading literature with care and learning how to read literarily—with intensive textual scrutiny, defiance, and metatheoretical awareness—a wide array of theoretical, visual and filmic texts.",,Dist:INT or ART; WCult:CI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -44259,7 +44259,7 @@ WGSS,WGSS 67.04 Humanities and Human Rights: Thoughts on Community,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,"WGSS 80 Seminar in Women's, Gender, and Sexuality Studies",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgst-80,WGSS80,"The seminar in Women's, Gender, and Sexuality Studies is designed as a culminating experience for Women's, Gender, and Sexuality Studies students and preparation for future work such as independent research, honors thesis, graduate studies and advanced scholarship.",,SOC,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -44679,7 +44679,7 @@ WGSS,"WGSS 80 Seminar in Women's, Gender, and Sexuality Studies",https://dartmou
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 85 Independent Study,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgst-85,WGSS85,"This will involve an independent project carried out under the direction of one or more of the Women's, Gender, and Sexuality Studies faculty. Permission of the instructor and the WGSS Chair and Steering Committee is required.",Permission of the instructor and approval of the WGSS Chair and Steering Committee.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -45097,7 +45097,7 @@ WGSS,WGSS 85 Independent Study,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 WGSS,WGSS 98 Honors Thesis I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-98,WGSS98,This two-course sequence involves an extensive investigation of a topic in a student's area of concentration and submission of an undergraduate thesis. Only students accepted into the Honors Program may take this sequence. Permission of the instructor and the Steering Committee is required.Students are awarded one course credit for successful completion of this course upon completion of WGSS-099. Students register for WGSS-098 in the first term of the project and receive a grade of “ON” (ongoing) at the end of the term. Students then register for WGSS-099 the subsequent term to complete the coursework. A final grade will replace the “ON” upon completion of WGSS-099.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -45520,7 +45520,7 @@ WGSS,WGSS 98 Honors Thesis I,https://dartmouth.smartcatalogiq.com/en/current/orc
 </form>
 
 </body>
-</html>"
+</html>",[]
 WGSS,WGSS 99 Honors Thesis II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/womens-gender-and-sexualities-studies-program/wgss-womens-gender-and-sexualities-studies/wgss-99,WGSS99,"This two-course sequence involves an extensive investigation of a topic in a student's area of concentration and submission of an undergraduate thesis. Only students accepted into the Honors Program may take this sequence. Permission of the instructor and the Steering Committee is required.Students are awarded one course credit for successful completion of this course. Students who have registered for WGSS-098 register for WGSS-099 to complete the coursework. At the discretion of the instructor, a student may opt to do additional work over three terms. In this arrangement, students register for WGSS-099 and receive a grade of “ON” (ongoing) at the end of the second term. Students do not register for a third term. A final grade will replace the “ON” for WGSS-098 and WGSS-099 at the end of the subsequent term at which time the coursework must be completed.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -45938,4 +45938,4 @@ WGSS,WGSS 99 Honors Thesis II,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",[]

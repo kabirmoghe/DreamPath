@@ -1,5 +1,11 @@
 from lark import Lark, Transformer
+import re
+import pandas as pd
+from langchain.prompts import PromptTemplate
+from langchain_openai import ChatOpenAI
+from prompts import PREREQ_GRAMMAR_PROMPT
 
+# Grammar and transformer for parsing prereqs
 prereq_grammar = """
      ?start: expr
 
@@ -49,33 +55,7 @@ def parse_prereq_grammar(prereq_text_standardized):
 
     return friendly_prereq_tree
 
-# def extract_best_course_path(prereq_tree):
-#     def is_valid_course(course):
-#         return course != "IP"
-
-#     if isinstance(prereq_tree, str):
-#         return [prereq_tree] if is_valid_course(prereq_tree) else []
-
-#     op, args = prereq_tree
-
-#     if op == "AND":
-#         path = []
-#         for arg in args:
-#             path += extract_best_course_path(arg)
-#         return path
-
-#     elif op == "OR":
-#         # Return the first valid path (prefer non-IP)
-#         for arg in args:
-#             result = extract_best_course_path(arg)
-#             if result and all(c != "IP" for c in result):
-#                 return result
-#         # If all options include IP, fallback to first
-#         return extract_best_course_path(args[0])
-
-#     return []  # fallback
-
-def extract_best_course_path(tree, dept_prefix):
+def extract_best_prereq_path(prereq_tree, dept_prefix):
     def is_real_course(course):
         return course not in ("IP", "AP", "LP")
 
@@ -118,43 +98,60 @@ def extract_best_course_path(tree, dept_prefix):
 
         return []
 
-    return helper(tree)
+    return helper(prereq_tree)
 
+# Preprocess the prerequisites text for LLM to pick up on separators
+def preprocess_prereq_text(prereq_text):
+    return re.sub(r'\.(?=[A-Za-z])', '; ', prereq_text)
 
+# LLM-based extraction of prerequisites
+def get_course_formatted_prereqs(enhanced_course):
+    # Extract relevant course fields
+    prerequisites_text_raw = enhanced_course['prerequisites']
+    dept_code = enhanced_course['dept']
 
-# def extract_best_course_path(prereq_tree):
-#     def is_real_course(course):
-#         return course != "IP" and course not in ("AP", "local_placement")
+    if not prerequisites_text_raw or pd.isna(prerequisites_text_raw):
+        return ''
+    
+    prerequisites_text = preprocess_prereq_text(prerequisites_text_raw)
+    
+    # Produce grammar expression for prerequisites
+    llm = ChatOpenAI(temperature=0, model="gpt-4o")
+    prompt = PromptTemplate(
+        input_variables=["prerequisite_text", "dept_code"],
+        template=PREREQ_GRAMMAR_PROMPT
+    )
 
-#     def is_alt_credit(course):
-#         return course in ("AP", "LP", "local_placement")
+    chain = prompt | llm
+    formatted_prereqs_response = chain.invoke({
+        "prerequisite_text": prerequisites_text,
+        "dept_code": dept_code
+    })
 
-#     if isinstance(prereq_tree, str):
-#         if is_real_course(prereq_tree) or is_alt_credit(prereq_tree):
-#             return [prereq_tree]
-#         else:
-#             return []
+    formatted_prereqs = formatted_prereqs_response.content if hasattr(formatted_prereqs_response, 'content') else str(formatted_prereqs_response)
+    
+    return formatted_prereqs
 
-#     op, args = prereq_tree
+def get_course_prereqs(enhanced_course, overwrite=False):
+    # To avoid re-running, check if best_prereq_path is already in the course
+    if not overwrite and 'best_prereq_path' in enhanced_course:
+        print(f'Using cached prereq path for {enhanced_course["course_code"]}')
+        return enhanced_course['best_prereq_path']
+        
+    formatted_prereqs = get_course_formatted_prereqs(enhanced_course)
+    current_course_code = enhanced_course['course_code']
 
-#     if op == "AND":
-#         path = []
-#         for arg in args:
-#             path += extract_best_course_path(arg)
-#         return path
+    if formatted_prereqs == '':
+        return []
+    
+    try: 
+        prereq_tree = parse_prereq_grammar(formatted_prereqs)
+        best_prereq_path = extract_best_prereq_path(prereq_tree, dept_prefix=enhanced_course['dept'])
+        best_prereq_path = [course for course in best_prereq_path if course != current_course_code]
 
-#     elif op == "OR":
-#         # 1. Try to find real courses (no IP, no alt credit)
-#         for arg in args:
-#             result = extract_best_course_path(arg)
-#             if result and all(is_real_course(c) for c in result):
-#                 return result
-#         # 2. Try to find alt credit like AP or placement
-#         for arg in args:
-#             result = extract_best_course_path(arg)
-#             if result and all(is_alt_credit(c) for c in result):
-#                 return result
-#         # 3. Fallback to anything (may include IP)
-#         return extract_best_course_path(args[0])
+    except Exception as e:
+        best_prereq_path = ['IP']
+        print(f'Produced prereq. grammar: {formatted_prereqs} (Error: {e})')
 
-#     return []
+    print(f'For {enhanced_course["course_code"]} --> best prereq path: {best_prereq_path}')
+    return best_prereq_path

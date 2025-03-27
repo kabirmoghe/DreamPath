@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 ASTR,ASTR 1 Exploration of the Solar System,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-1,ASTR1,"An introduction to the study of the solar system and exoplanets. Topics to be discussed include phases of the moon and eclipses, formation and evolution of the early solar system, Terrestrial and Jovian planetary surfaces and atmospheres, moons and small bodies in the solar system, and exoplanets. Course material will include results from recent planetary spacecraft missions. Labs include making observations with telescopes.",,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -424,7 +424,7 @@ ASTR,ASTR 1 Exploration of the Solar System,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 ASTR,ASTR 2 Exploring the Universe,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-2,ASTR2,"A survey of contemporary knowledge of the nature and the evolution of stars, galaxies and the universe. Topics include stellar evolution, the origin of the elements, the deaths of stars, black holes, the structure of our Galaxy, other galaxies, dark matter, the expanding universe and the big bang. Physical processes underlying these phenomena are discussed. No student may receive credit for bothASTR 2andASTR 3. Identical toASTR 3, but without the observing laboratory.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -850,7 +850,7 @@ ASTR,ASTR 2 Exploring the Universe,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>",[]
 ASTR,"ASTR 3 Exploring the Universe, with Laboratory",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-3,ASTR3,"A survey of contemporary knowledge of the nature and the evolution of stars, galaxies and the universe. Topics include stellar evolution, the origin of the elements, the deaths of stars, black holes, the structure of our Galaxy, other galaxies, dark matter, the expanding universe and the big bang. Physical processes underlying these phenomena are discussed. Students will make observations with radio and optical telescopes. Supplemental course fee required. No student may receive credit for bothASTR 2andASTR 3. Identical toASTR 2, but with an observing laboratory.",,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1276,7 +1276,7 @@ ASTR,"ASTR 3 Exploring the Universe, with Laboratory",https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>",[]
 ASTR,ASTR 4 The Development of Astronomical Thought,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-4,ASTR4,"A survey of the development of theories of the cosmos from ancient to modern times in an historical sequence, commencing with ancient attitudes and progressing to modern concepts. Topics discussed include the Ptolemaic and Copernican theories, the emergence of an observational basis of astronomy through the works of Kepler and Galileo. Newton’s synthesis, relativity theory and its application to modern cosmologies. Supplemental course fee required.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1696,7 +1696,7 @@ ASTR,ASTR 4 The Development of Astronomical Thought,https://dartmouth.smartcatal
 </form>
 
 </body>
-</html>"
+</html>",[]
 ASTR,ASTR 7 First-year Seminars in Astronomy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-7,ASTR7,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2112,7 +2112,7 @@ ASTR,ASTR 7 First-year Seminars in Astronomy,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 ASTR,ASTR 15 Stars and the Milky Way,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-15,ASTR15,"An introduction to astronomy and astrophysics for science majors and others with some background in physics, providing an observational and theoretical background for more advanced topics in astrophysics. Topics include basic properties of stars as derived from observations, stellar evolution, black holes, transfer of energy by electromagnetic radiation, the interstellar gas and the Milky Way galaxy. Students will make observations with the telescope.",An introductory physics course (or permission of instructor) andMATH 3.,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2540,7 +2540,7 @@ ASTR,ASTR 15 Stars and the Milky Way,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 ASTR,ASTR 19 Habitable Planets,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-19,ASTR19,"Is the Earth unique, or are there other planets in the universe which can support life? This question has been pondered for thousands of years, and humanity is now on the cusp of being able to answer this question. This course will examine the question of planetary habitability, focusing on the processes which made the Earth habitable, and the likelihood of finding other habitable planets in the universe. Topics to be covered include the creation of the elements, the formation of structure in the universe, planetary system formation, the habitability of Earth and other bodies in the solar system, the future habitability of Earth, and the prospects of finding habitable planets around other stars.",MATH 3,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2964,7 +2964,7 @@ ASTR,ASTR 19 Habitable Planets,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",['MATH3']
 ASTR,ASTR 25 Galaxies and Cosmology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-25,ASTR25,"This is a course in physical cosmology. The first half builds the Universe from the bottom up, focusing on galaxies. Topics include galaxy classification dynamics, clustering, dark matter, and evidence for the large scale homogeneity. The second half builds the Universe from the top down, developing the Big Bang cosmology. Topics include FRW equation classical cosmological tests, nucleosynthesis, and cosmic microwave background.",PHYS 14or permission of the instructor.,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3392,7 +3392,7 @@ ASTR,ASTR 25 Galaxies and Cosmology,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['PHYS14']
 ASTR,ASTR 61 Observational Techniques in Astronomy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-61,ASTR61,"The fundamental techniques of observational astronomy. Topics include detectors, photometry, spectroscopy, data acquisition and analysis.","ASTR 2,ASTR 3orASTR 15.",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3820,7 +3820,7 @@ ASTR,ASTR 61 Observational Techniques in Astronomy,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>","['ASTR2', 'ASTR3']"
 ASTR,ASTR 74 Astrophysics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-74,ASTR74,"A survey of the processes which generate radiation detected by astronomers, and how astronomers interpret observations to understand the Universe. Topics include radiative transfer, blackbody radiation, bremsstrahlung, synchrotron radiation, inverse Compton scattering, atomic and molecular spectra. Applications will include emission from neutron stars, accretion disks surrounding black holes, stellar atmospheres, intergalactic gas and the cosmic microwave background.","PHYS 14orPHYS 16; andPHYS 19orPHYS 24orPHYS 40; andASTR 2orASTR 3orASTR 15, or permission of instructor.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4248,7 +4248,7 @@ ASTR,ASTR 74 Astrophysics,https://dartmouth.smartcatalogiq.com/en/current/orc/de
 </form>
 
 </body>
-</html>"
+</html>","['PHYS14', 'PHYS19', 'ASTR2']"
 ASTR,ASTR 75 High Energy Astrophysics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-75,ASTR75,"The physics and observations of black holes, neutron stars, white dwarfs, supernova remnants, and extragalactic objects through x-ray, gamma-ray, and cosmic rays.","PHYS 19andASTR 25or the equivalent, or permission of the instructor.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4676,7 +4676,7 @@ ASTR,ASTR 75 High Energy Astrophysics,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>","['PHYS19', 'ASTR25']"
 ASTR,ASTR 81 Special Topics in Astronomy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-81,ASTR81,"Advanced study of a topic in observational astronomy, culminating in a one- to two-week observing session at a major research observatory.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5092,7 +5092,7 @@ ASTR,ASTR 81 Special Topics in Astronomy,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",[]
 ASTR,ASTR 81.01 Observing in South Africa,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-81-01,ASTR81.01,"This course is an advanced study of a topic in observational astronomy, including a one- week observing session at the South African Astronomical Observatory in Sutherland, South Africa. During their time at the observatory, students will have the opportunity to collect data for their observational project. At the completion of the observing, students will return to Cape Town where they will work in pairs, analyzing the data they obtained at the observatory. The course will culminate with a written presentation of the results of the students' research project. Speci\fc research topics will vary and could range from studies of exoplanets, stars or other galaxies, depending on faculty and student interest.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5514,7 +5514,7 @@ ASTR,ASTR 81.01 Observing in South Africa,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",[]
 ASTR,"ASTR 81.02 Special topics in Astronomy, with observing",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-81-02,ASTR81.02,"This course is an advanced study of a topic in observational astronomy, including a one to two-week observing session at a major research observatory. During their time at the observatory, students will have the opportunity to operate a telescope and collect data for their observational project. At the completion of the observing, students analyze some of the data they obtained at the observatory. Speci\ffic research topics will vary and could range from studies of exoplanets, stars or other galaxies, depending on faculty and student interest.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5930,7 +5930,7 @@ ASTR,"ASTR 81.02 Special topics in Astronomy, with observing",https://dartmouth.
 </form>
 
 </body>
-</html>"
+</html>",[]
 ASTR,ASTR 87 Undergraduate Research in Astronomy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/astr-astronomy-undergraduate/astr-87,ASTR87,Intensive individual work on an observational or theoretical problem in astronomy or cosmology under the guidance of a staff member.,Permission of the Chair.,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6354,7 +6354,7 @@ ASTR,ASTR 87 Undergraduate Research in Astronomy,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['IP']
 PHYS,"PHYS 1 Understanding the Universe: From Atoms to the Big Bang, with Laboratory",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-1,PHYS1,"An introduction to the evolution of physical theories and models of natural phenomena from ancient Greece to modern times. Topics include Pre-Socratic and Aristotelian natural philosophy; the scientific revolutions of Copernicus, Kepler, Galileo, and Newton, and the birth of mechanics; electromagnetism, thermodynamics, and the physics of light in the nineteenth century; the emergence of quantum mechanics and relativity theory; modern particle physics and the search for unification; the interface of particle physics and cosmology; and physics and its contexts (other sciences, worldviews, technologies, the Cold War). Students will carry out five biweekly laboratory experiments illustrating major discoveries. No student may receive credit for both Physics 1 and Physics 2. Identical to Physics 2, but with the laboratory.",,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6780,7 +6780,7 @@ PHYS,"PHYS 1 Understanding the Universe: From Atoms to the Big Bang, with Labora
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 2 Understanding the Universe: From Atoms to the Big Bang,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-2,PHYS2,"No student may receive credit for both Physics 1 and Physics 2. Identical toPHYS 1, but without the laboratory.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7206,7 +7206,7 @@ PHYS,PHYS 2 Understanding the Universe: From Atoms to the Big Bang,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 3 General Physics I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-3,PHYS3,"The fundamental laws and phenomena of mechanics, heat, wave motion, and sound, including relativistic concepts. The sequence Physics 3-4 is designed primarily for students who do not intend to takePHYS 19. One laboratory period per week.",MATH 3.,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7634,7 +7634,7 @@ PHYS,PHYS 3 General Physics I,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",['MATH3']
 PHYS,PHYS 4 General Physics II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-4,PHYS4,"The fundamental laws and phenomena of electricity, magnetism, and light, including quantum mechanical concepts; atomic and nuclear physics. One laboratory period per week.",PHYS 3.,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8062,7 +8062,7 @@ PHYS,PHYS 4 General Physics II,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",['PHYS3']
 PHYS,PHYS 5 Physics for Future Leaders,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-5,PHYS5,"This class is an introduction to modern physics, the resulting technologies and social ramifications. Physics topics include radiation, energy, atomic and nuclear structures, relativity, waves and quantum mechanics. These in turn have led to modern technologies such as microwaves, radar, GPS, lasers, nuclear power and weapons. We may also examine MRIs, X-rays, digital cameras, quantum cryptography, semiconductors including computer chips and photovoltaics. This course aims to take some of the mystery out of these technologies so that a student can be an informed citizen as society debates the uses of these machines and devices. Finally, we look at potential future developments such as quantum computing and new energy technologies. No prior physics is required.",,Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8482,7 +8482,7 @@ PHYS,PHYS 5 Physics for Future Leaders,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 7 First-year Seminars in Physics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-7,PHYS7,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8904,7 +8904,7 @@ PHYS,PHYS 7 First-year Seminars in Physics,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 13 Introductory Physics I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-13,PHYS13,"The fundamental laws of mechanics. Reference frames. Harmonic and gravitational motion. Thermodynamics and kinetic theory.PHYS 13,PHYS 14, andPHYS 19are designed as a three-term sequence for students majoring in a physical science. One laboratory period per week.",MATH 3andMATH 8(at least concurrently).,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9332,7 +9332,7 @@ PHYS,PHYS 13 Introductory Physics I,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>","['MATH3', 'MATH8']"
 PHYS,PHYS 14 Introductory Physics II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-14,PHYS14,The fundamental laws of electricity and magnetism. Maxwell's equations. Waves. Electrical and magnetic properties of bulk matter. Circuit theory. Optics. One laboratory period per week.,"PHYS 13andMATH 8, or permission of the instructor.",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9760,7 +9760,7 @@ PHYS,PHYS 14 Introductory Physics II,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>","['PHYS13', 'MATH8']"
 PHYS,"PHYS 15 Introductory Physics I, Honors Section",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-15,PHYS15,"PHYS 15andPHYS 16is an alternative sequence toPHYS 13,PHYS 14and 19 for students whose substantial background in physics and mathematics enables them to study the material at a faster pace than is possible in regular sections, and who are willing to devote correspondingly more work to the course. Admission criteria are described in the First Year, available from the Office of the Dean of Undergraduate Students.  Classical dynamics of particles and rigid bodies. Special Relativity. Introduction to Quantum Mechanics including the wave-particle duality of radiation and matter, the Uncertainty Principle and the Schrödinger equation in one and three spatial dimensions. One laboratory period per week.","MATH 8orMATH 9concurrently, and permission of the instructor.",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10188,7 +10188,7 @@ PHYS,"PHYS 15 Introductory Physics I, Honors Section",https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>","['MATH8', 'IP']"
 PHYS,"PHYS 16 Introductory Physics II, Honors Section",https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-16,PHYS16,"Electric and magnetic fields of charges and currents. Electromagnetic induction. Dielectric and magnetic materials. Circuit theory. Maxwell's equations, electromagnetic waves and optics. Special relativity. One laboratory period per week.",PHYS 15or permission of the instructor.,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10616,7 +10616,7 @@ PHYS,"PHYS 16 Introductory Physics II, Honors Section",https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>",['PHYS15']
 PHYS,PHYS 19 Relativistic and Quantum Physics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-19,PHYS19,"The general theme of this course is the wave-particle duality of radiation and matter, with an introduction to special relativity. Classical wave phenomena in mechanical and electromagnetic systems including beats, interference, and diffraction. Quantum aspects of electromagnetic radiation include the photoelectric effect, Compton scattering and pair production and annihilation. Quantum aspects of matter include DeBroglie waves, electron diffraction, and the spectrum of the hydrogen atom. The Schrödinger equation is discussed in one and three spatial dimensions.","PHYS 14andMATH 13, or permission of the instructor.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11044,7 +11044,7 @@ PHYS,PHYS 19 Relativistic and Quantum Physics,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>","['PHYS14', 'MATH13']"
 PHYS,PHYS 22 Applied Mathematical Methods for Physicists,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-22,PHYS22,"This course surveys two of the most important areas of mathematical physics: linear algebra and the theory differential equations. Topics from linear algebra include complex numbers, systems of equations, matrices, vector spaces, and the eigenvalue problem. Topics from differential equations include linear differential equations, homogenous and non-homogenous differential equations with constant coefficients, and partial differential equations (separation of variables). The application of these techniques to problems in physics and astronomy will be emphasized.  Not open to students who have received credit for Phys 82.02",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11470,7 +11470,7 @@ PHYS,PHYS 22 Applied Mathematical Methods for Physicists,https://dartmouth.smart
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 24 Quantum Physics of Matter: An Introduction,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-24,PHYS24,"The theme of this course is the application of the principles of physics to the structure of matter on various scales. The Schrödinger equation is discussed in three spatial dimensions, with emphasis on the description of hydrogenic wavefunctions. Spin and the Pauli exclusion principle. Applications may include many-electron atoms, molecules, solids, nuclei and elementary particles. (NOTE: Renumbered to Physics 40 with description change; last offering of 24 is 15S.)",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11890,7 +11890,7 @@ PHYS,PHYS 24 Quantum Physics of Matter: An Introduction,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 30 Biological Physics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-30,PHYS30,"Introduction to the principles of physics and engineering applied to biological problems. Topics include the architecture of biological cells, molecular motion, entropic forces, enzymes and molecular machines, and nerve impulses.","CHEM 5,PHYS 13andPHYS 14(or equivalent).PHYS 14(or equivalent) may be taken concurrently. Students with strong quantitative skills who have takenPHYS 3andPHYS 4can enroll with permission of the instructor.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12314,7 +12314,7 @@ PHYS,PHYS 30 Biological Physics,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>","['CHEM5', 'PHYS13', 'PHYS14']"
 PHYS,PHYS 31 Explore Physics!,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-31,PHYS31,,"PHYS 13,PHYS 14orPHYS 15,PHYS 16",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12736,7 +12736,7 @@ PHYS,PHYS 31 Explore Physics!,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>","['PHYS13', 'PHYS14']"
 PHYS,PHYS 31.01 Nonlinear Dynamics of Physical Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-31-01,PHYS31.01,"Most problems introduced in introductory physics course are based on linear systems; the simple harmonic oscillator is a prime example. This course will instead focus on the dynamics of systems that are instead explicitly non-linear, as are the vast majority of physical systems in the real world; examples from real life include self-oscillators such as the human heart, exotic electrical devices such as the superconducting Josephson junction, and complex, chaotic phenomena such as weather. We will focus on using graphical techniques for figuring out the behavior of differential equations without actually solving them, frequently using Mathematica as a tool for numerics and visualization. Students will also be introduced to the art of making good physical approximations.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13156,7 +13156,7 @@ PHYS,PHYS 31.01 Nonlinear Dynamics of Physical Systems,https://dartmouth.smartca
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 31.02 Research Methods in 21st Century Physics and Astronomy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-31-02,PHYS31.02,"This course provides a structured introduction to some of the key methods used in 21st Century Physics and Astronomy Research. Student will learn how to perform a literature search, engage in hands-on experimental and/or computational research and use computational techniques for data analysis and modeling. Students will practice distinguishing between critical variables and background details and learn to summarize and present their results to different audiences. Ethics and researcher responsibilities will also be explored.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13576,7 +13576,7 @@ PHYS,PHYS 31.02 Research Methods in 21st Century Physics and Astronomy,https://d
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 31.03 Research Methods in 21st Century Astronomy in South Africa,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-31-03,PHYS31.03,"This course will introduce students to research methods used within astronomy, as well as to the cutting-edge research conducted in South Africa and its impact on South African society.  Students will be introduced to modern  tools used by astronomers, with an emphasis on hands-on practice using Python for scientific analyses. From guest lecturers and site visits, students will learn about science and society in South Africa.  Offered as part of the Astronomy FSP.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14002,7 +14002,7 @@ PHYS,PHYS 31.03 Research Methods in 21st Century Astronomy in South Africa,https
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 31.04 Research Methods in 21st Century Astronomy,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-31-04,PHYS31.04,"This course provides a structured introduction to some of the key methods used in 21st Century Astronomy Research. In this course students will gain hands-on experience using computational techniques for data analysis and modeling in python. Students will be introduced to all aspects of the research process, from reviewing the literature, to producing high quality plots, to presenting their research to their peers. Ethical questions related to conducting research in the US will be explored. Not open to students who have received credit forPHYS 31.02,PHYS 31.03.",,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14422,7 +14422,7 @@ PHYS,PHYS 31.04 Research Methods in 21st Century Astronomy,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 40 Quantum Physics of Matter,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-40,PHYS40,"An introduction to the quantum physics of matter on different scales, from a phenomenological perspective. Schrödinger equation in three spatial dimensions, angular momentum and hydrogenic wavefunctions. Spin and the Pauli exclusion principle, application to multi-electron atoms, the periodic table. Molecular bonds and spectra. Basic properties of solids, survey of nuclear models and reactions. An introduction to the standard model of elementary particle physics.","PHYS 15orPHYS 19; andPHYS 14orPHYS 16, or permission of the instructor.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14850,7 +14850,7 @@ PHYS,PHYS 40 Quantum Physics of Matter,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>","['PHYS15', 'PHYS14']"
 PHYS,PHYS 41 Electricity and Magnetism,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-41,PHYS41,"The differential and integral laws of electric and magnetic fields in vector form. Potential theory and boundary value problems. Maxwell's equations, the wave equation and plane waves.",PHYS 15orPHYS 19; andPHYS 14orPHYS 16; or permission of the instructor.,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15278,7 +15278,7 @@ PHYS,PHYS 41 Electricity and Magnetism,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>","['PHYS15', 'PHYS14']"
 PHYS,PHYS 42 Introductory Quantum Mechanics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-42,PHYS42,"Detailed solutions of the Schrödinger equation for a variety of systems including bound states and scattering states in one and three dimensions. Matrix representations of spin and orbital angular momenta. Applications to atomic, molecular and nuclear problems are emphasized.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15698,7 +15698,7 @@ PHYS,PHYS 42 Introductory Quantum Mechanics,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 43 Statistical Physics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-43,PHYS43,"Kinetic theory of gases. Boltzmann's Principle. Boltzmann, Bose-Einstein and Fermi-Dirac statistics. The statistical approach to thermodynamics. Applications to radiation, atoms, molecules, and condensed matter.",PHYS 15orPHYS 19; andPHYS 14orPHYS 16; or permission of the instructor.,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16126,7 +16126,7 @@ PHYS,PHYS 43 Statistical Physics,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>","['PHYS15', 'PHYS14']"
 PHYS,PHYS 44 Mechanics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-44,PHYS44,"The fundamental principles of mechanics. Lagrangian form of the equations of motion. Central force motion, collisions and scattering, dynamics of rigid bodies, vibrations, normal modes, and waves. Nonlinear dynamics and chaos.","PHYS 15orPHYS 19; andPHYS 14orPHYS 16; andMATH 22orMATH 23orPHYS 22, or permission of the instructor.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16554,7 +16554,7 @@ PHYS,PHYS 44 Mechanics,https://dartmouth.smartcatalogiq.com/en/current/orc/depar
 </form>
 
 </body>
-</html>"
+</html>","['PHYS15', 'PHYS14', 'PHYS22']"
 PHYS,PHYS 47 Optics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-47,PHYS47,"This course covers geometrical, physical, and modern optics topics including the propagation, reflection, dispersion, and refraction of radiant energy; polarization, interference, and diffraction in optical systems; the basics of coherence theory, lasers, quantum optics, and holography. Applications of optical and laser science will be discussed. Lectures and laboratory work.\f","PHYS 14orPHYS 16andMATH 13, or permission.",Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16983,7 +16983,7 @@ PHYS,PHYS 47 Optics,https://dartmouth.smartcatalogiq.com/en/current/orc/departme
 </form>
 
 </body>
-</html>"
+</html>","['PHYS14', 'MATH13']"
 PHYS,PHYS 48 Electronics: Introduction to Linear and Digital Circuits,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-48,PHYS48,"Principles of operation of semiconductor diodes, bipolar and field-effect transistors, and their application in rectifier, amplifier, waveshaping, and logic circuits. Basic active-circuit theory. Introduction to integrated circuits: the operational amplifier and comparator, to include practical considerations for designing circuits with off-the shelf components. Emphasis on breadth of coverage of low-frequency linear and digital networks, as well as on high order passive and active filter design. Laboratory exercises permit ""hands-on"" experience in the analysis and design of simple electronic circuits. The course is designed for two populations: a) those desiring a single course in basic electronics, and b) those that need the fundamentals necessary for further study of active circuits and systems.","ENGS 22, or equivalent background in basic circuit theory.",Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17413,7 +17413,7 @@ PHYS,PHYS 48 Electronics: Introduction to Linear and Digital Circuits,https://da
 </form>
 
 </body>
-</html>"
+</html>",['ENGS22']
 PHYS,PHYS 50 Introductory Quantum Mechanics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-50,PHYS50,"An introduction to the basic concepts and formalism of quantum mechanics. Time-dependent and time-independent Schrödinger equation for a variety of systems in one and three spatial dimensions, bound and unbound states, quantum tunneling. Basics of Dirac notation and matrix formalism. Orbital and spin angular momentum, addition rules. Approximation methods: WKB and variational approach, time-independent perturbation theory.","PHYS 40andMATH 22orMATH 23orPHYS 22, or permission of the instructor.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17841,7 +17841,7 @@ PHYS,PHYS 50 Introductory Quantum Mechanics,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>","['PHYS40', 'PHYS22']"
 PHYS,PHYS 66 Relativistic Electrodynamics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-66,PHYS66,Classical electromagnetic radiation and relativistic electrodynamics. Topics include: electromagnetism and relativity; Maxwell stress-tensor; electromagnetic wave propagation in free space and media; radiation by charged particles; scattering; diffraction.,PHYS 41or permission of instructor.,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18269,7 +18269,7 @@ PHYS,PHYS 66 Relativistic Electrodynamics,https://dartmouth.smartcatalogiq.com/e
 </form>
 
 </body>
-</html>"
+</html>",['PHYS41']
 PHYS,PHYS 68 Introductory Plasma Physics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-68,PHYS68,The physics of ionized gases with emphasis on the theory of waves and instabilities. Includes introduction to magnetohydrodynamics and kinetic theory of plasmas.,PHYS 41or permission of instructor.,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18697,7 +18697,7 @@ PHYS,PHYS 68 Introductory Plasma Physics,https://dartmouth.smartcatalogiq.com/en
 </form>
 
 </body>
-</html>"
+</html>",['PHYS41']
 PHYS,PHYS 70 Fourier Transforms and Complex Variables,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-70,PHYS70,"Survey of a number of mathematical methods of importance in Engineering and Physics with particular emphasis on the Fourier transform as a tool for modeling and analysis. Orthogonal function expansions, Fourier series, discrete and continuous Fourier transforms, generalized functions and sampling theory, complex functions and complex integration, Laplace, Z, and Hilbert transforms. Computational Fourier analysis. Applications to linear systems, waves, and signal processing.","MATH 46orENGS 22,ENGS 23, or the equivalent.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19121,7 +19121,7 @@ PHYS,PHYS 70 Fourier Transforms and Complex Variables,https://dartmouth.smartcat
 </form>
 
 </body>
-</html>"
+</html>","['MATH46', 'ENGS23']"
 PHYS,PHYS 72 Introductory Particle Physics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-72,PHYS72,"Characterization of elementary particles and their interactions according to the standard model; leptons, quarks, gauge bosons, and the Higgs mechanism. Composite particles and their interactions. Methods of production and measurement of particles. Particle lifetimes and cross sections.",PHYS 50,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19543,7 +19543,7 @@ PHYS,PHYS 72 Introductory Particle Physics,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['PHYS50']
 PHYS,PHYS 73 Introductory Condensed Matter Physics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-73,PHYS73,"The physics of condensed matter, primarily solids with periodic order. Theory and measurement of electronic, optical, magnetic, and thermal properties of solids. Lattice structures, symmetries, and bonding energies. The reciprocal lattice and the Brillouin Zone. Bloch's Theorem. Electron energy band structure and the Fermi surface, phonon mode dispersion, and other elementary excitations.",PHYS 43andPHYS 50;PHYS 43may be taken concurrently.,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19971,7 +19971,7 @@ PHYS,PHYS 73 Introductory Condensed Matter Physics,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>","['PHYS43', 'PHYS50']"
 PHYS,PHYS 74 Space Plasma Physics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-74,PHYS74,"Plasma processes in the solar system. The solar cycle, solar flares, solar wind outflow and interaction with distinct types of planetary magnetospheres. Plasma waves, particle acceleration and generation of escaping electromagnetic radiation. Magnetosphere-ionosphere coupling, and ionospheric interaction with the neutral atmosphere.","PHYS 66orPHYS 68, or permission of the instructor.",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20393,7 +20393,7 @@ PHYS,PHYS 74 Space Plasma Physics,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",['PHYS66']
 PHYS,PHYS 75 Quantum Computation and Information,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-75,PHYS75,"Overview of basic ideas in classical and quantum computation. Concepts and physical realizations of quantum bits (qubits). Topics in quantum computation may include the Deutsch-Jozsa, quantum Fourier transform, Shor factorization and Grover search algorithms. Topics in quantum communication include quantum key distribution schemes and quantum teleportation. Issues relating to the foundations and interpretations of quantum mechanics will be revisited throughout the course.",PHYS 15orPHYS 19; orMATH 22; or permission of instructor.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20821,7 +20821,7 @@ PHYS,PHYS 75 Quantum Computation and Information,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['PHYS15']
 PHYS,PHYS 76 Methods of Experimental Physics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-76,PHYS76,"Experiments emphasizing modern techniques and topics in physical measurements. Experiments will cover areas including condensed matter, particle and plasma physics, and such practical laboratory techniques as noise suppression, digital data acquisition, and operation of standard laboratory equipment.",PHYS 40,Dist:SLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21249,7 +21249,7 @@ PHYS,PHYS 76 Methods of Experimental Physics,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",['PHYS40']
 PHYS,PHYS 77 Introduction to General Relativity and Gravitation,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-77,PHYS77,"An introduction to Einstein's General Theory of Relativity. Topics: review of special relativity and spacetime diagrams; equivalence principle; coordinates and four vectors; the spacetime metric; particle motion from a variational principle, the geodesic equation; spacetime physics; redshift and time dilation in the solar system, gravitational lenses, black holes, the expanding universe, gravitational waves, time machines (closed timelike curves); the field equations of General Relativity, connecting spacetime curvature to energy and momentum.",PHYS 44andPHYS 41.,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21671,7 +21671,7 @@ PHYS,PHYS 77 Introduction to General Relativity and Gravitation,https://dartmout
 </form>
 
 </body>
-</html>"
+</html>","['PHYS44', 'PHYS41']"
 PHYS,PHYS 82 Special Topics Seminar,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-82,PHYS82,Advanced study in physics or astrophysics. Students will read and report orally on significant journal articles and write a paper summarizing their library research.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22087,7 +22087,7 @@ PHYS,PHYS 82 Special Topics Seminar,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 82.01 Question Reality,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-82-01,PHYS82.01,"How much can we know of the world? Can we know everything? Or are there fundamental limits to how much science can explain? If there are limits, to what extent can we explain the nature of physical reality? In this interdisciplinary course we will address these questions, exploring how philosophers and physicists from Plato to Einstein and many others have attempted to explain the nature of the world and of reality. We will follow a historical approach, reading as many original sources as possible and focusing on three central themes: 1. The nature of the cosmos: from a closed cosmos to an expanding universe and the multiverse; 2. The nature of matter: from alchemy to quarks and quantum physics; 3. The nature of mind: Godel's incompleteness theorem, mathematics, computers, and the problem of consciousness. The main text will be The Island of Knowledge: The Limits of Science and the Search for Meaning, by Marcelo Gleiser (Basic Books, Spring 2014). This will be complemented by original and critical texts by Plato, Aristotle, Galileo, Newton, Einstein, John Bell, David Bohm, Rebecca Goldstein, Thomas Nagel, Colin McGinn, and others. The class will be seminar style and has no prerequisites.",,Dist:SCI; WCult:W,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22507,7 +22507,7 @@ PHYS,PHYS 82.01 Question Reality,https://dartmouth.smartcatalogiq.com/en/current
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 82.02 Introductory Mathematical Methods for Physicists,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-82-02,PHYS82.02,"This course surveys topics from linear algebra and differential equations, selected for their importance in upper-level physics courses,  Topics from linear algebra will include complex numbers, systems of equations, matrices, vector spaces, and the eigenvalue problem. Topics from differential equations will include linear differential equations, series solutions, systems of differential equations, and partial differential equations (separation of variables). The course will serve as an alternate to the Math22/23/24 prerequisite for physics majors.","MATH 3,MATH 8, ANDMATH 13",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22929,7 +22929,7 @@ PHYS,PHYS 82.02 Introductory Mathematical Methods for Physicists,https://dartmou
 </form>
 
 </body>
-</html>"
+</html>","['MATH3', 'MATH8', 'MATH13']"
 PHYS,PHYS 85 Reading Course,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-85,PHYS85,Reading course under the direction of a faculty member.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23351,7 +23351,7 @@ PHYS,PHYS 85 Reading Course,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 87 Undergraduate Research,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-87,PHYS87,Intensive individual work on an experimental or theoretical problem in physics or astronomy under the guidance of a staff member.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23773,7 +23773,7 @@ PHYS,PHYS 87 Undergraduate Research,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 90 Intermediate Quantum Mechanics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-90,PHYS90,"An in-depth study of the formal apparatus and postulates of non-relativistic quantum mechanics. Dirac formalism for pure quantum states and operators, quantum measurements and uncertainty relations. Mixed quantum states and density operators. Quantum dynamics in Schrödinger and Heisenberg picture. Symmetries and conservation laws, angular momentum theory. Approximation methods: time-independent and time-dependent perturbation theory.",PHYS 50,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24201,7 +24201,7 @@ PHYS,PHYS 90 Intermediate Quantum Mechanics,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",['PHYS50']
 PHYS,PHYS 91 Intermediate Quantum Mechanics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-91,PHYS91,"Formalism of quantum mechanics, operator methods and transformation theory. Measurement theory and uncertainty relations. Position and momentum representation. The harmonic oscillator and ladder operators. Introduction to path integrals. Perturbation methods: WKB, time-independent and time-dependent perturbation theory. Interaction of matter and radiation and selection rules. Symmetries and conservation laws.",,Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24621,7 +24621,7 @@ PHYS,PHYS 91 Intermediate Quantum Mechanics,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>",[]
 PHYS,PHYS 92 Physics of the Early Universe,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/physics-and-astronomy/phys-physics-undergraduate/phys-92,PHYS92,"An introduction to the study of the early universe, focusing on the interaction of nuclear and particle physics and cosmology, the so-called inner-space outer-space connection. After an investigation of the Robertson-Walker metric and its application to the Big Bang model, the course will address the following topics; thermodynamics in an expanding universe; nucleosynthesis (synthesis of light nuclei) and baryogenesis (origin of excess matter over antimatter); inflationary models of cosmology; primordial phase transitions; introduction to quantum cosmology.","PHYS 41,PHYS 43,PHYS 44,PHYS 50andASTR 25(recommended).",Dist:SCI,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25049,4 +25049,4 @@ PHYS,PHYS 92 Physics of the Early Universe,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>","['PHYS41', 'PHYS43', 'PHYS44', 'PHYS50']"

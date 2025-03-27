@@ -1,4 +1,4 @@
-dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content
+dept,course_title,course_url,course_code,description,prerequisites,degree_req,html_content,best_prereq_path
 MATH,Timetable of Class Meetings,https://nam12.safelinks.protection.outlook.com/?url=http%3A%2F%2Foracle-www.dartmouth.edu%2Fdart%2Fgroucho%2Ftimetable.main&data=04%7C01%7CMarcia.Groszek%40Dartmouth.EDU%7C0c064d59cb6843cb9d2208d925382b7f%7C995b093648d640e5a31ebf689ec9446f%7C0%7C0%7C637581745441331891%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=MSR9FRbAtki3XFndByGIl8xamNLNf1G6ZlYx4hwwU7U%3D&reserved=0,,,,,"<!DOCTYPE html PUBLIC ""-//W3C//DTD HTML 4.01 Transitional//EN"">
 <html lang=""en"">
 <!--Copyright, Trustees of Dartmouth College, all rights reserved-->
@@ -221,7 +221,7 @@ table .timetable {font-family:Verdana, Arial, Helvetica, sans-serif; font-size: 
 </body>
 <!-- #EndTemplate -->
 </html>
-"
+",[]
 MATH,MATH 1 Introduction to Calculus,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-1,MATH1,"This course is an introduction to single variable calculus for students who have not taken calculus before. Students who have seen some calculus, but not enough to place out ofMATH 3, should takeMATH 3.MATH 1reviews relevant techniques from algebra and pre-calculus, covers the manipulation and analysis of functions, including polynomial, trigonometric, logarithmic, and exponential functions, an introduction to convergence and limits, continuity, rates of change and derivatives, differentiation rules, and applications to approximation.  Students wishing to continue their study of calculus afterMATH 1takeMATH 3.",,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -647,7 +647,7 @@ MATH,MATH 1 Introduction to Calculus,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 MATH,MATH 3 Calculus,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-3,MATH3,"This course is an introduction to single variable calculus aimed at students who have seen some calculus before, either before matriculation or inMATH 1.MATH 3begins by revisiting the core topics inMATH 1- convergence, limits, and derivatives - in greater depth before moving to applications of differentiation such as related rates, finding extreme values, and optimization.  The course then turns to integration theory, introducing the integral via Riemann sums, the fundamental theorem of calculus, and basic techniques of integration.",,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1073,7 +1073,7 @@ MATH,MATH 3 Calculus,https://dartmouth.smartcatalogiq.com/en/current/orc/departm
 </form>
 
 </body>
-</html>"
+</html>",[]
 MATH,MATH 4 Applications of Calculus to Medicine and Biology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-4,MATH4,"This course will establish the relevance of calculus to medicine. It will develop mathematical tools extending the techniques of introductory calculus, including some matrix algebra and solution techniques for first order differential equations. These methods will be used to construct simple and elegant models of phenomena such as the mutation of HIV, spread of infectious disease, and biological disposition of drugs and inorganic toxins, enzyme kinetics and population growth.","MATH 3. Note: This is a sequel toMATH 3, but it does not cover the same material asMATH 8, and does not serve as a prerequisite forMATH 13. There is a version of this course suitable for major credit: seeMATH 27.",QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1495,7 +1495,7 @@ MATH,MATH 4 Applications of Calculus to Medicine and Biology,https://dartmouth.s
 </form>
 
 </body>
-</html>"
+</html>",['MATH3']
 MATH,MATH 5.01 Computational Text Analysis for the Social Sciences,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-5-01,MATH5.01,"Language is the medium for politics and political conflict. Candidates debate during elections. Representatives write laws. Nations negotiate peace treaties. Clerics issue Fatwas. Citizens express their opinions about politics on social media sites. These examples, and many others, suggest that to understand what politics is about, we need to know what political actors are saying and writing. This course introduces techniques to collect, analyze, and utilize large collections of text for social science inferences. Students will also have the opportunity to develop their programming abilities.We will explore a range of datasets from the text ofThe Federalist Papersto the millions of tweets sent to and from members of Congress.",GOVT/ECON/PSYC/SOCY/MATH 10orQSS 15orCOSC 1,Dist:TLA,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -1921,7 +1921,7 @@ MATH,MATH 5.01 Computational Text Analysis for the Social Sciences,https://dartm
 </form>
 
 </body>
-</html>"
+</html>",['MATH10']
 MATH,MATH 5.04 Fundamental Applied Mathematics for the Sciences,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-5-04,MATH5.04,"Mathematics is the language of science. However, mathematics preparation for most science students typically involves only the study of calculus at the university level. While many scientific problems involve calculus, two other areas of mathematics are equally (if not more) important: linear algebra and probability. For example, linear algebra is fundamental to stoichiometry and the conservation of matter in chemistry, hydrology and atmospheric dynamics in earth sciences, and cell growth and population dynamics in biology. Moreover, most features of the natural world are probabilistic and frequently best described by probability models, such as the firing of neurons in the brain or the timing of earthquakes. Both are also central to all problems in statistics. This course will explore the application of linear algebra and probability to problems across the sciences. We will cover the basics of solving linear algebra and probability problems as well as formulating simple models to describe and analyze natural phenomena from across the sciences.",,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2343,7 +2343,7 @@ MATH,MATH 5.04 Fundamental Applied Mathematics for the Sciences,https://dartmout
 </form>
 
 </body>
-</html>"
+</html>",[]
 MATH,MATH 7 First-Year Seminar in Mathematics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-7,MATH7,,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -2765,7 +2765,7 @@ MATH,MATH 7 First-Year Seminar in Mathematics,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 MATH,MATH 8 Calculus of Functions of One and Several Variables,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-8,MATH8,"This course is a sequel toMATH 3and is appropriate for students who have successfully completed an AB calculus curriculum (or the equivalent) in secondary school. Roughly half of the course is devoted to topics in one-variable calculus, selected from techniques of integrations, areas, volumes, numerical integration, sequences and series including Taylor series, ordinary differential equations and techniques of their solution. The second half of the course studies scalar valued functions of several variables. It begins with the study of vector geometry, equations of lines and planes, and space curves (velocity, acceleration, arclength). The balance of the course is devoted to studying differential calculus of functions of several variables. Topics include limits and continuity, partial derivatives, tangent planes and differentials, the Chain Rule, directional derivatives and applications, and optimization problems including the use of Lagrange multipliers.",MATH 3or equivalent.,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3193,7 +3193,7 @@ MATH,MATH 8 Calculus of Functions of One and Several Variables,https://dartmouth
 </form>
 
 </body>
-</html>"
+</html>",['MATH3']
 MATH,MATH 9 Multivariable Differential Calculus with Linear Algebra,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-9,MATH9,"This course includes the multivariable calculus material present inMATH 8along with a brief introduction to concepts from linear algebra, a topic pervasive throughout mathematics and its applications.   The introduction to linear algebra enables a more thorough understanding of multivariable calculus.  Topics include vector geometry, equations of lines and planes, matrices and linear transformations, space curves (velocity, acceleration, arclength), functions of several variables (limits and continuity, partial derivatives, the derivative as a linear transformation, tangent planes and linear approximation, the Chain Rule, directional derivatives and applications, and optimization problems including the use of Lagrange multipliers).First-year students who have successfully completed a BC calculus curriculum in secondary school may complete multivariable calculus either by taking the two-term sequenceMATH 9, 13 or by taking the single faster-paced courseMATH 11, which covers the second half of Math 8 together with the material from Math 13 in a single term.",Advanced placement intoMATH 9orMATH 11.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -3622,7 +3622,7 @@ MATH,MATH 9 Multivariable Differential Calculus with Linear Algebra,https://dart
 </form>
 
 </body>
-</html>"
+</html>","['AP', 'MATH9']"
 MATH,MATH 10 Introductory Statistics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-10,MATH10,"An introduction to the basic concepts of statistics. Topics include elementary probability theory, descriptive statistics, the binomial and normal distributions, confidence intervals, basic concepts of tests of hypotheses, chi-square tests, nonparametric tests, normal theory t-tests, correlation, and simple regression. Packaged statistical programs will be used. Because of the large overlap in material covered, no student may receive credit for more than one of the coursesECON 10,ENVS 10,GOVT 10,MATH 10,PSYC 10,QSS 15, andSOCY 10, except by special petition to the Committee on Instruction.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4048,7 +4048,7 @@ MATH,MATH 10 Introductory Statistics,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",[]
 MATH,MATH 11 Accelerated Multivariable Calculus,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-11,MATH11,"This briskly paced course can be viewed as equivalent toMATH 13in terms of prerequisites, but is designed especially for first-year students who have successfully completed a BC calculus curriculum in secondary school. In particular, as part of its syllabus it includes most of the multivariable calculus material present inMATH 8together with the material fromMATH 13. Topics include vector geometry, equations of lines and planes, and space curves (velocity, acceleration, arclength), limits and continuity, partial derivatives, tangent planes and differentials, the Chain Rule, directional derivatives and applications, and optimization problems. It continues with multiple integration, vector fields, line integrals, and finishes with a study of Green's and Stokes' theorem.Students who have successfully completed a BC calculus curriculum in secondary school may complete multivariable calculus either by taking the two term sequenceMATH 9andMATH 13or by completing the single, faster-paced,MATH 11. Not open to students who have received credit for MATH 013.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4475,7 +4475,7 @@ MATH,MATH 11 Accelerated Multivariable Calculus,https://dartmouth.smartcatalogiq
 </form>
 
 </body>
-</html>"
+</html>",[]
 MATH,MATH 13 Calculus of Vector-Valued Functions,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-13,MATH13,"This course is a sequel toMATH 8and provides an introduction to calculus of vector-valued functions. Topics include differentiation and integration of parametrically defined functions with interpretations of velocity, acceleration, arclength and curvature. Other topics include iterated, double, triple and surface integrals including change of coordinates. The remainder of the course is devoted to vector fields, line integrals, Green's theorem, curl and divergence, and Stokes' theorem. Not open to students who have received credit for MATH 011.Note: First-year students who have received two terms on the BC exam generally should takeMATH 11instead. On the other hand, if the student has had substantial exposure to multivariable techniques, they are encouraged to take a placement exam during orientation week to determine ifMATH 13is more appropriate.",MATH 8or Math 9 or equivalent.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -4904,7 +4904,7 @@ MATH,MATH 13 Calculus of Vector-Valued Functions,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>",['MATH8']
 MATH,MATH 17 An Introduction to Mathematics Beyond Calculus,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-17,MATH17,"Gives prospective Mathematics majors an early opportunity to delve into topics outside the standard calculus sequence. Specific topics will vary from term to term, according to the interests and expertise of the instructor. Designed to be accessible to bright and curious students who have mastered BC Calculus, or its equivalent. This course counts toward the Mathematics major, and is open to all students, but enrollment may be limited, with preference given to first-year students.",MATH 8,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5332,7 +5332,7 @@ MATH,MATH 17 An Introduction to Mathematics Beyond Calculus,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",['MATH8']
 MATH,MATH 19 Introduction to Set Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-19,MATH19,"This course introduces the axioms of set theory, the universe of sets, and set theory as a foundation for mathematics. It touches on historical and philosophical aspects of set theory. Mathematical topics covered include the algebra of sets, ordinals and cardinals, trans\ffinite induction and recursion, and the axiom of choice. Students will learn language and concepts used throughout mathematics, and learn how to write mathematical proofs.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -5758,7 +5758,7 @@ MATH,MATH 19 Introduction to Set Theory,https://dartmouth.smartcatalogiq.com/en/
 </form>
 
 </body>
-</html>"
+</html>",[]
 MATH,MATH 20 Probability,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-20,MATH20,"Our capacity to fathom the world around us hinges on our ability to understand quantities which are inherently unpredictable. Therefore, in order to gain more accurate mathematical models of the natural world we must incorporate probability into the mix. This course will serve as an introductions to the foundations of probability theory. Topics covered will include some of the following: (discrete and continuous)random variable, random vectors, multivariate distributions, expectations; independence, conditioning, conditional distributions and expectations; strong law of large numbers and the central limit theorem; random walks and Markov chains. There is an honors version of this course: seeMATH 60. Not open to students who have taken MATH 060.",MATH 8.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6186,7 +6186,7 @@ MATH,MATH 20 Probability,https://dartmouth.smartcatalogiq.com/en/current/orc/dep
 </form>
 
 </body>
-</html>"
+</html>",['MATH8']
 MATH,MATH 22 Linear Algebra with Applications,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-22,MATH22,"This course presents the fundamental concepts and applications of linear algebra with emphasis on Euclidean space. Significant goals of the course are that the student develop the ability to perform meaningful computations and to write accurate proofs. Topics include bases, subspaces, dimension, determinants, characteristic polynomials, eigenvalues, eigenvectors, and especially matrix representations of linear transformations and change of basis. Applications may be drawn from areas such as optimization, statistics, biology, physics, and signal processing. Students who plan to take eitherMATH 63orMATH 71are strongly encouraged to takeMATH 24. Not open to students who have taken MATH 024.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -6612,7 +6612,7 @@ MATH,MATH 22 Linear Algebra with Applications,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",[]
 MATH,MATH 23 Differential Equations,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-23,MATH23,"This course is a survey of important types of differential equations, both linear and non-linear. Topics include the study of systems of ordinary differential equations using eigenvectors and eigenvalues, numerical solutions of first and second order equations and of systems, and the solution of elementary partial differential equations using Fourier series.",MATH 13.,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7040,7 +7040,7 @@ MATH,MATH 23 Differential Equations,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",['MATH13']
 MATH,MATH 24 Linear Algebra,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-24,MATH24,"This course is an introduction to the fundamental concepts of linear algebra in abstract vector spaces. The topics and goals of this course are similar to those ofMATH 22, but with an additional emphasis on mathematical abstraction and theory. (MATH 24can be substituted forMATH 22as a prerequisite for any course or program.) Not open to students who have taken MATH 022.",MATH 8.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7468,7 +7468,7 @@ MATH,MATH 24 Linear Algebra,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",['MATH8']
 MATH,MATH 25 Number Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-25,MATH25,"The great mathematician C. F. Gauss once wrote ""Mathematics is the queen of sciences and number theory is the queen of mathematics."" Number theory is that part of mathematics dealing with the integers and certain natural generalizations. Topics include modular arithmetic, unique factorization into primes, linear Diophantine equations, and Fermat's Little Theorem. Discretionary topics may include cryptography, primality testing, partition functions, multiplicative functions, the law of quadratic reciprocity, historically interesting problems.",MATH 8.,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -7896,7 +7896,7 @@ MATH,MATH 25 Number Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",['MATH8']
 MATH,MATH 27 Dynamical Systems with Applicaitons,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-27,MATH27,"Dynamical systems theory is the branch of mathematics that studies the properties of time-evolving phenomena. It finds a great variety of applications in areas spanning physics, engineering, ecology, finance, among many disciplines.Math 27 is an introductory course, studying aspects of dynamical systems that evolve in discrete time, as well as continuous-time systems described by ordinary differential equations. A primary objective will be to explore and understand the qualitative properties of dynamics, such as the existence of attractors, periodic orbits and chaos. We will do this by means of mathematical analysis, as well as simple numerical experiments.","MATH 22andMATH 23, or instructor approval.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8325,7 +8325,7 @@ MATH,MATH 27 Dynamical Systems with Applicaitons,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>","['MATH22', 'MATH23']"
 MATH,MATH 28 Introduction to Combinatorics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-28,MATH28,"Beginning with techniques for counting-permutations and combinations, inclusion-exclusion, recursions, and generating functions-the course then takes up graphs and directed graphs and ordered sets, and concludes with some examples of maximum-minimum problems of finite sets. Topics in the course have application in the areas of probability, statistics, and computing.",MATH 8.,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -8753,7 +8753,7 @@ MATH,MATH 28 Introduction to Combinatorics,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['MATH8']
 MATH,MATH 29 Introduction to Computability,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-29,MATH29,"What does it mean for a function to be computable? This course examines several different mathematical formalizations of the notion of computability, inspired by widely varying viewpoints, and establishes the surprising result that all these formalizations are equivalent. It goes on to demonstrate the existence of noncomputable sets and functions, and to make connections to undecidable problems in other areas of mathematics. The course concludes with an introduction to relative computability. This is a good companion course toCOSC 39; the two share only the introduction of Turing machines. Offered in alternate years.","None, but the student must be willing to learn to work abstractly and to read and write proofs.",QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9175,7 +9175,7 @@ MATH,MATH 29 Introduction to Computability,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 MATH,MATH 30.04 Evolutionary Game Theory and Applications,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-30-04,MATH30.04,"Pioneered by John Maynard Smith and others, evolutionary game theory has become an important approach to studying a wide range of biological and social problems, such as microbial interactions and animal behavior. In evolutionary game dynamics, the fitness of individuals depends on the relative abundance of all individual types in the population, and higher-fitness individual types tend to increase in abundance. This course introduces basic concepts in evolutionary game theory, including evolutionarily stable strategies, replicator dynamics, finite populations, and games on networks, along with applications to social evolution, particularly to understanding human cooperation.",Math 3 and Math 20,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -9605,7 +9605,7 @@ MATH,MATH 30.04 Evolutionary Game Theory and Applications,https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>","['MATH3', 'MATH20']"
 MATH,MATH 31 Topics in Algebra,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-31,MATH31,"This course will provide an introduction to fundamental algebraic structures, and may include significant applications. The majority of the course will consist of an introduction to the basic algebraic structures of groups and rings. Additional work will consist either of the development of further algebraic structures or applications of the previously developed theory to areas such as coding theory or crystallography. As a result of the variable syllabus, this course may not serve as an adequate prerequisite forMATH 81. Students who contemplate takingMATH 81should consider takingMATH 71instead of this course.Not open to students who have taken MATH 071.",MATH 22orMATH 24,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10034,7 +10034,7 @@ MATH,MATH 31 Topics in Algebra,https://dartmouth.smartcatalogiq.com/en/current/o
 </form>
 
 </body>
-</html>"
+</html>",['MATH22']
 MATH,MATH 31.01 Topics in Algebra,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-31-01,MATH31.01,"This course will provide an introduction to fundamental algebraic structures, and may include significant applications. The majority of the course will consist of an introduction to the basic algebraic structures of groups and rings. Additional work will consist either of the development of further algebraic structures or applications of the previously developed theory to areas such as coding theory or crystallography. As a result of the variable syllabus, this course may not serve as an adequate prerequisite forMATH 81. Students who contemplate takingMATH 81should consider takingMATH 71instead of this course.",MATH 22orMATH 24,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10456,7 +10456,7 @@ MATH,MATH 31.01 Topics in Algebra,https://dartmouth.smartcatalogiq.com/en/curren
 </form>
 
 </body>
-</html>"
+</html>",['MATH22']
 MATH,MATH 32 The Shape of Space,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-32,MATH32,"Topics in intuitive geometry and topology, for example: how to turn a sphere inside out; knots, links, and their invariants; polyhedra In 2, 3, and 4 dimensions; the classification of surfaces; curvature and the Gauss-Bonnet theorem; spherical and hyperbolic geometry; Escher patterns and their quotients; the shape of the universe. Offered in alternate years.",MATH 22orMATH 24.,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -10878,7 +10878,7 @@ MATH,MATH 32 The Shape of Space,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>",['MATH22']
 MATH,MATH 35 Real Analysis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-35,MATH35,"This course introduces the basic concepts of real-variable theory. Topics include real numbers and cardinality of sets, sequences and series of real numbers, metric spaces, continuous functions, integration theory, sequences and series of functions, and polynomial approximation. Some applications of the theory may be presented.MATH 63presents similar material, but from a more sophisticated point of view. This course may not serve as an adequate prerequisite for eitherMATH 73or 83. Students who contemplate taking one of these two advanced courses should consider takingMATH 63instead of this course. Not open to students who have taken MATH 063.","MATH 13and permission of the instructor, orMATH 22orMATH 24.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11306,7 +11306,7 @@ MATH,MATH 35 Real Analysis,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",['MATH22']
 MATH,MATH 36 Mathematical Models in the Social Sciences,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-36,MATH36,"Disciplines such as anthropology, economics, sociology, psychology, and linguistics all now make extensive use of mathematical models, using the tools of calculus, probability, game theory, network theory, often mixed with a healthy dose of computing. This course introduces students to a range of techniques using current and relevant examples. Students interested in further study of these and related topics are referred to the courses listed in the Mathematics and Social Sciences program.","MATH 13,MATH 20.",TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -11736,7 +11736,7 @@ MATH,MATH 36 Mathematical Models in the Social Sciences,https://dartmouth.smartc
 </form>
 
 </body>
-</html>"
+</html>",['MATH13']
 MATH,MATH 37 Computational methods in mathematical biology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-37,MATH37,"Introduction into cellular automata and agent-based modeling using the Java programming language. Focus of this course will be simulation of stochastic events, model parameterization and calibration, model validation, simulation and result visualization. This is a hands-on course with laboratory sessions and training exercises on individual computers.","MATH 22andMATH 24,MATH 23, one ofCOSC 1,COSC 10,ENGS 20or equivalent experience.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12159,7 +12159,7 @@ MATH,MATH 37 Computational methods in mathematical biology,https://dartmouth.sma
 </form>
 
 </body>
-</html>"
+</html>","['MATH22', 'MATH24', 'MATH23', 'COSC1']"
 MATH,MATH 38 Graph Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-38,MATH38,"The theory of graphs has roots in both practical and recreational mathematics. Today there are major applications of graph theory in management science (operations research) and computer science. This course is a survey of the theory and applications of graphs. Topics will be chosen from among connectivity, trees, and Hamiltonian and Eulerian paths and cycles; isomorphism and reconstructability; planarity, duality, and genus; independence and coloring problems, including interval graphs, interval orderings and perfect graphs, color-critical graphs and the four-color theorem; matchings; network flows, including applications to matchings, higher connectivity, and transportation problems; matroids and their relationship with optimization.",MATH 22orMATH 24(orCOSC 55and permission of the instructor).,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -12587,7 +12587,7 @@ MATH,MATH 38 Graph Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/de
 </form>
 
 </body>
-</html>"
+</html>",['MATH22']
 MATH,MATH 40 Probability and Statistical Inference,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-40,MATH40,"Introduction to continuous probability and statistical inference for data analysis. Includes the theory of estimation and the theory of hypothesis testing using normal theory t-tests and nonparametric tests for means and medians, tests for variances, chi-square tests, and an introduction to the theory of the analysis of variance and regression analysis. Analysis of explicit data sets and computation are an important part of this hands-on statistics course. *NOTE: Prior to Fall 2014 Math 40 was numbered Math 50.","MATH 13andMATH 20, or permission of the instructor.",QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13015,7 +13015,7 @@ MATH,MATH 40 Probability and Statistical Inference,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>","['MATH13', 'MATH20']"
 MATH,MATH 42 Differential Geometry I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-42,MATH42,"This course will cover curves and surfaces in Euclidean 3-dimensional space. Topics include curvature and torsion of curves, the Frenet-Serret equations, Gaussian and mean curvature of surfaces, geodesics and parallel transport, isometries and Gauss's Theorem Egregium, the Riemann Curvature tensor. One or more of the following topics will be studied if time permits: vector fields, tangent bundles, hypersurfaces, connections, and curvature. Offered in alternate years.","MATH 22orMATH 24or permission of the instructor, andMATH 23.",QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13437,7 +13437,7 @@ MATH,MATH 42 Differential Geometry I,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>","['MATH22', 'MATH23']"
 MATH,MATH 43 Functions of a Complex Variable,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-43,MATH43,"This course covers the differential and integral calculus of complex variables including such topics as Cauchy's theorem, Cauchy's integral formula and their consequences; singularities, Laurent's theorem, and the residue calculus; harmonic functions and conformal mapping. Applications will include two-dimensional potential theory, fluid flow, and aspects of Fourier analysis.",MATH 13.,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -13865,7 +13865,7 @@ MATH,MATH 43 Functions of a Complex Variable,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",['MATH13']
 MATH,MATH 46 Introduction to Applied Mathematics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-46,MATH46,"This course introduces a wide variety of mathematical tools and methods used to analyze phenomena in the physical, life, and social sciences.  This is an introductory course and is accessible to undergraduate and graduate students in mathematics and other scientific disciplines who have completed the prerequisites.  Topics include dimensional analysis and scaling, perturbation analysis, calculus of variations, integral equations, and eigenvalue problems.","MATH 22orMATH 24, andMATH 23, or permission of the instructor.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14293,7 +14293,7 @@ MATH,MATH 46 Introduction to Applied Mathematics,https://dartmouth.smartcatalogi
 </form>
 
 </body>
-</html>"
+</html>","['MATH22', 'MATH23']"
 MATH,MATH 47 Introduction to Mathematical Oncology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-47,MATH47,"Introduction into cancer biology and basic mathematical approaches to simulate cancer dynamics on the subcellular, cellular, and tissue level. Techniques for quantitative modeling are plentiful, and an increasing number of theoretical approaches are successfully applied to cancer biology. Differential equation models and individual-based cell models paved the way into quantitative cancer biology about two decades ago. Herein we will give an introduction on how such models are derived and how they can be utilized to simulate tumor growth and treatment response. We will then discuss a number of different models and discuss their confirmative and predictive power for cancer biology.","MATH 22andMATH 24,MATH 23, one ofCOSC 1,COSC 10,ENGS 20or equivalent experience.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -14715,7 +14715,7 @@ MATH,MATH 47 Introduction to Mathematical Oncology,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>","['MATH22', 'MATH24', 'MATH23', 'COSC1']"
 MATH,MATH 50 Introduction to Linear Models,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-50,MATH50,"This course provides an introduction to the most common model used in statistical data analysis. Simple linear regression, multiple regression, and analysis of variance are cov\\u00ADered, as well as statistical model-building strategies. Regression diagnostics, analysis of complex data sets and scientific writing skills are emphasized. Methods are illustrated with data sets drawn from the health, biological, and social sciences. Computations require the use of a statistical software package such as STATA.","Any one of the following:MATH 8,MATH 22or 24,MATH 10, or another elementary statistics course, or permission of the instructor.",Dist:TAS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15143,7 +15143,7 @@ MATH,MATH 50 Introduction to Linear Models,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",['MATH8']
 MATH,MATH 53 Partial Differential Equations,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-53,MATH53,"Partial differential equations play critical roles in wide areas of mathematics, science, and engineering.  This is an introductory course, accessible to undergraduate and graduate students in mathematics and other scientific disciplines who have completed the prerequisites.  Examples will come from both linear and non-linear partial differential equations, including the wave equation, diffusion, boundary value problems, conservation laws, and the Monge-Ampere equations.  Offered in alternate years.","MATH 22orMATH 24, andMATH 23, or permission of the instructor.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15571,7 +15571,7 @@ MATH,MATH 53 Partial Differential Equations,https://dartmouth.smartcatalogiq.com
 </form>
 
 </body>
-</html>"
+</html>","['MATH22', 'MATH23']"
 MATH,MATH 54 Topology I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-54,MATH54,"This course begins with the definitions of topological space, open sets, closed sets, neighborhoods, bases and subbases, closure operator, continuous functions, and homeomorphisms. The course will study constructions of spaces including subspaces, product spaces, and quotient spaces. Special categories of spaces and their interrelations will be covered, including the categories defined by the various separation axioms, first and second countable spaces, compact spaces, and connected spaces. Subspaces of Euclidean and general metric spaces will be among the examples studied in some detail.",MATH 13andMATH 22orMATH 24.,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -15999,7 +15999,7 @@ MATH,MATH 54 Topology I,https://dartmouth.smartcatalogiq.com/en/current/orc/depa
 </form>
 
 </body>
-</html>"
+</html>","['MATH13', 'MATH22']"
 MATH,MATH 56 Computational Methods,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-56,MATH56,"This course introduces computational algorithms solving problems from a variety of scientific disciplines. Mathematical models describing a phenomenon of interest are typically too complex to construct analytical solutions, leading us to numerical methods. Motivated by models from physics, biology, and medicine, students will develop numerical algorithms and mathematically analyze their accuracy, efficiency, and convergence properties. Students will be expected to implement computational algorithms to verify their understanding of the theoretical results, but developing programming skills is not the main focus of the course. Sample topics include matrix decompositions, inverse problems, optimization, data fitting, and differential equations.","MATH 22orMATH 24,COSC 1orENGS 20, or permission of the instructor.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16427,7 +16427,7 @@ MATH,MATH 56 Computational Methods,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>","['MATH22', 'COSC1']"
 MATH,MATH 60 Probability (Honors Section of MATH 20),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-60,MATH60,"This course is a more theoretical introduction to probability theory thanMATH 20. In addition to the basic content ofMATH 20, the course will include other topics such as continuous probability distributions and their applications. Offered in alternate years. Not open to students who have taken MATH 020.","MATH 13, or permission of the instructor.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -16849,7 +16849,7 @@ MATH,MATH 60 Probability (Honors Section of MATH 20),https://dartmouth.smartcata
 </form>
 
 </body>
-</html>"
+</html>",['MATH13']
 MATH,MATH 63 Real Analysis,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-63,MATH63,"This course introduces the basic concepts of real-variable theory. Topics include real numbers and cardinality of sets, sequences and series of real numbers, metric spaces, continuous functions, integration theory, sequences and series of functions, and polynomial approximation. Not open to students who have taken MATH 035.","MATH 22orMATH 24, orMATH 13and permission of the instructor.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17277,7 +17277,7 @@ MATH,MATH 63 Real Analysis,https://dartmouth.smartcatalogiq.com/en/current/orc/d
 </form>
 
 </body>
-</html>"
+</html>",['MATH22']
 MATH,MATH 66 Mathematical Topics in Modern Physics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-66,MATH66,"This introductory course presents mathematical topics that are relevant to issues in modern physics. It is mainly designed for two audiences: mathematics majors who would like to see modern physics and the historical motivations for theory in their coursework, and physics majors who want to learn mathematics beyond linear algebra and calculus. Possible topics include (but are not limited to) introductory Hilbert space theory, quantum logics, quantum computing, symplectic geometry, Einstein's theory of special relativity, Lie groups in quantum field theory, etc. No background in physics is assumed. Offered in alternate years.",Math 23 andMATH 24(or MATH 22 with permission of the instructor).,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -17699,7 +17699,7 @@ MATH,MATH 66 Mathematical Topics in Modern Physics,https://dartmouth.smartcatalo
 </form>
 
 </body>
-</html>"
+</html>","['MATH23', 'MATH24']"
 MATH,MATH 68 Algebraic Combinatorics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-68,MATH68,"This course covers the use of abstract algebra in studying the existence, construction, enumeration, and classification of combinatorial structures. The theory of enumeration, including both Polya Theory and the Incidence Algebra, and culminating in a study of algebras of generating functions, will be a central theme in the course. Other topics that may be included if time permits are the construction of block designs, error-correcting codes, lattice theory, the combinatorial theory of the symmetric group, and incidence matrices of combinatorial structures. Offered in alternate years.","MATH 28and MATH 31, orMATH 71, or permission of the instructor.",QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18121,7 +18121,7 @@ MATH,MATH 68 Algebraic Combinatorics,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>",['MATH71']
 MATH,MATH 69 Logic (Honors Section of MATH 39),https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-69,MATH69,"This course begins with a study of relational systems as they occur in mathematics. First-order languages suitable for formalizing such systems are treated in detail, and several important theorems about such languages, including the compactness and Lowenheim-Skolem theorems, are studied. The implications of these theorems for the mathematical theories being formulated are assessed. Emphasis is placed on those problems relating to first-order languages that are of fundamental interest in logic. Offered in alternate years.","experience with mathematical structures and proofs, as offered by such courses asMATH 71,MATH 54, orMATH 24; or permission of the instructor.",QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18549,7 +18549,7 @@ MATH,MATH 69 Logic (Honors Section of MATH 39),https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",['MATH71']
 MATH,MATH 70 Elements of Multivariate Statistics & Statistical Learning,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-70,MATH70,"This course focuses on modern methods of statistical analysis including nonlinear models, data mining, and classification. Students gain a theoretical basis for multivariate statistical analysis, optimal statistical hypothesis testing, and point and interval estimation. The course is grounded in applications and students will gain experience in solving problems in data analysis. Students are required to use the statistical package R.",MATH 40,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -18977,7 +18977,7 @@ MATH,MATH 70 Elements of Multivariate Statistics & Statistical Learning,https://
 </form>
 
 </body>
-</html>"
+</html>",['MATH40']
 MATH,MATH 71 Algebra,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-71,MATH71,"The sequenceMATH 71and 81 is intended as an introduction to abstract algebra.MATH 71develops basic theorems on groups, rings, fields, and vector spaces.Not open to students who have taken MATH 031.",MATH 22orMATH 24.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19406,7 +19406,7 @@ MATH,MATH 71 Algebra,https://dartmouth.smartcatalogiq.com/en/current/orc/departm
 </form>
 
 </body>
-</html>"
+</html>",['MATH22']
 MATH,MATH 72 Topics in Geometry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-72,MATH72,This course develops one or more topics in geometry. Possible topics include hyperbolic geometry; Riemannian geometry; the geometry of special and general relativity; Lie groups and algebras; algebraic geometry; projective geometry. Offered in alternate years.,"Math 13, Math 22 or Math 24, and Math 35, or Permission of the Instructor",QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -19828,7 +19828,7 @@ MATH,MATH 72 Topics in Geometry,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>","['MATH13', 'MATH22', 'MATH35']"
 MATH,MATH 72.01 Calculus on Manifolds,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-72-01,MATH72.01,"Manifolds provide mathematicians and other scientists with a way of grappling with the concept of “space” (from a global viewpoint). The space occupied by an object. The space that we inhabit. The space of solutions to a system of equations. Or, perhaps, the space of configurations of a mechanical system. While manifolds are central to the study of geometry and topology, they also provide an appropriate framework in which to explore aspects of mathematical physics, dynamics, control theory, medical imaging, and robotics, to name just a few. This course will demonstrate how ideas from calculus can be generalized to manifolds, providing a new perspective and toolkit with which to explore problems where “space” plays a fundamental role.","Math 13, Math 22 or Math 24, and Math 35, or Permission of the Instructor",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20250,7 +20250,7 @@ MATH,MATH 72.01 Calculus on Manifolds,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>","['MATH13', 'MATH22', 'MATH35']"
 MATH,MATH 72.02 Lie Groups: An Introduction Via Matrix Groups,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-72-02,MATH72.02,"Created by Sophus Lie (1842-1899) with the intent of developing a “Galois theory” of differential equations, Lie groups are a mathematically rigorous realization of our intuitive notion of “continuous transformation groups” and play a fundamental role in the study of geometry and physics.Formally, a Lie group is a group G equipped with the structure of a smooth manifold with respect to which the group operations (i.e., multiplication and inversion) are smooth. Our exploration of Lie groups will begin with the study of “matrix groups” (e.g., SO(n), SU(n), Sp(n) and SLn(R)). By focusing on this concrete class of examples, we will build our intuition and encounter many of the interesting themes that arise in the general theory of Lie groups.","Math 13, and Math 22 or Math 24, or Permission of the Instructor",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -20679,7 +20679,7 @@ MATH,MATH 72.02 Lie Groups: An Introduction Via Matrix Groups,https://dartmouth.
 </form>
 
 </body>
-</html>"
+</html>","['MATH13', 'MATH22']"
 MATH,MATH 72.10 Topics in Geometry,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-72-10,MATH72.10,This course develops one or more topics in geometry. Possible topics include ergodic theory & dynamics; hyperbolic geometry; the geometry of special and general relativity; algebraic geometry; projective geometry; theory of distributions. Offered on occasion.,"Math 13, and Math 22 or Math 24, or Permission of the Instructor",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21101,7 +21101,7 @@ MATH,MATH 72.10 Topics in Geometry,https://dartmouth.smartcatalogiq.com/en/curre
 </form>
 
 </body>
-</html>"
+</html>","['MATH13', 'MATH22']"
 MATH,MATH 73 Metric Spaces and Measure Theory,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-73,MATH73,"This course reviews the basic theory of metric spaces and their topology including continuity, completeness, connectedness, and compactness. An introduction to abstract measure theory follows, with topics including measurability, measures, integration, the construction of Lebesgue measure, as well as additional topics as time allows.",MATH 43andMATH 63or a basic course in real analysis and an undergarduate complex analysis course or permission of the instructor.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21529,7 +21529,7 @@ MATH,MATH 73 Metric Spaces and Measure Theory,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>","['MATH43', 'MATH63']"
 MATH,MATH 74 Algebraic Topology,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-74,MATH74,"This course provides a foundation in algebraic topology, including both homotopy theory and homology theory. Topics may include: the fundamental group, covering spaces, calculation of the fundamental group, singular homology theory, Eilenberg-Steenrod axioms, Mayer-Vietoris sequence, computations, applications to fi\fxed points and vector \felds.",MATH 31/MATH 71andMATH 54and permission of the instructor orMATH 54andMATH 101.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -21957,7 +21957,7 @@ MATH,MATH 74 Algebraic Topology,https://dartmouth.smartcatalogiq.com/en/current/
 </form>
 
 </body>
-</html>"
+</html>","['MATH31', 'MATH54', 'MATH54', 'MATH101']"
 MATH,MATH 75 Mathematical Cryptography,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-75,MATH75,"Cryptography is the science of secure communication over an insecure channel. This course focuses on understanding how mathematics is used in the design of modern cryptosystems, including both theoretical and algorithmic aspects. Specific topics will vary, but may include: substitution ciphers and statistical inference, the Enigma machine and permutation groups, Diffie-Hellman key exchange and discrete logarithms, RSA and integer factorization, AES and finite fields, elliptic curve cryptography, homomorphic encryption and lattices, and quantum cryptography.","Math 71, or Math 25 and 31, or instructor permission",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22379,7 +22379,7 @@ MATH,MATH 75 Mathematical Cryptography,https://dartmouth.smartcatalogiq.com/en/c
 </form>
 
 </body>
-</html>"
+</html>",['MATH71']
 MATH,MATH 75.01 Applied Topics in Number Theory and Algebra,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-75-01,MATH75.01,"Provides some applications of number theory and algebra. Specific topics will vary; two possibilities are cryptology and coding theory. The former allows for secure communication and authentication on the Internet, while the latter allows for efficient and error-free electronic communication over noisy channels. Students may take Math 75 for credit more than once. Offered in alternate years.","MATH 25orMATH 22/MATH 24or MATH 31/MATH 71, or permission of the instructor.",QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -22801,7 +22801,7 @@ MATH,MATH 75.01 Applied Topics in Number Theory and Algebra,https://dartmouth.sm
 </form>
 
 </body>
-</html>"
+</html>",['MATH25']
 MATH,MATH 76 Topics in Applied Mathematics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-76,MATH76,"The numerical nature of twenty-first century society means that applied mathematics is everywhere: animation studios, search engines, hedge funds and derivatives markets, and drug design. Students will gain an in-depth introduction to an advanced topic in applied mathematics. Possible subjects include digital signal and image processing, quantum chaos, computational biology, cryptography, coding theory, waves in nature, inverse problems, information theory, stochastic processes, machine learning, and mathematical finance.",,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23221,7 +23221,7 @@ MATH,MATH 76 Topics in Applied Mathematics,https://dartmouth.smartcatalogiq.com/
 </form>
 
 </body>
-</html>"
+</html>",[]
 MATH,MATH 76.01 Topics in Applied Mathematics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-76-01,MATH76.01,"The numerical nature of twenty-first century society means that applied mathematics is everywhere: animation studios, search engines, hedge funds and derivatives markets, and drug design. Students will gain an in-depth introduction to an advanced topic in applied mathematics. Possible subjects include digital signal and image processing, quantum chaos, computational biology, cryptography, coding theory, waves in nature, inverse problems, information theory, stochastic processes, machine learning, and mathematical finance.","MATH 22orMATH 24,MATH 23, or permission of the instructor.",QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -23649,7 +23649,7 @@ MATH,MATH 76.01 Topics in Applied Mathematics,https://dartmouth.smartcatalogiq.c
 </form>
 
 </body>
-</html>"
+</html>",['MATH22']
 MATH,MATH 76.02 Computational Inverse Problems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-76-02,MATH76.02,"Inverse problems are ubiquitous in scientific research, and occur in applications ranging from medical imaging to radar sensing. The input data are often under-sampled, noisy and may additionally be blurry. Physical obstructions may also prevent accurate data acquisition. Recovering an underlying signal or image can be critical for diagnosis, classification, or inference. This course describes fundamental aspects of inverse problems and various computational approaches for solving them. Importantly, the students will learn how to choose the appropriate methodology for the particular challenges presented by the given application, and moreover how to critically analyze the quality of their results. Specifically, students will analyze accuracy, efficiency and convergence properties of the computational techniques for various classes of problems and when possible to quantify the uncertainty of their results. Although programming will not be formally taught as part of the course, students will write numerical code in languagessuch as MATLAB or Python to compute their solutions. Resources will be provided to help students learn to write MATLAB code.","MATH 22or 24. MATH 20 or 60 recommended.  Programming experience (e.g. COSC 1, ENGS 20) recommended.",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24077,7 +24077,7 @@ MATH,MATH 76.02 Computational Inverse Problems,https://dartmouth.smartcatalogiq.
 </form>
 
 </body>
-</html>"
+</html>",['MATH22']
 MATH,MATH 76.03 Evolutionary Dynamics,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-76-03,MATH76.03,"Evolutionary dynamics is the mathematical study of evolutionary processes permeating every corner of biology. The course is intended for both upper-level undergraduate students and graduate students who are interested in applying mathematics to real-world problems. It will cover important topics related to cooperation, infectious diseases, and cancer, and introduce mathematical techniques and stochastic modeling approaches needed to tackle such problems.","MATH 3,MATH 20,MATH 23or upon approval of the instructor.  Programming skills helpful, but not required",Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24505,7 +24505,7 @@ MATH,MATH 76.03 Evolutionary Dynamics,https://dartmouth.smartcatalogiq.com/en/cu
 </form>
 
 </body>
-</html>"
+</html>","['MATH3', 'MATH20', 'MATH23']"
 MATH,MATH 76.04 Modeling and Simulation of Living Systems,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-76-04,MATH76.04,"Mathematical models play a key role in formulating null hypotheses for biological phenomenon and developing informative experiments. This course surveys stochastic and deterministic mathematical models of living systems, from single-cells to populations, and highlights their role in guiding experimental biology. An emphasis is placed on the multi-scale nature of biology and how processes on different scales interact with each other. Students also learn to perform simulations and data analysis in python.",,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -24925,7 +24925,7 @@ MATH,MATH 76.04 Modeling and Simulation of Living Systems,https://dartmouth.smar
 </form>
 
 </body>
-</html>"
+</html>",[]
 MATH,MATH 81 Abstract Algebra,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-81,MATH81,"This course provides a foundation in core areas in the theory of rings and fields. Specifically, it provides an introduction to commutative ring theory with a particular emphasis on polynomial rings and their applications to unique factorization and to finite and algebraic extensions of fields. The study of fields continues with an introduction to Galois Theory, including the fundamental theorem of Galois Theory and numerous applications.","MATH 71. In general, MATH 31 is not an acceptable prerequisite; however, in consultation with the instructor, MATH 31 together with some outside reading should be adequate preparation for the course.",QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25355,7 +25355,7 @@ MATH,MATH 81 Abstract Algebra,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",['MATH31']
 MATH,MATH 86 Mathematical Finance I,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-86,MATH86,"Financial derivatives can be thought of as insurance against uncertain future financial events. This course will take a mathematically rigorous approach to understanding the Black-Scholes-Merton model and its applications to pricing financial derivatives and risk management. Topics may include: arbitrage-free pricing, binomial tree models, Ito calculus, the Black-Scholes analysis, Monte Carlo simulation, pricing of equities options, and hedging.",MATH 20orMATH 60; andCOSC 1orENGS 20or equivalent.,Dist:QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -25783,7 +25783,7 @@ MATH,MATH 86 Mathematical Finance I,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>","['MATH20', 'COSC1']"
 MATH,MATH 87 Reading Course,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-87,MATH87,Advanced undergraduates occasionally arrange with a faculty member a reading course in a subject not occurring in the regularly scheduled curriculum.,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26199,7 +26199,7 @@ MATH,MATH 87 Reading Course,https://dartmouth.smartcatalogiq.com/en/current/orc/
 </form>
 
 </body>
-</html>"
+</html>",[]
 MATH,MATH 89 Seminar in Logic,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-89,MATH89,"A study of selected topics in logic, such as model theory, set theory, recursive function theory, or undecidability and incompleteness. Offered in alternate years.",MATH 39 orMATH 69.,QDS,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -26621,7 +26621,7 @@ MATH,MATH 89 Seminar in Logic,https://dartmouth.smartcatalogiq.com/en/current/or
 </form>
 
 </body>
-</html>"
+</html>",['MATH39']
 MATH,MATH 90 Data Intensive Research Project,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-90,MATH90,This course is intended for Mathematical Data Science majors as a means of satisfying their Culminating Experience requirement. Students will undertake a mathematically intensive independent project involving a sufficiently complex data set to meaningfully address a question of interest. Students will be required to submit a journal style report and a scientific poster before the final grade is awarded.Students are awarded one course credit for successful completion of this course at the end of the second term of work. Students register for MATH-090 and receive a grade of “ON” (ongoing) at the end of the term. Students do not register for the subsequent term. A final grade will replace the “ON” at the end of the subsequent term at which time the coursework must be completed,,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27038,7 +27038,7 @@ MATH,MATH 90 Data Intensive Research Project,https://dartmouth.smartcatalogiq.co
 </form>
 
 </body>
-</html>"
+</html>",[]
 MATH,MATH 96 Mathematical Finance II,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-96,MATH96,"This course is a continuation ofMATH 86with an emphasis on the mathematics underlying fixed income derivatives. Topics may include: stochastic calculus, Radon-Nikodym derivative and change of measure, Girsanov's theorem, the Martingale representation theorem, interest rate models (e.g., H-J-M, Ho-Lee, Vasicek, C-I-R), interest rate derivatives, interest rate trees and model calibration, and credit derivatives. Offered in alternate years","MATH 86, and Math 23.",,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27456,7 +27456,7 @@ MATH,MATH 96 Mathematical Finance II,https://dartmouth.smartcatalogiq.com/en/cur
 </form>
 
 </body>
-</html>"
+</html>","['MATH86', 'MATH23']"
 MATH,MATH 97 Undergraduate Research,https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate/mathematics/math-mathematics-undergraduate/math-97,MATH97,"Open only to students who are officially registered in the Honors Program. Permission of the adviser to majors and thesis adviser required. This course does not serve for major credit nor for distributive credit, and may be taken at most twice.",,,"
 <!DOCTYPE HTML PUBLIC ""-//W3C//DTD XHTML 1.0 Transitional//EN"" ""http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"">
 <html xml:lang=""en"" xmlns=""http://www.w3.org/1999/xhtml"" lang=""en"">
@@ -27872,4 +27872,4 @@ MATH,MATH 97 Undergraduate Research,https://dartmouth.smartcatalogiq.com/en/curr
 </form>
 
 </body>
-</html>"
+</html>",[]
