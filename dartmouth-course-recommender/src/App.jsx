@@ -78,7 +78,23 @@ function App() {
             <CourseRecommendations recommendations={recommendations} />
           ) : (
             <div className="placeholder-message">
-              Fill out the form and click "Find My Courses" to see personalized course suggestions.
+              <p>
+                Get a personalized course plan based on your interests and goals.
+              </p>
+              <div className="steps">
+                <div className="step">
+                  <div className="step-number">1</div>
+                  <div className="step-text">Select your major and areas of interest</div>
+                </div>
+                <div className="step">
+                  <div className="step-number">2</div>
+                  <div className="step-text">Tell us about your goals</div>
+                </div>
+                <div className="step">
+                  <div className="step-number">3</div>
+                  <div className="step-text">Build your DreamPath</div>
+                </div>
+              </div>
             </div>
           )}
         </Col>
