@@ -1,0 +1,43 @@
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.auth-card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+.modern-input {
+  border-radius: 8px;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  transition: border-color 0.3s ease;
+}
+
+.modern-input:focus {
+  border-color: #00693e; /* Dartmouth green */
+  box-shadow: 0 0 0 0.2rem rgba(0, 105, 62, 0.25);
+}
+
+.modern-button {
+  background-color: #00693e;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.modern-button:hover {
+  background-color: #005a33;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+}

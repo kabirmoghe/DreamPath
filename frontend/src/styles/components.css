@@ -1,0 +1,83 @@
+/* Card styles */
+.card {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid rgba(138, 107, 193, 0.2);
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid rgba(138, 107, 193, 0.2);
+}
+
+/* Button styles */
+.btn-primary {
+  background-color: #8A6BC1;
+  border-color: #8A6BC1;
+}
+
+.btn-primary:hover {
+  background-color: #7a5bb0;
+  border-color: #7a5bb0;
+}
+
+.btn-outline-primary {
+  color: #8A6BC1;
+  border-color: #8A6BC1;
+}
+
+.btn-outline-primary:hover {
+  background-color: #8A6BC1;
+  border-color: #8A6BC1;
+}
+
+/* Form styles */
+.form-control:focus {
+  border-color: #8A6BC1;
+  box-shadow: 0 0 0 0.2rem rgba(138, 107, 193, 0.25);
+}
+
+.form-select:focus {
+  border-color: #8A6BC1;
+  box-shadow: 0 0 0 0.2rem rgba(138, 107, 193, 0.25);
+}
+
+/* Navigation styles */
+.nav-pills .nav-link.active {
+  background-color: #8A6BC1;
+}
+
+.nav-pills .nav-link {
+  color: #495057;
+}
+
+.nav-pills .nav-link:hover {
+  color: #8A6BC1;
+}
+
+/* Alert styles */
+.alert-primary {
+  background-color: rgba(138, 107, 193, 0.1);
+  border-color: rgba(138, 107, 193, 0.2);
+  color: #8A6BC1;
+}
+
+/* Link styles */
+a {
+  color: #8A6BC1;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #7a5bb0;
+  text-decoration: none;
+}
+
+/* Loading spinner */
+.spinner-border {
+  color: #8A6BC1;
+} 

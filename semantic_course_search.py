@@ -7,7 +7,7 @@ from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
 import os
-from prompts import *
+from course_matching_prompts import *
 from college_info_retrieval import produce_courses_for_major
 from rapidfuzz import process, fuzz
 import re
