@@ -4,4 +4,3 @@ Linkedin Test.ipynb
 .env
 .ipynb_checkpoints
 __pycache__
-vectorstores/

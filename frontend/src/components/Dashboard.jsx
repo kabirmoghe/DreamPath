@@ -443,7 +443,7 @@ function Dashboard() {
                     <div className="dreampath-visualization-container w-100">
                       <div className="d-flex justify-content-between mb-4">
                         {/* Top Course Recommendations (simplified) */}
-                        <div className="dreampath-top-courses mb-4">
+                        <div className="dreampath-top-courses mb-4" style={{ width: '100%' }}>
                           <TopRecommendations
                             majorCourse={(recommendations.majorRecommendations || [])[0]}
                             complementaryCourse={(recommendations.complementaryRecommendations || [])[0]}

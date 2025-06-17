@@ -2,15 +2,14 @@ import React from 'react';
 import { ArrowRightShort, BookmarkStar, Star, People } from 'react-bootstrap-icons';
 
 // Props: majorCourse, complementaryCourse, clubRecommendation, onViewAll, onViewAllClubs
-const TILE_MAX_WIDTH = 370;
 const TopRecommendations = ({ majorCourse, complementaryCourse, clubRecommendation, onViewAll, onViewAllClubs }) => {
   return (
     <div className="top-course-recommendations d-flex w-100" style={{ gap: 16, justifyContent: 'space-between' }}>
       {/* Left: Courses */}
-      <div style={{ flex: 1, minWidth: 0 }}>
+      <div style={{ flex: 1, width: '50%' }}>
         {/* Major course card */}
         {majorCourse && (
-          <div className="d-flex align-items-center bg-light rounded shadow-sm p-2 mb-2" style={{ minHeight: 48, maxWidth: TILE_MAX_WIDTH, wordBreak: 'break-word' }}>
+          <div className="d-flex align-items-center bg-light rounded shadow-sm p-2 mb-2" style={{ minHeight: 48, maxWidth: '100%', wordBreak: 'break-word' }}>
             <div className="d-flex align-items-center justify-content-center rounded-circle me-2" style={{ width: 32, height: 32, background: '#f3e8ff' }}>
               <BookmarkStar style={{ color: '#8A6BC1', fontSize: 18 }} />
             </div>
@@ -22,7 +21,7 @@ const TopRecommendations = ({ majorCourse, complementaryCourse, clubRecommendati
         )}
         {/* Complementary course card */}
         {complementaryCourse && (
-          <div className="d-flex align-items-center bg-light rounded shadow-sm p-2" style={{ minHeight: 48, maxWidth: TILE_MAX_WIDTH, wordBreak: 'break-word' }}>
+          <div className="d-flex align-items-center bg-light rounded shadow-sm p-2" style={{ minHeight: 48, width: '100%', wordBreak: 'break-word' }}>
             <div className="d-flex align-items-center justify-content-center rounded-circle me-2" style={{ width: 32, height: 32, background: '#e7f2fb' }}>
               <Star style={{ color: '#4A90E2', fontSize: 18 }} />
             </div>
@@ -43,9 +42,9 @@ const TopRecommendations = ({ majorCourse, complementaryCourse, clubRecommendati
         </button>
       </div>
       {/* Right: Club Recommendation */}
-      <div style={{ flex: 'none', minWidth: 260, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginRight: 0, paddingRight: 0 }}>
+      <div style={{ flex: 'none', minWidth: '50%', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginRight: 0, paddingRight: 0 }}>
         {clubRecommendation && (
-          <div className="d-flex align-items-center bg-light rounded shadow-sm p-2 mb-2" style={{ minHeight: 48, maxWidth: TILE_MAX_WIDTH, wordBreak: 'break-word' }}>
+          <div className="d-flex align-items-center bg-light rounded shadow-sm p-2 mb-2" style={{ minHeight: 48, width: '100%', wordBreak: 'break-word' }}>
             <div className="d-flex align-items-center justify-content-center rounded-circle me-2" style={{ width: 32, height: 32, background: '#e6f9f0' }}>
               <People style={{ color: '#228B5A', fontSize: 18 }} />
             </div>

@@ -66,6 +66,16 @@ const LandingPage = () => {
       <section className="py-5 bg-white">
         <Container>
           <h2 className="text-center mb-5" style={{ fontFamily: 'Lora, serif' }}>How DreamPath Works</h2>
+          <div style={{
+            color: '#6c757d',
+            fontSize: 18,
+            marginBottom: 20,
+            textAlign: 'center',
+            fontFamily: 'Lora, serif',
+            fontWeight: 400
+          }}>
+            A career-oriented, AI-powered college advisor that personalizes:
+          </div>
           <Row>
             <Col md={4} className="mb-4">
               <div className="bg-light p-4 rounded h-100">
@@ -89,7 +99,7 @@ const LandingPage = () => {
                     <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
                   </svg>
                 </div>
-                <h3 className="h4 mb-3">Club Connections</h3>
+                <h3 className="h4 mb-3">Club Involvement</h3>
                 <p className="text-muted">Discover student organizations that align with your interests and enhance your college experience.</p>
               </div>
             </Col>
@@ -104,7 +114,7 @@ const LandingPage = () => {
                     <path d="M12 12V8"></path>
                   </svg>
                 </div>
-                <h3 className="h4 mb-3">Alumni Network</h3>
+                <h3 className="h4 mb-3">Alumni Connections</h3>
                 <p className="text-muted">Connect with alumni in your field of interest for mentorship, advice, and career opportunities.</p>
               </div>
             </Col>
