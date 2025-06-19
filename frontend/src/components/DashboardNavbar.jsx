@@ -2,7 +2,8 @@ import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase';
-import { House, Calendar, People, Diagram3, Person, BoxArrowRight } from 'react-bootstrap-icons';
+import { BoxArrowRight, InfoCircle } from 'react-bootstrap-icons';
+import { HouseIcon, BookIcon, PeopleIcon, NetworkIcon } from './icons/DreamPathIcons';
 
 const DREAMPATH_PURPLE = '#8A6BC1';
 const NAV_TEXT = '#222';
@@ -76,7 +77,7 @@ const DashboardNavbar = () => {
             border: 'none',
           }}
         >
-          <House className="me-1" /> Home
+          <HouseIcon size={16} className="me-1" /> Home
         </Nav.Link>
         <Nav.Link
           as={Link}
@@ -89,7 +90,7 @@ const DashboardNavbar = () => {
             border: 'none',
           }}
         >
-          <Calendar className="me-1" /> Courses
+          <BookIcon size={16} className="me-1" /> Courses
         </Nav.Link>
         <Nav.Link
           as={Link}
@@ -102,7 +103,7 @@ const DashboardNavbar = () => {
             border: 'none',
           }}
         >
-          <People className="me-1" /> Clubs
+          <PeopleIcon size={16} className="me-1" /> Clubs
         </Nav.Link>
         <Nav.Link
           as={Link}
@@ -115,14 +116,14 @@ const DashboardNavbar = () => {
             border: 'none',
           }}
         >
-          <Diagram3 className="me-1" /> Alumni
+          <NetworkIcon size={16} className="me-1" /> Alumni
         </Nav.Link>
       </Nav>
 
       {/* Right: Profile and Logout (icon only, with red hover) */}
       <Nav className="ms-auto align-items-center gap-2" style={{ fontSize: 16 }}>
-        <Nav.Link as={Link} to="/profile" className="d-flex align-items-center px-2" style={{ color: NAV_TEXT }}>
-          <Person className="me-1" /> Profile
+        <Nav.Link className="d-flex align-items-center px-2" style={{ color: NAV_TEXT }}>
+          <InfoCircle className="me-1" /> About
         </Nav.Link>
         <Nav.Link
           onClick={handleLogout}

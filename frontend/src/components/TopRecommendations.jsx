@@ -9,7 +9,7 @@ const TopRecommendations = ({ majorCourse, complementaryCourse, clubRecommendati
       <div style={{ flex: 1, width: '50%' }}>
         {/* Major course card */}
         {majorCourse && (
-          <div className="d-flex align-items-center bg-light rounded shadow-sm p-2 mb-2" style={{ minHeight: 48, maxWidth: '100%', wordBreak: 'break-word' }}>
+          <div className="d-flex align-items-center bg-light rounded p-2 mb-2" style={{ minHeight: 48, maxWidth: '100%', wordBreak: 'break-word', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)' }}>
             <div className="d-flex align-items-center justify-content-center rounded-circle me-2" style={{ width: 32, height: 32, background: '#f3e8ff' }}>
               <BookmarkStar style={{ color: '#8A6BC1', fontSize: 18 }} />
             </div>
@@ -21,9 +21,9 @@ const TopRecommendations = ({ majorCourse, complementaryCourse, clubRecommendati
         )}
         {/* Complementary course card */}
         {complementaryCourse && (
-          <div className="d-flex align-items-center bg-light rounded shadow-sm p-2" style={{ minHeight: 48, width: '100%', wordBreak: 'break-word' }}>
+          <div className="d-flex align-items-center bg-light rounded p-2" style={{ minHeight: 48, width: '100%', wordBreak: 'break-word', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)' }}>
             <div className="d-flex align-items-center justify-content-center rounded-circle me-2" style={{ width: 32, height: 32, background: '#e7f2fb' }}>
-              <Star style={{ color: '#4A90E2', fontSize: 18 }} />
+              <Star style={{ color: '#3873a0', fontSize: 18 }} />
             </div>
             <div>
               <div style={{ fontWeight: 700, fontSize: 15, lineHeight: 1.1 }}>{complementaryCourse.courseCode}{complementaryCourse.courseTitle ? `: ${complementaryCourse.courseTitle}` : ''}</div>
@@ -42,9 +42,9 @@ const TopRecommendations = ({ majorCourse, complementaryCourse, clubRecommendati
         </button>
       </div>
       {/* Right: Club Recommendation */}
-      <div style={{ flex: 'none', minWidth: '50%', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginRight: 0, paddingRight: 0 }}>
+      <div style={{ flex: 'none', width: '50%', display: 'flex', flexDirection: 'column', alignItems: 'flex-end', marginRight: 0, paddingRight: 0 }}>
         {clubRecommendation && (
-          <div className="d-flex align-items-center bg-light rounded shadow-sm p-2 mb-2" style={{ minHeight: 48, width: '100%', wordBreak: 'break-word' }}>
+          <div className="d-flex align-items-center bg-light rounded p-2 mb-2" style={{ minHeight: 48, width: '100%', wordBreak: 'break-word', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.12)' }}>
             <div className="d-flex align-items-center justify-content-center rounded-circle me-2" style={{ width: 32, height: 32, background: '#e6f9f0' }}>
               <People style={{ color: '#228B5A', fontSize: 18 }} />
             </div>

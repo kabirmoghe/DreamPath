@@ -7,6 +7,8 @@ import SignUp from './components/Auth/SignUp';
 import Dashboard from './components/Dashboard';
 import CreateDetailedProfile from './components/CreateDetailedProfile';
 import ProtectedRoute from './components/ProtectedRoute';
+import Courses from './components/Courses';
+import Clubs from './components/Clubs';
 
 function App() {
   return (
@@ -32,6 +34,8 @@ function App() {
               </ProtectedRoute>
             } 
           />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/clubs" element={<Clubs />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>

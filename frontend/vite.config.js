@@ -8,5 +8,11 @@ export default defineConfig({
     proxy: {
       '/api': 'http://localhost:5001',
     },
+    hmr: {
+      overlay: true,
+    },
+    watch: {
+      usePolling: true,
+    },
   },
 })

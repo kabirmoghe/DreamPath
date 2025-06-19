@@ -126,7 +126,7 @@ function Dashboard() {
       setUser(session.user);
 
       // Fetch user profile (basic)
-      const { data: profileData, error: profileError } = await supabase
+      let { data: profileData, error: profileError } = await supabase
         .from('profiles')
         .select('*')
         .eq('id', session.user.id)
@@ -441,19 +441,33 @@ function Dashboard() {
                   {/* Recommendations Preview */}
                   {recommendations && recommendations.coursePath && (
                     <div className="dreampath-visualization-container w-100">
+                      {/* Header for the right column */}
+                      <div className="d-flex justify-content-between align-items-center w-100" style={{ borderBottom: '0.75px solid #e0e0e0', paddingBottom: '12px', marginBottom: '12px' }}>
+                        <h3 className="h5 mb-0">Dashboard</h3>
+                      </div>
                       <div className="d-flex justify-content-between mb-4">
                         {/* Top Course Recommendations (simplified) */}
                         <div className="dreampath-top-courses mb-4" style={{ width: '100%' }}>
-                          <TopRecommendations
-                            majorCourse={(recommendations.majorRecommendations || [])[0]}
-                            complementaryCourse={(recommendations.complementaryRecommendations || [])[0]}
-                            clubRecommendation={
-                              Object.values(recommendations.clubRecommendations || {})
-                                .sort((a, b) => (b.score || 0) - (a.score || 0))[0]
-                            }
-                            onViewAll={() => { /* TODO: navigate to courses tab */ }}
-                            onViewAllClubs={() => { /* TODO: navigate to clubs tab */ }}
-                          />
+                          {(() => {
+                            const sortedMajor = [...(recommendations.majorRecommendations || [])]
+                              .sort((a, b) => (b.majorTotalScore || 0) - (a.majorTotalScore || 0));
+                            const sortedComplementary = [...(recommendations.complementaryRecommendations || [])]
+                              .sort((a, b) => (b.complementaryTotalScore || 0) - (a.complementaryTotalScore || 0));
+                            // Always sort clubs by score or totalScore before picking the top club
+                            const clubs = Array.isArray(recommendations.clubRecommendations)
+                              ? recommendations.clubRecommendations
+                              : Object.values(recommendations.clubRecommendations || {});
+                            const sortedClubs = clubs.sort((a, b) => ((b.score || b.totalScore || 0) - (a.score || a.totalScore || 0)));
+                            return (
+                              <TopRecommendations
+                                majorCourse={sortedMajor[0]}
+                                complementaryCourse={sortedComplementary[0]}
+                                clubRecommendation={sortedClubs[0]}
+                                onViewAll={() => navigate('/courses')}
+                                onViewAllClubs={() => navigate('/clubs')}
+                              />
+                            );
+                          })()}
                         </div>
                       </div>
                       <CourseTimeline coursePath={recommendations.coursePath} />
