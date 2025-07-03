@@ -1,0 +1,42 @@
+/* Define global CSS variables */
+:root {
+  --dream-purple: #8A6BC1;
+  --dream-blue: #6A4C93;
+  --dream-dark: #222;
+}
+
+/* Basic CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* App container */
+.app {
+  min-height: 100vh;
+}
+
+/* Custom font classes */
+.font-lora {
+  font-family: 'Lora', serif;
+}
+
+/* Custom gradient background */
+.bg-gradient {
+  background: linear-gradient(to right, #00693E, #8A6BC1, #00693E);
+} 
