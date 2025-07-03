@@ -7,7 +7,7 @@ Context:
     "{college_interests}"
 
 Task:
-    What are 5 specific technical or academic topics they should consider studying in college to support these interests (which may be within or outside of their major)?
+    What are 5 specific technical or academic topics they should consider studying in college to support these interests? Take into account that certain interests may be independent of their major if implied by the student.
     Focus on topics that are likely to appear in college course descriptions or syllabi.
     These might include subfields, tools, theories, or methodologies.
 

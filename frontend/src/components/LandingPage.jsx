@@ -75,7 +75,7 @@ const LandingPage = () => {
             fontFamily: 'Lora, serif',
             fontWeight: 400
           }}>
-            A career-oriented, AI-powered college advisor that personalizes:
+            A career-oriented, AI-powered advisor that personalizes your college experience.
           </div>
           <Row>
             <Col md={4} className="mb-4">

@@ -15,6 +15,15 @@ load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 EMBED_MODEL = OpenAIEmbeddings(api_key=openai_api_key)
 
+# Parameter Weights Feature:
+# The score_club_recommendations function now accepts optional parameter_weights
+# to allow users to adjust the importance of different profile parameters:
+# - college_interests: weight for student's college interests
+# - post_grad_goal: weight for post-graduation goals  
+# - long_term_goal: weight for long-term career goals
+# Weights should be in range [0,1] with at least one > 0.
+# Default weights: {'college_interests': 1.0, 'post_grad_goal': 1.0, 'long_term_goal': 0.5}
+
 # Add this mapping at the top of the file after imports
 PARAMETER_TO_PROMPT_MAP = {
     "college_interests": PARSE_CLUB_THEMES_FROM_INTERESTS_PROMPT,
@@ -131,6 +140,82 @@ def get_club_recommendations(major, student_parameter_data):
         print("=" * 50)
 
     return club_recommendations, club_metadata
+
+def score_club_recommendations(club_recommendations, club_metadata, parameter_weights=None):
+    """
+    Scores club recommendations across all parameters for a given student.
+
+    Args:
+        club_recommendations (dict): Dictionary of club recommendations with parameter scores.
+        club_metadata (dict): Dictionary of club metadata.
+        parameter_weights (dict, optional): Dictionary of weights for each parameter.
+            Should contain keys: 'college_interests', 'post_grad_goal', 'long_term_goal'
+            Values should be in range [0,1]. At least one must be > 0.
+            Defaults to {'college_interests': 1.0, 'post_grad_goal': 1.0, 'long_term_goal': 0.5}.
+
+    Returns:
+        dict: Dictionary of scored club recommendations with weighted total scores.
+    """
+    # Set default weights if none provided
+    if parameter_weights is None:
+        parameter_weights = {
+            'college_interests': 1.0,
+            'post_grad_goal': 1.0,
+            'long_term_goal': 0.5
+        }
+    
+    # Validate parameter weights
+    valid_parameters = {'college_interests', 'post_grad_goal', 'long_term_goal'}
+    
+    # Check that all provided weights are for valid parameters
+    for param in parameter_weights:
+        if param not in valid_parameters:
+            raise ValueError(f"Invalid parameter '{param}' in parameter_weights. Valid parameters: {valid_parameters}")
+    
+    # Check that weights are in valid range [0,1]
+    for param, weight in parameter_weights.items():
+        if not (0 <= weight <= 1):
+            raise ValueError(f"Weight for '{param}' must be in range [0,1], got {weight}")
+    
+    # Check that at least one weight is > 0
+    if not any(weight > 0 for weight in parameter_weights.values()):
+        raise ValueError("At least one parameter weight must be greater than 0")
+    
+    # Ensure all parameters have weights (use defaults for missing ones)
+    for param in valid_parameters:
+        if param not in parameter_weights:
+            if param == 'long_term_goal':
+                parameter_weights[param] = 0.5
+            else:
+                parameter_weights[param] = 1.0
+    
+    print(f'Producing club recommendation details with weights: {parameter_weights}')
+    
+    scored_club_recommendations = {}
+    
+    for club_name, parameter_scores in club_recommendations.items():
+        weighted_total = 0
+        total_weight = 0
+        
+        # Calculate weighted total score
+        for parameter, score in parameter_scores.items():
+            weight = parameter_weights.get(parameter, 1.0)
+            weighted_total += score * weight
+            total_weight += weight
+        
+        # Calculate weighted average (avoid division by zero)
+        if total_weight > 0:
+            weighted_average = weighted_total / total_weight
+        else:
+            weighted_average = 0
+        
+        scored_club_recommendations[club_name] = {
+            'parameterScores': parameter_scores,
+            'totalScore': weighted_average,
+            'metadata': club_metadata.get(club_name, {})
+        }
+    
+    return scored_club_recommendations
 
 if __name__ == "__main__":
     # Sample responses

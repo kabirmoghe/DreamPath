@@ -16,6 +16,15 @@ import re
 load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
+# Parameter Weights Feature:
+# The score_recommended_courses function now accepts optional parameter_weights
+# to allow users to adjust the importance of different profile parameters:
+# - college_interests: weight for student's college interests
+# - post_grad_goal: weight for post-graduation goals  
+# - long_term_goal: weight for long-term career goals
+# Weights should be in range [0,1] with at least one > 0.
+# Default weights: {'college_interests': 1.0, 'post_grad_goal': 1.0, 'long_term_goal': 0.5}
+
 def create_vector_store(courses_with_descriptions, vectorstore_name):
     """
     Creates vector store for set of courses associated with a department.
@@ -289,7 +298,7 @@ def get_courses_for_student_parameters(major, student_parameter_data):
     
     return major_parameter_course_counts, other_parameter_course_counts, all_unique_courses, all_course_to_department_map
 
-def score_recommended_courses(major_parameter_course_counts, other_parameter_course_counts, all_unique_courses):
+def score_recommended_courses(major_parameter_course_counts, other_parameter_course_counts, all_unique_courses, parameter_weights=None):
     """
     Scores courses across all parameters for a given student.
 
@@ -297,11 +306,48 @@ def score_recommended_courses(major_parameter_course_counts, other_parameter_cou
         major_parameter_course_counts (dict): Dictionary of major course counts.
         other_parameter_course_counts (dict): Dictionary of other course counts.
         all_unique_courses (set): Set of all unique courses.
+        parameter_weights (dict, optional): Dictionary of weights for each parameter.
+            Should contain keys: 'college_interests', 'post_grad_goal', 'long_term_goal'
+            Values should be in range [0,1]. At least one must be > 0.
+            Defaults to {'college_interests': 1.0, 'post_grad_goal': 1.0, 'long_term_goal': 0.5}.
 
     Returns:
         tuple: Tuple containing major course recommendation details and other course recommendation details.
     """
-    print(f'Producing course recommendation details...')
+    # Set default weights if none provided
+    if parameter_weights is None:
+        parameter_weights = {
+            'college_interests': 1.0,
+            'post_grad_goal': 1.0,
+            'long_term_goal': 0.5
+        }
+    
+    # Validate parameter weights
+    valid_parameters = {'college_interests', 'post_grad_goal', 'long_term_goal'}
+    
+    # Check that all provided weights are for valid parameters
+    for param in parameter_weights:
+        if param not in valid_parameters:
+            raise ValueError(f"Invalid parameter '{param}' in parameter_weights. Valid parameters: {valid_parameters}")
+    
+    # Check that weights are in valid range [0,1]
+    for param, weight in parameter_weights.items():
+        if not (0 <= weight <= 1):
+            raise ValueError(f"Weight for '{param}' must be in range [0,1], got {weight}")
+    
+    # Check that at least one weight is > 0
+    if not any(weight > 0 for weight in parameter_weights.values()):
+        raise ValueError("At least one parameter weight must be greater than 0")
+    
+    # Ensure all parameters have weights (use defaults for missing ones)
+    for param in valid_parameters:
+        if param not in parameter_weights:
+            if param == 'long_term_goal':
+                parameter_weights[param] = 0.5
+            else:
+                parameter_weights[param] = 1.0
+    
+    print(f'Producing course recommendation details with weights: {parameter_weights}')
     major_course_recommendation_details = {}
     other_course_recommendation_details = {}
 
@@ -310,16 +356,12 @@ def score_recommended_courses(major_parameter_course_counts, other_parameter_cou
         other_count = 0
 
         for parameter in major_parameter_course_counts:
-            if parameter=='long_term_goal':
-                major_count += major_parameter_course_counts[parameter][course_code] * 0.5
-            else:
-                major_count += major_parameter_course_counts[parameter][course_code]
+            weight = parameter_weights.get(parameter, 1.0)
+            major_count += major_parameter_course_counts[parameter][course_code] * weight
 
         for parameter in other_parameter_course_counts:
-            if parameter=='long_term_goal':
-                other_count += other_parameter_course_counts[parameter][course_code] * 0.5
-            else:
-                other_count += other_parameter_course_counts[parameter][course_code]
+            weight = parameter_weights.get(parameter, 1.0)
+            other_count += other_parameter_course_counts[parameter][course_code] * weight
         
         major_course_recommendation_details[course_code] = {
             'total_count': major_count,

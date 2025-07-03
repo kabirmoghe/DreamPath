@@ -62,13 +62,14 @@ function Login() {
         }
 
         // Now check for detailed user profile
-        const { data: detailedProfile, error: detailedProfileError } = await supabase
+        const { data: detailedProfiles, error: detailedProfileError } = await supabase
           .from('detailed_profiles')
           .select('*')
           .eq('user_id', user.id)
-          .maybeSingle();
+          .order('created_at', { ascending: false })
+          .limit(1);
 
-        if (!detailedProfile) {
+        if (!detailedProfiles || detailedProfiles.length === 0) {
           navigate('/create-detailed-profile');
         } else {
           navigate('/dashboard');

@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Card, Button, Nav, Tab, Form, Spinner } from 'react-bootstrap';
 import { supabase } from '../lib/supabase';
 import { useNavigate } from 'react-router-dom';
-import StudentForm from './StudentForm';
-import ModernStudentForm from './ModernStudentForm';
-import CourseRecommendations from './CourseRecommendations';
 import axios from 'axios';
 import DashboardNavbar from './DashboardNavbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Hammer } from 'react-bootstrap-icons';
+import { Hammer, Gear } from 'react-bootstrap-icons';
 import CourseTimeline from './CourseTimeline';
 import TopRecommendations from './TopRecommendations';
+import ParameterWeightsSettings from './ParameterWeightsSettings';
 
 function Dashboard() {
   const navigate = useNavigate();
@@ -36,12 +34,27 @@ function Dashboard() {
   const [buildLoading, setBuildLoading] = useState(false);
   const [iterations, setIterations] = useState([]);
   const [activeIteration, setActiveIteration] = useState(null);
+  const [showWeightsSettings, setShowWeightsSettings] = useState(false);
+  const [currentWeights, setCurrentWeights] = useState({
+    course_parameter_weights: {
+      college_interests: 1.0,
+      post_grad_goal: 1.0,
+      long_term_goal: 0.5
+    },
+    club_parameter_weights: {
+      college_interests: 1.0,
+      post_grad_goal: 1.0,
+      long_term_goal: 0.5
+    }
+  });
 
   // Loader text animation state
   const loaderMessages = [
     'Finding courses that match your interests',
-    'Discovering classes aligned with your post-grad goals',
-    'Selecting courses for your career aspirations',
+    'Finding clubs that align with your long-term goals',
+    'Building your term-by-term plan',
+    'Identifying courses that support your post-grad goals',
+    'Clarifying relevant topics'
   ];
   const [loaderMsgIdx, setLoaderMsgIdx] = useState(0);
   const [fadeState, setFadeState] = useState('fade-in');
@@ -149,19 +162,25 @@ function Dashboard() {
         profileData = newProfile;
       }
 
-      // Fetch detailed profile
-      const { data: detailedProfile, error: detailedProfileError } = await supabase
+      // Fetch the most recent detailed profile
+      // This approach allows us to track profile evolution over time
+      // by creating new records instead of updating existing ones
+      const { data: detailedProfiles, error: detailedProfileError } = await supabase
         .from('detailed_profiles')
         .select('*')
         .eq('user_id', session.user.id)
-        .maybeSingle();
+        .order('created_at', { ascending: false })
+        .limit(1);
       if (detailedProfileError) throw detailedProfileError;
 
-      // If detailed profile does not exist, redirect to create-detailed-profile
-      if (!detailedProfile) {
+      // If no detailed profile exists, redirect to create-detailed-profile
+      if (!detailedProfiles || detailedProfiles.length === 0) {
         navigate('/create-detailed-profile');
         return;
       }
+
+      // Use the most recent detailed profile
+      const detailedProfile = detailedProfiles[0];
 
       // Merge both profiles
       setProfile({ ...profileData, ...detailedProfile });
@@ -194,26 +213,30 @@ function Dashboard() {
     setSaveError(null);
     setSaveSuccess(false);
     try {
+      // Create a new detailed profile record instead of updating
+      // This enables tracking profile evolution over time
       const { error } = await supabase
         .from('detailed_profiles')
-        .update({
+        .insert([{
+          user_id: user.id,
           major: editProfile.major,
           college_interests: editProfile.college_interests,
           post_grad_goal: editProfile.post_grad_goal,
           long_term_goal: editProfile.long_term_goal,
-        })
-        .eq('user_id', user.id);
+        }]);
       if (error) {
         setSaveError(error.message);
-        console.error('Profile update error:', error);
+        console.error('Profile creation error:', error);
         return;
       }
+      
+      // Update the local profile state with the new data
       setProfile({ ...profile, ...editProfile });
       setIsEditing(false);
       setSaveSuccess(true);
     } catch (err) {
       setSaveError(err.message);
-      console.error('Profile update exception:', err);
+      console.error('Profile creation exception:', err);
     } finally {
       setSaveLoading(false);
       setTimeout(() => setSaveSuccess(false), 2000);
@@ -231,6 +254,8 @@ function Dashboard() {
         collegeInterests: editProfile?.college_interests || '',
         postGradGoal: editProfile?.post_grad_goal || '',
         longTermGoal: editProfile?.long_term_goal || '',
+        course_parameter_weights: currentWeights.course_parameter_weights,
+        club_parameter_weights: currentWeights.club_parameter_weights,
       };
       const response = await fetch('/api/recommendations', {
         method: 'POST',
@@ -245,6 +270,11 @@ function Dashboard() {
     } finally {
       setBuildLoading(false);
     }
+  };
+
+  const handleWeightsSave = (newWeights) => {
+    setCurrentWeights(newWeights);
+    console.log('Parameter weights updated:', newWeights);
   };
 
   if (loading) {
@@ -282,7 +312,7 @@ function Dashboard() {
         </Row>
         <Row>
           <Col md={4} className="h-100">
-            <Card className="mb-4 h-100" style={{ background: '#faf9fb', border: 'none', minHeight: 420 }}>
+            <Card className="mb-4 h-100" style={{ background: '#faf9fb', border: 'none' }}>
               <Card.Body style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                 <div className="d-flex justify-content-between align-items-center mb-3">
                   <h3 className="h5 mb-0">Your Profile</h3>
@@ -403,10 +433,33 @@ function Dashboard() {
                     </div>
                   )}
                   {saveError && <div className="text-danger mt-2">{saveError}</div>}
-                  {saveSuccess && <div className="text-success mt-2">Profile updated!</div>}
+                  {saveSuccess && <div className="text-success mt-2">Profile saved.</div>}
                 </Form>
               </Card.Body>
             </Card>
+            
+            {/* Parameter Weights Settings - Separate card below profile */}
+                <div className="d-flex justify-content-between align-items-center mb-2">
+                  <Button
+                    size="sm"
+                    className="d-flex align-items-center"
+                    style={{
+                      fontWeight: 500,
+                      border: 'none',
+                      color: '#6c757d',
+                      boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
+                      borderRadius: '6px',
+                      padding: '6px 10px',
+                      fontSize: '12px',
+                      backgroundColor: 'white'
+                    }}
+                    onClick={() => setShowWeightsSettings(true)}
+                    disabled={buildLoading}
+                  >
+                    <Gear size={14} className="me-1" />
+                    Recommendation Settings
+                  </Button>
+                </div>
           </Col>
           <Col md={8} className="h-100 position-relative">
             <div style={{ position: 'relative', height: '100%' }}>
@@ -427,8 +480,13 @@ function Dashboard() {
                   animation: 'fadeInOverlay 0.3s',
                 }} />
               )}
-              <Card className="mb-4 h-100" style={{ background: '#faf9fb', border: 'none', minHeight: 420, display: 'flex', flexDirection: 'column', justifyContent: 'center', borderRadius: 16 }}>
+              <Card className="mb-4 h-100" style={{ background: '#faf9fb', border: 'none', borderRadius: 16 }}>
                 <Card.Body className="d-flex flex-column justify-content-center align-items-center h-100" style={{ width: '100%' }}>
+                  {/* Header for the right column - always present */}
+                  <div className="d-flex justify-content-between align-items-center w-100" style={{ borderBottom: '0.75px solid #e0e0e0', paddingBottom: '12px', marginBottom: '12px' }}>
+                    <h3 className="h5 mb-0">Dashboard</h3>
+                  </div>
+                  
                   {/* Placeholder if no recommendations */}
                   {(!recommendations || !recommendations.majorRecommendations) && (
                     <div className="text-center mb-4">
@@ -438,13 +496,10 @@ function Dashboard() {
                       </p>
                     </div>
                   )}
+                  
                   {/* Recommendations Preview */}
                   {recommendations && recommendations.coursePath && (
                     <div className="dreampath-visualization-container w-100">
-                      {/* Header for the right column */}
-                      <div className="d-flex justify-content-between align-items-center w-100" style={{ borderBottom: '0.75px solid #e0e0e0', paddingBottom: '12px', marginBottom: '12px' }}>
-                        <h3 className="h5 mb-0">Dashboard</h3>
-                      </div>
                       <div className="d-flex justify-content-between mb-4">
                         {/* Top Course Recommendations (simplified) */}
                         <div className="dreampath-top-courses mb-4" style={{ width: '100%' }}>
@@ -543,6 +598,14 @@ function Dashboard() {
           filter: grayscale(0.2) brightness(0.95);
         }
       `}</style>
+      
+      {/* Parameter Weights Settings Modal */}
+      <ParameterWeightsSettings
+        show={showWeightsSettings}
+        onHide={() => setShowWeightsSettings(false)}
+        onSave={handleWeightsSave}
+        currentWeights={currentWeights}
+      />
     </div>
   );
 }

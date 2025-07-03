@@ -195,7 +195,7 @@ function Courses() {
                     {renderCoursePathCard(course)}
                   </div>
                 ))}
-                {termCourses.length === 0 && <p className="no-courses">No courses</p>}
+                {termCourses.length === 0 && <p className="no-courses" style={{ color: '#888' }}>No courses</p>}
               </div>
             </div>
           ))}
@@ -220,11 +220,11 @@ function Courses() {
     
     return (
       <>
-        <div className={`panel-overlay ${detailsPanelVisible ? 'visible' : ''}`} onClick={() => setDetailsPanelVisible(false)}></div>
+        <div className={`panel-overlay ${detailsPanelVisible ? 'visible' : ''}`} onClick={() => handleClosePanel()}></div>
         <div className={`course-details-panel ${detailsPanelVisible ? 'visible' : ''}`} ref={detailsPanelRef}>
           <div className="details-header d-flex justify-content-between align-items-center mb-3">
             <h4 className="mb-0">Course Details</h4>
-            <CloseButton onClick={() => setDetailsPanelVisible(false)} />
+            <CloseButton onClick={() => handleClosePanel()} />
           </div>
           <div className="details-content">
             {courseDetails ? (
@@ -319,6 +319,12 @@ function Courses() {
         </div>
       </>
     );
+  }
+
+  // Helper to close panel with animation
+  function handleClosePanel() {
+    setDetailsPanelVisible(false);
+    setTimeout(() => setExpandedCourse(null), 300); // Wait for slide-out
   }
 
   // Render course cards (for major/complementary)
@@ -420,7 +426,7 @@ function Courses() {
       <Container className="py-4">
         <h2 className="mb-4" style={{ fontFamily: 'Lora, serif', fontWeight: 400, fontSize: 32, letterSpacing: 0.5 }}>Courses</h2>
         <Card className="shadow-sm border-0" style={{ borderRadius: 18, background: '#fff', padding: 0 }}>
-          <Card.Body style={{ padding: '2.5rem 2rem' }}>
+          <Card.Body style={{ padding: '2.5rem 2rem 0 2rem' }}>
             {loading ? (
               <div className="d-flex flex-column align-items-center justify-content-center" style={{ minHeight: 200 }}>
                 <Spinner animation="border" variant="secondary" />
@@ -475,7 +481,8 @@ function Courses() {
             )}
           </Card.Body>
         </Card>
-        {detailsPanelVisible && renderDetailsPanel()}
+        {/* Always render details panel for animation */}
+        {renderDetailsPanel()}
       </Container>
     </div>
   );

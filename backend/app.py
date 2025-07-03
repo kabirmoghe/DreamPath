@@ -42,10 +42,25 @@ def get_recommendations():
     profile_id = data.get('profile_id')
     iteration_name = data.get('iteration_name', 'DreamPath Iteration')
     
+    # Extract parameter weights from request (optional)
+    # parameter_weights = data.get('parameter_weights')
+    # Default parameter weights
+    parameter_weights = {
+        'college_interests': 1.0,
+        'post_grad_goal': 1.0,
+        'long_term_goal': 0.5
+    }
+    
+    # Extract separate weights for courses and clubs (optional)
+    course_parameter_weights = data.get('course_parameter_weights', parameter_weights)
+    club_parameter_weights = data.get('club_parameter_weights', parameter_weights)
+    
     print(f"Major: {major}")
     print(f"College interests: {college_interests}")
     print(f"Post-grad goal: {post_grad_goal}")
     print(f"Long-term goal: {long_term_goal}")
+    print(f"Course parameter weights: {course_parameter_weights}")
+    print(f"Club parameter weights: {club_parameter_weights}")
 
     # Clean major name for file paths
     major_cleaned = major.replace(" ", "_").lower()
@@ -60,7 +75,11 @@ def get_recommendations():
     
     # Get course recommendations
     major_course_recs, other_course_recs, all_unique_courses, all_course_to_department_map = get_courses_for_student_parameters(major, student_parameters)
-    scored_major_course_recs, scored_other_course_recs = score_recommended_courses(major_course_recs, other_course_recs, all_unique_courses)
+    
+    try:
+        scored_major_course_recs, scored_other_course_recs = score_recommended_courses(major_course_recs, other_course_recs, all_unique_courses, course_parameter_weights)
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
 
     ranked_major_course_recs = rank_recommended_courses(scored_major_course_recs)
     ranked_other_course_recs = rank_recommended_courses(scored_other_course_recs)
@@ -114,6 +133,9 @@ def get_recommendations():
                     del formatted_course['parameterScores']
                 else:
                     formatted_course = format_course(course_code)
+                    if formatted_course is None:
+                        print(f"Warning: Could not format course {course_code}, skipping...")
+                        continue
                     formatted_course['isPrerequisite'] = True
                 formatted_course['isMajor'] = True
                 
@@ -138,10 +160,18 @@ def get_recommendations():
                     # In case complementary course is not a major recommendation, format it
                     if formatted_course is None:
                         formatted_course = format_course(course_code)
+                        if formatted_course is None:
+                            print(f"Warning: Could not format course {course_code}, skipping...")
+                            continue
 
                     formatted_course['isPrerequisite'] = True
                 formatted_course['isComplementary'] = True
 
+            # Skip if no formatted course was created
+            if formatted_course is None:
+                print(f"Warning: No formatted course created for {course_code}, skipping...")
+                continue
+            
             # Backup defaults
             formatted_course.setdefault('isMajor', False)
             formatted_course.setdefault('isComplementary', False)
@@ -157,9 +187,11 @@ def get_recommendations():
 
     # Get club recommendations
     club_recommendations, club_metadata = get_club_recommendations(major, student_parameters)
-    formatted_club_recommendations = format_club(club_recommendations, club_metadata)
-
-    print(f"Produced club recommendations --> {formatted_club_recommendations}")
+    
+    try:
+        formatted_club_recommendations = format_club(club_recommendations, club_metadata, club_parameter_weights)
+    except ValueError as e:
+        return jsonify({'error': str(e)}), 400
 
     # 1. Insert dreampath_iterations
     iteration_resp = supabase.table('dreampath_iterations').insert({
@@ -358,7 +390,12 @@ def format_course(course_code, courses_df=None, details=None):
     if courses_df is None:
         course_info = retrieve_enhanced_course_from_course_code(course_code)
     else:
-        course_info = courses_df[courses_df['course_code'] == course_code].iloc[0]
+        # Check if course exists in DataFrame before accessing
+        matching_courses = courses_df[courses_df['course_code'] == course_code]
+        if matching_courses.empty:
+            print(f"Warning: Course {course_code} not found in courses DataFrame")
+            return None
+        course_info = matching_courses.iloc[0]
 
     if course_info.empty:
         return None
@@ -393,17 +430,37 @@ def format_course(course_code, courses_df=None, details=None):
     return formatted_course_info
 
 # Club formatting
-def format_club(club_recommendations, club_metadata):
+def format_club(club_recommendations, club_metadata, parameter_weights=None):
+    """
+    Formats club recommendations with optional parameter weights.
+    
+    Args:
+        club_recommendations (dict): Dictionary of club recommendations with parameter scores.
+        club_metadata (dict): Dictionary of club metadata.
+        parameter_weights (dict, optional): Dictionary of weights for each parameter.
+            Should contain keys: 'college_interests', 'post_grad_goal', 'long_term_goal'
+            Values should be in range [0,1]. At least one must be > 0.
+            Defaults to {'college_interests': 1.0, 'post_grad_goal': 1.0, 'long_term_goal': 0.5}.
+    
+    Returns:
+        dict: Formatted club recommendations with weighted scores.
+    """
+    from dreampath_processing.clubs.semantic_club_search import score_club_recommendations
+    
+    # Score clubs with weights
+    scored_clubs = score_club_recommendations(club_recommendations, club_metadata, parameter_weights)
+    
     unified_club_data = {}
-    for club_name in club_recommendations:
+    for club_name, scored_data in scored_clubs.items():
+        metadata = scored_data['metadata']
         unified_club_data[club_name] = {
             'clubName': club_name,
-            'clubCategory': club_metadata[club_name].get('club_category', ''),
-            'clubBlurb': club_metadata[club_name].get('club_blurb', ''),
-            'tags': club_metadata[club_name].get('tags', []),
-            'urls': club_metadata[club_name].get('urls', []),
-            'parameterScores': club_recommendations[club_name],
-            'totalScore': sum(club_recommendations[club_name].values()) / len(club_recommendations[club_name])
+            'clubCategory': metadata.get('club_category', ''),
+            'clubBlurb': metadata.get('club_blurb', ''),
+            'tags': metadata.get('tags', []),
+            'urls': metadata.get('urls', []),
+            'parameterScores': scored_data['parameterScores'],
+            'totalScore': scored_data['totalScore']
         }
 
     # Sort dict of clubs by total score
