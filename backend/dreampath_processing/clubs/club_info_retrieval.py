@@ -6,8 +6,8 @@ from langchain_community.vectorstores import FAISS
 import json
 import os
 import numpy as np
-from dreampath_processing.clubs.prompts.club_matching_prompts import *
 from dotenv import load_dotenv
+from dreampath_processing.clubs.prompts.club_matching_prompts import *
 
 load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
@@ -118,7 +118,7 @@ def build_tag_embeddings(clubs_json_path):
     return tag_embeds
 
 if __name__ == "__main__":
-    club_descriptions = json.load(open('data/club_data.json'))
+    club_descriptions = json.load(open('dreampath_processing/clubs/data/club_data.json'))
     augment_club_data = False
     build_vector_store = True
     
@@ -138,10 +138,10 @@ if __name__ == "__main__":
 
                 club['tags'] = tags
 
-        json.dump(club_descriptions, open('data/club_data_with_tags.json', 'w'))
+        json.dump(club_descriptions, open('dreampath_processing/clubs/data/club_data_with_tags.json', 'w'))
 
     # Build vector store
     if build_vector_store:
-        club_description_augmented = json.load(open('data/club_data_with_tags.json'))
+        club_description_augmented = json.load(open('dreampath_processing/clubs/data/club_data_with_tags.json'))
 
         create_club_vector_store(club_description_augmented, vectorstore_name="all_clubs")

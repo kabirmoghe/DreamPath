@@ -1,3 +1,23 @@
+# ================================
+# TOPIC-LEVEL COURSE MATCHING PROMPTS
+# ================================
+
+# Extracting small set of refined topics from single topic for querying
+SUBTOPIC_EXTRACTION_PROMPT = """
+Context:
+    A student has expressed interest in exploring the following topic through college courses: "{topic}".
+
+Task:
+    Extract the 3 most relevant subtopics from the topic that are likely to appear in college course descriptions or syllabi.
+    These might include subfields, tools, theories, or methodologies.
+
+Return only a comma-separated list of the subtopics.
+"""
+
+
+# ================================
+# PARAMETER-LEVEL COURSE MATCHING PROMPTS
+# ================================
 
 # Extracting topics from student interests
 PARSE_TOPICS_FOR_STUDENT_INTERESTS_PROMPT = """
@@ -46,6 +66,10 @@ Task:
 Return only a comma-separated list of the topics.
 """
 
+# ================================
+# COURSE DATA PROCESSING PROMPTS
+# ================================
+
 # Extracting departments for a given topic
 DEPARTMENT_MATCHING_PROMPT = """
 Context:
@@ -73,7 +97,10 @@ Context:
     'Womens Gender & Sexuality Studies'
 
 Task:
-    Given the academic topic: "{topic}", return up to **3 departments** from the list above that are most likely to offer courses covering this topic.
+    Given the academic topic: "{topic}", return the **most relevant** department(s) from the list above that are likely to offer courses covering this topic.
+
+    Return **no more than 3 departments**, and **only include multiple departments if they are clearly relevant**.
+    It is perfectly acceptable—and often preferable—to return just 1 or 2 departments if the topic is specialized.
 
     Only include departments from the provided list.
     Return a comma-separated list of department names, with department names surrounded by single quotes.

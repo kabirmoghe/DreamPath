@@ -123,7 +123,7 @@ const DashboardNavbar = () => {
       {/* Right: Profile and Logout (icon only, with red hover) */}
       <Nav className="ms-auto align-items-center gap-2" style={{ fontSize: 16 }}>
         <Nav.Link className="d-flex align-items-center px-2" style={{ color: NAV_TEXT }}>
-          <InfoCircle className="me-1" /> About
+          <InfoCircle className="me-1" />
         </Nav.Link>
         <Nav.Link
           onClick={handleLogout}

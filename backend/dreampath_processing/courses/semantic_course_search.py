@@ -1,136 +1,22 @@
 import pandas as pd
-from langchain_openai import OpenAIEmbeddings
-from langchain_community.vectorstores import FAISS
 from collections import Counter
-from langchain.schema import Document
 from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from dotenv import load_dotenv
 import os
-from dreampath_processing.courses.prompts.course_matching_prompts import *
-from dreampath_processing.courses.college_info_retrieval import produce_courses_for_major
-from rapidfuzz import process, fuzz
 import re
+from rapidfuzz import process, fuzz
+from dreampath_processing.courses.prompts.course_matching_prompts import *
+from dreampath_processing.courses.course_vector_db_ops import *
+from dreampath_processing.courses.build_major_course_path import get_department_alias_from_dept_name, get_department_from_course_code
 
 # Set the OpenAI API key
 load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
 
-# Parameter Weights Feature:
-# The score_recommended_courses function now accepts optional parameter_weights
-# to allow users to adjust the importance of different profile parameters:
-# - college_interests: weight for student's college interests
-# - post_grad_goal: weight for post-graduation goals  
-# - long_term_goal: weight for long-term career goals
-# Weights should be in range [0,1] with at least one > 0.
-# Default weights: {'college_interests': 1.0, 'post_grad_goal': 1.0, 'long_term_goal': 0.5}
-
-def create_vector_store(courses_with_descriptions, vectorstore_name):
-    """
-    Creates vector store for set of courses associated with a department.
-
-    Args:
-        courses_with_descriptions (list[dict]): List of dictionaries, each containing course information.
-        vectorstore_name (str): Name of the vector store.
-
-    Returns:
-        FAISS: Vector store for the courses.
-    """
-    # Create embeddings for the course descriptions
-    docs = [
-        Document(page_content=course['description'],
-                 metadata={'course_title': course['course_title'],
-                           'course_code': course['course_code'],
-                           'course_url': course['course_url'],
-                           'prerequisites': course['prerequisites'],
-                           'degree_req': course['degree_req']})
-        for course in courses_with_descriptions
-    ]
-
-    # Create a FAISS vector store
-    embedding_model = OpenAIEmbeddings(api_key=openai_api_key)
-    vectorstore = FAISS.from_documents(docs, embedding_model)
-    vectorstore.save_local(f"vectorstores/{vectorstore_name}")
-    return vectorstore  # Return the created vectorstore
-
-def load_vector_store(vectorstore_name_raw):
-    """
-    Loads vector store for set of courses associated with a department. Either loads from cache or creates new vector store.
-
-    Args:
-        vectorstore_name_raw (str): Name of the department.
-
-    Returns:
-        FAISS: Vector store for the courses.
-    """
-    vectorstore_name = vectorstore_name_raw.replace(" ", "_").lower()
-
-     # Check if we have cached course data
-    if os.path.exists(f'data/{vectorstore_name}_courses_with_descriptions.csv'):
-        courses_with_descriptions_df = pd.read_csv(f'data/{vectorstore_name}_courses_with_descriptions.csv')
-        courses_with_descriptions = courses_with_descriptions_df.to_dict('records')
-    else:
-        # If not, fetch course data
-        courses_with_descriptions = produce_courses_for_major(vectorstore_name_raw)
-
-        if courses_with_descriptions:
-            courses_with_descriptions_df = pd.DataFrame(courses_with_descriptions)
-            courses_with_descriptions_df.to_csv(f'data/{vectorstore_name}_courses_with_descriptions.csv', index=False)
-        else:
-            print(f"No courses found for {vectorstore_name_raw}")
-            return None
-
-    # Create or load vector store
-    if not os.path.exists(f'vectorstores/{vectorstore_name}'):
-        os.makedirs('vectorstores', exist_ok=True)
-        vectorstore = create_vector_store(courses_with_descriptions=courses_with_descriptions, vectorstore_name=vectorstore_name)
-    else:
-        vectorstore = FAISS.load_local(f"vectorstores/{vectorstore_name}", OpenAIEmbeddings(api_key=openai_api_key), allow_dangerous_deserialization=True)
-
-    return vectorstore
-
-def semantic_search(vectorstore, query, k=5):
-    """
-    Performs semantic search on a vector store for courses associated with a department.
-
-    Args:
-        vectorstore (FAISS): Vector store to search.
-        query (str): Query to search for.
-        k (int): Number of results to return.
-
-    Returns:
-        list[str]: List of course codes.
-    """
-    # Perform a semantic search
-    results = vectorstore.similarity_search(query, k=k)
-
-    print('--------------------------------')
-    print('Query: ', query)
-
-    course_codes = [doc.metadata.get('course_code') for doc in results]
-    print(course_codes)
-    return course_codes
-
-def parse_topics_from_student_response(prompt, major, parameter, parameter_response):
-    """
-    Parses topics from student response for a given parameter in initial form.
-
-    Args:
-        prompt (PromptTemplate): Prompt template to use.
-        major (str): Student's major.
-        parameter (str): Parameter currently being parsed.
-        parameter_response (str): Response to supply to prompt.
-
-    Returns:
-        list[str]: List of topics.
-    """
-    llm = ChatOpenAI(temperature=0, model="gpt-4o")
-
-    chain = prompt | llm
-    response = chain.invoke({"major": major, parameter: parameter_response})
-    response_text = response.content if hasattr(response, 'content') else str(response)
-    topics = [t.strip() for t in response_text.split(",")]
-    return topics
+# ================================
+# Modular extraction of courses for topics
+# ================================
 
 def get_departments_for_topic(topic, score_cutoff=80):
     """
@@ -155,7 +41,7 @@ def get_departments_for_topic(topic, score_cutoff=80):
     response_text = response.content if hasattr(response, 'content') else str(response)
 
     raw_departments = [t.strip() for t in re.findall(r"'(.*?)'", response_text)]
-    known_departments = pd.read_csv("data/dartmouth_majors.csv")["Major"].tolist()
+    known_departments = pd.read_csv("dreampath_processing/courses/data/dartmouth_majors.csv")["Major"].tolist()
     departments = []
 
     for department in raw_departments:
@@ -187,6 +73,70 @@ def get_courses_for_parameter_search_areas(search_areas, vectorstore):
         courses_for_search_areas.update(courses_for_area)
 
     return courses_for_search_areas
+
+def get_courses_for_topic(topic, major):
+    llm = ChatOpenAI(temperature=0, model="gpt-4o")
+
+    # Extract subtopics from topic
+    prompt = PromptTemplate(
+    input_variables=["topic"],
+    template=SUBTOPIC_EXTRACTION_PROMPT
+)
+
+    chain = prompt | llm
+    response = chain.invoke({"topic": topic})
+    response_text = response.content if hasattr(response, 'content') else str(response)
+
+    subtopics = [t.strip() for t in response_text.split(",")]
+
+    # Get major and complementary course counts for topic
+    major_alias = get_department_alias_from_dept_name(major)
+    major_course_counts = Counter()
+    complementary_course_counts = Counter()
+
+    for subtopic in subtopics:
+        depts = get_departments_for_topic(subtopic)
+        print(f'* Subtopic: {subtopic} --> Departments: {depts}')
+
+        for dept in depts:
+            vectorstore = load_vector_store(dept)
+            courses_for_dept = get_courses_for_parameter_search_areas([subtopic], vectorstore)
+            print(f'Department: {dept} --> Courses: {courses_for_dept}')
+
+            # Get dept alias for each course
+            for course in courses_for_dept:
+                dept_alias, _ = get_department_from_course_code(course)
+                if dept_alias == major_alias:
+                    major_course_counts.update([course])
+                else:
+                    complementary_course_counts.update([course])
+
+    return major_course_counts, complementary_course_counts
+
+# ================================
+# Extracting courses for parameters
+# ================================
+
+def parse_topics_from_student_response(prompt, major, parameter, parameter_response):
+    """
+    Parses topics from student response for a given parameter in initial form.
+
+    Args:
+        prompt (PromptTemplate): Prompt template to use.
+        major (str): Student's major.
+        parameter (str): Parameter currently being parsed.
+        parameter_response (str): Response to supply to prompt.
+
+    Returns:
+        list[str]: List of topics.
+    """
+    llm = ChatOpenAI(temperature=0, model="gpt-4o")
+
+    chain = prompt | llm
+    response = chain.invoke({"major": major, parameter: parameter_response})
+    response_text = response.content if hasattr(response, 'content') else str(response)
+    topics = [t.strip() for t in response_text.split(",")]
+    return topics
 
 def get_courses_for_parameter(major, parameter, parameter_response):
     """
@@ -389,4 +339,26 @@ def rank_recommended_courses(course_recommendation_details):
     return ranked_courses
 
 if __name__ == "__main__":
-    pass
+    # Testing course extraction for hard-coded topics
+
+    ai_topics = ["Machine Learning", "Deep Learning", "Natural Language Processing", "Reinforcement Learning", "Computer Vision", "Generative AI", "Large Language Models"]
+
+    course_counts = Counter()
+
+    for topic in ai_topics:
+        print('========================================')
+        print(f'Topic: {topic}')
+        topic_depts = get_departments_for_topic(topic)
+        print(f'Topic: {topic} --> Departments: {topic_depts}')
+
+        for dept in topic_depts:
+            if dept == "Cognitive Science":
+                continue
+            
+            vectorstore = load_vector_store(dept)
+            courses_for_dept = get_courses_for_parameter_search_areas([topic], vectorstore)
+            print(f'Department: {dept} --> Courses: {courses_for_dept}')
+
+            course_counts.update(courses_for_dept)
+
+    print(f'Course counts: {course_counts.most_common(10)}')

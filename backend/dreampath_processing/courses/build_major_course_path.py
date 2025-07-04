@@ -21,15 +21,21 @@ def get_department_from_course_code(course_code):
     
     return None, None
 
+# Get department alias from department name
+def get_department_alias_from_dept_name(dept_name):
+    dept_alias_to_name = json.load(open('dreampath_processing/courses/data/department_aliases.json'))
+    dept_name_to_alias = {v: k for k, v in dept_alias_to_name.items()}
+    return dept_name_to_alias[dept_name]
+
 def retrieve_enhanced_course_from_course_code(course_code):
     # get department name from course code
     dept_alias, _ = get_department_from_course_code(course_code)
-    dept_alias_map = json.load(open('data/department_aliases.json'))
+    dept_alias_map = json.load(open('dreampath_processing/courses/data/department_aliases.json'))
     dept_raw = dept_alias_map[dept_alias]
     dept_cleaned = dept_raw.replace(' ', '_').lower()
 
     # get department courses
-    dept_courses = pd.read_csv(f'data/{dept_cleaned}_courses_with_descriptions.csv')
+    dept_courses = pd.read_csv(f'dreampath_processing/courses/data/{dept_cleaned}_courses_with_descriptions.csv')
     candidate_course = dept_courses[dept_courses['course_code'] == course_code]
 
     if len(candidate_course) == 0:

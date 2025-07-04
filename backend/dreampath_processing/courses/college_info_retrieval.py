@@ -188,7 +188,7 @@ def retrieve_undergraduate_links_by_major(majors_df, major_name):
 
 def load_undergraduate_links_by_major(major_raw):
     major_undergraduate_links = None
-    undergraduate_links_path = 'data/undergraduate_links.json'
+    undergraduate_links_path = 'dreampath_processing/courses/data/undergraduate_links.json'
 
     # Ensure directory exists
     os.makedirs(os.path.dirname(undergraduate_links_path), exist_ok=True)
@@ -210,7 +210,7 @@ def load_undergraduate_links_by_major(major_raw):
     # If not, retrieve links
     else:
         print(f"Major '{major_raw}' not found in master bank; retrieving undergraduate links...")
-        majors_df = pd.read_csv('data/dartmouth_majors.csv')
+        majors_df = pd.read_csv('dreampath_processing/courses/data/dartmouth_majors.csv')
         major_undergraduate_links = retrieve_undergraduate_links_by_major(majors_df, major_raw)
 
         # If retrieved links, add to master

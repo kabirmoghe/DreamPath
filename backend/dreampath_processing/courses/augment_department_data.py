@@ -5,20 +5,20 @@ from dreampath_processing.courses.semantic_course_search import load_vector_stor
 import json
 
 def add_prereqs_to_major_data(major_cleaned):
-    major_df = pd.read_csv(f'data/{major_cleaned}_courses_with_descriptions.csv') 
+    major_df = pd.read_csv(f'dreampath_processing/courses/data/{major_cleaned}_courses_with_descriptions.csv') 
     major_df['best_prereq_path'] = major_df.apply(get_course_prereqs, axis=1, overwrite=False)
     
     return major_df
 
 def produce_department_alias(major_raw):
     major_cleaned = major_raw.replace(" ", "_").lower()
-    course_df = pd.read_csv(f'data/{major_cleaned}_courses_with_descriptions.csv')
+    course_df = pd.read_csv(f'dreampath_processing/courses/data/{major_cleaned}_courses_with_descriptions.csv')
 
     department_alias = course_df['dept'].mode()[0]
     return department_alias
 
 if __name__ == "__main__":
-    department_df = pd.read_csv('data/dartmouth_majors.csv')
+    department_df = pd.read_csv('dreampath_processing/courses/data/dartmouth_majors.csv')
     majors_raw = department_df['Major'].unique()
     majors_cleaned = [major_raw.replace(" ", "_").lower() for major_raw in majors_raw]
 
@@ -44,7 +44,7 @@ if __name__ == "__main__":
     # Producing department alias for each major
     if build_department_aliases:
         print('Producing department alias for each major...\n==')
-        department_aliases_path = 'data/department_aliases.json'
+        department_aliases_path = 'dreampath_processing/courses/data/department_aliases.json'
         department_aliases = {}
 
         for major in majors_raw:
@@ -63,7 +63,7 @@ if __name__ == "__main__":
             print(f'Augmenting {major} data with prereqs...')
             try: 
                 major_df = add_prereqs_to_major_data(major)
-                major_df.to_csv(f'data/{major}_courses_with_descriptions.csv', index=False)
+                major_df.to_csv(f'dreampath_processing/courses/data/{major}_courses_with_descriptions.csv', index=False)
             except Exception as e:
                 print(f'Error augmenting {major} data with prereqs: {e}\nSkipping...')
         print('--')

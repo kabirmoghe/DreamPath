@@ -2,12 +2,9 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pandas as pd
 import os
-from langchain_community.vectorstores import FAISS
-from langchain_openai import OpenAIEmbeddings
-from dreampath_processing.courses.semantic_course_search import *
-from dreampath_processing.courses.college_info_retrieval import produce_courses_for_major
+from dreampath_processing.courses.semantic_course_search import get_courses_for_student_parameters, score_recommended_courses, rank_recommended_courses
 from dreampath_processing.courses.build_major_course_path import retrieve_enhanced_course_from_course_code, build_course_path
-from dreampath_processing.clubs.semantic_club_search import *
+from dreampath_processing.clubs.semantic_club_search import get_club_recommendations
 from dotenv import load_dotenv
 from supabase import create_client, Client # type: ignore
 
@@ -26,7 +23,7 @@ CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
 @app.route('/api/majors', methods=['GET'])
 def get_majors():
     # Return list of available majors
-    available_majors = pd.read_csv('data/dartmouth_majors.csv')['Major'].unique().tolist()
+    available_majors = pd.read_csv('dreampath_processing/courses/data/dartmouth_majors.csv')['Major'].unique().tolist()
     
     print(f"Available majors: {available_majors}")
     return jsonify(available_majors)
@@ -85,7 +82,7 @@ def get_recommendations():
     ranked_other_course_recs = rank_recommended_courses(scored_other_course_recs)
     
     # Format major course recommendations
-    major_courses_with_descriptions_df = pd.read_csv(f'data/{major_cleaned}_courses_with_descriptions.csv')
+    major_courses_with_descriptions_df = pd.read_csv(f'dreampath_processing/courses/data/{major_cleaned}_courses_with_descriptions.csv')
     major_recommendations = []
     major_recommendations_map = {}
     for course_code, details in ranked_major_course_recs[:10]:
