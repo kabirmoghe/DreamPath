@@ -111,8 +111,22 @@ def merge_prereq_trees_to_graph(prereq_trees):
 
     return graph, all_courses
 
+def handle_course_queue(in_degree, term, earliest_term_reqs=None, verbose=False):
+    simple_ready = []
+    for c in in_degree:
+        if in_degree[c] == 0:
+            if earliest_term_reqs and c in earliest_term_reqs:
+                if term >= earliest_term_reqs[c]:
+                    simple_ready.append(c)
+                elif verbose:
+                    print(f"Course {c} not ready, curr_term={term} but requires {earliest_term_reqs[c]}")
+            else:
+                simple_ready.append(c)
+
+    return deque(sorted(simple_ready))
+
 # Producing course path
-def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_courses, max_terms=12, max_courses_per_term=3):
+def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_courses, plan=None, earliest_term_reqs=None, max_terms=12, max_courses_per_term=3, verbose=False):
     # Build in-degree and adjacency
     in_degree = defaultdict(int)
     adjacency = defaultdict(list)
@@ -126,19 +140,30 @@ def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_
     for course in all_courses:
         in_degree.setdefault(course, 0)
 
-    # Initial ready queue (sorted for determinism)
-    ready = deque(sorted([c for c in in_degree if in_degree[c] == 0]))
-    scheduled = set()
-    plan = [[] for _ in range(max_terms)]
-
+    # Begin scheduling, initial ready queue (sorted for determinism)
     term = 0
+    ready = handle_course_queue(in_degree, term, earliest_term_reqs)
+    scheduled = set()
+
+    if not plan:
+        plan = [[] for _ in range(max_terms)]
+
     while ready and term < max_terms:
-        courses_this_term = []
+        courses_this_term = plan[term]
+
+        if verbose: 
+            print(f"--------\nCurrentTerm: {term} | courses={courses_this_term}")
+
         next_ready = []
 
         # Split ready queue by type
         majors_ready = sorted([c for c in ready if c in all_major_courses])
         comps_ready = sorted([c for c in ready if c in all_complementary_courses and c not in all_major_courses])
+
+        if verbose:
+            print(f"--> All ready: {ready}")
+            print(f"--> Majors_ready: {majors_ready}")
+            print(f"--> Compl ready: {comps_ready}")
 
         majors_added = 0
         comps_added = 0
@@ -179,13 +204,31 @@ def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_
                 if in_degree[dependent] == 0 and dependent not in scheduled:
                     next_ready.append(dependent)
 
+        # Handle courses with term requirements
+        if earliest_term_reqs:
+            scheduled_with_term_reqs = set()
+            for course, term_req in earliest_term_reqs.items():
+                if course not in scheduled:
+                    if in_degree[course] == 0:
+                        if term + 1 >= term_req:
+                            next_ready.append(course)
+                            scheduled_with_term_reqs.add(course)
+                        elif verbose:
+                            print(f" * Unscheduled course {course} not ready, curr_term={term+1} but requires {term_req}")
+                    elif verbose:
+                            print(f" * Unscheduled course {course} not ready, indeg={in_degree[course]} (next_term={term+1}, requires {term_req})")
+
+            # Remove scheduled courses from term_req map
+            for scheduled_c in scheduled_with_term_reqs:
+                earliest_term_reqs.pop(scheduled_c)    
+
         ready = deque(sorted(set(ready) | set(next_ready)))
         plan[term] = courses_this_term
         term += 1
 
     unscheduled = set(all_courses) - scheduled
     if unscheduled:
-        print(f"Unscheduled courses: {sorted(unscheduled)}")
+        print(f"* Unscheduled courses: {sorted(unscheduled)}")
 
     return plan
 
@@ -217,6 +260,8 @@ def build_course_path(major_courses, complementary_courses, visualize_course_con
     # Create complete course graph; add prereq. courses to course type map
     prereq_graph, all_courses = merge_prereq_trees_to_graph(prereq_trees)
 
+    print("---")
+
     if visualize_course_connections:
         flattened_graph = flatten_graph_dict(prereq_graph)
         visualize_graph(flattened_graph, all_courses)
@@ -224,12 +269,12 @@ def build_course_path(major_courses, complementary_courses, visualize_course_con
     # Build course path
     course_path = schedule_courses_by_term(prereq_graph, all_major_courses, all_complementary_courses, max_terms=12, max_courses_per_term=3)
 
-    return course_path, all_major_courses, all_complementary_courses
+    return course_path, prereq_graph, all_major_courses, all_complementary_courses
 
 
 if __name__ == '__main__':
-    major_courses = ['COSC89.27', 'COSC55', 'COSC89.20', 'COSC35', 'COSC89.17', 'COSC89.28', 'COSC62', 'COSC69.17', 'COSC89.19', 'COSC69.18']
-    complementary_courses = ['QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26']
+    major_courses = ['COSC89.27', 'COSC55', 'COSC89.20', 'COSC35', 'COSC89.17', 'COSC89.28', 'COSC62', 'COSC69.17', 'COSC89.19', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61']
+    complementary_courses = ['QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26','']
 
-    course_path, all_major_courses, all_complementary_courses = build_course_path(major_courses, complementary_courses)
+    course_path, prereq_graph, all_major_courses, all_complementary_courses = build_course_path(major_courses, complementary_courses)
     print(course_path)
