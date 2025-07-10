@@ -112,13 +112,13 @@ def merge_prereq_trees_to_graph(prereq_trees):
 
     return graph, all_courses
 
-def handle_course_queue(in_degree, term, course_scheduling_windows=None, verbose=False):
+def handle_course_queue(in_degree, term, course_scheduling_windows={}, verbose=False):
     simple_ready = []
     for c in in_degree:
         if in_degree[c] == 0:
-            if course_scheduling_windows and c in course_scheduling_windows:
-                c_window_start, c_window_end = course_scheduling_windows[c]
-                if term >= c_window_start and term <= c_window_end:
+            if c in course_scheduling_windows:
+                c_start_term, c_end_term = course_scheduling_windows[c]
+                if term >= c_start_term and term <= c_end_term:
                     simple_ready.append(c)
                 elif verbose:
                     print(f"Course {c} not ready, curr_term={term} but requires {course_scheduling_windows[c]}")
@@ -128,7 +128,7 @@ def handle_course_queue(in_degree, term, course_scheduling_windows=None, verbose
     return deque(sorted(simple_ready))
 
 # Producing course path
-def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_courses, existing_plan=None, course_scheduling_windows=None, max_terms=12, max_courses_per_term=3, verbose=False):
+def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_courses, existing_plan=None, course_scheduling_windows={}, max_terms=12, max_courses_per_term=3, verbose=False):
     # Build in-degree and adjacency
     in_degree = defaultdict(int)
     adjacency = defaultdict(list)
@@ -151,13 +151,14 @@ def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_
     if not plan:
         plan = [[] for _ in range(max_terms)]
 
-    while ready and term < max_terms:
+    # Iterate while there are still unscheduled courses and not yet reached max # of terms
+    while (scheduled != all_courses) and term < max_terms:
         courses_this_term = plan[term]
 
         if verbose: 
             print(f"--------\nCurrentTerm: {term} | courses={courses_this_term}")
 
-        next_ready = []
+        next_ready = set()
 
         # Split ready queue by type
         majors_ready = sorted([c for c in ready if c in all_major_courses])
@@ -204,30 +205,37 @@ def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_
         for course in courses_this_term:
             for dependent in adjacency[course]:
                 in_degree[dependent] -= 1
-                if in_degree[dependent] == 0 and dependent not in scheduled:
-                    next_ready.append(dependent)
+                # Add courses that have preerqs scheduled, haven't been scheduled yet, and don't have specific windows (those w/ windows handled next)
+                if in_degree[dependent] == 0 and dependent not in scheduled and dependent not in course_scheduling_windows:
+                    next_ready.add(dependent)
 
-        # Handle courses with term requirements
+        # Handle courses with term requirements (if present)
         if course_scheduling_windows:
             scheduled_with_term_reqs = set()
             for course, term_reqs in course_scheduling_windows.items():
                 if course not in scheduled:
                     if in_degree[course] == 0:
-                        c_window_start, c_window_end = term_reqs
+                        c_start_term, c_end_term = term_reqs
                         next_term = term + 1
-                        if next_term >= c_window_start and next_term <= c_window_end:
-                            next_ready.append(course)
+                        if next_term >= c_start_term and next_term <= c_end_term:
+                            next_ready.add(course)
                             scheduled_with_term_reqs.add(course)
-                        elif verbose:
-                            print(f" * Unscheduled course {course} not ready, curr_term={term+1} but requires {term_reqs}")
+                        else:
+                            if verbose:                                
+                                print(f"* Unscheduled course {course} not ready, curr_term={term+1} but requires {term_reqs}")
+                            if course in ready: # Meaning, course was previously within window but is now outside and thus cannot be scheduled
+                                ready.remove(course)
+                                if verbose:
+                                    print(f"--> Removed course {course} from 'ready' due to passing scheduling window")
+
                     elif verbose:
-                            print(f" * Unscheduled course {course} not ready, indeg={in_degree[course]} (next_term={term+1}, requires {term_reqs})")
+                            print(f"* Unscheduled course {course} not ready, indeg={in_degree[course]} (next_term={term+1}, requires {term_reqs})")
 
             # Remove scheduled courses from term_req map
             for scheduled_c in scheduled_with_term_reqs:
                 course_scheduling_windows.pop(scheduled_c)    
 
-        ready = deque(sorted(set(ready) | set(next_ready)))
+        ready = deque(sorted(set(ready) | next_ready))
         plan[term] = courses_this_term
         term += 1
 
@@ -235,7 +243,7 @@ def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_
     if unscheduled:
         print(f"* Unscheduled courses: {sorted(unscheduled)}")
 
-    return plan
+    return plan, scheduled, unscheduled
 
 def build_course_path(major_courses, complementary_courses, visualize_course_connections=False):
     # Build prereq trees
@@ -272,7 +280,7 @@ def build_course_path(major_courses, complementary_courses, visualize_course_con
         visualize_graph(flattened_graph, all_courses)
 
     # Build course path
-    course_path = schedule_courses_by_term(prereq_graph, all_major_courses, all_complementary_courses, max_terms=12, max_courses_per_term=3)
+    course_path, scheduled, unscheduled = schedule_courses_by_term(prereq_graph, all_major_courses, all_complementary_courses, max_terms=12, max_courses_per_term=3)
 
     return course_path, prereq_graph, all_major_courses, all_complementary_courses
 
