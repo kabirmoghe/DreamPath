@@ -2,6 +2,7 @@ import pandas as pd
 import re
 import json
 from collections import defaultdict, deque
+import copy
 from dreampath_processing.courses.course_path_visualization import flatten_graph_dict, visualize_graph
 
 # Building prerequisite tree for individual courses
@@ -111,22 +112,23 @@ def merge_prereq_trees_to_graph(prereq_trees):
 
     return graph, all_courses
 
-def handle_course_queue(in_degree, term, earliest_term_reqs=None, verbose=False):
+def handle_course_queue(in_degree, term, course_scheduling_windows=None, verbose=False):
     simple_ready = []
     for c in in_degree:
         if in_degree[c] == 0:
-            if earliest_term_reqs and c in earliest_term_reqs:
-                if term >= earliest_term_reqs[c]:
+            if course_scheduling_windows and c in course_scheduling_windows:
+                c_window_start, c_window_end = course_scheduling_windows[c]
+                if term >= c_window_start and term <= c_window_end:
                     simple_ready.append(c)
                 elif verbose:
-                    print(f"Course {c} not ready, curr_term={term} but requires {earliest_term_reqs[c]}")
+                    print(f"Course {c} not ready, curr_term={term} but requires {course_scheduling_windows[c]}")
             else:
                 simple_ready.append(c)
 
     return deque(sorted(simple_ready))
 
 # Producing course path
-def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_courses, plan=None, earliest_term_reqs=None, max_terms=12, max_courses_per_term=3, verbose=False):
+def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_courses, existing_plan=None, course_scheduling_windows=None, max_terms=12, max_courses_per_term=3, verbose=False):
     # Build in-degree and adjacency
     in_degree = defaultdict(int)
     adjacency = defaultdict(list)
@@ -142,9 +144,10 @@ def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_
 
     # Begin scheduling, initial ready queue (sorted for determinism)
     term = 0
-    ready = handle_course_queue(in_degree, term, earliest_term_reqs)
+    ready = handle_course_queue(in_degree, term, course_scheduling_windows)
     scheduled = set()
 
+    plan = copy.deepcopy(existing_plan)
     if not plan:
         plan = [[] for _ in range(max_terms)]
 
@@ -205,22 +208,24 @@ def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_
                     next_ready.append(dependent)
 
         # Handle courses with term requirements
-        if earliest_term_reqs:
+        if course_scheduling_windows:
             scheduled_with_term_reqs = set()
-            for course, term_req in earliest_term_reqs.items():
+            for course, term_reqs in course_scheduling_windows.items():
                 if course not in scheduled:
                     if in_degree[course] == 0:
-                        if term + 1 >= term_req:
+                        c_window_start, c_window_end = term_reqs
+                        next_term = term + 1
+                        if next_term >= c_window_start and next_term <= c_window_end:
                             next_ready.append(course)
                             scheduled_with_term_reqs.add(course)
                         elif verbose:
-                            print(f" * Unscheduled course {course} not ready, curr_term={term+1} but requires {term_req}")
+                            print(f" * Unscheduled course {course} not ready, curr_term={term+1} but requires {term_reqs}")
                     elif verbose:
-                            print(f" * Unscheduled course {course} not ready, indeg={in_degree[course]} (next_term={term+1}, requires {term_req})")
+                            print(f" * Unscheduled course {course} not ready, indeg={in_degree[course]} (next_term={term+1}, requires {term_reqs})")
 
             # Remove scheduled courses from term_req map
             for scheduled_c in scheduled_with_term_reqs:
-                earliest_term_reqs.pop(scheduled_c)    
+                course_scheduling_windows.pop(scheduled_c)    
 
         ready = deque(sorted(set(ready) | set(next_ready)))
         plan[term] = courses_this_term

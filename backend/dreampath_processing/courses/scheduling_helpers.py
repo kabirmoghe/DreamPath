@@ -4,18 +4,35 @@ from typing import Tuple, List, Set, Dict
 import copy
 
 # ─────────────────────────────────────────────────────────────────────────────
-# COURSE CHANGE FUNCTIONS
+# HARD-CODED CHANGE FUNCTIONS
 # ─────────────────────────────────────────────────────────────────────────────
 
-def swap_courses(course_path, term_idx, old_course, new_course):
+def remove_course(course_path, term_idx, course_to_remove):
+    # Validate term_idx
+    if term_idx < 0 or term_idx >= len(course_path):
+        raise ValueError(f"term_idx must be in range [0, {len(course_path) - 1}]")
+    
+    if course_to_remove in course_path[term_idx]:
+        course_path[term_idx].remove(course_to_remove) 
+    else:
+        raise ValueError(f"Course '{course_to_remove}' not in specified term '{term_idx}' for course_path.")
+
+def replace_course(course_path, term_idx, old_course, new_course):
+    # Validate term_idx
+    if term_idx < 0 or term_idx >= len(course_path):
+        raise ValueError(f"term_idx must be in range [0, {len(course_path) - 1}]")
+
     # Extract position of old course in term
-    old_course_idx = course_path[term_idx].index(old_course)
+    old_course_idx = course_path[term_idx].index(old_course) if old_course in course_path[term_idx] else None
 
-    # Swap courses
-    course_path_swapped = copy.deepcopy(course_path)
-    course_path_swapped[term_idx][old_course_idx] = new_course
+    if old_course_idx:
+        # Replace old course with new course
+        course_path_swapped = copy.deepcopy(course_path)
+        course_path_swapped[term_idx][old_course_idx] = new_course
 
-    return course_path_swapped
+        return course_path_swapped
+    else:
+        raise ValueError(f"Course '{old_course}' not in specified term '{term_idx}' for course_path.") # Invalid course for replacement
 
 # ─────────────────────────────────────────────────────────────────────────────
 # SCHEDULING FUNCTIONS
@@ -144,6 +161,9 @@ def schedule_general_courses_by_term(course_graph, all_courses, existing_plan=No
         in_degree.setdefault(course, 0)
 
     # Initial ready queue (sorted for determinism)
+    print(course_graph)
+    print(all_courses)
+    print(in_degree)
     ready = deque(sorted([c for c in in_degree if in_degree[c] == 0]))
     scheduled = set()
     
@@ -155,6 +175,8 @@ def schedule_general_courses_by_term(course_graph, all_courses, existing_plan=No
 
     term_idx = 0
     while ready and term_idx < max_terms:
+        print(f"Term_idx: {term_idx}")
+        print(ready)
         courses_this_term = plan[term_idx]
         next_ready = []
 
@@ -189,30 +211,39 @@ def schedule_general_courses_by_term(course_graph, all_courses, existing_plan=No
 
     return plan, scheduled, unscheduled, term_idx
 
-def schedule_must_have_courses(course_path, curr_term, must_have_courses, verbose=False): 
+def schedule_must_have_courses(course_path, window_start_term, must_have_courses, verbose=False): 
 
     # Validate curr_term pointer
     max_terms = len(course_path)
+    print(max_terms)
 
-    if (curr_term <= 0) or (curr_term >= max_terms): 
-        raise ValueError("Current term pointer must be within course_path list.")
+    if (window_start_term <= 0) or (window_start_term >= max_terms): 
+        raise ValueError("Window start term pointer must be within course_path list.")
     
-    external_courses = set([course for term in course_path[:curr_term] for course in term])
+    external_courses = set([course for term in course_path[:window_start_term] for course in term])
     courses_by_end_term = {}
 
-    # Group courses by end term (i.e., latest term they must be scheduled by)
+    # Group courses by end term (i.e., latest term they must be scheduled by) | 
     for c, must_have_window in must_have_courses.items(): 
+        # Get window
+        c_start_term = must_have_window[0]
         c_end_term = must_have_window[1]
+
+        # Validate window
+        if c_start_term > c_end_term or c_start_term < window_start_term or c_end_term > max_terms:
+            raise ValueError(f"Invalid scheduling window {must_have_window} for course {c}.")
+
         curr_c_by_end_term = courses_by_end_term.get(c_end_term, set())
         curr_c_by_end_term.add(c)
         courses_by_end_term[c_end_term] = curr_c_by_end_term
 
 
     # Begin modifying the course path
-    mod_course_path = [[] for _ in range(max_terms - curr_term)]
+    mod_course_path = [[] for _ in range(max_terms - window_start_term)]
     all_scheduled_courses = set()
 
-    for end_term_idx, term_courses in courses_by_end_term.items():
+    # Iterate in order of earliest end-term requirement
+    for end_term_idx, term_courses in sorted(courses_by_end_term.items(), key=lambda item: item[0]):
         course_prereq_map = {}
         course_prereq_tree_depth = {}
         
@@ -235,22 +266,25 @@ def schedule_must_have_courses(course_path, curr_term, must_have_courses, verbos
             # Invert dependency order to prereq --> course(s) that requires it
             window_prereq_graph, all_window_courses = merge_prereq_trees_to_graph([window_prereq_tree])
             window_prereqs_only = all_window_courses.difference({curr_priority_course})
-            num_terms_for_window = end_term_idx - curr_term + 1
+            num_terms_for_window = end_term_idx - window_start_term
             tentative_course_path, scheduled_prereqs, unscheduled_prereqs, final_prereq_term = schedule_general_courses_by_term(course_graph=window_prereq_graph,
                                                                all_courses=window_prereqs_only,
                                                                existing_plan=mod_course_path,
                                                                max_terms=num_terms_for_window)
+
+            print(tentative_course_path)
+            print(f"Final_prereq_term: {final_prereq_term}")
                 
             # Place must-have in plan
             if not unscheduled_prereqs: 
                 # Update modified course path
                 mod_course_path = tentative_course_path
-                min_must_have_term = max(must_have_courses[curr_priority_course][0], final_prereq_term) - curr_term
+                min_must_have_term = max(must_have_courses[curr_priority_course][0], final_prereq_term + window_start_term) - window_start_term
                 mod_course_path[min_must_have_term].append(curr_priority_course)
             
                 if verbose:
                     print(f"For course: {curr_priority_course}")
-                    print(course_path[:curr_term])
+                    print(course_path[:window_start_term])
                     print(mod_course_path)
                     print('--')
                     print(f'* Scheduled Courses: {scheduled_prereqs}')
@@ -262,11 +296,11 @@ def schedule_must_have_courses(course_path, curr_term, must_have_courses, verbos
             else:
                 print(f"* Cannot schedule course: {curr_priority_course} | Unscheduled courses: {unscheduled_prereqs}")
 
-    return {"course_path": course_path[:curr_term] + mod_course_path,
+    return {"course_path": course_path[:window_start_term] + mod_course_path,
             "newly_scheduled_courses": all_scheduled_courses,
             "pre_window_courses": external_courses} 
         
-def rebuild_course_path_post_modification(mod_course_path, locked_courses, existing_prereq_graph, prior_major_courses, prior_complementary_courses, verbose=False):
+def rebuild_course_path_post_modification(mod_course_path, locked_courses, prior_prereq_graph, prior_major_courses, prior_complementary_courses, verbose=False):
 
     if verbose:
         print("-----\nPruning overlapping courses, determining earliest term requirements...")
@@ -278,18 +312,18 @@ def rebuild_course_path_post_modification(mod_course_path, locked_courses, exist
             mod_course_to_term[c] = term_idx
 
     # Remove scheduled courses from prior prereq. graph, keep track of earliest existing courses can be scheduled given modifications
-    unscheduled_graph = copy.deepcopy(existing_prereq_graph)
+    unscheduled_graph = copy.deepcopy(prior_prereq_graph)
     earliest_possible_term = {}
     for c in locked_courses:
-        if c in existing_prereq_graph:
+        if c in prior_prereq_graph:
             c_dependents = unscheduled_graph.pop(c)
-            earliest_term_for_dependents =  mod_course_to_term[c] + 1 # earliest possible term for c's dependents WRONG
+            earliest_term_for_dependents =  mod_course_to_term[c] + 1 # earliest possible term for c's dependents
 
             # print(f"Found overlapping course scheduled. {c} in term={mod_course_to_term[c]}\n-> Earliest term for dependents = {earliest_term_for_dependents}")
             # print(f"\tDependents={c_dependents}")
 
             for d in c_dependents:
-                earliest_possible_term[d] = earliest_term_for_dependents
+                earliest_possible_term[d] = (earliest_term_for_dependents, float('inf'))
 
     for c in locked_courses:
         # If removed course (because of overlap), then remove from earliest can take
@@ -305,7 +339,7 @@ def rebuild_course_path_post_modification(mod_course_path, locked_courses, exist
                              all_major_courses=prior_major_courses,
                              all_complementary_courses=prior_complementary_courses,
                              plan=mod_course_path,
-                             earliest_term_reqs=earliest_possible_term)
+                             course_scheduling_windows=earliest_possible_term)
     
     return complete_modified_course_path
 
@@ -318,12 +352,11 @@ if __name__=='__main__':
     print(f"\n-- ORIGINAL --")
     print(course_path)
 
-    mod_schedule_output = schedule_must_have_courses(course_path=course_path, curr_term=1, must_have_courses={
-        'COSC31': (3, 3),
-        # 'COSC55': (2, 3),
-        'COSC58': (2, 4),
-        'COSC34': (2, 4)
-    })
+    mod_schedule_output = schedule_must_have_courses(course_path=course_path, window_start_term=7, must_have_courses={
+        'COSC52': (7, 8),
+        'COSC58': (7, 12),
+        'COSC74': (7, 9)
+    }, verbose=True)
 
     ex_mod_course_path = mod_schedule_output['course_path']
     ex_newly_scheduled_courses = mod_schedule_output['newly_scheduled_courses']
@@ -332,37 +365,12 @@ if __name__=='__main__':
     print("\n-- MODIFIED --")
     print(ex_mod_course_path)
 
-    ex_locked_courses = ex_newly_scheduled_courses.union(ex_pre_window_courses)
+    # ex_locked_courses = ex_newly_scheduled_courses.union(ex_pre_window_courses)
 
-    ex_complete_modified_plan = rebuild_course_path_post_modification(mod_course_path=ex_mod_course_path,
-                                          locked_courses=ex_locked_courses,
-                                          existing_prereq_graph=prereq_graph,
-                                          prior_major_courses=all_major_courses,
-                                          prior_complementary_courses=all_complementary_courses)
-    print('\n-- FINAL PLAN --')
-    print(ex_complete_modified_plan)
-
-    # course_path_swapped = swap_courses(course_path, 0, "COSC1", "COSC10")
-
-    # direct_prereq_map = {}
-
-    # for term in course_path:
-    #     for course in term:
-    #         prereq_tree, _ = build_prereq_tree(course)
-    #         direct_prereqs = get_direct_prereqs(prereq_tree, course)
-    #         direct_prereq_map[course] = direct_prereqs
-
-    # violations = validate_plan(course_path_swapped, direct_prereq_map)
-
-    # cosc_74_tree, _ = build_prereq_tree('COSC74')
-    # # print(cosc_74_tree)
-
-    # depth_cosc74_tree = compute_max_prereq_depth(cosc_74_tree)
-    # print(depth_cosc74_tree)
-
-    # already_taken = {'COSC70'}
-
-    # remaining_prereqs = prereq_difference(cosc_74_tree, already_taken)
-    # print(remaining_prereqs)
-
-    # print(violations)
+    # ex_complete_modified_plan = rebuild_course_path_post_modification(mod_course_path=ex_mod_course_path,
+    #                                       locked_courses=ex_locked_courses,
+    #                                       prior_prereq_graph=prereq_graph,
+    #                                       prior_major_courses=all_major_courses,
+    #                                       prior_complementary_courses=all_complementary_courses)
+    # print('\n-- FINAL PLAN --')
+    # print(ex_complete_modified_plan)
