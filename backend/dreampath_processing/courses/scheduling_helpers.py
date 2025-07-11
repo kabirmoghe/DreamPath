@@ -2,6 +2,7 @@ from dreampath_processing.courses.build_major_course_path import build_prereq_tr
 from collections import defaultdict, deque
 from typing import Tuple, List, Set, Dict, Any
 import copy
+from schedule_modules.course_path import CoursePath
 
 # ─────────────────────────────────────────────────────────────────────────────
 # COURSE CHANGE FUNCTIONS
@@ -322,9 +323,9 @@ def schedule_must_have_courses(course_path: List[List[str]], window_start_term: 
 def rebuild_course_path_post_modification(mod_course_path: List[List[str]], 
                                           locked_courses: Set[str], 
                                           prior_prereq_graph: Dict[str, List[dict]], 
-                                          prior_major_courses: Set[str], 
-                                          prior_complementary_courses: Set[str], 
-                                          verbose: bool = False) -> Dict[str, Any]:
+                                          prior_all_major_courses: Set[str], 
+                                          prior_all_complementary_courses: Set[str], 
+                                          verbose: bool = False) -> CoursePath:
     if verbose:
         print("-----\nPruning overlapping courses, determining earliest term requirements...")
 
@@ -361,29 +362,40 @@ def rebuild_course_path_post_modification(mod_course_path: List[List[str]],
         print("-----\nRunning Rescheduling...")
 
     # Scheduling existing courses within modified plan
-    return schedule_courses_by_term(course_graph=unscheduled_graph,       
-                             all_major_courses=prior_major_courses,
-                             all_complementary_courses=prior_complementary_courses,
+    modified_course_path_schedule, scheduled_courses, unscheduled_courses = schedule_courses_by_term(course_graph=unscheduled_graph,       
+                             all_major_courses=prior_all_major_courses,
+                             all_complementary_courses=prior_all_complementary_courses,
                              existing_plan=mod_course_path,
                              course_scheduling_windows=earliest_possible_term)
+    
+    complete_modified_course_path = CoursePath(course_path=modified_course_path_schedule,
+                                     recommended_major_courses=prior_all_major_courses,
+                                     all_major_courses=prior_all_major_courses,
+                                     recommended_complementary_courses=prior_all_complementary_courses,
+                                     all_complementary_courses=prior_all_complementary_courses,
+                                     scheduled_courses=scheduled_courses,
+                                     unscheduled_courses=unscheduled_courses,
+                                     prereq_graph=prior_prereq_graph)
+
+    return complete_modified_course_path
 
 if __name__=='__main__':
     # -- 1. Build original course path --
-    major_courses = ['COSC89.27', 'COSC55', 'COSC89.20', 'COSC35', 'COSC89.17', 'COSC89.28', 'COSC62', 'COSC69.17', 'COSC89.19', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61']
-    complementary_courses = ['QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26']
+    major_courses = {'COSC89.27', 'COSC55', 'COSC89.20', 'COSC35', 'COSC89.17', 'COSC89.28', 'COSC62', 'COSC69.17', 'COSC89.19', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61'}
+    complementary_courses = {'QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26'}
 
-    course_path, prereq_graph, all_major_courses, all_complementary_courses = build_course_path(major_courses, complementary_courses)
+    initial_course_path = build_course_path(major_courses, complementary_courses)
 
     print(f"\n-- ORIGINAL --")
-    print(course_path)
+    print(initial_course_path.course_path)
 
     # -- 2. Make changes --
     
     # 2.1. Remove courses test
-    sample_major_courses, sample_complementary_courses = remove_recommended_courses(major_courses, complementary_courses, {'COSC89.27', 'COGS44'})
+    # sample_major_courses, sample_complementary_courses = remove_recommended_courses(major_courses, complementary_courses, {'COSC89.27', 'COGS44'})
 
     # 2.2. Schedule specific courses
-    mod_schedule_output = schedule_must_have_courses(course_path=course_path, window_start_term=7, must_have_courses={
+    mod_schedule_output = schedule_must_have_courses(course_path=initial_course_path.course_path, window_start_term=7, must_have_courses={
         'COSC52': (7, 8),
         'COSC58': (8, 12),
         'COSC74': (7,11)
@@ -399,12 +411,12 @@ if __name__=='__main__':
     # -- 3. Rebuild course path --
     ex_locked_courses = ex_newly_scheduled_courses | ex_pre_window_courses
 
-    ex_complete_modified_plan, ex_final_scheduled_courses, ex_final_unscheduled_courses = rebuild_course_path_post_modification(mod_course_path=ex_mod_course_path,
+    ex_complete_modified_plan = rebuild_course_path_post_modification(mod_course_path=ex_mod_course_path,
                                           locked_courses=ex_locked_courses,
-                                          prior_prereq_graph=prereq_graph,
-                                          prior_major_courses=all_major_courses,
-                                          prior_complementary_courses=all_complementary_courses)
+                                          prior_prereq_graph=initial_course_path.prereq_graph,
+                                          prior_all_major_courses=initial_course_path.all_major_courses,
+                                          prior_all_complementary_courses=initial_course_path.all_complementary_courses)
     print('\n-- FINAL PLAN --')
-    print(ex_complete_modified_plan)
-    if ex_final_unscheduled_courses:
-        print(f"* Unscheduled courses: {ex_final_unscheduled_courses}")
+    print(ex_complete_modified_plan.course_path)
+    if ex_complete_modified_plan.unscheduled_courses:
+        print(f"* Unscheduled courses: {ex_complete_modified_plan.unscheduled_courses}")

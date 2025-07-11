@@ -4,6 +4,7 @@ import json
 from collections import defaultdict, deque
 import copy
 from dreampath_processing.courses.course_path_visualization import flatten_graph_dict, visualize_graph
+from schedule_modules.course_path import CoursePath
 
 # Building prerequisite tree for individual courses
 def get_department_from_course_code(course_code):
@@ -245,7 +246,7 @@ def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_
 
     return plan, scheduled, unscheduled
 
-def build_course_path(major_courses, complementary_courses, visualize_course_connections=False):
+def build_course_path(major_courses, complementary_courses, visualize_course_connections=False) -> CoursePath:
     # Build prereq trees
     prereq_trees = []
 
@@ -282,12 +283,22 @@ def build_course_path(major_courses, complementary_courses, visualize_course_con
     # Build course path
     course_path, scheduled, unscheduled = schedule_courses_by_term(prereq_graph, all_major_courses, all_complementary_courses, max_terms=12, max_courses_per_term=3)
 
-    return course_path, prereq_graph, all_major_courses, all_complementary_courses
+    # Formalize output course path
+    output_course_path = CoursePath(course_path=course_path,
+                                    recommended_major_courses=major_courses,
+                                    all_major_courses=all_major_courses,
+                                    recommended_complementary_courses=complementary_courses,
+                                    all_complementary_courses=all_complementary_courses,
+                                    scheduled_courses=scheduled,
+                                    unscheduled_courses=unscheduled,
+                                    prereq_graph=prereq_graph)
+
+    return output_course_path
 
 
 if __name__ == '__main__':
-    major_courses = ['COSC89.27', 'COSC55', 'COSC89.20', 'COSC35', 'COSC89.17', 'COSC89.28', 'COSC62', 'COSC69.17', 'COSC89.19', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61']
-    complementary_courses = ['QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26','']
+    major_courses = {'COSC89.27', 'COSC55', 'COSC89.20', 'COSC35', 'COSC89.17', 'COSC89.28', 'COSC62', 'COSC69.17', 'COSC89.19', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61'}
+    complementary_courses = {'QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26'}
 
-    course_path, prereq_graph, all_major_courses, all_complementary_courses = build_course_path(major_courses, complementary_courses)
+    course_path = build_course_path(major_courses, complementary_courses)
     print(course_path)
