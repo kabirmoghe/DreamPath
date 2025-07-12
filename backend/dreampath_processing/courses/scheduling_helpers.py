@@ -1,8 +1,9 @@
-from dreampath_processing.courses.build_major_course_path import build_prereq_tree, merge_prereq_trees_to_graph, build_course_path, schedule_courses_by_term
+from dreampath_processing.courses.build_major_course_path import build_prereq_tree, merge_prereq_trees_to_graph, build_course_path, schedule_courses_by_term, is_major_course
 from collections import defaultdict, deque
 from typing import Tuple, List, Set, Dict, Any
 import copy
 from schedule_modules.course_path import CoursePath
+from schedule_modules.course import Course, MAJOR, COMPLEMENTARY
 
 # ─────────────────────────────────────────────────────────────────────────────
 # COURSE CHANGE FUNCTIONS
@@ -35,7 +36,6 @@ def remove_recommended_courses(major_course_recommendations: set, complementary_
         
     return mod_major_course_recommendations, mod_complementary_course_recommendations
 
-
 def replace_course(course_path, term_idx, old_course, new_course):
     # Validate term_idx
     if term_idx < 0 or term_idx >= len(course_path):
@@ -58,6 +58,16 @@ def replace_course(course_path, term_idx, old_course, new_course):
 # ─────────────────────────────────────────────────────────────────────────────
 
 def get_direct_prereqs(prereq_tree, course_code):
+    """
+    Get direct prereqs for a given course code from a prereq. tree
+
+    Args:
+        prereq_tree (dict): Prereq. tree for a course
+        course_code (str): Course code to get direct prereqs for
+
+    Returns:
+        list: List of direct prereqs for the given course code
+    """
     try:
         direct_children = []
         
@@ -76,6 +86,13 @@ def get_direct_prereqs(prereq_tree, course_code):
     return direct_children
 
 def validate_plan(course_plan, direct_prereq_map):
+    """
+    Validate a course plan by checking for duplicates and prerequisite violations
+
+    Args:
+        course_plan (list): List of lists, where each inner list represents a term and contains course codes
+        direct_prereq_map (dict): Dictionary mapping course codes to their direct prereqs
+    """
     # 1. Build a mapping from course → list of terms it appears in
     occurrences = defaultdict(list)
     for term_idx, term_courses in enumerate(course_plan):
@@ -132,6 +149,13 @@ def validate_plan(course_plan, direct_prereq_map):
 def prereq_difference(prereq_tree: Dict[str, List[dict]], to_remove: Set[str]) -> Dict[str, List[dict]]:
     """
     Prune any branch whose root is in `to_remove`, and return the pruned tree
+
+    Args:
+        prereq_tree (dict): Prereq. tree to prune
+        to_remove (set): Set of course codes to remove from the prereq. tree
+
+    Returns:
+        dict: Pruned prereq. tree
     """
 
     def _prune(node: Dict[str, List[dict]]) -> Dict[str, List[dict]]:
@@ -153,6 +177,15 @@ def prereq_difference(prereq_tree: Dict[str, List[dict]], to_remove: Set[str]) -
     return pruned_tree
 
 def compute_max_prereq_depth(prereq_tree): 
+    """
+    Compute the maximum depth of a prereq. tree
+
+    Args:
+        prereq_tree (dict): Prereq. tree to compute the maximum depth of
+
+    Returns:
+        int: Maximum depth of the prereq. tree
+    """
     def _depth_traverse(prereq_tree: dict, depth: int) -> int: 
         root_node = list(prereq_tree.keys())[0]
         children = prereq_tree[root_node]
@@ -167,71 +200,7 @@ def compute_max_prereq_depth(prereq_tree):
 # RE-SCHEDULING
 # ─────────────────────────────────────────────────────────────────────────────
 
-def schedule_general_courses_by_term(course_graph, all_courses, existing_plan=None, max_terms=12, max_courses_per_term=3):
-    # Build in-degree and adjacency
-    in_degree = defaultdict(int)
-    adjacency = defaultdict(list)
-
-    for prereq, courses in course_graph.items():
-        for course in courses:
-            in_degree[course] += 1
-            adjacency[prereq].append(course)
-            
-    for course in all_courses:
-        in_degree.setdefault(course, 0)
-
-    # Initial ready queue (sorted for determinism)
-    print(course_graph)
-    print(all_courses)
-    print(in_degree)
-    ready = deque(sorted([c for c in in_degree if in_degree[c] == 0]))
-    scheduled = set()
-    
-    # Init plan object copy for tentative changes
-    if existing_plan:
-        plan = copy.deepcopy(existing_plan)
-    else:
-        plan = [[] for _ in range(max_terms)]
-
-    term_idx = 0
-    while ready and term_idx < max_terms:
-        print(f"Term_idx: {term_idx}")
-        print(ready)
-        courses_this_term = plan[term_idx]
-        next_ready = []
-
-        # Split ready queue by type
-        courses_ready = sorted([c for c in ready if c in all_courses])
-
-        # Add courses
-        for course in courses_ready:
-            if len(courses_this_term) < max_courses_per_term:
-                existing_courses = set([course for term in plan[:term_idx + 1] for course in term])
-                if course not in existing_courses:
-                    courses_this_term.append(course)
-
-                ready.remove(course)
-                scheduled.add(course)
-
-        # Update in-degrees and build next ready list
-        for course in courses_this_term:
-            for dependent in adjacency[course]:
-                in_degree[dependent] -= 1
-                if in_degree[dependent] == 0 and dependent not in scheduled:
-                    next_ready.append(dependent)
-
-        ready = deque(sorted(set(ready) | set(next_ready)))
-        plan[term_idx] = courses_this_term
-        term_idx += 1
-
-    unscheduled = set(all_courses) - scheduled
-
-    if unscheduled:
-        print(f"Unscheduled courses: {sorted(unscheduled)}")
-
-    return plan, scheduled, unscheduled, term_idx
-
-def schedule_must_have_courses(course_path: List[List[str]], window_start_term: int, must_have_courses: Dict[str, Tuple[int, int]], verbose: bool = False) -> Dict[str, Any]: 
+def schedule_must_have_courses(course_path: List[List[str]], prior_course_bank: Dict[str, Course], window_start_term: int, must_have_courses: Dict, verbose: bool = False) -> Dict[str, Any]: 
     max_terms = len(course_path)
    
     # Validate curr_term pointer
@@ -241,9 +210,10 @@ def schedule_must_have_courses(course_path: List[List[str]], window_start_term: 
     external_courses = set([course for term in course_path[:window_start_term] for course in term])
     courses_by_end_term = {}
 
-    # Group courses by end term (i.e., latest term they must be scheduled by) | 
-    for c, must_have_window in must_have_courses.items(): 
+    # Group courses by end term (i.e., latest term they must be scheduled by)
+    for c, c_info in must_have_courses.items(): 
         # Get window and validate
+        must_have_window = c_info['window']
         c_start_term = must_have_window[0]
         c_end_term = must_have_window[1]
 
@@ -254,9 +224,10 @@ def schedule_must_have_courses(course_path: List[List[str]], window_start_term: 
         curr_c_by_end_term.add(c)
         courses_by_end_term[c_end_term] = curr_c_by_end_term
 
-    # Begin modifying the course path
-    mod_course_path = [[] for _ in range(max_terms - window_start_term)]
+    # Begin modifying the course path with must have courses | Keep track of newly scheduled courses 
+    must_have_course_path = [[] for _ in range(max_terms - window_start_term)]
     all_scheduled_courses = set()
+    must_have_course_bank = {}
 
     # Iterate in order of earliest end-term requirement
     for end_term_idx, term_courses in sorted(courses_by_end_term.items(), key=lambda item: item[0]):
@@ -264,13 +235,26 @@ def schedule_must_have_courses(course_path: List[List[str]], window_start_term: 
         course_prereq_tree_depth = {}
         
         for c in term_courses:
-            c_prereq_tree, _ = build_prereq_tree(c)
+            c_prereq_tree, c_prereq_set = build_prereq_tree(c)
             course_prereq_map[c] = c_prereq_tree
-            course_prereq_tree_depth[c] = compute_max_prereq_depth(c_prereq_tree)    
-        
-        course_prereq_scheduling_priority = sorted(course_prereq_tree_depth, key=course_prereq_tree_depth.get, reverse=True)
+            course_prereq_tree_depth[c] = compute_max_prereq_depth(c_prereq_tree)  
+
+            # Update must_have_course_bank with course + prereqs
+            must_have_course_bank[c] = must_have_course_bank.get(c, must_have_courses[c]['course_object'])
+            must_have_course_bank[c].prereq_tree = c_prereq_tree
+
+            c_course_type = must_have_courses[c]['course_object'].course_type
+            for prereq in c_prereq_set:
+                must_have_course_bank[prereq] = must_have_course_bank.get(prereq, Course(course_code=prereq, course_type=c_course_type))
+                must_have_course_bank[prereq].is_prereq = True
+
+                # Avoids case where prereq has been scheduled in pre-window, meaning will not be scheduled in window
+                if prereq in prior_course_bank:
+                    must_have_course_bank[prereq].scheduled = prior_course_bank[prereq].scheduled
 
         # Iterate through courses from course with most prereqs, to least
+        course_prereq_scheduling_priority = sorted(course_prereq_tree_depth, key=course_prereq_tree_depth.get, reverse=True)
+
         for curr_priority_course in course_prereq_scheduling_priority:
             curr_prereq_tree = course_prereq_map[curr_priority_course]
             window_prereq_tree = prereq_difference(curr_prereq_tree, external_courses)
@@ -281,19 +265,18 @@ def schedule_must_have_courses(course_path: List[List[str]], window_start_term: 
 
             # Invert dependency order to prereq --> course(s) that requires it
             window_prereq_graph, all_window_courses = merge_prereq_trees_to_graph([window_prereq_tree])
-            window_prereqs_only = all_window_courses.difference({curr_priority_course})
+            # window_prereqs_only = all_window_courses.difference({curr_priority_course})
             num_terms_for_window = end_term_idx - window_start_term + 1
 
             # Schedule with course window in mind, adjusting for relativity to modified path
-            curr_priority_course_raw_window = must_have_courses[curr_priority_course]
+            curr_priority_course_raw_window = must_have_courses[curr_priority_course]['window']
             curr_priority_course_relative_window = {curr_priority_course: 
                                                         (curr_priority_course_raw_window[0] - window_start_term, curr_priority_course_raw_window[1] - window_start_term)
                                                     }
             
             tentative_course_path, scheduled_courses, unscheduled_courses = schedule_courses_by_term(course_graph=window_prereq_graph,
-                                     all_major_courses=window_prereqs_only,
-                                     all_complementary_courses={},
-                                     existing_plan=mod_course_path,
+                                     course_bank=must_have_course_bank,
+                                     existing_plan=must_have_course_path,
                                      course_scheduling_windows=curr_priority_course_relative_window,
                                      max_terms=num_terms_for_window,
                                      verbose=True)
@@ -301,37 +284,42 @@ def schedule_must_have_courses(course_path: List[List[str]], window_start_term: 
             # Check if any unscheduled courses
             if not unscheduled_courses: 
                 # Update modified course path
-                mod_course_path = tentative_course_path
+                must_have_course_path = tentative_course_path
             
                 if verbose:
                     print(f"For course: {curr_priority_course}")
                     print(course_path[:window_start_term])
-                    print(mod_course_path)
+                    print(must_have_course_path)
                     print(f'* Scheduled Courses: {scheduled_courses}')
                     print("===========================")
 
                 # Update list of scheduled courses
                 all_scheduled_courses = all_scheduled_courses | scheduled_courses
                 all_scheduled_courses.add(curr_priority_course)
+
+                # Update mod_course_bank to indicate scheduled courses
+                for c in scheduled_courses:
+                    must_have_course_bank[c].is_scheduled = True
             else:
                 print(f"* Cannot schedule course: {curr_priority_course} | Unscheduled courses: {unscheduled_courses}")
 
-    return {"course_path": course_path[:window_start_term] + mod_course_path,
+    return {"must_have_course_path": course_path[:window_start_term] + must_have_course_path,
+            "must_have_course_bank": must_have_course_bank,
             "newly_scheduled_courses": all_scheduled_courses,
             "pre_window_courses": external_courses} 
         
-def rebuild_course_path_post_modification(mod_course_path: List[List[str]], 
+def integrate_recommendations_and_must_have_courses(must_have_course_path: List[List[str]], 
                                           locked_courses: Set[str], 
                                           prior_prereq_graph: Dict[str, List[dict]], 
-                                          prior_all_major_courses: Set[str], 
-                                          prior_all_complementary_courses: Set[str], 
-                                          verbose: bool = False) -> CoursePath:
+                                          must_have_course_bank: Dict[str, Course],
+                                          prior_course_bank: Dict[str, Course],
+                                          verbose: bool = False):
     if verbose:
         print("-----\nPruning overlapping courses, determining earliest term requirements...")
 
     # Build map from tentative modified course path, for courses to term scheduled to allow for prereq. awareness
     mod_course_to_term = {}
-    for term_idx, term_courses in enumerate(mod_course_path):
+    for term_idx, term_courses in enumerate(must_have_course_path):
         for c in term_courses:
             mod_course_to_term[c] = term_idx
 
@@ -361,62 +349,90 @@ def rebuild_course_path_post_modification(mod_course_path: List[List[str]],
         print(f"Map for earliest valid term per course: {earliest_possible_term}")
         print("-----\nRunning Rescheduling...")
 
-    # Scheduling existing courses within modified plan
-    modified_course_path_schedule, scheduled_courses, unscheduled_courses = schedule_courses_by_term(course_graph=unscheduled_graph,       
-                             all_major_courses=prior_all_major_courses,
-                             all_complementary_courses=prior_all_complementary_courses,
-                             existing_plan=mod_course_path,
-                             course_scheduling_windows=earliest_possible_term)
-    
-    complete_modified_course_path = CoursePath(course_path=modified_course_path_schedule,
-                                     recommended_major_courses=prior_all_major_courses,
-                                     all_major_courses=prior_all_major_courses,
-                                     recommended_complementary_courses=prior_all_complementary_courses,
-                                     all_complementary_courses=prior_all_complementary_courses,
-                                     scheduled_courses=scheduled_courses,
-                                     unscheduled_courses=unscheduled_courses,
-                                     prereq_graph=prior_prereq_graph)
+    # Create complete course bank from prior/existing course bank + "must have" course bank
+    complete_course_bank = prior_course_bank | must_have_course_bank
 
-    return complete_modified_course_path
+    # Scheduling existing courses within modified plan
+    modified_course_path_schedule, _, _ = schedule_courses_by_term(course_graph=unscheduled_graph, 
+                             course_bank=complete_course_bank, 
+                             existing_plan=must_have_course_path, 
+                             course_scheduling_windows=earliest_possible_term)
+                             
+
+    return modified_course_path_schedule, complete_course_bank
+
+def rebuild_modified_course_path(initial_course_path: CoursePath, 
+                                 must_have_courses: Dict[str, Dict[str, Any]],
+                                 verbose: bool = False) -> CoursePath:
+    
+    # 1. Schedule must have courses
+    must_have_schedule_output = schedule_must_have_courses(course_path=initial_course_path.course_path, 
+                                                           prior_course_bank=initial_course_path.course_bank, 
+                                                           window_start_term=7, 
+                                                           must_have_courses=must_have_courses,
+                                                           verbose=verbose)
+    
+    # Get newly scheduled courses & pre-window courses
+    must_have_course_path = must_have_schedule_output['must_have_course_path']
+    must_have_course_bank = must_have_schedule_output['must_have_course_bank']
+    newly_scheduled_courses = must_have_schedule_output['newly_scheduled_courses']
+    pre_window_courses = must_have_schedule_output['pre_window_courses']
+
+    # Define "locked" courses
+    locked_courses = newly_scheduled_courses | pre_window_courses
+
+    # 2. Integrate recommendations and must have courses
+    modified_course_path_schedule, complete_course_bank = integrate_recommendations_and_must_have_courses(must_have_course_path=must_have_course_path,
+                                                                                                        locked_courses=locked_courses,
+                                                                                                        prior_prereq_graph=initial_course_path.prereq_graph,
+                                                                                                        must_have_course_bank=must_have_course_bank,
+                                                                                                        prior_course_bank=initial_course_path.course_bank,
+                                                                                                        verbose=verbose)
+    
+    # 3. Rebuild course path
+
+    # Combine recommended courses with top-level must-have courses
+    complete_recommended_courses = initial_course_path.recommended_courses | must_have_courses.keys()
+
+    # Build prereq. graph for complete course bank
+    complete_course_prereq_trees = []
+    for c in complete_course_bank:
+        c_prereq_tree, c_prereq_set = build_prereq_tree(c)
+        complete_course_prereq_trees.append(c_prereq_tree)
+    
+    complete_course_prereq_graph, _ = merge_prereq_trees_to_graph(complete_course_prereq_trees)
+
+    # Build course path
+    modified_course_path = CoursePath(course_path=modified_course_path_schedule,
+                                      course_bank=complete_course_bank,
+                                      prereq_graph=complete_course_prereq_graph,
+                                      recommended_courses=complete_recommended_courses)
+
+    return modified_course_path
 
 if __name__=='__main__':
+    
     # -- 1. Build original course path --
+    major = 'Computer Science'
     major_courses = {'COSC89.27', 'COSC55', 'COSC89.20', 'COSC35', 'COSC89.17', 'COSC89.28', 'COSC62', 'COSC69.17', 'COSC89.19', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61'}
     complementary_courses = {'QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26'}
+    
+    # Construct recommended courses set and course bank
+    recommended_courses = major_courses | complementary_courses
+    course_bank = {c: Course(course_code=c, course_type=MAJOR if c in major_courses else COMPLEMENTARY) for c in recommended_courses}
 
-    initial_course_path = build_course_path(major_courses, complementary_courses)
+    # Build initial course path + course bank updated with prereqs + scheduling info
+    initial_course_path = build_course_path(recommended_courses, course_bank)
 
-    print(f"\n-- ORIGINAL --")
+    print(f"\n-- ORIGINAL COURSE PATH --")
     print(initial_course_path.course_path)
 
-    # -- 2. Make changes --
+    # 2. Make changes
+    must_have_courses = {'COSC52': {'course_object': Course(course_code='COSC52', course_type=MAJOR), 'window': (7, 8)},
+                         'COSC58': {'course_object': Course(course_code='COSC58', course_type=MAJOR), 'window': (8, 12)},
+                         'COSC74': {'course_object': Course(course_code='COSC74', course_type=MAJOR), 'window': (7,11)}}
     
-    # 2.1. Remove courses test
-    # sample_major_courses, sample_complementary_courses = remove_recommended_courses(major_courses, complementary_courses, {'COSC89.27', 'COGS44'})
+    modified_course_path = rebuild_modified_course_path(initial_course_path, must_have_courses)
 
-    # 2.2. Schedule specific courses
-    mod_schedule_output = schedule_must_have_courses(course_path=initial_course_path.course_path, window_start_term=7, must_have_courses={
-        'COSC52': (7, 8),
-        'COSC58': (8, 12),
-        'COSC74': (7,11)
-    }, verbose=True)
-
-    ex_mod_course_path = mod_schedule_output['course_path']
-    ex_newly_scheduled_courses = mod_schedule_output['newly_scheduled_courses']
-    ex_pre_window_courses = mod_schedule_output['pre_window_courses']
-
-    print("\n-- MODIFIED --")
-    print(ex_mod_course_path)
-
-    # -- 3. Rebuild course path --
-    ex_locked_courses = ex_newly_scheduled_courses | ex_pre_window_courses
-
-    ex_complete_modified_plan = rebuild_course_path_post_modification(mod_course_path=ex_mod_course_path,
-                                          locked_courses=ex_locked_courses,
-                                          prior_prereq_graph=initial_course_path.prereq_graph,
-                                          prior_all_major_courses=initial_course_path.all_major_courses,
-                                          prior_all_complementary_courses=initial_course_path.all_complementary_courses)
-    print('\n-- FINAL PLAN --')
-    print(ex_complete_modified_plan.course_path)
-    if ex_complete_modified_plan.unscheduled_courses:
-        print(f"* Unscheduled courses: {ex_complete_modified_plan.unscheduled_courses}")
+    print(f"\n-- MODIFIED COURSE PATH --")
+    print(modified_course_path.course_path)

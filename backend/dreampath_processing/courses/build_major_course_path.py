@@ -5,6 +5,7 @@ from collections import defaultdict, deque
 import copy
 from dreampath_processing.courses.course_path_visualization import flatten_graph_dict, visualize_graph
 from schedule_modules.course_path import CoursePath
+from schedule_modules.course import Course, MAJOR, COMPLEMENTARY
 
 # Building prerequisite tree for individual courses
 def get_department_from_course_code(course_code):
@@ -27,7 +28,13 @@ def get_department_from_course_code(course_code):
 def get_department_alias_from_dept_name(dept_name):
     dept_alias_to_name = json.load(open('dreampath_processing/courses/data/department_aliases.json'))
     dept_name_to_alias = {v: k for k, v in dept_alias_to_name.items()}
-    return dept_name_to_alias[dept_name]
+    dept_alias = dept_name_to_alias.get(dept_name, None)
+
+    # Ensure provided department name has corresponding alias
+    if not dept_alias:
+        raise ValueError(f"Department name {dept_name} does not exist.")
+    
+    return dept_alias
 
 def retrieve_enhanced_course_from_course_code(course_code):
     # get department name from course code
@@ -44,6 +51,13 @@ def retrieve_enhanced_course_from_course_code(course_code):
         return None
 
     return candidate_course.iloc[0]
+
+# Checking if course is a major course
+def is_major_course(course_code, major_name):
+    department_alias_for_course = get_department_from_course_code(course_code)
+    major_alias = get_department_alias_from_dept_name(major_name)
+
+    return (department_alias_for_course == major_alias)
 
 def build_prereq_tree(course_code, base_tokens=("IP"), visited=None, prereq_accumulator=None):
     if visited is None:
@@ -129,7 +143,7 @@ def handle_course_queue(in_degree, term, course_scheduling_windows={}, verbose=F
     return deque(sorted(simple_ready))
 
 # Producing course path
-def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_courses, existing_plan=None, course_scheduling_windows={}, max_terms=12, max_courses_per_term=3, verbose=False):
+def schedule_courses_by_term(course_graph, course_bank, existing_plan=None, course_scheduling_windows={}, max_terms=12, max_courses_per_term=3, verbose=False):
     # Build in-degree and adjacency
     in_degree = defaultdict(int)
     adjacency = defaultdict(list)
@@ -162,8 +176,8 @@ def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_
         next_ready = set()
 
         # Split ready queue by type
-        majors_ready = sorted([c for c in ready if c in all_major_courses])
-        comps_ready = sorted([c for c in ready if c in all_complementary_courses and c not in all_major_courses])
+        majors_ready = sorted([c for c in ready if (c in course_bank and course_bank[c].course_type == MAJOR)])
+        comps_ready = sorted([c for c in ready if (c in course_bank and course_bank[c].course_type == COMPLEMENTARY)])
 
         if verbose:
             print(f"--> All ready: {ready}")
@@ -179,6 +193,7 @@ def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_
                 courses_this_term.append(course)
                 ready.remove(course)
                 scheduled.add(course)
+                course_bank[course].scheduled = True
                 majors_added += 1
 
         # Phase 2: Always try to add 1 complementary
@@ -187,11 +202,12 @@ def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_
                 courses_this_term.append(course)
                 ready.remove(course)
                 scheduled.add(course)
+                course_bank[course].scheduled = True
                 comps_added += 1
 
         # Phase 3: Fill remaining slots with any ready courses (prefer complementary)
         remaining_ready = sorted(list(ready), key=lambda course: (
-            0 if course in all_complementary_courses and course not in all_major_courses else 1,
+            0 if (course in course_bank and course_bank[course].course_type == COMPLEMENTARY) else 1,
             course
         ))
 
@@ -201,6 +217,7 @@ def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_
             courses_this_term.append(course)
             ready.remove(course)
             scheduled.add(course)
+            course_bank[course].scheduled = True
 
         # Update in-degrees and build next ready list
         for course in courses_this_term:
@@ -240,38 +257,44 @@ def schedule_courses_by_term(course_graph, all_major_courses, all_complementary_
         plan[term] = courses_this_term
         term += 1
 
+    # Determine which courses were not scheduled and update course bank
     unscheduled = set(all_courses) - scheduled
     if unscheduled:
         print(f"* Unscheduled courses: {sorted(unscheduled)}")
 
+        for c in unscheduled:
+            course_bank[c].scheduled = False
+
+    # Confirmation that scheduled set is the same of course_bank scheduled set
+    scheduled_from_bank = {c for c in course_bank if course_bank[c].scheduled}
+    if scheduled != scheduled_from_bank:
+        print(f"* Scheduled from bank: {scheduled_from_bank}")
+        print(f"* Scheduled: {scheduled}")
+        print(f"* Scheduled set mismatch: {scheduled} != {scheduled_from_bank}")
+    else:
+        print(f"* Scheduled set matches bank: {scheduled} == {scheduled_from_bank}")
+
     return plan, scheduled, unscheduled
 
-def build_course_path(major_courses, complementary_courses, visualize_course_connections=False) -> CoursePath:
+# major_courses, complementary_courses, 
+def build_course_path(recommended_courses, course_bank, visualize_course_connections=False) -> CoursePath:
     # Build prereq trees
     prereq_trees = []
 
-    all_major_courses = set(major_courses)
-    all_complementary_courses = set(complementary_courses)
+    print('Building prereq. trees for recommended courses...')
+    # Modify course objects in course bank
+    for course in recommended_courses:
+        course_prereq_tree, course_prereqs = build_prereq_tree(course)
+        prereq_trees.append(course_prereq_tree)
+        course_bank[course].prereq_tree = course_prereq_tree
 
-    print('Building prereq. trees for major courses...')
-    for course in major_courses:
-        # print(f'Prereq tree for {course}:')
-        course_prereq_tree, course_prereqs = build_prereq_tree(course)
-        # print(course_prereq_tree)
-        prereq_trees.append(course_prereq_tree)
-        # print('--')
-        all_major_courses.update(course_prereqs)
-        
-    print('Building prereq. trees for complementary courses...')
-    for course in complementary_courses:
-        # print(f'Prereq tree for {course}:')
-        course_prereq_tree, course_prereqs = build_prereq_tree(course)
-        # print(course_prereq_tree)
-        prereq_trees.append(course_prereq_tree)
-        # print('--')
-        all_complementary_courses.update(course_prereqs)
-        
-    # Create complete course graph; add prereq. courses to course type map
+        # Add prereq. objects to course bank
+        for prereq in course_prereqs:
+            prereq_obj = course_bank.get(prereq, Course(course_code=prereq, course_type=course_bank[course].course_type))
+            prereq_obj.is_prereq = True
+            course_bank[prereq] = prereq_obj
+
+    # Build course graph
     prereq_graph, all_courses = merge_prereq_trees_to_graph(prereq_trees)
 
     print("---")
@@ -281,16 +304,12 @@ def build_course_path(major_courses, complementary_courses, visualize_course_con
         visualize_graph(flattened_graph, all_courses)
 
     # Build course path
-    course_path, scheduled, unscheduled = schedule_courses_by_term(prereq_graph, all_major_courses, all_complementary_courses, max_terms=12, max_courses_per_term=3)
+    course_path, _, _ = schedule_courses_by_term(course_graph=prereq_graph, course_bank=course_bank, max_terms=12, max_courses_per_term=3)
 
     # Formalize output course path
     output_course_path = CoursePath(course_path=course_path,
-                                    recommended_major_courses=major_courses,
-                                    all_major_courses=all_major_courses,
-                                    recommended_complementary_courses=complementary_courses,
-                                    all_complementary_courses=all_complementary_courses,
-                                    scheduled_courses=scheduled,
-                                    unscheduled_courses=unscheduled,
+                                    recommended_courses=recommended_courses,
+                                    course_bank=course_bank,
                                     prereq_graph=prereq_graph)
 
     return output_course_path
