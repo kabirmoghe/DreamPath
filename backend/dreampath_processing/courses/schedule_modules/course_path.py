@@ -1,6 +1,5 @@
 from dataclasses import dataclass, field
 from typing import List, Set, Dict
-import copy
 from .course import Course
 
 @dataclass
@@ -9,6 +8,7 @@ class CoursePath:
     recommended_courses: Set[str]
     course_bank: Dict[str, Course]
     prereq_graph: Dict[str, List[str]]
+    must_have_courses: Set[str] = field(default_factory=set)
     
     def __post_init__(self):
         """Validate the data after initialization"""
@@ -20,4 +20,5 @@ class CoursePath:
             raise ValueError("course_bank must be a dict")
         if not isinstance(self.prereq_graph, dict):
             raise ValueError("prereq_graph must be a dict")
-        
+        if not isinstance(self.must_have_courses, set):
+            raise ValueError("must_have_courses must be a set")
