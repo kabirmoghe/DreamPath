@@ -6,7 +6,7 @@ from schedule_modules.course_path import CoursePath
 from schedule_modules.course import Course, MAJOR, COMPLEMENTARY
 
 # ─────────────────────────────────────────────────────────────────────────────
-# COURSE CHANGE FUNCTIONS
+# SIMPLE COURSE CHANGE FUNCTIONS
 # ─────────────────────────────────────────────────────────────────────────────
 
 def forcefully_remove_course(course_path, term_idx, course_to_remove):
@@ -18,23 +18,6 @@ def forcefully_remove_course(course_path, term_idx, course_to_remove):
         course_path[term_idx].remove(course_to_remove) 
     else:
         raise ValueError(f"Course '{course_to_remove}' not in specified term '{term_idx}' for course_path.")
-    
-def remove_recommended_courses(major_course_recommendations: set, complementary_course_recommendations: set, courses_to_remove: set) -> Tuple[set, set]:
-    mod_major_course_recommendations = copy.deepcopy(major_course_recommendations)
-    mod_complementary_course_recommendations = complementary_course_recommendations
-   
-    for c in courses_to_remove:
-        if c in major_course_recommendations:
-            mod_major_course_recommendations.remove(c)
-            print(f"Removed recommended major course '{c}")
-        elif c in mod_complementary_course_recommendations:
-            mod_complementary_course_recommendations.remove(c)
-            print(f"Removed recommended complementary course '{c}")
-        # Validate courses
-        else:
-            raise ValueError(f"Course '{c}' not in provided set of major or complementary course recommendations.")
-        
-    return mod_major_course_recommendations, mod_complementary_course_recommendations
 
 def replace_course(course_path, term_idx, old_course, new_course):
     # Validate term_idx
@@ -85,17 +68,16 @@ def get_direct_prereqs(prereq_tree, course_code):
         print(prereq_tree)
     return direct_children
 
-def validate_plan(course_plan, direct_prereq_map):
+def validate_plan(course_path):
     """
     Validate a course plan by checking for duplicates and prerequisite violations
 
     Args:
         course_plan (list): List of lists, where each inner list represents a term and contains course codes
-        direct_prereq_map (dict): Dictionary mapping course codes to their direct prereqs
     """
     # 1. Build a mapping from course → list of terms it appears in
     occurrences = defaultdict(list)
-    for term_idx, term_courses in enumerate(course_plan):
+    for term_idx, term_courses in enumerate(course_path):
         for c in term_courses:
             occurrences[c].append(term_idx)
 
@@ -113,6 +95,14 @@ def validate_plan(course_plan, direct_prereq_map):
     # 3. Build reverse map from course → single term (for prereq checking)
     #    Note: if duplicate, this will pick the last occurrence, but that doesn't block us
     term_of = {course: terms[-1] for course, terms in occurrences.items()}
+
+    # Build direct prereq. map
+    direct_prereq_map = {}
+    for term in course_path:
+        for course in term:
+            prereq_tree, _ = build_prereq_tree(course)
+            direct_prereqs = get_direct_prereqs(prereq_tree, course)
+            direct_prereq_map[course] = direct_prereqs
 
     # 4. Prerequisite violations
     for c, prereqs in direct_prereq_map.items():
@@ -197,7 +187,7 @@ def compute_max_prereq_depth(prereq_tree):
     return _depth_traverse(prereq_tree, 0)
 
 # ─────────────────────────────────────────────────────────────────────────────
-# RE-SCHEDULING
+# RE-SCHEDULING FOR MUST-HAVE COURSES (i.e., courses that must be scheduled in a given window)
 # ─────────────────────────────────────────────────────────────────────────────
 
 def schedule_must_have_courses(course_path: List[List[str]], prior_course_bank: Dict[str, Course], window_start_term: int, must_have_courses: Dict, verbose: bool = False) -> Dict[str, Any]: 
@@ -400,8 +390,13 @@ def rebuild_modified_course_path(initial_course_path: CoursePath,
 
     # Build prereq. graph for complete course bank
     complete_course_prereq_trees = []
-    for c in complete_course_bank:
-        c_prereq_tree, _ = build_prereq_tree(c)
+    for c, c_object in complete_course_bank.items():
+        c_prereq_tree = c_object.prereq_tree
+
+        if not c_prereq_tree:
+            c_prereq_tree, _ = build_prereq_tree(c)
+            c_object.prereq_tree = c_prereq_tree
+
         complete_course_prereq_trees.append(c_prereq_tree)
     
     complete_course_prereq_graph, _ = merge_prereq_trees_to_graph(complete_course_prereq_trees)
@@ -413,6 +408,45 @@ def rebuild_modified_course_path(initial_course_path: CoursePath,
                                       recommended_courses=complete_recommended_courses)
 
     return modified_course_path
+
+# ─────────────────────────────────────────────────────────────────────────────
+# WRAPPING FUNCTIONALITY FOR REMOVING / ADDING COURSES
+# ─────────────────────────────────────────────────────────────────────────────
+
+def safely_remove_course(course_path_obj: CoursePath, course_to_remove: str, term_idx: int) -> CoursePath:
+    """
+    Remove courses from a course path
+
+    Args:
+        course_path_obj (CoursePath): Course path to remove courses from
+        courses_to_remove (set): Set of course codes to remove from the course path
+    """
+    mod_course_path = copy.deepcopy(course_path_obj.course_path)
+
+    # Attempt to remove course and check for validity
+    forcefully_remove_course(mod_course_path, term_idx, course_to_remove)
+    removal_violations = validate_plan(mod_course_path)
+
+    # If removal violates prereq. graph, check if course is recommended and remove from recommended courses; if prereq., raise error
+    if removal_violations:
+        print(f"* Removal violations for course '{course_to_remove}' in term {term_idx}: {removal_violations}")
+        
+        if course_to_remove not in course_path_obj.recommended_courses or course_path_obj.course_bank[course_to_remove].is_prereq:
+            raise ValueError(f"Course '{course_to_remove}' is a pre-requisite for a recommended course, cannot be removed.")
+        else:
+            print(f"* Course '{course_to_remove}' is a recommended course, removing from recommended courses.")
+            removed_recommended_courses = course_path_obj.recommended_courses - {course_to_remove}
+            removed_course_path = build_course_path(removed_recommended_courses, course_path_obj.course_bank)
+            return removed_course_path
+
+    else: # Simple removal successful
+        print(f"* Course '{course_to_remove}' removed successfully.")
+        removed_course_path = CoursePath(course_path=mod_course_path,
+                                         course_bank=course_path_obj.course_bank,
+                                         prereq_graph=course_path_obj.prereq_graph,
+                                         recommended_courses=course_path_obj.recommended_courses)
+        
+        return removed_course_path
 
 if __name__=='__main__':
     
@@ -431,12 +465,18 @@ if __name__=='__main__':
     print(f"\n-- ORIGINAL COURSE PATH --")
     print(initial_course_path.course_path)
 
-    # 2. Make changes
-    must_have_courses = {'COSC52': {'course_object': Course(course_code='COSC52', course_type=MAJOR), 'window': (7, 8)},
-                         'COSC58': {'course_object': Course(course_code='COSC58', course_type=MAJOR), 'window': (8, 12)},
-                         'COSC74': {'course_object': Course(course_code='COSC74', course_type=MAJOR), 'window': (7,11)}}
-    
-    modified_course_path = rebuild_modified_course_path(initial_course_path, window_start_term=3, must_have_courses=must_have_courses, verbose=True)
+     # Test removal functionality
+    removed_course_path = safely_remove_course(initial_course_path, 'COSC74', 8)
+    print(f"\n-- REMOVED COURSE PATH --")
+    print(removed_course_path.course_path)
 
-    print(f"\n-- MODIFIED COURSE PATH --")
-    print(modified_course_path.course_path)
+
+    # # 2. Make changes
+    # must_have_courses = {'COSC52': {'course_object': Course(course_code='COSC52', course_type=MAJOR), 'window': (7, 8)},
+    #                      'COSC58': {'course_object': Course(course_code='COSC58', course_type=MAJOR), 'window': (8, 12)},
+    #                      'COSC74': {'course_object': Course(course_code='COSC74', course_type=MAJOR), 'window': (7,11)}}
+    
+    # modified_course_path = rebuild_modified_course_path(initial_course_path, window_start_term=3, must_have_courses=must_have_courses, verbose=True)
+
+    # print(f"\n-- MODIFIED COURSE PATH --")
+    # print(modified_course_path.course_path)
