@@ -265,15 +265,6 @@ def schedule_courses_by_term(course_graph, course_bank, existing_plan=None, cour
         for c in unscheduled:
             course_bank[c].scheduled = False
 
-    # Confirmation that scheduled set is the same of course_bank scheduled set
-    scheduled_from_bank = {c for c in course_bank if course_bank[c].scheduled}
-    if scheduled != scheduled_from_bank:
-        print(f"* Scheduled from bank: {scheduled_from_bank}")
-        print(f"* Scheduled: {scheduled}")
-        print(f"* Scheduled set mismatch: {scheduled} != {scheduled_from_bank}")
-    else:
-        print(f"* Scheduled set matches bank: {scheduled} == {scheduled_from_bank}")
-
     return plan, scheduled, unscheduled
 
 # major_courses, complementary_courses, 

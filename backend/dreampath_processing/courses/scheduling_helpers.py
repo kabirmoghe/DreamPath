@@ -278,8 +278,7 @@ def schedule_must_have_courses(course_path: List[List[str]], prior_course_bank: 
                                      course_bank=must_have_course_bank,
                                      existing_plan=must_have_course_path,
                                      course_scheduling_windows=curr_priority_course_relative_window,
-                                     max_terms=num_terms_for_window,
-                                     verbose=True)
+                                     max_terms=num_terms_for_window)
                 
             # Check if any unscheduled courses
             if not unscheduled_courses: 
@@ -362,21 +361,27 @@ def integrate_recommendations_and_must_have_courses(must_have_course_path: List[
     return modified_course_path_schedule, complete_course_bank
 
 def rebuild_modified_course_path(initial_course_path: CoursePath, 
+                                 window_start_term: int,
                                  must_have_courses: Dict[str, Dict[str, Any]],
                                  verbose: bool = False) -> CoursePath:
     
     # 1. Schedule must have courses
     must_have_schedule_output = schedule_must_have_courses(course_path=initial_course_path.course_path, 
                                                            prior_course_bank=initial_course_path.course_bank, 
-                                                           window_start_term=7, 
-                                                           must_have_courses=must_have_courses,
-                                                           verbose=verbose)
+                                                           window_start_term=window_start_term, 
+                                                           must_have_courses=must_have_courses)
     
     # Get newly scheduled courses & pre-window courses
     must_have_course_path = must_have_schedule_output['must_have_course_path']
     must_have_course_bank = must_have_schedule_output['must_have_course_bank']
     newly_scheduled_courses = must_have_schedule_output['newly_scheduled_courses']
     pre_window_courses = must_have_schedule_output['pre_window_courses']
+
+    if verbose:
+        print(f"\n-- MUST-HAVE COURSE PATH --")
+        print(must_have_course_path)
+        print(f"\n* Newly scheduled courses: {newly_scheduled_courses}")
+        print("-----\n")
 
     # Define "locked" courses
     locked_courses = newly_scheduled_courses | pre_window_courses
@@ -386,8 +391,7 @@ def rebuild_modified_course_path(initial_course_path: CoursePath,
                                                                                                         locked_courses=locked_courses,
                                                                                                         prior_prereq_graph=initial_course_path.prereq_graph,
                                                                                                         must_have_course_bank=must_have_course_bank,
-                                                                                                        prior_course_bank=initial_course_path.course_bank,
-                                                                                                        verbose=verbose)
+                                                                                                        prior_course_bank=initial_course_path.course_bank)
     
     # 3. Rebuild course path
 
@@ -397,7 +401,7 @@ def rebuild_modified_course_path(initial_course_path: CoursePath,
     # Build prereq. graph for complete course bank
     complete_course_prereq_trees = []
     for c in complete_course_bank:
-        c_prereq_tree, c_prereq_set = build_prereq_tree(c)
+        c_prereq_tree, _ = build_prereq_tree(c)
         complete_course_prereq_trees.append(c_prereq_tree)
     
     complete_course_prereq_graph, _ = merge_prereq_trees_to_graph(complete_course_prereq_trees)
@@ -432,7 +436,7 @@ if __name__=='__main__':
                          'COSC58': {'course_object': Course(course_code='COSC58', course_type=MAJOR), 'window': (8, 12)},
                          'COSC74': {'course_object': Course(course_code='COSC74', course_type=MAJOR), 'window': (7,11)}}
     
-    modified_course_path = rebuild_modified_course_path(initial_course_path, must_have_courses)
+    modified_course_path = rebuild_modified_course_path(initial_course_path, window_start_term=3, must_have_courses=must_have_courses, verbose=True)
 
     print(f"\n-- MODIFIED COURSE PATH --")
     print(modified_course_path.course_path)
