@@ -24,4 +24,12 @@ class Course:
     course_description: Optional[str] = None
 
     def __str__(self):
-        return f"{self.course_code} [{self.course_type}, scheduled={self.scheduled}, window={self.must_have_window}]"
+        course_str = f"{self.course_code} [{self.course_type}, scheduled={self.scheduled}"
+        if self.is_prereq:
+            course_str += ", PREREQ]"
+        if self.must_have_window:
+            course_str += f"\n\twindow={self.must_have_window}"
+        if self.term_idx is not None:
+            course_str += f"\n\tterm_idx={self.term_idx}"
+ 
+        return course_str

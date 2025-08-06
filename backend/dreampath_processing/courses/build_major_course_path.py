@@ -1,131 +1,10 @@
-import pandas as pd
-import re
-import json
 from collections import defaultdict, deque
 import copy
+
 from dreampath_processing.courses.course_path_visualization import flatten_graph_dict, visualize_graph
-from schedule_modules.course_path import CoursePath
-from schedule_modules.course import Course, MAJOR, COMPLEMENTARY
-
-# Building prerequisite tree for individual courses
-def get_department_from_course_code(course_code):
-    course_components = re.match(r'^([A-Z]+)(.*)', course_code)
-    
-    if course_components:
-        dept_alias = course_components.group(1)
-        number = course_components.group(2)
-
-        try:
-            number = float(number)
-        except ValueError:
-            number = None
-
-        return dept_alias, number
-    
-    return None, None
-
-# Get department alias from department name
-def get_department_alias_from_dept_name(dept_name):
-    dept_alias_to_name = json.load(open('dreampath_processing/courses/data/department_aliases.json'))
-    dept_name_to_alias = {v: k for k, v in dept_alias_to_name.items()}
-    dept_alias = dept_name_to_alias.get(dept_name, None)
-
-    # Ensure provided department name has corresponding alias
-    if not dept_alias:
-        raise ValueError(f"Department name {dept_name} does not exist.")
-    
-    return dept_alias
-
-def retrieve_enhanced_course_from_course_code(course_code):
-    # get department name from course code
-    dept_alias, _ = get_department_from_course_code(course_code)
-    dept_alias_map = json.load(open('dreampath_processing/courses/data/department_aliases.json'))
-    dept_raw = dept_alias_map[dept_alias]
-    dept_cleaned = dept_raw.replace(' ', '_').lower()
-
-    # get department courses
-    dept_courses = pd.read_csv(f'dreampath_processing/courses/data/{dept_cleaned}_courses_with_descriptions.csv')
-    candidate_course = dept_courses[dept_courses['course_code'] == course_code]
-
-    if len(candidate_course) == 0:
-        return None
-
-    return candidate_course.iloc[0]
-
-# Checking if course is a major course
-def is_major_course(course_code, major_name):
-    department_alias_for_course = get_department_from_course_code(course_code)
-    major_alias = get_department_alias_from_dept_name(major_name)
-
-    return (department_alias_for_course == major_alias)
-
-def build_prereq_tree(course_code, base_tokens=("IP"), visited=None, prereq_accumulator=None):
-    if visited is None:
-        visited = set()
-    if prereq_accumulator is None:
-        prereq_accumulator = set()
-    if course_code in visited:
-        return {course_code: "cyclic"}  # or just skip if preferred
-    visited.add(course_code)
-
-    enhanced_course = retrieve_enhanced_course_from_course_code(course_code)
-    if enhanced_course is None:
-        print(f"Course {course_code} not found")
-        return {}, set()
-
-    prereq_children = eval(enhanced_course['best_prereq_path'])
-
-    tree_children = []
-    for child in prereq_children:
-        if child in base_tokens:
-            tree_children.append(child)
-        elif child not in ('AP', 'LP'):
-            prereq_accumulator.add(child)
-            subtree, _ = build_prereq_tree(child, base_tokens, visited.copy(), prereq_accumulator)
-            tree_children.append(subtree)
-
-    return {course_code: tree_children}, prereq_accumulator
-
-# Building course graph for major and complementary courses
-def merge_prereq_trees_to_graph(prereq_trees):
-    """
-    trees: list of nested dicts (each representing one course's tree)
-    returns:
-        - dict of {prereq: set of courses that depend on it}
-        - full set of all courses mentioned (nodes in the graph)
-    """
-    graph = defaultdict(set)
-    all_courses = set()
-
-    def extract_edges(tree):
-        edges = []
-
-        def dfs(course, children):
-            all_courses.add(course)
-            for child_dict in children:
-                if isinstance(child_dict, dict):
-                    for prereq, grand_children in child_dict.items():
-                        edges.append((prereq, course))
-                        all_courses.add(prereq)
-                        dfs(prereq, grand_children)
-                else:
-                    print(f'Likely IP/AP/LP encountered: {child_dict}')
-
-        for course, prereq_children in tree.items():
-            dfs(course, prereq_children)
-
-        return edges
-
-    for prereq_tree in prereq_trees:
-        edges = extract_edges(prereq_tree)
-        for prereq, course in edges:
-            graph[prereq].add(course)
-
-    # Ensure nodes with no edges still appear
-    for course in all_courses:
-        graph.setdefault(course, set())
-
-    return graph, all_courses
+from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, merge_prereq_trees_to_graph
+from dreampath_processing.courses.schedule_modules.course_path import CoursePath
+from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY
 
 def handle_course_queue(in_degree, term, course_scheduling_windows={}, verbose=False):
     simple_ready = []
@@ -194,6 +73,7 @@ def schedule_courses_by_term(course_graph, course_bank, existing_plan=None, cour
                 ready.remove(course)
                 scheduled.add(course)
                 course_bank[course].scheduled = True
+                course_bank[course].term_idx = term
                 majors_added += 1
 
         # Phase 2: Always try to add 1 complementary
@@ -203,6 +83,7 @@ def schedule_courses_by_term(course_graph, course_bank, existing_plan=None, cour
                 ready.remove(course)
                 scheduled.add(course)
                 course_bank[course].scheduled = True
+                course_bank[course].term_idx = term
                 comps_added += 1
 
         # Phase 3: Fill remaining slots with any ready courses (prefer complementary)
@@ -218,6 +99,7 @@ def schedule_courses_by_term(course_graph, course_bank, existing_plan=None, cour
             ready.remove(course)
             scheduled.add(course)
             course_bank[course].scheduled = True
+            course_bank[course].term_idx = term
 
         # Update in-degrees and build next ready list
         for course in courses_this_term:
@@ -264,6 +146,7 @@ def schedule_courses_by_term(course_graph, course_bank, existing_plan=None, cour
 
         for c in unscheduled:
             course_bank[c].scheduled = False
+            course_bank[c].term_idx = None
 
     return plan, scheduled, unscheduled
 
