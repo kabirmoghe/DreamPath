@@ -81,11 +81,11 @@ if __name__ == "__main__":
         pass
 
     # # 3. Make more changes
-    # additional_must_have_course_map = {'QSS41': Course(course_code='QSS41', course_type=COMPLEMENTARY, must_have_window=(9, 9))}
-    # modified_course_path = rebuild_course_path_with_must_haves(modified_course_path, window_start_term=6, must_have_course_map=additional_must_have_course_map, verbose=True)
+    additional_must_have_course_map = {'QSS41': Course(course_code='QSS41', course_type=COMPLEMENTARY, must_have_window=(9, 9))}
+    final_course_path = rebuild_course_path_with_must_haves(remove_course_path, window_start_term=6, must_have_course_map=additional_must_have_course_map, verbose=True)
 
-    # print(f"\n-- MODIFIED COURSE PATH v2--")
-    # print(modified_course_path.course_path)
-    # print(f"Must-have courses: {modified_course_path.must_have_courses}")
-    # for c in modified_course_path.course_bank.values():
-    #     print(c)
+    print(f"\n-- FINAL COURSE PATH --")
+    print(final_course_path.course_path)
+    print(f"Must-have courses: {final_course_path.must_have_courses}")
+    for c in final_course_path.course_bank.values():
+        print(c)

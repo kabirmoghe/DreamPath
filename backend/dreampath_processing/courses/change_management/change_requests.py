@@ -28,18 +28,31 @@ class ChangeRequest:
 # REMOVE COURSE
 # ─────────────────────────────────────────────────────────────────────────────
 
-def attempt_remove_course(course_path: CoursePath, course_to_remove: Course):
+def attempt_remove_course(course_path_obj: CoursePath, course_to_remove: Course) -> List[List[str]]:
+    """
+    Attempt to remove course from course path
+
+    Args:
+        course_path_obj (CoursePath): Course path to remove course from
+        course_to_remove (Course): Course to remove from course path
+
+    Returns:
+        List[List[str]]: Course path list with course removed
+    """
     # Validate term_idx
     term_idx = course_to_remove.term_idx
 
     if term_idx is None:
         raise Exception(f"Course '{course_to_remove.course_code}' not scheduled / missing term index.")
 
-    elif term_idx < 0 or term_idx >= len(course_path):
-        raise Exception(f"Term index must be in range [0, {len(course_path) - 1}]")
+    elif term_idx < 0 or term_idx >= len(course_path_obj.course_path):
+        raise Exception(f"Term index must be in range [0, {len(course_path_obj.course_path) - 1}]")
     
-    if course_to_remove.course_code in course_path[term_idx]:
-        course_path[term_idx].remove(course_to_remove.course_code) 
+    if course_to_remove.course_code in course_path_obj.course_path[term_idx]:
+        remove_course_path = copy.deepcopy(course_path_obj.course_path)
+        remove_course_path[term_idx].remove(course_to_remove.course_code) 
+
+        return remove_course_path
     else:
         raise Exception(f"Course '{course_to_remove.course_code}' not in specified term '{term_idx}' for course_path.")
 
@@ -50,6 +63,9 @@ def remove_course(course_path_obj: CoursePath, course_code_to_remove: str) -> Co
     Args:
         course_path_obj (CoursePath): Course path to remove courses from
         courses_to_remove (set): Set of course codes to remove from the course path
+
+    Returns:
+        CoursePath: Course path object with course removed
     """
     course_to_remove = course_path_obj.course_bank.get(course_code_to_remove, None)
     if course_to_remove is None:
@@ -58,12 +74,10 @@ def remove_course(course_path_obj: CoursePath, course_code_to_remove: str) -> Co
     if course_to_remove.term_idx < course_path_obj.curr_window_start:
         raise Exception(f"Term index {course_to_remove.term_idx} for removal must be within current window.")
 
-    mod_course_path = copy.deepcopy(course_path_obj.course_path)
-
     # Attempt to remove course and check for validity
     try:
-        attempt_remove_course(course_path=mod_course_path, course_to_remove=course_to_remove)
-        removal_violations = validate_plan(mod_course_path)
+        remove_course_path = attempt_remove_course(course_path_obj=course_path_obj, course_to_remove=course_to_remove)
+        removal_violations = validate_plan(remove_course_path)
 
     except Exception as e:
         raise Exception(f"Error attempting to remove course {course_code_to_remove}: {e}")
@@ -76,13 +90,13 @@ def remove_course(course_path_obj: CoursePath, course_code_to_remove: str) -> Co
             raise Exception(f"\n* Course '{course_code_to_remove}' is a pre-requisite for a recommended course, cannot be removed. [prereq={course_to_remove.is_prereq}]")
         else:
             print(f"\n* Course '{course_code_to_remove}' is a recommended course, removing from recommended courses and rescheduling...")
-            temp_removed_course_path = copy.deepcopy(course_path_obj)
-            temp_removed_course_path.recommended_courses = course_path_obj.recommended_courses - {course_code_to_remove}
-            temp_removed_course_path.prereq_graph = rebuild_prereq_graph(course_bank=course_path_obj.course_bank, courses=temp_removed_course_path.recommended_courses)
-            temp_removed_course_path.must_have_courses = course_path_obj.must_have_courses - {course_code_to_remove}
+            temp_removed_course_path_obj = copy.deepcopy(course_path_obj)
+            temp_removed_course_path_obj.recommended_courses = course_path_obj.recommended_courses - {course_code_to_remove}
+            temp_removed_course_path_obj.prereq_graph = rebuild_prereq_graph(course_bank=course_path_obj.course_bank, courses=temp_removed_course_path_obj.recommended_courses)
+            temp_removed_course_path_obj.must_have_courses = course_path_obj.must_have_courses - {course_code_to_remove}
 
             # Rebuild course path with must-have courses
-            removed_course_path = rebuild_course_path_with_must_haves(initial_course_path=temp_removed_course_path, 
+            removed_course_path_obj = rebuild_course_path_with_must_haves(initial_course_path=temp_removed_course_path_obj, 
                                                                       window_start_term=course_path_obj.curr_window_start, verbose=True)
 
     # Simple removal successful
@@ -94,19 +108,19 @@ def remove_course(course_path_obj: CoursePath, course_code_to_remove: str) -> Co
         removed_prereq_graph = rebuild_prereq_graph(course_bank=course_path_obj.course_bank, courses=removed_recommended_courses)
         removed_must_have_courses = course_path_obj.must_have_courses - {course_code_to_remove}
 
-        removed_course_path = CoursePath(course_path=mod_course_path,
+        removed_course_path_obj = CoursePath(course_path=remove_course_path,
                                          course_bank=course_path_obj.course_bank,
                                          prereq_graph=removed_prereq_graph,
                                          recommended_courses=removed_recommended_courses,
                                          must_have_courses=removed_must_have_courses)
         
     print(f"* Course '{course_code_to_remove}' removed successfully.")
-    return removed_course_path
+    return removed_course_path_obj
 
 # ─────────────────────────────────────────────────────────────────────────────
 # ADD COURSE
 # ─────────────────────────────────────────────────────────────────────────────
-def attempt_add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_per_term=3) -> Tuple[CoursePath, int]:
+def attempt_add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_per_term=3) -> Tuple[List[List[str]], int]:
     add_course_path = copy.deepcopy(course_path_obj.course_path)
 
     # Check if must_have term location / window specified
@@ -144,7 +158,7 @@ def add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_p
     # Checking if course is already scheduled
     existing_course = course_path_obj.course_bank.get(course_to_add.course_code, None)
     if existing_course and existing_course.term_idx is not None:
-        raise Exception(f"Course '{course_to_add.course_code}' is already scheduled.")
+        raise Exception(f"Course '{course_to_add.course_code}' is already scheduled (scheduled={existing_course.scheduled}).")
     
     # Otherwise, attempt to add course
     try:
@@ -156,7 +170,7 @@ def add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_p
 
             # Make must have and schedule around
             add_as_must_have = {course_to_add.course_code: course_to_add}
-            return rebuild_course_path_with_must_haves(initial_course_path=course_path_obj,
+            add_course_path_obj = rebuild_course_path_with_must_haves(initial_course_path=course_path_obj,
                                                 window_start_term=course_path_obj.curr_window_start,
                                                 must_have_course_map=add_as_must_have)
         else:
@@ -169,7 +183,7 @@ def add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_p
             added_prereq_graph = rebuild_prereq_graph(course_bank=added_course_bank, courses=added_recommended_courses)
             added_must_have_courses = course_path_obj.must_have_courses | {course_to_add.course_code}
             
-            return CoursePath(
+            add_course_path_obj = CoursePath(
                 course_path=add_course_path,
                 recommended_courses=added_recommended_courses,
                 must_have_courses=added_must_have_courses,
@@ -177,12 +191,17 @@ def add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_p
                 prereq_graph=added_prereq_graph
             )
 
+        print(f"* Course '{course_to_add.course_code}' added successfully.")
+        return add_course_path_obj
+
     except Exception as e:
         print(f"* Error attempting to add course '{course_to_add.course_code}' in window {course_to_add.must_have_window}: {e}")
 
 # ─────────────────────────────────────────────────────────────────────────────
 # MOVE COURSE
 # ─────────────────────────────────────────────────────────────────────────────
+def attempt_move_course(course_path_obj: CoursePath, course_to_move: Course, move_window: Tuple[int, int], max_classes_per_term: int=3):
+     pass
 
 def move_course(course_path_obj: CoursePath, course_to_move: Course, move_window: Tuple[int, int], max_classes_per_term: int=3) -> CoursePath:
     # Validate move window
@@ -200,7 +219,7 @@ def move_course(course_path_obj: CoursePath, course_to_move: Course, move_window
     if move_window[0] <= course_to_move.term_idx <= move_window[1]:
         raise Exception(f"Course '{course_to_move.course_code}' is already in move window {move_window}.")
 
-    
+
     
 
 # ─────────────────────────────────────────────────────────────────────────────
