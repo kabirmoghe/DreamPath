@@ -10,7 +10,7 @@ from schedule_modules.course import Course, MAJOR, COMPLEMENTARY
 # SCHEDULING FUNCTIONS
 # -----------------------------------------------------
 
-def validate_plan(course_path):
+def validate_plan(course_path: List[List[str]], course_bank: Dict[str, Course]):
     """
     Validate a course plan by checking for duplicates and prerequisite violations
 
@@ -42,7 +42,14 @@ def validate_plan(course_path):
     direct_prereq_map = {}
     for term in course_path:
         for course in term:
-            prereq_tree, _ = build_prereq_tree(course)
+            # In case course prereq. tree is already built, use it; otherwise, build it
+            course_obj = course_bank.get(course, None)
+            if course_obj and course_obj.prereq_tree is not None:
+                prereq_tree = course_obj.prereq_tree
+            else:
+                prereq_tree, _ = build_prereq_tree(course)
+                course_obj.prereq_tree = prereq_tree
+
             direct_prereqs = get_direct_prereqs(prereq_tree, course)
             direct_prereq_map[course] = direct_prereqs
 

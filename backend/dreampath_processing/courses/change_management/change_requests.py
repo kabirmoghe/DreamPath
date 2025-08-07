@@ -39,22 +39,11 @@ def attempt_remove_course(course_path_obj: CoursePath, course_to_remove: Course)
     Returns:
         List[List[str]]: Course path list with course removed
     """
-    # Validate term_idx
-    term_idx = course_to_remove.term_idx
-
-    if term_idx is None:
-        raise Exception(f"Course '{course_to_remove.course_code}' not scheduled / missing term index.")
-
-    elif term_idx < 0 or term_idx >= len(course_path_obj.course_path):
-        raise Exception(f"Term index must be in range [0, {len(course_path_obj.course_path) - 1}]")
     
-    if course_to_remove.course_code in course_path_obj.course_path[term_idx]:
-        remove_course_path = copy.deepcopy(course_path_obj.course_path)
-        remove_course_path[term_idx].remove(course_to_remove.course_code) 
+    remove_course_path = copy.deepcopy(course_path_obj.course_path)
+    remove_course_path[course_to_remove.term_idx].remove(course_to_remove.course_code) 
 
-        return remove_course_path
-    else:
-        raise Exception(f"Course '{course_to_remove.course_code}' not in specified term '{term_idx}' for course_path.")
+    return remove_course_path
 
 def remove_course(course_path_obj: CoursePath, course_code_to_remove: str, reschedule: bool=False) -> CoursePath:
     """
@@ -70,6 +59,12 @@ def remove_course(course_path_obj: CoursePath, course_code_to_remove: str, resch
     course_to_remove = course_path_obj.course_bank.get(course_code_to_remove, None)
     if course_to_remove is None:
         raise Exception(f"Course code '{course_code_to_remove}' does not exist in course bank.")
+    
+    if course_to_remove.term_idx is None:
+        raise Exception(f"Course '{course_to_remove.course_code}' not scheduled / missing term index.")
+
+    if course_to_remove.term_idx < 0 or course_to_remove.term_idx >= len(course_path_obj.course_path):
+        raise Exception(f"Term index must be in range [0, {len(course_path_obj.course_path) - 1}]")
 
     if course_to_remove.term_idx < course_path_obj.curr_window_start:
         raise Exception(f"Term index {course_to_remove.term_idx} for removal must be within current window.")
@@ -77,7 +72,7 @@ def remove_course(course_path_obj: CoursePath, course_code_to_remove: str, resch
     # Attempt to remove course and check for validity
     try:
         remove_course_path = attempt_remove_course(course_path_obj=course_path_obj, course_to_remove=course_to_remove)
-        removal_violations = validate_plan(remove_course_path)
+        removal_violations = validate_plan(course_path=remove_course_path, course_bank=course_path_obj.course_bank)
 
     except Exception as e:
         raise Exception(f"Error attempting to remove course {course_code_to_remove}: {e}")
@@ -92,13 +87,13 @@ def remove_course(course_path_obj: CoursePath, course_code_to_remove: str, resch
         # Reschedule if requested
         elif reschedule:
             print(f"\n* Course '{course_code_to_remove}' is a recommended course, removing from recommended courses and rescheduling...")
-            temp_removed_course_path_obj = copy.deepcopy(course_path_obj)
-            temp_removed_course_path_obj.recommended_courses = course_path_obj.recommended_courses - {course_code_to_remove}
-            temp_removed_course_path_obj.prereq_graph = rebuild_prereq_graph(course_bank=course_path_obj.course_bank, courses=temp_removed_course_path_obj.recommended_courses)
-            temp_removed_course_path_obj.must_have_courses = course_path_obj.must_have_courses - {course_code_to_remove}
+            temp_remove_course_path_obj = copy.deepcopy(course_path_obj)
+            temp_remove_course_path_obj.recommended_courses = course_path_obj.recommended_courses - {course_code_to_remove}
+            temp_remove_course_path_obj.prereq_graph = rebuild_prereq_graph(course_bank=course_path_obj.course_bank, courses=temp_remove_course_path_obj.recommended_courses)
+            temp_remove_course_path_obj.must_have_courses = course_path_obj.must_have_courses - {course_code_to_remove}
 
             # Rebuild course path with must-have courses
-            removed_course_path_obj = rebuild_course_path_with_must_haves(initial_course_path=temp_removed_course_path_obj, 
+            removed_course_path_obj = rebuild_course_path_with_must_haves(initial_course_path=temp_remove_course_path_obj, 
                                                                       window_start_term=course_path_obj.curr_window_start, verbose=True)
         else:
             raise Exception(f"Cannot remove course '{course_code_to_remove}' due to scheduling violations.")
@@ -166,7 +161,7 @@ def add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_p
     
     # Proceed with addition
     add_course_path, new_course_term_idx = attempt_add_course(course_path_obj, course_to_add, max_classes_per_term)
-    add_violations = validate_plan(add_course_path)
+    add_violations = validate_plan(course_path=add_course_path, course_bank=course_path_obj.course_bank)
 
     # If violations, make must-have and schedule around
     if add_violations:
@@ -239,8 +234,8 @@ def move_course(course_path_obj: CoursePath, course_code_to_move: str, move_wind
         raise Exception(f"Course '{course_code_to_move}' is already in move window {move_window}.")
 
     # Proceed with move
-    move_course_path, new_course_term_idx = attempt_move_course(course_path_obj=course_path_obj, course_to_move=course_to_move, move_window=move_window, max_classes_per_term=max_classes_per_term)
-    move_violations = validate_plan(move_course_path)
+    move_course_path, move_term_idx = attempt_move_course(course_path_obj=course_path_obj, course_to_move=course_to_move, move_window=move_window, max_classes_per_term=max_classes_per_term)
+    move_violations = validate_plan(course_path=move_course_path, course_bank=course_path_obj.course_bank)
 
     # If violations, make must-have and schedule around
     if move_violations:
@@ -256,7 +251,7 @@ def move_course(course_path_obj: CoursePath, course_code_to_move: str, move_wind
 
     # Simple move successful, update course info
     else:
-        course_to_move.term_idx = new_course_term_idx
+        course_to_move.term_idx = move_term_idx
         course_to_move.must_have_window = move_window
 
         move_course_path_obj = CoursePath(
@@ -274,40 +269,102 @@ def move_course(course_path_obj: CoursePath, course_code_to_move: str, move_wind
 # REPLACE COURSE
 # ─────────────────────────────────────────────────────────────────────────────
 
-def attempt_replace_course(course_path, new_course, old_course_code, term_idx):
-    # Validate term_idx
-    if term_idx < 0 or term_idx >= len(course_path):
-        raise Exception(f"term_idx must be in range [0, {len(course_path) - 1}]")
+def attempt_replace_course(course_path_obj: CoursePath, new_course: Course, course_to_replace: Course) -> Tuple[List[List[str]], int]:
+    # First, remove old course
+    remove_course_path = attempt_remove_course(course_path_obj=course_path_obj, course_to_remove=course_to_replace)
 
-    # Extract position of old course in term
-    old_course_idx = course_path[term_idx].index(old_course_code) if old_course_code in course_path[term_idx] else None
-
-    if old_course_idx:
-        # Replace old course with new course
-        course_path_swapped = copy.deepcopy(course_path)
-        course_path_swapped[term_idx][old_course_idx] = new_course.course_code
-
-        return course_path_swapped
+    # Then, add new course
+    if course_to_replace.must_have_window:
+        new_course.must_have_window = course_to_replace.must_have_window
     else:
-        raise Exception(f"Course '{old_course_code}' not in specified term '{term_idx}' for course_path.") # Invalid course for replacement
+        new_course.must_have_window = (course_to_replace.term_idx, course_to_replace.term_idx)
+
+    # Reframe ADD error as REPLACE error
+    try:
+        add_course_path, new_course_term_idx = attempt_add_course(course_path_obj=course_path_obj, course_to_add=new_course, max_classes_per_term=3)
+
+    except Exception as e:
+        raise Exception(f"Error attempting to replace course '{course_to_replace.course_code}' with '{new_course.course_code}': {e}")
+
+    return add_course_path, new_course_term_idx
     
-def replace_course(course_path_obj: CoursePath, new_course: Course, old_course_code: str, term_idx: int) -> CoursePath:
-    mod_course_path = copy.deepcopy(course_path_obj.course_path)
-    attempt_replace_course(mod_course_path, new_course, old_course_code, term_idx)
-    replacement_violations = validate_plan(mod_course_path)
+def replace_course(course_path_obj: CoursePath, new_course: Course, course_code_to_replace: str, reschedule: bool=False) -> CoursePath:
+   
+    # Validate course to replace
+    course_to_replace = course_path_obj.course_bank.get(course_code_to_replace, None)
+    if course_to_replace is None:
+        raise Exception(f"Course code '{course_code_to_replace}' does not exist in course bank.")
     
+    if course_to_replace.term_idx is None:
+        raise Exception(f"Course '{course_code_to_replace}' not scheduled / missing term index.")
+
+    # Validate new course
+    if new_course.course_code in course_path_obj.course_bank and new_course.term_idx is not None:
+        raise Exception(f"Course '{new_course.course_code}' is already scheduled (scheduled={new_course.scheduled})")
+    
+    if new_course.must_have_window:
+        print(f"Warning: replacing course '{course_code_to_replace}' with course '{new_course.course_code}' may override existing must-have window.")
+
+    # Attempt to replace course
+    replace_course_path, replace_term_idx = attempt_replace_course(course_path_obj=course_path_obj, new_course=new_course, course_to_replace=course_to_replace)
+    replacement_violations = validate_plan(course_path=replace_course_path, course_bank=course_path_obj.course_bank)
+
+    # If violations, make must-have and schedule around
     if replacement_violations:
-        print(f"* Replacement violations for course '{old_course_code}' in term {term_idx}: {replacement_violations}")
+        print(f"* Replacement violations for course '{course_code_to_replace}' in term {replace_term_idx}: {replacement_violations}")
 
-        old_course_obj = course_path_obj.course_bank[old_course_code]
-        if old_course_code not in course_path_obj.recommended_courses or old_course_obj.is_prereq:
-            raise Exception(f"Course '{old_course_code}' is a pre-requisite for a recommended course, cannot be replaced.")
-        else:   
-            # print(f"* Course '{old_course}' is a recommended course, replacing with '{new_course}'.")
-            # replaced_recommended_courses = course_path_obj.recommended_courses - {old_course} | {new_course}
-            # replaced_course_path = build_course_path(replaced_recommended_courses, course_path_obj.course_bank)
-            # return replaced_course_path
-            pass
+        course_to_replace_obj = course_path_obj.course_bank[course_code_to_replace]
+        if course_code_to_replace not in course_path_obj.recommended_courses or course_to_replace_obj.is_prereq:
+            raise Exception(f"Course '{course_code_to_replace}' is a pre-requisite for a recommended course, cannot be replaced.")
+        
+        # Reschedule if requested
+        elif reschedule:
+            print(f"* Course '{course_code_to_replace}' is a recommended course, replacing with '{new_course.course_code}' and rescheduling...")
+            temp_replace_course_path_obj = copy.deepcopy(course_path_obj)
+            temp_replace_course_path_obj.recommended_courses = course_path_obj.recommended_courses - {course_code_to_replace} | {new_course.course_code}
+            temp_replace_course_path_obj.course_bank = course_path_obj.course_bank | {new_course.course_code: new_course}
+            temp_replace_course_path_obj.prereq_graph = rebuild_prereq_graph(course_bank=temp_replace_course_path_obj.course_bank, courses=temp_replace_course_path_obj.recommended_courses)
+            temp_replace_course_path_obj.must_have_courses = course_path_obj.must_have_courses - {course_code_to_replace} | {new_course.course_code}
 
-    else: # Simple replacement successful
-        return
+            # Rebuild course path with must-have courses
+            replace_course_path_obj = rebuild_course_path_with_must_haves(initial_course_path=temp_replace_course_path_obj, 
+                                                                      window_start_term=course_path_obj.curr_window_start, verbose=True)
+        else:
+            raise Exception(f"Cannot replace course '{course_code_to_replace}' with '{new_course.course_code}' due to scheduling violations.")
+
+    # Simple replacement successful, update course info
+    else:
+        new_course.scheduled = True
+        new_course.term_idx = replace_term_idx
+        new_course.must_have_window = course_to_replace.must_have_window
+
+        course_to_replace.scheduled = False
+        course_to_replace.term_idx = None
+        course_to_replace.must_have_window = None
+
+        if course_code_to_replace in course_path_obj.recommended_courses:
+            replaced_recommended_courses = course_path_obj.recommended_courses - {course_code_to_replace} | {new_course.course_code}
+        else:
+            replaced_recommended_courses = course_path_obj.recommended_courses
+
+        replaced_course_bank = course_path_obj.course_bank | {new_course.course_code: new_course}
+
+        # ASSUMPTION: prereq. tree for new course is already built in validate_plan
+        replaced_prereq_graph = rebuild_prereq_graph(course_bank=replaced_course_bank, courses=replaced_recommended_courses)
+
+        if course_code_to_replace in course_path_obj.must_have_courses:
+            replaced_must_have_courses = course_path_obj.must_have_courses - {course_code_to_replace} | {new_course.course_code}
+        else:
+            replaced_must_have_courses = course_path_obj.must_have_courses
+
+        replace_course_path_obj = CoursePath(
+            course_path=replace_course_path,
+            recommended_courses=replaced_recommended_courses,
+            course_bank=replaced_course_bank,
+            prereq_graph=replaced_prereq_graph,
+            curr_window_start=course_path_obj.curr_window_start,
+            must_have_courses=replaced_must_have_courses
+        )
+
+    print(f"* Course '{course_code_to_replace}' replaced with '{new_course.course_code}' successfully.")
+    return replace_course_path_obj
