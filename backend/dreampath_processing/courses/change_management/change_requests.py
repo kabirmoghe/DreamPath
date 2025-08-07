@@ -56,7 +56,7 @@ def attempt_remove_course(course_path_obj: CoursePath, course_to_remove: Course)
     else:
         raise Exception(f"Course '{course_to_remove.course_code}' not in specified term '{term_idx}' for course_path.")
 
-def remove_course(course_path_obj: CoursePath, course_code_to_remove: str) -> CoursePath:
+def remove_course(course_path_obj: CoursePath, course_code_to_remove: str, reschedule: bool=False) -> CoursePath:
     """
     Remove courses from a course path
 
@@ -88,7 +88,9 @@ def remove_course(course_path_obj: CoursePath, course_code_to_remove: str) -> Co
         
         if course_code_to_remove not in course_path_obj.recommended_courses or course_path_obj.course_bank[course_code_to_remove].is_prereq:
             raise Exception(f"\n* Course '{course_code_to_remove}' is a pre-requisite for a recommended course, cannot be removed. [prereq={course_to_remove.is_prereq}]")
-        else:
+        
+        # Reschedule if requested
+        elif reschedule:
             print(f"\n* Course '{course_code_to_remove}' is a recommended course, removing from recommended courses and rescheduling...")
             temp_removed_course_path_obj = copy.deepcopy(course_path_obj)
             temp_removed_course_path_obj.recommended_courses = course_path_obj.recommended_courses - {course_code_to_remove}
@@ -98,8 +100,10 @@ def remove_course(course_path_obj: CoursePath, course_code_to_remove: str) -> Co
             # Rebuild course path with must-have courses
             removed_course_path_obj = rebuild_course_path_with_must_haves(initial_course_path=temp_removed_course_path_obj, 
                                                                       window_start_term=course_path_obj.curr_window_start, verbose=True)
+        else:
+            raise Exception(f"Cannot remove course '{course_code_to_remove}' due to scheduling violations.")
 
-    # Simple removal successful
+    # Simple removal successful, update course info
     else:
         course_to_remove.scheduled = False
         course_to_remove.term_idx = None
@@ -144,7 +148,7 @@ def attempt_add_course(course_path_obj: CoursePath, course_to_add: Course, max_c
             
         raise Exception(f"Course '{course_to_add.course_code}' cannot be directly added in any term.")
 
-def add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_per_term: int=3) -> CoursePath:
+def add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_per_term: int=3, reschedule: bool=False) -> CoursePath:
     # Check if must_have term location / window specified 
     if course_to_add.must_have_window:
         max_terms = len(course_path_obj.course_path)
@@ -160,67 +164,111 @@ def add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_p
     if existing_course and existing_course.term_idx is not None:
         raise Exception(f"Course '{course_to_add.course_code}' is already scheduled (scheduled={existing_course.scheduled}).")
     
-    # Otherwise, attempt to add course
-    try:
-        add_course_path, new_course_term_idx = attempt_add_course(course_path_obj, course_to_add, max_classes_per_term)
-        add_violations = validate_plan(add_course_path)
+    # Proceed with addition
+    add_course_path, new_course_term_idx = attempt_add_course(course_path_obj, course_to_add, max_classes_per_term)
+    add_violations = validate_plan(add_course_path)
 
-        if add_violations:
-            print(f"* Violations for ADD course '{course_to_add.course_code}':\n{add_violations}")
+    # If violations, make must-have and schedule around
+    if add_violations:
+        print(f"* Violations for ADD course '{course_to_add.course_code}':\n{add_violations}")
 
-            # Make must have and schedule around
+        # Reschedule if requested
+        if reschedule:
             add_as_must_have = {course_to_add.course_code: course_to_add}
             add_course_path_obj = rebuild_course_path_with_must_haves(initial_course_path=course_path_obj,
-                                                window_start_term=course_path_obj.curr_window_start,
-                                                must_have_course_map=add_as_must_have)
+                                            window_start_term=course_path_obj.curr_window_start,
+                                            must_have_course_map=add_as_must_have)
         else:
-            # Update course info / not currently handling course_graph updates
-            course_to_add.scheduled = True
-            course_to_add.term_idx = new_course_term_idx
+            raise Exception(f"Cannot add course '{course_to_add.course_code}' due to scheduling violations.")
+        
+    # Simple addition successful, update course info
+    else: 
+        course_to_add.scheduled = True
+        course_to_add.term_idx = new_course_term_idx
 
-            added_recommended_courses = course_path_obj.recommended_courses | {course_to_add.course_code}
-            added_course_bank = course_path_obj.course_bank | {course_to_add.course_code: course_to_add}
-            added_prereq_graph = rebuild_prereq_graph(course_bank=added_course_bank, courses=added_recommended_courses)
-            added_must_have_courses = course_path_obj.must_have_courses | {course_to_add.course_code}
-            
-            add_course_path_obj = CoursePath(
-                course_path=add_course_path,
-                recommended_courses=added_recommended_courses,
-                must_have_courses=added_must_have_courses,
-                course_bank=added_course_bank,
-                prereq_graph=added_prereq_graph
-            )
+        added_recommended_courses = course_path_obj.recommended_courses | {course_to_add.course_code}
+        added_course_bank = course_path_obj.course_bank | {course_to_add.course_code: course_to_add}
+        added_prereq_graph = rebuild_prereq_graph(course_bank=added_course_bank, courses=added_recommended_courses)
+        added_must_have_courses = course_path_obj.must_have_courses | {course_to_add.course_code}
+        
+        add_course_path_obj = CoursePath(
+            course_path=add_course_path,
+            recommended_courses=added_recommended_courses,
+            must_have_courses=added_must_have_courses,
+            course_bank=added_course_bank,
+            prereq_graph=added_prereq_graph
+        )
 
-        print(f"* Course '{course_to_add.course_code}' added successfully.")
-        return add_course_path_obj
-
-    except Exception as e:
-        print(f"* Error attempting to add course '{course_to_add.course_code}' in window {course_to_add.must_have_window}: {e}")
+    print(f"* Course '{course_to_add.course_code}' added successfully.")
+    return add_course_path_obj
 
 # ─────────────────────────────────────────────────────────────────────────────
 # MOVE COURSE
 # ─────────────────────────────────────────────────────────────────────────────
-def attempt_move_course(course_path_obj: CoursePath, course_to_move: Course, move_window: Tuple[int, int], max_classes_per_term: int=3):
-     pass
+def attempt_move_course(course_path_obj: CoursePath, course_to_move: Course, move_window: Tuple[int, int], max_classes_per_term: int=3) -> Tuple[List[List[str]], int]:
+    
+    # First, remove course from original term
+    remove_course_path = attempt_remove_course(course_path_obj=course_path_obj, course_to_remove=course_to_move)
+    
+    # Then, move course to new term
+    move_course_path = copy.deepcopy(remove_course_path)
 
-def move_course(course_path_obj: CoursePath, course_to_move: Course, move_window: Tuple[int, int], max_classes_per_term: int=3) -> CoursePath:
-    # Validate move window
+    for term_idx in range(move_window[0], move_window[1] + 1):
+        if len(move_course_path[term_idx]) < max_classes_per_term:
+            move_course_path[term_idx].append(course_to_move.course_code)
+            return move_course_path, term_idx
+        
+    raise Exception(f"Course '{course_to_move.course_code}' cannot be moved due to max capacity in scheduling window {move_window}.")
+
+def move_course(course_path_obj: CoursePath, course_code_to_move: str, move_window: Tuple[int, int], max_classes_per_term: int=3, reschedule: bool=False) -> CoursePath:
+    # Validate move window and move validity
     if move_window[0] > move_window[1] or move_window[0] < 0 or move_window[1] >= len(course_path_obj.course_path):
-        raise Exception(f"Invalid move window {move_window} for course {course_to_move.course_code}.")
+        raise Exception(f"Invalid move window {move_window} for course {course_code_to_move}.")
 
     if move_window[0] < course_path_obj.curr_window_start:
         raise Exception(f"Move window {move_window} must be within current window.")
     
-    # Check if course is already scheduled
+    course_to_move = course_path_obj.course_bank.get(course_code_to_move, None)
+    if course_to_move is None:
+        raise Exception(f"Course code '{course_code_to_move}' does not exist in course bank.")
+
     if course_to_move.term_idx is None:
-        raise Exception(f"Cannot move unscheduled course '{course_to_move.course_code}'.")
+        raise Exception(f"Cannot move unscheduled course '{course_code_to_move}'.")
 
-    # Check if course is in move window
     if move_window[0] <= course_to_move.term_idx <= move_window[1]:
-        raise Exception(f"Course '{course_to_move.course_code}' is already in move window {move_window}.")
+        raise Exception(f"Course '{course_code_to_move}' is already in move window {move_window}.")
 
+    # Proceed with move
+    move_course_path, new_course_term_idx = attempt_move_course(course_path_obj=course_path_obj, course_to_move=course_to_move, move_window=move_window, max_classes_per_term=max_classes_per_term)
+    move_violations = validate_plan(move_course_path)
 
-    
+    # If violations, make must-have and schedule around
+    if move_violations:
+        print(f"* Violations for MOVE course '{course_code_to_move}' in window {move_window}:\n{move_violations}")
+
+        # Reschedule if requested
+        if reschedule:
+            course_to_move.must_have_window = move_window
+            move_course_path_obj = rebuild_course_path_with_must_haves(initial_course_path=course_path_obj,
+                                                                    window_start_term=course_path_obj.curr_window_start)
+        else:
+            raise Exception(f"Cannot move course '{course_code_to_move}' due to scheduling violations.")
+
+    # Simple move successful, update course info
+    else:
+        course_to_move.term_idx = new_course_term_idx
+        course_to_move.must_have_window = move_window
+
+        move_course_path_obj = CoursePath(
+            course_path=move_course_path,
+            course_bank=course_path_obj.course_bank,
+            prereq_graph=course_path_obj.prereq_graph,
+            recommended_courses=course_path_obj.recommended_courses,
+            must_have_courses=course_path_obj.must_have_courses
+        )
+
+    print(f"* Course '{course_code_to_move}' moved successfully.")
+    return move_course_path_obj
 
 # ─────────────────────────────────────────────────────────────────────────────
 # REPLACE COURSE

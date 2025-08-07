@@ -5,7 +5,7 @@ from collections import Counter
 
 from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY
 from dreampath_processing.courses.build_major_course_path import build_course_path
-from dreampath_processing.courses.change_management.change_requests import add_course, remove_course
+from dreampath_processing.courses.change_management.change_requests import add_course, remove_course, move_course
 from dreampath_processing.courses.scheduling_helpers import rebuild_course_path_with_must_haves
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
@@ -80,12 +80,26 @@ if __name__ == "__main__":
         print(f"* Error removing course: {e}")
         pass
 
-    # # 3. Make more changes
+    # 3. Make more changes
     additional_must_have_course_map = {'QSS41': Course(course_code='QSS41', course_type=COMPLEMENTARY, must_have_window=(9, 9))}
     final_course_path = rebuild_course_path_with_must_haves(remove_course_path, window_start_term=6, must_have_course_map=additional_must_have_course_map, verbose=True)
 
-    print(f"\n-- FINAL COURSE PATH --")
+    print(f"\n-- MODIFIED COURSE PATH v4 --")
     print(final_course_path.course_path)
     print(f"Must-have courses: {final_course_path.must_have_courses}")
     for c in final_course_path.course_bank.values():
         print(c)
+
+    # 4. Testing MOVE Course
+    try:
+        course_path_with_space = remove_course(final_course_path, 'COSC58')
+        move_course_path = move_course(course_path_with_space, 'COSC89.20', (4, 6))
+        print(f"\n-- MODIFIED COURSE PATH v5 --")
+        print(move_course_path.course_path)
+        print(f"Must-have courses: {move_course_path.must_have_courses}")
+        for c in move_course_path.course_bank.values():
+            print(c)
+    except Exception as e:
+        print(f"* Error moving course: {e}")
+        pass
+
