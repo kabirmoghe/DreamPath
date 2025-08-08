@@ -5,7 +5,7 @@ from collections import Counter
 
 from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY
 from dreampath_processing.courses.build_major_course_path import build_course_path
-from dreampath_processing.courses.change_management.change_requests import add_course, remove_course, move_course
+from dreampath_processing.courses.change_management.change_requests import add_course, remove_course, move_course, replace_course, swap_courses
 from dreampath_processing.courses.scheduling_helpers import rebuild_course_path_with_must_haves
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
@@ -36,17 +36,12 @@ if __name__ == "__main__":
     for c in initial_course_path.course_bank.values():
         print(c)
 
-    #  # Test removal functionality
-    # # removed_course_path = safely_remove_course(initial_course_path, 'COSC74', 8)
-    # # print(f"\n-- REMOVED COURSE PATH --")
-    # # print(removed_course_path.course_path)
-
     # 2. Make changes
     sample_must_have_course_map = {'COSC52': Course(course_code='COSC52', course_type=MAJOR, must_have_window=(7, 8)),
                          'COSC58': Course(course_code='COSC58', course_type=MAJOR, must_have_window=(2, 2)),
                          'COSC74': Course(course_code='COSC74', course_type=MAJOR, must_have_window=(6,9))}
     
-    modified_course_path = rebuild_course_path_with_must_haves(initial_course_path, window_start_term=2, must_have_course_map=sample_must_have_course_map, verbose=3)
+    modified_course_path = rebuild_course_path_with_must_haves(initial_course_path, window_start_term=2, must_have_course_map=sample_must_have_course_map, verbose=1)
 
     print(f"\n-- MODIFIED COURSE PATH v1--")
     print(modified_course_path.course_path)
@@ -57,32 +52,24 @@ if __name__ == "__main__":
     # 1. Testing ADD Course
     new_course = Course(course_code='COSC59', course_type=MAJOR, must_have_window=(7, 11))
 
-    try:
-        add_course_path = add_course(modified_course_path, new_course)
-        print(f"\n-- MODIFIED COURSE PATH v2--")
-        print(add_course_path.course_path)
-        print(f"Must-have courses: {add_course_path.must_have_courses}")
-        for c in add_course_path.course_bank.values():
-            print(c)
-    except ValueError as e:
-        print(f"* Error adding course: {e}")
-        pass
+    add_course_path = add_course(modified_course_path, new_course)
+    print(f"\n-- MODIFIED COURSE PATH v2--")
+    print(add_course_path.course_path)
+    print(f"Must-have courses: {add_course_path.must_have_courses}")
+    for c in add_course_path.course_bank.values():
+        print(c)
 
     # 2. Testing REMOVE Course
-    try: 
-        remove_course_path = remove_course(add_course_path, 'COSC59')
-        print(f"\n-- MODIFIED COURSE PATH v3--")
-        print(remove_course_path.course_path)
-        print(f"Must-have courses: {remove_course_path.must_have_courses}")
-        for c in remove_course_path.course_bank.values():
-            print(c)
-    except ValueError as e:
-        print(f"* Error removing course: {e}")
-        pass
+    remove_course_path = remove_course(add_course_path, 'COSC59')
+    print(f"\n-- MODIFIED COURSE PATH v3--")
+    print(remove_course_path.course_path)
+    print(f"Must-have courses: {remove_course_path.must_have_courses}")
+    for c in remove_course_path.course_bank.values():
+        print(c)
 
     # 3. Make more changes
     additional_must_have_course_map = {'QSS41': Course(course_code='QSS41', course_type=COMPLEMENTARY, must_have_window=(9, 9))}
-    final_course_path = rebuild_course_path_with_must_haves(remove_course_path, window_start_term=6, must_have_course_map=additional_must_have_course_map, verbose=True)
+    final_course_path = rebuild_course_path_with_must_haves(remove_course_path, window_start_term=6, must_have_course_map=additional_must_have_course_map, verbose=1)
 
     print(f"\n-- MODIFIED COURSE PATH v4 --")
     print(final_course_path.course_path)
@@ -90,9 +77,9 @@ if __name__ == "__main__":
     for c in final_course_path.course_bank.values():
         print(c)
 
-    # 4. Testing MOVE Course
+    # 4a. Testing invalid MOVE Course
+    course_path_with_space = remove_course(final_course_path, 'COSC35')
     try:
-        course_path_with_space = remove_course(final_course_path, 'COSC58')
         move_course_path = move_course(course_path_with_space, 'COSC89.20', (4, 6))
         print(f"\n-- MODIFIED COURSE PATH v5 --")
         print(move_course_path.course_path)
@@ -102,4 +89,28 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"* Error moving course: {e}")
         pass
+
+    # 4b. Testing valid MOVE Course
+    move_course_path = move_course(course_path_with_space, 'QSS41', (4, 6))
+    print(f"\n-- MODIFIED COURSE PATH v5 --")
+    print(move_course_path.course_path)
+    print(f"Must-have courses: {move_course_path.must_have_courses}")
+    for c in move_course_path.course_bank.values():
+        print(c)
+
+    # 4b. Testing REPLACE Course
+    replace_course_path = replace_course(move_course_path, new_course, 'QSS20', reschedule=False)
+    print(f"\n-- MODIFIED COURSE PATH v6 --")
+    print(replace_course_path.course_path)
+    print(f"Must-have courses: {replace_course_path.must_have_courses}")
+    for c in replace_course_path.course_bank.values():
+        print(c)
+
+    # 6. Testing SWAP Courses
+    swap_course_path = swap_courses(replace_course_path, 'COGS44', 'COSC59')
+    print(f"\n-- MODIFIED COURSE PATH v7 --")
+    print(swap_course_path.course_path)
+    print(f"Must-have courses: {swap_course_path.must_have_courses}")
+    for c in swap_course_path.course_bank.values():
+            print(c)
 

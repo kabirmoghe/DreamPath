@@ -28,19 +28,19 @@ class ChangeRequest:
 # REMOVE COURSE
 # ─────────────────────────────────────────────────────────────────────────────
 
-def attempt_remove_course(course_path_obj: CoursePath, course_to_remove: Course) -> List[List[str]]:
+def attempt_remove_course(course_path: List[List[str]], course_to_remove: Course) -> List[List[str]]:
     """
     Attempt to remove course from course path
 
     Args:
-        course_path_obj (CoursePath): Course path to remove course from
+        course_path (List[List[str]]): Course path to remove course from
         course_to_remove (Course): Course to remove from course path
 
     Returns:
         List[List[str]]: Course path list with course removed
     """
     
-    remove_course_path = copy.deepcopy(course_path_obj.course_path)
+    remove_course_path = copy.deepcopy(course_path)
     remove_course_path[course_to_remove.term_idx].remove(course_to_remove.course_code) 
 
     return remove_course_path
@@ -71,7 +71,7 @@ def remove_course(course_path_obj: CoursePath, course_code_to_remove: str, resch
 
     # Attempt to remove course and check for validity
     try:
-        remove_course_path = attempt_remove_course(course_path_obj=course_path_obj, course_to_remove=course_to_remove)
+        remove_course_path = attempt_remove_course(course_path=course_path_obj.course_path, course_to_remove=course_to_remove)
         removal_violations = validate_plan(course_path=remove_course_path, course_bank=course_path_obj.course_bank)
 
     except Exception as e:
@@ -119,29 +119,28 @@ def remove_course(course_path_obj: CoursePath, course_code_to_remove: str, resch
 # ─────────────────────────────────────────────────────────────────────────────
 # ADD COURSE
 # ─────────────────────────────────────────────────────────────────────────────
-def attempt_add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_per_term=3) -> Tuple[List[List[str]], int]:
-    add_course_path = copy.deepcopy(course_path_obj.course_path)
+def attempt_add_course(course_path: List[List[str]], course_code_to_add: str, must_have_window: Tuple[int, int]=None, max_classes_per_term=3) -> Tuple[List[List[str]], int]:
+    add_course_path = copy.deepcopy(course_path)
 
     # Check if must_have term location / window specified
-    if course_to_add.must_have_window:
+    if must_have_window is not None:
         # Assumes valid window
-        course_start_term, course_end_term = course_to_add.must_have_window
+        course_start_term, course_end_term = must_have_window
 
         for term_idx in range(course_start_term, course_end_term + 1):
             if len(add_course_path[term_idx]) < max_classes_per_term:
-                add_course_path[term_idx].append(course_to_add.course_code)
+                add_course_path[term_idx].append(course_code_to_add)
 
                 return add_course_path, term_idx
             
-        raise Exception(f"Course '{course_to_add.course_code}' cannot be directly added in scheduling window {course_to_add.must_have_window}.")
-    
+        raise Exception(f"Course '{course_code_to_add}' cannot be directly added in scheduling window {must_have_window}.")
     else:
         for term_idx in range(len(add_course_path)):
             if len(add_course_path[term_idx]) < max_classes_per_term:
-                add_course_path[term_idx].append(course_to_add.course_code)
+                add_course_path[term_idx].append(course_code_to_add)
                 return add_course_path, term_idx
             
-        raise Exception(f"Course '{course_to_add.course_code}' cannot be directly added in any term.")
+        raise Exception(f"Course '{course_code_to_add}' cannot be directly added in any term.")
 
 def add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_per_term: int=3, reschedule: bool=False) -> CoursePath:
     # Check if must_have term location / window specified 
@@ -160,7 +159,7 @@ def add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_p
         raise Exception(f"Course '{course_to_add.course_code}' is already scheduled (scheduled={existing_course.scheduled}).")
     
     # Proceed with addition
-    add_course_path, new_course_term_idx = attempt_add_course(course_path_obj, course_to_add, max_classes_per_term)
+    add_course_path, new_course_term_idx = attempt_add_course(course_path=course_path_obj.course_path, course_code_to_add=course_to_add.course_code, must_have_window=course_to_add.must_have_window, max_classes_per_term=max_classes_per_term)
     add_violations = validate_plan(course_path=add_course_path, course_bank=course_path_obj.course_bank)
 
     # If violations, make must-have and schedule around
@@ -200,10 +199,10 @@ def add_course(course_path_obj: CoursePath, course_to_add: Course, max_classes_p
 # ─────────────────────────────────────────────────────────────────────────────
 # MOVE COURSE
 # ─────────────────────────────────────────────────────────────────────────────
-def attempt_move_course(course_path_obj: CoursePath, course_to_move: Course, move_window: Tuple[int, int], max_classes_per_term: int=3) -> Tuple[List[List[str]], int]:
+def attempt_move_course(course_path: List[List[str]], course_to_move: Course, move_window: Tuple[int, int], max_classes_per_term: int=3) -> Tuple[List[List[str]], int]:
     
     # First, remove course from original term
-    remove_course_path = attempt_remove_course(course_path_obj=course_path_obj, course_to_remove=course_to_move)
+    remove_course_path = attempt_remove_course(course_path=course_path, course_to_remove=course_to_move)
     
     # Then, move course to new term
     move_course_path = copy.deepcopy(remove_course_path)
@@ -234,7 +233,7 @@ def move_course(course_path_obj: CoursePath, course_code_to_move: str, move_wind
         raise Exception(f"Course '{course_code_to_move}' is already in move window {move_window}.")
 
     # Proceed with move
-    move_course_path, move_term_idx = attempt_move_course(course_path_obj=course_path_obj, course_to_move=course_to_move, move_window=move_window, max_classes_per_term=max_classes_per_term)
+    move_course_path, move_term_idx = attempt_move_course(course_path=course_path_obj.course_path, course_to_move=course_to_move, move_window=move_window, max_classes_per_term=max_classes_per_term)
     move_violations = validate_plan(course_path=move_course_path, course_bank=course_path_obj.course_bank)
 
     # If violations, make must-have and schedule around
@@ -269,9 +268,9 @@ def move_course(course_path_obj: CoursePath, course_code_to_move: str, move_wind
 # REPLACE COURSE
 # ─────────────────────────────────────────────────────────────────────────────
 
-def attempt_replace_course(course_path_obj: CoursePath, new_course: Course, course_to_replace: Course) -> Tuple[List[List[str]], int]:
+def attempt_replace_course(course_path: List[List[str]], new_course: Course, course_to_replace: Course) -> Tuple[List[List[str]], int]:
     # First, remove old course
-    remove_course_path = attempt_remove_course(course_path_obj=course_path_obj, course_to_remove=course_to_replace)
+    remove_course_path = attempt_remove_course(course_path=course_path, course_to_remove=course_to_replace)
 
     # Then, add new course
     if course_to_replace.must_have_window:
@@ -281,7 +280,7 @@ def attempt_replace_course(course_path_obj: CoursePath, new_course: Course, cour
 
     # Reframe ADD error as REPLACE error
     try:
-        add_course_path, new_course_term_idx = attempt_add_course(course_path_obj=course_path_obj, course_to_add=new_course, max_classes_per_term=3)
+        add_course_path, new_course_term_idx = attempt_add_course(course_path=remove_course_path, course_code_to_add=new_course.course_code, must_have_window=new_course.must_have_window, max_classes_per_term=3)
 
     except Exception as e:
         raise Exception(f"Error attempting to replace course '{course_to_replace.course_code}' with '{new_course.course_code}': {e}")
@@ -306,7 +305,7 @@ def replace_course(course_path_obj: CoursePath, new_course: Course, course_code_
         print(f"Warning: replacing course '{course_code_to_replace}' with course '{new_course.course_code}' may override existing must-have window.")
 
     # Attempt to replace course
-    replace_course_path, replace_term_idx = attempt_replace_course(course_path_obj=course_path_obj, new_course=new_course, course_to_replace=course_to_replace)
+    replace_course_path, replace_term_idx = attempt_replace_course(course_path=course_path_obj.course_path, new_course=new_course, course_to_replace=course_to_replace)
     replacement_violations = validate_plan(course_path=replace_course_path, course_bank=course_path_obj.course_bank)
 
     # If violations, make must-have and schedule around
@@ -348,8 +347,6 @@ def replace_course(course_path_obj: CoursePath, new_course: Course, course_code_
             replaced_recommended_courses = course_path_obj.recommended_courses
 
         replaced_course_bank = course_path_obj.course_bank | {new_course.course_code: new_course}
-
-        # ASSUMPTION: prereq. tree for new course is already built in validate_plan
         replaced_prereq_graph = rebuild_prereq_graph(course_bank=replaced_course_bank, courses=replaced_recommended_courses)
 
         if course_code_to_replace in course_path_obj.must_have_courses:
@@ -368,3 +365,71 @@ def replace_course(course_path_obj: CoursePath, new_course: Course, course_code_
 
     print(f"* Course '{course_code_to_replace}' replaced with '{new_course.course_code}' successfully.")
     return replace_course_path_obj
+
+# ─────────────────────────────────────────────────────────────────────────────
+# SWAP COURSE
+# ─────────────────────────────────────────────────────────────────────────────
+
+def attempt_swap_courses(course_path: List[List[str]], course_1: Course, course_2: Course) -> Tuple[List[List[str]], int, int]:
+    # First, remove course 1 and move course 2 to course 1's term
+    remove_course_path = attempt_remove_course(course_path=course_path, course_to_remove=course_1)
+    course_2_move_window = (course_1.term_idx, course_1.term_idx)
+    move_course_path, course_2_new_term_idx = attempt_move_course(course_path=remove_course_path, course_to_move=course_2, move_window=course_2_move_window, max_classes_per_term=3)
+
+    # Then, add course 1 to course 2's term
+    course_1_add_window = (course_2.term_idx, course_2.term_idx)
+    add_course_path, course_1_new_term_idx = attempt_add_course(course_path=move_course_path, course_code_to_add=course_1.course_code, must_have_window=course_1_add_window, max_classes_per_term=3)
+
+    return add_course_path, course_1_new_term_idx, course_2_new_term_idx
+
+def swap_courses(course_path_obj: CoursePath, course_code_1: str, course_code_2: str) -> CoursePath:
+    # Validate courses to swap
+    course_1 = course_path_obj.course_bank.get(course_code_1, None)
+    if course_1 is None:
+        raise Exception(f"Course code '{course_code_1}' does not exist in course bank.")
+    
+    course_2 = course_path_obj.course_bank.get(course_code_2, None)
+    if course_2 is None:
+        raise Exception(f"Course code '{course_code_2}' does not exist in course bank.")
+
+    # Validate term indices
+    if course_1.term_idx is None:
+        raise Exception(f"Course '{course_code_1}' not scheduled / missing term index.")
+    
+    if course_2.term_idx is None:
+        raise Exception(f"Course '{course_code_2}' not scheduled / missing term index.")
+    
+    if course_1.term_idx == course_2.term_idx:
+        raise Exception(f"Cannot swap courses '{course_code_1}' and '{course_code_2}' in the same term.")
+    
+    # Validate indices in case of windows
+    if course_1.must_have_window and (course_1.must_have_window[0] > course_2.term_idx or course_1.must_have_window[1] < course_2.term_idx):
+        raise Exception(f"Cannot swap courses '{course_code_1}' and '{course_code_2}'; term {course_2.term_idx} is outside of course '{course_code_1}' must-have window.")
+
+    if course_2.must_have_window and (course_2.must_have_window[0] > course_1.term_idx or course_2.must_have_window[1] < course_1.term_idx):
+        raise Exception(f"Cannot swap courses '{course_code_1}' and '{course_code_2}'; term {course_1.term_idx} is outside of course '{course_code_2}' must-have window.")
+
+    # Attempt to swap courses
+    swap_course_path, course_1_new_term_idx, course_2_new_term_idx = attempt_swap_courses(course_path=course_path_obj.course_path, course_1=course_1, course_2=course_2)
+    swap_violations = validate_plan(course_path=swap_course_path, course_bank=course_path_obj.course_bank)
+
+    # If violations, cannot swap directly
+    if swap_violations:
+        print(f"* Swap violations for courses '{course_code_1}' and '{course_code_2}': {swap_violations}")
+        raise Exception(f"Cannot swap courses '{course_code_1}' [term={course_1.term_idx} -> {course_1_new_term_idx}] and '{course_code_2}' [term={course_2.term_idx} -> {course_2_new_term_idx}] due to scheduling violations.")
+    
+    # Simple swap successful, update course info
+    course_1.term_idx = course_1_new_term_idx
+    course_2.term_idx = course_2_new_term_idx
+
+    swap_course_path_obj = CoursePath(
+        course_path=swap_course_path,
+        course_bank=course_path_obj.course_bank,
+        prereq_graph=course_path_obj.prereq_graph,
+        recommended_courses=course_path_obj.recommended_courses,
+        must_have_courses=course_path_obj.must_have_courses,
+        curr_window_start=course_path_obj.curr_window_start
+    )
+
+    print(f"* Courses '{course_code_1}' and '{course_code_2}' swapped successfully.")
+    return swap_course_path_obj

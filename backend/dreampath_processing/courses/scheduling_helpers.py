@@ -17,6 +17,7 @@ def validate_plan(course_path: List[List[str]], course_bank: Dict[str, Course]):
     Args:
         course_plan (list): List of lists, where each inner list represents a term and contains course codes
     """
+    print(f"Validating plan...")
     # 1. Build a mapping from course → list of terms it appears in
     occurrences = defaultdict(list)
     for term_idx, term_courses in enumerate(course_path):
@@ -45,10 +46,11 @@ def validate_plan(course_path: List[List[str]], course_bank: Dict[str, Course]):
             # In case course prereq. tree is already built, use it; otherwise, build it
             course_obj = course_bank.get(course, None)
             if course_obj and course_obj.prereq_tree is not None:
+                print(f"* Using prereq. tree for course {course} from course bank.")
                 prereq_tree = course_obj.prereq_tree
             else:
+                print(f"* Building prereq. tree for course {course}.")
                 prereq_tree, _ = build_prereq_tree(course)
-                course_obj.prereq_tree = prereq_tree
 
             direct_prereqs = get_direct_prereqs(prereq_tree, course)
             direct_prereq_map[course] = direct_prereqs
@@ -335,10 +337,21 @@ def rebuild_course_path_with_must_haves(initial_course_path: CoursePath,
         print(f"\n* Newly scheduled courses: {newly_scheduled_courses}")
         print("-----\n")
 
+    # 3. Remove window from unscheduled must-have courses
+    unscheduled_new_must_haves = set(must_have_course_map.keys()) - newly_scheduled_courses
+    for c in unscheduled_new_must_haves:
+        must_have_course_bank[c].must_have_window = None
+        complete_must_have_courses_map.pop(c)
+        must_have_course_map.pop(c)
+        must_have_course_bank.pop(c)
+
+        if verbose >= 1:
+            print(f"[Unable to schedule must-have course '{c}', removed from must-have courses]")
+
     # Define "locked" courses
     locked_courses = newly_scheduled_courses | pre_window_courses
 
-    # 3. Integrate recommendations and must have courses
+    # 4. Integrate recommendations and must have courses
     modified_course_path_schedule, complete_course_bank = integrate_recommendations_and_must_have_courses(must_have_course_path=must_have_course_path,
                                                                                                         locked_courses=locked_courses,
                                                                                                         prior_prereq_graph=initial_course_path.prereq_graph,
@@ -346,7 +359,7 @@ def rebuild_course_path_with_must_haves(initial_course_path: CoursePath,
                                                                                                         prior_course_bank=initial_course_path.course_bank,
                                                                                                         verbose=True if verbose >= 3 else False)
     
-    # 4. Rebuild course path
+    # 5. Rebuild course path
 
     # Combine recommended courses with top-level must-have courses
     complete_recommended_courses = initial_course_path.recommended_courses | set(must_have_course_map.keys())
