@@ -1,9 +1,7 @@
-from dreampath_processing.courses.build_major_course_path import build_prereq_tree, merge_prereq_trees_to_graph, build_course_path, schedule_courses_by_term
-from dreampath_processing.courses.course_relationship_handling import get_direct_prereqs, prune_prereqs_from_tree, compute_max_prereq_depth, rebuild_prereq_graph
+from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, merge_prereq_trees_to_graph, get_direct_prereqs, prune_prereqs_from_tree, compute_max_prereq_depth, rebuild_prereq_graph
 from collections import defaultdict, deque
-from typing import Tuple, List, Set, Dict, Any
+from typing import List, Set, Dict, Any
 import copy
-from schedule_modules.course_path import CoursePath
 from schedule_modules.course import Course, MAJOR, COMPLEMENTARY
 
 # -----------------------------------------------------
@@ -83,24 +81,153 @@ def validate_plan(course_path: List[List[str]], course_bank: Dict[str, Course]):
 
     return violations
 
-    """
-    Compute the maximum depth of a prereq. tree
+# -----------------------------------------------------
+# SCHEDULE COURSES BY TERM
+# -----------------------------------------------------
 
-    Args:
-        prereq_tree (dict): Prereq. tree to compute the maximum depth of
+def handle_course_queue(in_degree, term, course_scheduling_windows={}, verbose=False):
+    simple_ready = []
+    for c in in_degree:
+        if in_degree[c] == 0:
+            if c in course_scheduling_windows:
+                c_start_term, c_end_term = course_scheduling_windows[c]
+                if term >= c_start_term and term <= c_end_term:
+                    simple_ready.append(c)
+                elif verbose:
+                    print(f"Course {c} not ready, curr_term={term} but requires {course_scheduling_windows[c]}")
+            else:
+                simple_ready.append(c)
 
-    Returns:
-        int: Maximum depth of the prereq. tree
-    """
-    def _depth_traverse(prereq_tree: dict, depth: int) -> int: 
-        root_node = list(prereq_tree.keys())[0]
-        children = prereq_tree[root_node]
-        if children: 
-            return max([_depth_traverse(prereq_child_tree, depth + 1) for prereq_child_tree in children])
-        else:
-            return depth
-    
-    return _depth_traverse(prereq_tree, 0)
+    return deque(sorted(simple_ready))
+
+# Producing course path
+def schedule_courses_by_term(course_graph, course_bank, existing_plan=None, course_scheduling_windows={}, max_terms=12, max_courses_per_term=3, verbose=False):
+    # Build in-degree and adjacency
+    in_degree = defaultdict(int)
+    adjacency = defaultdict(list)
+
+    for prereq, courses in course_graph.items():
+        for course in courses:
+            in_degree[course] += 1
+            adjacency[prereq].append(course)
+
+    all_courses = set(course_graph.keys()) | {c for cs in course_graph.values() for c in cs}
+    for course in all_courses:
+        in_degree.setdefault(course, 0)
+
+    # Begin scheduling, initial ready queue (sorted for determinism)
+    term = 0
+    ready = handle_course_queue(in_degree, term, course_scheduling_windows)
+    scheduled = set()
+
+    plan = copy.deepcopy(existing_plan)
+    if not plan:
+        plan = [[] for _ in range(max_terms)]
+
+    # Iterate while there are still unscheduled courses and not yet reached max # of terms
+    while (scheduled != all_courses) and term < max_terms:
+        courses_this_term = plan[term]
+
+        if verbose: 
+            print(f"--------\nCurrentTerm: {term} | courses={courses_this_term}")
+
+        next_ready = set()
+
+        # Split ready queue by type
+        majors_ready = sorted([c for c in ready if (c in course_bank and course_bank[c].course_type == MAJOR)])
+        comps_ready = sorted([c for c in ready if (c in course_bank and course_bank[c].course_type == COMPLEMENTARY)])
+
+        if verbose:
+            print(f"--> All ready: {ready}")
+            print(f"--> Majors_ready: {majors_ready}")
+            print(f"--> Compl ready: {comps_ready}")
+
+        majors_added = 0
+        comps_added = 0
+
+        # Phase 1: Add up to 2 majors
+        for course in majors_ready:
+            if len(courses_this_term) < max_courses_per_term and majors_added < 2:
+                courses_this_term.append(course)
+                ready.remove(course)
+                scheduled.add(course)
+                course_bank[course].scheduled = True
+                course_bank[course].term_idx = term
+                majors_added += 1
+
+        # Phase 2: Always try to add 1 complementary
+        for course in comps_ready:
+            if len(courses_this_term) < max_courses_per_term and comps_added < 1:
+                courses_this_term.append(course)
+                ready.remove(course)
+                scheduled.add(course)
+                course_bank[course].scheduled = True
+                course_bank[course].term_idx = term
+                comps_added += 1
+
+        # Phase 3: Fill remaining slots with any ready courses (prefer complementary)
+        remaining_ready = sorted(list(ready), key=lambda course: (
+            0 if (course in course_bank and course_bank[course].course_type == COMPLEMENTARY) else 1,
+            course
+        ))
+
+        for course in remaining_ready:
+            if len(courses_this_term) >= max_courses_per_term:
+                break
+            courses_this_term.append(course)
+            ready.remove(course)
+            scheduled.add(course)
+            course_bank[course].scheduled = True
+            course_bank[course].term_idx = term
+
+        # Update in-degrees and build next ready list
+        for course in courses_this_term:
+            for dependent in adjacency[course]:
+                in_degree[dependent] -= 1
+                # Add courses that have preerqs scheduled, haven't been scheduled yet, and don't have specific windows (those w/ windows handled next)
+                if in_degree[dependent] == 0 and dependent not in scheduled and dependent not in course_scheduling_windows:
+                    next_ready.add(dependent)
+
+        # Handle courses with term requirements (if present)
+        if course_scheduling_windows:
+            scheduled_with_term_reqs = set()
+            for course, term_reqs in course_scheduling_windows.items():
+                if course not in scheduled:
+                    if in_degree[course] == 0:
+                        c_start_term, c_end_term = term_reqs
+                        next_term = term + 1
+                        if next_term >= c_start_term and next_term <= c_end_term:
+                            next_ready.add(course)
+                            scheduled_with_term_reqs.add(course)
+                        else:
+                            if verbose:                                
+                                print(f"* Unscheduled course {course} not ready, curr_term={term+1} but requires {term_reqs}")
+                            if course in ready: # Meaning, course was previously within window but is now outside and thus cannot be scheduled
+                                ready.remove(course)
+                                if verbose:
+                                    print(f"--> Removed course {course} from 'ready' due to passing scheduling window")
+
+                    elif verbose:
+                            print(f"* Unscheduled course {course} not ready, indeg={in_degree[course]} (next_term={term+1}, requires {term_reqs})")
+
+            # Remove scheduled courses from term_req map
+            for scheduled_c in scheduled_with_term_reqs:
+                course_scheduling_windows.pop(scheduled_c)    
+
+        ready = deque(sorted(set(ready) | next_ready))
+        plan[term] = courses_this_term
+        term += 1
+
+    # Determine which courses were not scheduled and update course bank
+    unscheduled = set(all_courses) - scheduled
+    if unscheduled:
+        print(f"* Unscheduled courses: {sorted(unscheduled)}")
+
+        for c in unscheduled:
+            course_bank[c].scheduled = False
+            course_bank[c].term_idx = None
+
+    return plan, scheduled, unscheduled
 
 # -----------------------------------------------------
 # RE-SCHEDULING FOR MUST-HAVE COURSES (i.e., courses that must be scheduled in a given window)
@@ -297,133 +424,86 @@ def integrate_recommendations_and_must_have_courses(must_have_course_path: List[
 
     return modified_course_path_schedule, complete_course_bank
 
-def rebuild_course_path_with_must_haves(initial_course_path: CoursePath, 
-                                 window_start_term: int,
-                                 must_have_course_map: Dict[str, Course] = {},
-                                 verbose: int = 0) -> CoursePath:
-    """
-    Rebuild a course path with must-have courses and recommendations
+# def rebuild_course_path_with_must_haves(initial_course_path: CoursePath, 
+#                                  window_start_term: int,
+#                                  must_have_course_map: Dict[str, Course] = {},
+#                                  verbose: int = 0) -> CoursePath:
+#     """
+#     Rebuild a course path with must-have courses and recommendations
 
-    Args:
-        initial_course_path (CoursePath): initial course path to rebuild
-        window_start_term (int): term to start scheduling must-have courses
-        must_have_course_map (dict): dictionary of must-have courses (containing must_have_window field)
-        verbose (int): verbosity level (0 - 3)
+#     Args:
+#         initial_course_path (CoursePath): initial course path to rebuild
+#         window_start_term (int): term to start scheduling must-have courses
+#         must_have_course_map (dict): dictionary of must-have courses (containing must_have_window field)
+#         verbose (int): verbosity level (0 - 3)
 
-    Returns:
-        CoursePath: rebuilt course path with must-have courses and recommendations
-    """
+#     Returns:
+#         CoursePath: rebuilt course path with must-have courses and recommendations
+#     """
     
-    # 1. Combine existing must-have courses with new must-have courses
-    existing_must_have_courses_map = {c: initial_course_path.course_bank[c] for c in initial_course_path.must_have_courses}
-    complete_must_have_courses_map = existing_must_have_courses_map | must_have_course_map
+#     # 1. Combine existing must-have courses with new must-have courses
+#     existing_must_have_courses_map = {c: initial_course_path.course_bank[c] for c in initial_course_path.must_have_courses}
+#     complete_must_have_courses_map = existing_must_have_courses_map | must_have_course_map
 
-    # 2. Schedule must have courses
-    must_have_schedule_output = schedule_must_have_courses(course_path=initial_course_path.course_path, 
-                                                           prior_course_bank=initial_course_path.course_bank, 
-                                                           window_start_term=window_start_term, 
-                                                           must_have_course_map=complete_must_have_courses_map,
-                                                           verbose=True if verbose >= 2 else False)
+#     # 2. Schedule must have courses
+#     must_have_schedule_output = schedule_must_have_courses(course_path=initial_course_path.course_path, 
+#                                                            prior_course_bank=initial_course_path.course_bank, 
+#                                                            window_start_term=window_start_term, 
+#                                                            must_have_course_map=complete_must_have_courses_map,
+#                                                            verbose=True if verbose >= 2 else False)
     
-    # Get newly scheduled courses & pre-window courses
-    must_have_course_path = must_have_schedule_output['must_have_course_path']
-    must_have_course_bank = must_have_schedule_output['must_have_course_bank']
-    newly_scheduled_courses = must_have_schedule_output['newly_scheduled_courses']
-    pre_window_courses = must_have_schedule_output['pre_window_courses']
+#     # Get newly scheduled courses & pre-window courses
+#     must_have_course_path = must_have_schedule_output['must_have_course_path']
+#     must_have_course_bank = must_have_schedule_output['must_have_course_bank']
+#     newly_scheduled_courses = must_have_schedule_output['newly_scheduled_courses']
+#     pre_window_courses = must_have_schedule_output['pre_window_courses']
 
-    if verbose >= 1:
-        print(f"\n-- MUST-HAVE COURSE PATH --")
-        print(must_have_course_path)
-        print(f"\n* Newly scheduled courses: {newly_scheduled_courses}")
-        print("-----\n")
+#     if verbose >= 1:
+#         print(f"\n-- MUST-HAVE COURSE PATH --")
+#         print(must_have_course_path)
+#         print(f"\n* Newly scheduled courses: {newly_scheduled_courses}")
+#         print("-----\n")
 
-    # 3. Remove window from unscheduled must-have courses
-    unscheduled_new_must_haves = set(must_have_course_map.keys()) - newly_scheduled_courses
-    for c in unscheduled_new_must_haves:
-        must_have_course_bank[c].must_have_window = None
-        complete_must_have_courses_map.pop(c)
-        must_have_course_map.pop(c)
-        must_have_course_bank.pop(c)
+#     # 3. Remove window from unscheduled must-have courses
+#     unscheduled_new_must_haves = set(must_have_course_map.keys()) - newly_scheduled_courses
+#     for c in unscheduled_new_must_haves:
+#         must_have_course_bank[c].must_have_window = None
+#         complete_must_have_courses_map.pop(c)
+#         must_have_course_map.pop(c)
+#         must_have_course_bank.pop(c)
 
-        if verbose >= 1:
-            print(f"[Unable to schedule must-have course '{c}', removed from must-have courses]")
+#         if verbose >= 1:
+#             print(f"[Unable to schedule must-have course '{c}', removed from must-have courses]")
 
-    # Define "locked" courses
-    locked_courses = newly_scheduled_courses | pre_window_courses
+#     # Define "locked" courses
+#     locked_courses = newly_scheduled_courses | pre_window_courses
 
-    # 4. Integrate recommendations and must have courses
-    modified_course_path_schedule, complete_course_bank = integrate_recommendations_and_must_have_courses(must_have_course_path=must_have_course_path,
-                                                                                                        locked_courses=locked_courses,
-                                                                                                        prior_prereq_graph=initial_course_path.prereq_graph,
-                                                                                                        must_have_course_bank=must_have_course_bank,
-                                                                                                        prior_course_bank=initial_course_path.course_bank,
-                                                                                                        verbose=True if verbose >= 3 else False)
+#     # 4. Integrate recommendations and must have courses
+#     modified_course_path_schedule, complete_course_bank = integrate_recommendations_and_must_have_courses(must_have_course_path=must_have_course_path,
+#                                                                                                         locked_courses=locked_courses,
+#                                                                                                         prior_prereq_graph=initial_course_path.prereq_graph,
+#                                                                                                         must_have_course_bank=must_have_course_bank,
+#                                                                                                         prior_course_bank=initial_course_path.course_bank,
+#                                                                                                         verbose=True if verbose >= 3 else False)
     
-    # 5. Rebuild course path
+#     # 5. Rebuild course path
 
-    # Combine recommended courses with top-level must-have courses
-    complete_recommended_courses = initial_course_path.recommended_courses | set(must_have_course_map.keys())
+#     # Combine recommended courses with top-level must-have courses
+#     complete_recommended_courses = initial_course_path.recommended_courses | set(must_have_course_map.keys())
 
-    # Build prereq. graph for complete course bank
-    complete_course_prereq_graph = rebuild_prereq_graph(course_bank=complete_course_bank)
+#     # Build prereq. graph for complete course bank
+#     complete_course_prereq_graph = rebuild_prereq_graph(course_bank=complete_course_bank)
 
-    # Update set of must-have courses; removed because gets rid of unscheduled must-haves from object even though may want to schedule moving fwd
-    # scheduled_must_have_courses = set(must_have_courses.keys()) & newly_scheduled_courses
-    # complete_must_have_courses = scheduled_must_have_courses | initial_course_path.must_have_courses 
-    complete_must_have_courses = set(complete_must_have_courses_map.keys())
+#     # Update set of must-have courses; removed because gets rid of unscheduled must-haves from object even though may want to schedule moving fwd
+#     # scheduled_must_have_courses = set(must_have_courses.keys()) & newly_scheduled_courses
+#     # complete_must_have_courses = scheduled_must_have_courses | initial_course_path.must_have_courses 
+#     complete_must_have_courses = set(complete_must_have_courses_map.keys())
  
-    # Build course path
-    modified_course_path = CoursePath(course_path=modified_course_path_schedule,
-                                      recommended_courses=complete_recommended_courses,
-                                      course_bank=complete_course_bank,
-                                      prereq_graph=complete_course_prereq_graph,
-                                      must_have_courses=complete_must_have_courses)
+#     # Build course path
+#     modified_course_path = CoursePath(course_path=modified_course_path_schedule,
+#                                       recommended_courses=complete_recommended_courses,
+#                                       course_bank=complete_course_bank,
+#                                       prereq_graph=complete_course_prereq_graph,
+#                                       must_have_courses=complete_must_have_courses)
 
-    return modified_course_path
-
-if __name__=='__main__':
-    
-    # -- 1. Build original course path --
-    major = 'Computer Science'
-    major_courses = {'COSC89.27', 'COSC55', 'COSC89.20', 'COSC35', 'COSC89.17', 'COSC89.28', 'COSC62', 'COSC69.17', 'COSC89.19', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61'}
-    complementary_courses = {'QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26'}
-    
-    # Construct recommended courses set and course bank
-    recommended_courses = major_courses | complementary_courses
-    course_bank = {c: Course(course_code=c, course_type=MAJOR if c in major_courses else COMPLEMENTARY) for c in recommended_courses}
-
-    # Build initial course path + course bank updated with prereqs + scheduling info
-    initial_course_path = build_course_path(recommended_courses, course_bank)
-
-    print(f"\n-- ORIGINAL COURSE PATH --")
-    print(initial_course_path.course_path)
-    for c in initial_course_path.course_bank.values():
-        print(c)
-
-    #  # Test removal functionality
-    # # removed_course_path = safely_remove_course(initial_course_path, 'COSC74', 8)
-    # # print(f"\n-- REMOVED COURSE PATH --")
-    # # print(removed_course_path.course_path)
-
-    # 2. Make changes
-    sample_must_have_course_map = {'COSC52': Course(course_code='COSC52', course_type=MAJOR, must_have_window=(7, 8)),
-                         'COSC58': Course(course_code='COSC58', course_type=MAJOR, must_have_window=(2, 2)),
-                         'COSC74': Course(course_code='COSC74', course_type=MAJOR, must_have_window=(6,9))}
-    
-    modified_course_path = rebuild_course_path_with_must_haves(initial_course_path, window_start_term=2, must_have_course_map=sample_must_have_course_map, verbose=True)
-
-    print(f"\n-- MODIFIED COURSE PATH v1--")
-    print(modified_course_path.course_path)
-    print(f"Must-have courses: {modified_course_path.must_have_courses}")
-    for c in modified_course_path.course_bank.values():
-        print(c)
-
-    # # 3. Make more changes
-    # additional_must_have_course_map = {'QSS41': Course(course_code='QSS41', course_type=COMPLEMENTARY, must_have_window=(9, 9))}
-    # modified_course_path = rebuild_course_path_with_must_haves(modified_course_path, window_start_term=6, must_have_course_map=additional_must_have_course_map, verbose=True)
-
-    # print(f"\n-- MODIFIED COURSE PATH v2--")
-    # print(modified_course_path.course_path)
-    # print(f"Must-have courses: {modified_course_path.must_have_courses}")
-    # for c in modified_course_path.course_bank.values():
-    #     print(c)
+#     return modified_course_path
