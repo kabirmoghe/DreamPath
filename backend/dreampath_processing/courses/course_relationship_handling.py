@@ -51,7 +51,12 @@ def retrieve_enhanced_course_from_course_code(course_code):
 
     return candidate_course.iloc[0]
 
-def is_major_course(course_code, major_name):
+def course_code_exists(course_code: str) -> bool:
+    enhanced_course = retrieve_enhanced_course_from_course_code(course_code)
+
+    return enhanced_course is not None
+
+def is_major_course(course_code: str, major_name: str) -> bool:
     department_alias_for_course = get_department_from_course_code(course_code)
     major_alias = get_department_alias_from_dept_name(major_name)
 
