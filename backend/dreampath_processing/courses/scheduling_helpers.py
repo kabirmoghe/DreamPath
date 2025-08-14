@@ -101,7 +101,7 @@ def handle_course_queue(in_degree, term, course_scheduling_windows={}, verbose=F
     return deque(sorted(simple_ready))
 
 # Producing course path
-def schedule_courses_by_term(course_graph, course_bank, existing_plan=None, course_scheduling_windows={}, max_terms=12, max_courses_per_term=3, verbose=False):
+def schedule_courses_by_term(course_graph, course_bank, existing_plan=None, course_scheduling_windows={}, window_start_term=0, max_terms=12, max_courses_per_term=3, verbose=False):
     # Build in-degree and adjacency
     in_degree = defaultdict(int)
     adjacency = defaultdict(list)
@@ -116,7 +116,7 @@ def schedule_courses_by_term(course_graph, course_bank, existing_plan=None, cour
         in_degree.setdefault(course, 0)
 
     # Begin scheduling, initial ready queue (sorted for determinism)
-    term = 0
+    term = window_start_term
     ready = handle_course_queue(in_degree, term, course_scheduling_windows)
     scheduled = set()
 
@@ -363,6 +363,7 @@ def integrate_recommendations_and_must_have_courses(must_have_course_path: List[
                                           prior_prereq_graph: Dict[str, List[dict]], 
                                           must_have_course_bank: Dict[str, Course],
                                           prior_course_bank: Dict[str, Course],
+                                          window_start_term: int,
                                           verbose: bool = False):
     if verbose:
         print("-----\nPruning overlapping courses, determining earliest term requirements...")
@@ -421,6 +422,7 @@ def integrate_recommendations_and_must_have_courses(must_have_course_path: List[
                              course_bank=complete_course_bank, 
                              existing_plan=must_have_course_path, 
                              course_scheduling_windows=earliest_possible_term,
+                             window_start_term=window_start_term,
                              verbose=verbose)
     
     if verbose:

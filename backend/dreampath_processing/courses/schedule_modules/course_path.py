@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from typing import List, Set, Dict, Tuple
+from typing import List, Set, Dict, Tuple, Optional
 from .course import Course
 from copy import deepcopy
 from collections import defaultdict
@@ -154,8 +154,11 @@ class CoursePath:
     # REBUILD COURSE PATH
     # ─────────────────────────────────────────────────────────────────────────────
 
-    def rebuild(self, window_start_term: int, must_have_course_map: Dict[str, Course] = {}, verbose: int = 0):
+    def rebuild(self, window_start_term: Optional[int] = None, must_have_course_map: Dict[str, Course] = {}, verbose: int = 0):
         """Rebuild a course path with must-have courses and recommendations"""
+
+        if window_start_term is None:
+            window_start_term = self.curr_window_start
 
         # 1. Combine existing must-have courses with new must-have courses
         existing_must_have_courses_map = {c: self.course_bank[c] for c in self.must_have_courses}
@@ -200,6 +203,7 @@ class CoursePath:
                                                                                                             prior_prereq_graph=self.prereq_graph,
                                                                                                             must_have_course_bank=must_have_course_bank,
                                                                                                             prior_course_bank=self.course_bank,
+                                                                                                            window_start_term=window_start_term,
                                                                                                             verbose=True if verbose >= 3 else False)
         
         # 5. Rebuild course path
@@ -315,7 +319,7 @@ class CoursePath:
     # ADD COURSE
     # ─────────────────────────────────────────────────────────────────────────────
     @staticmethod
-    def _attempt_add_course(course_path: List[List[str]], course_code_to_add: str, must_have_window: Tuple[int, int]=None, max_classes_per_term=3) -> Tuple[List[List[str]], int]:
+    def _attempt_add_course(course_path: List[List[str]], course_code_to_add: str, must_have_window: Optional[Tuple[int, int]]=None, max_classes_per_term=3) -> Tuple[List[List[str]], int]:
         add_course_path = deepcopy(course_path)
 
         # Check if must_have term location / window specified
@@ -370,7 +374,7 @@ class CoursePath:
             # Reschedule if requested
             if reschedule:
                 add_as_must_have = {course_to_add.course_code: course_to_add}
-                self.rebuild(window_start_term=self.curr_window_start, must_have_course_map=add_as_must_have, verbose=3)
+                self.rebuild(window_start_term=self.curr_window_start, must_have_course_map=add_as_must_have)
             else:
                 raise Exception(f"Cannot add course '{course_to_add.course_code}' due to scheduling violations, requires rescheduling.")
             

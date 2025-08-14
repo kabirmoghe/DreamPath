@@ -3,7 +3,7 @@ from typing import List, Dict, Optional, Tuple
 from dreampath_processing.courses.schedule_modules.course_path import CoursePath
 from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY
 from dreampath_processing.courses.course_relationship_handling import course_code_exists, is_major_course
-from dreampath_processing.courses.course_path_agent.types import ExecuteOpResult, RemoveOp, AddOp, MoveOp, ReplaceOp, SwapOp, RebuildOp, Op
+from dreampath_processing.courses.course_path_agent.types import ExecuteOpResult, RemoveOp, AddOp, MoveOp, ReplaceOp, SwapOp, RebuildOp, Op, ExtractedOpType
 
 # Utilities
 class RequiresRescheduleError(Exception): ...
@@ -167,22 +167,22 @@ class CoursePathTools:
         except Exception as e:
             return ExecuteOpResult(ok=False, diff={}, warnings=[], error={"code": "REBUILD_FAIL", "details": str(e)}, requires_reschedule=False, new_version=None)
         
-    def execute(self, op: Op) -> ExecuteOpResult:
-        op_type = op.type
-
+    def execute(self, op_type: ExtractedOpType, op: Op) -> ExecuteOpResult:
         print(f"EXECUTING OPERATION: {op}")
 
-        if op_type == "REMOVE":
+        type = op_type.type
+
+        if type == "REMOVE":
             return self.remove(op)
-        elif op_type == "ADD":
+        elif type == "ADD":
             return self.add(op)
-        elif op_type == "MOVE":
+        elif type == "MOVE":
             return self.move(op)
-        elif op_type == "REPLACE":
+        elif type == "REPLACE":
             return self.replace(op)
-        elif op_type == "SWAP":
+        elif type == "SWAP":
             return self.swap(op)
-        elif op_type == "REBUILD":
+        elif type == "REBUILD":
             return self.rebuild(op)
         else:
-            raise Exception(f"Unknown operation type: {op_type}")
+            raise Exception(f"Unknown operation type: {type}")

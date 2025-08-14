@@ -2,9 +2,21 @@ from instructor import from_openai
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
-from dreampath_processing.courses.course_path_agent.types import Op, CoursePathAgentState, ExtractedOp, ExecuteOpResult
+from dreampath_processing.courses.course_path_agent.types import (
+    CoursePathAgentState,
+    ExtractedOpType,
+    Op,
+    RemoveExtractedOp,
+    AddExtractedOp,
+    MoveExtractedOp,
+    ReplaceExtractedOp,
+    SwapExtractedOp,
+    RebuildExtractedOp,
+    ExecuteOpResult,
+    BaseExtractedOp,
+)
 from dreampath_processing.courses.course_path_agent.operation_tools import CoursePathTools, summarize_diff
-from dreampath_processing.courses.course_path_agent.prompts import EXTRACTOR_SYS
+from dreampath_processing.courses.course_path_agent.prompts import OP_EXTRACTOR_SYS, PARAM_EXTRACTOR_SYS
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY
 
@@ -13,9 +25,9 @@ load_dotenv()
 client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
 
 # Build messages for extraction
-def build_messages(state: CoursePathAgentState, user_input: str):
+def build_messages(state: CoursePathAgentState, user_input: str, prompt: str):
     # Include only short episodic summary if needed
-    msgs = [{"role": "system", "content": EXTRACTOR_SYS}]
+    msgs = [{"role": "system", "content": prompt}]
     if state.summary:
         msgs.append({"role": "assistant", "content": f"Summary: {state.summary[:800]}"})
 
@@ -26,27 +38,52 @@ def build_messages(state: CoursePathAgentState, user_input: str):
     # Current user input
     msgs.append({"role": "user", "content": user_input})
 
+    print(f"~~~\nSummary: {state.summary}\n~~~\n")
+
     return msgs
 
-# Extract operation from user input
-def extract_course_op(state: CoursePathAgentState, user_input: str) -> ExtractedOp:
-    messages = build_messages(state=state, user_input=user_input)
+# Extract operation type from user input
+def extract_op_type(state: CoursePathAgentState, user_input: str) -> ExtractedOpType:
+    messages = build_messages(state=state, user_input=user_input, prompt=OP_EXTRACTOR_SYS)
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=messages,
-        response_model=ExtractedOp,
-        temperature=0.01
+        response_model=ExtractedOpType,
+        temperature=0
+    )
+    print(f"Extracted Op Type: {response}")
+    return response
+
+# Extract operation from user input
+def extract_course_op(state: CoursePathAgentState, user_input: str, op_type: ExtractedOpType) -> BaseExtractedOp:
+    # Map op type to op class
+    op_type_to_op = {
+        "REMOVE": RemoveExtractedOp,
+        "ADD": AddExtractedOp,
+        "MOVE": MoveExtractedOp,
+        "REPLACE": ReplaceExtractedOp,
+        "SWAP": SwapExtractedOp,
+        "REBUILD": RebuildExtractedOp
+    }
+
+    messages = build_messages(state=state, user_input=user_input, prompt=PARAM_EXTRACTOR_SYS.format(op_type=op_type.type))
+
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=messages,
+        response_model=op_type_to_op[op_type.type],
+        temperature=0
     )
     
-    print(response)
+    print(f"Extracted Op: {response}")
     return response
 
 # Execute operation
-def execute_course_op(state: CoursePathAgentState, op: Op, tools: CoursePathTools, force_reschedule: bool=False) -> ExecuteOpResult:
+def execute_course_op(state: CoursePathAgentState, op_type: ExtractedOpType, op: Op, tools: CoursePathTools, force_reschedule: bool=False) -> ExecuteOpResult:
     if force_reschedule:
         op.reschedule = True
 
-    return tools.execute(op)
+    return tools.execute(op_type=op_type, op=op)
 
 # Validate operation (placeholder)
 def validate_op(state: CoursePathAgentState, op: Op) -> bool:
@@ -55,58 +92,77 @@ def validate_op(state: CoursePathAgentState, op: Op) -> bool:
 # Confirm message before execution
 def render_confirm_msg(op: Op, target_version: int) -> str:
     # simple template; you can LLM-polish later
-    return (f"Ready to apply {op.render()}. "
+    return (f"Ready to apply {op}. "
             f"Reply `CONFIRM` to proceed or `CANCEL`.")
 
 def render_reschedule_msg(op: Op) -> str:
-    return (f"To apply {op.render()}, rescheduling is required and may disrupt prior structure. "
+    return (f"To apply {op}, rescheduling is required and may disrupt prior structure. "
             f"Reply `CONFIRM RESCHEDULE` to proceed, or `CANCEL`.")
 
+# ------------------------------------------------------------
+# ROUTING NODES
+# ------------------------------------------------------------
+def clear_op_state(state: CoursePathAgentState):
+    state.pending_op_type = None
+    state.pending_op = None
+
 def handle_user_turn(state: CoursePathAgentState, user_input: str) -> str:
-    # 1) extraction
-    ex = extract_course_op(state, user_input)
-    if ex.missing:
-        state.pending_op = ex.op  # draft
-        q = ex.questions[0] if ex.questions else f"Missing: {ex.missing[0]}. Please specify."
+    # 1) Extract operation type (if not already done)
+    if not state.pending_op_type:
+        state.pending_op_type = extract_op_type(state, user_input)
+    
+    # 2) Extract operation
+    ex_op = extract_course_op(state, user_input, state.pending_op_type)
+
+    if ex_op.missing:
+        state.pending_op = ex_op.op  # draft
+        q = ex_op.questions[0] if ex_op.questions else f"Missing: {ex_op.missing[0]}. Please specify."
         return q
 
-    op = ex.op
+    op = ex_op.op
 
-    # 2) confirmation
+    # 3) Confirmation
     state.pending_op = op
 
-    # 4) intent confirm
+    # 4) Intent confirmation
     return render_confirm_msg(op, target_version=state.plan_version)
 
 def on_user_confirm(state: CoursePathAgentState, tools: CoursePathTools, user_input: str) -> str:
     # Optimistic lock
+    op_type = state.pending_op_type
     op = state.pending_op
-    attempt = execute_course_op(state=state, op=op, tools=tools, force_reschedule=False)
+    attempt = execute_course_op(state=state, op_type=op_type, op=op, tools=tools, force_reschedule=False)
     
     if attempt.ok:
-        state.pending_op = None
-        state.summary += f"Applied: {op.render()}."
+        state.summary += f"\nApplied: {op}."
+        clear_op_state(state)
         return summarize_diff(attempt.diff)
 
     if attempt.error and attempt.error.get("code") == "REQUIRES_RESCHEDULE":
+        state.summary += f"\nAttempted to apply but rescheduling required: {op}."
         return render_reschedule_msg(op)
 
+    clear_op_state(state)
+    state.summary += f"\nExecution failed for {op_type.type}: {attempt.error}"
     return f"Error [{attempt.error.get('code','EXEC_FAIL')}]: {attempt.error}"
 
 def on_user_force(state: CoursePathAgentState, tools: CoursePathTools, user_input: str) -> str:
+    op_type = state.pending_op_type
     op = state.pending_op
     op.reschedule = True
-    forced = execute_course_op(state=state, op=op, tools=tools, force_reschedule=True)
+    forced = execute_course_op(state=state, op_type=op_type, op=op, tools=tools, force_reschedule=True)
 
     if forced.ok:
+        state.pending_op_type = None
         state.pending_op = None
-        state.summary += f"Applied via force: {op.render()}."
+        state.summary += f"\nApplied via force: {op}."
         return summarize_diff(forced.diff)
 
+    clear_op_state(state)
     return f"Error [{forced.error.get('code','FORCE_EXEC_FAIL')}]: {forced.error}"
 
 def on_user_cancel(state: CoursePathAgentState, tools: CoursePathTools, user_input: str) -> str:
-    state.pending_op = None
+    clear_op_state(state)
     return "Operation cancelled."
 
 # ------------------------------------------------------------
