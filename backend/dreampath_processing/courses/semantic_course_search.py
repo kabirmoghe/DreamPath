@@ -8,7 +8,7 @@ import re
 from rapidfuzz import process, fuzz
 from dreampath_processing.courses.prompts.course_matching_prompts import *
 from dreampath_processing.courses.course_vector_db_ops import *
-from dreampath_processing.courses.build_major_course_path import get_department_alias_from_dept_name, get_department_from_course_code
+from dreampath_processing.courses.course_relationship_handling import get_department_alias_from_dept_name, get_department_from_course_code
 
 # Set the OpenAI API key
 load_dotenv()

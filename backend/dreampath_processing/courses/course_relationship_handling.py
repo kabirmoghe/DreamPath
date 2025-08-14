@@ -117,7 +117,8 @@ def merge_prereq_trees_to_graph(prereq_trees):
                         all_courses.add(prereq)
                         dfs(prereq, grand_children)
                 else:
-                    print(f'Likely IP/AP/LP encountered: {child_dict}')
+                    pass
+                    # print(f'Likely IP/AP/LP encountered: {child_dict}')
 
         for course, prereq_children in tree.items():
             dfs(course, prereq_children)
@@ -150,9 +151,10 @@ def rebuild_prereq_graph(course_bank: Dict[str, Course], courses: Set[str]=None)
         
         c_prereq_tree = c_object.prereq_tree
         if c_prereq_tree:
-            print(f"Using existing prereq_tree for course '{c}'.")
+            pass
+            # print(f"Using existing prereq_tree for course '{c}'.")
         else:
-            print(f"Building new prereq_tree for course '{c}...")
+            # print(f"Building new prereq_tree for course '{c}...")
             c_prereq_tree, _ = build_prereq_tree(c)
             c_object.prereq_tree = c_prereq_tree
 
@@ -187,8 +189,9 @@ def get_direct_prereqs(prereq_tree, course_code):
 
         return direct_children
     except:
-        print(f'Error getting direct prereqs for {course_code}')
-        print(prereq_tree)
+        pass
+        # print(f'Error getting direct prereqs for {course_code}')
+        # print(prereq_tree)
     return direct_children
 
 # Remove prereq. branches for a given set of courses

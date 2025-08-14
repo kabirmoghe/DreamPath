@@ -3,7 +3,8 @@ from flask_cors import CORS
 import pandas as pd
 import os
 from dreampath_processing.courses.semantic_course_search import get_courses_for_student_parameters, score_recommended_courses, rank_recommended_courses
-from dreampath_processing.courses.build_major_course_path import retrieve_enhanced_course_from_course_code, build_course_path
+from dreampath_processing.courses.build_major_course_path import build_course_path
+from dreampath_processing.courses.course_scaffolding_testing import retrieve_enhanced_course_from_course_code
 from dreampath_processing.clubs.semantic_club_search import get_club_recommendations
 from dotenv import load_dotenv
 from supabase import create_client, Client # type: ignore

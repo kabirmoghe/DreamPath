@@ -1,0 +1,169 @@
+from instructor import from_openai
+from openai import OpenAI
+import os
+from dotenv import load_dotenv
+from dreampath_processing.courses.course_path_agent.types import Op, CoursePathAgentState, ExtractedOp, ExecuteOpResult
+from dreampath_processing.courses.course_path_agent.operation_tools import CoursePathTools, summarize_diff
+from dreampath_processing.courses.course_path_agent.prompts import EXTRACTOR_SYS
+from dreampath_processing.courses.build_major_course_path import build_course_path
+from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY
+
+load_dotenv()
+
+client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
+
+# Build messages for extraction
+def build_messages(state: CoursePathAgentState, user_input: str):
+    # Include only short episodic summary if needed
+    msgs = [{"role": "system", "content": EXTRACTOR_SYS}]
+    if state.summary:
+        msgs.append({"role": "assistant", "content": f"Summary: {state.summary[:800]}"})
+
+    # Include last few turns for continuity
+    if state.recent_messages:
+        msgs.extend(state.recent_messages[-4:])
+
+    # Current user input
+    msgs.append({"role": "user", "content": user_input})
+
+    return msgs
+
+# Extract operation from user input
+def extract_course_op(state: CoursePathAgentState, user_input: str) -> ExtractedOp:
+    messages = build_messages(state=state, user_input=user_input)
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=messages,
+        response_model=ExtractedOp,
+        temperature=0.01
+    )
+    
+    print(response)
+    return response
+
+# Execute operation
+def execute_course_op(state: CoursePathAgentState, op: Op, tools: CoursePathTools, force_reschedule: bool=False) -> ExecuteOpResult:
+    if force_reschedule:
+        op.reschedule = True
+
+    return tools.execute(op)
+
+# Validate operation (placeholder)
+def validate_op(state: CoursePathAgentState, op: Op) -> bool:
+    return {"ok": True, "error": None}
+
+# Confirm message before execution
+def render_confirm_msg(op: Op, target_version: int) -> str:
+    # simple template; you can LLM-polish later
+    return (f"Ready to apply {op.render()}. "
+            f"Reply `CONFIRM` to proceed or `CANCEL`.")
+
+def render_reschedule_msg(op: Op) -> str:
+    return (f"To apply {op.render()}, rescheduling is required and may disrupt prior structure. "
+            f"Reply `CONFIRM RESCHEDULE` to proceed, or `CANCEL`.")
+
+def handle_user_turn(state: CoursePathAgentState, user_input: str) -> str:
+    # 1) extraction
+    ex = extract_course_op(state, user_input)
+    if ex.missing:
+        state.pending_op = ex.op  # draft
+        q = ex.questions[0] if ex.questions else f"Missing: {ex.missing[0]}. Please specify."
+        return q
+
+    op = ex.op
+
+    # 2) confirmation
+    state.pending_op = op
+
+    # 4) intent confirm
+    return render_confirm_msg(op, target_version=state.plan_version)
+
+def on_user_confirm(state: CoursePathAgentState, tools: CoursePathTools, user_input: str) -> str:
+    # Optimistic lock
+    op = state.pending_op
+    attempt = execute_course_op(state=state, op=op, tools=tools, force_reschedule=False)
+    
+    if attempt.ok:
+        state.pending_op = None
+        state.summary += f"Applied: {op.render()}."
+        return summarize_diff(attempt.diff)
+
+    if attempt.error and attempt.error.get("code") == "REQUIRES_RESCHEDULE":
+        return render_reschedule_msg(op)
+
+    return f"Error [{attempt.error.get('code','EXEC_FAIL')}]: {attempt.error}"
+
+def on_user_force(state: CoursePathAgentState, tools: CoursePathTools, user_input: str) -> str:
+    op = state.pending_op
+    op.reschedule = True
+    forced = execute_course_op(state=state, op=op, tools=tools, force_reschedule=True)
+
+    if forced.ok:
+        state.pending_op = None
+        state.summary += f"Applied via force: {op.render()}."
+        return summarize_diff(forced.diff)
+
+    return f"Error [{forced.error.get('code','FORCE_EXEC_FAIL')}]: {forced.error}"
+
+def on_user_cancel(state: CoursePathAgentState, tools: CoursePathTools, user_input: str) -> str:
+    state.pending_op = None
+    return "Operation cancelled."
+
+# ------------------------------------------------------------
+# MAIN CONTROLLER
+# ------------------------------------------------------------
+class CoursePathAgent:
+    def __init__(self, tools: CoursePathTools):
+        self.state = CoursePathAgentState(thread_id="", plan_id="", plan_version=0, pending_op=None, facts={}, summary="", recent_messages=[])
+        self.tools = tools
+
+    def run(self, text: str) -> str:
+        # Route based on whether we’re waiting for a confirm
+        if self.state.pending_op and text.strip().upper() == "CONFIRM":
+            reply = on_user_confirm(state=self.state, tools=self.tools, user_input=text)
+        elif self.state.pending_op and text.strip().upper() == "CONFIRM RESCHEDULE":
+            reply = on_user_force(state=self.state, tools=self.tools, user_input=text)
+        elif self.state.pending_op and text.strip().upper() == "CANCEL":
+            reply = on_user_cancel(state=self.state, tools=self.tools, user_input=text)
+        else:
+            reply = handle_user_turn(state=self.state, user_input=text)
+
+        # update tiny conversational memory if you want
+        self.state.recent_messages.append({"role":"user", "content": text})
+        self.state.recent_messages.append({"role":"assistant", "content": reply})
+        # persist state (plan_id, plan_version, pending_op, etc.)
+        return reply
+    
+if __name__ == "__main__":
+    major_name = 'Computer Science'
+    major_courses = {'COSC89.27', 'COSC55', 'COSC89.20', 'COSC35', 'COSC89.17', 'COSC89.28', 'COSC62', 'COSC69.17', 'COSC89.19', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61'}
+    complementary_courses = {'QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26'}
+    
+    # Construct recommended courses set and course bank
+    recommended_courses = major_courses | complementary_courses
+    course_bank = {c: Course(course_code=c, course_type=MAJOR if c in major_courses else COMPLEMENTARY) for c in recommended_courses}
+
+    # Build initial course path + course bank updated with prereqs + scheduling info
+    test_course_path = build_course_path(recommended_courses, course_bank)
+    test_course_path.curr_window_start = 7 # Example
+
+    # Build agent
+    tools = CoursePathTools(course_path=test_course_path, major_name=major_name)
+    agent = CoursePathAgent(tools=tools)
+
+    # Run agent
+    print("CoursePathAgent ready. Type 'quit' to exit.\n")
+
+    # --- Main Loop ---
+    while True:
+        print(f"----------\nCoursePath (@ term={test_course_path.curr_window_start})")
+        print(test_course_path)
+        print("----------\n")
+
+        user_input = input("You: ").strip()
+        if user_input.lower() in ("quit", "exit"):
+            break
+
+        # Pass input to agent, get back a response
+        response = agent.run(user_input)
+        print(f"Agent: {response}")

@@ -2,7 +2,7 @@ from dreampath_processing.courses.course_relationship_handling import build_prer
 from collections import defaultdict, deque
 from typing import List, Set, Dict, Any
 import copy
-from schedule_modules.course import Course, MAJOR, COMPLEMENTARY
+from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY
 
 # -----------------------------------------------------
 # SCHEDULING FUNCTIONS
@@ -235,7 +235,7 @@ def schedule_courses_by_term(course_graph, course_bank, existing_plan=None, cour
 
 def schedule_must_have_courses(course_path: List[List[str]], prior_course_bank: Dict[str, Course], window_start_term: int, must_have_course_map: Dict[str, Course], verbose: bool = False) -> Dict[str, Any]: 
     max_terms = len(course_path)
-   
+
     # Validate curr_term pointer
     if (window_start_term < 0) or (window_start_term >= max_terms): 
         raise ValueError("Window start term pointer must be within course_path list.")
@@ -246,11 +246,16 @@ def schedule_must_have_courses(course_path: List[List[str]], prior_course_bank: 
     # Group courses by end term (i.e., latest term they must be scheduled by)
     for c, c_object in must_have_course_map.items():
         if c in external_courses:
-            print(f"Skipping must-have course '{c}', already scheduled outside window")
+            if verbose:
+                print(f"Skipping must-have course '{c}', already scheduled outside window")
             continue
 
         # Get window and validate
+        if c_object.must_have_window is None:
+            c_object.must_have_window = (0, max_terms - 1) # Default to full term if no window
+
         must_have_window = c_object.must_have_window
+
         c_start_term = must_have_window[0]
         c_end_term = must_have_window[1]
 
@@ -383,7 +388,7 @@ def integrate_recommendations_and_must_have_courses(must_have_course_path: List[
             for d in c_dependents:
                 adjusted_earliest_term_for_d = max(earliest_term_for_dependents, earliest_possible_term.get(d, (0,))[0])
 
-                if adjusted_earliest_term_for_d > earliest_term_for_dependents:
+                if adjusted_earliest_term_for_d > earliest_term_for_dependents and verbose:
                     print(f"\t\t[Retaining previous earliest term for dependent {d} = {adjusted_earliest_term_for_d}]")
 
                 earliest_possible_term[d] = (adjusted_earliest_term_for_d, float('inf'))
@@ -402,13 +407,14 @@ def integrate_recommendations_and_must_have_courses(must_have_course_path: List[
     # Create complete course bank from prior/existing course bank + "must have" course bank
     complete_course_bank = prior_course_bank | must_have_course_bank
 
-    print("Prior course bank:")
-    for c in prior_course_bank.values():
-        print(c)
+    if verbose:
+        print("Prior course bank:")
+        for c in prior_course_bank.values():
+            print(c)
 
-    print("Must-have course bank:")
-    for c in must_have_course_bank.values():
-        print(c)
+        print("Must-have course bank:")
+        for c in must_have_course_bank.values():
+            print(c)
 
     # Scheduling existing courses within modified plan
     modified_course_path_schedule, _, _ = schedule_courses_by_term(course_graph=unscheduled_graph, 
@@ -417,9 +423,10 @@ def integrate_recommendations_and_must_have_courses(must_have_course_path: List[
                              course_scheduling_windows=earliest_possible_term,
                              verbose=verbose)
     
-    print("Complete course bank:")
-    for c in complete_course_bank.values():
-        print(c)
+    if verbose:
+        print("Complete course bank:")
+        for c in complete_course_bank.values():
+            print(c)
                              
 
     return modified_course_path_schedule, complete_course_bank
