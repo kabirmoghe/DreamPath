@@ -201,7 +201,7 @@ if __name__ == "__main__":
 
     # Build initial course path + course bank updated with prereqs + scheduling info
     test_course_path = build_course_path(recommended_courses, course_bank)
-    test_course_path.curr_window_start = 7 # Example
+    test_course_path.curr_window_start = 10 # Example
 
     # Build agent
     tools = CoursePathTools(course_path=test_course_path, major_name=major_name)

@@ -319,15 +319,16 @@ class CoursePath:
     # ADD COURSE
     # ─────────────────────────────────────────────────────────────────────────────
     @staticmethod
-    def _attempt_add_course(course_path: List[List[str]], course_code_to_add: str, must_have_window: Optional[Tuple[int, int]]=None, max_classes_per_term=3) -> Tuple[List[List[str]], int]:
+    def _attempt_add_course(course_path: List[List[str]], course_code_to_add: str, must_have_window: Optional[Tuple[int, int]]=None, window_start_term: int=0, max_classes_per_term=3) -> Tuple[List[List[str]], int]:
         add_course_path = deepcopy(course_path)
 
         # Check if must_have term location / window specified
         if must_have_window is not None:
             # Assumes valid window
             course_start_term, course_end_term = must_have_window
+            adjusted_start_term = max(window_start_term, course_start_term)
 
-            for term_idx in range(course_start_term, course_end_term + 1):
+            for term_idx in range(adjusted_start_term, course_end_term + 1):
                 if len(add_course_path[term_idx]) < max_classes_per_term:
                     add_course_path[term_idx].append(course_code_to_add)
 
@@ -335,12 +336,12 @@ class CoursePath:
                 
             raise TermCapacityError(f"Course '{course_code_to_add}' cannot be directly added in scheduling window {must_have_window}.")
         else:
-            for term_idx in range(len(add_course_path)):
+            for term_idx in range(window_start_term, len(add_course_path)):
                 if len(add_course_path[term_idx]) < max_classes_per_term:
                     add_course_path[term_idx].append(course_code_to_add)
                     return add_course_path, term_idx
                 
-            raise TermCapacityError(f"Course '{course_code_to_add}' cannot be directly added in any term.")
+            raise TermCapacityError(f"Course '{course_code_to_add}' cannot be directly added to any term in current window.")
 
     def add_course(self, course_to_add: Course, max_classes_per_term: int=3, reschedule: bool=False, verbose: bool=False):
         # Check if must_have term location / window specified 
@@ -353,6 +354,9 @@ class CoursePath:
             if (course_start_term > course_end_term) or (course_start_term < 0) or (course_end_term >= max_terms):
                 raise Exception(f"Invalid scheduling window {course_to_add.must_have_window} for course {course_to_add.course_code}.")
             
+            if course_end_term < self.curr_window_start:
+                raise Exception(f"Cannot add course '{course_to_add.course_code}', requested scheduling window {course_to_add.must_have_window} outside of current window.")
+
         # Checking if course is already scheduled
         existing_course = self.course_bank.get(course_to_add.course_code, None)
         if existing_course and existing_course.term_idx is not None:
@@ -360,7 +364,7 @@ class CoursePath:
         
         # Proceed with addition
         try:
-            add_course_path, new_course_term_idx = self._attempt_add_course(course_path=self.course_path, course_code_to_add=course_to_add.course_code, must_have_window=course_to_add.must_have_window, max_classes_per_term=max_classes_per_term)
+            add_course_path, new_course_term_idx = self._attempt_add_course(course_path=self.course_path, course_code_to_add=course_to_add.course_code, must_have_window=course_to_add.must_have_window, window_start_term=self.curr_window_start, max_classes_per_term=max_classes_per_term)
             add_violations = self._validate_plan(course_path=add_course_path, course_bank=self.course_bank)
         except TermCapacityError as e:
             # Reschedule if requested
@@ -397,15 +401,16 @@ class CoursePath:
     # MOVE COURSE
     # ─────────────────────────────────────────────────────────────────────────────
     @staticmethod
-    def _attempt_move_course(course_path: List[List[str]], course_to_move: Course, move_window: Tuple[int, int], max_classes_per_term: int=3) -> Tuple[List[List[str]], int]:
-        
+    def _attempt_move_course(course_path: List[List[str]], course_to_move: Course, move_window: Tuple[int, int], window_start_term: int=0, max_classes_per_term: int=3) -> Tuple[List[List[str]], int]:
         # First, remove course from original term
         remove_course_path = CoursePath._attempt_remove_course(course_path=course_path, course_to_remove=course_to_move)
         
         # Then, move course to new term
         move_course_path = deepcopy(remove_course_path)
+        move_start_term, move_end_term = move_window
+        adjusted_start_term = max(window_start_term, move_start_term)
 
-        for term_idx in range(move_window[0], move_window[1] + 1):
+        for term_idx in range(adjusted_start_term, move_end_term + 1):
             if len(move_course_path[term_idx]) < max_classes_per_term:
                 move_course_path[term_idx].append(course_to_move.course_code)
                 return move_course_path, term_idx
@@ -413,13 +418,7 @@ class CoursePath:
         raise TermCapacityError(f"Course '{course_to_move.course_code}' cannot be moved due to max capacity in scheduling window {move_window}.")
         
     def move_course(self, course_code_to_move: str, move_window: Tuple[int, int], max_classes_per_term: int=3, reschedule: bool=False, verbose: bool=False):
-        # Validate move window and move validity
-        if move_window[0] > move_window[1] or move_window[0] < 0 or move_window[1] >= len(self.course_path):
-            raise Exception(f"Invalid move window {move_window} for course {course_code_to_move}.")
-
-        if move_window[0] < self.curr_window_start:
-            raise Exception(f"Move window {move_window} must be within current window.")
-        
+        # Validate course to move
         course_to_move = self.course_bank.get(course_code_to_move, None)
         if course_to_move is None:
             raise Exception(f"Course code '{course_code_to_move}' does not exist in course bank.")
@@ -427,12 +426,23 @@ class CoursePath:
         if course_to_move.term_idx is None:
             raise Exception(f"Cannot move unscheduled course '{course_code_to_move}'.")
 
-        if move_window[0] <= course_to_move.term_idx <= move_window[1]:
-            raise Exception(f"Course '{course_code_to_move}' is already in move window {move_window}.")
+        # Validate move window
+        move_start_term, move_end_term = move_window
+        if move_start_term > move_end_term or move_start_term < 0 or move_end_term >= len(self.course_path):
+            raise Exception(f"Invalid move window {move_window} for course {course_code_to_move}.")
 
+        if move_end_term < self.curr_window_start:
+            raise Exception(f"Cannot move course '{course_code_to_move}', requested scheduling window {move_window} outside of current window.")
+        
+        if move_start_term <= course_to_move.term_idx <= move_end_term:
+            raise Exception(f"Course '{course_code_to_move}' is already in move window {move_window}.")
+        
+        if course_to_move.term_idx < self.curr_window_start:
+            raise Exception(f"Term index {course_to_move.term_idx} for move must be within current window.")
+        
         # Proceed with move
         try:
-            move_course_path, move_term_idx = self._attempt_move_course(course_path=self.course_path, course_to_move=course_to_move, move_window=move_window, max_classes_per_term=max_classes_per_term)
+            move_course_path, move_term_idx = self._attempt_move_course(course_path=self.course_path, course_to_move=course_to_move, move_window=move_window, window_start_term=self.curr_window_start, max_classes_per_term=max_classes_per_term)
             move_violations = self._validate_plan(course_path=move_course_path, course_bank=self.course_bank)
         except TermCapacityError as e:
             move_violations = [{"course": course_to_move.course_code, "issue": str(e)}]
