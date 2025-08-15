@@ -15,7 +15,7 @@ class RemoveOp(OpBase):
 
 class AddOp(OpBase):
     course_code: str
-    to_term: Optional[int] = Field(default=None)
+    add_to_term: Optional[int] = None
     must_have_window: Optional[List[int]] = Field(
         default=None, min_length=2, max_length=2
     )
@@ -25,13 +25,13 @@ class AddOp(OpBase):
 
 class MoveOp(OpBase):
     course_code: str
-    to_term: int
+    move_to_term: int
     move_window: Optional[List[int]] = Field(
         default=None, min_length=2, max_length=2
     )
 
     def __str__(self) -> str:
-        return f"MOVE '{self.course_code}' to term {self.to_term}{f' between terms {self.move_window}' if self.move_window else ''}"
+        return f"MOVE '{self.course_code}' to term {self.move_to_term}{f' between terms {self.move_window}' if self.move_window else ''}"
 
 class ReplaceOp(OpBase):
     old_course_code: str

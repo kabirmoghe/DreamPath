@@ -8,6 +8,7 @@ from dreampath_processing.courses.scheduling_helpers import schedule_must_have_c
 
 # Exceptions
 class TermCapacityError(Exception): ...
+class RebuildError(Exception): ...
 
 @dataclass
 class CoursePath:
@@ -154,7 +155,7 @@ class CoursePath:
     # REBUILD COURSE PATH
     # ─────────────────────────────────────────────────────────────────────────────
 
-    def rebuild(self, window_start_term: Optional[int] = None, must_have_course_map: Dict[str, Course] = {}, verbose: int = 0):
+    def rebuild(self, window_start_term: Optional[int] = None, must_have_course_map: Dict[str, Course] = {}, for_op: bool = False, verbose: int = 0):
         """Rebuild a course path with must-have courses and recommendations"""
 
         if window_start_term is None:
@@ -175,6 +176,7 @@ class CoursePath:
         must_have_course_path = must_have_schedule_output['must_have_course_path']
         must_have_course_bank = must_have_schedule_output['must_have_course_bank']
         newly_scheduled_courses = must_have_schedule_output['newly_scheduled_courses']
+        newly_scheduled_must_have_courses = must_have_schedule_output['newly_scheduled_must_have_courses']
         pre_window_courses = must_have_schedule_output['pre_window_courses']
 
         if verbose >= 1:
@@ -184,7 +186,10 @@ class CoursePath:
             print("-----\n")
 
         # 3. Remove window from unscheduled must-have courses
-        unscheduled_new_must_haves = set(must_have_course_map.keys()) - newly_scheduled_courses
+        unscheduled_new_must_haves = set(must_have_course_map.keys()) - newly_scheduled_must_have_courses
+        if unscheduled_new_must_haves and for_op:
+            raise RebuildError("Rebuild failed for operation, could not prioritize must-have operation course(s).")
+
         for c in unscheduled_new_must_haves:
             must_have_course_bank[c].must_have_window = None
             complete_must_have_courses_map.pop(c)
@@ -297,7 +302,7 @@ class CoursePath:
                 self.must_have_courses = self.must_have_courses - {course_code_to_remove}
 
                 # Rebuild course path with must-have courses
-                self.rebuild(window_start_term=self.curr_window_start)
+                self.rebuild(window_start_term=self.curr_window_start, for_op=True)
             else:
                 raise Exception(f"Cannot remove course '{course_code_to_remove}' due to scheduling violations, requires rescheduling.")
 
@@ -378,7 +383,7 @@ class CoursePath:
             # Reschedule if requested
             if reschedule:
                 add_as_must_have = {course_to_add.course_code: course_to_add}
-                self.rebuild(window_start_term=self.curr_window_start, must_have_course_map=add_as_must_have)
+                self.rebuild(window_start_term=self.curr_window_start, must_have_course_map=add_as_must_have, for_op=True)
             else:
                 raise Exception(f"Cannot add course '{course_to_add.course_code}' due to scheduling violations, requires rescheduling.")
             
@@ -459,7 +464,8 @@ class CoursePath:
                 if course_to_move.course_code not in self.must_have_courses:
                     self.must_have_courses = self.must_have_courses | {course_to_move.course_code}
 
-                self.rebuild(window_start_term=self.curr_window_start)
+                # Override must-have course map to treat course as new
+                self.rebuild(must_have_course_map={course_to_move.course_code: course_to_move}, window_start_term=self.curr_window_start, for_op=True)
             else:
                 raise Exception(f"Cannot move course '{course_code_to_move}' due to scheduling violations, requires rescheduling.")
 
@@ -478,7 +484,7 @@ class CoursePath:
     # REPLACE COURSE
     # ─────────────────────────────────────────────────────────────────────────────
     @staticmethod
-    def _attempt_replace_course(course_path: List[List[str]], new_course: Course, old_course: Course) -> Tuple[List[List[str]], int]:
+    def _attempt_replace_course(course_path: List[List[str]], new_course: Course, old_course: Course, window_start_term: int=0) -> Tuple[List[List[str]], int]:
         # First, remove old course
         remove_course_path = CoursePath._attempt_remove_course(course_path=course_path, course_to_remove=old_course)
 
@@ -490,7 +496,7 @@ class CoursePath:
 
         # Reframe ADD error as REPLACE error
         try:
-            add_course_path, new_course_term_idx = CoursePath._attempt_add_course(course_path=remove_course_path, course_code_to_add=new_course.course_code, must_have_window=new_course.must_have_window, max_classes_per_term=3)
+            add_course_path, new_course_term_idx = CoursePath._attempt_add_course(course_path=remove_course_path, course_code_to_add=new_course.course_code, must_have_window=new_course.must_have_window, window_start_term=window_start_term, max_classes_per_term=3)
 
         except Exception as e:
             raise Exception(f"Error attempting to replace course '{old_course.course_code}' with '{new_course.course_code}': {e}")
@@ -498,7 +504,6 @@ class CoursePath:
         return add_course_path, new_course_term_idx
 
     def replace_course(self, new_course: Course, old_course_code: str, reschedule: bool=False, verbose: bool=False):
-    
         # Validate course to replace
         old_course = self.course_bank.get(old_course_code, None)
         if old_course is None:
@@ -506,17 +511,26 @@ class CoursePath:
         
         if old_course.term_idx is None:
             raise Exception(f"Course '{old_course_code}' not scheduled / missing term index.")
+        
+        if old_course.term_idx < self.curr_window_start:
+            raise Exception(f"Cannot replace course '{old_course_code}', outside of current window.")
 
         # Validate new course
         if new_course.course_code in self.course_bank and new_course.term_idx is not None:
             raise Exception(f"Course '{new_course.course_code}' is already scheduled (scheduled={new_course.scheduled})")
         
         if new_course.must_have_window:
+            if new_course.must_have_window[1] < self.curr_window_start:
+                raise Exception(f"Cannot replace course '{old_course_code}' with '{new_course.course_code}', requested scheduling window {new_course.must_have_window} outside of current window.")
+            
+            if new_course.must_have_window[0] > new_course.must_have_window[1] or new_course.must_have_window[0] < 0 or new_course.must_have_window[1] >= len(self.course_path):
+                raise Exception(f"Cannot replace course '{old_course_code}' with '{new_course.course_code}', requested scheduling window {new_course.must_have_window} is invalid.")
+            
             if verbose:
                 print(f"Warning: replacing course '{old_course_code}' with course '{new_course.course_code}' may override existing must-have window.")
 
         # Attempt to replace course
-        replace_course_path, replace_term_idx = self._attempt_replace_course(course_path=self.course_path, new_course=new_course, old_course=old_course)
+        replace_course_path, replace_term_idx = self._attempt_replace_course(course_path=self.course_path, new_course=new_course, old_course=old_course, window_start_term=self.curr_window_start)
         replacement_violations = self._validate_plan(course_path=replace_course_path, course_bank=self.course_bank)
 
         # If violations, make must-have and schedule around
@@ -537,7 +551,7 @@ class CoursePath:
                 self.must_have_courses = self.must_have_courses - {old_course_code} | {new_course.course_code}
 
                 # Rebuild course path with must-have courses
-                self.rebuild(window_start_term=self.curr_window_start)
+                self.rebuild(window_start_term=self.curr_window_start, for_op=True)
             else:
                 raise Exception(f"Cannot replace course '{old_course_code}' with '{new_course.course_code}' due to scheduling violations, requires rescheduling.")
 
@@ -601,6 +615,12 @@ class CoursePath:
         
         if course_1.term_idx == course_2.term_idx:
             raise Exception(f"Cannot swap courses '{course_code_1}' and '{course_code_2}' in the same term.")
+        
+        if course_1.term_idx < self.curr_window_start:
+            raise Exception(f"Cannot swap courses, course '{course_code_1}' is outside of current window.")
+
+        if course_2.term_idx < self.curr_window_start:
+            raise Exception(f"Cannot swap courses, course '{course_code_2}' is outside of current window.")
         
         # Validate indices in case of windows
         if course_1.must_have_window and (course_1.must_have_window[0] > course_2.term_idx or course_1.must_have_window[1] < course_2.term_idx):

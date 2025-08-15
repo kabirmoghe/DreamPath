@@ -29,7 +29,7 @@ def build_messages(state: CoursePathAgentState, user_input: str, prompt: str):
     # Include only short episodic summary if needed
     msgs = [{"role": "system", "content": prompt}]
     if state.summary:
-        msgs.append({"role": "assistant", "content": f"Summary: {state.summary[:800]}"})
+        msgs.append({"role": "assistant", "content": f"Summary: ...{state.summary[-800:]}"})
 
     # Include last few turns for continuity
     if state.recent_messages:
@@ -38,7 +38,7 @@ def build_messages(state: CoursePathAgentState, user_input: str, prompt: str):
     # Current user input
     msgs.append({"role": "user", "content": user_input})
 
-    print(f"~~~\nSummary: {state.summary}\n~~~\n")
+    # print(f"~~~\nSummary: {state.summary}\n~~~\n")
 
     return msgs
 
@@ -51,7 +51,6 @@ def extract_op_type(state: CoursePathAgentState, user_input: str) -> ExtractedOp
         response_model=ExtractedOpType,
         temperature=0
     )
-    print(f"Extracted Op Type: {response}")
     return response
 
 # Extract operation from user input
@@ -65,17 +64,18 @@ def extract_course_op(state: CoursePathAgentState, user_input: str, op_type: Ext
         "SWAP": SwapExtractedOp,
         "REBUILD": RebuildExtractedOp
     }
+    extraction_model = op_type_to_op[op_type.type]
 
     messages = build_messages(state=state, user_input=user_input, prompt=PARAM_EXTRACTOR_SYS.format(op_type=op_type.type))
 
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=messages,
-        response_model=op_type_to_op[op_type.type],
+        response_model=extraction_model,
         temperature=0
     )
     
-    print(f"Extracted Op: {response}")
+    print(f"Pending Op: {response}")
     return response
 
 # Execute operation
@@ -201,7 +201,7 @@ if __name__ == "__main__":
 
     # Build initial course path + course bank updated with prereqs + scheduling info
     test_course_path = build_course_path(recommended_courses, course_bank)
-    test_course_path.curr_window_start = 10 # Example
+    test_course_path.curr_window_start = 6 # Example
 
     # Build agent
     tools = CoursePathTools(course_path=test_course_path, major_name=major_name)
@@ -213,7 +213,8 @@ if __name__ == "__main__":
     # --- Main Loop ---
     while True:
         print(f"----------\nCoursePath (@ term={test_course_path.curr_window_start})")
-        print(test_course_path)
+        current_path = tools.cp
+        print(current_path)
         print("----------\n")
 
         user_input = input("You: ").strip()

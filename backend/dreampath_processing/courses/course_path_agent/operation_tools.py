@@ -82,6 +82,8 @@ class CoursePathTools:
             after = snapshot_path(self.cp)
             return ExecuteOpResult(ok=True, diff=compute_diff(before, after), warnings=[], error=None, requires_reschedule=False, new_version=None)
         except Exception as e:
+            # Revert to original path
+            self.cp = before
             msg = str(e)
             if "requires rescheduling" in msg:
                 return ExecuteOpResult(ok=False, diff={}, warnings=[], error={"code": "REQUIRES_RESCHEDULE", "details": msg}, requires_reschedule=True, new_version=None)
@@ -94,14 +96,18 @@ class CoursePathTools:
             add_window = None
             if p.must_have_window:
                 add_window = p.must_have_window
-            elif p.to_term is not None:
-                add_window = (p.to_term, p.to_term)
+            elif p.add_to_term is not None:
+                add_window = (p.add_to_term, p.add_to_term)
 
             course_obj = construct_course(p.course_code, self.major_name, add_window)
             self.cp.add_course(course_to_add=course_obj, reschedule=p.reschedule)
             after = snapshot_path(self.cp)
             return ExecuteOpResult(ok=True, diff=compute_diff(before, after), warnings=[], error=None, requires_reschedule=False, new_version=None)
+        
         except Exception as e:
+            # Revert to original path
+            print(f"ERROR REVERT REVERT adding course {p.course_code}: {e}")
+            self.cp = before
             msg = str(e)
             if "requires rescheduling" in msg:
                 return ExecuteOpResult(ok=False, diff={}, warnings=[], error={"code": "REQUIRES_RESCHEDULE", "details": msg}, requires_reschedule=True, new_version=None)
@@ -111,9 +117,9 @@ class CoursePathTools:
     def move(self, p: MoveOp) -> ExecuteOpResult:
         before = snapshot_path(self.cp)
         if p.move_window is None:
-            if p.to_term is None:
-                return ExecuteOpResult(ok=False, diff={}, warnings=[], error={"code": "VALIDATION_ERROR", "details": "Move requires either to_term or move_window."}, requires_reschedule=False, new_version=None)
-            move_window = (p.to_term, p.to_term)
+            if p.move_to_term is None:
+                return ExecuteOpResult(ok=False, diff={}, warnings=[], error={"code": "VALIDATION_ERROR", "details": "Move requires either move_to_term or move_window."}, requires_reschedule=False, new_version=None)
+            move_window = (p.move_to_term, p.move_to_term)
         else:
             move_window = p.move_window
         try:
@@ -121,6 +127,8 @@ class CoursePathTools:
             after = snapshot_path(self.cp)
             return ExecuteOpResult(ok=True, diff=compute_diff(before, after), warnings=[], error=None, requires_reschedule=False, new_version=None)
         except Exception as e:
+            # Revert to original path
+            self.cp = before
             msg = str(e)
             if "requires rescheduling" in msg:
                 return ExecuteOpResult(ok=False, diff={}, warnings=[], error={"code": "REQUIRES_RESCHEDULE", "details": msg}, requires_reschedule=True, new_version=None)
@@ -148,6 +156,8 @@ class CoursePathTools:
             after = snapshot_path(self.cp)
             return ExecuteOpResult(ok=True, diff=compute_diff(before, after), warnings=[], error=None, requires_reschedule=False, new_version=None)
         except Exception as e:
+            # Revert to original path
+            self.cp = before
             msg = str(e)
             if "scheduling violations" in msg:
                 return ExecuteOpResult(ok=False, diff={}, warnings=[], error={"code": "SCHEDULE_CONFLICT", "details": msg}, requires_reschedule=False, new_version=None)
@@ -165,6 +175,8 @@ class CoursePathTools:
             after = snapshot_path(self.cp)
             return ExecuteOpResult(ok=True, diff=compute_diff(before, after), warnings=[], error=None, requires_reschedule=False, new_version=None)
         except Exception as e:
+            # Revert to original path
+            self.cp = before
             return ExecuteOpResult(ok=False, diff={}, warnings=[], error={"code": "REBUILD_FAIL", "details": str(e)}, requires_reschedule=False, new_version=None)
         
     def execute(self, op_type: ExtractedOpType, op: Op) -> ExecuteOpResult:

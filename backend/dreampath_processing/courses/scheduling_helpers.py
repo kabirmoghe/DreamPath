@@ -274,6 +274,7 @@ def schedule_must_have_courses(course_path: List[List[str]], prior_course_bank: 
     # Begin modifying the course path with must have courses | Keep track of newly scheduled courses 
     must_have_course_path = [[] for _ in range(max_terms - window_start_term)]
     all_scheduled_courses = set()
+    newly_scheduled_must_have_courses = set()
     must_have_course_bank = {}
 
     # Iterate in order of earliest end-term requirement
@@ -345,17 +346,19 @@ def schedule_must_have_courses(course_path: List[List[str]], prior_course_bank: 
                 # Update list of scheduled courses
                 all_scheduled_courses = all_scheduled_courses | scheduled_courses
                 all_scheduled_courses.add(curr_priority_course)
+                newly_scheduled_must_have_courses.add(curr_priority_course)
 
                 # Update mod_course_bank to indicate scheduled courses
                 for c in scheduled_courses:
                     must_have_course_bank[c].scheduled = True
                     must_have_course_bank[c].term_idx += window_start_term
-            else:
+            elif verbose:
                 print(f"* Cannot schedule course: {curr_priority_course} | Unscheduled courses: {unscheduled_courses}")
 
     return {"must_have_course_path": course_path[:window_start_term] + must_have_course_path,
             "must_have_course_bank": must_have_course_bank,
             "newly_scheduled_courses": all_scheduled_courses,
+            "newly_scheduled_must_have_courses": newly_scheduled_must_have_courses,
             "pre_window_courses": external_courses} 
         
 def integrate_recommendations_and_must_have_courses(must_have_course_path: List[List[str]], 
