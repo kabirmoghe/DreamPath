@@ -106,7 +106,6 @@ class CoursePathTools:
         
         except Exception as e:
             # Revert to original path
-            print(f"ERROR REVERT REVERT adding course {p.course_code}: {e}")
             self.cp = before
             msg = str(e)
             if "requires rescheduling" in msg:

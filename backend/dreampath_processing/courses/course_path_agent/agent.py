@@ -6,14 +6,8 @@ from dreampath_processing.courses.course_path_agent.types import (
     CoursePathAgentState,
     ExtractedOpType,
     Op,
-    RemoveExtractedOp,
-    AddExtractedOp,
-    MoveExtractedOp,
-    ReplaceExtractedOp,
-    SwapExtractedOp,
-    RebuildExtractedOp,
     ExecuteOpResult,
-    BaseExtractedOp,
+    OP_INFO,
 )
 from dreampath_processing.courses.course_path_agent.operation_tools import CoursePathTools, summarize_diff
 from dreampath_processing.courses.course_path_agent.prompts import OP_EXTRACTOR_SYS, PARAM_EXTRACTOR_SYS
@@ -24,7 +18,9 @@ load_dotenv()
 
 client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
 
-# Build messages for extraction
+# ------------------------------------------------------------
+# CONTEXT BUILDING
+# ------------------------------------------------------------
 def build_messages(state: CoursePathAgentState, user_input: str, prompt: str):
     # Include only short episodic summary if needed
     msgs = [{"role": "system", "content": prompt}]
@@ -42,7 +38,9 @@ def build_messages(state: CoursePathAgentState, user_input: str, prompt: str):
 
     return msgs
 
-# Extract operation type from user input
+# ------------------------------------------------------------
+# OPERATION TYPE / PARAMETER EXTRACTION
+# ------------------------------------------------------------
 def extract_op_type(state: CoursePathAgentState, user_input: str) -> ExtractedOpType:
     messages = build_messages(state=state, user_input=user_input, prompt=OP_EXTRACTOR_SYS)
     response = client.chat.completions.create(
@@ -54,17 +52,9 @@ def extract_op_type(state: CoursePathAgentState, user_input: str) -> ExtractedOp
     return response
 
 # Extract operation from user input
-def extract_course_op(state: CoursePathAgentState, user_input: str, op_type: ExtractedOpType) -> BaseExtractedOp:
+def extract_course_op(state: CoursePathAgentState, user_input: str, op_type: ExtractedOpType) -> Op:
     # Map op type to op class
-    op_type_to_op = {
-        "REMOVE": RemoveExtractedOp,
-        "ADD": AddExtractedOp,
-        "MOVE": MoveExtractedOp,
-        "REPLACE": ReplaceExtractedOp,
-        "SWAP": SwapExtractedOp,
-        "REBUILD": RebuildExtractedOp
-    }
-    extraction_model = op_type_to_op[op_type.type]
+    extraction_model = OP_INFO[op_type.type]['extraction_model']
 
     messages = build_messages(state=state, user_input=user_input, prompt=PARAM_EXTRACTOR_SYS.format(op_type=op_type.type))
 
@@ -78,18 +68,34 @@ def extract_course_op(state: CoursePathAgentState, user_input: str, op_type: Ext
     print(f"Pending Op: {response}")
     return response
 
-# Execute operation
+def handle_missing_fields(state: CoursePathAgentState, op: Op):
+    op_type = state.pending_op_type.type
+    missing_fields = [field for field in OP_INFO[op_type]['required_fields'] if not getattr(op, field)]
+    alternative_fields = OP_INFO[op_type]['alternative_fields']
+    for field in alternative_fields:
+        if getattr(op, field):
+            alternative_fields = []
+            break
+
+    missing_fields.extend(alternative_fields)
+    state.missing_fields = missing_fields
+
+# ------------------------------------------------------------
+# OPERATION EXECUTION / VALIDATION
+# ------------------------------------------------------------
 def execute_course_op(state: CoursePathAgentState, op_type: ExtractedOpType, op: Op, tools: CoursePathTools, force_reschedule: bool=False) -> ExecuteOpResult:
     if force_reschedule:
         op.reschedule = True
 
     return tools.execute(op_type=op_type, op=op)
 
-# Validate operation (placeholder)
+# TODO: Placeholder
 def validate_op(state: CoursePathAgentState, op: Op) -> bool:
     return {"ok": True, "error": None}
 
-# Confirm message before execution
+# ------------------------------------------------------------
+# RENDERING
+# ------------------------------------------------------------
 def render_confirm_msg(op: Op, target_version: int) -> str:
     # simple template; you can LLM-polish later
     return (f"Ready to apply {op}. "
@@ -113,19 +119,18 @@ def handle_user_turn(state: CoursePathAgentState, user_input: str) -> str:
     
     # 2) Extract operation
     ex_op = extract_course_op(state, user_input, state.pending_op_type)
+    handle_missing_fields(state, ex_op)
 
-    if ex_op.missing:
-        state.pending_op = ex_op.op  # draft
-        q = ex_op.questions[0] if ex_op.questions else f"Missing: {ex_op.missing[0]}. Please specify."
+    if state.missing_fields:
+        state.pending_op = ex_op  # draft
+        q = f"Missing: {state.missing_fields[0]}. Please specify."
         return q
 
-    op = ex_op.op
-
     # 3) Confirmation
-    state.pending_op = op
+    state.pending_op = ex_op
 
     # 4) Intent confirmation
-    return render_confirm_msg(op, target_version=state.plan_version)
+    return render_confirm_msg(ex_op, target_version=state.plan_version)
 
 def on_user_confirm(state: CoursePathAgentState, tools: CoursePathTools, user_input: str) -> str:
     # Optimistic lock
