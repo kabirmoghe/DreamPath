@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Literal, Optional, Dict, Tuple, List
+from typing import Literal, Optional, Dict, Tuple, List, Any
 from dreampath_processing.courses.schedule_modules.course_path import CoursePath
 from dreampath_processing.courses.schedule_modules.course import Course
 
@@ -21,7 +21,7 @@ class AddOp(OpBase):
     )
 
     def __str__(self) -> str:
-        return f"ADD '{self.course_code}'{f' between terms {self.must_have_window}' if self.must_have_window else ''}"
+        return f"ADD '{self.course_code}'{f' to term {self.add_to_term}' if self.add_to_term and not self.must_have_window else ''}{f' between terms {self.must_have_window}' if self.must_have_window else ''}"
 
 class MoveOp(OpBase):
     course_code: Optional[str] = None
@@ -31,7 +31,7 @@ class MoveOp(OpBase):
     )
 
     def __str__(self) -> str:
-        return f"MOVE '{self.course_code}' to term {self.move_to_term}{f' between terms {self.move_window}' if self.move_window else ''}"
+        return f"MOVE '{self.course_code}' {'to term ' + str(self.move_to_term) if self.move_to_term and not self.move_window else ''}{f' between terms {self.move_window}' if self.move_window else ''}"
 
 class ReplaceOp(OpBase):
     old_course_code: Optional[str] = None
@@ -75,6 +75,13 @@ class ExecuteOpResult(BaseModel):
     error: Optional[Dict] = None
     requires_reschedule: bool = False
     new_version: Optional[int] = None
+
+# Agent Output
+class CoursePathAgentOutput(BaseModel):
+    status: Literal["ask", "confirm", "execute", "error", "cancel"]
+    ui_text: str
+    diff: Optional[Dict[str, Any]] = None
+    error: Optional[Dict] = None
 
 # Agent State
 class CoursePathAgentState(BaseModel):

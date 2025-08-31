@@ -74,7 +74,7 @@ def load_vector_store(vectorstore_name_raw):
 
     return vectorstore
 
-def semantic_search(vectorstore, query, k=5):
+def semantic_search(vectorstore, query, k=5, verbose=False):
     """
     Performs semantic search on a vector store for courses associated with a department.
 
@@ -89,9 +89,12 @@ def semantic_search(vectorstore, query, k=5):
     # Perform a semantic search
     results = vectorstore.similarity_search(query, k=k)
 
-    print('--------------------------------')
-    print('Query: ', query)
+    if verbose:
+        print('--------------------------------')
+        print('Query: ', query)
 
     course_codes = [doc.metadata.get('course_code') for doc in results]
-    print(course_codes)
+    if verbose:
+        print(course_codes)
+        
     return course_codes

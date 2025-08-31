@@ -3,7 +3,7 @@ from typing import List, Dict, Optional, Tuple
 from dreampath_processing.courses.schedule_modules.course_path import CoursePath
 from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY
 from dreampath_processing.courses.course_relationship_handling import course_code_exists, is_major_course
-from dreampath_processing.courses.course_path_agent.types import ExecuteOpResult, RemoveOp, AddOp, MoveOp, ReplaceOp, SwapOp, RebuildOp, Op, ExtractedOpType
+from dreampath_processing.courses.coursepath_agent.types import ExecuteOpResult, RemoveOp, AddOp, MoveOp, ReplaceOp, SwapOp, RebuildOp, Op, ExtractedOpType
 
 # Utilities
 class RequiresRescheduleError(Exception): ...

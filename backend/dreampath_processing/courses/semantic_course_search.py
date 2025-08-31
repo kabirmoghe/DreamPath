@@ -74,7 +74,7 @@ def get_courses_for_parameter_search_areas(search_areas, vectorstore):
 
     return courses_for_search_areas
 
-def get_courses_for_topic(topic, major):
+def get_courses_for_topic(topic, major, major_comp_split=0.75, num_courses=8, verbose=False):
     llm = ChatOpenAI(temperature=0, model="gpt-4o")
 
     # Extract subtopics from topic
@@ -96,12 +96,14 @@ def get_courses_for_topic(topic, major):
 
     for subtopic in subtopics:
         depts = get_departments_for_topic(subtopic)
-        print(f'* Subtopic: {subtopic} --> Departments: {depts}')
+        if verbose:
+            print(f'* Subtopic: {subtopic} --> Departments: {depts}')
 
         for dept in depts:
             vectorstore = load_vector_store(dept)
             courses_for_dept = get_courses_for_parameter_search_areas([subtopic], vectorstore)
-            print(f'Department: {dept} --> Courses: {courses_for_dept}')
+            if verbose:
+                print(f'Department: {dept} --> Courses: {courses_for_dept}')
 
             # Get dept alias for each course
             for course in courses_for_dept:
@@ -111,7 +113,11 @@ def get_courses_for_topic(topic, major):
                 else:
                     complementary_course_counts.update([course])
 
-    return major_course_counts, complementary_course_counts
+    num_major_courses = int(num_courses * major_comp_split)
+    topic_major_courses = [course for course, _ in major_course_counts.most_common(num_major_courses)]
+    topic_comp_courses = [course for course, _ in complementary_course_counts.most_common(num_courses - num_major_courses)]
+
+    return topic_major_courses, topic_comp_courses
 
 # ================================
 # Extracting courses for parameters
@@ -343,22 +349,25 @@ if __name__ == "__main__":
 
     ai_topics = ["Machine Learning", "Deep Learning", "Natural Language Processing", "Reinforcement Learning", "Computer Vision", "Generative AI", "Large Language Models"]
 
-    course_counts = Counter()
+    major_course_counts, other_course_counts = get_courses_for_topic(topic="Robotics and computer vision", major="Computer Science")
+    print(f"Major courses: {major_course_counts}")
+    print(f"Other courses: {other_course_counts}")
+    # course_counts = Counter()
 
-    for topic in ai_topics:
-        print('========================================')
-        print(f'Topic: {topic}')
-        topic_depts = get_departments_for_topic(topic)
-        print(f'Topic: {topic} --> Departments: {topic_depts}')
+    # for topic in ai_topics:
+    #     print('========================================')
+    #     print(f'Topic: {topic}')
+    #     topic_depts = get_departments_for_topic(topic)
+    #     print(f'Topic: {topic} --> Departments: {topic_depts}')
 
-        for dept in topic_depts:
-            if dept == "Cognitive Science":
-                continue
+    #     for dept in topic_depts:
+    #         if dept == "Cognitive Science":
+    #             continue
             
-            vectorstore = load_vector_store(dept)
-            courses_for_dept = get_courses_for_parameter_search_areas([topic], vectorstore)
-            print(f'Department: {dept} --> Courses: {courses_for_dept}')
+    #         vectorstore = load_vector_store(dept)
+    #         courses_for_dept = get_courses_for_parameter_search_areas([topic], vectorstore)
+    #         print(f'Department: {dept} --> Courses: {courses_for_dept}')
 
-            course_counts.update(courses_for_dept)
+    #         course_counts.update(courses_for_dept)
 
-    print(f'Course counts: {course_counts.most_common(10)}')
+    # print(f'Course counts: {course_counts.most_common(10)}')
