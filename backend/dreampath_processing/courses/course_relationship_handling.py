@@ -9,6 +9,15 @@ from dreampath_processing.courses.schedule_modules.course import Course
 # External course information extraction / confirmation
 # -----------------------------------------------------
 def get_department_from_course_code(course_code):
+    """
+    Get the department from a given course code
+
+    Args:
+        course_code: str - Course code to get the department from
+
+    Returns:
+        Tuple[str, str] - Tuple of department alias and course number
+    """
     course_components = re.match(r'^([A-Z]+)(.*)', course_code)
     
     if course_components:
@@ -25,6 +34,15 @@ def get_department_from_course_code(course_code):
     return None, None
 
 def get_department_alias_from_dept_name(dept_name):
+    """
+    Get the department alias from a given department name
+
+    Args:
+        dept_name: str - Department name to get the alias from
+
+    Returns:
+        str - Department alias
+    """
     dept_alias_to_name = json.load(open('dreampath_processing/courses/data/department_aliases.json'))
     dept_name_to_alias = {v: k for k, v in dept_alias_to_name.items()}
     dept_alias = dept_name_to_alias.get(dept_name, None)
@@ -36,6 +54,15 @@ def get_department_alias_from_dept_name(dept_name):
     return dept_alias
 
 def retrieve_enhanced_course_from_course_code(course_code):
+    """
+    Retrieve the enhanced course from a given course code
+
+    Args:
+        course_code: str - Course code to retrieve the enhanced course from
+
+    Returns:
+        DataFrame - DataFrame of the enhanced course
+    """
     # get department name from course code
     dept_alias, _ = get_department_from_course_code(course_code)
     dept_alias_map = json.load(open('dreampath_processing/courses/data/department_aliases.json'))
@@ -52,11 +79,13 @@ def retrieve_enhanced_course_from_course_code(course_code):
     return candidate_course.iloc[0]
 
 def course_code_exists(course_code: str) -> bool:
+    """Check if a course code exists in the master course list"""
     enhanced_course = retrieve_enhanced_course_from_course_code(course_code)
 
     return enhanced_course is not None
 
 def is_major_course(course_code: str, major_name: str) -> bool:
+    """Check if a course code is a major course"""
     department_alias_for_course = get_department_from_course_code(course_code)
     major_alias = get_department_alias_from_dept_name(major_name)
 
@@ -68,6 +97,18 @@ def is_major_course(course_code: str, major_name: str) -> bool:
 
 # Building prerequisite tree for individual courses
 def build_prereq_tree(course_code, base_tokens=("IP"), visited=None, prereq_accumulator=None):
+    """
+    Build the prereq. tree for a given course code
+
+    Args:
+        course_code: str - Course code to build the prereq. tree for
+        base_tokens: Set[str] - Set of base tokens to treat as childless nodes
+        visited: Set[str] - Set of visited courses
+        prereq_accumulator: Set[str] - Set of courses that have been added to the prereq. tree
+
+    Returns:
+        Dict[str, Set[str]] - Dictionary of prereq. trees
+    """
     if visited is None:
         visited = set()
     if prereq_accumulator is None:
@@ -138,6 +179,16 @@ def merge_prereq_trees_to_graph(prereq_trees):
 
 # Rebuild prereq graph for bank of courses
 def rebuild_prereq_graph(course_bank: Dict[str, Course], courses: Set[str]=None) -> Dict[str, Set[str]]:
+    """
+    Rebuild the prereq. graph for a given set of courses
+
+    Args:
+        course_bank: Dict[str, Course] - Dictionary of courses
+        courses: Set[str] - Set of courses to rebuild the prereq. graph for
+
+    Returns:
+        Dict[str, Set[str]] - Dictionary of prereq. trees
+    """
     course_prereq_trees = []
 
     if not courses:

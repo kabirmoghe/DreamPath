@@ -203,7 +203,7 @@ class CoursePath:
         locked_courses = newly_scheduled_courses | pre_window_courses
 
         # 4. Integrate recommendations and must have courses
-        modified_course_path_schedule, complete_course_bank = integrate_recommendations_and_must_have_courses(must_have_course_path=must_have_course_path,
+        integration_output = integrate_recommendations_and_must_have_courses(must_have_course_path=must_have_course_path,
                                                                                                             locked_courses=locked_courses,
                                                                                                             prior_prereq_graph=self.prereq_graph,
                                                                                                             must_have_course_bank=must_have_course_bank,
@@ -211,6 +211,9 @@ class CoursePath:
                                                                                                             window_start_term=window_start_term,
                                                                                                             verbose=True if verbose >= 3 else False)
         
+        modified_course_path = integration_output["modified_course_path"]
+        complete_course_bank = integration_output["complete_course_bank"]
+
         # 5. Rebuild course path
 
         # Combine recommended courses with top-level must-have courses
@@ -223,7 +226,7 @@ class CoursePath:
         complete_must_have_courses = set(complete_must_have_courses_map.keys())
     
         # Build course path
-        self.course_path = modified_course_path_schedule
+        self.course_path = modified_course_path
         self.recommended_courses = complete_recommended_courses
         self.course_bank = complete_course_bank
         self.prereq_graph = complete_course_prereq_graph

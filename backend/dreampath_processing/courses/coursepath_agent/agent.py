@@ -233,7 +233,7 @@ class CoursePathAgent:
     
 if __name__ == "__main__":
     major_name = 'Computer Science'
-    major_courses = {'COSC89.27', 'COSC55', 'COSC89.20', 'COSC35', 'COSC89.17', 'COSC89.28', 'COSC62', 'COSC69.17', 'COSC89.19', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61'}
+    major_courses = {'COSC89.27', 'COSC55', 'COSC35', 'COSC62', 'COSC69.17', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61'}
     complementary_courses = {'QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26'}
     
     # Construct recommended courses set and course bank
@@ -264,4 +264,4 @@ if __name__ == "__main__":
 
         # Pass input to agent, get back a response
         response = agent.run(user_input)
-        print(f"Agent: {response}")
+        print(f"Agent: {response.ui_text}")

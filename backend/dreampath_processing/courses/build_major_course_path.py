@@ -1,5 +1,4 @@
-
-from dreampath_processing.courses.course_path_visualization import flatten_graph_dict, visualize_graph
+from dreampath_processing.courses.data_retrieval.course_path_visualization import flatten_graph_dict, visualize_graph
 from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, merge_prereq_trees_to_graph
 from dreampath_processing.courses.scheduling_helpers import schedule_courses_by_term
 from dreampath_processing.courses.schedule_modules.course_path import CoursePath
@@ -33,7 +32,8 @@ def build_course_path(recommended_courses, course_bank, visualize_course_connect
         visualize_graph(flattened_graph, all_courses)
 
     # Build course path
-    course_path, _, _ = schedule_courses_by_term(course_graph=prereq_graph, course_bank=course_bank, max_terms=12, max_courses_per_term=3)
+    course_path_components = schedule_courses_by_term(course_graph=prereq_graph, course_bank=course_bank, max_terms=12, max_courses_per_term=3)
+    course_path = course_path_components["plan"]
 
     # Formalize output course path
     output_course_path = CoursePath(course_path=course_path,

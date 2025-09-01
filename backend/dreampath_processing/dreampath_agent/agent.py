@@ -224,52 +224,6 @@ def finalize_node(state: DreamPathAgentState) -> DreamPathAgentState:
         "search_results": None,
         "recent_messages": [{"role": "assistant", "content": reply}],
     }
-    # state.ui_reply = render_final_reply(state)
-    # state.current_cp_agent_outcomes = []
-    # state.search_results
-    # update state.summary / trim state.recent as you like
-
-    # return state
-
-class DreamPathAgent:
-    def __init__(self, course_path, major):
-        tools = CoursePathTools(course_path=course_path, major_name=major)
-        agent = CoursePathAgent(tools=tools)
-        state = DreamPathAgentState(major=major, course_path_agent=agent)
-
-    def compile(self):
-        g = StateGraph(DreamPathAgentState)
-
-        # Nodes
-        g.add_node("orchestrator", orchestrator_node)
-        g.add_node("course_search", course_search_node)
-        g.add_node("plan_builder", plan_builder_node)
-        g.add_node("course_path", course_path_node)
-        g.add_node("finalize", finalize_node)
-
-        # Edges
-        g.add_edge(START, "orchestrator")
-
-        def router(state: DreamPathAgentState):
-            return state.route or "finalize"
-
-        g.add_conditional_edges("orchestrator", router, {
-            "course_search": "course_search",
-            "plan_builder": "plan_builder",
-            "finalize": "finalize",
-        })
-
-        # workers loop back to orchestrator-style planner
-        g.add_edge("course_search", "orchestrator")
-        g.add_edge("plan_builder", "orchestrator")     # plan → execute
-        g.add_edge("course_path", "orchestrator")         # end of batch        g.add_edge("finalize", END)
-
-        app = g.compile(checkpointer=None)
-
-        # png_graph = app.get_graph().draw_mermaid_png()
-
-        self.app = app
-
 
 # ------------------------------------------------------------
 # MAIN GRAPH

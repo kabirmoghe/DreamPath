@@ -1,6 +1,6 @@
 import pandas as pd
-from dreampath_processing.courses.prerequisite_parsing import get_course_prereqs
-from dreampath_processing.courses.college_info_retrieval import load_undergraduate_links_by_major
+from backend.dreampath_processing.courses.data_retrieval.prerequisite_parsing import get_course_prereqs
+from backend.dreampath_processing.courses.data_retrieval.college_info_retrieval import load_undergraduate_links_by_major
 from dreampath_processing.courses.semantic_course_search import load_vector_store
 import json
 
