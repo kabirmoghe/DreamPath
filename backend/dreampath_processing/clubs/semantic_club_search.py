@@ -3,7 +3,6 @@ from langchain.prompts import PromptTemplate
 from langchain.schema import Document
 from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
-import json
 import os
 import numpy as np
 from dreampath_processing.clubs.prompts.club_matching_prompts import *
@@ -103,9 +102,9 @@ def get_club_recommendations(major, student_parameter_data):
     # Load vectorstore & tag embeddings
     vectorstore = load_club_vector_store(
         vectorstore_name="all_clubs",
-        clubs_json_path="data/club_data_with_tags.json"
+        clubs_json_path="dreampath_processing/clubs/data/club_data_with_tags.json"
     )
-    tag_embeds = build_tag_embeddings("data/club_data_with_tags.json")
+    tag_embeds = build_tag_embeddings("dreampath_processing/clubs/data/club_data_with_tags.json")
 
     # Initialize defaultdict to store club recommendations - use dict instead of list
     club_recommendations = defaultdict(dict)
