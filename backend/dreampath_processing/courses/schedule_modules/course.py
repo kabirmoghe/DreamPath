@@ -5,6 +5,13 @@ from enum import Enum
 class CourseType(Enum):
     MAJOR = "major"
     COMPLEMENTARY = "complementary"
+    
+    def __str__(self):
+        if self == CourseType.MAJOR:
+            return "Major"
+        elif self == CourseType.COMPLEMENTARY:
+            return "Complementary"
+        return self.value
 
 # Make enum values directly accessible
 MAJOR = CourseType.MAJOR
@@ -20,7 +27,7 @@ class Course:
     must_have_window: Optional[Tuple[int, int]] = None
     term_idx: Optional[int] = None
     term_idx_in_term: Optional[int] = None
-    course_name: Optional[str] = None
+    course_title: Optional[str] = None
     course_description: Optional[str] = None
 
     def __str__(self):

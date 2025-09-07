@@ -34,7 +34,7 @@ class CoursePath:
         if not isinstance(self.must_have_courses, set):
             raise ValueError("must_have_courses must be a set")
         
-    def __str__(self):
+    def visualize(self):
         """Print the course path in a pretty format"""
         # Normalize to strings and handle None
         cols = [[str(x) for x in term if x is not None] for term in self.course_path]
@@ -66,6 +66,22 @@ class CoursePath:
             lines.append((" " * pad).join(cells))
 
         return "\n".join(lines)
+    
+    def __str__(self):
+        cp_str = ""
+        for term_idx, term in enumerate(self.course_path):
+            cp_str += f"#### Term {term_idx} Courses:\n"
+            for course in term:
+                course_obj = self.course_bank[course]
+                cp_str += f"{course_obj.course_code}: '{course_obj.course_title}' |"
+
+                if course_obj.is_prereq:
+                    cp_str += f" Prereq.\n"
+                else:
+                    cp_str += f" {course_obj.course_type} Course\n"
+
+            cp_str += "\n\n"
+        return cp_str
 
     # ─────────────────────────────────────────────────────────────────────────────
     # VALIDATE COURSE PLAN

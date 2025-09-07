@@ -24,7 +24,7 @@ def extract_structured_output_from_context(state: DreamPathAgentState, system_pr
     if verbose:
         print("=== MESSAGES SENT TO LLM ===")
         for i, msg in enumerate(messages):
-            print(f"Message {i}: {msg['role']} - {msg['content'][:200]}...")
+            print(f"Message {i}: {msg['role']} - {msg['content']}")#[:200]}...")
         print("=== END MESSAGES ===")
     response = client.chat.completions.create(
         model=model,
@@ -34,15 +34,18 @@ def extract_structured_output_from_context(state: DreamPathAgentState, system_pr
     )
     return response
 
-def decide_next_route(state: DreamPathAgentState) -> OrchestratorDecision:
-    worklist = state.worklist
-    return extract_structured_output_from_context(state, ORCHESTRATOR_DECISION_SYS.format(worklist=worklist), OrchestratorDecision, verbose=True)
+def decide_next_route(state: DreamPathAgentState, config) -> OrchestratorDecision:
+    student_profile = config["configurable"]["student_profile"]
+    student_name = student_profile.name
+    return extract_structured_output_from_context(state, ORCHESTRATOR_DECISION_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), OrchestratorDecision)#, verbose=True)
 
 def build_operations_from_context_and_results(state: DreamPathAgentState, max_cmds: int=3) -> CoursePathOperations:
     return extract_structured_output_from_context(state, BUILD_OPERATIONS_SYS, CoursePathOperations, model="gpt-4o-mini")
 
-def render_final_reply(state: DreamPathAgentState) -> str:
-    return extract_structured_output_from_context(state, CRAFT_FINAL_REPLY_SYS, str, temperature=0.1)
+def render_final_reply(state: DreamPathAgentState, config) -> str:
+    student_profile = config["configurable"]["student_profile"]
+    student_name = student_profile.name
+    return extract_structured_output_from_context(state, CRAFT_FINAL_REPLY_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), str, temperature=0.1, verbose=True)
 
 if __name__ == "__main__":
     state = DreamPathAgentState(

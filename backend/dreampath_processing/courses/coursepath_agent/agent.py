@@ -13,7 +13,8 @@ from dreampath_processing.courses.coursepath_agent.types import (
 from dreampath_processing.courses.coursepath_agent.operation_tools import CoursePathTools, summarize_diff
 from dreampath_processing.courses.coursepath_agent.prompts import OP_EXTRACTOR_SYS, PARAM_EXTRACTOR_SYS
 from dreampath_processing.courses.build_major_course_path import build_course_path
-from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY
+from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
+from dreampath_processing.courses.course_relationship_handling import construct_course
 
 load_dotenv()
 
@@ -96,7 +97,7 @@ def validate_op(state: CoursePathAgentState, op: Op) -> bool:
 # RENDERING
 # ------------------------------------------------------------
 def render_confirm_msg(op: Op, target_version: int) -> str:
-    # simple template; you can LLM-polish later
+    # simple template; can LLM-polish later
     return (f"Ready to apply: {op}. "
             f"Reply `CONFIRM` to proceed or `CANCEL`.")
 
@@ -238,7 +239,7 @@ if __name__ == "__main__":
     
     # Construct recommended courses set and course bank
     recommended_courses = major_courses | complementary_courses
-    course_bank = {c: Course(course_code=c, course_type=MAJOR if c in major_courses else COMPLEMENTARY) for c in recommended_courses}
+    course_bank = {c: construct_course(course_code=c, hardcoded_type=MAJOR if c in major_courses else COMPLEMENTARY) for c in recommended_courses}
 
     # Build initial course path + course bank updated with prereqs + scheduling info
     test_course_path = build_course_path(recommended_courses, course_bank)
@@ -255,6 +256,7 @@ if __name__ == "__main__":
     while True:
         print(f"----------\nCoursePath (@ term={test_course_path.curr_window_start})")
         current_path = tools.cp
+        print(current_path.visualize())
         print(current_path)
         print("----------\n")
 

@@ -1,5 +1,5 @@
 from dreampath_processing.courses.data_retrieval.course_path_visualization import flatten_graph_dict, visualize_graph
-from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, merge_prereq_trees_to_graph
+from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, merge_prereq_trees_to_graph, construct_course
 from dreampath_processing.courses.scheduling_helpers import schedule_courses_by_term
 from dreampath_processing.courses.schedule_modules.course_path import CoursePath
 from dreampath_processing.courses.schedule_modules.course import Course
@@ -18,7 +18,8 @@ def build_course_path(recommended_courses, course_bank, visualize_course_connect
 
         # Add prereq. objects to course bank
         for prereq in course_prereqs:
-            prereq_obj = course_bank.get(prereq, Course(course_code=prereq, course_type=course_bank[course].course_type))
+            print(f"Prereq: {prereq}, parent course: {course}")
+            prereq_obj = course_bank.get(prereq, construct_course(course_code=prereq, hardcoded_type=course_bank[course].course_type))
             prereq_obj.is_prereq = True
             course_bank[prereq] = prereq_obj
 
@@ -42,11 +43,3 @@ def build_course_path(recommended_courses, course_bank, visualize_course_connect
                                     prereq_graph=prereq_graph)
 
     return output_course_path
-
-
-if __name__ == '__main__':
-    major_courses = {'COSC89.27', 'COSC55', 'COSC89.20', 'COSC35', 'COSC89.17', 'COSC89.28', 'COSC62', 'COSC69.17', 'COSC89.19', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61'}
-    complementary_courses = {'QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26'}
-
-    course_path = build_course_path(major_courses, complementary_courses)
-    print(course_path)

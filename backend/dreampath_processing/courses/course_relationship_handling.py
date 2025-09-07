@@ -2,8 +2,8 @@ import re
 import json
 import pandas as pd
 from collections import defaultdict
-from typing import Dict, List, Set
-from dreampath_processing.courses.schedule_modules.course import Course
+from typing import Dict, List, Set, Optional, Tuple
+from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY, CourseType
 
 # -----------------------------------------------------
 # External course information extraction / confirmation
@@ -90,6 +90,37 @@ def is_major_course(course_code: str, major_name: str) -> bool:
     major_alias = get_department_alias_from_dept_name(major_name)
 
     return (department_alias_for_course == major_alias)
+
+def construct_course(course_code: str, major_name: Optional[str] = None, hardcoded_type: Optional[CourseType] = None, must_have_window: Optional[Tuple[int, int]] = None) -> Course:
+    """Construct a Course object from a course code and major name"""
+    
+    # Validate existence externally
+    enhanced_course = retrieve_enhanced_course_from_course_code(course_code)
+    if enhanced_course is None:
+        raise Exception(f"Unknown course code '{course_code}'.")
+    
+    # Determine course type
+    if not hardcoded_type:
+        if not major_name:
+            raise ValueError("Must provide major name if hardcoded_type is not provided")
+        ctype = MAJOR if is_major_course(course_code, major_name) else COMPLEMENTARY
+    else:
+        ctype = hardcoded_type
+
+    print(f"Constructing course: {course_code} | {ctype} | {must_have_window}")
+    
+    return Course(
+        course_code=course_code,
+        course_type=ctype,
+        scheduled=False,
+        is_prereq=False,
+        prereq_tree=None,
+        must_have_window=must_have_window,
+        term_idx=None,
+        term_idx_in_term=None,
+        course_title=' '.join(enhanced_course['course_title'].split()[2:]),
+        course_description=enhanced_course['description'],
+    )
 
 # -----------------------------------------------------
 # Prereq. operations
@@ -296,3 +327,9 @@ def compute_max_prereq_depth(prereq_tree):
             return depth
     
     return _depth_traverse(prereq_tree, 0)
+
+if __name__ == "__main__":
+    course_codes = ["COSC89.27", "COSC55", "COSC35", "COSC62", "COSC69.17", "COSC69.18", "COSC74", "COSC70", "COSC34", "COSC61", "MATH56", "COGS44", "COGS26", "QSS30.09", "QSS20", "QSS17", "QSS45", "QSS19", "QSS30.19", "QSS30.07"]
+    for course_code in course_codes:
+        enhanced_course = retrieve_enhanced_course_from_course_code(course_code)
+        print(' '.join(enhanced_course['course_title'].split()[2:]))
