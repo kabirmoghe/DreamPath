@@ -3,7 +3,7 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 from pydantic import BaseModel
-from dreampath_processing.dreampath_agent.types import OrchestratorDecision, DreamPathAgentState, CoursePathOperations
+from backend.dreampath_processing.dreampath_agent.types_legacy import OrchestratorDecision, DreamPathAgentState, CoursePathOperations
 from dreampath_processing.dreampath_agent.prompts import ORCHESTRATOR_DECISION_SYS, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS
 
 load_dotenv()

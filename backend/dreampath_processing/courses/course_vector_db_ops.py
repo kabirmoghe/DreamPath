@@ -5,7 +5,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.schema import Document
 from dotenv import load_dotenv
 import os
-from dreampath_processing.courses.data_retrieval.college_info_retrieval import produce_courses_for_major
+from backend.dreampath_processing.courses.data_retrieval.college_info_retrieval_legacy import produce_courses_for_major
 
 load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")

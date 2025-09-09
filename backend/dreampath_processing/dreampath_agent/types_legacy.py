@@ -12,11 +12,11 @@ class OrchestratorDecision(BaseModel):
 # Course Search Tool
 # ================================
 class CourseSearchInput(BaseModel):
-    query: str = Field(description="The query to search for courses")
-    dept: Optional[str] = Field(default=None, description="The department of the course")
-    course_code: Optional[str] = Field(default=None, description="The code of the course")
+    topic: str
+    limit: int = 8
 
 class CourseSearchOutput(BaseModel):
+    topic: str
     results: List[str] = Field(default_factory=list)
 
 # ================================
