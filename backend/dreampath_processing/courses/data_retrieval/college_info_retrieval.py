@@ -19,7 +19,7 @@ CHROME_OPTIONS.add_argument("--headless")
 
 DEGREES_URL = 'https://home.dartmouth.edu/degrees'
 DEPARTMENTS_URL = 'https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate'
-DATA_DIR = "dreampath_processing/courses/data_dup"
+DATA_DIR = "dreampath_processing/courses/data"
 
 def normalize_text(text):
     """
@@ -453,3 +453,17 @@ def add_prereqs_to_department_data(department_courses_df):
     department_courses_df['best_prereq_path'] = department_courses_df.apply(get_course_prereqs, axis=1, overwrite=False)
     
     return department_courses_df
+
+def load_dataframes(paths):
+    rows = []
+    for p in paths:
+        print(f"Loading '{p}'...")
+        if os.path.isdir(p):
+            for name in sorted(os.listdir(p)):
+                if name.lower().endswith(".csv"):
+                    rows.append(pd.read_csv(os.path.join(p, name)))
+        else:
+            rows.append(pd.read_csv(p))
+    if not rows:
+        raise SystemExit("No CSVs found.")
+    return pd.concat(rows, ignore_index=True)

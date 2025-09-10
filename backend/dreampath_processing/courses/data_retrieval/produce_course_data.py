@@ -1,6 +1,7 @@
-from dreampath_processing.courses.data_retrieval.college_info_retrieval import get_dartmouth_majors, produce_courses_for_department, get_department_data, DATA_DIR, add_prereqs_to_department_data
+from dreampath_processing.courses.data_retrieval.college_info_retrieval import get_dartmouth_majors, produce_courses_for_department, get_department_data, DATA_DIR, add_prereqs_to_department_data, load_dataframes
 import os
 import json
+import glob
 
 def main():
     # Get Dartmouth departments
@@ -47,6 +48,19 @@ def main():
             courses = add_prereqs_to_department_data(courses)
             courses.to_csv(courses_path, index=False)
             print(f"Saved courses for {department_name} to {courses_path}")
+
+    # Aggregate all courses into a single dataframe
+    print("Aggregating all courses into a single dataframe...")
+    all_courses_path = f"{DATA_DIR}/all_courses.csv"
+    if not os.path.exists(all_courses_path):
+        course_files = glob.glob(f"{DATA_DIR}/courses/*.csv")
+        if course_files:
+            all_courses = load_dataframes(course_files)
+            all_courses.to_csv(all_courses_path, index=False)
+        else:
+            print(f"No CSV files found in {DATA_DIR}/courses/")
+    else:
+        print(f"Skipping aggregation because {all_courses_path} already exists")
 
 if __name__ == "__main__":
     main()

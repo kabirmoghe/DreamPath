@@ -14,7 +14,7 @@ from dreampath_processing.courses.coursepath_agent.operation_tools import Course
 from dreampath_processing.courses.coursepath_agent.prompts import OP_EXTRACTOR_SYS, PARAM_EXTRACTOR_SYS
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
-from dreampath_processing.courses.course_relationship_handling import construct_course
+from backend.dreampath_processing.courses.course_relationship_handling_legacy import construct_course
 
 load_dotenv()
 

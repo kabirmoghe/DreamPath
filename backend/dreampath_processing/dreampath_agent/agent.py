@@ -2,12 +2,12 @@ import json
 from langgraph.graph import StateGraph, START, END
 from langgraph.types import interrupt, Command
 from langgraph.checkpoint.memory import InMemorySaver
-from dreampath_processing.dreampath_agent.types import DreamPathAgentState, CourseSearchOutput
-from dreampath_processing.dreampath_agent.helpers import decide_next_route, build_operations_from_context_and_results
-from dreampath_processing.courses.semantic_course_search import get_courses_for_topic
+from dreampath_processing.dreampath_agent.types import DreamPathAgentState
+from dreampath_processing.dreampath_agent.CourseSearchTool import CourseSearchTool
+from dreampath_processing.dreampath_agent.helpers import decide_next_route, build_operations_from_context_and_results, determine_course_search_queries
 from dreampath_processing.dreampath_agent.helpers import render_final_reply
 from dreampath_processing.courses.build_major_course_path import build_course_path
-from dreampath_processing.courses.course_relationship_handling import construct_course
+from backend.dreampath_processing.courses.course_relationship_handling_legacy import construct_course
 from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
 from dreampath_processing.courses.coursepath_agent.agent import CoursePathAgent, CoursePathTools
 from dreampath_processing.modules.student_profile import StudentProfile
@@ -20,36 +20,28 @@ def orchestrator_node(state: DreamPathAgentState, config) -> DreamPathAgentState
 
     return {
         "route": decision.next,
-        "topics": decision.topics,
-        # "handoff": decision.handoff
     }
 
 def course_search_node(state: DreamPathAgentState) -> DreamPathAgentState:
 
-    # Pop item from topics dictionary
-    topics = state.topics
-    topic, num_courses = topics.popitem()
+    course_search_tool: CourseSearchTool = state.config["configurable"]["course_search_tool"]
+    queries = determine_course_search_queries(state, config)
 
-    print(f"Searching for course(s) in '{topic.replace('_', ' ').title()}'...")
-    
+    # Build tool call
     tool_call = {
         "role": "assistant",
         "content": json.dumps({
             "type": "tool_call",
             "name": "course_search",
             "arguments": {
-                "topic": topic,
-                "major": state.major,
-                "num_courses": num_courses,
+                "queries": queries,
             }
         }),
     }
 
-    majors, comps = get_courses_for_topic(topic, major=state.major, num_courses=num_courses)
+    # Execute tool call
+    search_results = course_search_tool.structured_hybrid_search(queries)
     
-    # Normalize to a flat list of dicts
-    search_results_dict = {"topic": topic, "results": majors + comps}
-    search_results = CourseSearchOutput(**search_results_dict)
     tool_message = {
         "role": "assistant",
         "content": json.dumps({
@@ -59,17 +51,9 @@ def course_search_node(state: DreamPathAgentState) -> DreamPathAgentState:
         }),
     }
 
-    if len(topics) == 0:
-        route = "orchestrator"
-    else:
-        route = "course_search"
-
     return {
         "recent_messages": [tool_call, tool_message],
-        "search_results": CourseSearchOutput(**search_results_dict),
-        "topics": topics,
-        "route": route,
-        # "handoff": {}
+        "search_results": search_results
     }
     
 def plan_builder_node(state: DreamPathAgentState) -> DreamPathAgentState:
@@ -79,7 +63,6 @@ def plan_builder_node(state: DreamPathAgentState) -> DreamPathAgentState:
         "worklist": ops.operations, # List[str], e.g., ["Add QSS41 to term 6.", "Add COSC50 to term 6."]
         "cursor": 0,
         "current_cp_agent_outcomes": [],   # start fresh for this batch
-        # "handoff": {},
     }
 
 def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
@@ -148,7 +131,6 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
         "worklist": worklist,
         "cursor": cursor,
         "route": route,
-        # "handoff": {}
     }
 
 def finalize_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
@@ -228,6 +210,8 @@ if __name__ == "__main__":
     # Build agent
     tools = CoursePathTools(course_path=test_course_path, major_name=major_name)
     agent = CoursePathAgent(tools=tools)
+    course_search_tool = CourseSearchTool()
+
     student_profile = StudentProfile(
         name="Kabir Moghe",
         major="Computer Science",
@@ -236,7 +220,7 @@ if __name__ == "__main__":
         career_goals="Become a CDO or hands on CEO developing a b2b saas platform for data aggregation across different BI tools.",
         course_path=tools.cp,
     )
-    config = {"configurable": {"thread_id": "1", "coursepath_agent": agent, "student_profile": student_profile}}
+    config = {"configurable": {"thread_id": "1", "coursepath_agent": agent, "student_profile": student_profile, "course_search_tool": course_search_tool}}
     state = DreamPathAgentState()
 
     while True:

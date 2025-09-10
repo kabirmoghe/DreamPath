@@ -34,6 +34,26 @@ def get_department_from_course_code(course_code):
     
     return None, None
 
+def get_department_alias_from_dept_name(dept_name):
+    """
+    Get the department alias from a given department name
+
+    Args:
+        dept_name: str - Department name to get the alias from
+
+    Returns:
+        str - Department alias
+    """
+    dept_alias_to_name = json.load(open(f'{DATA_DIR}/undergrad_dept_aliases.json'))
+    dept_name_to_alias = {v: k for k, v in dept_alias_to_name.items()}
+    dept_alias = dept_name_to_alias.get(dept_name, None)
+
+    # Ensure provided department name has corresponding alias
+    if not dept_alias:
+        raise ValueError(f"Department name {dept_name} does not exist.")
+    
+    return dept_alias
+
 def retrieve_enhanced_course_from_course_code(course_code):
     """
     Retrieve the enhanced course from a given course code
@@ -42,12 +62,17 @@ def retrieve_enhanced_course_from_course_code(course_code):
         course_code: str - Course code to retrieve the enhanced course from
 
     Returns:
-        DataFrame - DataFrame entry of the enhanced course
+        DataFrame - DataFrame of the enhanced course
     """
+    # get department name from course code
+    dept_alias, _ = get_department_from_course_code(course_code)
+    dept_alias_map = json.load(open(f'{DATA_DIR}/undergrad_dept_aliases.json'))
+    dept_raw = dept_alias_map[dept_alias]
+    dept_cleaned = dept_raw.replace(' ', '_').lower()
 
-    # Load all courses
-    all_courses = pd.read_csv(f'{DATA_DIR}/all_courses.csv')
-    candidate_course = all_courses[all_courses['course_code'] == course_code]
+    # get department courses
+    dept_courses = pd.read_csv(f'dreampath_processing/courses/data/{dept_cleaned}_courses_with_descriptions.csv')
+    candidate_course = dept_courses[dept_courses['course_code'] == course_code]
 
     if len(candidate_course) == 0:
         return None

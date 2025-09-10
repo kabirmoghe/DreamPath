@@ -3,7 +3,7 @@ from typing import List, Set, Dict, Tuple, Optional
 from .course import Course
 from copy import deepcopy
 from collections import defaultdict
-from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, get_direct_prereqs, rebuild_prereq_graph
+from backend.dreampath_processing.courses.course_relationship_handling_legacy import build_prereq_tree, get_direct_prereqs, rebuild_prereq_graph
 from dreampath_processing.courses.scheduling_helpers import schedule_must_have_courses, integrate_recommendations_and_must_have_courses
 
 # Exceptions

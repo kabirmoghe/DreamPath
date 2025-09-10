@@ -11,13 +11,28 @@ class OrchestratorDecision(BaseModel):
 # ================================
 # Course Search Tool
 # ================================
-class CourseSearchInput(BaseModel):
-    query: str = Field(description="The query to search for courses")
+class CourseSearchParams(BaseModel):
+    query: Optional[str] = Field(default=None, description="The query to search for courses")
     dept: Optional[str] = Field(default=None, description="The department of the course")
     course_code: Optional[str] = Field(default=None, description="The code of the course")
+    num_prereqs_max: Optional[int] = Field(default=None, description="The maximum number of prerequisites for the course")
+    sort_by_level: Optional[bool] = Field(default=False, description="Whether to sort the results by level")
+    limit: Optional[int] = Field(default=10, description="The maximum number of results to return")
+    alpha: Optional[float] = Field(default=0.5, description="The alpha value for the hybrid search")
+
+class CourseSearchQueries(BaseModel):
+    queries: List[CourseSearchParams] = Field(default_factory=list)
+
+class CourseSearchResult(BaseModel):
+    dept: str
+    course_code: str
+    course_title: str
+    description: str
+    prerequisites: str
+    course_url: str
 
 class CourseSearchOutput(BaseModel):
-    results: List[str] = Field(default_factory=list)
+    results: List[CourseSearchResult] = Field(default_factory=list)
 
 # ================================
 # Course Path Agent

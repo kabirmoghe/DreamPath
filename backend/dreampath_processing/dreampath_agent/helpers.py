@@ -3,8 +3,8 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 from pydantic import BaseModel
-from backend.dreampath_processing.dreampath_agent.types_legacy import OrchestratorDecision, DreamPathAgentState, CoursePathOperations
-from dreampath_processing.dreampath_agent.prompts import ORCHESTRATOR_DECISION_SYS, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS
+from dreampath_processing.dreampath_agent.types import OrchestratorDecision, DreamPathAgentState, CoursePathOperations, CourseSearchQueries
+from dreampath_processing.dreampath_agent.prompts import ORCHESTRATOR_DECISION_SYS, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS, COURSE_SEARCH_SYS
 
 load_dotenv()
 
@@ -41,6 +41,11 @@ def decide_next_route(state: DreamPathAgentState, config) -> OrchestratorDecisio
 
 def build_operations_from_context_and_results(state: DreamPathAgentState, max_cmds: int=3) -> CoursePathOperations:
     return extract_structured_output_from_context(state, BUILD_OPERATIONS_SYS, CoursePathOperations, model="gpt-4o-mini")
+
+def determine_course_search_queries(state: DreamPathAgentState, config) -> CourseSearchQueries:
+    student_profile = config["configurable"]["student_profile"]
+    student_name = student_profile.name
+    return extract_structured_output_from_context(state, COURSE_SEARCH_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), CourseSearchQueries, model="gpt-4o-mini")
 
 def render_final_reply(state: DreamPathAgentState, config) -> str:
     student_profile = config["configurable"]["student_profile"]

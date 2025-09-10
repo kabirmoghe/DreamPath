@@ -1,7 +1,7 @@
 from copy import deepcopy
 from typing import List, Dict
 from dreampath_processing.courses.schedule_modules.course_path import CoursePath
-from dreampath_processing.courses.course_relationship_handling import construct_course
+from backend.dreampath_processing.courses.course_relationship_handling_legacy import construct_course
 from dreampath_processing.courses.coursepath_agent.types import ExecuteOpResult, RemoveOp, AddOp, MoveOp, ReplaceOp, SwapOp, RebuildOp, Op, ExtractedOpType
 
 # Utilities

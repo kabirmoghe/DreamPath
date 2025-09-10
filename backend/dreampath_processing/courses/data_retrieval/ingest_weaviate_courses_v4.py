@@ -3,6 +3,7 @@ import pandas as pd
 import weaviate
 import weaviate.classes.config as wc
 from weaviate.classes.query import Filter
+from dreampath_processing.courses.data_retrieval.college_info_retrieval import load_dataframes
 
 # ---- Connection helpers -----------------------------------------------------
 
@@ -31,20 +32,6 @@ def infer_level(code: str) -> int:
 def infer_num_prereqs(best_prereq_path_str: str) -> int:
     best_prereq_path = ast.literal_eval(best_prereq_path_str)
     return len(best_prereq_path)
-
-def load_dataframes(paths):
-    rows = []
-    for p in paths:
-        print(f"Loading '{p}'...")
-        if os.path.isdir(p):
-            for name in sorted(os.listdir(p)):
-                if name.lower().endswith(".csv"):
-                    rows.append(pd.read_csv(os.path.join(p, name)))
-        else:
-            rows.append(pd.read_csv(p))
-    if not rows:
-        raise SystemExit("No CSVs found.")
-    return pd.concat(rows, ignore_index=True)
 
 # ---- Schema / Collection (v4) ----------------------------------------------
 

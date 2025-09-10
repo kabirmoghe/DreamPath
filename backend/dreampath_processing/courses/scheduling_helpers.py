@@ -1,4 +1,4 @@
-from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, merge_prereq_trees_to_graph, get_direct_prereqs, prune_prereqs_from_tree, compute_max_prereq_depth, rebuild_prereq_graph
+from backend.dreampath_processing.courses.course_relationship_handling_legacy import build_prereq_tree, merge_prereq_trees_to_graph, get_direct_prereqs, prune_prereqs_from_tree, compute_max_prereq_depth, rebuild_prereq_graph
 from collections import defaultdict, deque
 from typing import List, Set, Dict, Any, Tuple, Deque
 import copy
