@@ -4,6 +4,7 @@ import pandas as pd
 from langchain.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
 from dreampath_processing.courses.prompts.course_matching_prompts import PREREQ_GRAMMAR_PROMPT
+from dreampath_processing.courses.course_relationship_handling import get_department_from_course_code
 
 # Grammar and transformer for parsing prereqs
 prereq_grammar = """
@@ -108,7 +109,7 @@ def preprocess_prereq_text(prereq_text):
 def get_course_formatted_prereqs(enhanced_course):
     # Extract relevant course fields
     prerequisites_text_raw = enhanced_course['prerequisites']
-    dept_code = enhanced_course['dept']
+    dept_code = enhanced_course['department']
 
     if not prerequisites_text_raw or pd.isna(prerequisites_text_raw):
         return ''
@@ -146,7 +147,8 @@ def get_course_prereqs(enhanced_course, overwrite=False):
     
     try: 
         prereq_tree = parse_prereq_grammar(formatted_prereqs)
-        best_prereq_path = extract_best_prereq_path(prereq_tree, dept_prefix=enhanced_course['dept'])
+        dept_prefix = get_department_from_course_code(current_course_code)[0]
+        best_prereq_path = extract_best_prereq_path(prereq_tree, dept_prefix=dept_prefix)
         best_prereq_path = [course for course in best_prereq_path if course != current_course_code]
 
     except Exception as e:

@@ -64,15 +64,9 @@ def retrieve_enhanced_course_from_course_code(course_code):
     Returns:
         DataFrame - DataFrame of the enhanced course
     """
-    # get department name from course code
-    dept_alias, _ = get_department_from_course_code(course_code)
-    dept_alias_map = json.load(open(f'{DATA_DIR}/undergrad_dept_aliases.json'))
-    dept_raw = dept_alias_map[dept_alias]
-    dept_cleaned = dept_raw.replace(' ', '_').lower()
-
-    # get department courses
-    dept_courses = pd.read_csv(f'dreampath_processing/courses/data/{dept_cleaned}_courses_with_descriptions.csv')
-    candidate_course = dept_courses[dept_courses['course_code'] == course_code]
+    # Load all courses
+    all_courses = pd.read_csv(f'{DATA_DIR}/all_courses.csv')
+    candidate_course = all_courses[all_courses['course_code'] == course_code]
 
     if len(candidate_course) == 0:
         return None

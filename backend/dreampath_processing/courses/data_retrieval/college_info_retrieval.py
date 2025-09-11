@@ -10,9 +10,10 @@ from selenium.common.exceptions import NoSuchElementException
 import requests
 from bs4 import BeautifulSoup
 import os
-import json
+from rapidfuzz import process, fuzz
 import unicodedata
 from dreampath_processing.courses.data_retrieval.prerequisite_parsing import get_course_prereqs
+import uuid
 
 CHROME_OPTIONS = Options()
 CHROME_OPTIONS.add_argument("--headless")
@@ -48,10 +49,151 @@ def normalize_text(text):
     
     return text.strip()
 
-def get_dartmouth_majors():
+def get_department_data():
     """
-    Scrapes Dartmouth College's degrees page to retrieve all bachelor's degree majors
-    and their associated departments using Selenium.
+    Scrapes Dartmouth's catalog navigation to get department names and their associated course links.
+    Navigates through the nested menu structure to collect all department-to-courses mappings.
+    
+    Returns:
+        dict: Dictionary mapping department names to lists of course link dictionaries
+    """
+    driver = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()),
+        options=CHROME_OPTIONS
+    )
+    
+    catalog_url = "https://dartmouth.smartcatalogiq.com/current/orc"
+    department_data = {}
+    
+    try:
+        # Navigate to the catalog page
+        driver.get(catalog_url)
+        time.sleep(3)  # Wait for page to load
+        
+        # Find the navLocal ul element
+        nav_local = driver.find_element(By.ID, "navLocal")
+        
+        # Find all li elements with class "hasChildren"
+        has_children_items = nav_local.find_elements(By.CSS_SELECTOR, "li.hasChildren")
+        
+        if len(has_children_items) < 5:
+            print(f"Expected at least 5 hasChildren items, found {len(has_children_items)}")
+            return department_data
+        
+        # Get the 5th hasChildren item (index 4)
+        fifth_item = has_children_items[4]
+        
+        # Find and click the button in the 5th item to expand it
+        try:
+            expand_button = fifth_item.find_element(By.CSS_SELECTOR, "button")
+            expand_button.click()
+            time.sleep(2)  # Wait for expansion
+            print("Clicked main expand button")
+        except Exception as e:
+            print(f"Error clicking main expand button: {e}")
+            return department_data
+        
+        # Now find the expanded ul within the 5th item
+        try:
+            expanded_ul = fifth_item.find_element(By.TAG_NAME, "ul")
+            department_items = expanded_ul.find_elements(By.CSS_SELECTOR, "li.hasChildren")
+            print(f"Found {len(department_items)} department items")
+        except Exception as e:
+            print(f"Error finding expanded department list: {e}")
+            return department_data
+        
+        # UUID for each department
+        dept_ids = {}
+
+        # Process each department
+        for i, dept_item in enumerate(department_items):
+            try:
+                # Get the department name from the link text
+                dept_link = dept_item.find_element(By.TAG_NAME, "a")
+                dept_name = normalize_text(dept_link.text.split('-')[0].strip())
+
+                # Special case for Classics
+                if dept_name == "Classics Classical Studies Greek Latin":
+                    dept_name = "Classics"
+
+                print(f"Processing department {i+1}/{len(department_items)}: {dept_name}")
+
+                # Assign a UUID to the department using UUID5
+                dept_id = str(uuid.uuid5(uuid.NAMESPACE_URL, dept_name))
+                dept_ids[dept_name] = dept_id
+
+                # Find and click the expand button for this department
+                try:
+                    dept_button = dept_item.find_element(By.CSS_SELECTOR, "button")
+                    dept_button.click()
+                    time.sleep(1.5)  # Wait for department expansion
+                except Exception as e:
+                    print(f"Error clicking button for {dept_name}: {e}")
+                    continue
+                
+                # Find the expanded ul within this department
+                try:
+                    dept_expanded_ul = dept_item.find_element(By.TAG_NAME, "ul")
+                    course_items = dept_expanded_ul.find_elements(By.CSS_SELECTOR, "li.hasChildren")
+                    
+                    course_links = []
+                    for i, course_item in enumerate(course_items):
+                        try:
+                            course_link = course_item.find_element(By.TAG_NAME, "a")
+                            course_text = normalize_text(course_link.text.strip())
+                            course_url = course_link.get_attribute('href')
+                            
+                            if course_text and course_url:
+                                course_links.append({
+                                    'text': course_text,
+                                    'url': course_url
+                                    })
+
+                        except Exception as e:
+                            # Some li items might not have links, skip them
+                            continue
+                    
+                    department_data[dept_name] = course_links
+                    print(f"  Found {len(course_links)} course links for {dept_name}")
+                    
+                except Exception as e:
+                    print(f"Error finding course links for {dept_name}: {e}")
+                    department_data[dept_name] = []
+
+                # Remove empty departments
+                if not department_data[dept_name]:
+                    del department_data[dept_name]
+                
+            except Exception as e:
+                print(f"Error processing department item {i}: {e}")
+                continue
+        
+        print(f"Total departments processed: {len(department_data)}")
+        
+    except Exception as e:
+        print(f"An error occurred while scraping department data: {e}")
+    
+    finally:
+        # Close the browser
+        driver.quit()
+    
+    return department_data, dept_ids
+
+def get_department_id(department, dept_ids, score_cutoff=50):
+    match, score, _ = process.extractOne(
+        department.strip("'"), dept_ids.keys(), scorer=fuzz.token_sort_ratio
+    )
+
+    print(f"For department {department}, found match {match} with score {score}")
+
+    if score >= score_cutoff:
+        return dept_ids[match]
+    else:
+        return None
+
+def get_dartmouth_majors(dept_ids):
+    """
+    Scrapes Dartmouth College's degrees page to retrieve all bachelor's degree majors and their associated departments using Selenium.
     
     Returns:
         pandas.DataFrame: DataFrame containing majors and their departments
@@ -129,10 +271,10 @@ def get_dartmouth_majors():
                     degree_type = "Bachelor of " + major_text.split("Bachelor of")[1].strip(")")
                     
                     majors_data.append({
-                        'Major': major_name,
-                        'Department': normalize_text(dept['text']),
-                        'Degree Type': degree_type,
-                        'URL': major_elem.get_attribute('href')
+                        'major': major_name,
+                        'department': normalize_text(dept['text'].replace("Department", "").strip()),
+                        'degree_type': degree_type,
+                        'url': major_elem.get_attribute('href')
                     })
                     
                     print(f"  Found major: {major_name}")
@@ -144,129 +286,9 @@ def get_dartmouth_majors():
     
     # Convert to DataFrame
     df = pd.DataFrame(majors_data)
+    df['department_id'] = df['department'].apply(lambda x: get_department_id(x, dept_ids))
+
     return df
-
-def get_department_data():
-    """
-    Scrapes Dartmouth's catalog navigation to get department names and their associated course links.
-    Navigates through the nested menu structure to collect all department-to-courses mappings.
-    
-    Returns:
-        dict: Dictionary mapping department names to lists of course link dictionaries
-    """
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()),
-        options=CHROME_OPTIONS
-    )
-    
-    catalog_url = "https://dartmouth.smartcatalogiq.com/current/orc"
-    department_data = {}
-    
-    try:
-        # Navigate to the catalog page
-        driver.get(catalog_url)
-        time.sleep(3)  # Wait for page to load
-        
-        # Find the navLocal ul element
-        nav_local = driver.find_element(By.ID, "navLocal")
-        
-        # Find all li elements with class "hasChildren"
-        has_children_items = nav_local.find_elements(By.CSS_SELECTOR, "li.hasChildren")
-        
-        if len(has_children_items) < 5:
-            print(f"Expected at least 5 hasChildren items, found {len(has_children_items)}")
-            return department_data
-        
-        # Get the 5th hasChildren item (index 4)
-        fifth_item = has_children_items[4]
-        
-        # Find and click the button in the 5th item to expand it
-        try:
-            expand_button = fifth_item.find_element(By.CSS_SELECTOR, "button")
-            expand_button.click()
-            time.sleep(2)  # Wait for expansion
-            print("Clicked main expand button")
-        except Exception as e:
-            print(f"Error clicking main expand button: {e}")
-            return department_data
-        
-        # Now find the expanded ul within the 5th item
-        try:
-            expanded_ul = fifth_item.find_element(By.TAG_NAME, "ul")
-            department_items = expanded_ul.find_elements(By.CSS_SELECTOR, "li.hasChildren")
-            print(f"Found {len(department_items)} department items")
-        except Exception as e:
-            print(f"Error finding expanded department list: {e}")
-            return department_data
-        
-        dept_aliases = {}
-
-        # Process each department
-        for i, dept_item in enumerate(department_items):
-            try:
-                # Get the department name from the link text
-                dept_link = dept_item.find_element(By.TAG_NAME, "a")
-                dept_name = normalize_text(dept_link.text.strip())
-                print(f"Processing department {i+1}/{len(department_items)}: {dept_name}")
-                
-                # Find and click the expand button for this department
-                try:
-                    dept_button = dept_item.find_element(By.CSS_SELECTOR, "button")
-                    dept_button.click()
-                    time.sleep(1.5)  # Wait for department expansion
-                except Exception as e:
-                    print(f"Error clicking button for {dept_name}: {e}")
-                    continue
-                
-                # Find the expanded ul within this department
-                try:
-                    dept_expanded_ul = dept_item.find_element(By.TAG_NAME, "ul")
-                    course_items = dept_expanded_ul.find_elements(By.CSS_SELECTOR, "li.hasChildren")
-                    
-                    course_links = []
-                    for i, course_item in enumerate(course_items):
-                        try:
-                            course_link = course_item.find_element(By.TAG_NAME, "a")
-                            course_text = normalize_text(course_link.text.strip())
-                            course_url = course_link.get_attribute('href')
-                            
-                            if course_text and course_url:
-                                course_links.append({
-                                    'text': course_text,
-                                    'url': course_url
-                                })
-
-                                if i == 0:
-                                    dept_aliases[dept_name] = course_text.split(" - ")[0].replace(" ", "_")
-                        except Exception as e:
-                            # Some li items might not have links, skip them
-                            continue
-                    
-                    department_data[dept_name] = course_links
-                    print(f"  Found {len(course_links)} course links for {dept_name}")
-                    
-                except Exception as e:
-                    print(f"Error finding course links for {dept_name}: {e}")
-                    department_data[dept_name] = []
-
-                # Remove empty departments
-                if not department_data[dept_name]:
-                    del department_data[dept_name]
-                
-            except Exception as e:
-                print(f"Error processing department item {i}: {e}")
-                continue
-        
-        print(f"Total departments processed: {len(department_data)}")
-        
-    except Exception as e:
-        print(f"An error occurred while scraping department data: {e}")
-    
-    finally:
-        # Close the browser
-        driver.quit()
-    
-    return department_data, dept_aliases
 
 def get_courses_by_link(courses_links):
     """
@@ -319,7 +341,6 @@ def get_courses_by_link(courses_links):
                     
                     if course_title:  # Only process non-empty titles
                         course_info = {
-                            'dept': dept_abbr,
                             'course_title': course_title,
                             'course_url': link_href
                         }
@@ -424,9 +445,9 @@ def get_course_descriptions(courses_list):
     
     return courses_with_descriptions
 
-def produce_courses_for_department(department_data, department_name):
+def produce_courses_for_department(department_data, department, department_id):
     # load undergraduate links either from master or retrieval
-    major_undergraduate_links = department_data[department_name]
+    major_undergraduate_links = department_data[department]
 
     # if undergraduate links found, get courses from links
     if major_undergraduate_links:
@@ -436,7 +457,7 @@ def produce_courses_for_department(department_data, department_name):
         if courses:
             courses_with_descriptions = get_course_descriptions(courses)
         else:
-            print(f"No courses found for {department_name} from undergraduate links.")
+            print(f"No courses found for {department} from undergraduate links.")
             return None
 
         courses_df = pd.DataFrame(courses_with_descriptions)
@@ -444,9 +465,13 @@ def produce_courses_for_department(department_data, department_name):
         # Remove rows with null course_code
         courses_df = courses_df[courses_df['course_code'].notna()]
 
+        # Add department id
+        courses_df['department'] = department
+        courses_df['department_id'] = department_id
+
         return courses_df
     else:
-        print(f"No undergraduate links found for {department_name}")
+        print(f"No undergraduate links found for {department}")
         return None
 
 def add_prereqs_to_department_data(department_courses_df):

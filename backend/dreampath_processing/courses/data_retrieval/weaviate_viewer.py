@@ -21,13 +21,13 @@ coll = client.collections.get("Course")
 # Sidebar filters
 q = st.sidebar.text_input("Search (hybrid)", "")
 alpha = st.sidebar.slider("Hybrid alpha (0=keyword, 1=vector)", 0.0, 1.0, 0.5, 0.05)
-dept = st.sidebar.text_input("Department filter (e.g., COSC)", "")
+department = st.sidebar.text_input("Department filter (e.g., COSC)", "")
 limit = st.sidebar.slider("Rows", 5, 200, 50)
 
 # Build filters
 flt = None
-if dept:
-    flt = Filter.by_property("dept").equal(dept)
+if department:
+    flt = Filter.by_property("department").equal(department)
 
 # Query
 if q:
@@ -35,7 +35,7 @@ if q:
         query=q, alpha=alpha, limit=limit,
         filters=flt,
         return_properties=[
-            "dept","course_code","course_title","description","prerequisites","num_prereqs","level","course_url"
+            "department","course_code","course_title","description","prerequisites","num_prereqs","level","course_url"
         ],
     )
     objs = res.objects
@@ -43,7 +43,7 @@ else:
     res = coll.query.fetch_objects(
         limit=limit, filters=flt,
         return_properties=[
-            "dept","course_code","course_title","description","prerequisites","num_prereqs","level","course_url"
+            "department","course_code","course_title","description","prerequisites","num_prereqs","level","course_url"
         ],
     )
     objs = res.objects

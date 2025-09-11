@@ -16,14 +16,15 @@ def connect_local_with_openai():
     return weaviate.connect_to_local(headers=headers)
 
 # ---- IDs & transforms -------------------------------------------------------
-def stable_course_id(dept: str, course_code: str) -> str:
+def stable_course_id(department: str, course_code: str) -> str:
     """Reproducible id based on intrinsic fields."""
     try:
-        d = (dept or "").strip().upper()
+        d = (department or "").strip().upper()
         c = (course_code or "").strip().upper()
         return f"{d}::{c}"
     except Exception as e:
-        raise Exception(f"Error creating stable course id with dept: {dept} and course code: {course_code}: {e}")
+        print(department, course_code)
+        raise Exception(f"Error creating stable course id with department: {department} and course code: {course_code}: {e}")
 
 def infer_level(code: str) -> int:
     m = re.search(r"(\d+)", str(code or ""))
@@ -53,8 +54,8 @@ def ensure_collection(client, name="Course", recreate=False, use_openai=True):
     coll = client.collections.create(
         name=name,
         properties=[
+            wc.Property(name="department",       data_type=wc.DataType.TEXT, index_searchable=True, index_filterable=True, skip_vectorization=True),
             wc.Property(name="course_id",        data_type=wc.DataType.TEXT, index_filterable=True, skip_vectorization=True),
-            wc.Property(name="dept",             data_type=wc.DataType.TEXT, index_searchable=True, index_filterable=True, skip_vectorization=True),
             wc.Property(name="course_code",      data_type=wc.DataType.TEXT, index_searchable=True, index_filterable=True, skip_vectorization=True),
             wc.Property(name="course_title",     data_type=wc.DataType.TEXT, index_searchable=True),  # Will be vectorized
             wc.Property(name="description",      data_type=wc.DataType.TEXT, index_searchable=True),  # Will be vectorized
@@ -86,12 +87,12 @@ def main():
         coll = ensure_collection(client, name=args.collection, recreate=args.recreate, use_openai=(not args.no_openai))
 
         df = load_dataframes(args.inputs)
-        expected = ["dept","course_title","course_url","course_code","description",
+        expected = ["department","course_title","course_url","course_code","description",
                     "prerequisites","degree_req","html_content","best_prereq_path"]
         for col in expected:
             if col not in df: df[col] = ""
 
-        df["course_id"] = [stable_course_id(d, c) for d,c in zip(df["dept"], df["course_code"])]
+        df["course_id"] = [stable_course_id(d, c) for d,c in zip(df["department"], df["course_code"])]
         df["updated_at"] = dt.datetime.now(dt.UTC).strftime('%Y-%m-%dT%H:%M:%SZ')
         df["level"] = [infer_level(c) for c in df["course_code"]]
         df["num_prereqs"] = [infer_num_prereqs(b) for b in df["best_prereq_path"]]
@@ -104,7 +105,7 @@ def main():
         for _, r in df.iterrows():
             rows.append({
                 "course_id": r["course_id"],
-                "dept": r["dept"],
+                "department": r["department"],
                 "course_code": r["course_code"],
                 "course_title": r["course_title"],
                 "description": r["description"],
@@ -133,5 +134,4 @@ def main():
         client.close()
 
 if __name__ == "__main__":
-    # print(infer_level("COSC89.21"))
     main()

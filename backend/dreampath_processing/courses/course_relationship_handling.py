@@ -4,7 +4,7 @@ import pandas as pd
 from collections import defaultdict
 from typing import Dict, List, Set, Optional, Tuple
 from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY, CourseType
-from dreampath_processing.courses.data_retrieval.college_info_retrieval import DATA_DIR
+DATA_DIR = "dreampath_processing/courses/data"
 
 # -----------------------------------------------------
 # External course information extraction / confirmation
