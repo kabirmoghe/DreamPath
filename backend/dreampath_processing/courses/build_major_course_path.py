@@ -1,8 +1,7 @@
 from dreampath_processing.courses.data_retrieval.course_path_visualization import flatten_graph_dict, visualize_graph
-from backend.dreampath_processing.courses.course_relationship_handling_legacy import build_prereq_tree, merge_prereq_trees_to_graph, construct_course
+from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, merge_prereq_trees_to_graph, construct_course
 from dreampath_processing.courses.scheduling_helpers import schedule_courses_by_term
 from dreampath_processing.courses.schedule_modules.course_path import CoursePath
-from dreampath_processing.courses.schedule_modules.course import Course
 
 # major_courses, complementary_courses, 
 def build_course_path(recommended_courses, course_bank, visualize_course_connections=False) -> CoursePath:

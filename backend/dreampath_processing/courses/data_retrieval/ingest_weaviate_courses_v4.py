@@ -16,6 +16,7 @@ def connect_local_with_openai():
     return weaviate.connect_to_local(headers=headers)
 
 # ---- IDs & transforms -------------------------------------------------------
+
 def stable_course_id(department: str, course_code: str) -> str:
     """Reproducible id based on intrinsic fields."""
     try:
@@ -36,14 +37,14 @@ def infer_num_prereqs(best_prereq_path_str: str) -> int:
 
 # ---- Schema / Collection (v4) ----------------------------------------------
 
-def ensure_collection(client, name="Course", recreate=False, use_openai=True):
+def ensure_course_collection(client, name="Course", recreate=False, use_openai=True):
     if recreate:
         try:
             client.collections.delete(name)
         except Exception:
             pass
 
-    existing = [c.name for c in client.collections.list_all()]
+    existing = [c for c, _ in client.collections.list_all().items()]
     if name in existing:
         return client.collections.get(name)
 
@@ -54,9 +55,10 @@ def ensure_collection(client, name="Course", recreate=False, use_openai=True):
     coll = client.collections.create(
         name=name,
         properties=[
-            wc.Property(name="department",       data_type=wc.DataType.TEXT, index_searchable=True, index_filterable=True, skip_vectorization=True),
             wc.Property(name="course_id",        data_type=wc.DataType.TEXT, index_filterable=True, skip_vectorization=True),
             wc.Property(name="course_code",      data_type=wc.DataType.TEXT, index_searchable=True, index_filterable=True, skip_vectorization=True),
+            wc.Property(name="department_id",    data_type=wc.DataType.UUID, index_filterable=True, skip_vectorization=True),
+            wc.Property(name="department",       data_type=wc.DataType.TEXT, index_searchable=True, index_filterable=True, skip_vectorization=True),
             wc.Property(name="course_title",     data_type=wc.DataType.TEXT, index_searchable=True),  # Will be vectorized
             wc.Property(name="description",      data_type=wc.DataType.TEXT, index_searchable=True),  # Will be vectorized
             wc.Property(name="level",            data_type=wc.DataType.INT, index_filterable=True),
@@ -84,10 +86,10 @@ def main():
 
     client = connect_local_with_openai()  # or use connect_to_custom(url="http://localhost:8080", headers=...)
     try:
-        coll = ensure_collection(client, name=args.collection, recreate=args.recreate, use_openai=(not args.no_openai))
+        coll = ensure_course_collection(client, name=args.collection, recreate=args.recreate, use_openai=(not args.no_openai))
 
         df = load_dataframes(args.inputs)
-        expected = ["department","course_title","course_url","course_code","description",
+        expected = ["department","department_id","course_title","course_url","course_code","description",
                     "prerequisites","degree_req","html_content","best_prereq_path"]
         for col in expected:
             if col not in df: df[col] = ""
@@ -105,8 +107,9 @@ def main():
         for _, r in df.iterrows():
             rows.append({
                 "course_id": r["course_id"],
-                "department": r["department"],
                 "course_code": r["course_code"],
+                "department_id": r["department_id"],
+                "department": r["department"],
                 "course_title": r["course_title"],
                 "description": r["description"],
                 "level": r["level"],

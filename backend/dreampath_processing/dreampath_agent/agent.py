@@ -3,11 +3,11 @@ from langgraph.graph import StateGraph, START, END
 from langgraph.types import interrupt, Command
 from langgraph.checkpoint.memory import InMemorySaver
 from dreampath_processing.dreampath_agent.types import DreamPathAgentState
-from dreampath_processing.dreampath_agent.CourseSearchTool import CourseSearchTool
+from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
 from dreampath_processing.dreampath_agent.helpers import decide_next_route, build_operations_from_context_and_results, determine_course_search_queries
 from dreampath_processing.dreampath_agent.helpers import render_final_reply
 from dreampath_processing.courses.build_major_course_path import build_course_path
-from backend.dreampath_processing.courses.course_relationship_handling_legacy import construct_course
+from dreampath_processing.courses.course_relationship_handling import construct_course
 from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
 from dreampath_processing.courses.coursepath_agent.agent import CoursePathAgent, CoursePathTools
 from dreampath_processing.modules.student_profile import StudentProfile
@@ -22,38 +22,45 @@ def orchestrator_node(state: DreamPathAgentState, config) -> DreamPathAgentState
         "route": decision.next,
     }
 
-def course_search_node(state: DreamPathAgentState) -> DreamPathAgentState:
+def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
 
-    course_search_tool: CourseSearchTool = state.config["configurable"]["course_search_tool"]
+    course_search_tool: CourseSearchTool = config["configurable"]["course_search_tool"]
     queries = determine_course_search_queries(state, config)
+    print(f"********** CourseSearchNode: queries={queries}")
 
-    # Build tool call
-    tool_call = {
-        "role": "assistant",
-        "content": json.dumps({
-            "type": "tool_call",
-            "name": "course_search",
-            "arguments": {
-                "queries": queries,
-            }
-        }),
-    }
+    tool_messages = []
+    for query in queries.queries:
 
-    # Execute tool call
-    search_results = course_search_tool.structured_hybrid_search(queries)
-    
-    tool_message = {
-        "role": "assistant",
-        "content": json.dumps({
-            "type": "tool_result",
-            "name": "course_search",
-            "result": json.dumps(search_results.model_dump()),
-        }),
-    }
+        # Build tool call
+        tool_call = {
+            "role": "assistant",
+            "content": json.dumps({
+                "type": "tool_call",
+                "name": "course_search",
+                "arguments": {
+                    "queries": json.dumps(query.model_dump()),
+                }
+            }),
+        }
+
+        tool_messages.append(tool_call)
+
+        # Execute tool call
+        search_results = course_search_tool.structured_hybrid_search(query)
+        
+        tool_message = {
+            "role": "assistant",
+            "content": json.dumps({
+                "type": "tool_result",
+                "name": "course_search",
+                "result": json.dumps(search_results.model_dump()),
+            }),
+        }
+
+        tool_messages.append(tool_message)
 
     return {
-        "recent_messages": [tool_call, tool_message],
-        "search_results": search_results
+        "recent_messages": tool_messages,
     }
     
 def plan_builder_node(state: DreamPathAgentState) -> DreamPathAgentState:
@@ -171,11 +178,7 @@ g.add_conditional_edges("orchestrator", router, {
 def sub_node_router(state: DreamPathAgentState):
     return state.route or "orchestrator"
 
-g.add_conditional_edges("course_search", sub_node_router, {
-    "course_search": "course_search",
-    "orchestrator": "orchestrator",
-})
-
+g.add_edge("course_search", "orchestrator")
 g.add_edge("plan_builder", "course_path")     # plan → execute directly
 g.add_conditional_edges("course_path", sub_node_router, {
     "course_path": "course_path",
@@ -194,7 +197,7 @@ with open("my_graph.png", "wb") as f:
 if __name__ == "__main__":
     
     # Set up course path agent
-    major_name = 'Computer Science'
+    major = 'Computer Science'
     # removed: 'COSC89.17', 'COSC89.19', 'COSC89.20', 'COSC89.28'
     major_courses = {'COSC89.27', 'COSC55', 'COSC35', 'COSC62', 'COSC69.17', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61'}
     complementary_courses = {'QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26'}
@@ -208,7 +211,7 @@ if __name__ == "__main__":
     test_course_path.curr_window_start = 6 # Example
 
     # Build agent
-    tools = CoursePathTools(course_path=test_course_path, major_name=major_name)
+    tools = CoursePathTools(course_path=test_course_path, major=major)
     agent = CoursePathAgent(tools=tools)
     course_search_tool = CourseSearchTool()
 
@@ -231,7 +234,7 @@ if __name__ == "__main__":
         user = input("You: ").strip()
         if not user: break
         try:
-            state_dict = app.invoke({"major": major_name, "recent_messages": [{"role": "user", "content": user}]}, config)
+            state_dict = app.invoke({"major": major, "recent_messages": [{"role": "user", "content": user}]}, config)
             
             # Check if there was an interrupt
             while '__interrupt__' in state_dict:

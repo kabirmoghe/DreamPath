@@ -4,82 +4,32 @@ import pandas as pd
 from collections import defaultdict
 from typing import Dict, List, Set, Optional, Tuple
 from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY, CourseType
+from dreampath_processing.courses.data_retrieval.weaviate_course_service import WeaviateCourseService
+
 DATA_DIR = "dreampath_processing/courses/data"
 
-# -----------------------------------------------------
-# External course information extraction / confirmation
-# -----------------------------------------------------
-def get_department_from_course_code(course_code):
-    """
-    Get the department from a given course code
+# Lazy initialization of Weaviate service
+_weaviate_service = None
 
-    Args:
-        course_code: str - Course code to get the department from
+def get_weaviate_service():
+    global _weaviate_service
+    if _weaviate_service is None:
+        _weaviate_service = WeaviateCourseService()
+    return _weaviate_service
 
-    Returns:
-        Tuple[str, str] - Tuple of department alias and course number
-    """
-    course_components = re.match(r'^([A-Z]+)(.*)', course_code)
-    
-    if course_components:
-        dept_alias = course_components.group(1)
-        number = course_components.group(2)
-
-        try:
-            number = float(number)
-        except ValueError:
-            number = None
-
-        return dept_alias, number
-    
-    return None, None
-
-def retrieve_enhanced_course_from_course_code(course_code):
-    """
-    Retrieve the enhanced course from a given course code
-
-    Args:
-        course_code: str - Course code to retrieve the enhanced course from
-
-    Returns:
-        DataFrame - DataFrame entry of the enhanced course
-    """
-
-    # Load all courses
-    all_courses = pd.read_csv(f'{DATA_DIR}/all_courses.csv')
-    candidate_course = all_courses[all_courses['course_code'] == course_code]
-
-    if len(candidate_course) == 0:
-        return None
-
-    return candidate_course.iloc[0]
-
-def course_code_exists(course_code: str) -> bool:
-    """Check if a course code exists in the master course list"""
-    enhanced_course = retrieve_enhanced_course_from_course_code(course_code)
-
-    return enhanced_course is not None
-
-def is_major_course(course_code: str, major_name: str) -> bool:
-    """Check if a course code is a major course"""
-    department_alias_for_course = get_department_from_course_code(course_code)
-    major_alias = get_department_alias_from_dept_name(major_name)
-
-    return (department_alias_for_course == major_alias)
-
-def construct_course(course_code: str, major_name: Optional[str] = None, hardcoded_type: Optional[CourseType] = None, must_have_window: Optional[Tuple[int, int]] = None) -> Course:
+def construct_course(course_code: str, major: Optional[str] = None, hardcoded_type: Optional[CourseType] = None, must_have_window: Optional[Tuple[int, int]] = None) -> Course:
     """Construct a Course object from a course code and major name"""
     
     # Validate existence externally
-    enhanced_course = retrieve_enhanced_course_from_course_code(course_code)
+    enhanced_course = get_weaviate_service().get_course_by_code(course_code)
     if enhanced_course is None:
         raise Exception(f"Unknown course code '{course_code}'.")
     
     # Determine course type
     if not hardcoded_type:
-        if not major_name:
+        if not major:
             raise ValueError("Must provide major name if hardcoded_type is not provided")
-        ctype = MAJOR if is_major_course(course_code, major_name) else COMPLEMENTARY
+        ctype = MAJOR if get_weaviate_service().is_major_course(course_code, major) else COMPLEMENTARY
     else:
         ctype = hardcoded_type
 
@@ -124,7 +74,7 @@ def build_prereq_tree(course_code, base_tokens=("IP"), visited=None, prereq_accu
         return {course_code: "cyclic"}  # or just skip if preferred
     visited.add(course_code)
 
-    enhanced_course = retrieve_enhanced_course_from_course_code(course_code)
+    enhanced_course = get_weaviate_service().get_course_by_code(course_code)
     if enhanced_course is None:
         print(f"Course {course_code} not found")
         return {}, set()
@@ -305,7 +255,10 @@ def compute_max_prereq_depth(prereq_tree):
     return _depth_traverse(prereq_tree, 0)
 
 if __name__ == "__main__":
+
     course_codes = ["COSC89.27", "COSC55", "COSC35", "COSC62", "COSC69.17", "COSC69.18", "COSC74", "COSC70", "COSC34", "COSC61", "MATH56", "COGS44", "COGS26", "QSS30.09", "QSS20", "QSS17", "QSS45", "QSS19", "QSS30.19", "QSS30.07"]
+    major = "Computer Science"
     for course_code in course_codes:
-        enhanced_course = retrieve_enhanced_course_from_course_code(course_code)
-        print(' '.join(enhanced_course['course_title'].split()[2:]))
+        print("---")
+        course_obj = construct_course(course_code, major)
+        print(course_obj)

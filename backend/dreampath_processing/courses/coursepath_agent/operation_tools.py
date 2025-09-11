@@ -1,7 +1,7 @@
 from copy import deepcopy
 from typing import List, Dict
 from dreampath_processing.courses.schedule_modules.course_path import CoursePath
-from backend.dreampath_processing.courses.course_relationship_handling_legacy import construct_course
+from dreampath_processing.courses.course_relationship_handling import construct_course
 from dreampath_processing.courses.coursepath_agent.types import ExecuteOpResult, RemoveOp, AddOp, MoveOp, ReplaceOp, SwapOp, RebuildOp, Op, ExtractedOpType
 
 # Utilities
@@ -51,9 +51,9 @@ def summarize_diff(diff: Dict[str, List[Dict[str, str]]]) -> str:
     return summary
 
 class CoursePathTools:
-    def __init__(self, course_path: CoursePath, major_name: str):
+    def __init__(self, course_path: CoursePath, major: str):
         self.cp = course_path
-        self.major_name = major_name
+        self.major = major
         self.window_start_term = course_path.curr_window_start
 
     def remove(self, p: RemoveOp) -> ExecuteOpResult:
@@ -80,7 +80,7 @@ class CoursePathTools:
             elif p.add_to_term is not None:
                 add_window = (p.add_to_term, p.add_to_term)
 
-            course_obj = construct_course(course_code=p.course_code, major_name=self.major_name, must_have_window=add_window)
+            course_obj = construct_course(course_code=p.course_code, major=self.major, must_have_window=add_window)
             self.cp.add_course(course_to_add=course_obj, reschedule=p.reschedule)
             after = snapshot_path(self.cp)
             return ExecuteOpResult(ok=True, diff=compute_diff(before, after), warnings=[], error=None, requires_reschedule=False, new_version=None)
@@ -118,7 +118,7 @@ class CoursePathTools:
     def replace(self, p: ReplaceOp) -> ExecuteOpResult:
         before = snapshot_path(self.cp)
         try:
-            new_course = construct_course(course_code=p.new_course_code, major_name=self.major_name, must_have_window=p.must_have_window)
+            new_course = construct_course(course_code=p.new_course_code, major=self.major, must_have_window=p.must_have_window)
             self.cp.replace_course(new_course=new_course, old_course_code=p.old_course_code, reschedule=p.reschedule)
             after = snapshot_path(self.cp)
             return ExecuteOpResult(ok=True, diff=compute_diff(before, after), warnings=[], error=None, requires_reschedule=False, new_version=None)
@@ -149,7 +149,7 @@ class CoursePathTools:
         must_have_map = {}
         if p.must_have_course_map:
             for code, window in p.must_have_course_map.items():
-                must_have_map[code] = construct_course(course_code=code, major_name=self.major_name, must_have_window=window)
+                must_have_map[code] = construct_course(course_code=code, major=self.major, must_have_window=window)
         try:
             self.cp.rebuild(window_start_term=self.window_start_term, must_have_course_map=must_have_map)
             after = snapshot_path(self.cp)

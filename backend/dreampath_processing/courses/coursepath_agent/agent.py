@@ -14,7 +14,7 @@ from dreampath_processing.courses.coursepath_agent.operation_tools import Course
 from dreampath_processing.courses.coursepath_agent.prompts import OP_EXTRACTOR_SYS, PARAM_EXTRACTOR_SYS
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
-from backend.dreampath_processing.courses.course_relationship_handling_legacy import construct_course
+from dreampath_processing.courses.course_relationship_handling import construct_course
 
 load_dotenv()
 
@@ -233,7 +233,7 @@ class CoursePathAgent:
         return out
     
 if __name__ == "__main__":
-    major_name = 'Computer Science'
+    major = 'Computer Science'
     major_courses = {'COSC89.27', 'COSC55', 'COSC35', 'COSC62', 'COSC69.17', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61'}
     complementary_courses = {'QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26'}
     
@@ -246,7 +246,7 @@ if __name__ == "__main__":
     test_course_path.curr_window_start = 6 # Example
 
     # Build agent
-    tools = CoursePathTools(course_path=test_course_path, major_name=major_name)
+    tools = CoursePathTools(course_path=test_course_path, major=major)
     agent = CoursePathAgent(tools=tools)
 
     # Run agent
@@ -257,7 +257,6 @@ if __name__ == "__main__":
         print(f"----------\nCoursePath (@ term={test_course_path.curr_window_start})")
         current_path = tools.cp
         print(current_path.visualize())
-        print(current_path)
         print("----------\n")
 
         user_input = input("You: ").strip()

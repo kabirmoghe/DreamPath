@@ -13,7 +13,7 @@ class OrchestratorDecision(BaseModel):
 # ================================
 class CourseSearchParams(BaseModel):
     query: Optional[str] = Field(default=None, description="The query to search for courses")
-    dept: Optional[str] = Field(default=None, description="The department of the course")
+    department: Optional[str] = Field(default=None, description="The department of the course")
     course_code: Optional[str] = Field(default=None, description="The code of the course")
     num_prereqs_max: Optional[int] = Field(default=None, description="The maximum number of prerequisites for the course")
     sort_by_level: Optional[bool] = Field(default=False, description="Whether to sort the results by level")
@@ -24,7 +24,8 @@ class CourseSearchQueries(BaseModel):
     queries: List[CourseSearchParams] = Field(default_factory=list)
 
 class CourseSearchResult(BaseModel):
-    dept: str
+    department: str
+    department_id: str
     course_code: str
     course_title: str
     description: str
