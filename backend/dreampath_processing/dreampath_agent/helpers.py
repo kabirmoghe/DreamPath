@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 from pydantic import BaseModel
 from dreampath_processing.dreampath_agent.types import OrchestratorDecision, DreamPathAgentState, CoursePathOperations, CourseSearchQueries, CourseSearchOutput
-from dreampath_processing.dreampath_agent.prompts import ORCHESTRATOR_DECISION_SYS, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS, COURSE_SEARCH_SYS
+from dreampath_processing.dreampath_agent.prompts import ORCHESTRATOR_DECISION_SYS_V2, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS, COURSE_SEARCH_SYS
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import construct_course
 from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
@@ -37,7 +37,7 @@ def extract_structured_output_from_context(state: DreamPathAgentState, system_pr
     if verbose:
         print("=== MESSAGES SENT TO LLM ===")
         for i, msg in enumerate(messages):
-            print(f"Message {i}: {msg['role']} - {msg['content']}")#[:200]}...")
+            print(f"Message {i}: {msg['role']} - {msg['content'][:200]}...")
         print("=== END MESSAGES ===")
     response = client.chat.completions.create(
         model=model,
@@ -53,15 +53,7 @@ def extract_structured_output_from_context(state: DreamPathAgentState, system_pr
 def decide_next_route(state: DreamPathAgentState, config) -> OrchestratorDecision:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state, ORCHESTRATOR_DECISION_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), OrchestratorDecision)#, verbose=True)
-
-# -----------------------------------------------------
-# PLAN BUILDER NODE
-# -----------------------------------------------------
-def build_operations_from_context_and_results(state: DreamPathAgentState, config) -> CoursePathOperations:
-    student_profile = config["configurable"]["student_profile"]
-    current_term = student_profile.course_path.curr_window_start
-    return extract_structured_output_from_context(state, BUILD_OPERATIONS_SYS.format(current_term=current_term), CoursePathOperations, model="gpt-4o-mini")
+    return extract_structured_output_from_context(state, ORCHESTRATOR_DECISION_SYS_V2.format(student_name=student_name, student_profile=student_profile.__str__()), OrchestratorDecision, model="gpt-4o", verbose=True)
 
 # -----------------------------------------------------
 # COURSE SEARCH NODE
@@ -69,7 +61,15 @@ def build_operations_from_context_and_results(state: DreamPathAgentState, config
 def determine_course_search_queries(state: DreamPathAgentState, config) -> CourseSearchQueries:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state, COURSE_SEARCH_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), CourseSearchQueries, model="gpt-4o-mini")#, verbose=True)
+    return extract_structured_output_from_context(state, COURSE_SEARCH_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), CourseSearchQueries, model="gpt-4o", verbose=True)
+
+# -----------------------------------------------------
+# PLAN BUILDER NODE
+# -----------------------------------------------------
+def build_operations_from_context_and_results(state: DreamPathAgentState, config) -> CoursePathOperations:
+    student_profile = config["configurable"]["student_profile"]
+    current_term = student_profile.course_path.curr_window_start
+    return extract_structured_output_from_context(state, BUILD_OPERATIONS_SYS.format(current_term=current_term, student_profile=student_profile.__str__()), CoursePathOperations, verbose=True)
 
 # -----------------------------------------------------
 # FINAL REPLY RENDERER NODE
@@ -131,7 +131,7 @@ if __name__ == "__main__":
     # Ex1
     state_1 = DreamPathAgentState(
         recent_messages=[
-            {"role": "user", "content": "Tell me more about COSC74."},
+            {"role": "user", "content": "Can you tell me more about cosc62"},
         ]
     )
 
