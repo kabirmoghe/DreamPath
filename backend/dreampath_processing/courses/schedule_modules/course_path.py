@@ -70,7 +70,7 @@ class CoursePath:
     def __str__(self):
         cp_str = ""
         for term_idx, term in enumerate(self.course_path):
-            cp_str += f"#### Term {term_idx} Courses:\n"
+            cp_str += f"#### Term {term_idx} Courses{' [**Current Term**]' if term_idx == self.curr_window_start else ''}:\n"
             for course in term:
                 course_obj = self.course_bank[course]
                 cp_str += f"{course_obj.course_code}: '{course_obj.course_title}' |"

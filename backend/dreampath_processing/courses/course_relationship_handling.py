@@ -44,7 +44,7 @@ def construct_course(course_code: str, major: Optional[str] = None, hardcoded_ty
         must_have_window=must_have_window,
         term_idx=None,
         term_idx_in_term=None,
-        course_title=' '.join(enhanced_course['course_title'].split()[2:]),
+        course_title=enhanced_course['course_title'],
         course_description=enhanced_course['description'],
     )
 

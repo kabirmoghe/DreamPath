@@ -6,7 +6,6 @@ import operator
 
 class OrchestratorDecision(BaseModel):
     next: Literal["plan_builder", "course_search", "course_path", "finalize"]
-    topics: Optional[Dict[str, int]] = Field(default_factory=dict)    
 
 # ================================
 # Course Search Tool

@@ -4,8 +4,7 @@ from langgraph.types import interrupt, Command
 from langgraph.checkpoint.memory import InMemorySaver
 from dreampath_processing.dreampath_agent.types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
-from dreampath_processing.dreampath_agent.helpers import decide_next_route, build_operations_from_context_and_results, determine_course_search_queries
-from dreampath_processing.dreampath_agent.helpers import render_final_reply
+from dreampath_processing.dreampath_agent.helpers import decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, format_course_search_output, render_final_reply
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import construct_course
 from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
@@ -14,9 +13,9 @@ from dreampath_processing.modules.student_profile import StudentProfile
 
 def orchestrator_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
 
-    # print(f"Orchestrator thinking...")
+    print(f"Orchestrator thinking...")
     decision = decide_next_route(state, config)
-    # print(f"--> Decision: {decision}")
+    print(f"--> Decision: {decision}")
 
     return {
         "route": decision.next,
@@ -53,7 +52,7 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
             "content": json.dumps({
                 "type": "tool_result",
                 "name": "course_search",
-                "result": json.dumps(search_results.model_dump()),
+                "result": format_course_search_output(search_results),
             }),
         }
 
@@ -63,8 +62,8 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
         "recent_messages": tool_messages,
     }
     
-def plan_builder_node(state: DreamPathAgentState) -> DreamPathAgentState:
-    ops = build_operations_from_context_and_results(state)
+def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
+    ops = build_operations_from_context_and_results(state, config)
     
     return {
         "worklist": ops.operations, # List[str], e.g., ["Add QSS41 to term 6.", "Add COSC50 to term 6."]
@@ -228,6 +227,7 @@ if __name__ == "__main__":
 
     while True:
         current_path = tools.cp
+        student_profile.course_path = current_path
         print(f"----------\nCoursePath (@ term={current_path.curr_window_start})")
         print(current_path.visualize())
         print("----------\n")
