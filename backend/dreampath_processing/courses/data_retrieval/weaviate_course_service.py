@@ -18,6 +18,7 @@ class WeaviateCourseService:
     def __new__(cls, http_host="localhost", http_port=8080, http_secure=False, 
                 grpc_host="localhost", grpc_port=50051, grpc_secure=False):
         if cls._instance is None:
+            print("Creating new WeaviateCourseService instance")
             with cls._lock:
                 if cls._instance is None:
                     cls._instance = super().__new__(cls)

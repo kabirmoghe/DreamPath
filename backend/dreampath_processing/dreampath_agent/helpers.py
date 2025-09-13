@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 from pydantic import BaseModel
 from dreampath_processing.dreampath_agent.types import OrchestratorDecision, DreamPathAgentState, CoursePathOperations, CourseSearchQueries, CourseSearchOutput
-from dreampath_processing.dreampath_agent.prompts import ORCHESTRATOR_DECISION_SYS_V2, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS, COURSE_SEARCH_SYS
+from dreampath_processing.dreampath_agent.prompts import SUMMARY_SYS_PROMPT, ORCHESTRATOR_DECISION_SYS_V2, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS, COURSE_SEARCH_SYS
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import construct_course
 from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
@@ -18,14 +18,43 @@ load_dotenv()
 client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
 
 # -----------------------------------------------------
+# Update Summary
+# -----------------------------------------------------
+def handle_summary_get_context_messages(state: DreamPathAgentState):
+    new_messages = state.messages[state.summary_end:]
+    num_messages_to_summarize = max(0, len(new_messages) - 20)
+    new_messages_to_summarize = new_messages[:num_messages_to_summarize]
+    
+    if new_messages_to_summarize:
+        new_summary = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": SUMMARY_SYS_PROMPT.format(summary=state.summary, new_messages=new_messages_to_summarize)}
+            ],
+            response_model=str,
+            temperature=0
+        )
+        new_summary_end = state.summary_end + num_messages_to_summarize + 1
+
+        # Update state
+        state.summary = new_summary
+        state.summary_end = new_summary_end
+
+    recent_messages = state.messages[state.summary_end:]
+    return recent_messages
+
+# -----------------------------------------------------
 # Build Context
 # -----------------------------------------------------
 def build_messages(state: DreamPathAgentState, prompt: str):
+
     msgs = [{"role": "system", "content": prompt}]
+    recent_messages = handle_summary_get_context_messages(state)
+
     if state.summary:
-        msgs.append({"role": "assistant", "content": f"Summary: ...{state.summary[-800:]}"})
-    if state.recent_messages:
-        msgs.extend(state.recent_messages[-10:])
+        msgs.append({"role": "assistant", "content": f"Summary: ...{state.summary[-1200:]}"})
+
+    msgs.extend(recent_messages)
 
     return msgs
 
@@ -130,21 +159,21 @@ if __name__ == "__main__":
 
     # Ex1
     state_1 = DreamPathAgentState(
-        recent_messages=[
+        messages=[
             {"role": "user", "content": "Can you tell me more about cosc62"},
         ]
     )
 
     # Ex2
     state_2 = DreamPathAgentState(
-        recent_messages=[
+        messages=[
             {"role": "user", "content": "Let's add a course on israel palestine to term 10"},
         ]
     )
 
     # Ex3
     state_3 = DreamPathAgentState(
-        recent_messages=[
+        messages=[
             {"role": "user", "content": "find me a course on hip hop music"},
         ]
     )

@@ -12,7 +12,6 @@ from dreampath_processing.courses.coursepath_agent.agent import CoursePathAgent,
 from dreampath_processing.modules.student_profile import StudentProfile
 
 def orchestrator_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
-
     print(f"Orchestrator thinking...")
     decision = decide_next_route(state, config)
     print(f"--> Decision: {decision}")
@@ -22,7 +21,6 @@ def orchestrator_node(state: DreamPathAgentState, config) -> DreamPathAgentState
     }
 
 def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
-
     course_search_tool: CourseSearchTool = config["configurable"]["course_search_tool"]
     queries = determine_course_search_queries(state, config)
     print(f"********** CourseSearchNode: queries={queries}")
@@ -59,7 +57,7 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
         tool_messages.append(tool_message)
 
     return {
-        "recent_messages": tool_messages,
+        "messages": tool_messages,
     }
     
 def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
@@ -72,14 +70,6 @@ def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgentState
     }
 
 def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
-    """
-    flow: 
-    - if have user_clarification (from previous run): cp_agent_input <- user_clarification
-    - else: cp_agent_input = state.worklist[state.cursor]
-    - then, run course_path_tool(state, cp_agent_input)
-
-
-    """
     coursepath_agent: CoursePathAgent = config["configurable"]["coursepath_agent"]
     cursor = state.cursor
     outcome = None
@@ -132,7 +122,7 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
             }
 
     return {
-        "recent_messages": [tool_call, tool_message],
+        "messages": [tool_call, tool_message],
         "current_cp_agent_outcomes": [outcome],
         "worklist": worklist,
         "cursor": cursor,
@@ -140,13 +130,12 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     }
 
 def finalize_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
-
     reply = render_final_reply(state, config)
     return {
         "ui_reply": reply,
         "current_cp_agent_outcomes": [],
         "search_results": None,
-        "recent_messages": [{"role": "assistant", "content": reply}],
+        "messages": [{"role": "assistant", "content": reply}],
     }
 
 # ------------------------------------------------------------
@@ -234,7 +223,7 @@ if __name__ == "__main__":
         user = input("You: ").strip()
         if not user: break
         try:
-            state_dict = app.invoke({"major": major, "recent_messages": [{"role": "user", "content": user}]}, config)
+            state_dict = app.invoke({"major": major, "messages": [{"role": "user", "content": user}]}, config)
             
             # Check if there was an interrupt
             while '__interrupt__' in state_dict:
@@ -250,7 +239,7 @@ if __name__ == "__main__":
                 messages_to_add = [{"role": "assistant", "content": interrupt_msg},
                                    {"role": "user", "content": user_for_interrupt}]
 
-                state_dict = app.invoke(Command(resume=user_for_interrupt, update={"recent_messages": messages_to_add}), config)
+                state_dict = app.invoke(Command(resume=user_for_interrupt, update={"messages": messages_to_add}), config)
 
             state = DreamPathAgentState(**state_dict)
             

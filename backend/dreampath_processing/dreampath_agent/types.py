@@ -57,7 +57,8 @@ class DreamPathAgentState(BaseModel):
 
     # Conversation state
     summary: str = Field(default="")
-    recent_messages: Annotated[List[Dict[str, str]], operator.add] = Field(default_factory=list)
+    messages: Annotated[List[Dict[str, str]], operator.add] = Field(default_factory=list)
+    summary_end: int = 0
 
     # Routing
     route: Optional[Literal["orchestrator", "plan_builder", "course_search", "course_path", "finalize"]] = Field(default=None)
