@@ -20,21 +20,24 @@ client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
 # -----------------------------------------------------
 # Update Summary
 # -----------------------------------------------------
-def handle_summary_get_context_messages(state: DreamPathAgentState):
+def handle_summary_get_context_messages(state: DreamPathAgentState, k=20):
     new_messages = state.messages[state.summary_end:]
-    num_messages_to_summarize = max(0, len(new_messages) - 20)
-    new_messages_to_summarize = new_messages[:num_messages_to_summarize]
+    num_messages_to_summarize = max(0, len(new_messages) - k)
     
-    if new_messages_to_summarize:
+    if num_messages_to_summarize > 0:
+        new_messages_to_summarize = new_messages[:num_messages_to_summarize]
         new_summary = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": SUMMARY_SYS_PROMPT.format(summary=state.summary, new_messages=new_messages_to_summarize)}
+                {"role": "system", "content": SUMMARY_SYS_PROMPT},
+                {"role": "assistant", "content": f"<summary>\n...{state.summary[-1200:]}\n</summary>"},
+                {"role": "user", "content": f"<new_messages>\n{new_messages_to_summarize}\n</new_messages>"}
+
             ],
             response_model=str,
             temperature=0
         )
-        new_summary_end = state.summary_end + num_messages_to_summarize + 1
+        new_summary_end = state.summary_end + num_messages_to_summarize
 
         # Update state
         state.summary = new_summary
@@ -66,7 +69,7 @@ def extract_structured_output_from_context(state: DreamPathAgentState, system_pr
     if verbose:
         print("=== MESSAGES SENT TO LLM ===")
         for i, msg in enumerate(messages):
-            print(f"Message {i}: {msg['role']} - {msg['content'][:200]}...")
+            print(f"Message {i}: {msg['role']} - {msg['content'][:500]}...")
         print("=== END MESSAGES ===")
     response = client.chat.completions.create(
         model=model,
@@ -82,7 +85,7 @@ def extract_structured_output_from_context(state: DreamPathAgentState, system_pr
 def decide_next_route(state: DreamPathAgentState, config) -> OrchestratorDecision:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state, ORCHESTRATOR_DECISION_SYS_V2.format(student_name=student_name, student_profile=student_profile.__str__()), OrchestratorDecision, model="gpt-4o", verbose=True)
+    return extract_structured_output_from_context(state, ORCHESTRATOR_DECISION_SYS_V2.format(student_name=student_name, student_profile=student_profile.__str__()), OrchestratorDecision, model="o3-mini", verbose=True)
 
 # -----------------------------------------------------
 # COURSE SEARCH NODE
@@ -106,7 +109,7 @@ def build_operations_from_context_and_results(state: DreamPathAgentState, config
 def render_final_reply(state: DreamPathAgentState, config) -> str:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state, CRAFT_FINAL_REPLY_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), str, temperature=0.1, verbose=True)
+    return extract_structured_output_from_context(state, CRAFT_FINAL_REPLY_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), str, model="o3-mini", temperature=0.1, verbose=True)
 
 
 def format_course_search_output(output: CourseSearchOutput) -> str:

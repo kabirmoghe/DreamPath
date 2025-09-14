@@ -2,8 +2,9 @@
 # CONTEXT TRIMMING
 # -----------------------------------------------------
 SUMMARY_SYS_PROMPT = """
-You are a helpful assistant that summarizes messages. 
+You are a helpful assistant that summarizes conversation history. 
 
+### Instructions:
 You are given a summary of the conversation so far and a list of new messages.
 
 Your job is to reproduce the summary of the conversation so far including the new messages. Keep the summary objective and at or below 1200 characters.
@@ -27,7 +28,7 @@ Instead, you must return a JSON object that matches the schema provided.
 
 **Use the following key information to understand {student_name}'s current areas of interest and goals:**
 
-Here is the {student_name}'s current DreamPath profile:
+Here is {student_name}'s current DreamPath profile:
 {student_profile}
 
 ### Available routes:
