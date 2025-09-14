@@ -3,6 +3,7 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 from pydantic import BaseModel
+import tiktoken
 from dreampath_processing.dreampath_agent.types import OrchestratorDecision, DreamPathAgentState, CoursePathOperations, CourseSearchQueries, CourseSearchOutput
 from dreampath_processing.dreampath_agent.prompts import SUMMARY_SYS_PROMPT, ORCHESTRATOR_DECISION_SYS_V2, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS, COURSE_SEARCH_SYS
 from dreampath_processing.courses.build_major_course_path import build_course_path
@@ -49,10 +50,37 @@ def handle_summary_get_context_messages(state: DreamPathAgentState, k=20):
 # -----------------------------------------------------
 # Build Context
 # -----------------------------------------------------
+def calculate_token_count(messages: list[dict], model="gpt-4o-mini"):
+    """Calculate token count for messages using tiktoken's precise method that matches OpenAI's billing."""
+    try:
+        encoding = tiktoken.encoding_for_model(model)
+    except KeyError:
+        print(f"Warning: {model} is not a supported model for tiktoken. Using cl100k_base instead.")
+        # Fallback to cl100k_base encoding for newer models
+        encoding = tiktoken.get_encoding("cl100k_base")
+    
+    # Use tiktoken's built-in function for precise token counting
+    # This matches exactly how OpenAI calculates tokens for chat completions
+    tokens_per_message = 3  # every message follows <|start|>{role/name}\n{content}<|end|>\n
+    tokens_per_name = 1     # if there's a name, the role is omitted
+    
+    num_tokens = 0
+    for message in messages:
+        num_tokens += tokens_per_message
+        for key, value in message.items():
+            if isinstance(value, str):
+                num_tokens += len(encoding.encode(value))
+                if key == "name":
+                    num_tokens += tokens_per_name
+    
+    num_tokens += 3  # every reply is primed with <|start|>assistant<|message|>
+    return num_tokens
+
 def build_messages(state: DreamPathAgentState, prompt: str):
 
     msgs = [{"role": "system", "content": prompt}]
-    recent_messages = handle_summary_get_context_messages(state)
+    # recent_messages = handle_summary_get_context_messages(state)
+    recent_messages = state.messages[-20:]
 
     if state.summary:
         msgs.append({"role": "assistant", "content": f"Summary: ...{state.summary[-1200:]}"})
@@ -64,19 +92,30 @@ def build_messages(state: DreamPathAgentState, prompt: str):
 # -----------------------------------------------------
 # Baseline For Extracting Structured Output from Context
 # -----------------------------------------------------
-def extract_structured_output_from_context(state: DreamPathAgentState, system_prompt: str, response_model: BaseModel, model="gpt-4o-mini", temperature=0, verbose=False):
+def extract_structured_output_from_context(state: DreamPathAgentState, system_prompt: str, response_model: BaseModel, model="gpt-4o-mini", temperature=0, verbose=False, show_token_count=True):
     messages = build_messages(state, system_prompt)
     if verbose:
         print("=== MESSAGES SENT TO LLM ===")
         for i, msg in enumerate(messages):
             print(f"Message {i}: {msg['role']} - {msg['content'][:500]}...")
         print("=== END MESSAGES ===")
-    response = client.chat.completions.create(
-        model=model,
-        messages=messages,
-        response_model=response_model,
-        temperature=temperature
-    )
+
+    if show_token_count:
+        print(f"[MODEL={model} | TOKEN COUNT: {calculate_token_count(messages, model)}]")
+
+    if model == "o3-mini":
+        response = client.chat.completions.create(
+            model=model,
+            messages=messages,
+            response_model=response_model,
+        )
+    else:
+        response = client.chat.completions.create(
+            model=model,
+            messages=messages,
+            response_model=response_model,
+            temperature=temperature
+        )
     return response
 
 # -----------------------------------------------------
@@ -109,7 +148,7 @@ def build_operations_from_context_and_results(state: DreamPathAgentState, config
 def render_final_reply(state: DreamPathAgentState, config) -> str:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state, CRAFT_FINAL_REPLY_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), str, model="o3-mini", temperature=0.1, verbose=True)
+    return extract_structured_output_from_context(state, CRAFT_FINAL_REPLY_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), str, model="gpt-4o", temperature=0.1, verbose=True)
 
 
 def format_course_search_output(output: CourseSearchOutput) -> str:
