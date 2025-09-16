@@ -7,7 +7,7 @@ You are a helpful assistant that summarizes conversation history.
 ### Instructions:
 You are given a summary of the conversation so far and a list of new messages.
 
-Your job is to reproduce the summary of the conversation so far including the new messages. Keep the summary objective and at or below 1200 characters.
+Your job is to reproduce the summary of the conversation so far including the new messages. Keep the summary objective and at or below 1200 characters. Pay particular attention to course codes if found in the new messages.
 
 Return this string summary only.
 """

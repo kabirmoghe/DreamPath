@@ -133,7 +133,7 @@ def extract_structured_output_from_context(state: DreamPathAgentState, system_pr
 def decide_next_route(state: DreamPathAgentState, config) -> Tuple[OrchestratorDecision, dict]:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state, ORCHESTRATOR_DECISION_SYS_V2.format(student_name=student_name, student_profile=student_profile.__str__()), OrchestratorDecision, model="gpt-4o", verbose=True)
+    return extract_structured_output_from_context(state, ORCHESTRATOR_DECISION_SYS_V2.format(student_name=student_name, student_profile=student_profile.__str__()), OrchestratorDecision, model="gpt-4o")
 
 # -----------------------------------------------------
 # COURSE SEARCH NODE
@@ -141,7 +141,7 @@ def decide_next_route(state: DreamPathAgentState, config) -> Tuple[OrchestratorD
 def determine_course_search_queries(state: DreamPathAgentState, config) -> Tuple[CourseSearchQueries, dict]:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state, COURSE_SEARCH_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), CourseSearchQueries, model="gpt-4o")#, verbose=True)
+    return extract_structured_output_from_context(state, COURSE_SEARCH_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), CourseSearchQueries, model="gpt-4o")
 
 # -----------------------------------------------------
 # PLAN BUILDER NODE
@@ -149,7 +149,7 @@ def determine_course_search_queries(state: DreamPathAgentState, config) -> Tuple
 def build_operations_from_context_and_results(state: DreamPathAgentState, config) -> Tuple[CoursePathOperations, dict]:
     student_profile = config["configurable"]["student_profile"]
     current_term = student_profile.course_path.curr_window_start
-    return extract_structured_output_from_context(state, BUILD_OPERATIONS_SYS.format(current_term=current_term, student_profile=student_profile.__str__()), CoursePathOperations)#, verbose=True)
+    return extract_structured_output_from_context(state, BUILD_OPERATIONS_SYS.format(current_term=current_term, student_profile=student_profile.__str__()), CoursePathOperations)
 
 # -----------------------------------------------------
 # FINAL REPLY RENDERER NODE
@@ -157,7 +157,7 @@ def build_operations_from_context_and_results(state: DreamPathAgentState, config
 def render_final_reply(state: DreamPathAgentState, config) -> Tuple[str, dict]:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state, CRAFT_FINAL_REPLY_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), str, model="gpt-4o", temperature=0.1)#, verbose=True)
+    return extract_structured_output_from_context(state, CRAFT_FINAL_REPLY_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), str, model="gpt-4o", temperature=0.1)
 
 
 def format_course_search_output(output: CourseSearchOutput) -> str:
