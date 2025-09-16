@@ -13,16 +13,17 @@ from dreampath_processing.modules.student_profile import StudentProfile
 
 def orchestrator_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     print(f"Orchestrator thinking...")
-    decision = decide_next_route(state, config)
+    decision, state_updates = decide_next_route(state, config)
     print(f"--> Decision: {decision}")
 
     return {
         "route": decision.next,
+        **state_updates,
     }
 
 def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     course_search_tool: CourseSearchTool = config["configurable"]["course_search_tool"]
-    queries = determine_course_search_queries(state, config)
+    queries, state_updates = determine_course_search_queries(state, config)
     print(f"********** CourseSearchNode: queries={queries}")
 
     tool_messages = []
@@ -58,15 +59,17 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
 
     return {
         "messages": tool_messages,
+        **state_updates,
     }
     
 def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
-    ops = build_operations_from_context_and_results(state, config)
+    ops, state_updates = build_operations_from_context_and_results(state, config)
     
     return {
         "worklist": ops.operations, # List[str], e.g., ["Add QSS41 to term 6.", "Add COSC50 to term 6."]
         "cursor": 0,
         "current_cp_agent_outcomes": [],   # start fresh for this batch
+        **state_updates,
     }
 
 def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
@@ -130,12 +133,13 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     }
 
 def finalize_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
-    reply = render_final_reply(state, config)
+    reply, state_updates = render_final_reply(state, config)
     return {
         "ui_reply": reply,
         "current_cp_agent_outcomes": [],
         "search_results": None,
         "messages": [{"role": "assistant", "content": reply}],
+        **state_updates,
     }
 
 # ------------------------------------------------------------

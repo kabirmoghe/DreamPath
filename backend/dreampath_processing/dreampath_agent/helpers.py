@@ -3,6 +3,7 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 from pydantic import BaseModel
+from typing import Tuple
 import tiktoken
 from dreampath_processing.dreampath_agent.types import OrchestratorDecision, DreamPathAgentState, CoursePathOperations, CourseSearchQueries, CourseSearchOutput
 from dreampath_processing.dreampath_agent.prompts import SUMMARY_SYS_PROMPT, ORCHESTRATOR_DECISION_SYS_V2, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS, COURSE_SEARCH_SYS
@@ -21,31 +22,40 @@ client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
 # -----------------------------------------------------
 # Update Summary
 # -----------------------------------------------------
-def handle_summary_get_context_messages(state: DreamPathAgentState, k=20):
-    new_messages = state.messages[state.summary_end:]
-    num_messages_to_summarize = max(0, len(new_messages) - k)
+def handle_summary_get_context_messages(state: DreamPathAgentState, k=20, h=10):
+
+    # Get recent messages
+    recent_start = max(len(state.messages) - k, 0)
+    recent_messages = state.messages[recent_start:]
+
+    # Get new messages to summarize
+    new_messages = state.messages[state.summary_end:recent_start]
     
-    if num_messages_to_summarize > 0:
-        new_messages_to_summarize = new_messages[:num_messages_to_summarize]
+    state_updates = {}
+
+    # Summarize new messages
+    if len(new_messages) > h:
+        print(f"Summarizing {len(new_messages)} new messages from {state.summary_end} to {recent_start}")
         new_summary = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": SUMMARY_SYS_PROMPT},
                 {"role": "assistant", "content": f"<summary>\n...{state.summary[-1200:]}\n</summary>"},
-                {"role": "user", "content": f"<new_messages>\n{new_messages_to_summarize}\n</new_messages>"}
+                {"role": "user", "content": f"<new_messages>\n{new_messages}\n</new_messages>"}
 
             ],
             response_model=str,
             temperature=0
         )
-        new_summary_end = state.summary_end + num_messages_to_summarize
+        new_summary_end = state.summary_end + len(new_messages)
 
         # Update state
-        state.summary = new_summary
-        state.summary_end = new_summary_end
+        state_updates["summary"] = new_summary
+        state_updates["summary_end"] = new_summary_end
 
-    recent_messages = state.messages[state.summary_end:]
-    return recent_messages
+        print(f"*Initiated updates to state summary*\n{new_summary}\n*[Ends at {new_summary_end}]*")
+
+    return recent_messages, state_updates
 
 # -----------------------------------------------------
 # Build Context
@@ -79,21 +89,20 @@ def calculate_token_count(messages: list[dict], model="gpt-4o-mini"):
 def build_messages(state: DreamPathAgentState, prompt: str):
 
     msgs = [{"role": "system", "content": prompt}]
-    # recent_messages = handle_summary_get_context_messages(state)
-    recent_messages = state.messages[-20:]
+    recent_messages, state_updates = handle_summary_get_context_messages(state)
 
     if state.summary:
         msgs.append({"role": "assistant", "content": f"Summary: ...{state.summary[-1200:]}"})
 
     msgs.extend(recent_messages)
 
-    return msgs
+    return msgs, state_updates
 
 # -----------------------------------------------------
 # Baseline For Extracting Structured Output from Context
 # -----------------------------------------------------
 def extract_structured_output_from_context(state: DreamPathAgentState, system_prompt: str, response_model: BaseModel, model="gpt-4o-mini", temperature=0, verbose=False, show_token_count=True):
-    messages = build_messages(state, system_prompt)
+    messages, state_updates = build_messages(state, system_prompt)
     if verbose:
         print("=== MESSAGES SENT TO LLM ===")
         for i, msg in enumerate(messages):
@@ -116,39 +125,39 @@ def extract_structured_output_from_context(state: DreamPathAgentState, system_pr
             response_model=response_model,
             temperature=temperature
         )
-    return response
+    return response, state_updates
 
 # -----------------------------------------------------
 # ORCHESTRATOR NODE
 # -----------------------------------------------------
-def decide_next_route(state: DreamPathAgentState, config) -> OrchestratorDecision:
+def decide_next_route(state: DreamPathAgentState, config) -> Tuple[OrchestratorDecision, dict]:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state, ORCHESTRATOR_DECISION_SYS_V2.format(student_name=student_name, student_profile=student_profile.__str__()), OrchestratorDecision, model="o3-mini", verbose=True)
+    return extract_structured_output_from_context(state, ORCHESTRATOR_DECISION_SYS_V2.format(student_name=student_name, student_profile=student_profile.__str__()), OrchestratorDecision, model="gpt-4o", verbose=True)
 
 # -----------------------------------------------------
 # COURSE SEARCH NODE
 # -----------------------------------------------------
-def determine_course_search_queries(state: DreamPathAgentState, config) -> CourseSearchQueries:
+def determine_course_search_queries(state: DreamPathAgentState, config) -> Tuple[CourseSearchQueries, dict]:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state, COURSE_SEARCH_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), CourseSearchQueries, model="gpt-4o", verbose=True)
+    return extract_structured_output_from_context(state, COURSE_SEARCH_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), CourseSearchQueries, model="gpt-4o")#, verbose=True)
 
 # -----------------------------------------------------
 # PLAN BUILDER NODE
 # -----------------------------------------------------
-def build_operations_from_context_and_results(state: DreamPathAgentState, config) -> CoursePathOperations:
+def build_operations_from_context_and_results(state: DreamPathAgentState, config) -> Tuple[CoursePathOperations, dict]:
     student_profile = config["configurable"]["student_profile"]
     current_term = student_profile.course_path.curr_window_start
-    return extract_structured_output_from_context(state, BUILD_OPERATIONS_SYS.format(current_term=current_term, student_profile=student_profile.__str__()), CoursePathOperations, verbose=True)
+    return extract_structured_output_from_context(state, BUILD_OPERATIONS_SYS.format(current_term=current_term, student_profile=student_profile.__str__()), CoursePathOperations)#, verbose=True)
 
 # -----------------------------------------------------
 # FINAL REPLY RENDERER NODE
 # -----------------------------------------------------
-def render_final_reply(state: DreamPathAgentState, config) -> str:
+def render_final_reply(state: DreamPathAgentState, config) -> Tuple[str, dict]:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state, CRAFT_FINAL_REPLY_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), str, model="gpt-4o", temperature=0.1, verbose=True)
+    return extract_structured_output_from_context(state, CRAFT_FINAL_REPLY_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), str, model="gpt-4o", temperature=0.1)#, verbose=True)
 
 
 def format_course_search_output(output: CourseSearchOutput) -> str:
