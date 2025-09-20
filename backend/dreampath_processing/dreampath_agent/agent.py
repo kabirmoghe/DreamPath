@@ -4,7 +4,9 @@ from langgraph.types import interrupt, Command
 from langgraph.checkpoint.memory import InMemorySaver
 from dreampath_processing.dreampath_agent.types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
-from dreampath_processing.dreampath_agent.helpers import decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, format_course_search_output, render_final_reply
+from dreampath_processing.dreampath_agent.helpers import (
+    decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, format_course_search_output, render_final_reply, modify_student_profile, determine_user_confirmation
+)
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import construct_course
 from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
@@ -84,7 +86,7 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
         "role": "assistant",
         "content": json.dumps({
             "type": "tool_call",
-            "name": "course_path_agent",
+            "name": "coursepath_agent",
             "arguments": {
                 "worklist": worklist,
                 "cursor": cursor
@@ -119,10 +121,14 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
                 "role": "assistant",
                 "content": json.dumps({
                     "type": "tool_result",
-                    "name": "course_path_agent",
+                    "name": "coursepath_agent",
                     "result": json.dumps(outcome.model_dump()),
                 }),
             }
+        
+    # Update the config with the new course path
+    modified_cp = coursepath_agent.tools.cp
+    config["configurable"]["student_profile"].course_path = modified_cp
 
     return {
         "messages": [tool_call, tool_message],
@@ -131,6 +137,54 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
         "cursor": cursor,
         "route": route,
     }
+
+def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
+    modified_profile, state_updates = modify_student_profile(state, config)
+
+    print(f"********** ProfileModifierNode: modified_profile={modified_profile}")
+
+    # Verify modified profile with user
+    user_response = interrupt(f"How do you feel about the modified profile? {modified_profile.__str__()}")
+    if determine_user_confirmation(user_response):
+
+        # Get the current student profile from config
+        current_profile = config["configurable"]["student_profile"]
+        
+        # Create a new StudentProfile by merging modified fields with existing profile
+        updated_profile = StudentProfile(
+            name=current_profile.name,
+            major=modified_profile.major, 
+            college_interests=modified_profile.college_interests,
+            post_grad_goals=modified_profile.post_grad_goals,
+            career_goals=modified_profile.career_goals,
+            course_path=current_profile.course_path,
+            minors=current_profile.minors,
+            clubs=current_profile.clubs,
+            career=current_profile.career,
+        )
+        
+        # Update the config with the new profile
+        config["configurable"]["student_profile"] = updated_profile
+
+        tool_call = {
+            "role": "assistant",
+            "content": json.dumps({
+                "type": "tool_call",
+                "name": "modify_profile",
+                "arguments": {
+                    "modified_profile": json.dumps(modified_profile.model_dump()),
+                }
+            }),
+        }
+
+        return {
+            "messages": [tool_call],
+            **state_updates,
+        }
+    else:
+        return {
+            **state_updates
+        }
 
 def finalize_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     reply, state_updates = render_final_reply(state, config)
@@ -151,6 +205,7 @@ g.add_node("orchestrator", orchestrator_node)
 g.add_node("course_search", course_search_node)
 g.add_node("plan_builder", plan_builder_node)
 g.add_node("course_path", course_path_node)
+g.add_node("modify_profile", modify_profile_node)
 g.add_node("finalize", finalize_node)
 
 g.add_edge(START, "orchestrator")
@@ -163,6 +218,7 @@ g.add_conditional_edges("orchestrator", router, {
     "course_search": "course_search",
     "plan_builder": "plan_builder",
     "course_path": "course_path",
+    "modify_profile": "modify_profile",
     "finalize": "finalize",
 })
 
@@ -176,7 +232,7 @@ g.add_conditional_edges("course_path", sub_node_router, {
     "course_path": "course_path",
     "orchestrator": "orchestrator",
 })
-
+g.add_edge("modify_profile", "orchestrator")
 g.add_edge("finalize", END)
 
 checkpointer = InMemorySaver()
@@ -203,8 +259,8 @@ if __name__ == "__main__":
     test_course_path.curr_window_start = 6 # Example
 
     # Build agent
-    tools = CoursePathTools(course_path=test_course_path, major=major)
-    agent = CoursePathAgent(tools=tools)
+    coursepath_tools = CoursePathTools(course_path=test_course_path, major=major)
+    coursepath_agent = CoursePathAgent(tools=coursepath_tools)
     course_search_tool = CourseSearchTool()
 
     student_profile = StudentProfile(
@@ -213,14 +269,13 @@ if __name__ == "__main__":
         college_interests="I want to focus on international relations and current events (specifically courses on Israel / Palestine, diplomacy); I want to dabble in AI and data science for social sciences",
         post_grad_goals="work hands on as a data scientists and engineer at a tech company or startup, be knowledgeable about data security/privacy, etc.",
         career_goals="Become a CDO or hands on CEO developing a b2b saas platform for data aggregation across different BI tools.",
-        course_path=tools.cp,
+        course_path=coursepath_tools.cp,
     )
-    config = {"configurable": {"thread_id": "1", "coursepath_agent": agent, "student_profile": student_profile, "course_search_tool": course_search_tool}}
+    config = {"configurable": {"thread_id": "1", "coursepath_agent": coursepath_agent, "student_profile": student_profile, "course_search_tool": course_search_tool}}
     state = DreamPathAgentState()
 
     while True:
-        current_path = tools.cp
-        student_profile.course_path = current_path
+        current_path = student_profile.course_path
         print(f"----------\nCoursePath (@ term={current_path.curr_window_start})")
         print(current_path.visualize())
         print("----------\n")

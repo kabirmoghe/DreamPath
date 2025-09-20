@@ -5,8 +5,12 @@ from dotenv import load_dotenv
 from pydantic import BaseModel
 from typing import Tuple
 import tiktoken
-from dreampath_processing.dreampath_agent.types import OrchestratorDecision, DreamPathAgentState, CoursePathOperations, CourseSearchQueries, CourseSearchOutput
-from dreampath_processing.dreampath_agent.prompts import SUMMARY_SYS_PROMPT, ORCHESTRATOR_DECISION_SYS_V2, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS, COURSE_SEARCH_SYS
+from dreampath_processing.dreampath_agent.types import (
+    OrchestratorDecision, DreamPathAgentState, CoursePathOperations, CourseSearchQueries, CourseSearchOutput, ModifiedStudentProfile
+)
+from dreampath_processing.dreampath_agent.prompts import (
+    SUMMARY_SYS_PROMPT, ORCHESTRATOR_DECISION_SYS_V2, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS, COURSE_SEARCH_SYS, MODIFY_PROFILE_SYS, DETERMINE_USER_CONFIRMATION_SYS
+)
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import construct_course
 from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
@@ -106,7 +110,7 @@ def extract_structured_output_from_context(state: DreamPathAgentState, system_pr
     if verbose:
         print("=== MESSAGES SENT TO LLM ===")
         for i, msg in enumerate(messages):
-            print(f"Message {i}: {msg['role']} - {msg['content'][:500]}...")
+            print(f"Message {i}: {msg['role']} - {msg['content']}")
         print("=== END MESSAGES ===")
 
     if show_token_count:
@@ -152,14 +156,36 @@ def build_operations_from_context_and_results(state: DreamPathAgentState, config
     return extract_structured_output_from_context(state, BUILD_OPERATIONS_SYS.format(current_term=current_term, student_profile=student_profile.__str__()), CoursePathOperations)
 
 # -----------------------------------------------------
+# MODIFY PROFILE NODE
+# -----------------------------------------------------
+def modify_student_profile(state: DreamPathAgentState, config) -> Tuple[ModifiedStudentProfile, dict]:
+    student_profile = config["configurable"]["student_profile"]
+    student_name = student_profile.name
+    return extract_structured_output_from_context(state, MODIFY_PROFILE_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), ModifiedStudentProfile, model="gpt-4o", temperature=0.1)
+
+# -----------------------------------------------------
 # FINAL REPLY RENDERER NODE
 # -----------------------------------------------------
 def render_final_reply(state: DreamPathAgentState, config) -> Tuple[str, dict]:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state, CRAFT_FINAL_REPLY_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), str, model="gpt-4o", temperature=0.1)
+    return extract_structured_output_from_context(state, CRAFT_FINAL_REPLY_SYS.format(student_name=student_name, student_profile=student_profile.__str__()), str, model="gpt-4o", temperature=0.1, verbose=True)
 
+# -----------------------------------------------------
+# DETERMINE USER CONFIRMATION (MINI-HELPER)
+# -----------------------------------------------------
+def determine_user_confirmation(user_response: str) -> Tuple[bool, dict]:
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": user_response}],
+        response_model=bool,
+        temperature=0
+    )
+    return response
 
+# -----------------------------------------------------
+# FORMAT COURSE SEARCH OUTPUT
+# -----------------------------------------------------
 def format_course_search_output(output: CourseSearchOutput) -> str:
 
     output_str = "<course_search_results>\n"

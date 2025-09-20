@@ -5,7 +5,7 @@ from dreampath_processing.courses.coursepath_agent.agent import CoursePathAgent
 import operator
 
 class OrchestratorDecision(BaseModel):
-    next: Literal["plan_builder", "course_search", "course_path", "finalize"]
+    next: Literal["plan_builder", "course_search", "course_path", "modify_profile", "finalize"]
 
 # ================================
 # Course Search Tool
@@ -43,6 +43,15 @@ class CoursePathAgentInput(BaseModel):
     plan_id: str
 
 # ================================
+# Modify Profile Tool
+# ================================
+class ModifiedStudentProfile(BaseModel):
+    major: str
+    college_interests: str
+    post_grad_goals: str
+    career_goals: str
+
+# ================================
 # DreamPath Agent
 # ================================
 class CoursePathOperations(BaseModel):
@@ -61,7 +70,7 @@ class DreamPathAgentState(BaseModel):
     summary_end: int = 0
 
     # Routing
-    route: Optional[Literal["orchestrator", "plan_builder", "course_search", "course_path", "finalize"]] = Field(default=None)
+    route: Optional[Literal["orchestrator", "plan_builder", "course_search", "course_path", "modify_profile", "finalize"]] = Field(default=None)
     # handoff: Optional[Dict[str, Any]] = Field(default_factory=dict)
 
     # Search + planning
