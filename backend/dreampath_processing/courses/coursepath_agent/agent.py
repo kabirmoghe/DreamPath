@@ -10,7 +10,7 @@ from dreampath_processing.courses.coursepath_agent.types import (
     ExecuteOpResult,
     OP_INFO,
 )
-from dreampath_processing.courses.coursepath_agent.operation_tools import CoursePathTools, summarize_diff
+from dreampath_processing.courses.coursepath_agent.operation_tools import CoursePathTools, compute_diff, summarize_diff, snapshot_path
 from dreampath_processing.courses.coursepath_agent.prompts import OP_EXTRACTOR_SYS, PARAM_EXTRACTOR_SYS
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
@@ -31,7 +31,7 @@ def build_messages(state: CoursePathAgentState, user_input: str, prompt: str):
 
     # Include last few turns for continuity
     if state.recent_messages:
-        msgs.extend(state.recent_messages[-4:])
+        msgs.extend(state.recent_messages[-5:])
 
     # Current user input
     msgs.append({"role": "user", "content": user_input})
@@ -214,6 +214,16 @@ class CoursePathAgent:
     def __init__(self, tools: CoursePathTools):
         self.state = CoursePathAgentState(thread_id="", plan_id="", plan_version=0, pending_op=None, facts={}, summary="", recent_messages=[])
         self.tools = tools
+
+    def save_previous_course_path(self):
+        self.tools.previous_cp = snapshot_path(self.tools.cp)
+
+    def revert_to_previous_course_path(self):
+        self.tools.cp = self.tools.previous_cp
+    
+    def get_diff_from_previous_course_path(self) -> str:
+        diff = compute_diff(self.tools.previous_cp, self.tools.cp)
+        return summarize_diff(diff)
 
     def run(self, text: str) -> CoursePathAgentOutput:
         # Route based on whether we’re waiting for a confirm

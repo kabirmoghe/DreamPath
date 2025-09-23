@@ -5,7 +5,7 @@ from langgraph.checkpoint.memory import InMemorySaver
 from dreampath_processing.dreampath_agent.types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
 from dreampath_processing.dreampath_agent.helpers import (
-    decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, format_course_search_output, render_final_reply, modify_student_profile, determine_user_confirmation
+    decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, render_final_reply, modify_student_profile, determine_user_confirmation, format_course_search_output, format_aggregate_coursepath_agent_result
 )
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import construct_course
@@ -48,7 +48,7 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
         # Execute tool call
         search_results = course_search_tool.structured_hybrid_search(query)
         
-        tool_message = {
+        tool_result = {
             "role": "assistant",
             "content": json.dumps({
                 "type": "tool_result",
@@ -57,7 +57,7 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
             }),
         }
 
-        tool_messages.append(tool_message)
+        tool_messages.append(tool_result)
 
     return {
         "messages": tool_messages,
@@ -77,23 +77,34 @@ def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgentState
 def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     coursepath_agent: CoursePathAgent = config["configurable"]["coursepath_agent"]
     cursor = state.cursor
-    outcome = None
+    current_op = None
+    outcomes = state.current_cp_agent_outcomes
     worklist = state.worklist
+    tool_messages = []
 
     print(f"********** CoursePathNode: worklist={worklist}, cursor={cursor}")
 
-    tool_call = {
-        "role": "assistant",
-        "content": json.dumps({
-            "type": "tool_call",
-            "name": "coursepath_agent",
-            "arguments": {
-                "worklist": worklist,
-                "cursor": cursor
-            }
-        }),
-    }
+    # current outcomes
+    print(f"********** CoursePathNode: current_cp_agent_outcomes={state.current_cp_agent_outcomes}")
 
+    # Build tool call at start of execution
+    if cursor == 0:
+        tool_call = {
+            "role": "assistant",
+            "content": json.dumps({
+                "type": "tool_call",
+                "name": "coursepath_agent",
+                "arguments": {
+                    "worklist": worklist,
+                    "cursor": cursor
+                }
+            }),
+        }
+        tool_messages.append(tool_call)
+        print(f"********** CoursePathNode: saving previous course path")
+        coursepath_agent.save_previous_course_path()
+
+    # Execute operations one by one
     if worklist and cursor < len(worklist):
         current_op = worklist[cursor]
         out = coursepath_agent.run(current_op) # execute op
@@ -105,34 +116,32 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
             # Continue processing with user response
             out = coursepath_agent.run(user_response)
 
-        outcome = out
+        outcomes.append(out)
         cursor += 1
-
-        if cursor < len(worklist):
-            route = "course_path"
-        else:
-            route = "orchestrator"
+        route = "course_path"
     else:
         route = "orchestrator"
 
-    tool_message = None
-    if outcome:
-        tool_message = {
-                "role": "assistant",
-                "content": json.dumps({
-                    "type": "tool_result",
-                    "name": "coursepath_agent",
-                    "result": json.dumps(outcome.model_dump()),
-                }),
-            }
+        # Format aggregate outcome
+        diff = coursepath_agent.get_diff_from_previous_course_path()
+        aggregate_result = format_aggregate_coursepath_agent_result(state.current_cp_agent_outcomes, diff)
+        tool_result = {
+            "role": "assistant",
+            "content": json.dumps({
+                "type": "tool_result",
+                "name": "coursepath_agent",
+                "result": aggregate_result,
+            }),
+        }
+        tool_messages.append(tool_result)
         
     # Update the config with the new course path
     modified_cp = coursepath_agent.tools.cp
     config["configurable"]["student_profile"].course_path = modified_cp
 
     return {
-        "messages": [tool_call, tool_message],
-        "current_cp_agent_outcomes": [outcome],
+        "messages": tool_messages,
+        "current_cp_agent_outcomes": outcomes,
         "worklist": worklist,
         "cursor": cursor,
         "route": route,

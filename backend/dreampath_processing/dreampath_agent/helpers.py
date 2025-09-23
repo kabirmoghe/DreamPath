@@ -3,8 +3,9 @@ from openai import OpenAI
 import os
 from dotenv import load_dotenv
 from pydantic import BaseModel
-from typing import Tuple
+from typing import Tuple, List
 import tiktoken
+from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentOutput
 from dreampath_processing.dreampath_agent.types import (
     OrchestratorDecision, DreamPathAgentState, CoursePathOperations, CourseSearchQueries, CourseSearchOutput, ModifiedStudentProfile
 )
@@ -187,7 +188,6 @@ def determine_user_confirmation(user_response: str) -> Tuple[bool, dict]:
 # FORMAT COURSE SEARCH OUTPUT
 # -----------------------------------------------------
 def format_course_search_output(output: CourseSearchOutput) -> str:
-
     output_str = "<course_search_results>\n"
 
     for result in output.results:
@@ -203,6 +203,19 @@ def format_course_search_output(output: CourseSearchOutput) -> str:
     output_str += "</course_search_results>"
 
     return output_str
+
+# -----------------------------------------------------
+# FORMAT AGGREGATE COURSEPATH AGENT RESULT
+# -----------------------------------------------------
+def format_aggregate_coursepath_agent_result(outcomes: List[CoursePathAgentOutput], diff: str) -> str:
+    outcomes_str = ""
+
+    for outcome in outcomes:
+        outcomes_str += f"<operation_outcome>\n{outcome.ui_text}\n</operation_outcome>\n"
+
+    diff_str = f"<aggregate_diff>\n{diff}\n</aggregate_diff>\n"
+
+    return f"<coursepath_agent_result>\n{outcomes_str}\n{diff_str}\n</coursepath_agent_result>"
 
 if __name__ == "__main__":
     # Set up course path agent

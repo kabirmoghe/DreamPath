@@ -1,7 +1,6 @@
 from pydantic import BaseModel, Field
 from typing import Optional, List, Dict, Any, Literal, Annotated
 from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentOutput
-from dreampath_processing.courses.coursepath_agent.agent import CoursePathAgent
 import operator
 
 class OrchestratorDecision(BaseModel):
@@ -79,6 +78,6 @@ class DreamPathAgentState(BaseModel):
     worklist: List[str] = Field(default_factory=list)
     cursor: int = 0
     
-    # Last worker outcome + reply
+    # Current CoursePath Agent outcome + reply
     current_cp_agent_outcomes: Optional[List[CoursePathAgentOutput]] = Field(default=None)
     ui_reply: Optional[str] = Field(default=None)

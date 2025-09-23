@@ -53,6 +53,7 @@ def summarize_diff(diff: Dict[str, List[Dict[str, str]]]) -> str:
 class CoursePathTools:
     def __init__(self, course_path: CoursePath, major: str):
         self.cp = course_path
+        self.previous_cp = snapshot_path(course_path)
         self.major = major
         self.window_start_term = course_path.curr_window_start
 
