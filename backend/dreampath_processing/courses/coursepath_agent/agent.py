@@ -226,6 +226,9 @@ class CoursePathAgent:
         return summarize_diff(diff)
 
     def run(self, text: str) -> CoursePathAgentOutput:
+
+        print(f"State: {self.state}")
+
         # Route based on whether we’re waiting for a confirm
         if self.state.pending_op and text.strip().upper() == "CONFIRM":
             out = on_user_confirm(state=self.state, tools=self.tools, user_input=text)

@@ -39,7 +39,7 @@ Here is {student_name}'s current DreamPath profile:
 - "plan_builder" → This is the planner for operations that involve adding/removing/replacing/moving/swapping courses in a student's course plan. 
 It generates course modification operations and stores them in a worklist.
 
-- "course_search" → For requests that involve finding courses related to a topic, department, or area of interest.
+- "course_search" → For requests that involve finding courses related to a topic, department, or area of interest. Also for verifying the existence of a specific course code.
 For example, route here if request requires searching for courses to find more information, explore courses that relate to a specific topic, and find potential courses to add to the plan.
 
 - "course_path" → This is a human-in-the-loop agent for operations that involve adding/removing/replacing/moving/swapping courses in a student's course plan.
@@ -67,18 +67,22 @@ Student may switch between modes freely during the conversation. Students may br
 **ALWAYS check message history first before making routing decisions.**
 
 1. **If the conversation shows course search results** (e.g., assistant messages with course codes like `{{"results": ["COSC89.28", ...]}}`):
-   - For pure information requests (e.g., "what are some AI courses?"): Route to "finalize"
+- For pure information requests (e.g., "what are some AI courses?"): Route to "finalize"
 
 2. **For hybrid modification requests that involve first identifying courses before modifying plan**: Route to "course_search" to get course code(s) then route to "plan_builder" to create operations to enact
-  - E.g., "add an AI course to term 6" --> route to "course_search" for AI --> route to "plan_builder", etc.
+- Specific requests: if request is about a specific course, still route to "course_search" for the specific course to ensure we get the correct course code(s) / validate its existence.
+- Open-ended / topic-based requests:
+  - E.g., "add a course on modern conflict resolution and negotiation" --> route to "course_search" (will find courses for topic) --> route to "plan_builder", etc.
+  - E.g., "add a course on deep learning" --> route to "course_search" (will find courses for topic) --> route to "plan_builder", etc.
+  - E.g., "add an AI course to term 6" --> route to "course_search" (will find courses for topic) --> route to "plan_builder", etc.
 
 3. **If the conversation shows course modification operations completed or intentionally canceled (e.g., user/assistant communication that indicates operation cancellation)**: Route to "finalize"
 
 3. **If there are course search results AND the user wants to modify their plan**: Route to "plan_builder" to create operations
 
-4. **For initial requests without prior context seeking course information or plan modification**:
-   - Information seeking (what/which courses): Route to "course_search"
-   - Plan modification (add/remove/replace): Route to "plan_builder"
+4. **For initial requests seeking course information or plan modification that don't need new context**:
+  - Information seeking (what/which courses): Route to "course_search"
+  - Plan modification (add/remove/replace): if relevant courses are found in student's course path or in previous search results, route to "plan_builder"
 
 5. **If the conversation shows that the user is no longer brainstorming or asking for advice and has implied that they want to make a change to their college interests or a pivot to their post-grad / career goals, this qualifies as a profile modification.**
   - For example, if they've indicated they're hoping to explore a specific domain in college or pivot to a new role/sector, route to "modify_profile" to make the necessary modifications to their profile.
@@ -228,21 +232,26 @@ Output:
 [{{"query":"","course_code":"COSC74","limit":1,"alpha":0.3,"sort_by_level":false}}]
 
 **Example 2:**
+User: [context discusses some potentially non-existent course MATH123]
+Output:
+[{{"query":"","course_code":"MATH123","limit":1,"alpha":0.3,"sort_by_level":false}}]
+
+**Example 3:**
 User: "I'm curious about graph embeddings and social networks."
 Output:
 [{{"query":"graph embeddings social networks","limit":5,"alpha":0.5,"sort_by_level":false}}]
 
-**Example 3:**
+**Example 4:**
 User: "Looking for intro economics courses."
 Output:
 [{{"query":"intro economics","department":"Economics","limit":5,"alpha":0.5,"sort_by_level":true}}]
 
-**Example 4:**
+**Example 5:**
 User: "Any computer science courses on machine learning with no prerequisites?"
 Output:
 [{{"query":"machine learning","department":"Computer Science","num_prereqs_max":0,"limit":5,"alpha":0.5,"sort_by_level":true}}]
 
-**Example 5:**
+**Example 6:**
 User: "Can you add an intro NLP and also an intro computer networks course?"
 Output:
 [
