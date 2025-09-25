@@ -58,6 +58,8 @@ def extract_course_op(state: CoursePathAgentState, user_input: str, op_type: Ext
     # Map op type to op class
     extraction_model = OP_INFO[op_type.type]['extraction_model']
     messages = build_messages(state=state, user_input=user_input, prompt=PARAM_EXTRACTOR_SYS.format(op_type=op_type.type))
+
+    print(f"Messages: {messages}")
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=messages,
@@ -111,6 +113,7 @@ def render_reschedule_msg(op: Op) -> str:
 def clear_op_state(state: CoursePathAgentState):
     state.pending_op_type = None
     state.pending_op = None
+    state.recent_messages = []
 
 def handle_user_turn(state: CoursePathAgentState, user_input: str) -> CoursePathAgentOutput:
     # 1) Extract operation type (if not already done)
@@ -124,7 +127,12 @@ def handle_user_turn(state: CoursePathAgentState, user_input: str) -> CoursePath
     if state.missing_fields:
         state.pending_op = ex_op  # draft
         q = f"Missing: {state.missing_fields[0]}. Please specify."
-        return q
+        return CoursePathAgentOutput(
+            status="ask",
+            ui_text=q,
+            diff=None,
+            error=None
+        )
 
     # 3) Confirmation
     state.pending_op = ex_op
@@ -183,6 +191,8 @@ def on_user_force(state: CoursePathAgentState, tools: CoursePathTools, user_inpu
         state.pending_op_type = None
         state.pending_op = None
         state.summary += f"\nApplied via force: {op}."
+        clear_op_state(state)
+        
         return CoursePathAgentOutput(
             status="execute",
             ui_text=summarize_diff(forced.diff),
@@ -227,7 +237,8 @@ class CoursePathAgent:
 
     def run(self, text: str) -> CoursePathAgentOutput:
 
-        print(f"State: {self.state}")
+        print(f"Summary: {self.state.summary}")
+        print(f"Recent messages: {self.state.recent_messages}")
 
         # Route based on whether we’re waiting for a confirm
         if self.state.pending_op and text.strip().upper() == "CONFIRM":
@@ -239,10 +250,11 @@ class CoursePathAgent:
         else:
             out = handle_user_turn(state=self.state, user_input=text)
 
-        # update tiny conversational memory if you want
+        # update tiny conversational memory 
         self.state.recent_messages.append({"role":"user", "content": text})
         self.state.recent_messages.append({"role":"assistant", "content": out.ui_text})
-        # persist state (plan_id, plan_version, pending_op, etc.)
+        # TODO: persist state (plan_id, plan_version, pending_op, etc.)
+        
         return out
     
 if __name__ == "__main__":
