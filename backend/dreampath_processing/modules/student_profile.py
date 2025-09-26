@@ -28,12 +28,9 @@ class StudentProfile:
 
     def __str__(self):
         return f"""
-* Name: {self.name}
-* Major: {self.major}
-* College Interests: "{self.college_interests}"
-* Post-Grad Goals: "{self.post_grad_goals}"
-* Career Goals: "{self.career_goals}"
-* Current Course Path:
-
-{self.course_path}
-                """
+Name: {self.name}
+Major: {self.major}
+College Interests: "{self.college_interests}"
+Post-Grad Goals: "{self.post_grad_goals}"
+Career Goals: "{self.career_goals}"
+"""

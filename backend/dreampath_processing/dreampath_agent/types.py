@@ -4,7 +4,7 @@ from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentO
 import operator
 
 class OrchestratorDecision(BaseModel):
-    next: Literal["plan_builder", "course_search", "course_path", "modify_profile", "finalize"]
+    next: Literal["plan_builder", "course_search", "modify_profile", "finalize"]
 
 # ================================
 # Course Search Tool
@@ -65,12 +65,11 @@ class DreamPathAgentState(BaseModel):
 
     # Conversation state
     summary: str = Field(default="")
-    messages: Annotated[List[Dict[str, str]], operator.add] = Field(default_factory=list)
+    messages: Annotated[List[Dict[str, str | dict]], operator.add] = Field(default_factory=list)
     summary_end: int = 0
 
     # Routing
     route: Optional[Literal["orchestrator", "plan_builder", "course_search", "course_path", "modify_profile", "finalize"]] = Field(default=None)
-    # handoff: Optional[Dict[str, Any]] = Field(default_factory=dict)
 
     # Search + planning
     topics: Optional[Dict[str, int]] = Field(default_factory=dict)

@@ -34,13 +34,13 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
         # Build tool call
         tool_call = {
             "role": "assistant",
-            "content": json.dumps({
+            "content": {
                 "type": "tool_call",
                 "name": "course_search",
                 "arguments": {
                     "queries": json.dumps(query.model_dump()),
                 }
-            }),
+            },
         }
 
         tool_messages.append(tool_call)
@@ -50,11 +50,11 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
         
         tool_result = {
             "role": "assistant",
-            "content": json.dumps({
+            "content": {
                 "type": "tool_result",
                 "name": "course_search",
                 "result": format_course_search_output(search_results),
-            }),
+            },
         }
 
         tool_messages.append(tool_result)
@@ -91,14 +91,14 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     if cursor == 0:
         tool_call = {
             "role": "assistant",
-            "content": json.dumps({
+            "content": {
                 "type": "tool_call",
                 "name": "coursepath_agent",
                 "arguments": {
                     "worklist": worklist,
                     "cursor": cursor
                 }
-            }),
+            },
         }
         tool_messages.append(tool_call)
         print(f"********** CoursePathNode: saving previous course path")
@@ -127,11 +127,11 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
         aggregate_result = format_aggregate_coursepath_agent_result(state.current_cp_agent_outcomes, diff)
         tool_result = {
             "role": "assistant",
-            "content": json.dumps({
+            "content": {
                 "type": "tool_result",
                 "name": "coursepath_agent",
                 "result": aggregate_result,
-            }),
+            },
         }
         tool_messages.append(tool_result)
         
@@ -177,13 +177,13 @@ def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentSta
 
         tool_call = {
             "role": "assistant",
-            "content": json.dumps({
+            "content": {
                 "type": "tool_call",
                 "name": "modify_profile",
                 "arguments": {
                     "modified_profile": json.dumps(modified_profile.model_dump()),
                 }
-            }),
+            },
         }
 
         return {
