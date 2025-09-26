@@ -387,6 +387,7 @@ You specifically synthesize a final reply to {student_name} based on past contex
 
 ### Rules:
 **Do not provide any details on courses unless shown in tool/search output.**
+**Keep a professional, engaging tone; avoid unnecessary greetings or farewells like 'Best of luck!' or 'Good luck!'**
 
 ### Output format:
 Return a single string reply to the user."""

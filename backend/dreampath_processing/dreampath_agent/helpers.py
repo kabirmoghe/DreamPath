@@ -2,7 +2,7 @@ from instructor import from_openai
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
-from typing import Tuple, List
+from typing import Tuple, Dict
 from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentOutput
 from dreampath_processing.dreampath_agent.types import (
     OrchestratorDecision, DreamPathAgentState, CoursePathOperations, CourseSearchQueries, CourseSearchOutput, ModifiedStudentProfile
@@ -99,11 +99,11 @@ def format_course_search_output(output: CourseSearchOutput) -> str:
 # -----------------------------------------------------
 # FORMAT AGGREGATE COURSEPATH AGENT RESULT
 # -----------------------------------------------------
-def format_aggregate_coursepath_agent_result(outcomes: List[CoursePathAgentOutput], diff: str) -> str:
+def format_aggregate_coursepath_agent_result(outcomes: Dict[str, CoursePathAgentOutput], diff: str) -> str:
     outcomes_str = ""
 
-    for outcome in outcomes:
-        outcomes_str += f"<operation_outcome>\n{outcome.ui_text}\n</operation_outcome>\n"
+    for op, outcome in outcomes.items():
+        outcomes_str += f"<operation_outcome>\n* For operation '{op}': {outcome.ui_text}\n</operation_outcome>\n"
 
     diff_str = f"<aggregate_diff>\n{diff}\n</aggregate_diff>\n"
 

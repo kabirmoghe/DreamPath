@@ -78,5 +78,5 @@ class DreamPathAgentState(BaseModel):
     cursor: int = 0
     
     # Current CoursePath Agent outcome + reply
-    current_cp_agent_outcomes: Optional[List[CoursePathAgentOutput]] = Field(default=None)
+    current_cp_agent_outcomes: Optional[Dict[str, CoursePathAgentOutput]] = Field(default=None)
     ui_reply: Optional[str] = Field(default=None)

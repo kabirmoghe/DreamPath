@@ -70,7 +70,7 @@ def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgentState
     return {
         "worklist": ops.operations, # List[str], e.g., ["Add QSS41 to term 6.", "Add COSC50 to term 6."]
         "cursor": 0,
-        "current_cp_agent_outcomes": [],   # start fresh for this batch
+        "current_cp_agent_outcomes": {},   # start fresh for this batch
         **state_updates,
     }
 
@@ -116,7 +116,7 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
             # Continue processing with user response
             out = coursepath_agent.run(user_response)
 
-        outcomes.append(out)
+        outcomes[current_op] = out
         cursor += 1
         route = "course_path"
     else:
@@ -199,7 +199,7 @@ def finalize_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     reply, state_updates = render_final_reply(state, config)
     return {
         "ui_reply": reply,
-        "current_cp_agent_outcomes": [],
+        "current_cp_agent_outcomes": {},
         "search_results": None,
         "messages": [{"role": "assistant", "content": reply}],
         **state_updates,
