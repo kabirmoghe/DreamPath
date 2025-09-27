@@ -172,6 +172,17 @@ def rebuild_prereq_graph(course_bank: Dict[str, Course], courses: Set[str]=None)
 
     return rebuilt_prereq_graph
 
+def find_lingering_courses(old_prereq_graph: Dict[str, Set[str]], new_prereq_graph: Dict[str, Set[str]]) -> Set[str]:
+    """
+    Find lingering prereqs for a given set of courses
+    """
+    lingering_courses = set()
+    for course in old_prereq_graph.keys():
+        if course not in new_prereq_graph:
+            lingering_courses.add(course)
+
+    return lingering_courses
+
 # Get direct prereqs (i.e., direct children) for course
 def get_direct_prereqs(prereq_tree, course_code):
     """

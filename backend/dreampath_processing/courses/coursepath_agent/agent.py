@@ -282,6 +282,10 @@ if __name__ == "__main__":
         print(f"----------\nCoursePath (@ term={test_course_path.curr_window_start})")
         current_path = tools.cp
         print(current_path.visualize())
+        print(current_path.visualize_by_term_idx())
+        print("Recommended courses: ", current_path.recommended_courses)
+        print("Prereq Graph: ", current_path.prereq_graph)
+        print("Lingering courses: ", current_path.lingering_courses)
         print("----------\n")
 
         user_input = input("You: ").strip()

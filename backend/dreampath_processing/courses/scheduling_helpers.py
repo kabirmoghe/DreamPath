@@ -127,7 +127,7 @@ def schedule_courses_by_term(course_graph: Dict[str, List[str]],
                              window_start_term: int = 0, 
                              max_terms: int = 12, 
                              max_courses_per_term: int = 3, 
-                             verbose: bool = False) -> List[List[str]]:
+                             verbose: bool = False) -> Dict[str, Any]:
     """
     Schedule courses by term by prioritizing majors, then compls, then any remaining courses
 
@@ -144,6 +144,11 @@ def schedule_courses_by_term(course_graph: Dict[str, List[str]],
     Returns:
         dict: Dictionary containing the plan, scheduled courses, and unscheduled courses
     """
+
+    if verbose:
+        print(f"Scheduling courses by term...")
+        print(f"Course graph: {course_graph}")
+
     # Build in-degree and adjacency
     in_degree = defaultdict(int)
     adjacency = defaultdict(list)
@@ -411,6 +416,9 @@ def schedule_must_have_courses(course_path: List[List[str]], prior_course_bank: 
                 all_scheduled_courses = all_scheduled_courses | scheduled_courses
                 all_scheduled_courses.add(curr_priority_course)
                 newly_scheduled_must_have_courses.add(curr_priority_course)
+
+                # Update external_courses to include newly scheduled courses
+                external_courses = external_courses | scheduled_courses
 
                 # Update mod_course_bank to indicate scheduled courses
                 for c in scheduled_courses:
