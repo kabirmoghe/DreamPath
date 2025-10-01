@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Optional, Tuple
+from typing import Optional, List
 from enum import Enum
 
 class CourseType(Enum):
@@ -24,7 +24,7 @@ class Course:
     is_prereq: bool = False
     scheduled: bool = False
     prereq_tree: Optional[dict] = None
-    must_have_window: Optional[Tuple[int, int]] = None
+    must_have_window: Optional[List[int]] = None
     term_idx: Optional[int] = None
     term_idx_in_term: Optional[int] = None
     course_title: Optional[str] = None

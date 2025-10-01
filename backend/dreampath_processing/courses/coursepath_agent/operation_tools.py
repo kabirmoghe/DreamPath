@@ -79,7 +79,7 @@ class CoursePathTools:
             if p.must_have_window:
                 add_window = p.must_have_window
             elif p.add_to_term is not None:
-                add_window = (p.add_to_term, p.add_to_term)
+                add_window = [p.add_to_term, p.add_to_term]
 
             course_obj = construct_course(course_code=p.course_code, major=self.major, must_have_window=add_window)
             self.cp.add_course(course_to_add=course_obj, reschedule=p.reschedule)
@@ -100,7 +100,7 @@ class CoursePathTools:
         if p.move_window is None:
             if p.move_to_term is None:
                 return ExecuteOpResult(ok=False, diff={}, warnings=[], error={"code": "VALIDATION_ERROR", "details": "Move requires either move_to_term or move_window."}, requires_reschedule=False, new_version=None)
-            move_window = (p.move_to_term, p.move_to_term)
+            move_window = [p.move_to_term, p.move_to_term]
         else:
             move_window = p.move_window
         try:

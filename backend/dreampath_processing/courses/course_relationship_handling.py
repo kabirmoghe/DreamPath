@@ -17,7 +17,7 @@ def get_weaviate_service():
         _weaviate_service = WeaviateCourseService()
     return _weaviate_service
 
-def construct_course(course_code: str, major: Optional[str] = None, hardcoded_type: Optional[CourseType] = None, must_have_window: Optional[Tuple[int, int]] = None) -> Course:
+def construct_course(course_code: str, major: Optional[str] = None, hardcoded_type: Optional[CourseType] = None, must_have_window: Optional[List[int]] = None) -> Course:
     """Construct a Course object from a course code and major name"""
     
     # Validate existence externally
@@ -59,7 +59,9 @@ class PrereqGraph:
         self.parents: Dict[str, Set[str]] = parents
         self.all_courses: Set[str] = all_courses
 
+# -----------------------------------------------------
 # Building prerequisite tree for individual courses
+# -----------------------------------------------------
 def build_prereq_tree(course_code, base_tokens=("IP"), visited=None, prereq_accumulator=None):
     """
     Build the prereq. tree for a given course code
@@ -99,48 +101,9 @@ def build_prereq_tree(course_code, base_tokens=("IP"), visited=None, prereq_accu
 
     return {course_code: tree_children}, prereq_accumulator
 
-# # Building course graph for major and complementary courses
-# def merge_prereq_trees_to_graph(prereq_trees):
-#     """
-#     trees: list of nested dicts (each representing one course's tree)
-#     returns:
-#         - dict of {prereq: set of courses that depend on it}
-#         - full set of all courses mentioned (nodes in the graph)
-#     """
-#     graph = defaultdict(set)
-#     all_courses = set()
-
-#     def extract_edges(tree):
-#         edges = []
-
-#         def dfs(course, children):
-#             all_courses.add(course)
-#             for child_dict in children:
-#                 if isinstance(child_dict, dict):
-#                     for prereq, grand_children in child_dict.items():
-#                         edges.append((prereq, course))
-#                         all_courses.add(prereq)
-#                         dfs(prereq, grand_children)
-#                 else:
-#                     pass
-#                     # print(f'Likely IP/AP/LP encountered: {child_dict}')
-
-#         for course, prereq_children in tree.items():
-#             dfs(course, prereq_children)
-
-#         return edges
-
-#     for prereq_tree in prereq_trees:
-#         edges = extract_edges(prereq_tree)
-#         for prereq, course in edges:
-#             graph[prereq].add(course)
-
-#     # Ensure nodes with no edges still appear
-#     for course in all_courses:
-#         graph.setdefault(course, set())
-
-#     return graph, all_courses
-
+# -----------------------------------------------------
+# Merge prerequisite trees into a unified DAG
+# -----------------------------------------------------
 def merge_prereq_trees_to_graph(prereq_trees) -> PrereqGraph:
     """
     Merge prerequisite trees into a graph, represented as parents and children dictionaries
@@ -178,7 +141,9 @@ def merge_prereq_trees_to_graph(prereq_trees) -> PrereqGraph:
 
     return PrereqGraph(children, parents, all_courses)
 
-# Rebuild prereq graph for bank of courses
+# -----------------------------------------------------
+# Rebuild prereq graph from bank for specific courses and prune unwanted branches
+# -----------------------------------------------------
 def rebuild_prereq_graph(course_bank: Dict[str, Course], courses: Set[str]=None, to_prune: Set[str]=None) -> PrereqGraph:
     """
     Rebuild the prereq. graph for a given set of courses
@@ -311,12 +276,3 @@ def compute_max_prereq_depth(prereq_tree):
             return depth
     
     return _depth_traverse(prereq_tree, 0)
-
-if __name__ == "__main__":
-
-    course_codes = ["COSC89.27", "COSC55", "COSC35", "COSC62", "COSC69.17", "COSC69.18", "COSC74", "COSC70", "COSC34", "COSC61", "MATH56", "COGS44", "COGS26", "QSS30.09", "QSS20", "QSS17", "QSS45", "QSS19", "QSS30.19", "QSS30.07"]
-    major = "Computer Science"
-    for course_code in course_codes:
-        print("---")
-        course_obj = construct_course(course_code, major)
-        print(course_obj)
