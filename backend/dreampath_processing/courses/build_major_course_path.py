@@ -19,20 +19,25 @@ def build_course_path(recommended_courses, course_bank, visualize_course_connect
         for prereq in course_prereqs:
             print(f"Prereq: {prereq}, parent course: {course}")
             prereq_obj = course_bank.get(prereq, construct_course(course_code=prereq, hardcoded_type=course_bank[course].course_type))
+
+            if prereq_obj is None:
+                print(f"Unknown prereq course code '{prereq}'.")
+                continue
+
             prereq_obj.is_prereq = True
             course_bank[prereq] = prereq_obj
 
     # Build course graph
-    prereq_graph, all_courses = merge_prereq_trees_to_graph(prereq_trees)
+    prereq_graph = merge_prereq_trees_to_graph(prereq_trees)
 
     print("---")
 
     if visualize_course_connections:
-        flattened_graph = flatten_graph_dict(prereq_graph)
-        visualize_graph(flattened_graph, all_courses)
+        flattened_graph = flatten_graph_dict(prereq_graph.children)
+        visualize_graph(flattened_graph, prereq_graph.all_courses)
 
     # Build course path
-    course_path_components = schedule_courses_by_term(course_graph=prereq_graph, course_bank=course_bank, max_terms=12, max_courses_per_term=3)
+    course_path_components = schedule_courses_by_term(course_graph=prereq_graph, course_bank=course_bank, max_terms=12, max_courses_per_term=3, verbose=True)
     course_path = course_path_components["plan"]
 
     # Formalize output course path

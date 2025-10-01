@@ -22,8 +22,10 @@ def construct_course(course_code: str, major: Optional[str] = None, hardcoded_ty
     
     # Validate existence externally
     enhanced_course = get_weaviate_service().get_course_by_code(course_code)
+
     if enhanced_course is None:
-        raise Exception(f"Unknown course code '{course_code}'.")
+        print(f"Unknown course code '{course_code}'.")
+        return None
     
     # Determine course type
     if not hardcoded_type:
@@ -51,6 +53,11 @@ def construct_course(course_code: str, major: Optional[str] = None, hardcoded_ty
 # -----------------------------------------------------
 # Prereq. operations
 # -----------------------------------------------------
+class PrereqGraph:
+    def __init__(self, children, parents, all_courses):
+        self.children: Dict[str, Set[str]] = children
+        self.parents: Dict[str, Set[str]] = parents
+        self.all_courses: Set[str] = all_courses
 
 # Building prerequisite tree for individual courses
 def build_prereq_tree(course_code, base_tokens=("IP"), visited=None, prereq_accumulator=None):
@@ -92,50 +99,87 @@ def build_prereq_tree(course_code, base_tokens=("IP"), visited=None, prereq_accu
 
     return {course_code: tree_children}, prereq_accumulator
 
-# Building course graph for major and complementary courses
-def merge_prereq_trees_to_graph(prereq_trees):
+# # Building course graph for major and complementary courses
+# def merge_prereq_trees_to_graph(prereq_trees):
+#     """
+#     trees: list of nested dicts (each representing one course's tree)
+#     returns:
+#         - dict of {prereq: set of courses that depend on it}
+#         - full set of all courses mentioned (nodes in the graph)
+#     """
+#     graph = defaultdict(set)
+#     all_courses = set()
+
+#     def extract_edges(tree):
+#         edges = []
+
+#         def dfs(course, children):
+#             all_courses.add(course)
+#             for child_dict in children:
+#                 if isinstance(child_dict, dict):
+#                     for prereq, grand_children in child_dict.items():
+#                         edges.append((prereq, course))
+#                         all_courses.add(prereq)
+#                         dfs(prereq, grand_children)
+#                 else:
+#                     pass
+#                     # print(f'Likely IP/AP/LP encountered: {child_dict}')
+
+#         for course, prereq_children in tree.items():
+#             dfs(course, prereq_children)
+
+#         return edges
+
+#     for prereq_tree in prereq_trees:
+#         edges = extract_edges(prereq_tree)
+#         for prereq, course in edges:
+#             graph[prereq].add(course)
+
+#     # Ensure nodes with no edges still appear
+#     for course in all_courses:
+#         graph.setdefault(course, set())
+
+#     return graph, all_courses
+
+def merge_prereq_trees_to_graph(prereq_trees) -> PrereqGraph:
     """
-    trees: list of nested dicts (each representing one course's tree)
-    returns:
-        - dict of {prereq: set of courses that depend on it}
-        - full set of all courses mentioned (nodes in the graph)
+    Merge prerequisite trees into a graph, represented as parents and children dictionaries
     """
-    graph = defaultdict(set)
+    children = defaultdict(set)  # prereq -> dependents
+    parents  = defaultdict(set)  # course -> prerequisites
     all_courses = set()
 
     def extract_edges(tree):
         edges = []
-
-        def dfs(course, children):
+        def dfs(course, children_nodes):
             all_courses.add(course)
-            for child_dict in children:
-                if isinstance(child_dict, dict):
-                    for prereq, grand_children in child_dict.items():
-                        edges.append((prereq, course))
+            for child in children_nodes:
+                if isinstance(child, dict):
+                    for prereq, grand_children in child.items():
+                        edges.append((prereq, course))  # prereq -> course
                         all_courses.add(prereq)
                         dfs(prereq, grand_children)
                 else:
+                    # base tokens like IP/AP/LP: no edges
                     pass
-                    # print(f'Likely IP/AP/LP encountered: {child_dict}')
-
-        for course, prereq_children in tree.items():
-            dfs(course, prereq_children)
-
+                
+        for course, kids in tree.items():
+            dfs(course, kids)
         return edges
 
-    for prereq_tree in prereq_trees:
-        edges = extract_edges(prereq_tree)
-        for prereq, course in edges:
-            graph[prereq].add(course)
+    for t in prereq_trees:
+        for p, c in extract_edges(t):
+            children[p].add(c)
+            parents[c].add(p)
 
-    # Ensure nodes with no edges still appear
-    for course in all_courses:
-        graph.setdefault(course, set())
+    for v in all_courses:
+        children.setdefault(v, set())
+        parents.setdefault(v, set())
 
-    return graph, all_courses
+    return PrereqGraph(children, parents, all_courses)
 
 # Rebuild prereq graph for bank of courses
-def rebuild_prereq_graph(course_bank: Dict[str, Course], courses: Set[str]=None) -> Dict[str, Set[str]]:
+def rebuild_prereq_graph(course_bank: Dict[str, Course], courses: Set[str]=None, to_prune: Set[str]=None) -> PrereqGraph:
     """
     Rebuild the prereq. graph for a given set of courses
 
@@ -166,19 +210,22 @@ def rebuild_prereq_graph(course_bank: Dict[str, Course], courses: Set[str]=None)
             c_prereq_tree, _ = build_prereq_tree(c)
             c_object.prereq_tree = c_prereq_tree
 
+        if to_prune:
+            c_prereq_tree = prune_prereqs_from_tree(c_prereq_tree, to_prune)
+
         course_prereq_trees.append(c_prereq_tree)
     
-    rebuilt_prereq_graph, all_courses_post_merge = merge_prereq_trees_to_graph(course_prereq_trees)
+    rebuilt_prereq_graph = merge_prereq_trees_to_graph(course_prereq_trees)
 
     return rebuilt_prereq_graph
 
-def find_lingering_courses(old_prereq_graph: Dict[str, Set[str]], new_prereq_graph: Dict[str, Set[str]]) -> Set[str]:
+def find_lingering_courses(old_prereq_graph: PrereqGraph, new_prereq_graph: PrereqGraph) -> Set[str]:
     """
     Find lingering prereqs for a given set of courses
     """
     lingering_courses = set()
-    for course in old_prereq_graph.keys():
-        if course not in new_prereq_graph:
+    for course in old_prereq_graph.children.keys():
+        if course not in new_prereq_graph.children:
             lingering_courses.add(course)
 
     return lingering_courses

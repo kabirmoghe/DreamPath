@@ -1,6 +1,6 @@
-from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, merge_prereq_trees_to_graph, get_direct_prereqs, prune_prereqs_from_tree, compute_max_prereq_depth, rebuild_prereq_graph
+from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, merge_prereq_trees_to_graph, get_direct_prereqs, prune_prereqs_from_tree, compute_max_prereq_depth, rebuild_prereq_graph, PrereqGraph
 from collections import defaultdict, deque
-from typing import List, Set, Dict, Any, Tuple, Deque
+from typing import List, Set, Dict, Any, Tuple, Deque, Optional
 import copy
 from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY
 
@@ -120,7 +120,7 @@ def _handle_course_queue(in_degree: Dict[str, int], term: int, course_scheduling
     return deque(sorted(simple_ready))
 
 # Producing course path
-def schedule_courses_by_term(course_graph: Dict[str, List[str]], 
+def schedule_courses_by_term_legacy(course_graph: Dict[str, List[str]], 
                              course_bank: Dict[str, Course], 
                              existing_plan: List[List[str]] = None, 
                              course_scheduling_windows: Dict[str, Tuple[int, int]] = {}, 
@@ -237,7 +237,7 @@ def schedule_courses_by_term(course_graph: Dict[str, List[str]],
 
         # Handle courses with term requirements (if present)
         if course_scheduling_windows:
-            scheduled_with_term_reqs = set()
+            ready_with_term_reqs = set()
             for course, term_reqs in course_scheduling_windows.items():
                 if course not in scheduled:
                     if in_degree[course] == 0:
@@ -245,7 +245,7 @@ def schedule_courses_by_term(course_graph: Dict[str, List[str]],
                         next_term = term + 1
                         if next_term >= c_start_term and next_term <= c_end_term:
                             next_ready.add(course)
-                            scheduled_with_term_reqs.add(course)
+                            ready_with_term_reqs.add(course)
                         else:
                             if verbose:                                
                                 print(f"* Unscheduled course {course} not ready, curr_term={term+1} but requires {term_reqs}")
@@ -258,8 +258,8 @@ def schedule_courses_by_term(course_graph: Dict[str, List[str]],
                             print(f"* Unscheduled course {course} not ready, indeg={in_degree[course]} (next_term={term+1}, requires {term_reqs})")
 
             # Remove scheduled courses from term_req map
-            for scheduled_c in scheduled_with_term_reqs:
-                course_scheduling_windows.pop(scheduled_c)    
+            for ready_c in ready_with_term_reqs:
+                course_scheduling_windows.pop(ready_c)    
 
         ready = deque(sorted(set(ready) | next_ready))
         plan[term] = courses_this_term
@@ -445,7 +445,7 @@ def integrate_recommendations_and_must_have_courses(must_have_course_path: List[
 
     Args:
         must_have_course_path: List of lists, where each inner list represents a term and contains course codes
-        locked_courses: Set of courses that must be scheduled in a given window
+        locked_courses: Courses scheduled outside of window
         prior_prereq_graph: Dictionary of course codes to list of prerequisite courses
         must_have_course_bank: Dictionary of course codes to Courses that must be scheduled in a given window
         prior_course_bank: Dictionary of course codes to Courses from previous course path
@@ -528,3 +528,394 @@ def integrate_recommendations_and_must_have_courses(must_have_course_path: List[
         "modified_course_path": modified_course_path,
         "complete_course_bank": complete_course_bank
     }
+
+# ---------------------------------------
+# Topological order (on the pruned subgraph)
+# ---------------------------------------
+def _topo_order(children: Dict[str, Set[str]], parents: Dict[str, Set[str]], nodes: Set[str]) -> List[str]:
+    indeg = {v: len(parents.get(v, set())) for v in nodes}
+    q = deque([v for v, d in indeg.items() if d == 0])
+    order: List[str] = []
+    while q:
+        v = q.popleft()
+        order.append(v)
+        for w in children.get(v, set()):
+            indeg[w] -= 1
+            if indeg[w] == 0:
+                q.append(w)
+    if len(order) != len(nodes):
+        raise ValueError("Cycle detected in prerequisite subgraph.")
+    return order
+
+# ---------------------------------------
+# ASAP (forward pass)
+# ---------------------------------------
+def compute_asap_for_graph(prereq_graph, window_start_term: int, topo_order: List[str] = None) -> Dict[str, int]:
+    """
+    prereq_graph: PrereqGraph(children, parents, all_courses) on the pruned in-window DAG
+    Returns: dict course -> earliest feasible term (ASAP)
+    """
+    parents = prereq_graph.parents
+
+    order = topo_order
+    asap: Dict[str, int] = {}
+    for v in order:
+        ps = parents.get(v, set())
+        if ps:
+            asap[v] = 1 + max(asap[p] for p in ps)
+        else:
+            asap[v] = window_start_term
+    return asap
+
+# ---------------------------------------
+# ALAP (backward pass)
+# ---------------------------------------
+def compute_alap_for_graph(prereq_graph,
+                           target_deadline_hi: Dict[str, int],
+                           default_hi: int,
+                           topo_order: List[str] = None) -> Dict[str, int]:
+    """
+    target_deadline_hi: deadlines for sink/target nodes (v -> latest term); others fall back to default_hi
+    default_hi: e.g., max_terms - 1
+    Returns: dict course -> latest feasible term (ALAP)
+    """
+    children = prereq_graph.children
+
+    order = topo_order
+    alap: Dict[str, int] = {}
+    for v in reversed(order):
+        cs = children.get(v, set())
+        if cs:
+            cand = min(alap[c] - 1 for c in cs)
+        else:
+            cand = target_deadline_hi.get(v, default_hi)
+        if v in target_deadline_hi:
+            cand = min(cand, target_deadline_hi[v])
+        alap[v] = cand
+    return alap
+
+def build_scheduling_windows(prereq_graph,
+                             asap: Dict[str, int],
+                             alap: Dict[str, int],
+                             window_start_term: int,
+                             max_terms: int,
+                             must_have_course_map: Dict[str, "Course"]) -> Dict[str, Tuple[int, int]]:
+    """
+    Clamp targets to their (lo, hi); others to full in-window horizon.
+    """
+    nodes = prereq_graph.all_courses
+    windows: Dict[str, Tuple[int, int]] = {}
+    for v in nodes:
+        lo = asap[v]
+        hi = alap[v]
+        if v in must_have_course_map and must_have_course_map[v].must_have_window:
+            tlo, thi = must_have_course_map[v].must_have_window
+            lo = max(lo, tlo)
+            hi = min(hi, thi)
+        else:
+            lo = max(lo, window_start_term)
+            hi = min(hi, max_terms - 1)
+        if lo > hi:
+            raise ValueError(f"Infeasible window for {v}: [{lo}, {hi}]")
+        windows[v] = (lo, hi)
+    return windows
+
+def schedule_courses_by_term(course_graph: PrereqGraph, 
+                             course_bank: Dict[str, Course], 
+                             existing_plan: List[List[str]] = None, 
+                             course_scheduling_windows: Dict[str, Tuple[int, int]] = {}, 
+                             window_start_term: int = 0, 
+                             max_terms: int = 12, 
+                             max_courses_per_term: int = 3,
+                             verbose: bool = False) -> Dict[str, Any]:
+    
+    # Set up in-degree for each course
+    in_degree = defaultdict(int)
+    for _, child_courses in course_graph.children.items():
+        for child_course in child_courses:
+            in_degree[child_course] += 1
+    
+    for course in course_graph.all_courses:
+        in_degree.setdefault(course, 0)
+
+    # Initialize plan
+    plan = copy.deepcopy(existing_plan)
+    if not plan:
+        plan = [[] for _ in range(max_terms)]
+
+    def _in_window(course: str, term: int) -> bool:
+        if course in course_scheduling_windows:
+            return course_scheduling_windows[course][0] <= term <= course_scheduling_windows[course][1]
+        return True
+    
+    # Set up priority function
+    term = window_start_term
+    scheduled = set()
+    ready_since: Dict[str, int] = {}
+
+    def _priority(course: str) -> Tuple[int, int, int, str]:
+        # 1. Window
+        lo, hi = course_scheduling_windows.get(course, (window_start_term, max_terms))
+
+        # 2. Slack
+        slack = max(0, hi - lo)
+
+        # 3. Major / comp. split
+        major_first = 0 if course_bank[course].course_type == MAJOR else 1
+
+        # 4. Age
+        age = max(0, term - ready_since.get(course, term) - 1)
+
+        return (hi, slack, major_first, -age, course)
+
+    # Initialize ready queue
+    def handle_course_queue(placed_now: List[str]) -> Deque[str]:
+        ready_course_list = []
+
+        # Update in-degree for courses whose prereqs have been placed
+        for c in placed_now:
+            for child_course in course_graph.children[c]:
+                in_degree[child_course] = max(0, in_degree[child_course] - 1)
+
+        # Add courses that are ready to be scheduled
+        for course in course_graph.all_courses:
+            if course not in scheduled and in_degree[course] == 0 and _in_window(course, term):
+                if course not in ready_since:
+                    ready_since[course] = term
+                ready_course_list.append(course) 
+
+        return deque(sorted(ready_course_list, key=lambda c: _priority(c)))
+    
+    ready = handle_course_queue(placed_now=[])
+
+    # Begin scheduling
+    while (scheduled != course_graph.all_courses) and term < max_terms:
+        courses_this_term = [] # clear out previous version of term
+        slots = max_courses_per_term - len(courses_this_term)
+        placed_now: List[str] = []
+
+        if verbose:
+            print(f"--\nTerm={term} | Cap.={slots} | Ready={ready} | Ready since={ready_since}")
+
+        # Layer A — Feasibility first: due-now = hi == term
+        due_now = [c for c in ready if course_scheduling_windows.get(c, (window_start_term, max_terms))[1] == term]
+
+        if verbose:
+            print(f"Due now: {due_now}")
+
+        # Place all due-now first
+        if len(due_now) > 0:
+            # deterministic order within due-now: major first, then code
+            due_now.sort(key=lambda c: (0 if (c in course_bank and course_bank[c].course_type == MAJOR) else 1, c))
+            if len(due_now) > slots:
+                # hard infeasibility
+                raise ValueError(f"Infeasible at term {term}: {len(due_now)} courses due now but only {slots} slots. Due: {due_now}")
+            for c in due_now:
+                courses_this_term.append(c)
+                placed_now.append(c)
+                scheduled.add(c)    
+                ready_since.pop(c)
+
+                if c in course_bank:
+                    course_bank[c].scheduled = True
+                    course_bank[c].term_idx = term
+
+            slots = max_courses_per_term - len(courses_this_term)
+
+        # Layer B — Fill remaining by priority (EDF/min-slack), enforcing ≤2 majors/term
+        if verbose:
+            print(f"Layer B: {slots} slots remaining")
+
+        if slots > 0:
+            pool = [c for c in ready if c not in due_now]
+            pool.sort(key=_priority)
+
+            for c in pool:
+                majors_used = sum(1 for c in courses_this_term if (c in course_bank and course_bank[c].course_type == MAJOR))
+
+                if slots == 0:
+                    break
+
+                is_major = (c in course_bank and course_bank[c].course_type == MAJOR)
+                # policy: ≤2 majors/term (soft—feasibility already handled in Layer A)
+                if is_major and majors_used >= 2:
+                    continue
+                # place
+                courses_this_term.append(c)
+                placed_now.append(c)
+                scheduled.add(c)
+                ready_since.pop(c)
+
+                if c in course_bank:
+                    course_bank[c].scheduled = True
+                    course_bank[c].term_idx = term
+                slots -= 1
+
+        # Update plan
+        plan[term] = courses_this_term
+
+        if verbose:
+            print(f"Placed: {courses_this_term}")
+
+        # Increment term and update ready queue
+        term += 1
+        ready = handle_course_queue(placed_now=placed_now)
+
+    unscheduled = course_graph.all_courses - scheduled
+    if unscheduled:
+        print(f"Warning: Unscheduled courses: {unscheduled}")
+
+        for c in unscheduled: 
+            course_bank[c].scheduled = False
+            course_bank[c].term_idx = None
+
+    return {"plan": plan, "scheduled": scheduled, "unscheduled": unscheduled}
+
+def rebuild_v1(cp, window_start_term: Optional[int] = None, must_have_course_map: Dict[str, Course] = {}, max_terms: int = 12, for_op: bool = False, verbose: bool = False) -> Dict[str, Any]:
+    if window_start_term is None:
+        window_start_term = cp.curr_window_start
+
+    # 1. Combine existing must-have courses with new must-have courses
+    existing_must_have_courses_map = {c: cp.course_bank[c] for c in cp.must_have_courses}
+    complete_must_have_courses_map = existing_must_have_courses_map | must_have_course_map
+
+    print(complete_must_have_courses_map)
+
+    # Get external courses
+    external_courses = set([course for term in cp.course_path[:window_start_term] for course in term])
+
+    # 2. Compute feasibility windows for must-have courses
+    must_have_course_bank = {}
+
+    for c, c_object in complete_must_have_courses_map.items():
+
+        # Construct course object for bank
+        must_have_course_bank[c] = must_have_course_bank.get(c, c_object)
+        c_prereq_tree, c_prereq_set = build_prereq_tree(c)
+        must_have_course_bank[c].prereq_tree = c_prereq_tree
+        must_have_course_bank[c].must_have_window = c_object.must_have_window
+
+        for c_prereq in c_prereq_set:
+            must_have_course_bank[c_prereq] = must_have_course_bank.get(c_prereq, Course(course_code=c_prereq, course_type=must_have_course_bank[c].course_type))
+            must_have_course_bank[c_prereq].is_prereq = True
+
+            ## To maintain schedulign accuracy for pre-window courses upon merging must-have and prior course banks
+            if c_prereq in cp.course_bank:
+                must_have_course_bank[c_prereq].scheduled = cp.course_bank[c_prereq].scheduled
+                must_have_course_bank[c_prereq].term_idx = cp.course_bank[c_prereq].term_idx
+
+    print(must_have_course_bank)
+
+    must_have_graph = rebuild_prereq_graph(course_bank=must_have_course_bank, courses=must_have_course_map.keys(), to_prune=external_courses)
+    print(must_have_graph.children)
+
+    # 4. Compute ASAP and ALAP, build scheduling windows
+    must_have_topo_order = _topo_order(must_have_graph.children, must_have_graph.parents, must_have_graph.all_courses)
+    asap_for_courses = compute_asap_for_graph(must_have_graph, window_start_term, topo_order=must_have_topo_order)
+    target_deadline_hi = {c: obj.must_have_window[1] for c, obj in complete_must_have_courses_map.items()}
+    alap_for_courses = compute_alap_for_graph(must_have_graph, target_deadline_hi, default_hi=max_terms - 1, topo_order=must_have_topo_order)
+    scheduling_windows = build_scheduling_windows(must_have_graph, asap_for_courses, alap_for_courses, window_start_term, max_terms, must_have_course_map)
+ 
+    # 5. Rebuild master course graph
+    complete_course_bank = cp.course_bank | must_have_course_bank
+    build_for = must_have_course_map.keys() | cp.recommended_courses
+    master_graph = rebuild_prereq_graph(course_bank=complete_course_bank, courses=build_for, to_prune=external_courses)
+
+    # 6. Schedule courses by term
+    course_path_components = schedule_courses_by_term(course_graph=master_graph, 
+                                                      course_bank=complete_course_bank, 
+                                                      existing_plan=cp.course_path, 
+                                                      course_scheduling_windows=scheduling_windows, 
+                                                      window_start_term=window_start_term, 
+                                                      max_terms=max_terms, 
+                                                      verbose=verbose)
+
+    
+    # 7. Consolidate into CoursePath object
+
+    from dreampath_processing.courses.schedule_modules.course_path import CoursePath
+    new_cp = CoursePath(course_path=course_path_components["plan"],
+                        recommended_courses=set(),
+                        course_bank={},
+                        prereq_graph=master_graph,
+                        curr_window_start=window_start_term,
+                        must_have_courses=set(),
+                        lingering_courses=set()
+                        )
+    
+    violations = CoursePath._validate_plan(course_path=course_path_components["plan"], course_bank=complete_course_bank)
+    if violations:
+        print(f"Violations: {violations}")
+
+    return new_cp
+
+if __name__ == "__main__":
+    major = 'Computer Science'
+    major_courses = {'COSC89.27', 'COSC55', 'COSC89.20', 'COSC35', 'COSC89.28', 'COSC62', 'COSC69.17', 'COSC89.19', 'COSC74', 'COSC70', 'COSC34', 'COSC61'}
+    complementary_courses = {'QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'COGS44', 'COGS26'}
+    
+    # Construct recommended courses set and course bank
+    recommended_courses = major_courses | complementary_courses
+    course_bank = {c: Course(course_code=c, course_type=MAJOR if c in major_courses else COMPLEMENTARY) for c in recommended_courses}
+
+    # Build initial course path + course bank updated with prereqs + scheduling info
+    from dreampath_processing.courses.build_major_course_path import build_course_path
+
+    test_course_path = build_course_path(recommended_courses, course_bank)
+    test_course_path.curr_window_start = 6
+
+    print(test_course_path.visualize())
+
+    must_have_course_map = {'MATH40': Course(course_code='MATH40', course_type=COMPLEMENTARY, must_have_window=(8, 9)),
+                            'MATH46': Course(course_code='MATH46', course_type=COMPLEMENTARY, must_have_window=(8, 10)),
+                            'CHEM40': Course(course_code='CHEM40', course_type=COMPLEMENTARY, must_have_window=(8, 10))}
+
+    new_cp = test_course_path.rebuild(must_have_course_map=must_have_course_map, verbose=3)
+    print(new_cp.visualize())
+    print(new_cp.visualize_by_term_idx())
+
+    from dreampath_processing.courses.schedule_modules.course_path import CoursePath
+
+    violations = CoursePath._validate_plan(course_path=new_cp.course_path, course_bank=new_cp.course_bank)
+    if violations:
+        print(f"Violations: {violations}")
+
+    # print(new_cp.course_bank)
+    print(new_cp.must_have_courses)
+    print(new_cp.recommended_courses)
+    print([new_cp.course_bank[c] for c in new_cp.must_have_courses])
+
+    new_cp.add_course(course_to_add=Course(course_code='COSC58', course_type=MAJOR), reschedule=True, verbose=3)
+
+    print(new_cp.visualize())
+    print(new_cp.visualize_by_term_idx())
+
+    violations = CoursePath._validate_plan(course_path=new_cp.course_path, course_bank=new_cp.course_bank)
+    if violations:
+        print(f"Violations: {violations}")
+
+    # asap_for_courses = {}
+    # alap_for_courses = {}
+
+    # # Compute must_have graph
+    # must_have_trees = []
+    # external_courses = set([course for term in test_course_path.course_path[:test_course_path.curr_window_start] for course in term])
+
+    # for course, course_object in must_have_course_map.items():
+    #     course_object.prereq_tree, _ = build_prereq_tree(course)
+    #     pruned_prereq_tree = prune_prereqs_from_tree(course_object.prereq_tree, external_courses)
+    #     must_have_trees.append(pruned_prereq_tree)
+        
+    # must_have_graph = merge_prereq_trees_to_graph(must_have_trees)
+
+    # print(must_have_graph.parents)
+    # print(must_have_graph.children)
+
+    # # Compute ASAP
+    # asap_for_courses = compute_asap_for_graph(must_have_graph, test_course_path.curr_window_start)
+
+    # # Compute ALAP
+    # alap_for_courses = compute_alap_for_graph(must_have_graph, asap_for_courses, test_course_path.curr_window_start)
+
+    # scheduling_windows = build_scheduling_windows(must_have_graph, asap_for_courses, alap_for_courses, test_course_path.curr_window_start, 12, must_have_course_map)
+    # print(scheduling_windows)

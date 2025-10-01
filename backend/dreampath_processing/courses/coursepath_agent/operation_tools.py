@@ -124,6 +124,8 @@ class CoursePathTools:
             after = snapshot_path(self.cp)
             return ExecuteOpResult(ok=True, diff=compute_diff(before, after), warnings=[], error=None, requires_reschedule=False, new_version=None)
         except Exception as e:
+            # Revert to original path
+            self.cp = before
             msg = str(e)
             if "requires rescheduling" in msg:
                 return ExecuteOpResult(ok=False, diff={}, warnings=[], error={"code": "REQUIRES_RESCHEDULE", "details": msg}, requires_reschedule=True, new_version=None)
