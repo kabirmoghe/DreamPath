@@ -59,7 +59,7 @@ def modify_student_profile(state: DreamPathAgentState, config) -> Tuple[Modified
 def render_final_reply(state: DreamPathAgentState, config) -> Tuple[str, dict]:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state, config, CRAFT_FINAL_REPLY_SYS.format(student_name=student_name), str, model="gpt-4o", temperature=0.1, verbose=True)
+    return extract_structured_output_from_context(state, config, CRAFT_FINAL_REPLY_SYS.format(student_name=student_name), str, model="gpt-4o", temperature=0.1)
 
 # -----------------------------------------------------
 # DETERMINE USER CONFIRMATION (MINI-HELPER)

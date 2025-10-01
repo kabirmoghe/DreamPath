@@ -69,7 +69,7 @@ class DreamPathAgentState(BaseModel):
     summary_end: int = 0
 
     # Routing
-    route: Optional[Literal["orchestrator", "plan_builder", "course_search", "course_path", "modify_profile", "finalize"]] = Field(default=None)
+    route: Optional[Literal["orchestrator", "course_search", "plan_builder", "course_path", "modify_profile", "finalize"]] = Field(default=None)
 
     # Search + planning
     topics: Optional[Dict[str, int]] = Field(default_factory=dict)

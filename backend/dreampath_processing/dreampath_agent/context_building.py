@@ -148,7 +148,7 @@ def build_messages(state: DreamPathAgentState, prompt: str, config: dict, task_p
 # -----------------------------------------------------
 # Baseline For Extracting Structured Output from Context
 # -----------------------------------------------------
-def extract_structured_output_from_context(state: DreamPathAgentState, config: dict, system_prompt: str, response_model: BaseModel, model="gpt-4o-mini", temperature=0, verbose=True, show_token_count=True, task_prompt: Optional[str]=None):
+def extract_structured_output_from_context(state: DreamPathAgentState, config: dict, system_prompt: str, response_model: BaseModel, model="gpt-4o-mini", temperature=0, verbose=False, show_token_count=True, task_prompt: Optional[str]=None):
     messages, state_updates = build_messages(state, system_prompt, config, task_prompt)
     if verbose:
         print("=== MESSAGES SENT TO LLM ===")

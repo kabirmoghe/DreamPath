@@ -156,6 +156,8 @@ def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentSta
     user_response = interrupt(f"How do you feel about the modified profile? {modified_profile.__str__()}")
     if determine_user_confirmation(user_response):
 
+        print(f"********** ProfileModifierNode: user confirmed modified profile")
+
         # Get the current student profile from config
         current_profile = config["configurable"]["student_profile"]
         
