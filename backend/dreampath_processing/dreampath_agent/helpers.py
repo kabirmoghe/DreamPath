@@ -7,7 +7,7 @@ from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentO
 from dreampath_processing.dreampath_agent.types import (
     OrchestratorDecision, DreamPathAgentState, CoursePathOperations, CourseSearchQueries, CourseSearchOutput, ModifiedStudentProfile
 )
-from dreampath_processing.dreampath_agent.prompts import (
+from dreampath_processing.dreampath_agent.chat_prompts import (
     ORCHESTRATOR_DECISION_SYS, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS, COURSE_SEARCH_SYS, MODIFY_PROFILE_SYS, DETERMINE_USER_CONFIRMATION_SYS
 )
 from dreampath_processing.dreampath_agent.context_building import extract_structured_output_from_context

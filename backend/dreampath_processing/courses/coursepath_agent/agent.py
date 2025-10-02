@@ -185,6 +185,9 @@ def on_user_force(state: CoursePathAgentState, tools: CoursePathTools, user_inpu
     op_type = state.pending_op_type
     op = state.pending_op
     op.reschedule = True
+
+    print(f"********** on_user_force: op={op}")
+
     forced = execute_course_op(state=state, op_type=op_type, op=op, tools=tools, force_reschedule=True)
 
     if forced.ok:
@@ -208,7 +211,7 @@ def on_user_force(state: CoursePathAgentState, tools: CoursePathTools, user_inpu
         error=forced.error
     )
 
-def on_user_cancel(state: CoursePathAgentState, tools: CoursePathTools, user_input: str) -> str:
+def on_user_cancel(state: CoursePathAgentState, tools: CoursePathTools, user_input: str) -> CoursePathAgentOutput:
     clear_op_state(state)
     return CoursePathAgentOutput(
         status="cancel",

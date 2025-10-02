@@ -12,6 +12,7 @@ from dreampath_processing.courses.course_relationship_handling import construct_
 from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
 from dreampath_processing.courses.coursepath_agent.agent import CoursePathAgent, CoursePathTools
 from dreampath_processing.modules.student_profile import StudentProfile
+from typing import Generator, Tuple, Optional
 
 def orchestrator_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     print(f"Orchestrator thinking...")
@@ -150,8 +151,6 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
 def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     modified_profile, state_updates = modify_student_profile(state, config)
 
-    print(f"********** ProfileModifierNode: modified_profile={modified_profile}")
-
     # Verify modified profile with user
     user_response = interrupt(f"How do you feel about the modified profile? {modified_profile.__str__()}")
     if determine_user_confirmation(user_response):
@@ -176,6 +175,8 @@ def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentSta
         
         # Update the config with the new profile
         config["configurable"]["student_profile"] = updated_profile
+
+        print(f"********** ProfileModifierNode: updated_profile={updated_profile}")
 
         tool_call = {
             "role": "assistant",
@@ -208,7 +209,168 @@ def finalize_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     }
 
 # ------------------------------------------------------------
-# MAIN GRAPH
+# DREAMPATH AGENT CLASS
+# ------------------------------------------------------------
+
+class DreampathAgent:
+    """
+    A conversational agent for course path planning and academic advising.
+    
+    This agent can help students with:
+    - Course search and recommendations
+    - Course path modifications (add, remove, move courses)
+    - Profile updates (major, interests, goals)
+    - Academic planning and scheduling
+    """
+    
+    def __init__(self, student_profile: StudentProfile, thread_id: str = "default"):
+        """
+        Initialize the DreampathAgent.
+        
+        Args:
+            student_profile: StudentProfile containing student information and course path
+            thread_id: Unique identifier for the conversation thread
+        """
+        self.student_profile = student_profile
+        self.thread_id = thread_id
+        
+        # Initialize components
+        self.course_search_tool = CourseSearchTool()
+        
+        # Set up coursepath agent
+        coursepath_tools = CoursePathTools(
+            course_path=student_profile.course_path, 
+            major=student_profile.major
+        )
+        self.coursepath_agent = CoursePathAgent(tools=coursepath_tools)
+        
+        # Build the graph
+        self._build_graph()
+        
+        # Initialize state
+        self.state = DreamPathAgentState()
+        
+    def _build_graph(self):
+        """Build the LangGraph state graph for the agent."""
+        g = StateGraph(DreamPathAgentState)
+        g.add_node("orchestrator", orchestrator_node)
+        g.add_node("course_search", course_search_node)
+        g.add_node("plan_builder", plan_builder_node)
+        g.add_node("course_path", course_path_node)
+        g.add_node("modify_profile", modify_profile_node)
+        g.add_node("finalize", finalize_node)
+
+        g.add_edge(START, "orchestrator")
+
+        # Orchestrator to sub-nodes
+        def router(state: DreamPathAgentState):
+            return state.route or "finalize"
+
+        g.add_conditional_edges("orchestrator", router, {
+            "course_search": "course_search",
+            "plan_builder": "plan_builder",
+            "modify_profile": "modify_profile",
+            "finalize": "finalize",
+        })
+
+        # Sub-nodes loop back to orchestrator-style planner
+        def sub_node_router(state: DreamPathAgentState):
+            return state.route or "orchestrator"
+
+        g.add_edge("course_search", "orchestrator")
+        g.add_edge("plan_builder", "course_path")     # plan → execute directly
+        g.add_conditional_edges("course_path", sub_node_router, {
+            "course_path": "course_path",
+            "orchestrator": "orchestrator",
+        })
+        g.add_edge("modify_profile", "orchestrator")
+        g.add_edge("finalize", END)
+
+        checkpointer = InMemorySaver()
+        self.app = g.compile(checkpointer=checkpointer)
+        
+    def _get_config(self):
+        """Get the configuration for the graph execution."""
+        return {
+            "configurable": {
+                "thread_id": self.thread_id,
+                "coursepath_agent": self.coursepath_agent,
+                "student_profile": self.student_profile,
+                "course_search_tool": self.course_search_tool
+            }
+        }
+    
+    def run(self, user_input: str) -> Generator[Tuple[str, Optional[str]], str, str]:
+        """
+        Process user input and return a generator that yields conversation turns.
+        
+        This method handles the full conversation flow including interrupts for user
+        confirmations and clarifications.
+        
+        Args:
+            user_input: The user's message/question
+            
+        Yields:
+            Tuple[str, Optional[str]]: (assistant_message, interrupt_request)
+            - assistant_message: The agent's response
+            - interrupt_request: If not None, a question requiring user response
+            
+        Returns:
+            str: The final assistant response when conversation is complete
+        """
+        config = self._get_config()
+        
+        try:
+            # Invoke the graph with the user input
+            state_dict = self.app.invoke({
+                "major": self.student_profile.major,
+                "messages": [{"role": "user", "content": user_input}]
+            }, config)
+            
+            # Handle interrupts in a loop
+            while '__interrupt__' in state_dict:
+                interrupt_info = state_dict['__interrupt__']
+                interrupt_msg = interrupt_info[0].value
+                
+                # Yield the interrupt message and wait for user response
+                user_response = yield (interrupt_msg, interrupt_msg)
+                
+                # Continue with user response
+                messages_to_add = [
+                    {"role": "assistant", "content": interrupt_msg},
+                    {"role": "user", "content": user_response}
+                ]
+
+                print(f"********** Messages to add: {messages_to_add}")
+                
+                state_dict = self.app.invoke(
+                    Command(resume=user_response, update={"messages": messages_to_add}), 
+                    config
+                )
+            
+            # Update internal state
+            self.state = DreamPathAgentState(**state_dict)
+            
+            # Return final response
+            final_response = self.state.ui_reply or "(ok)"
+            print(f"********** Final response: {final_response}")
+            return final_response
+            
+        except Exception as e:
+            error_msg = f"❌ ERROR: {type(e).__name__}: {e}"
+            return error_msg
+    
+    def get_course_path_visualization(self) -> str:
+        """Get a visualization of the current course path."""
+        current_path = self.student_profile.course_path
+        return f"CoursePath (@ term={current_path.curr_window_start})\n{current_path.visualize()}"
+    
+    def get_student_profile_summary(self) -> str:
+        """Get a summary of the student profile."""
+        return str(self.student_profile)
+
+# ------------------------------------------------------------
+# MAIN GRAPH (for backwards compatibility)
 # ------------------------------------------------------------
 
 g = StateGraph(DreamPathAgentState)
@@ -269,53 +431,48 @@ if __name__ == "__main__":
     test_course_path = build_course_path(recommended_courses, course_bank)
     test_course_path.curr_window_start = 6 # Example
 
-    # Build agent
-    coursepath_tools = CoursePathTools(course_path=test_course_path, major=major)
-    coursepath_agent = CoursePathAgent(tools=coursepath_tools)
-    course_search_tool = CourseSearchTool()
-
     student_profile = StudentProfile(
         name="Kabir Moghe",
         major="Computer Science",
         college_interests="I want to focus on international relations and current events (specifically courses on Israel / Palestine, diplomacy); I want to dabble in AI and data science for social sciences",
         post_grad_goals="work hands on as a data scientists and engineer at a tech company or startup, be knowledgeable about data security/privacy, etc.",
         career_goals="Become a CDO or hands on CEO developing a b2b saas platform for data aggregation across different BI tools.",
-        course_path=coursepath_tools.cp,
+        course_path=test_course_path,
     )
-    config = {"configurable": {"thread_id": "1", "coursepath_agent": coursepath_agent, "student_profile": student_profile, "course_search_tool": course_search_tool}}
-    state = DreamPathAgentState()
+    
+    # Create the agent
+    agent = DreampathAgent(student_profile=student_profile, thread_id="1")
+
+    print("DreampathAgent ready. Type 'quit' to exit.\n")
 
     while True:
-        current_path = student_profile.course_path
-        print(f"----------\nCoursePath (@ term={current_path.curr_window_start})")
-        print(current_path.visualize())
-        print("----------\n")
+        # Show current course path
+        print(f"----------\n{agent.get_course_path_visualization()}\n----------\n")
+        print(f"********** Student profile: {agent.get_student_profile_summary()}")
+        
         user = input("You: ").strip()
-        if not user: break
+        if not user or user.lower() in ('quit', 'exit'):
+            break
+            
+        # Use the agent's run method
+        conversation = agent.run(user)
+        
         try:
-            state_dict = app.invoke({"major": major, "messages": [{"role": "user", "content": user}]}, config)
+            # Get the first yield
+            assistant_msg, interrupt_request = next(conversation)
             
-            # Check if there was an interrupt
-            while '__interrupt__' in state_dict:
-                interrupt_info = state_dict['__interrupt__']
-                # print(interrupt_info)
-                interrupt_msg = interrupt_info[0].value
-
-                # Simulate communication
-                print(f"💬 ASSISTANT: {interrupt_msg}")
-                user_for_interrupt = input("You: ").strip()
-
-                # Update state (remove interrupt, add messages)
-                messages_to_add = [{"role": "assistant", "content": interrupt_msg},
-                                   {"role": "user", "content": user_for_interrupt}]
-
-                state_dict = app.invoke(Command(resume=user_for_interrupt, update={"messages": messages_to_add}), config)
-
-            state = DreamPathAgentState(**state_dict)
+            while interrupt_request is not None:
+                # Need user input for interrupt
+                print(f"💬 ASSISTANT: {assistant_msg}")
+                user_response = input("You: ").strip()
+                
+                # Send response and get next yield
+                assistant_msg, interrupt_request = conversation.send(user_response)
             
-            print(f"💬 ASSISTANT: {state.ui_reply or '(ok)'}")
-
-        except Exception as e:
-            print(f"❌ ERROR: {type(e).__name__}: {e}")
-            import traceback
-            traceback.print_exc()
+            # Final response
+            print(f"💬 ASSISTANT: {assistant_msg}")
+                    
+        except StopIteration as e:
+            # Conversation completed
+            if hasattr(e, 'value') and e.value:
+                print(f"💬 ASSISTANT: {e.value}")

@@ -78,6 +78,7 @@ class CoursePathTools:
             add_window = None
             if p.must_have_window:
                 add_window = p.must_have_window
+                print(f"********** add: add_window={add_window}")
             elif p.add_to_term is not None:
                 add_window = [p.add_to_term, p.add_to_term]
 

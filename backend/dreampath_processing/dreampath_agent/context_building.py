@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from typing import Tuple, List, Optional, Dict
 import tiktoken
 from dreampath_processing.dreampath_agent.types import DreamPathAgentState
-from dreampath_processing.dreampath_agent.prompts import SUMMARY_SYS_PROMPT, MASTER_CONTEXT
+from dreampath_processing.dreampath_agent.chat_prompts import SUMMARY_SYS_PROMPT, MASTER_CONTEXT
 from dreampath_processing.modules.student_profile import StudentProfile
 
 load_dotenv()

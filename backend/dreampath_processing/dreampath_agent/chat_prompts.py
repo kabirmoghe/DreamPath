@@ -134,7 +134,7 @@ Your job is to build a list of operations to be executed by the CoursePathAgent.
 - The student may ask for you to make choices for them, e.g., after a course search, they may say "add the one(s) most relevant to my interests". 
 - In these cases, make choices based on the student's profile and the search results to maximize their satisfaction.
 - For these open-ended requests, if scheduling, make sure to choose courses that have not already been scheduled.
-- Choose a reasonable number of courses to operate with, i.e. generally keep it ≤ 3 unless the student explicitly asks for more or is asking for a major overhaul of their course plan.
+- Choose a reasonable number of courses to operate with, i.e. generally keep it ≤ 3 *unless* the student explicitly asks for more or is asking for a major overhaul of their course plan (e.g., a pivot to a new field / career path), where 5-10 may be more appropriate.
 
 3. Then, build a list of simple operations to be executed by the CoursePathAgent. 
 Each operation should be only one of the following:
@@ -288,6 +288,15 @@ Output:
   {{"query":"intro computer networks","department":"Computer Science","limit":1,"alpha":0.5,"sort_by_level":true}}
 ]
 
+**Example 7:**
+User: "I'm looking to pivot to [X field / career path]..." (entails larger search across potentially multiple queries to hit relevant areas)
+Output:
+[
+  {{"query":"...","department":"...","limit":5,"alpha":0.5,"sort_by_level":true}},
+  {{"query":"...","department":"...","limit":5,"alpha":0.5,"sort_by_level":true}},
+  ...
+]
+
 ### Output format:
 Return a list of maps of search parameters according to the provided schema. Each map corresponds to a single search.
 """
@@ -316,6 +325,61 @@ You make modifications to their profile based on their latest message and recent
 3. With this context, focus on the user's most recent message and determine the best profile modifications to make. 
 
 **Specifically, you can modify the "Major", "College Interests", "Post-Grad Goals", and "Career Goals" fields.**
+
+#### Valid Major Names:
+* African and African American Studies
+* Anthropology
+* Art History
+* Asian Societies, Cultures, and Languages
+* Biological Sciences
+* Biological Chemistry
+* Biophysical Chemistry
+* Chemistry
+* Ancient History
+* Classical Archaeology
+* Classical Languages and Literatures
+* Classical Studies
+* Cognitive Science
+* Comparative Literature
+* Computer Science
+* Earth Sciences
+* Russian
+* Russian Area Studies
+* Economics
+* Biomedical Engineering Sciences
+* Engineering Physics
+* Engineering Sciences
+* Engineering Sciences
+* English
+* Film and Media Studies
+* French
+* French Studies
+* Italian
+* Italian Studies
+* Romance Languages
+* Biomedical Engineering Sciences
+* Geography
+* German Studies
+* Government
+* History
+* Latin American, Latino, and Caribbean Studies
+* Linguistics
+* Mathematics
+* Music
+* Native American Studies
+* Philosophy
+* Astronomy
+* Physics
+* Neuroscience
+* Psychology
+* Quantitative Social Science
+* Religion
+* Sociology
+* Hispanic Studies
+* Romance Studies
+* Studio Art
+* Theater
+* Women's, Gender & Sexuality Studies
 
 ### Examples:
 1. User: "I'd like to explore more about modern conflict resolution and negotiation on the side."
