@@ -106,7 +106,7 @@ def render_confirm_msg(op: Op, summarized_diff: str) -> str:
 
 def render_reschedule_msg(op: Op, summarized_diff: str) -> str:
     return (f"To apply {op}, rescheduling is required and may disrupt prior structure:"
-            f"{summarized_diff}"
+            f"{summarized_diff}\n"
             f"Reply `CONFIRM` to proceed or `CANCEL`.")
 
 def render_success_msg(op: Op, summarized_diff: str) -> str:
@@ -271,7 +271,6 @@ if __name__ == "__main__":
     print("CoursePathAgent ready. Type 'quit' to exit.\n")
 
     current_path = tools.cp
-    print(current_path.visualize())
     print(current_path.visualize_by_term_idx())
 
     # --- Main Loop ---
@@ -292,7 +291,5 @@ if __name__ == "__main__":
         
         current_path = tools.cp
         if response.status != "ask":
-            print(current_path.visualize())
+            # print(current_path.visualize())
             print(current_path.visualize_by_term_idx())
-        # for course in current_path.course_bank:
-        #     print(f"{course}: {current_path.course_bank[course].term_idx}")

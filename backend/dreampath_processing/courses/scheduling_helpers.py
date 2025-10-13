@@ -207,6 +207,10 @@ def schedule_courses_by_term(course_graph: PrereqGraph,
     plan = copy.deepcopy(existing_plan)
     if not plan:
         plan = [[] for _ in range(max_terms)]
+    
+    # Clear all courses from window_start_term onwards to prevent lingering courses during rescheduling (in case loop terminates early).
+    for term_idx in range(window_start_term, len(plan)):
+        plan[term_idx] = []
 
     def _in_window(course: str, term: int) -> bool:
         if course in course_scheduling_windows:
