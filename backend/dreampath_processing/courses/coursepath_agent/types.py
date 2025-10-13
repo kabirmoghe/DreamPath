@@ -1,7 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import Literal, Optional, Dict, Tuple, List, Any
-from dreampath_processing.courses.schedule_modules.course_path import CoursePath
-from dreampath_processing.courses.schedule_modules.course import Course
+from typing import Literal, Optional, Dict, List, Any
 
 # Operation Types
 class OpBase(BaseModel):
@@ -90,6 +88,7 @@ class CoursePathAgentState(BaseModel):
     plan_version: int
     pending_op_type: Optional[ExtractedOpType] = None
     pending_op: Optional[Op] = None
+    trial_op_execution: Optional[ExecuteOpResult] = None
     missing_fields: List[str] = Field(default_factory=list)
     facts: Dict[str, str | int | List[str]] = Field(default_factory=dict)
     summary: str = Field(default="")

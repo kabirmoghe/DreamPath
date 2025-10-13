@@ -4,9 +4,11 @@ flask-cors
 pandas
 numpy  
 scikit-learn
+lark
 sentence-transformers
 umap-learn
 hdbscan
+instructor
 langchain
 langchain-openai
 langchain-community
@@ -24,3 +26,5 @@ jupyter
 ipykernel
 rapidfuzz
 supabase
+weaviate-client
+streamlit

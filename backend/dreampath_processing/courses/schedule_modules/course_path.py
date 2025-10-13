@@ -598,8 +598,8 @@ class CoursePath:
             raise Exception(f"Cannot replace course '{old_course_code}', outside of current window.")
 
         # Validate new course
-        if new_course.course_code in self.course_bank and new_course.term_idx is not None:
-            raise Exception(f"Course '{new_course.course_code}' is already scheduled (scheduled={new_course.scheduled})")
+        if new_course.course_code in self.course_bank and self.course_bank[new_course.course_code].term_idx is not None:
+            raise Exception(f"Course '{new_course.course_code}' is already scheduled (scheduled={self.course_bank[new_course.course_code].scheduled})")
         
         if new_course.must_have_window:
             if new_course.must_have_window[1] < self.curr_window_start:
