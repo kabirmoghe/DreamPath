@@ -49,7 +49,6 @@ def build_operations_from_context_and_results(state: DreamPathAgentState, config
 # MODIFY PROFILE NODE
 # -----------------------------------------------------
 def modify_student_profile(state: DreamPathAgentState, config) -> Tuple[ModifiedStudentProfile, dict]:
-    print("CALLING MODIFY PROFILE NODE")
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
     return extract_structured_output_from_context(state=state, config=config, system_prompt=MODIFY_PROFILE_SYS.format(student_name=student_name), response_model=ModifiedStudentProfile, small_context=True, model="gpt-4o", temperature=0.1)

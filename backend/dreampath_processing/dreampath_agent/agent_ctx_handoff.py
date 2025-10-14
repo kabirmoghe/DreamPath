@@ -17,7 +17,7 @@ from typing import Generator, Tuple, Optional
 def orchestrator_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     print(f"Orchestrator thinking...")
     decision, state_updates = decide_next_route(state, config)
-    print(f"--> Decision: {decision} | Handoff: {decision.handoff}")
+    print(f"| → Decision: {decision.next} | Handoff: {decision.handoff}")
 
     return {
         "route": decision.next,
@@ -91,10 +91,7 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     worklist = state.worklist
     tool_messages = []
 
-    # print(f"********** CoursePathNode: worklist={worklist}, cursor={cursor}")
-
-    # current outcomes
-    # print(f"********** CoursePathNode: current_cp_agent_outcomes={state.current_cp_agent_outcomes}")
+    print(f"| → CoursePathAgent: worklist={worklist}, cursor={cursor}")
 
     # Build tool call at start of execution
     if cursor == 0:
@@ -115,16 +112,26 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     # Execute operations one by one
     if worklist and cursor < len(worklist):
         current_op = worklist[cursor]
-        out = coursepath_agent.run(current_op) # execute op
 
-        while out.status == "ask":
+        # If we have a pending pre-interrupt, use it
+        if state.pending_pre_interrupt is not None:
+            print("| * Using cached pre-interrupt output (avoiding re-execution)")
+            cp_agent_output = state.pending_pre_interrupt
+        else:   
+            print("| * Executing operation for the first time")
+            cp_agent_output = coursepath_agent.run(current_op) # execute op
+
+        if cp_agent_output.status == "ask":
             # Use interrupt() function to pause and wait for user input
-            user_response = interrupt(out.ui_text)
+            user_response = interrupt({
+                "pending_pre_interrupt": cp_agent_output,
+                "text": cp_agent_output.ui_text
+            })
 
             # Continue processing with user response
-            out = coursepath_agent.run(user_response)
+            cp_agent_output = coursepath_agent.run(user_response)
 
-        outcomes[current_op] = out
+        outcomes[current_op] = cp_agent_output
         cursor += 1
         route = "course_path"
     else:
@@ -149,6 +156,7 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
 
     return {
         "turn_messages": state.turn_messages + tool_messages,
+        "pending_pre_interrupt": None,
         "current_cp_agent_outcomes": outcomes,
         "worklist": worklist,
         "cursor": cursor,
@@ -157,39 +165,34 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
 
 def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     # Check if we already computed the modified profile (to avoid re-computing on interrupt resume)
-    if state.pending_profile_modification is not None:
-        print("********** Using cached modified profile (avoiding re-computation)")
-        modified_profile = state.pending_profile_modification
+    print(f"| → ProfileModifier")
+
+    if state.pending_pre_interrupt is not None:
+        print("| * Using cached modified profile (avoiding re-computation)")
+        modified_profile = state.pending_pre_interrupt
     else:
-        print("********** Computing modified profile for the first time")
+        print("| * Computing modified profile for the first time")
         modified_profile, _ = modify_student_profile(state, config) # no state updates, only updating turn messages
 
-    # Verify modified profile with user
-    user_response = interrupt(f"How do you feel about the modified profile? {modified_profile.__str__()}")
-    if determine_user_confirmation(user_response):
 
-        print(f"********** ProfileModifierNode: user confirmed modified profile as follows: {modified_profile.__str__()}")
+    # Verify modified profile with user
+    user_response = interrupt({
+        "pending_pre_interrupt": modified_profile,
+        "text": f"How do you feel about the modified profile? {modified_profile.__str__()}"
+    })
+    if determine_user_confirmation(user_response):
 
         # Get the current student profile from config
         current_profile = config["configurable"]["student_profile"]
         
-        # Create a new StudentProfile by merging modified fields with existing profile
-        updated_profile = StudentProfile(
-            name=current_profile.name,
-            major=modified_profile.major, 
-            college_interests=modified_profile.college_interests,
-            post_grad_goals=modified_profile.post_grad_goals,
-            career_goals=modified_profile.career_goals,
-            course_path=current_profile.course_path,
-            minors=current_profile.minors,
-            clubs=current_profile.clubs,
-            career=current_profile.career,
-        )
-        
-        # Update the config with the new profile
-        config["configurable"]["student_profile"] = updated_profile
+        # Update the existing profile object's attributes
+        current_profile.major = modified_profile.major
+        current_profile.college_interests = modified_profile.college_interests
+        current_profile.post_grad_goals = modified_profile.post_grad_goals
+        current_profile.career_goals = modified_profile.career_goals
 
-        # print(f"********** ProfileModifierNode: updated_profile={updated_profile}")
+        # Update the config with the new profile
+        print(f"| → ProfileModifier: user confirmed, updated_profile={current_profile}")
 
         tool_call = {
             "role": "assistant",
@@ -204,6 +207,7 @@ def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentSta
 
         return {
             "turn_messages": state.turn_messages + [tool_call],
+            "pending_pre_interrupt": None,
         }
     else:
         return {}
@@ -343,8 +347,11 @@ class DreampathAgent:
             
             # Handle interrupts in a loop
             while '__interrupt__' in state_dict:
-                interrupt_info = state_dict['__interrupt__']
-                interrupt_msg = interrupt_info[0].value
+                interrupt_info = state_dict['__interrupt__'][0]
+
+                # Get (1) pending pre-interrupt, (2) interrupt message
+                pending_pre_interrupt = interrupt_info.value["pending_pre_interrupt"]
+                interrupt_msg = interrupt_info.value["text"]
                 
                 # Yield the interrupt message and wait for user response
                 user_response = yield (interrupt_msg, interrupt_msg)
@@ -354,11 +361,9 @@ class DreampathAgent:
                     {"role": "assistant", "content": interrupt_msg},
                     {"role": "user", "content": user_response}
                 ]
-
-                print(f"********** Messages to add: {messages_to_add}")
                 
                 state_dict = self.app.invoke(
-                    Command(resume=user_response, update={"turn_messages": state_dict.get("turn_messages", []) + messages_to_add}), 
+                    Command(resume=user_response, update={"turn_messages": state_dict.get("turn_messages", []) + messages_to_add, "pending_pre_interrupt": pending_pre_interrupt}), 
                     self.config
                 )
             
@@ -418,8 +423,8 @@ if __name__ == "__main__":
 
     while True:
         # Show current course path
-        print(f"----------\n{agent.get_course_path_visualization()}\n----------\n")
-        print(f"********** Student profile: {agent.get_student_profile_summary()}")
+        print(f"----------\n{agent.get_course_path_visualization()}\n----------")
+        print(f"Student profile: {agent.get_student_profile_summary()}")
         
         user = input("You: ").strip()
         if not user or user.lower() in ('quit', 'exit'):

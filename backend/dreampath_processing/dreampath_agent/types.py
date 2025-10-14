@@ -85,7 +85,7 @@ class DreamPathAgentState(BaseModel):
     
     # Current CoursePath Agent outcome + reply
     current_cp_agent_outcomes: Optional[Dict[str, CoursePathAgentOutput]] = Field(default=None)
-    ui_reply: Optional[str] = Field(default=None)
-    
+    ui_reply: Optional[str] = Field(default=None)    
+
     # Pending profile modification (used to avoid re-computing on interrupt resume)
-    pending_profile_modification: Optional["ModifiedStudentProfile"] = Field(default=None)
+    pending_pre_interrupt: Optional[CoursePathAgentOutput | ModifiedStudentProfile] = Field(default=None)

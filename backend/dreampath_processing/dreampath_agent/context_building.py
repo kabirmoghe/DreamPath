@@ -209,7 +209,7 @@ def extract_structured_output_from_context(state: DreamPathAgentState, config: d
         print("=== END MESSAGES ===")
 
     if show_token_count:
-        print(f"[MODEL={model} | TOKEN COUNT: {calculate_token_count(messages, model)}]")
+        print(f"[ MODEL={model} | TOKEN COUNT: {calculate_token_count(messages, model)} ]")
 
     if model == "o3-mini" or model == "o4-mini":
         response = client.chat.completions.create(

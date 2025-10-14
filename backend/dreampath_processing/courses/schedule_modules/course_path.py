@@ -308,7 +308,7 @@ class CoursePath:
 
         return remove_course_path
 
-    def remove_course(self, course_code_to_remove: str, reschedule: bool=False, verbose: bool=True):
+    def remove_course(self, course_code_to_remove: str, reschedule: bool=False, verbose: bool=False):
         """
         Remove courses from a course path
 
@@ -417,7 +417,7 @@ class CoursePath:
                 
             raise TermCapacityError(f"Course '{course_code_to_add}' cannot be directly added to any term in current window.")
 
-    def add_course(self, course_to_add: Course, max_classes_per_term: int=3, reschedule: bool=False, verbose: bool=True):
+    def add_course(self, course_to_add: Course, max_classes_per_term: int=3, reschedule: bool=False, verbose: bool=False):
         # Check if must_have term location / window specified 
         if course_to_add.must_have_window:
             max_terms = len(self.course_path)
@@ -493,7 +493,7 @@ class CoursePath:
             
         raise TermCapacityError(f"Course '{course_to_move.course_code}' cannot be moved due to max capacity in scheduling window {move_window}.")
         
-    def move_course(self, course_code_to_move: str, move_window: List[int], max_classes_per_term: int=3, reschedule: bool=False, verbose: bool=True):
+    def move_course(self, course_code_to_move: str, move_window: List[int], max_classes_per_term: int=3, reschedule: bool=False, verbose: bool=False):
         # Validate course to move
         course_to_move = self.course_bank.get(course_code_to_move, None)
         if course_to_move is None:
@@ -574,7 +574,7 @@ class CoursePath:
 
         return add_course_path, new_course_term_idx
 
-    def replace_course(self, new_course: Course, old_course_code: str, reschedule: bool=False, verbose: bool=True):
+    def replace_course(self, new_course: Course, old_course_code: str, reschedule: bool=False, verbose: bool=False):
         # Validate course to replace
         old_course = self.course_bank.get(old_course_code, None)
         if old_course is None:
@@ -677,7 +677,7 @@ class CoursePath:
 
         return add_course_path, course_1_new_term_idx, course_2_new_term_idx
 
-    def swap_courses(self, course_code_1: str, course_code_2: str, verbose: bool=True):
+    def swap_courses(self, course_code_1: str, course_code_2: str, verbose: bool=False):
         # Validate courses to swap
         course_1 = self.course_bank.get(course_code_1, None)
         if course_1 is None:
