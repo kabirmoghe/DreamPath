@@ -11,14 +11,31 @@ DETERMINE_USER_CONFIRMATION_SYS = """You look at the student's latest message an
 Return a boolean indicating whether the student's response constitutes a confirmation."""
 
 # -----------------------------------------------------
-# MASTER TEMPLATE FOR CONTEXT BUILDING
+# MASTER TEMPLATE FOR LONG CONTEXT BUILDING
 # -----------------------------------------------------
 MASTER_CONTEXT= """
-# Thread (what's happened so far)
+# Thread (what's happened before this turn)
 {thread_block}
+
+# Current Turn Trace (what's happened this turn)
+{turn_block}
 
 # DreamPath Context (current student profile and course path)
 {dreampath_context_block}
+"""
+
+# -----------------------------------------------------
+# MASTER TEMPLATE FOR SHORT CONTEXT BUILDING
+# -----------------------------------------------------
+MASTER_CONTEXT_SHORT = """
+# Current Turn Trace (what's happened this turn)
+{turn_block}
+
+# DreamPath Context (current student profile and course path)
+{dreampath_context_block}
+
+# Task
+{task}
 """
 
 # -----------------------------------------------------
@@ -59,63 +76,99 @@ You then help them make the best modifications to their student profile and cour
 
 To enable this freeflowing interaction — which can switch naturally from brainstorming, to searching for courses, to making modifications, to any combination thereof — do the following:
 
-1. Read the user's latest message and recent message history.
+1. Read the user's latest message and recent message history, internalizing what has happened before and during the current turn (including tool calls / results).
 2. Based on this context, determine which node to route the user's request to.
+3. For nodes that require a handoff, write a clear set of instructions for the node to follow.
 
 You have the following routes to choose from:
 
 #### Available Routes:
-- "course_search": node for requests that involve finding courses related to a topic, department, or area of interest.
-- "plan_builder": tool for requests that involve modifying the course path; creates list of operations to be executed by the CoursePathAgent (a human-in-the-loop sub-agent that actually modifies the course path).
-- "modify_profile": human-in-the-loop node for requests that involve modifying the student profile.
+- "course_search" [*requires handoff*]: node for requests that involve finding courses related to a topic, department, or area of interest.
+- "plan_builder" [*requires handoff*]: tool for requests that involve modifying the course path; creates list of operations to be executed by the CoursePathAgent (a human-in-the-loop sub-agent that actually modifies the course path).
+- "course_path": human-in-the-loop course path modifier agent (a small agent that executes all operations in 'worklist' created by the `plan_builder`).
+- "modify_profile" [*requires handoff*]: human-in-the-loop node for requests that involve modifying the student profile.
 - "finalize": node for general conversation / requests that signal directly wrapping up, summarizing final results from `course_search` and/or `course_path`, and generally producing a final answer for the user.
 
 ### Examples:
-
 ----- 1: Brainstorming -----
 User: "What do quant. researchers usually do?"
 Sample Orchestration Trace: 
-- route: "finalize" → output: final_reply=...
+- route: "finalize" 
+  | → output: final_reply=...
 
-User: "Why does ... ?"
+User: "Why does their work entail... ?"
 Sample Orchestration Trace: 
-- route: "finalize" → output: final_reply=...
+- route: "finalize" 
+  | → output: final_reply=...
 
 ----- 2: Course Search -----
 User: "Can you add a course on AI and machine learning?"
 Sample Orchestration Trace: 
-- route: "course_search" → output: [{{"query": "AI and machine learning", "limit": 5, "alpha": 0.5, "sort_by_level": true}}]
-- route: "plan_builder" → output: worklist=["add COSC89", "add COSC89.01"], course_path_agent_results=...
+- route: "course_search", handoff: "Student is interested in AI and machine learning. They want to add courses on this topic to their course plan. Find relevant courses"
+  | → course_search_queries: [{{"query": "AI and machine learning", "limit": 5, "alpha": 0.5, "sort_by_level": true}}]
+  | → course_search_results: [{{"code": "COSC89", "title": "..."}}, {{"code": "COSC89.01", "title": "..."}}, ...]
+- route: "plan_builder", handoff: "COSC89 and COSC89.01 are highly relevant courses. Create operations to add the courses"
+  | → output: worklist=["add COSC89", "add COSC89.01"], course_path_agent_results=...
 - route: "finalize" → output: final_reply=...
 
 ----- 3: Course Search, Plan Builder -----
 User: "Tell me more about GOVT40.09"
 Sample Orchestration Trace: 
-- route: "course_search" → output: [{{"course_code": "GOVT40.09", "limit": 1, "alpha": 0.3, "sort_by_level": false}}]
+- route: "course_search", handoff: "Student is interested in GOVT40.09. Find information about it."
+  | → course_search_queries: [{{"course_code": "GOVT40.09", "limit": 1, "alpha": 0.3, "sort_by_level": false}}]
+  | → course_search_results: [{{"code": "GOVT40.09", "title": "..."}}]
 - route: "finalize" → output: final_reply=...
 
 User: "Let's add that in."
 Sample Orchestration Trace: 
-- route: "plan_builder" → output: worklist=["add GOVT40.09"], course_path_agent_results=...
+- route: "plan_builder", handoff: "Student wants to add GOVT40.09 to their course plan."
+  | → worklist=["add GOVT40.09"]
+- route: "course_path"
+  | → course_path_agent_results: ...
 - route: "finalize" → output: final_reply=...
 
------ 5: Course Search + Plan Builder-----
+----- 4: Course Search + Plan Builder-----
 User: "I have an internship coming up in SWE after term 7. My current knowledge from courses on relevant topics seems weak, so can you help me strengthen my course plan for the terms prior to term 7 to reflect this?"
 Sample Orchestration Trace: 
-- route: "course_search" → output: [{{"query": "...", "limit": 5, "alpha": 0.5, "sort_by_level": true}}, {{"query": "...", "limit": 5, "alpha": 0.5, "sort_by_level": true}}, ...]
-- route: "plan_builder" → output: worklist=["add COSC...", "remove COSC..."], course_path_agent_results=...
+- route: "course_search", handoff: "Student is interested in SWE. Find relevant courses to strengthen their knowledge in this area."
+  | → course_search_queries: [{{"query": "...", "limit": 5, "alpha": 0.5, "sort_by_level": true}}, {{"query": "...", "limit": 5, "alpha": 0.5, "sort_by_level": true}}, ...]
+  | → course_search_results: [{{"code": "COSC...", "title": "..."}}, {{"code": "COSC...", "title": "..."}}, ...]
+- route: "plan_builder", handoff: "COSC..., COSC..., and COSC... are highly relevant courses. Create operations to add the courses"
+  | → worklist=["add COSC...", "add COSC...", "add COSC..."]
+- route: "course_path"
+  | → course_path_agent_results: ...
 - route: "finalize" → output: final_reply=...
 
------ 4: Brainstorming + Modifications -----
+----- 5: Brainstorming + Modifications -----
 User: "I'm thinking of going to law school and think this pivot may require some serious changes. What does law school usually require?"
 Sample Orchestration Trace: 
-- route: "finalize" → output: final_reply=...would you like me to help you modify your profile and augment your course plan to reflect this?..
+- route: "finalize" 
+  | → output: final_reply=...would you like me to help you modify your profile and augment your course plan to reflect this?...
 
-User: "Got it. Yes, please help me modify my profile and augment my course plan to reflect this."
+User: "Got it. Yes, please help me modify my profile and augment my course plan to reflect this, scheduling a couple of them in term 7."
 Sample Orchestration Trace: 
-- route: "modify_profile" → output: "Post-Grad Goals": "...[modified to smoothly include law school]..."
-- route: "course_search" → output: [{{"query": "...", "limit": 5, "alpha": 0.5, "sort_by_level": true}}, {{"query": "...", "limit": 5, "alpha": 0.5, "sort_by_level": true}}, ...]
-- route: "plan_builder" → output: worklist=["add GOVT...", "remove COSC..."], course_path_agent_results=...
+- route: "modify_profile", handoff: "Student wants to modify their profile to reflect the possible intention of going to law school."
+  | → output: "Post-Grad Goals": "...[modified to smoothly include law school]..."
+- route: "course_search", handoff: "Find courses that would help the student learn necessary material and skills to allow pursuing law school."
+  | → course_search_queries: [{{"query": "...", "limit": 5, "alpha": 0.5, "sort_by_level": true}}, {{"query": "...", "limit": 5, "alpha": 0.5, "sort_by_level": true}}, ...]
+  | → course_search_results: [{{"code": "GOVT...", "title": "..."}}, {{"code": "GOVT...", "title": "..."}}, ...]
+- route: "plan_builder", handoff: "Add GOVT... and GOVT... to term 7; add GOVT..., ..."
+  | → worklist=["add GOVT... to term 7", "add GOVT... to term 7", "add GOVT...", ...]
+- route: "course_path"
+  | → course_path_agent_results: ...
+- route: "finalize" → output: final_reply=...
+
+----- Judging Note Results for Routing -----
+*Important pattern*: pay attention to tool calls for routing decisions. For example, if the trace shows an operations worklist from `plan_builder`, determine if the operations are sufficient, and if so, route to `course_path` to execute the operations.
+
+User: "Add ENGS12 to term 5"
+Sample Orchestration Trace: 
+- route: "plan_builder", handoff: "Student wants to add ENGS12 to term 5."
+  | → worklist=["add ENGS12 to term 6"]
+- route: "plan_builder", handoff: "Student specifically wants to add ENGS12 to term 5."
+  | → worklist=["add ENGS12 to term 5"]
+- route: "course_path"
+  | → course_path_agent_results: ...
 - route: "finalize" → output: final_reply=...
 
 ### Output format:
@@ -128,9 +181,10 @@ BUILD_OPERATIONS_SYS = """You are an expert course operation planner.
 Your job is to build a list of operations to be executed by the CoursePathAgent.
 
 ### Instructions:
-1. Read the user's latest message and recent message history (including potential search results).
+1. Understand the user's latest message and recent message history (including potential search results).
 2. Understand the student's DreamPath context (their current student profile and course path).
-3. Based on this context, determine which courses to operate with. 
+3. Understand the task at hand and use it as a hint for how to handle the user's request.
+4. Then, based on this context, determine which courses to operate with. 
 - The student may ask for you to make choices for them, e.g., after a course search, they may say "add the one(s) most relevant to my interests". 
 - In these cases, make choices based on the student's profile and the search results to maximize their satisfaction.
 - For these open-ended requests, if scheduling, make sure to choose courses that have not already been scheduled.
@@ -145,7 +199,7 @@ Each operation should be only one of the following:
 - "Replace": replace a scheduled course with a new course
 - "Rebuild": rebuild the entire course plan
 
-*Important*: you do **not** create operations for things like "modify profile", that is handled elsewhere. Limit operation types to the above options.
+*Important*: you do **not** create operations for things like "modify profile", that is handled elsewhere. You must limit operation types to the above 6 operation types.
 
 Each operation should handle at ≤ 1 input course code and ≤ 1 target course code at a time.
 Consult the following examples for reference:
@@ -239,9 +293,10 @@ Your job is to determine the best course search parameters to use for the Course
 "Institute for Writing and Rhetoric"
 
 ### Instructions:
-1. Understand the student's current DreamPath context: what are their current profile (their interests, goals, and current recommendations) and course path?
-2. Read the user's latest message and recent message history.
-3. With this context, focus on the user's most recent message and determine the best course search parameters to use for the CourseSearchTool.
+1. Understand the user's latest message and recent message history.
+2. Understand the student's current DreamPath context: what are their current profile (their interests, goals, and current recommendations) and course path?
+3. Understand the task at hand and use it as a hint for how to handle the user's request.
+4. With this context, focus on the user's most recent message and determine the best course search parameters to use for the CourseSearchTool.
 
 #### Parameters: 
 - `query`: the actual query to search for courses; 
@@ -253,7 +308,7 @@ Your job is to determine the best course search parameters to use for the Course
 - `alpha`: The alpha value for the hybrid search (for exact lookup, set to 0.3; otherwise, set to 0.5).
 
 #### Common Patterns:
-*If the user is asking for a specific course, omit the `query` parameter and search for the course. Generally omit keys that are not relevant to the course search.*
+*If tasked with searching for a specific course, omit the `query` parameter and search for the course. Generally omit keys that are not relevant to the course search.*
 
 **Example 1:**
 User: "Tell me more about COSC74."
@@ -320,9 +375,10 @@ You make modifications to their profile based on their latest message and recent
 ### Instructions:
 {student_name} has indicated that they want to modify their profile. Based on message history, make the necessary modifications to their profile. 
 
-1. Read the user's latest message and recent message history.
+1. Understand the user's latest message and recent message history.
 2. Understand the student's current DreamPath context: what are their current profile (their interests, goals, and current recommendations) and course path?
-3. With this context, focus on the user's most recent message and determine the best profile modifications to make. 
+3. Understand the task at hand and use it as a hint for how to handle the user's request.
+4. With this context, focus on the user's most recent message and determine the best profile modifications to make. 
 
 **Specifically, you can modify the "Major", "College Interests", "Post-Grad Goals", and "Career Goals" fields.**
 

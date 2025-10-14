@@ -6,7 +6,7 @@ from pydantic import BaseModel
 from typing import Tuple, List, Optional, Dict
 import tiktoken
 from dreampath_processing.dreampath_agent.types import DreamPathAgentState
-from dreampath_processing.dreampath_agent.chat_prompts import SUMMARY_SYS_PROMPT, MASTER_CONTEXT
+from dreampath_processing.dreampath_agent.chat_prompts import SUMMARY_SYS_PROMPT, MASTER_CONTEXT, MASTER_CONTEXT_SHORT
 from dreampath_processing.modules.student_profile import StudentProfile
 
 load_dotenv()
@@ -63,8 +63,7 @@ def calculate_token_count(messages: list[dict], model="gpt-4o-mini"):
         # Fallback to cl100k_base encoding for newer models
         encoding = tiktoken.get_encoding("cl100k_base")
     
-    # Use tiktoken's built-in function for precise token counting
-    # This matches exactly how OpenAI calculates tokens for chat completions
+    # Use tiktoken's built-in function for precise token counting | matches exactly how OpenAI calculates tokens for chat completions
     tokens_per_message = 3  # every message follows <|start|>{role/name}\n{content}<|end|>\n
     tokens_per_name = 1     # if there's a name, the role is omitted
     
@@ -77,7 +76,7 @@ def calculate_token_count(messages: list[dict], model="gpt-4o-mini"):
                 if key == "name":
                     num_tokens += tokens_per_name
     
-    num_tokens += 3  # every reply is primed with <|start|>assistant<|message|>
+    num_tokens += 3  # every reply primed with <|start|>assistant<|message|>
     return num_tokens
 
 # -----------------------------------------------------
@@ -90,7 +89,7 @@ def _render_thread_block(summary: Optional[str], recent_messages: List[Dict]) ->
     if summary:
         lines.append(f"Summary: {summary.strip()}")
     if tail:
-        lines.append(f"Recent Messages:")
+        lines.append(f"Recent Messages Prior to Current Turn:")
         for m in tail:
             role = m.get("role", "user")
             content = m.get("content") or ""
@@ -111,8 +110,32 @@ def _render_thread_block(summary: Optional[str], recent_messages: List[Dict]) ->
             
     return "\n".join(lines) if lines else "None."
 
+def _render_turn_block(current_user_msg: str, turn_messages: List[Dict]) -> str:
+    lines = []
+    lines.append(f"<user_msg_for_current_turn>\n{current_user_msg}\n</user_msg_for_current_turn>")
+    
+    if turn_messages:
+        for m in turn_messages:
+            role = m.get("role", "user")
+            content = m.get("content") or ""
+            
+            if isinstance(content, dict):
+                tag_name = content.get("name", role)
+                content_lines = []
+                for key, value in content.items():
+                    if key != "name":  # Skip the name attribute since it's used as the tag
+                        content_lines.append(f"* {key}: {value}")
+                formatted_content = "\n".join(content_lines)
+                lines.append(f"<{tag_name}>\n{formatted_content}\n</{tag_name}>")
+            else:
+                # Handle string content normally
+                content = str(content).strip()
+                lines.append(f"<{role}>\n{content}\n</{role}>")
+        
+    return "\n".join(lines)
+
 def _render_dreampath_context_block(student_profile: StudentProfile) -> str:
-    lines = ["Dreampath Context:"]
+    lines = []
     
     # Add student profile with HTML-like tags
     lines.append(f"<student_profile>\n{str(student_profile)}\n</student_profile>")
@@ -125,31 +148,59 @@ def _render_dreampath_context_block(student_profile: StudentProfile) -> str:
 # -----------------------------------------------------
 # Build Messages
 # -----------------------------------------------------
-def build_messages(state: DreamPathAgentState, prompt: str, config: dict, task_prompt: Optional[str]=None):
+def build_complete_messages(state: DreamPathAgentState, prompt: str, config: dict, task_prompt: Optional[str]=None):
 
     # Init messages and go through summarization if needed
     msgs = [{"role": "system", "content": prompt}]
     recent_messages, state_updates = handle_summary_get_context_messages(state)
 
     # Render context blocks
+
+    # 1) Thread Block (prior to current turn)
     thread_block = _render_thread_block(state.summary, recent_messages)
+
+    # 2) Turn Block (current turn)
+    turn_block = _render_turn_block(state.current_user_msg, state.turn_messages)
+
+    # 3) Dreampath Context Block
     dreampath_context_block = _render_dreampath_context_block(config["configurable"]["student_profile"])
-    conversation_msg = MASTER_CONTEXT.format(thread_block=thread_block, dreampath_context_block=dreampath_context_block)
+
+    # 4) Combine all blocks
+    conversation_msg = MASTER_CONTEXT.format(thread_block=thread_block, turn_block=turn_block, dreampath_context_block=dreampath_context_block)
 
     # Add task prompt if provided (i.e. for orchestrator decision)
     if task_prompt:
         conversation_msg += f"\n\n# Task\n{task_prompt}"
 
     # Add master context to messages
-    msgs.append({"role": "user", "content": conversation_msg})
+    msgs.append({"role": "system", "content": conversation_msg})
 
     return msgs, state_updates
+
+def build_small_messages(state: DreamPathAgentState, prompt: str, config: dict, handoff: str):
+    msgs = [{"role": "system", "content": prompt}]
+    
+    # 1) Turn Block (current turn)
+    turn_block = _render_turn_block(state.current_user_msg, state.turn_messages)
+
+    # 2) Dreampath Context Block
+    dreampath_context_block = _render_dreampath_context_block(config["configurable"]["student_profile"])
+
+    # 3) Combine all blocks
+    conversation_msg = MASTER_CONTEXT_SHORT.format(turn_block=turn_block, dreampath_context_block=dreampath_context_block, task=handoff)
+    msgs.append({"role": "system", "content": conversation_msg})
+    return msgs
 
 # -----------------------------------------------------
 # Baseline For Extracting Structured Output from Context
 # -----------------------------------------------------
-def extract_structured_output_from_context(state: DreamPathAgentState, config: dict, system_prompt: str, response_model: BaseModel, model="gpt-4o-mini", temperature=0, verbose=False, show_token_count=True, task_prompt: Optional[str]=None):
-    messages, state_updates = build_messages(state, system_prompt, config, task_prompt)
+def extract_structured_output_from_context(state: DreamPathAgentState, config: dict, system_prompt: str, response_model: BaseModel, small_context: bool=False, model="gpt-4o-mini", temperature=0, show_token_count=True, task_prompt: Optional[str]=None, verbose=False):
+    if small_context:
+        messages = build_small_messages(state, system_prompt, config, state.handoff)
+        state_updates = {}
+    else:
+        messages, state_updates = build_complete_messages(state, system_prompt, config, task_prompt)
+
     if verbose:
         print("=== MESSAGES SENT TO LLM ===")
         for i, msg in enumerate(messages):
@@ -160,7 +211,7 @@ def extract_structured_output_from_context(state: DreamPathAgentState, config: d
     if show_token_count:
         print(f"[MODEL={model} | TOKEN COUNT: {calculate_token_count(messages, model)}]")
 
-    if model == "o3-mini":
+    if model == "o3-mini" or model == "o4-mini":
         response = client.chat.completions.create(
             model=model,
             messages=messages,

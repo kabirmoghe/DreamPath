@@ -237,7 +237,7 @@ class CoursePath:
                 must_have_course_bank[c_prereq] = must_have_course_bank.get(c_prereq, Course(course_code=c_prereq, course_type=must_have_course_bank[c].course_type))
                 must_have_course_bank[c_prereq].is_prereq = True
 
-                ## To maintain schedulign accuracy for pre-window courses upon merging must-have and prior course banks
+                # To maintain scheduling accuracy for pre-window courses upon merging must-have and prior course banks
                 if c_prereq in self.course_bank:
                     must_have_course_bank[c_prereq].scheduled = self.course_bank[c_prereq].scheduled
                     must_have_course_bank[c_prereq].term_idx = self.course_bank[c_prereq].term_idx
@@ -251,7 +251,7 @@ class CoursePath:
             asap_for_courses = compute_asap_for_graph(must_have_graph, window_start_term, topo_order=must_have_topo_order)
             target_deadline_hi = {c: obj.must_have_window[1] for c, obj in complete_must_have_courses_map.items()}
             alap_for_courses = compute_alap_for_graph(must_have_graph, target_deadline_hi, default_hi=max_terms - 1, topo_order=must_have_topo_order)
-            scheduling_windows = build_scheduling_windows(must_have_graph, asap_for_courses, alap_for_courses, window_start_term, max_terms, must_have_course_map)
+            scheduling_windows = build_scheduling_windows(must_have_graph, asap_for_courses, alap_for_courses, window_start_term, max_terms, must_have_course_bank)
         
         if verbose >= 1:
             print(f"Scheduling windows: {scheduling_windows}")
@@ -281,19 +281,8 @@ class CoursePath:
         self.must_have_courses = set(complete_must_have_courses_map.keys())
 
         # Handle lingering courses
-        for c in self.lingering_courses:
-            if c in self.course_bank:
-                course_to_update = self.course_bank[c]
-                course_to_update.scheduled = False
-                course_to_update.term_idx = None
-                course_to_update.must_have_window = None
-
-                self.course_bank[c] = course_to_update
-                self.recommended_courses.discard(c)
-                self.must_have_courses.discard(c)
-
-                if verbose >= 1:
-                    print(f"[Removed lingering course '{c}']")
+        if self.lingering_courses:
+            print(f"* Warning: lingering courses={self.lingering_courses}")
 
         self.lingering_courses = set()
         

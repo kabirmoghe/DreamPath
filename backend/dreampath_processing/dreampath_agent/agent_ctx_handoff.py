@@ -5,29 +5,30 @@ from langgraph.checkpoint.memory import InMemorySaver
 from dreampath_processing.dreampath_agent.types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
 from dreampath_processing.dreampath_agent.helpers import (
-    decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, render_final_reply, modify_student_profile, determine_user_confirmation, format_course_search_output, format_aggregate_coursepath_agent_result
+    decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, render_final_reply, modify_student_profile, determine_user_confirmation, format_course_search_output, format_aggregate_coursepath_agent_result, format_worklist
 )
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import construct_course
 from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
-from dreampath_processing.courses.coursepath_agent.agent import CoursePathAgent, CoursePathTools
+from dreampath_processing.courses.coursepath_agent.agent_v2 import CoursePathAgent, CoursePathTools
 from dreampath_processing.modules.student_profile import StudentProfile
 from typing import Generator, Tuple, Optional
 
 def orchestrator_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     print(f"Orchestrator thinking...")
     decision, state_updates = decide_next_route(state, config)
-    print(f"--> Decision: {decision}")
+    print(f"--> Decision: {decision} | Handoff: {decision.handoff}")
 
     return {
         "route": decision.next,
+        "handoff": decision.handoff,
         **state_updates,
     }
 
 def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     course_search_tool: CourseSearchTool = config["configurable"]["course_search_tool"]
-    queries, state_updates = determine_course_search_queries(state, config)
-    print(f"********** CourseSearchNode: queries={queries}")
+    queries, _ = determine_course_search_queries(state, config) # no state updates, only updating turn_messages
+    # print(f"********** CourseSearchNode: queries={queries}")
 
     tool_messages = []
     for query in queries.queries:
@@ -61,18 +62,25 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
         tool_messages.append(tool_result)
 
     return {
-        "messages": tool_messages,
-        **state_updates,
+        "turn_messages": state.turn_messages + tool_messages,
     }
     
 def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
-    ops, state_updates = build_operations_from_context_and_results(state, config)
-    
+    ops, _ = build_operations_from_context_and_results(state, config) # no state updates, only updating worklist and turn messages
+
+    tool_result = {
+        "role": "assistant",
+        "content": {
+            "type": "tool_result",
+            "name": "plan_builder",
+            "result": format_worklist(ops.operations),
+        },
+    }
     return {
         "worklist": ops.operations, # List[str], e.g., ["Add QSS41 to term 6.", "Add COSC50 to term 6."]
         "cursor": 0,
         "current_cp_agent_outcomes": {},   # start fresh for this batch
-        **state_updates,
+        "turn_messages": state.turn_messages + [tool_result],
     }
 
 def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
@@ -83,10 +91,10 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     worklist = state.worklist
     tool_messages = []
 
-    print(f"********** CoursePathNode: worklist={worklist}, cursor={cursor}")
+    # print(f"********** CoursePathNode: worklist={worklist}, cursor={cursor}")
 
     # current outcomes
-    print(f"********** CoursePathNode: current_cp_agent_outcomes={state.current_cp_agent_outcomes}")
+    # print(f"********** CoursePathNode: current_cp_agent_outcomes={state.current_cp_agent_outcomes}")
 
     # Build tool call at start of execution
     if cursor == 0:
@@ -102,7 +110,6 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
             },
         }
         tool_messages.append(tool_call)
-        print(f"********** CoursePathNode: saving previous course path")
         coursepath_agent.save_previous_course_path()
 
     # Execute operations one by one
@@ -141,7 +148,7 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     config["configurable"]["student_profile"].course_path = modified_cp
 
     return {
-        "messages": tool_messages,
+        "turn_messages": state.turn_messages + tool_messages,
         "current_cp_agent_outcomes": outcomes,
         "worklist": worklist,
         "cursor": cursor,
@@ -149,13 +156,19 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     }
 
 def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
-    modified_profile, state_updates = modify_student_profile(state, config)
+    # Check if we already computed the modified profile (to avoid re-computing on interrupt resume)
+    if state.pending_profile_modification is not None:
+        print("********** Using cached modified profile (avoiding re-computation)")
+        modified_profile = state.pending_profile_modification
+    else:
+        print("********** Computing modified profile for the first time")
+        modified_profile, _ = modify_student_profile(state, config) # no state updates, only updating turn messages
 
     # Verify modified profile with user
     user_response = interrupt(f"How do you feel about the modified profile? {modified_profile.__str__()}")
     if determine_user_confirmation(user_response):
 
-        print(f"********** ProfileModifierNode: user confirmed modified profile")
+        print(f"********** ProfileModifierNode: user confirmed modified profile as follows: {modified_profile.__str__()}")
 
         # Get the current student profile from config
         current_profile = config["configurable"]["student_profile"]
@@ -176,7 +189,7 @@ def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentSta
         # Update the config with the new profile
         config["configurable"]["student_profile"] = updated_profile
 
-        print(f"********** ProfileModifierNode: updated_profile={updated_profile}")
+        # print(f"********** ProfileModifierNode: updated_profile={updated_profile}")
 
         tool_call = {
             "role": "assistant",
@@ -190,22 +203,25 @@ def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentSta
         }
 
         return {
-            "messages": [tool_call],
-            **state_updates,
+            "turn_messages": state.turn_messages + [tool_call],
         }
     else:
-        return {
-            **state_updates
-        }
+        return {}
 
 def finalize_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
-    reply, state_updates = render_final_reply(state, config)
+
+    # Add turn messages to state's messages
+    reply, _ = render_final_reply(state, config)
+
+    compiled_turn_messages = [{"role": "user", "content": state.current_user_msg}] + state.turn_messages + [{"role": "assistant", "content": reply}]
+
     return {
         "ui_reply": reply,
         "current_cp_agent_outcomes": {},
         "search_results": None,
-        "messages": [{"role": "assistant", "content": reply}],
-        **state_updates,
+        "messages": compiled_turn_messages,
+        "current_user_msg": None,
+        "turn_messages": []
     }
 
 # ------------------------------------------------------------
@@ -231,7 +247,6 @@ class DreampathAgent:
             student_profile: StudentProfile containing student information and course path
             thread_id: Unique identifier for the conversation thread
         """
-        self.student_profile = student_profile
         self.thread_id = thread_id
         
         # Initialize components
@@ -249,6 +264,16 @@ class DreampathAgent:
         
         # Initialize state
         self.state = DreamPathAgentState()
+
+        # Initialize config
+        self.config = {
+            "configurable": {
+                "thread_id": self.thread_id,
+                "coursepath_agent": self.coursepath_agent,
+                "student_profile": student_profile,
+                "course_search_tool": self.course_search_tool
+            }
+        }
         
     def _build_graph(self):
         """Build the LangGraph state graph for the agent."""
@@ -269,6 +294,7 @@ class DreampathAgent:
         g.add_conditional_edges("orchestrator", router, {
             "course_search": "course_search",
             "plan_builder": "plan_builder",
+            "course_path": "course_path",
             "modify_profile": "modify_profile",
             "finalize": "finalize",
         })
@@ -278,7 +304,7 @@ class DreampathAgent:
             return state.route or "orchestrator"
 
         g.add_edge("course_search", "orchestrator")
-        g.add_edge("plan_builder", "course_path")     # plan → execute directly
+        g.add_edge("plan_builder", "orchestrator")
         g.add_conditional_edges("course_path", sub_node_router, {
             "course_path": "course_path",
             "orchestrator": "orchestrator",
@@ -288,17 +314,6 @@ class DreampathAgent:
 
         checkpointer = InMemorySaver()
         self.app = g.compile(checkpointer=checkpointer)
-        
-    def _get_config(self):
-        """Get the configuration for the graph execution."""
-        return {
-            "configurable": {
-                "thread_id": self.thread_id,
-                "coursepath_agent": self.coursepath_agent,
-                "student_profile": self.student_profile,
-                "course_search_tool": self.course_search_tool
-            }
-        }
     
     def run(self, user_input: str) -> Generator[Tuple[str, Optional[str]], str, str]:
         """
@@ -318,14 +333,13 @@ class DreampathAgent:
         Returns:
             str: The final assistant response when conversation is complete
         """
-        config = self._get_config()
-        
+
         try:
             # Invoke the graph with the user input
             state_dict = self.app.invoke({
-                "major": self.student_profile.major,
-                "messages": [{"role": "user", "content": user_input}]
-            }, config)
+                "major": self.config["configurable"]["student_profile"].major,
+                "current_user_msg": user_input,
+            }, self.config)
             
             # Handle interrupts in a loop
             while '__interrupt__' in state_dict:
@@ -344,8 +358,8 @@ class DreampathAgent:
                 print(f"********** Messages to add: {messages_to_add}")
                 
                 state_dict = self.app.invoke(
-                    Command(resume=user_response, update={"messages": messages_to_add}), 
-                    config
+                    Command(resume=user_response, update={"turn_messages": state_dict.get("turn_messages", []) + messages_to_add}), 
+                    self.config
                 )
             
             # Update internal state
@@ -353,7 +367,6 @@ class DreampathAgent:
             
             # Return final response
             final_response = self.state.ui_reply or "(ok)"
-            print(f"********** Final response: {final_response}")
             return final_response
             
         except Exception as e:
@@ -362,12 +375,12 @@ class DreampathAgent:
     
     def get_course_path_visualization(self) -> str:
         """Get a visualization of the current course path."""
-        current_path = self.student_profile.course_path
-        return f"CoursePath (@ term={current_path.curr_window_start})\n{current_path.visualize()}"
+        current_path = self.config["configurable"]["student_profile"].course_path
+        return f"CoursePath (@ term={current_path.curr_window_start})\n{current_path.visualize_by_term_idx()}"
     
     def get_student_profile_summary(self) -> str:
         """Get a summary of the student profile."""
-        return str(self.student_profile)
+        return str(self.config["configurable"]["student_profile"])
 
 # ------------------------------------------------------------
 # MAIN GRAPH (for backwards compatibility)

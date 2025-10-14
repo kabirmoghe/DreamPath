@@ -161,7 +161,7 @@ def build_scheduling_windows(prereq_graph,
                              alap: Dict[str, int],
                              window_start_term: int,
                              max_terms: int,
-                             must_have_course_map: Dict[str, "Course"]) -> Dict[str, List[int]]:
+                             must_have_course_bank: Dict[str, "Course"]) -> Dict[str, List[int]]:
     """
     Clamp targets to their (lo, hi); others to full in-window horizon.
     """
@@ -170,8 +170,9 @@ def build_scheduling_windows(prereq_graph,
     for v in nodes:
         lo = asap[v]
         hi = alap[v]
-        if v in must_have_course_map and must_have_course_map[v].must_have_window:
-            tlo, thi = must_have_course_map[v].must_have_window[0], must_have_course_map[v].must_have_window[1]
+        if v in must_have_course_bank and must_have_course_bank[v].must_have_window:
+            tlo, thi = must_have_course_bank[v].must_have_window[0], must_have_course_bank[v].must_have_window[1]
+            print("TLO, THI:", tlo, thi)
             lo = max(lo, tlo)
             hi = min(hi, thi)
         else:

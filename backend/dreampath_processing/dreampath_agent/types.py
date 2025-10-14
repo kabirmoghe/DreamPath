@@ -4,7 +4,8 @@ from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentO
 import operator
 
 class OrchestratorDecision(BaseModel):
-    next: Literal["plan_builder", "course_search", "modify_profile", "finalize"]
+    next: Literal["course_search", "plan_builder", "course_path", "modify_profile", "finalize"]
+    handoff: Optional[str] = Field(default=None, description="The handoff message for the next node")
 
 # ================================
 # Course Search Tool
@@ -63,13 +64,18 @@ class DreamPathAgentState(BaseModel):
     plan_id: Optional[str] = Field(default=None)
     major: Optional[str] = Field(default=None)
 
-    # Conversation state
+    # Historical conversation state
     summary: str = Field(default="")
     messages: Annotated[List[Dict[str, str | dict]], operator.add] = Field(default_factory=list)
     summary_end: int = 0
 
+    # Current conversation state
+    current_user_msg: Optional[str] = Field(default=None)
+    turn_messages: List[Dict[str, str | dict]] = Field(default_factory=list)
+
     # Routing
     route: Optional[Literal["orchestrator", "course_search", "plan_builder", "course_path", "modify_profile", "finalize"]] = Field(default=None)
+    handoff: Optional[str] = Field(default=None)
 
     # Search + planning
     topics: Optional[Dict[str, int]] = Field(default_factory=dict)
@@ -80,3 +86,6 @@ class DreamPathAgentState(BaseModel):
     # Current CoursePath Agent outcome + reply
     current_cp_agent_outcomes: Optional[Dict[str, CoursePathAgentOutput]] = Field(default=None)
     ui_reply: Optional[str] = Field(default=None)
+    
+    # Pending profile modification (used to avoid re-computing on interrupt resume)
+    pending_profile_modification: Optional["ModifiedStudentProfile"] = Field(default=None)

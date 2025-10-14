@@ -121,14 +121,13 @@ def clear_op_state(state: CoursePathAgentState):
     state.recent_messages = []
     state.trial_op_execution = None
 
+def create_fallback_course_path(config: dict, tools: CoursePathTools):
+    config["fallback_cp"] = snapshot_path(tools.cp)
 
-def save_previous_course_path(tools: CoursePathTools):
-    tools.previous_cp = snapshot_path(tools.cp)
+def revert_to_fallback_course_path(config: dict, tools: CoursePathTools):
+    tools.cp = config["fallback_cp"]
 
-def revert_to_previous_course_path(tools: CoursePathTools):
-    tools.cp = tools.previous_cp
-
-def handle_user_turn(state: CoursePathAgentState, tools: CoursePathTools, user_input: str) -> CoursePathAgentOutput:
+def handle_user_turn(state: CoursePathAgentState, config: dict, tools: CoursePathTools, user_input: str) -> CoursePathAgentOutput:
     # 1) Extract operation type (if not already done)
     if not state.pending_op_type:
         state.pending_op_type = extract_op_type(state, user_input)
@@ -152,7 +151,7 @@ def handle_user_turn(state: CoursePathAgentState, tools: CoursePathTools, user_i
 
     # 4) If trial execution has already been performed, skip to step 5
     if state.trial_op_execution is None:
-        save_previous_course_path(tools)
+        create_fallback_course_path(config, tools)
         state.trial_op_execution = execute_course_op(state=state, op_type=state.pending_op_type, op=state.pending_op, tools=tools, force_reschedule=False)
 
     # 5) Trial execution of operation
@@ -196,7 +195,7 @@ def handle_user_turn(state: CoursePathAgentState, tools: CoursePathTools, user_i
         clear_op_state(state)
         return output
 
-def on_user_confirm(state: CoursePathAgentState, tools: CoursePathTools, user_input: str) -> CoursePathAgentOutput:
+def on_user_confirm(state: CoursePathAgentState) -> CoursePathAgentOutput:
     # Optimistic lock
     op = state.pending_op
     attempt = state.trial_op_execution
@@ -212,8 +211,8 @@ def on_user_confirm(state: CoursePathAgentState, tools: CoursePathTools, user_in
         error=None
     )
 
-def on_user_cancel(state: CoursePathAgentState, tools: CoursePathTools, user_input: str) -> CoursePathAgentOutput:
-    revert_to_previous_course_path(tools)
+def on_user_cancel(state: CoursePathAgentState, config: dict, tools: CoursePathTools) -> CoursePathAgentOutput:
+    revert_to_fallback_course_path(config, tools)
     clear_op_state(state)
     return CoursePathAgentOutput(
         status="cancel",
@@ -228,20 +227,30 @@ def on_user_cancel(state: CoursePathAgentState, tools: CoursePathTools, user_inp
 class CoursePathAgent:
     def __init__(self, tools: CoursePathTools):
         self.state = CoursePathAgentState(thread_id="", plan_id="", plan_version=0, pending_op=None, facts={}, summary="", recent_messages=[])
+        self.config = {}
         self.tools = tools
 
-    def run(self, text: str) -> CoursePathAgentOutput:
+    def save_previous_course_path(self):
+        self.tools.previous_cp = snapshot_path(self.tools.cp)
 
+    def revert_to_previous_course_path(self):
+        self.tools.cp = self.tools.previous_cp
+
+    def get_diff_from_previous_course_path(self) -> str:
+        diff = compute_diff(self.tools.previous_cp, self.tools.cp)
+        return summarize_diff(diff)
+
+    def run(self, text: str) -> CoursePathAgentOutput:
         print(f"Summary: {self.state.summary}")
         print(f"Recent messages: {self.state.recent_messages}")
 
         # Route based on whether we’re waiting for a confirm
         if self.state.pending_op and text.strip().upper() == "CONFIRM":
-            out = on_user_confirm(state=self.state, tools=self.tools, user_input=text)
+            out = on_user_confirm(state=self.state)
         elif self.state.pending_op and text.strip().upper() == "CANCEL":
-            out = on_user_cancel(state=self.state, tools=self.tools, user_input=text)
+            out = on_user_cancel(state=self.state, config=self.config, tools=self.tools)
         else:
-            out = handle_user_turn(state=self.state, tools=self.tools, user_input=text)
+            out = handle_user_turn(state=self.state, config=self.config, tools=self.tools, user_input=text)
 
         # update tiny conversational memory 
         self.state.recent_messages.append({"role":"user", "content": text})
