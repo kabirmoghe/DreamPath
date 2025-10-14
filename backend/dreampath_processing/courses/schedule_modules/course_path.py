@@ -3,8 +3,12 @@ from typing import List, Set, Dict, Tuple, Optional
 from .course import Course
 from copy import deepcopy
 from collections import defaultdict
-from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, get_direct_prereqs, rebuild_prereq_graph
-from dreampath_processing.courses.scheduling_helpers import schedule_must_have_courses, integrate_recommendations_and_must_have_courses
+from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, get_direct_prereqs, rebuild_prereq_graph, find_lingering_courses, PrereqGraph
+from dreampath_processing.courses.scheduling_helpers import (_topo_order,
+                                                             compute_asap_for_graph,
+                                                             compute_alap_for_graph,
+                                                             build_scheduling_windows,
+                                                             schedule_courses_by_term)
 
 # Exceptions
 class TermCapacityError(Exception): ...
@@ -15,9 +19,10 @@ class CoursePath:
     course_path: List[List[str]]
     recommended_courses: Set[str]
     course_bank: Dict[str, Course]
-    prereq_graph: Dict[str, List[str]]
+    prereq_graph: PrereqGraph
     curr_window_start: int = 0
     must_have_courses: Set[str] = field(default_factory=set)
+    lingering_courses: Set[str] = field(default_factory=set)
     
     def __post_init__(self):
         """Validate the data after initialization"""
@@ -29,15 +34,15 @@ class CoursePath:
             raise ValueError("recommended_courses must be a set")
         if not isinstance(self.course_bank, dict):
             raise ValueError("course_bank must be a dict")
-        if not isinstance(self.prereq_graph, dict):
+        if not isinstance(self.prereq_graph, PrereqGraph):
             raise ValueError("prereq_graph must be a dict")
         if not isinstance(self.must_have_courses, set):
             raise ValueError("must_have_courses must be a set")
         
-    def __str__(self):
+    def visualize(self, course_path=None):
         """Print the course path in a pretty format"""
         # Normalize to strings and handle None
-        cols = [[str(x) for x in term if x is not None] for term in self.course_path]
+        cols = [[str(x) for x in term if x is not None] for term in course_path or self.course_path]
 
         # Column widths = longest course in each term, but at least as wide as "(n)"
         widths = []
@@ -66,6 +71,51 @@ class CoursePath:
             lines.append((" " * pad).join(cells))
 
         return "\n".join(lines)
+    
+    def _produce_mock_course_path(self):
+        """Produce a mock course path using the course_bank"""
+        mock_course_path = [[] for _ in range(len(self.course_path))]
+        for course_code, course_obj in self.course_bank.items():
+            if course_obj.term_idx is not None and course_obj.scheduled:
+                mock_course_path[course_obj.term_idx].append(course_code)
+        return mock_course_path
+
+    def visualize_by_term_idx(self, calculate_diff=True):
+        """Print the course path in a pretty format by term index"""
+        # Construct mock course path using course_bank
+        mock_course_path = self._produce_mock_course_path()
+
+        if calculate_diff:
+            diff = {}
+
+            for term_idx, term in enumerate(self.course_path):
+                in_mock = set(mock_course_path[term_idx]) - set(term)
+                in_self = set(term) - set(mock_course_path[term_idx])
+
+                if in_mock:
+                    diff["removed"] = diff.get("removed", []) + [{"course_code": list(in_mock), "term_idx": term_idx}]
+                if in_self:
+                    diff["added"] = diff.get("added", []) + [{"course_code": list(in_self), "term_idx": term_idx}]
+
+            print(f"Diff: {diff}")
+
+        return self.visualize(mock_course_path)
+        
+    def __str__(self):
+        cp_str = ""
+        for term_idx, term in enumerate(self.course_path):
+            cp_str += f"#### Term {term_idx} Courses{' [**Current Term**]' if term_idx == self.curr_window_start else ''}:\n"
+            for course in term:
+                course_obj = self.course_bank[course]
+                cp_str += f"{course_obj.course_code}: '{course_obj.course_title}' |"
+
+                if course_obj.is_prereq:
+                    cp_str += f" Prereq.\n"
+                else:
+                    cp_str += f" {course_obj.course_type} Course\n"
+
+            cp_str += "\n\n"
+        return cp_str
 
     # ─────────────────────────────────────────────────────────────────────────────
     # VALIDATE COURSE PLAN
@@ -154,10 +204,8 @@ class CoursePath:
     # ─────────────────────────────────────────────────────────────────────────────
     # REBUILD COURSE PATH
     # ─────────────────────────────────────────────────────────────────────────────
-
-    def rebuild(self, window_start_term: Optional[int] = None, must_have_course_map: Dict[str, Course] = {}, for_op: bool = False, verbose: int = 0):
-        """Rebuild a course path with must-have courses and recommendations"""
-
+    
+    def rebuild(self, window_start_term: Optional[int] = None, must_have_course_map: Dict[str, Course] = {}, max_terms: int = 12, for_op: bool = False, verbose: int = 0):
         if window_start_term is None:
             window_start_term = self.curr_window_start
 
@@ -165,75 +213,80 @@ class CoursePath:
         existing_must_have_courses_map = {c: self.course_bank[c] for c in self.must_have_courses}
         complete_must_have_courses_map = existing_must_have_courses_map | must_have_course_map
 
-        # 2. Schedule must have courses
-        must_have_schedule_output = schedule_must_have_courses(course_path=self.course_path, 
-                                                            prior_course_bank=self.course_bank, 
-                                                            window_start_term=window_start_term, 
-                                                            must_have_course_map=complete_must_have_courses_map,
-                                                            verbose=True if verbose >= 2 else False)
-        
-        # Get newly scheduled courses & pre-window courses
-        must_have_course_path = must_have_schedule_output['must_have_course_path']
-        must_have_course_bank = must_have_schedule_output['must_have_course_bank']
-        newly_scheduled_courses = must_have_schedule_output['newly_scheduled_courses']
-        newly_scheduled_must_have_courses = must_have_schedule_output['newly_scheduled_must_have_courses']
-        pre_window_courses = must_have_schedule_output['pre_window_courses']
-
         if verbose >= 1:
-            print(f"\n-- MUST-HAVE COURSE PATH --")
-            print(must_have_course_path)
-            print(f"\n* Newly scheduled courses: {newly_scheduled_courses}")
-            print("-----\n")
+            print("Complete must-have courses map:")
+            for c, obj in complete_must_have_courses_map.items():
+                print(f"{c}: {obj.must_have_window}")
 
-        # 3. Remove window from unscheduled must-have courses
-        unscheduled_new_must_haves = set(must_have_course_map.keys()) - newly_scheduled_must_have_courses
-        if unscheduled_new_must_haves and for_op:
+        # Get external courses
+        external_courses = set([course for term in self.course_path[:window_start_term] for course in term])
+
+        # 2. Compute feasibility windows for must-have courses
+        must_have_course_bank = {}
+        scheduling_windows = {}
+
+        for c, c_object in complete_must_have_courses_map.items():
+
+            # Construct course object for bank
+            must_have_course_bank[c] = must_have_course_bank.get(c, c_object)
+            c_prereq_tree, c_prereq_set = build_prereq_tree(c)
+            must_have_course_bank[c].prereq_tree = c_prereq_tree
+            must_have_course_bank[c].must_have_window = c_object.must_have_window
+
+            for c_prereq in c_prereq_set:
+                must_have_course_bank[c_prereq] = must_have_course_bank.get(c_prereq, Course(course_code=c_prereq, course_type=must_have_course_bank[c].course_type))
+                must_have_course_bank[c_prereq].is_prereq = True
+
+                # To maintain scheduling accuracy for pre-window courses upon merging must-have and prior course banks
+                if c_prereq in self.course_bank:
+                    must_have_course_bank[c_prereq].scheduled = self.course_bank[c_prereq].scheduled
+                    must_have_course_bank[c_prereq].term_idx = self.course_bank[c_prereq].term_idx
+
+        # If there are must-have courses, compute ASAP and ALAP, build scheduling windows
+        if must_have_course_bank: 
+            must_have_graph = rebuild_prereq_graph(course_bank=must_have_course_bank, courses=complete_must_have_courses_map.keys(), to_prune=external_courses)
+
+            # 4. Compute ASAP and ALAP, build scheduling windows
+            must_have_topo_order = _topo_order(must_have_graph.children, must_have_graph.parents, must_have_graph.all_courses)
+            asap_for_courses = compute_asap_for_graph(must_have_graph, window_start_term, topo_order=must_have_topo_order)
+            target_deadline_hi = {c: obj.must_have_window[1] for c, obj in complete_must_have_courses_map.items()}
+            alap_for_courses = compute_alap_for_graph(must_have_graph, target_deadline_hi, default_hi=max_terms - 1, topo_order=must_have_topo_order)
+            scheduling_windows = build_scheduling_windows(must_have_graph, asap_for_courses, alap_for_courses, window_start_term, max_terms, must_have_course_bank)
+        
+        if verbose >= 1:
+            print(f"Scheduling windows: {scheduling_windows}")
+
+        # 5. Rebuild master course graph
+        complete_course_bank = self.course_bank | must_have_course_bank
+        build_for = must_have_course_map.keys() | self.recommended_courses
+        master_graph = rebuild_prereq_graph(course_bank=complete_course_bank, courses=build_for, to_prune=external_courses)
+
+        # 6. Schedule courses by term
+        course_path_components = schedule_courses_by_term(course_graph=master_graph, 
+                                                        course_bank=complete_course_bank, 
+                                                        existing_plan=self.course_path, 
+                                                        course_scheduling_windows=scheduling_windows, 
+                                                        window_start_term=window_start_term, 
+                                                        max_terms=max_terms, 
+                                                        verbose=verbose >= 1)
+
+        if for_op and len(course_path_components["unscheduled"] & must_have_course_map.keys()) > 0:
             raise RebuildError("Rebuild failed for operation, could not prioritize must-have operation course(s).")
-
-        for c in unscheduled_new_must_haves:
-            must_have_course_bank[c].must_have_window = None
-            complete_must_have_courses_map.pop(c)
-            must_have_course_map.pop(c)
-            must_have_course_bank.pop(c)
-
-            if verbose >= 1:
-                print(f"[Unable to schedule must-have course '{c}', removed from must-have courses]")
-
-        # Define "locked" courses
-        locked_courses = newly_scheduled_courses | pre_window_courses
-
-        # 4. Integrate recommendations and must have courses
-        integration_output = integrate_recommendations_and_must_have_courses(must_have_course_path=must_have_course_path,
-                                                                                                            locked_courses=locked_courses,
-                                                                                                            prior_prereq_graph=self.prereq_graph,
-                                                                                                            must_have_course_bank=must_have_course_bank,
-                                                                                                            prior_course_bank=self.course_bank,
-                                                                                                            window_start_term=window_start_term,
-                                                                                                            verbose=True if verbose >= 3 else False)
         
-        modified_course_path = integration_output["modified_course_path"]
-        complete_course_bank = integration_output["complete_course_bank"]
-
-        # 5. Rebuild course path
-
-        # Combine recommended courses with top-level must-have courses
-        complete_recommended_courses = self.recommended_courses | set(must_have_course_map.keys())
-
-        # Build prereq. graph for complete course bank
-        complete_course_prereq_graph = rebuild_prereq_graph(course_bank=complete_course_bank)
-
-        # Update set of must-have courses; removed because gets rid of unscheduled must-haves from object even though may want to schedule moving fwd
-        complete_must_have_courses = set(complete_must_have_courses_map.keys())
-    
-        # Build course path
-        self.course_path = modified_course_path
-        self.recommended_courses = complete_recommended_courses
+        # 7. Consolidate into CoursePath object
+        self.course_path = course_path_components["plan"]
+        self.recommended_courses = self.recommended_courses | must_have_course_map.keys()
         self.course_bank = complete_course_bank
-        self.prereq_graph = complete_course_prereq_graph
-        self.must_have_courses = complete_must_have_courses
+        self.prereq_graph = rebuild_prereq_graph(course_bank=self.course_bank, courses=self.recommended_courses)
+        self.must_have_courses = set(complete_must_have_courses_map.keys())
 
-        return self
+        # Handle lingering courses
+        if self.lingering_courses:
+            print(f"* Warning: lingering courses={self.lingering_courses}")
+
+        self.lingering_courses = set()
         
+        return self
     # ─────────────────────────────────────────────────────────────────────────────
     # REMOVE COURSE
     # ────────────────────────────────────────────────────────────────────────────
@@ -300,6 +353,10 @@ class CoursePath:
                 if verbose:
                     print(f"\n* Course '{course_code_to_remove}' is a recommended course, removing from recommended courses and rescheduling...")
 
+                course_to_remove.scheduled = False
+                course_to_remove.term_idx = None
+                course_to_remove.must_have_window = None
+
                 self.recommended_courses = self.recommended_courses - {course_code_to_remove}
                 self.prereq_graph = rebuild_prereq_graph(course_bank=self.course_bank, courses=self.recommended_courses)
                 self.must_have_courses = self.must_have_courses - {course_code_to_remove}
@@ -313,27 +370,36 @@ class CoursePath:
         else:
             course_to_remove.scheduled = False
             course_to_remove.term_idx = None
+            course_to_remove.must_have_window = None
             
             self.course_path = remove_course_path
             self.recommended_courses = self.recommended_courses - {course_code_to_remove}
-            self.prereq_graph = rebuild_prereq_graph(course_bank=self.course_bank, courses=self.recommended_courses)
             self.must_have_courses = self.must_have_courses - {course_code_to_remove}
+
+            # Update prereq. graph & handle lingering courses
+            remove_prereq_graph = rebuild_prereq_graph(course_bank=self.course_bank, courses=self.recommended_courses)
+            new_lingering_courses = find_lingering_courses(old_prereq_graph=self.prereq_graph, new_prereq_graph=remove_prereq_graph)
+            new_lingering_courses.discard(course_code_to_remove)
+            
+            self.prereq_graph = remove_prereq_graph
+            self.lingering_courses = self.lingering_courses | new_lingering_courses
 
         if verbose:
             print(f"* Course '{course_code_to_remove}' removed successfully.")
+
         return self
     
     # ─────────────────────────────────────────────────────────────────────────────
     # ADD COURSE
     # ─────────────────────────────────────────────────────────────────────────────
     @staticmethod
-    def _attempt_add_course(course_path: List[List[str]], course_code_to_add: str, must_have_window: Optional[Tuple[int, int]]=None, window_start_term: int=0, max_classes_per_term=3) -> Tuple[List[List[str]], int]:
+    def _attempt_add_course(course_path: List[List[str]], course_code_to_add: str, must_have_window: Optional[List[int]]=None, window_start_term: int=0, max_classes_per_term=3) -> Tuple[List[List[str]], int]:
         add_course_path = deepcopy(course_path)
 
         # Check if must_have term location / window specified
         if must_have_window is not None:
             # Assumes valid window
-            course_start_term, course_end_term = must_have_window
+            course_start_term, course_end_term = must_have_window[0], must_have_window[1]
             adjusted_start_term = max(window_start_term, course_start_term)
 
             for term_idx in range(adjusted_start_term, course_end_term + 1):
@@ -357,13 +423,15 @@ class CoursePath:
             max_terms = len(self.course_path)
 
             # Validate scheduling window pointers
-            course_start_term, course_end_term = course_to_add.must_have_window
+            course_start_term, course_end_term = course_to_add.must_have_window[0], course_to_add.must_have_window[1]
         
             if (course_start_term > course_end_term) or (course_start_term < 0) or (course_end_term >= max_terms):
                 raise Exception(f"Invalid scheduling window {course_to_add.must_have_window} for course {course_to_add.course_code}.")
             
             if course_end_term < self.curr_window_start:
                 raise Exception(f"Cannot add course '{course_to_add.course_code}', requested scheduling window {course_to_add.must_have_window} outside of current window.")
+        else:
+            course_to_add.must_have_window = [self.curr_window_start, len(self.course_path) - 1]
 
         # Checking if course is already scheduled
         existing_course = self.course_bank.get(course_to_add.course_code, None)
@@ -409,13 +477,13 @@ class CoursePath:
     # MOVE COURSE
     # ─────────────────────────────────────────────────────────────────────────────
     @staticmethod
-    def _attempt_move_course(course_path: List[List[str]], course_to_move: Course, move_window: Tuple[int, int], window_start_term: int=0, max_classes_per_term: int=3) -> Tuple[List[List[str]], int]:
+    def _attempt_move_course(course_path: List[List[str]], course_to_move: Course, move_window: List[int], window_start_term: int=0, max_classes_per_term: int=3) -> Tuple[List[List[str]], int]:
         # First, remove course from original term
         remove_course_path = CoursePath._attempt_remove_course(course_path=course_path, course_to_remove=course_to_move)
         
         # Then, move course to new term
         move_course_path = deepcopy(remove_course_path)
-        move_start_term, move_end_term = move_window
+        move_start_term, move_end_term = move_window[0], move_window[1]
         adjusted_start_term = max(window_start_term, move_start_term)
 
         for term_idx in range(adjusted_start_term, move_end_term + 1):
@@ -425,7 +493,7 @@ class CoursePath:
             
         raise TermCapacityError(f"Course '{course_to_move.course_code}' cannot be moved due to max capacity in scheduling window {move_window}.")
         
-    def move_course(self, course_code_to_move: str, move_window: Tuple[int, int], max_classes_per_term: int=3, reschedule: bool=False, verbose: bool=False):
+    def move_course(self, course_code_to_move: str, move_window: List[int], max_classes_per_term: int=3, reschedule: bool=False, verbose: bool=False):
         # Validate course to move
         course_to_move = self.course_bank.get(course_code_to_move, None)
         if course_to_move is None:
@@ -435,7 +503,7 @@ class CoursePath:
             raise Exception(f"Cannot move unscheduled course '{course_code_to_move}'.")
 
         # Validate move window
-        move_start_term, move_end_term = move_window
+        move_start_term, move_end_term = move_window[0], move_window[1]
         if move_start_term > move_end_term or move_start_term < 0 or move_end_term >= len(self.course_path):
             raise Exception(f"Invalid move window {move_window} for course {course_code_to_move}.")
 
@@ -495,7 +563,7 @@ class CoursePath:
         if old_course.must_have_window:
             new_course.must_have_window = old_course.must_have_window
         else:
-            new_course.must_have_window = (old_course.term_idx, old_course.term_idx)
+            new_course.must_have_window = [old_course.term_idx, old_course.term_idx]
 
         # Reframe ADD error as REPLACE error
         try:
@@ -519,8 +587,8 @@ class CoursePath:
             raise Exception(f"Cannot replace course '{old_course_code}', outside of current window.")
 
         # Validate new course
-        if new_course.course_code in self.course_bank and new_course.term_idx is not None:
-            raise Exception(f"Course '{new_course.course_code}' is already scheduled (scheduled={new_course.scheduled})")
+        if new_course.course_code in self.course_bank and self.course_bank[new_course.course_code].term_idx is not None:
+            raise Exception(f"Course '{new_course.course_code}' is already scheduled (scheduled={self.course_bank[new_course.course_code].scheduled})")
         
         if new_course.must_have_window:
             if new_course.must_have_window[1] < self.curr_window_start:
@@ -548,13 +616,17 @@ class CoursePath:
             elif reschedule:
                 if verbose:
                     print(f"* Course '{old_course_code}' is a recommended course, replacing with '{new_course.course_code}' and rescheduling...")
-                self.recommended_courses = self.recommended_courses - {old_course_code} | {new_course.course_code}
-                self.course_bank = self.course_bank | {new_course.course_code: new_course}
+                
+                old_course.scheduled = False
+                old_course.term_idx = None
+                old_course.must_have_window = None
+
+                self.recommended_courses = self.recommended_courses - {old_course_code}
                 self.prereq_graph = rebuild_prereq_graph(course_bank=self.course_bank, courses=self.recommended_courses)
-                self.must_have_courses = self.must_have_courses - {old_course_code} | {new_course.course_code}
+                self.must_have_courses = self.must_have_courses - {old_course_code}
 
                 # Rebuild course path with must-have courses
-                self.rebuild(window_start_term=self.curr_window_start, for_op=True)
+                self.rebuild(window_start_term=self.curr_window_start, must_have_course_map={new_course.course_code: new_course}, for_op=True)
             else:
                 raise Exception(f"Cannot replace course '{old_course_code}' with '{new_course.course_code}' due to scheduling violations, requires rescheduling.")
 
@@ -572,7 +644,13 @@ class CoursePath:
                 self.recommended_courses = self.recommended_courses - {old_course_code} | {new_course.course_code}
 
             self.course_bank = self.course_bank | {new_course.course_code: new_course}
-            self.prereq_graph = rebuild_prereq_graph(course_bank=self.course_bank, courses=self.recommended_courses)
+            
+            # Update prereq. graph & handle lingering courses
+            replace_prereq_graph = rebuild_prereq_graph(course_bank=self.course_bank, courses=self.recommended_courses)
+            new_lingering_courses = find_lingering_courses(old_prereq_graph=self.prereq_graph, new_prereq_graph=replace_prereq_graph) 
+            new_lingering_courses.discard(old_course_code)
+            self.prereq_graph = replace_prereq_graph
+            self.lingering_courses = self.lingering_courses | new_lingering_courses
 
             if old_course_code in self.must_have_courses:
                 self.must_have_courses = self.must_have_courses - {old_course_code} | {new_course.course_code}
@@ -590,11 +668,11 @@ class CoursePath:
     def _attempt_swap_courses(course_path: List[List[str]], course_to_swap_1: Course, course_to_swap_2: Course) -> Tuple[List[List[str]], int, int]:
         # First, remove course 1 and move course 2 to course 1's term
         remove_course_path = CoursePath._attempt_remove_course(course_path=course_path, course_to_remove=course_to_swap_1)
-        course_2_move_window = (course_to_swap_1.term_idx, course_to_swap_1.term_idx)
+        course_2_move_window = [course_to_swap_1.term_idx, course_to_swap_1.term_idx]
         move_course_path, course_2_new_term_idx = CoursePath._attempt_move_course(course_path=remove_course_path, course_to_move=course_to_swap_2, move_window=course_2_move_window, max_classes_per_term=3)
 
         # Then, add course 1 to course 2's term
-        course_1_add_window = (course_to_swap_2.term_idx, course_to_swap_2.term_idx)
+        course_1_add_window = [course_to_swap_2.term_idx, course_to_swap_2.term_idx]
         add_course_path, course_1_new_term_idx = CoursePath._attempt_add_course(course_path=move_course_path, course_code_to_add=course_to_swap_1.course_code, must_have_window=course_1_add_window, max_classes_per_term=3)
 
         return add_course_path, course_1_new_term_idx, course_2_new_term_idx

@@ -24,7 +24,7 @@ CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
 @app.route('/api/majors', methods=['GET'])
 def get_majors():
     # Return list of available majors
-    available_majors = pd.read_csv('dreampath_processing/courses/data/dartmouth_majors.csv')['Major'].unique().tolist()
+    available_majors = pd.read_csv('dreampath_processing/courses/data/dartmouth_majors.csv')['major'].unique().tolist()
     
     print(f"Available majors: {available_majors}")
     return jsonify(available_majors)
@@ -41,8 +41,6 @@ def get_recommendations():
     iteration_name = data.get('iteration_name', 'DreamPath Iteration')
     
     # Extract parameter weights from request (optional)
-    # parameter_weights = data.get('parameter_weights')
-    # Default parameter weights
     parameter_weights = {
         'college_interests': 1.0,
         'post_grad_goal': 1.0,
@@ -71,6 +69,8 @@ def get_recommendations():
         'long_term_goal': long_term_goal
     }
     
+    # TODO: change lines 75 - 112 to use weaviate search, refactor ranking
+
     # Get course recommendations
     major_course_recs, other_course_recs, all_unique_courses, all_course_to_department_map = get_courses_for_student_parameters(major, student_parameters)
     
@@ -107,6 +107,8 @@ def get_recommendations():
     
     print(f"Produced major courses --> {major_courses}")
     print(f"Produced complementary courses --> {complementary_courses}")
+
+    # TODO: change lines 115 - end to use CoursePath model for course path building; update data model to match
 
     # Build course path and enhance course codes with catalog information
     course_codes_path, all_major_course_codes, all_complementary_course_codes = build_course_path(major_courses, complementary_courses)

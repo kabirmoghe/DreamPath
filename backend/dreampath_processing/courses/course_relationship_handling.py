@@ -2,100 +2,66 @@ import re
 import json
 import pandas as pd
 from collections import defaultdict
-from typing import Dict, List, Set
-from dreampath_processing.courses.schedule_modules.course import Course
+from typing import Dict, List, Set, Optional, Tuple
+from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY, CourseType
+from dreampath_processing.courses.data_retrieval.weaviate_course_service import WeaviateCourseService
 
-# -----------------------------------------------------
-# External course information extraction / confirmation
-# -----------------------------------------------------
-def get_department_from_course_code(course_code):
-    """
-    Get the department from a given course code
+DATA_DIR = "dreampath_processing/courses/data"
 
-    Args:
-        course_code: str - Course code to get the department from
+# Lazy initialization of Weaviate service
+_weaviate_service = None
 
-    Returns:
-        Tuple[str, str] - Tuple of department alias and course number
-    """
-    course_components = re.match(r'^([A-Z]+)(.*)', course_code)
+def get_weaviate_service():
+    global _weaviate_service
+    if _weaviate_service is None:
+        _weaviate_service = WeaviateCourseService()
+    return _weaviate_service
+
+def construct_course(course_code: str, major: Optional[str] = None, hardcoded_type: Optional[CourseType] = None, must_have_window: Optional[List[int]] = None) -> Course:
+    """Construct a Course object from a course code and major name"""
     
-    if course_components:
-        dept_alias = course_components.group(1)
-        number = course_components.group(2)
+    # Validate existence externally
+    enhanced_course = get_weaviate_service().get_course_by_code(course_code)
 
-        try:
-            number = float(number)
-        except ValueError:
-            number = None
-
-        return dept_alias, number
-    
-    return None, None
-
-def get_department_alias_from_dept_name(dept_name):
-    """
-    Get the department alias from a given department name
-
-    Args:
-        dept_name: str - Department name to get the alias from
-
-    Returns:
-        str - Department alias
-    """
-    dept_alias_to_name = json.load(open('dreampath_processing/courses/data/department_aliases.json'))
-    dept_name_to_alias = {v: k for k, v in dept_alias_to_name.items()}
-    dept_alias = dept_name_to_alias.get(dept_name, None)
-
-    # Ensure provided department name has corresponding alias
-    if not dept_alias:
-        raise ValueError(f"Department name {dept_name} does not exist.")
-    
-    return dept_alias
-
-def retrieve_enhanced_course_from_course_code(course_code):
-    """
-    Retrieve the enhanced course from a given course code
-
-    Args:
-        course_code: str - Course code to retrieve the enhanced course from
-
-    Returns:
-        DataFrame - DataFrame of the enhanced course
-    """
-    # get department name from course code
-    dept_alias, _ = get_department_from_course_code(course_code)
-    dept_alias_map = json.load(open('dreampath_processing/courses/data/department_aliases.json'))
-    dept_raw = dept_alias_map[dept_alias]
-    dept_cleaned = dept_raw.replace(' ', '_').lower()
-
-    # get department courses
-    dept_courses = pd.read_csv(f'dreampath_processing/courses/data/{dept_cleaned}_courses_with_descriptions.csv')
-    candidate_course = dept_courses[dept_courses['course_code'] == course_code]
-
-    if len(candidate_course) == 0:
+    if enhanced_course is None:
+        print(f"Unknown course code '{course_code}'.")
         return None
+    
+    # Determine course type
+    if not hardcoded_type:
+        if not major:
+            raise ValueError("Must provide major name if hardcoded_type is not provided")
+        ctype = MAJOR if get_weaviate_service().is_major_course(course_code, major) else COMPLEMENTARY
+    else:
+        ctype = hardcoded_type
 
-    return candidate_course.iloc[0]
-
-def course_code_exists(course_code: str) -> bool:
-    """Check if a course code exists in the master course list"""
-    enhanced_course = retrieve_enhanced_course_from_course_code(course_code)
-
-    return enhanced_course is not None
-
-def is_major_course(course_code: str, major_name: str) -> bool:
-    """Check if a course code is a major course"""
-    department_alias_for_course = get_department_from_course_code(course_code)
-    major_alias = get_department_alias_from_dept_name(major_name)
-
-    return (department_alias_for_course == major_alias)
+    print(f"Constructing course: {course_code} | {ctype} | {must_have_window}")
+    
+    return Course(
+        course_code=course_code,
+        course_type=ctype,
+        scheduled=False,
+        is_prereq=False,
+        prereq_tree=None,
+        must_have_window=must_have_window,
+        term_idx=None,
+        term_idx_in_term=None,
+        course_title=enhanced_course['course_title'],
+        course_description=enhanced_course['description'],
+    )
 
 # -----------------------------------------------------
 # Prereq. operations
 # -----------------------------------------------------
+class PrereqGraph:
+    def __init__(self, children, parents, all_courses):
+        self.children: Dict[str, Set[str]] = children
+        self.parents: Dict[str, Set[str]] = parents
+        self.all_courses: Set[str] = all_courses
 
+# -----------------------------------------------------
 # Building prerequisite tree for individual courses
+# -----------------------------------------------------
 def build_prereq_tree(course_code, base_tokens=("IP"), visited=None, prereq_accumulator=None):
     """
     Build the prereq. tree for a given course code
@@ -117,7 +83,7 @@ def build_prereq_tree(course_code, base_tokens=("IP"), visited=None, prereq_accu
         return {course_code: "cyclic"}  # or just skip if preferred
     visited.add(course_code)
 
-    enhanced_course = retrieve_enhanced_course_from_course_code(course_code)
+    enhanced_course = get_weaviate_service().get_course_by_code(course_code)
     if enhanced_course is None:
         print(f"Course {course_code} not found")
         return {}, set()
@@ -135,50 +101,50 @@ def build_prereq_tree(course_code, base_tokens=("IP"), visited=None, prereq_accu
 
     return {course_code: tree_children}, prereq_accumulator
 
-# Building course graph for major and complementary courses
-def merge_prereq_trees_to_graph(prereq_trees):
+# -----------------------------------------------------
+# Merge prerequisite trees into a unified DAG
+# -----------------------------------------------------
+def merge_prereq_trees_to_graph(prereq_trees) -> PrereqGraph:
     """
-    trees: list of nested dicts (each representing one course's tree)
-    returns:
-        - dict of {prereq: set of courses that depend on it}
-        - full set of all courses mentioned (nodes in the graph)
+    Merge prerequisite trees into a graph, represented as parents and children dictionaries
     """
-    graph = defaultdict(set)
+    children = defaultdict(set)  # prereq -> dependents
+    parents  = defaultdict(set)  # course -> prerequisites
     all_courses = set()
 
     def extract_edges(tree):
         edges = []
-
-        def dfs(course, children):
+        def dfs(course, children_nodes):
             all_courses.add(course)
-            for child_dict in children:
-                if isinstance(child_dict, dict):
-                    for prereq, grand_children in child_dict.items():
-                        edges.append((prereq, course))
+            for child in children_nodes:
+                if isinstance(child, dict):
+                    for prereq, grand_children in child.items():
+                        edges.append((prereq, course))  # prereq -> course
                         all_courses.add(prereq)
                         dfs(prereq, grand_children)
                 else:
+                    # base tokens like IP/AP/LP: no edges
                     pass
-                    # print(f'Likely IP/AP/LP encountered: {child_dict}')
-
-        for course, prereq_children in tree.items():
-            dfs(course, prereq_children)
-
+                
+        for course, kids in tree.items():
+            dfs(course, kids)
         return edges
 
-    for prereq_tree in prereq_trees:
-        edges = extract_edges(prereq_tree)
-        for prereq, course in edges:
-            graph[prereq].add(course)
+    for t in prereq_trees:
+        for p, c in extract_edges(t):
+            children[p].add(c)
+            parents[c].add(p)
 
-    # Ensure nodes with no edges still appear
-    for course in all_courses:
-        graph.setdefault(course, set())
+    for v in all_courses:
+        children.setdefault(v, set())
+        parents.setdefault(v, set())
 
-    return graph, all_courses
+    return PrereqGraph(children, parents, all_courses)
 
-# Rebuild prereq graph for bank of courses
-def rebuild_prereq_graph(course_bank: Dict[str, Course], courses: Set[str]=None) -> Dict[str, Set[str]]:
+# -----------------------------------------------------
+# Rebuild prereq graph from bank for specific courses and prune unwanted branches
+# -----------------------------------------------------
+def rebuild_prereq_graph(course_bank: Dict[str, Course], courses: Set[str]=None, to_prune: Set[str]=None) -> PrereqGraph:
     """
     Rebuild the prereq. graph for a given set of courses
 
@@ -209,11 +175,25 @@ def rebuild_prereq_graph(course_bank: Dict[str, Course], courses: Set[str]=None)
             c_prereq_tree, _ = build_prereq_tree(c)
             c_object.prereq_tree = c_prereq_tree
 
+        if to_prune:
+            c_prereq_tree = prune_prereqs_from_tree(c_prereq_tree, to_prune)
+
         course_prereq_trees.append(c_prereq_tree)
     
-    rebuilt_prereq_graph, all_courses_post_merge = merge_prereq_trees_to_graph(course_prereq_trees)
+    rebuilt_prereq_graph = merge_prereq_trees_to_graph(course_prereq_trees)
 
     return rebuilt_prereq_graph
+
+def find_lingering_courses(old_prereq_graph: PrereqGraph, new_prereq_graph: PrereqGraph) -> Set[str]:
+    """
+    Find lingering prereqs for a given set of courses
+    """
+    lingering_courses = set()
+    for course in old_prereq_graph.children.keys():
+        if course not in new_prereq_graph.children:
+            lingering_courses.add(course)
+
+    return lingering_courses
 
 # Get direct prereqs (i.e., direct children) for course
 def get_direct_prereqs(prereq_tree, course_code):

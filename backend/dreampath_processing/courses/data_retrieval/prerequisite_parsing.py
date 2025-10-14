@@ -108,7 +108,7 @@ def preprocess_prereq_text(prereq_text):
 def get_course_formatted_prereqs(enhanced_course):
     # Extract relevant course fields
     prerequisites_text_raw = enhanced_course['prerequisites']
-    dept_code = enhanced_course['dept']
+    dept_code = enhanced_course['department']
 
     if not prerequisites_text_raw or pd.isna(prerequisites_text_raw):
         return ''
@@ -132,6 +132,32 @@ def get_course_formatted_prereqs(enhanced_course):
     
     return formatted_prereqs
 
+
+def get_department_prefix_from_course_code(course_code):
+    """
+    Get the department from a given course code
+
+    Args:
+        course_code: str - Course code to get the department from
+
+    Returns:
+        Tuple[str, str] - Tuple of department alias and course number
+    """
+    course_components = re.match(r'^([A-Z]+)(.*)', course_code)
+    
+    if course_components:
+        dept_alias = course_components.group(1)
+        number = course_components.group(2)
+
+        try:
+            number = float(number)
+        except ValueError:
+            number = None
+
+        return dept_alias, number
+    
+    return None, None
+
 def get_course_prereqs(enhanced_course, overwrite=False):
     # To avoid re-running, check if best_prereq_path is already in the course
     if not overwrite and 'best_prereq_path' in enhanced_course:
@@ -146,7 +172,8 @@ def get_course_prereqs(enhanced_course, overwrite=False):
     
     try: 
         prereq_tree = parse_prereq_grammar(formatted_prereqs)
-        best_prereq_path = extract_best_prereq_path(prereq_tree, dept_prefix=enhanced_course['dept'])
+        dept_prefix = get_department_prefix_from_course_code(current_course_code)[0]
+        best_prereq_path = extract_best_prereq_path(prereq_tree, dept_prefix=dept_prefix)
         best_prereq_path = [course for course in best_prereq_path if course != current_course_code]
 
     except Exception as e:

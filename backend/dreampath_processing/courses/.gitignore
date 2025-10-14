@@ -1,2 +1,4 @@
 change_management/
 course_scaffolding_testing.py
+course_relationship_handling_legacy.py
+data_legacy/
