@@ -27,7 +27,7 @@ load_dotenv()
 def decide_next_route(state: DreamPathAgentState, config) -> Tuple[OrchestratorDecision, dict]:
     student_profile = config["configurable"]["student_profile"]
     student_name = student_profile.name
-    return extract_structured_output_from_context(state=state, config=config, system_prompt=ORCHESTRATOR_DECISION_SYS.format(student_name=student_name), response_model=OrchestratorDecision, small_context=False, model="o4-mini", task_prompt="What should happen next?")
+    return extract_structured_output_from_context(state=state, config=config, system_prompt=ORCHESTRATOR_DECISION_SYS.format(student_name=student_name), response_model=OrchestratorDecision, small_context=False, model="o4-mini", task_prompt="What should happen next?", verbose=True)
 
 # -----------------------------------------------------
 # COURSE SEARCH NODE
@@ -77,22 +77,27 @@ def determine_user_confirmation(user_response: str) -> Tuple[bool, dict]:
     return response
 
 # -----------------------------------------------------
+# FORMAT ORCHESTRATOR DECISION
+# -----------------------------------------------------
+def format_orchestrator_decision(decision: OrchestratorDecision) -> str:
+    return f"route: {decision.route}\nreason: {decision.reason}\nconfidence: {decision.confidence}\nhandoff: {decision.handoff}"
+
+# -----------------------------------------------------
 # FORMAT COURSE SEARCH OUTPUT
 # -----------------------------------------------------
 def format_course_search_output(output: CourseSearchOutput) -> str:
-    output_str = "<course_search_results>\n"
+
+    output_str = ""
 
     for result in output.results:
-        output_str += f"<course_search_result>\n"
-        output_str += f"Course Code: {result.course_code}\n"
-        output_str += f"Course Title: {result.course_title}\n"
+        output_str += f"<result>\n"
+        output_str += f"Code: {result.course_code}\n"
+        output_str += f"Title: {result.course_title}\n"
         output_str += f"Description: {result.description}\n"
-        output_str += f"Prerequisites: {result.prerequisites}\n"
-        output_str += f"Department: {result.department}\n"
-        output_str += f"Course URL: {result.course_url}\n"
-        output_str += f"</course_search_result>\n"
-
-    output_str += "</course_search_results>"
+        output_str += f"Prereqs: {result.prerequisites}\n"
+        output_str += f"Dept: {result.department}\n"
+        output_str += f"URL: {result.course_url}\n"
+        output_str += f"</result>\n"
 
     return output_str
 
@@ -100,11 +105,11 @@ def format_course_search_output(output: CourseSearchOutput) -> str:
 # FORMAT WORKLIST (COURSE PATH MODIFICATION OPERATIONS)
 # -----------------------------------------------------
 def format_worklist(worklist: List[str]) -> str:
-    output_str = "<plan_builder_worklist>\n"
+    output_str = "<worklist>\n"
     for op in worklist:
-        output_str += "Awaiting execution:"
-        output_str += f"<operation>\n{op}\n</operation>\n"
-    output_str += "</plan_builder_worklist>"
+        output_str += "Ops. awaiting execution:\n"
+        output_str += f"<op>\n{op}\n</op>\n"
+    output_str += "</worklist>"
     return output_str
 
 # -----------------------------------------------------
@@ -114,11 +119,11 @@ def format_aggregate_coursepath_agent_result(outcomes: Dict[str, CoursePathAgent
     outcomes_str = ""
 
     for op, outcome in outcomes.items():
-        outcomes_str += f"<operation_outcome>\n* For operation '{op}': {outcome.ui_text}\n</operation_outcome>\n"
+        outcomes_str += f"<op_result>\n* For op '{op}': {outcome.ui_text}\n</op_result>\n"
 
     diff_str = f"<aggregate_diff>\n{diff}\n</aggregate_diff>\n"
 
-    return f"<coursepath_agent_result>\n{outcomes_str}\n{diff_str}\n</coursepath_agent_result>"
+    return f"{outcomes_str}\n{diff_str}"
 
 if __name__ == "__main__":
     # Set up course path agent

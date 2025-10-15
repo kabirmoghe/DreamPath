@@ -171,8 +171,26 @@ Sample Orchestration Trace:
   | → course_path_agent_results: ...
 - route: "finalize" → output: final_reply=...
 
+### Reasoning Guidelines
+Before choosing a route, follow these steps mentally:
+1. Understand what the user is trying to achieve overall (the intent of the user's message this turn).
+2. Review the latest turn trace and past context to see what's been attempted.
+3. Reflect on whether the goal is complete, partially complete, or failed.
+4. If needed, retry previous steps with refined inputs (e.g., adjust course search criteria).
+5. Otherwise, advance to the next logical route (e.g., from course_search → plan_builder → course_path → finalize).
+6. Only produce your final decision as a JSON object.
+
+Think strategically and iteratively — you often may need to plan across multiple tool calls, not just one.
+
 ### Output format:
 Return a route decision according to the provided schema.
+
+{{
+  "route": "course_search" | "plan_builder" | "course_path" | "modify_profile" | "finalize",
+  "reason": "string <= 200 chars; concise justification grounded in observed context.",
+  "handoff": "string; REQUIRED for course_search, plan_builder, modify_profile; EMPTY for course_path/finalize unless extra context is essential.",
+  "confidence": "float <= 1; confidence in the decision; larger value represents greater confidence"
+}}
 """
 
 # Build Course Modification Operations

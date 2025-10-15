@@ -1,11 +1,13 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, constr
 from typing import Optional, List, Dict, Any, Literal, Annotated
 from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentOutput
 import operator
 
 class OrchestratorDecision(BaseModel):
-    next: Literal["course_search", "plan_builder", "course_path", "modify_profile", "finalize"]
+    route: Literal["course_search", "plan_builder", "course_path", "modify_profile", "finalize"]
+    reason: constr(max_length=200)
     handoff: Optional[str] = Field(default=None, description="The handoff message for the next node")
+    confidence: Optional[float] = Field(default=None, description="The confidence in the routing decision")
 
 # ================================
 # Course Search Tool

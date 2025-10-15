@@ -8,6 +8,7 @@ import tiktoken
 from dreampath_processing.dreampath_agent.types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.chat_prompts import SUMMARY_SYS_PROMPT, MASTER_CONTEXT, MASTER_CONTEXT_SHORT
 from dreampath_processing.modules.student_profile import StudentProfile
+from dreampath_processing.dreampath_agent.debug_logger import log_messages_to_file
 
 load_dotenv()
 
@@ -92,7 +93,7 @@ def _render_thread_block(summary: Optional[str], recent_messages: List[Dict]) ->
         lines.append(f"Recent Messages Prior to Current Turn:")
         for m in tail:
             role = m.get("role", "user")
-            content = m.get("content") or ""
+            content = m.get("content", "")
                     
             # Handle dictionary content (e.g., tool calls)
             if isinstance(content, dict):
@@ -100,7 +101,7 @@ def _render_thread_block(summary: Optional[str], recent_messages: List[Dict]) ->
                 content_lines = []
                 for key, value in content.items():
                     if key != "name":  # Skip the name attribute since it's used as the tag
-                        content_lines.append(f"* {key}: {value}")
+                        content_lines.append(f"{value}")
                 formatted_content = "\n".join(content_lines)
                 lines.append(f"<{tag_name}>\n{formatted_content}\n</{tag_name}>")
             else:
@@ -117,14 +118,14 @@ def _render_turn_block(current_user_msg: str, turn_messages: List[Dict]) -> str:
     if turn_messages:
         for m in turn_messages:
             role = m.get("role", "user")
-            content = m.get("content") or ""
+            content = m.get("content", "")
             
             if isinstance(content, dict):
                 tag_name = content.get("name", role)
                 content_lines = []
                 for key, value in content.items():
                     if key != "name":  # Skip the name attribute since it's used as the tag
-                        content_lines.append(f"* {key}: {value}")
+                        content_lines.append(f"{value}")
                 formatted_content = "\n".join(content_lines)
                 lines.append(f"<{tag_name}>\n{formatted_content}\n</{tag_name}>")
             else:
@@ -202,11 +203,7 @@ def extract_structured_output_from_context(state: DreamPathAgentState, config: d
         messages, state_updates = build_complete_messages(state, system_prompt, config, task_prompt)
 
     if verbose:
-        print("=== MESSAGES SENT TO LLM ===")
-        for i, msg in enumerate(messages):
-            print(f"--- Message {i} [role={msg['role']}] ---")
-            print(f"Content: {msg['content']}")
-        print("=== END MESSAGES ===")
+        log_messages_to_file(messages)
 
     if show_token_count:
         print(f"[ MODEL={model} | TOKEN COUNT: {calculate_token_count(messages, model)} ]")

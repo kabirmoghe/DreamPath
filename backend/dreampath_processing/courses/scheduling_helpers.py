@@ -51,10 +51,12 @@ def validate_plan(course_path: List[List[str]], course_bank: Dict[str, Course], 
             # In case course prereq. tree is already built, use it; otherwise, build it
             course_obj = course_bank.get(course, None)
             if course_obj and course_obj.prereq_tree is not None:
-                print(f"* Using prereq. tree for course {course} from course bank.")
+                if verbose:
+                    print(f"* Using prereq. tree for course {course} from course bank.")
                 prereq_tree = course_obj.prereq_tree
             else:
-                print(f"* Building prereq. tree for course {course}.")
+                if verbose:
+                    print(f"* Building prereq. tree for course {course}.")
                 prereq_tree, _ = build_prereq_tree(course)
 
             direct_prereqs = get_direct_prereqs(prereq_tree, course)
@@ -172,7 +174,6 @@ def build_scheduling_windows(prereq_graph,
         hi = alap[v]
         if v in must_have_course_bank and must_have_course_bank[v].must_have_window:
             tlo, thi = must_have_course_bank[v].must_have_window[0], must_have_course_bank[v].must_have_window[1]
-            print("TLO, THI:", tlo, thi)
             lo = max(lo, tlo)
             hi = min(hi, thi)
         else:

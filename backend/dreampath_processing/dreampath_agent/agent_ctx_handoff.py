@@ -4,8 +4,8 @@ from langgraph.types import interrupt, Command
 from langgraph.checkpoint.memory import InMemorySaver
 from dreampath_processing.dreampath_agent.types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
-from dreampath_processing.dreampath_agent.helpers import (
-    decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, render_final_reply, modify_student_profile, determine_user_confirmation, format_course_search_output, format_aggregate_coursepath_agent_result, format_worklist
+from dreampath_processing.dreampath_agent.node_helpers import (
+    decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, render_final_reply, modify_student_profile, determine_user_confirmation, format_orchestrator_decision, format_course_search_output, format_aggregate_coursepath_agent_result, format_worklist
 )
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import construct_course
@@ -16,12 +16,25 @@ from typing import Generator, Tuple, Optional
 
 def orchestrator_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     print(f"Orchestrator thinking...")
+
     decision, state_updates = decide_next_route(state, config)
-    print(f"| → Decision: {decision.next} | Handoff: {decision.handoff}")
+
+    print(f"| → Decision: {decision.route} | Reason: {decision.reason} | Confidence: {decision.confidence}")
+    if decision.handoff:
+        print(f"| + Handoff: {decision.handoff}")
+
+    orchestrator_decision = {
+        "role": "assistant",
+        "content": {
+            "name": "orchestrator",
+            "result": format_orchestrator_decision(decision),
+        },
+    }
 
     return {
-        "route": decision.next,
+        "route": decision.route,
         "handoff": decision.handoff,
+        "turn_messages": state.turn_messages + [orchestrator_decision],
         **state_updates,
     }
 
@@ -37,7 +50,6 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
         tool_call = {
             "role": "assistant",
             "content": {
-                "type": "tool_call",
                 "name": "course_search",
                 "arguments": {
                     "queries": json.dumps(query.model_dump()),
@@ -53,7 +65,6 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
         tool_result = {
             "role": "assistant",
             "content": {
-                "type": "tool_result",
                 "name": "course_search",
                 "result": format_course_search_output(search_results),
             },
@@ -71,7 +82,6 @@ def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgentState
     tool_result = {
         "role": "assistant",
         "content": {
-            "type": "tool_result",
             "name": "plan_builder",
             "result": format_worklist(ops.operations),
         },
@@ -98,8 +108,7 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
         tool_call = {
             "role": "assistant",
             "content": {
-                "type": "tool_call",
-                "name": "coursepath_agent",
+                "name": "course_path_agent",
                 "arguments": {
                     "worklist": worklist,
                     "cursor": cursor
@@ -143,8 +152,7 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
         tool_result = {
             "role": "assistant",
             "content": {
-                "type": "tool_result",
-                "name": "coursepath_agent",
+                "name": "course_path_agent",
                 "result": aggregate_result,
             },
         }
@@ -197,7 +205,6 @@ def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentSta
         tool_call = {
             "role": "assistant",
             "content": {
-                "type": "tool_call",
                 "name": "modify_profile",
                 "arguments": {
                     "modified_profile": json.dumps(modified_profile.model_dump()),
@@ -243,7 +250,7 @@ class DreampathAgent:
     - Academic planning and scheduling
     """
     
-    def __init__(self, student_profile: StudentProfile, thread_id: str = "default"):
+    def __init__(self, student_profile: StudentProfile, thread_id: str = "default", generate_diagram: bool=False):
         """
         Initialize the DreampathAgent.
         
@@ -264,7 +271,7 @@ class DreampathAgent:
         self.coursepath_agent = CoursePathAgent(tools=coursepath_tools)
         
         # Build the graph
-        self._build_graph()
+        self._build_graph(generate_diagram=generate_diagram)
         
         # Initialize state
         self.state = DreamPathAgentState()
@@ -279,7 +286,7 @@ class DreampathAgent:
             }
         }
         
-    def _build_graph(self):
+    def _build_graph(self, generate_diagram: bool=False):
         """Build the LangGraph state graph for the agent."""
         g = StateGraph(DreamPathAgentState)
         g.add_node("orchestrator", orchestrator_node)
@@ -318,6 +325,12 @@ class DreampathAgent:
 
         checkpointer = InMemorySaver()
         self.app = g.compile(checkpointer=checkpointer)
+
+        # Generate diagram
+        if generate_diagram:
+            png_graph = self.app.get_graph().draw_mermaid_png()
+            with open("my_graph.png", "wb") as f:
+                f.write(png_graph)
     
     def run(self, user_input: str) -> Generator[Tuple[str, Optional[str]], str, str]:
         """
