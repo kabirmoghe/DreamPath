@@ -127,7 +127,7 @@ def create_fallback_course_path(config: dict, tools: CoursePathTools):
 def revert_to_fallback_course_path(config: dict, tools: CoursePathTools):
     tools.cp = config["fallback_cp"]
 
-def handle_user_turn(state: CoursePathAgentState, config: dict, tools: CoursePathTools, user_input: str) -> CoursePathAgentOutput:
+def handle_user_turn(state: CoursePathAgentState, config: dict, tools: CoursePathTools, user_input: str, require_user_confirmation: bool=True) -> CoursePathAgentOutput:
     # 1) Extract operation type (if not already done)
     if not state.pending_op_type:
         state.pending_op_type = extract_op_type(state, user_input)
@@ -136,7 +136,7 @@ def handle_user_turn(state: CoursePathAgentState, config: dict, tools: CoursePat
     ex_op = extract_course_op(state, user_input, state.pending_op_type)
     handle_missing_fields(state, ex_op)
 
-    if state.missing_fields:
+    if state.missing_fields and require_user_confirmation:
         state.pending_op = ex_op  # draft
         q = f"Missing: {state.missing_fields[0]}. Please specify."
         return CoursePathAgentOutput(
@@ -156,24 +156,30 @@ def handle_user_turn(state: CoursePathAgentState, config: dict, tools: CoursePat
 
     # 5) Trial execution of operation
     if state.trial_op_execution.ok:
-        return CoursePathAgentOutput(
-            status="ask",
-            ui_text=render_confirm_msg(state.pending_op, summarize_diff(state.trial_op_execution.diff)),
-            diff=state.trial_op_execution.diff,
-            error=None
-        )
+        if require_user_confirmation:
+            return CoursePathAgentOutput(
+                status="ask",
+                ui_text=render_confirm_msg(state.pending_op, summarize_diff(state.trial_op_execution.diff)),
+                diff=state.trial_op_execution.diff,
+                error=None
+            )
+        else: # Simulate user confirmation for non-confirmation-required cases
+            return on_user_confirm(state)
 
     # 6) If requires rescheduling, execute operation with force_reschedule=True
     elif state.trial_op_execution.error and state.trial_op_execution.error.get("code") == "REQUIRES_RESCHEDULE":
         state.trial_op_execution = execute_course_op(state=state, op_type=state.pending_op_type, op=state.pending_op, tools=tools, force_reschedule=True)
 
         if state.trial_op_execution.ok:
-            return CoursePathAgentOutput(
-                status="ask",
-                ui_text=render_reschedule_msg(state.pending_op, summarize_diff(state.trial_op_execution.diff)),
-                diff=state.trial_op_execution.diff,
-                error=None
-            )
+            if require_user_confirmation:
+                return CoursePathAgentOutput(
+                    status="ask",
+                    ui_text=render_reschedule_msg(state.pending_op, summarize_diff(state.trial_op_execution.diff)),
+                    diff=state.trial_op_execution.diff,
+                    error=None
+                )
+            else:
+                return on_user_confirm(state)
         else:
             state.summary += f"\nExecution failed for {state.pending_op_type.type}: {state.trial_op_execution.error}"
             output = CoursePathAgentOutput(
@@ -225,10 +231,11 @@ def on_user_cancel(state: CoursePathAgentState, config: dict, tools: CoursePathT
 # MAIN CONTROLLER
 # ------------------------------------------------------------
 class CoursePathAgent:
-    def __init__(self, tools: CoursePathTools):
+    def __init__(self, tools: CoursePathTools, require_user_confirmation: bool=True):
         self.state = CoursePathAgentState(thread_id="", plan_id="", plan_version=0, pending_op=None, facts={}, summary="", recent_messages=[])
         self.config = {}
         self.tools = tools
+        self.require_user_confirmation = require_user_confirmation
 
     def save_previous_course_path(self):
         self.tools.previous_cp = snapshot_path(self.tools.cp)
@@ -250,7 +257,7 @@ class CoursePathAgent:
         elif self.state.pending_op and text.strip().upper() == "CANCEL":
             out = on_user_cancel(state=self.state, config=self.config, tools=self.tools)
         else:
-            out = handle_user_turn(state=self.state, config=self.config, tools=self.tools, user_input=text)
+            out = handle_user_turn(state=self.state, config=self.config, tools=self.tools, user_input=text, require_user_confirmation=self.require_user_confirmation)
 
         # update tiny conversational memory 
         self.state.recent_messages.append({"role":"user", "content": text})
@@ -274,7 +281,7 @@ if __name__ == "__main__":
 
     # Build agent
     tools = CoursePathTools(course_path=test_course_path, major=major)
-    agent = CoursePathAgent(tools=tools)
+    agent = CoursePathAgent(tools=tools, require_user_confirmation=False)
 
     # Run agent
     print("CoursePathAgent ready. Type 'quit' to exit.\n")
