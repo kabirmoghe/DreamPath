@@ -105,6 +105,8 @@ class CoursePath:
         cp_str = ""
         for term_idx, term in enumerate(self.course_path):
             cp_str += f"#### Term {term_idx} Courses{' [**Current Term**]' if term_idx == self.curr_window_start else ''}:\n"
+            
+            # Add actual courses
             for course in term:
                 course_obj = self.course_bank[course]
                 cp_str += f"{course_obj.course_code}: '{course_obj.course_title}' |"
@@ -113,8 +115,12 @@ class CoursePath:
                     cp_str += f" Prereq.\n"
                 else:
                     cp_str += f" {course_obj.course_type} Course\n"
+            
+            # Add empty slots if term has fewer than 3 courses
+            for _ in range(len(term), 3):
+                cp_str += "*Empty*\n"
 
-            cp_str += "\n\n"
+            cp_str += "\n"
         return cp_str
 
     # ─────────────────────────────────────────────────────────────────────────────
@@ -205,7 +211,7 @@ class CoursePath:
     # REBUILD COURSE PATH
     # ─────────────────────────────────────────────────────────────────────────────
     
-    def rebuild(self, window_start_term: Optional[int] = None, must_have_course_map: Dict[str, Course] = {}, max_terms: int = 12, for_op: bool = False, verbose: int = 0):
+    def rebuild(self, window_start_term: Optional[int] = None, must_have_course_map: Dict[str, Course] = {}, max_terms: int = 12, for_op: bool = False, verbose: int = 2):
         if window_start_term is None:
             window_start_term = self.curr_window_start
 
@@ -244,8 +250,10 @@ class CoursePath:
 
         # If there are must-have courses, compute ASAP and ALAP, build scheduling windows
         if must_have_course_bank: 
+            print(f"Building prereq. graph for must-have courses...")
             must_have_graph = rebuild_prereq_graph(course_bank=must_have_course_bank, courses=complete_must_have_courses_map.keys(), to_prune=external_courses)
 
+            print(f"Computing ASAP and ALAP for must-have courses...")
             # 4. Compute ASAP and ALAP, build scheduling windows
             must_have_topo_order = _topo_order(must_have_graph.children, must_have_graph.parents, must_have_graph.all_courses)
             asap_for_courses = compute_asap_for_graph(must_have_graph, window_start_term, topo_order=must_have_topo_order)

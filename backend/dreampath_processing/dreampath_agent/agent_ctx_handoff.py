@@ -5,7 +5,8 @@ from langgraph.checkpoint.memory import InMemorySaver
 from dreampath_processing.dreampath_agent.types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
 from dreampath_processing.dreampath_agent.node_helpers import (
-    decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, render_final_reply, modify_student_profile, determine_user_confirmation, format_orchestrator_decision, format_course_search_output, format_aggregate_coursepath_agent_result, format_worklist
+    decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, render_final_reply, modify_student_profile, determine_user_confirmation, 
+    format_orchestrator_decision, format_course_search_output, format_aggregate_coursepath_agent_result, format_worklist, format_modified_student_profile
 )
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import construct_course
@@ -202,18 +203,16 @@ def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentSta
         # Update the config with the new profile
         print(f"| → ProfileModifier: user confirmed, updated_profile={current_profile}")
 
-        tool_call = {
+        tool_result = {
             "role": "assistant",
             "content": {
                 "name": "modify_profile",
-                "arguments": {
-                    "modified_profile": json.dumps(modified_profile.model_dump()),
-                }
+                "result": format_modified_student_profile(modified_profile),
             },
         }
 
         return {
-            "turn_messages": state.turn_messages + [tool_call],
+            "turn_messages": state.turn_messages + [tool_result],
             "pending_pre_interrupt": None,
         }
     else:

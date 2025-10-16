@@ -108,7 +108,7 @@ def format_worklist(worklist: List[str]) -> str:
     output_str = "<worklist>\n"
     for op in worklist:
         output_str += "Ops. awaiting execution:\n"
-        output_str += f"<op>\n{op}\n</op>\n"
+        output_str += f"<op>{op}</op>\n"
     output_str += "</worklist>"
     return output_str
 
@@ -121,9 +121,19 @@ def format_aggregate_coursepath_agent_result(outcomes: Dict[str, CoursePathAgent
     for op, outcome in outcomes.items():
         outcomes_str += f"<op_result>\n* For op '{op}': {outcome.ui_text}\n</op_result>\n"
 
-    diff_str = f"<aggregate_diff>\n{diff}\n</aggregate_diff>\n"
+    diff_str = f"<aggregate_diff>{diff}\n</aggregate_diff>"
 
-    return f"{outcomes_str}\n{diff_str}"
+    return f"{outcomes_str}{diff_str}"
+
+# -----------------------------------------------------
+# FORMAT MODIFIED STUDENT PROFILE
+# -----------------------------------------------------
+def format_modified_student_profile(modified_profile: ModifiedStudentProfile) -> str:
+    modified_profile_content = f"major: {modified_profile.major}\n"
+    modified_profile_content += f"college_interests: {modified_profile.college_interests}\n"
+    modified_profile_content += f"post_grad_goals: {modified_profile.post_grad_goals}\n"
+    modified_profile_content += f"career_goals: {modified_profile.career_goals}\n"
+    return f"<mod_result>\n{modified_profile_content}</mod_result>"
 
 if __name__ == "__main__":
     # Set up course path agent
