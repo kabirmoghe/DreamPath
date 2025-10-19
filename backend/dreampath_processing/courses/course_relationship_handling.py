@@ -17,6 +17,9 @@ def get_weaviate_service():
         _weaviate_service = WeaviateCourseService()
     return _weaviate_service
 
+def is_major_course(course_code: str, major: str) -> bool:
+    return get_weaviate_service().is_major_course(course_code, major)
+
 def construct_course(course_code: str, major: Optional[str] = None, hardcoded_type: Optional[CourseType] = None, must_have_window: Optional[List[int]] = None) -> Course:
     """Construct a Course object from a course code and major name"""
     
@@ -31,7 +34,7 @@ def construct_course(course_code: str, major: Optional[str] = None, hardcoded_ty
     if not hardcoded_type:
         if not major:
             raise ValueError("Must provide major name if hardcoded_type is not provided")
-        ctype = MAJOR if get_weaviate_service().is_major_course(course_code, major) else COMPLEMENTARY
+        ctype = MAJOR if is_major_course(course_code, major) else COMPLEMENTARY
     else:
         ctype = hardcoded_type
 

@@ -111,9 +111,12 @@ def _render_thread_block(summary: Optional[str], recent_messages: List[Dict]) ->
             
     return "\n".join(lines) if lines else "None."
 
-def _render_turn_block(current_user_msg: str, turn_messages: List[Dict]) -> str:
+def _render_turn_block(current_user_msg: str, turn_messages: List[Dict], init_mode: bool=False) -> str:
     lines = []
-    lines.append(f"<user_msg_for_current_turn>\n{current_user_msg}\n</user_msg_for_current_turn>")
+    if init_mode:
+        lines.append(f"<init_message>\n{current_user_msg}\n</init_message>")
+    else:
+        lines.append(f"<user_msg_for_current_turn>\n{current_user_msg}\n</user_msg_for_current_turn>")
     
     if turn_messages:
         for m in turn_messages:
@@ -142,14 +145,17 @@ def _render_dreampath_context_block(student_profile: StudentProfile) -> str:
     lines.append(f"<student_profile>\n{str(student_profile)}\n</student_profile>")
     
     # Add course path with HTML-like tags
-    lines.append(f"<course_path>\n**Important**: student is currently in term {student_profile.course_path.curr_window_start}\n\n{str(student_profile.course_path)}\n</course_path>")
+    if student_profile.course_path:
+        lines.append(f"<course_path>\n**Important**: student is currently in term {student_profile.course_path.curr_window_start}\n\n{str(student_profile.course_path)}\n</course_path>")
+    else:
+        lines.append(f"<course_path>\nNo course path yet.\n</course_path>")
     
     return "\n".join(lines)
 
 # -----------------------------------------------------
 # Build Messages
 # -----------------------------------------------------
-def build_complete_messages(state: DreamPathAgentState, prompt: str, config: dict, task_prompt: Optional[str]=None):
+def build_complete_context(state: DreamPathAgentState, prompt: str, config: dict, task_prompt: Optional[str]=None, init_mode: bool=False):
 
     # Init messages and go through summarization if needed
     msgs = [{"role": "system", "content": prompt}]
@@ -161,7 +167,7 @@ def build_complete_messages(state: DreamPathAgentState, prompt: str, config: dic
     thread_block = _render_thread_block(state.summary, recent_messages)
 
     # 2) Turn Block (current turn)
-    turn_block = _render_turn_block(state.current_user_msg, state.turn_messages)
+    turn_block = _render_turn_block(state.current_user_msg, state.turn_messages, init_mode)
 
     # 3) Dreampath Context Block
     dreampath_context_block = _render_dreampath_context_block(config["configurable"]["student_profile"])
@@ -178,11 +184,11 @@ def build_complete_messages(state: DreamPathAgentState, prompt: str, config: dic
 
     return msgs, state_updates
 
-def build_small_messages(state: DreamPathAgentState, prompt: str, config: dict, handoff: str):
+def build_small_context(state: DreamPathAgentState, prompt: str, config: dict, handoff: str, init_mode: bool=False):
     msgs = [{"role": "system", "content": prompt}]
     
     # 1) Turn Block (current turn)
-    turn_block = _render_turn_block(state.current_user_msg, state.turn_messages)
+    turn_block = _render_turn_block(state.current_user_msg, state.turn_messages, init_mode)
 
     # 2) Dreampath Context Block
     dreampath_context_block = _render_dreampath_context_block(config["configurable"]["student_profile"])
@@ -197,10 +203,10 @@ def build_small_messages(state: DreamPathAgentState, prompt: str, config: dict, 
 # -----------------------------------------------------
 def extract_structured_output_from_context(state: DreamPathAgentState, config: dict, system_prompt: str, response_model: BaseModel, small_context: bool=False, model="gpt-4o-mini", temperature=0, show_token_count=True, task_prompt: Optional[str]=None, verbose=False):
     if small_context:
-        messages = build_small_messages(state, system_prompt, config, state.handoff)
+        messages = build_small_context(state, system_prompt, config, state.handoff)
         state_updates = {}
     else:
-        messages, state_updates = build_complete_messages(state, system_prompt, config, task_prompt)
+        messages, state_updates = build_complete_context(state, system_prompt, config, task_prompt)
 
     if verbose:
         log_messages_to_file(messages)

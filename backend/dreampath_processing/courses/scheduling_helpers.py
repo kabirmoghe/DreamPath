@@ -187,6 +187,29 @@ def build_scheduling_windows(prereq_graph,
 # ---------------------------------------
 # Schedule courses by term
 # ---------------------------------------
+def initialize_plan(existing_plan: List[List[str]], course_bank: Dict[str, Course], window_start_term: int, max_terms: int, verbose: bool=False) -> List[List[str]]:
+    plan = copy.deepcopy(existing_plan)
+
+    # Initialize plan if DNE
+    if not plan:
+        plan = [[] for _ in range(max_terms)]
+
+    # Clear all courses in window_start_term onwards to prevent lingering courses during rescheduling (in case loop terminates early)
+    cleared = set()
+
+    for term_idx in range(window_start_term, len(plan)):
+        for course in plan[term_idx]:
+            course_bank[course].scheduled = False
+            course_bank[course].term_idx = None
+            cleared.add(course)
+
+        plan[term_idx] = []
+
+    if verbose:
+        print(f"Cleared previously scheduled courses: {cleared}")
+
+    return plan
+
 def schedule_courses_by_term(course_graph: PrereqGraph, 
                              course_bank: Dict[str, Course], 
                              existing_plan: List[List[str]] = None, 
@@ -206,13 +229,7 @@ def schedule_courses_by_term(course_graph: PrereqGraph,
         in_degree.setdefault(course, 0)
 
     # Initialize plan
-    plan = copy.deepcopy(existing_plan)
-    if not plan:
-        plan = [[] for _ in range(max_terms)]
-    
-    # Clear all courses from window_start_term onwards to prevent lingering courses during rescheduling (in case loop terminates early).
-    for term_idx in range(window_start_term, len(plan)):
-        plan[term_idx] = []
+    plan = initialize_plan(existing_plan=existing_plan, course_bank=course_bank, window_start_term=window_start_term, max_terms=max_terms, verbose=verbose)
 
     def _in_window(course: str, term: int) -> bool:
         if course in course_scheduling_windows:

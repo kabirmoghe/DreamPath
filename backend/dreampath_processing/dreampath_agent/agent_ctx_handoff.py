@@ -1,12 +1,15 @@
+import os
 import json
 from langgraph.graph import StateGraph, START, END
 from langgraph.types import interrupt, Command
 from langgraph.checkpoint.memory import InMemorySaver
+from dreampath_processing.dreampath_agent.rebuild_tool import execute_rebuild_tool
 from dreampath_processing.dreampath_agent.types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
 from dreampath_processing.dreampath_agent.node_helpers import (
-    decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, render_final_reply, modify_student_profile, determine_user_confirmation, 
-    format_orchestrator_decision, format_course_search_output, format_aggregate_coursepath_agent_result, format_worklist, format_modified_student_profile
+    decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, modify_student_profile, determine_user_confirmation, 
+    format_orchestrator_decision, format_course_search_output, format_aggregate_coursepath_agent_result, format_worklist, format_modified_student_profile, 
+    format_rebuild_course_path_output, render_final_reply
 )
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import construct_course
@@ -96,6 +99,7 @@ def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgentState
 
 def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     coursepath_agent: CoursePathAgent = config["configurable"]["coursepath_agent"]
+    coursepath_agent.require_user_confirmation = state.require_user_confirmation
     cursor = state.cursor
     current_op = None
     outcomes = state.current_cp_agent_outcomes
@@ -183,7 +187,6 @@ def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentSta
         print("| * Computing modified profile for the first time")
         modified_profile, _ = modify_student_profile(state, config) # no state updates, only updating turn messages
 
-
     # Verify modified profile with user
     user_response = interrupt({
         "pending_pre_interrupt": modified_profile,
@@ -218,20 +221,51 @@ def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentSta
     else:
         return {}
 
+def rebuild_course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
+    output = execute_rebuild_tool(state, config)
+    
+    # If we created a new course path and coursepath_agent was None, create it now
+    if state.init_mode and config["configurable"]["coursepath_agent"] is None:
+        student_profile = config["configurable"]["student_profile"]
+        if student_profile.course_path is not None:
+            coursepath_tools = CoursePathTools(
+                course_path=student_profile.course_path,
+                major=student_profile.major
+            )
+            coursepath_agent = CoursePathAgent(tools=coursepath_tools)
+            config["configurable"]["coursepath_agent"] = coursepath_agent
+        else:
+            raise ValueError("Course path must exist before rebuild_course_path_node can run")
+
+    tool_result = {
+        "role": "assistant",
+        "content": {
+            "name": "rebuild_course_path",
+            "result": format_rebuild_course_path_output(output),
+        },
+    }
+
+    return {
+        "turn_messages": state.turn_messages + [tool_result],
+        "require_user_confirmation": False,
+    }
+
 def finalize_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
 
     # Add turn messages to state's messages
     reply, _ = render_final_reply(state, config)
 
-    compiled_turn_messages = [{"role": "user", "content": state.current_user_msg}] + state.turn_messages + [{"role": "assistant", "content": reply}]
-
+    compiled_turn_messages = [{"role": "system" if state.init_mode else "user", "content": state.current_user_msg}] + state.turn_messages + [{"role": "assistant", "content": reply}]
+    
     return {
         "ui_reply": reply,
         "current_cp_agent_outcomes": {},
         "search_results": None,
         "messages": compiled_turn_messages,
         "current_user_msg": None,
-        "turn_messages": []
+        "turn_messages": [],
+        "init_mode": False, # Default: not in init mode
+        "require_user_confirmation": True, # Default: user confirmation required
     }
 
 # ------------------------------------------------------------
@@ -262,12 +296,15 @@ class DreampathAgent:
         # Initialize components
         self.course_search_tool = CourseSearchTool()
         
-        # Set up coursepath agent
-        coursepath_tools = CoursePathTools(
-            course_path=student_profile.course_path, 
-            major=student_profile.major
-        )
-        self.coursepath_agent = CoursePathAgent(tools=coursepath_tools)
+        # Set up coursepath agent only if course_path exists
+        if student_profile.course_path is not None:
+            coursepath_tools = CoursePathTools(
+                course_path=student_profile.course_path, 
+                major=student_profile.major
+            )
+            self.coursepath_agent = CoursePathAgent(tools=coursepath_tools)
+        else:
+            self.coursepath_agent = None
         
         # Build the graph
         self._build_graph(generate_diagram=generate_diagram)
@@ -293,6 +330,7 @@ class DreampathAgent:
         g.add_node("plan_builder", plan_builder_node)
         g.add_node("course_path", course_path_node)
         g.add_node("modify_profile", modify_profile_node)
+        g.add_node("rebuild_course_path", rebuild_course_path_node)
         g.add_node("finalize", finalize_node)
 
         g.add_edge(START, "orchestrator")
@@ -306,6 +344,7 @@ class DreampathAgent:
             "plan_builder": "plan_builder",
             "course_path": "course_path",
             "modify_profile": "modify_profile",
+            "rebuild_course_path": "rebuild_course_path",
             "finalize": "finalize",
         })
 
@@ -320,6 +359,7 @@ class DreampathAgent:
             "orchestrator": "orchestrator",
         })
         g.add_edge("modify_profile", "orchestrator")
+        g.add_edge("rebuild_course_path", "orchestrator")
         g.add_edge("finalize", END)
 
         checkpointer = InMemorySaver()
@@ -331,7 +371,7 @@ class DreampathAgent:
             with open("my_graph.png", "wb") as f:
                 f.write(png_graph)
     
-    def run(self, user_input: str) -> Generator[Tuple[str, Optional[str]], str, str]:
+    def run(self, user_input: str, init_mode: bool=False) -> Generator[Tuple[str, Optional[str]], str, str]:
         """
         Process user input and return a generator that yields conversation turns.
         
@@ -355,6 +395,7 @@ class DreampathAgent:
             state_dict = self.app.invoke({
                 "major": self.config["configurable"]["student_profile"].major,
                 "current_user_msg": user_input,
+                "init_mode": init_mode,
             }, self.config)
             
             # Handle interrupts in a loop
@@ -390,9 +431,36 @@ class DreampathAgent:
             error_msg = f"❌ ERROR: {type(e).__name__}: {e}"
             return error_msg
     
+    def init_course_path(self) -> str:
+        """
+        Initialize the course path for a new student.
+        
+        Returns:
+            str: The final response from the initialization process
+        """
+        init_message = "Student completed their profile for the first time. Please build a course path for them."
+        conversation = self.run(user_input=init_message, init_mode=True)
+        
+        # Consume the generator to completion
+        final_response = None
+        try:
+            while True:
+                assistant_msg, interrupt_request = next(conversation)
+                if interrupt_request is None:
+                    final_response = assistant_msg
+                    break
+                # If there's an interrupt, we shouldn't reach here for init
+                # but if we do, we'll just continue
+        except StopIteration as e:
+            final_response = e.value if hasattr(e, 'value') and e.value else assistant_msg
+        
+        return final_response or "(Initialization completed)"
+    
     def get_course_path_visualization(self) -> str:
         """Get a visualization of the current course path."""
         current_path = self.config["configurable"]["student_profile"].course_path
+        if current_path is None:
+            return "No course path created yet."
         return f"CoursePath (@ term={current_path.curr_window_start})\n{current_path.visualize_by_term_idx()}"
     
     def get_student_profile_summary(self) -> str:
@@ -408,28 +476,32 @@ if __name__ == "__main__":
     # Set up course path agent
     major = 'Computer Science'
     # removed: 'COSC89.17', 'COSC89.19', 'COSC89.20', 'COSC89.28'
-    major_courses = {'COSC89.27', 'COSC55', 'COSC35', 'COSC62', 'COSC69.17', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61'}
-    complementary_courses = {'QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26'}
+    # major_courses = {'COSC89.27', 'COSC55', 'COSC35', 'COSC62', 'COSC69.17', 'COSC69.18', 'COSC74', 'COSC70', 'COSC34', 'COSC61'}
+    # complementary_courses = {'QSS30.09', 'QSS20', 'QSS17', 'QSS45', 'QSS19', 'QSS30.19', 'QSS30.07', 'MATH56', 'COGS44', 'COGS26'}
     
     # Construct recommended courses set and course bank
-    recommended_courses = major_courses | complementary_courses
-    course_bank = {c: construct_course(course_code=c, hardcoded_type=MAJOR if c in major_courses else COMPLEMENTARY) for c in recommended_courses}
+    # recommended_courses = major_courses | complementary_courses
+    # course_bank = {c: construct_course(course_code=c, hardcoded_type=MAJOR if c in major_courses else COMPLEMENTARY) for c in recommended_courses}
 
-    # Build initial course path + course bank updated with prereqs + scheduling info
-    test_course_path = build_course_path(recommended_courses, course_bank)
-    test_course_path.curr_window_start = 6 # Example
+    # # Build initial course path + course bank updated with prereqs + scheduling info
+    # test_course_path = build_course_path(recommended_courses, course_bank)
+    # test_course_path.curr_window_start = 6 # Example
 
     student_profile = StudentProfile(
         name="Kabir Moghe",
-        major="Computer Science",
+        major=major,
         college_interests="I want to focus on international relations and current events (specifically courses on Israel / Palestine, diplomacy); I want to dabble in AI and data science for social sciences",
         post_grad_goals="work hands on as a data scientists and engineer at a tech company or startup, be knowledgeable about data security/privacy, etc.",
         career_goals="Become a CDO or hands on CEO developing a b2b saas platform for data aggregation across different BI tools.",
-        course_path=test_course_path,
+        # course_path=test_course_path,
     )
     
     # Create the agent
     agent = DreampathAgent(student_profile=student_profile, thread_id="1")
+
+    # Initialize course path
+    init_response = agent.init_course_path()
+    print(f"💬 ASSISTANT: {init_response}")
 
     print("DreampathAgent ready. Type 'quit' to exit.\n")
 

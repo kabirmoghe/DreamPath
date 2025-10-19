@@ -2,10 +2,10 @@ from instructor import from_openai
 from openai import OpenAI
 from dotenv import load_dotenv
 import os
-from typing import Tuple, Dict, List
+from typing import Tuple, Dict, List, Union
 from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentOutput
 from dreampath_processing.dreampath_agent.types import (
-    OrchestratorDecision, DreamPathAgentState, CoursePathOperations, CourseSearchQueries, CourseSearchOutput, ModifiedStudentProfile
+    OrchestratorDecision, DreamPathAgentState, CoursePathOperations, CourseSearchQueries, CourseSearchResult, CourseSearchOutput, ModifiedStudentProfile, RebuildCoursePathOutput
 )
 from dreampath_processing.dreampath_agent.chat_prompts import (
     ORCHESTRATOR_DECISION_SYS, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS, COURSE_SEARCH_SYS, MODIFY_PROFILE_SYS, DETERMINE_USER_CONFIRMATION_SYS
@@ -85,19 +85,24 @@ def format_orchestrator_decision(decision: OrchestratorDecision) -> str:
 # -----------------------------------------------------
 # FORMAT COURSE SEARCH OUTPUT
 # -----------------------------------------------------
+def format_course_search_result(course_obj: CourseSearchResult) -> str:
+    course_str = f"Code: {course_obj.course_code}\n"
+    course_str += f"Title: {course_obj.course_title}\n"
+    course_str += f"Description: {course_obj.description}\n"
+    course_str += f"Prereqs: {course_obj.prerequisites}\n"
+    course_str += f"Dept: {course_obj.department}\n"
+    course_str += f"URL: {course_obj.course_url}\n"
+
+    return course_str
+
 def format_course_search_output(output: CourseSearchOutput) -> str:
 
     output_str = ""
 
     for result in output.results:
-        output_str += f"<result>\n"
-        output_str += f"Code: {result.course_code}\n"
-        output_str += f"Title: {result.course_title}\n"
-        output_str += f"Description: {result.description}\n"
-        output_str += f"Prereqs: {result.prerequisites}\n"
-        output_str += f"Dept: {result.department}\n"
-        output_str += f"URL: {result.course_url}\n"
-        output_str += f"</result>\n"
+        output_str += f"<course>\n{format_course_search_result(result)}\n</course>\n"
+
+    print(f"Output: {output_str}")
 
     return output_str
 
@@ -134,6 +139,38 @@ def format_modified_student_profile(modified_profile: ModifiedStudentProfile) ->
     modified_profile_content += f"post_grad_goals: {modified_profile.post_grad_goals}\n"
     modified_profile_content += f"career_goals: {modified_profile.career_goals}\n"
     return f"<mod_result>\n{modified_profile_content}</mod_result>"
+
+# -----------------------------------------------------
+# FORMAT REBUILD COURSE PATH OUTPUT
+# -----------------------------------------------------
+def format_rebuild_course_path_output(output: RebuildCoursePathOutput) -> str:
+    output_str = ""
+
+    # Modified profile
+    if output.modified_profile:
+        output_str += f"Modified profile: {format_modified_student_profile(output.modified_profile)}\n"
+    else:
+        output_str += "Profile not modified.\n"
+
+    # Course search queries by parameter
+    if output.course_search_queries_by_parameter:
+        output_str += f"Executed course search queries by Student Profile Parameter:\n"
+        for parameter, queries in output.course_search_queries_by_parameter.items():
+            output_str += f"Parameter: {parameter}\n"
+            for query in queries.queries:
+                output_str += f"- {query.query}\n"
+
+    # Updated recommended courses
+    if output.updated_recommended_courses:
+        output_str += f"Updated recommended courses: {output.updated_recommended_courses}\n"
+
+    # Course path update mode
+    if output.course_path_update_mode == "new":
+        output_str += f"No existing course path found. New course path constructed.\n"
+    elif output.course_path_update_mode == "update_existing":
+        output_str += f"Existing course path updated.\n"
+
+    return f"<rebuild_course_path_output>\n{output_str}\n</rebuild_course_path_output>"
 
 if __name__ == "__main__":
     # Set up course path agent

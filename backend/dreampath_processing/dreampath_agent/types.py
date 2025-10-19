@@ -1,10 +1,10 @@
 from pydantic import BaseModel, Field, constr
-from typing import Optional, List, Dict, Any, Literal, Annotated
+from typing import Optional, List, Dict, Literal, Annotated, Set
 from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentOutput
 import operator
 
 class OrchestratorDecision(BaseModel):
-    route: Literal["course_search", "plan_builder", "course_path", "modify_profile", "finalize"]
+    route: Literal["course_search", "plan_builder", "course_path", "modify_profile", "rebuild_course_path", "finalize"]
     reason: constr(max_length=200)
     handoff: Optional[str] = Field(default=None, description="The handoff message for the next node")
     confidence: Optional[float] = Field(default=None, description="The confidence in the routing decision")
@@ -26,7 +26,7 @@ class CourseSearchQueries(BaseModel):
 
 class CourseSearchResult(BaseModel):
     department: str
-    department_id: str
+    department_id: Optional[str] = Field(default=None)
     course_code: str
     course_title: str
     description: str
@@ -54,6 +54,15 @@ class ModifiedStudentProfile(BaseModel):
     career_goals: str
 
 # ================================
+# Rebuild Course Path Tool
+# ================================
+class RebuildCoursePathOutput(BaseModel):
+    modified_profile: Optional[ModifiedStudentProfile] = Field(default=None)
+    course_search_queries_by_parameter: Optional[Dict[str, CourseSearchQueries]] = Field(default=None)
+    updated_recommended_courses: Optional[Set[str]] = Field(default=None)
+    course_path_update_mode: Optional[Literal["new", "update_existing"]] = Field(default=None)
+
+# ================================
 # DreamPath Agent
 # ================================
 class CoursePathOperations(BaseModel):
@@ -72,11 +81,13 @@ class DreamPathAgentState(BaseModel):
     summary_end: int = 0
 
     # Current conversation state
+    init_mode: Optional[bool] = Field(default=False)
+    require_user_confirmation: Optional[bool] = Field(default=True)
     current_user_msg: Optional[str] = Field(default=None)
     turn_messages: List[Dict[str, str | dict]] = Field(default_factory=list)
 
     # Routing
-    route: Optional[Literal["orchestrator", "course_search", "plan_builder", "course_path", "modify_profile", "finalize"]] = Field(default=None)
+    route: Optional[Literal["orchestrator", "course_search", "plan_builder", "course_path", "modify_profile", "rebuild_course_path", "finalize"]] = Field(default=None)
     handoff: Optional[str] = Field(default=None)
 
     # Search + planning
