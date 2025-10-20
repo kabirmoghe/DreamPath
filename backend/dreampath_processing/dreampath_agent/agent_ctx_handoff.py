@@ -100,18 +100,6 @@ def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgentState
 
 def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     coursepath_agent: CoursePathAgent = config["configurable"]["coursepath_agent"]
-    
-    # Debug logging to understand the state
-    print(f"| → CoursePathNode Debug:")
-    print(f"|   - coursepath_agent.tools is None: {coursepath_agent.tools is None}")
-    print(f"|   - coursepath_agent.tools type: {type(coursepath_agent.tools)}")
-    
-    # Check if coursepath_agent is None (happens when no course path exists)
-    if coursepath_agent.tools is None:
-        print(f"|   - ERROR: coursepath_agent.tools is None, returning early")
-        raise Exception("Missing CPAgent.tools")
-    
-    print(f"|   - Setting require_user_confirmation to: {state.require_user_confirmation}")
     coursepath_agent.require_user_confirmation = state.require_user_confirmation
     cursor = state.cursor
     current_op = None
@@ -237,12 +225,6 @@ def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentSta
 def rebuild_course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     output = execute_rebuild_tool(state, config)
     
-    # Debug logging to understand the state
-    print(f"| → RebuildCoursePath Debug:")
-    print(f"|   - state.init_mode: {state.init_mode}")
-    print(f"|   - coursepath_agent is None: {config['configurable']['coursepath_agent'] is None}")
-    print(f"|   - student_profile.course_path exists: {config['configurable']['student_profile'].course_path is not None}")
-    
     # If we created a new course path and coursepath_agent was None, create it now
     coursepath_agent: CoursePathAgent = config["configurable"]["coursepath_agent"]
     if state.init_mode and coursepath_agent.tools is None:
@@ -254,14 +236,8 @@ def rebuild_course_path_node(state: DreamPathAgentState, config) -> DreamPathAge
                 major=student_profile.major
             )
             coursepath_agent.tools = coursepath_tools
-            print(f"|   - coursepath_agent.tools initialized successfully")
         else:
-            print(f"|   - ERROR: No course path found in student profile")
             raise ValueError("Course path must exist before rebuild_course_path_node can run")
-    else:
-        print(f"|   - Skipping coursepath_agent.tools creation:")
-        print(f"|     - init_mode check: {state.init_mode}")
-        print(f"|     - agent.tools is None check: {config['configurable']['coursepath_agent'].tools is None}")
 
     tool_result = {
         "role": "assistant",
