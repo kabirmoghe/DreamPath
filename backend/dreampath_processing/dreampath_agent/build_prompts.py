@@ -291,5 +291,5 @@ COSC62: 'Applied Cryptography'
 {course_search_results}
 
 ### Output format:
-Return the student's updated recommended course codes. Keep the number of recommended courses at ~15
+Return the student's updated recommended course codes. Keep the number of recommended courses at ~{num_recommended_courses}
 """

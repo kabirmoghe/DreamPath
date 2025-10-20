@@ -109,7 +109,7 @@ class CoursePath:
             # Add actual courses
             for course in term:
                 course_obj = self.course_bank[course]
-                cp_str += f"{course_obj.course_code}: '{course_obj.course_title}' |"
+                cp_str += f"{course_obj.course_code}: '{course_obj.course_title.strip()}' |"
 
                 if course_obj.is_prereq:
                     cp_str += f" Prereq.\n"

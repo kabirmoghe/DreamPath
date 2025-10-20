@@ -46,7 +46,9 @@ def execute_rebuild_tool(state: DreamPathAgentState, config: dict, parameter_wei
     
     output = {}
 
+    # -----------------------------------------------------
     # 1. Modify profile
+    # -----------------------------------------------------
     current_profile = config["configurable"]["student_profile"]
 
     if not from_scratch:
@@ -66,7 +68,9 @@ def execute_rebuild_tool(state: DreamPathAgentState, config: dict, parameter_wei
         # Update output (no modified profile)
         output["modified_profile"] = None
     
+    # -----------------------------------------------------
     # 2. Extract parameter weights, default weights
+    # -----------------------------------------------------
     if parameter_weights is None:
         parameter_weights = {
             "college_interests": 1.0,
@@ -74,7 +78,9 @@ def execute_rebuild_tool(state: DreamPathAgentState, config: dict, parameter_wei
             "long_term_goal": 0.5
         }
     
+    # -----------------------------------------------------
     # 3. For each parameter, generate 5 course search queries
+    # -----------------------------------------------------
     course_search_queries = {}
     student_name = config["configurable"]["student_profile"].name
 
@@ -83,9 +89,11 @@ def execute_rebuild_tool(state: DreamPathAgentState, config: dict, parameter_wei
         course_search_queries[parameter], _ = extract_structured_output_from_context(state=state, config=config, system_prompt=PARAMETER_COURSE_SEARCH_QUERIES_SYS.format(student_name=student_name, parameter=parameter.replace("_", " ").capitalize()), response_model=CourseSearchQueries, small_context=True, model="gpt-4o", verbose=True)
 
     # Update output
-    output["course_search_queries"] = course_search_queries
+    output["course_search_queries_by_parameter"] = course_search_queries
 
+    # -----------------------------------------------------
     # 4. Execute course search queries
+    # -----------------------------------------------------
     course_search_tool: CourseSearchTool = config["configurable"]["course_search_tool"]
     course_search_results = {} # course: {parameter: {hits, course_info}}
 
@@ -100,7 +108,9 @@ def execute_rebuild_tool(state: DreamPathAgentState, config: dict, parameter_wei
                 course_search_results[result.course_code][parameter] = current_hits + 1
                 course_search_results[result.course_code]["result"] = result
 
+    # -----------------------------------------------------
     # 5. Score courses by weights, sort by score
+    # -----------------------------------------------------
     print("Scoring courses...")
     scored_course_results = {}
 
@@ -114,7 +124,9 @@ def execute_rebuild_tool(state: DreamPathAgentState, config: dict, parameter_wei
     sorted_course_results = sorted(scored_course_results.items(), key=lambda x: x[1]["score"], reverse=True)
     top_course_results = [result["result"] for _, result in sorted_course_results[:N]]
 
+    # -----------------------------------------------------
     # 6. Update recommended courses, must-have courses
+    # -----------------------------------------------------
     print("Updating recommended courses...")
 
     if current_profile.course_path is None:
@@ -122,16 +134,20 @@ def execute_rebuild_tool(state: DreamPathAgentState, config: dict, parameter_wei
     else:
         recommended_courses = current_profile.course_path.recommended_courses
 
+    # Approximate number of recommended courses based on rough capacity remaining
+    window_start_term = current_profile.course_path.curr_window_start if current_profile.course_path is not None else 0
+    num_recommended_courses = int(20 * (12 - window_start_term) / 12)
+
     formatted_recommended_courses = format_recommended_courses(recommended_courses, course_search_tool)
     formatted_top_courses = format_deep_course_search_results(top_course_results)
-    formatted_updated_course_recommendation_prompt = UPDATE_COURSE_RECOMMENDATIONS_SYS.format(student_name=student_name, recommended_courses=formatted_recommended_courses, course_search_results=formatted_top_courses)
+    formatted_updated_course_recommendation_prompt = UPDATE_COURSE_RECOMMENDATIONS_SYS.format(student_name=student_name, recommended_courses=formatted_recommended_courses, course_search_results=formatted_top_courses, num_recommended_courses=num_recommended_courses)
 
     updated_recommendations, _ = extract_structured_output_from_context(state=state, config=config, system_prompt=formatted_updated_course_recommendation_prompt, response_model=CourseRecommendations, small_context=True, model="gpt-4o", verbose=True)
 
     print(f"Updated recommendations: {updated_recommendations.courses}")
 
     # Update output
-    output["updated_recommendations"] = updated_recommendations.courses
+    output["updated_recommended_courses"] = updated_recommendations.courses
 
     # 7. Construct updated course path
     if current_profile.course_path is None:
