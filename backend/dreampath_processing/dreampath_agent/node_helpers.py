@@ -100,9 +100,7 @@ def format_course_search_output(output: CourseSearchOutput) -> str:
     output_str = ""
 
     for result in output.results:
-        output_str += f"<course>\n{format_course_search_result(result)}\n</course>\n"
-
-    print(f"Output: {output_str}")
+        output_str += f"<course_search_result>\n{format_course_search_result(result)}\n</course_search_result>\n"
 
     return output_str
 
@@ -148,29 +146,31 @@ def format_rebuild_course_path_output(output: RebuildCoursePathOutput) -> str:
 
     # Modified profile
     if output.modified_profile:
-        output_str += f"Modified profile: {format_modified_student_profile(output.modified_profile)}\n"
+        output_str += f"<modify_profile>\n{format_modified_student_profile(output.modified_profile)}\n</modify_profile>\n"
     else:
-        output_str += "Profile not modified.\n"
+        output_str += "<modify_profile>\nProfile not modified.\n</modify_profile>\n"
 
     # Course search queries by parameter
     if output.course_search_queries_by_parameter:
-        output_str += f"Executed course search queries by Student Profile Parameter:\n"
+        output_str += f"<course_search_by_profile_parameter>\n"
         for parameter, queries in output.course_search_queries_by_parameter.items():
-            output_str += f"Parameter: {parameter}\n"
+            output_str += f"<{parameter}>\n"
             for query in queries.queries:
-                output_str += f"- {query.query}\n"
+                output_str += f"<query>{query.query}</query>\n"
+            output_str += f"</{parameter}>\n"
+        output_str += f"</course_search_by_profile_parameter>\n"
 
     # Updated recommended courses
     if output.updated_recommended_courses:
-        output_str += f"Updated recommended courses: {output.updated_recommended_courses}\n"
+        output_str += f"<updated_recommended_courses>\n{output.updated_recommended_courses}\n</updated_recommended_courses>\n"
 
     # Course path update mode
     if output.course_path_update_mode == "new":
-        output_str += f"No existing course path found. New course path constructed.\n"
+        output_str += f"<course_path_update_mode>\nNo existing course path found. New course path constructed.\n</course_path_update_mode>\n"
     elif output.course_path_update_mode == "update_existing":
-        output_str += f"Existing course path updated.\n"
+        output_str += f"<course_path_update_mode>\nExisting course path updated.\n</course_path_update_mode>"
 
-    return f"<rebuild_course_path_output>\n{output_str}\n</rebuild_course_path_output>"
+    return output_str
 
 if __name__ == "__main__":
     # Set up course path agent

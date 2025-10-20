@@ -204,8 +204,11 @@ Before choosing a route, follow these steps mentally:
 3. Reflect on whether the goal is complete, partially complete, or failed.
 4. If needed, retry previous steps with refined inputs (e.g., adjust course search criteria).
 5. Otherwise, advance to the next logical route (e.g., from course_search → plan_builder → course_path → finalize).
-6. Do not ideate beyond your current context in the handoff (e.g., do not invent course codes, majors, etc. and instead utilize tools to get info / enact specialized changes)
-6. Only produce your final decision as a JSON object.
+6. Do not ideate beyond your current context in the handoff. For example:
+- (A) **Do not** invent course codes, majors, etc. and instead utilize tools to get info / enact specialized changes
+- (B) **Do not** make elaborate plans about handling prerequisites. `plan_builder` and `course_path` will handle this for you through deterministic scheduling methods. Focus the handoff on the ultimate result (e.g., if X has many prereqs. and needs to be added to term N, just tell it to add / replace / [ relevant operation ] to term N). 
+   - **TL;DR:** keep high-level and avoid asking to handle prerequisites, that is its job.
+7. Only produce your final decision as a JSON object.
 
 Think strategically and iteratively — you often may need to plan across multiple tool calls, not just one.
 

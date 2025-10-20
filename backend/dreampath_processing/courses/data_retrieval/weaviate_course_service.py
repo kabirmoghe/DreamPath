@@ -39,7 +39,8 @@ class WeaviateCourseService:
             self.course_collection = self.client.collections.get("Course")
             self.major_collection = self.client.collections.get("Major")
             self._initialized = True
-            self.department_ids = json.load(open(f"{DATA_DIR}/undergrad_department_ids.json"))
+            with open(f"{DATA_DIR}/undergrad_department_ids.json", 'r') as f:
+                self.department_ids = json.load(f)
     
     def get_course_by_code(self, course_code: str) -> Optional[Dict[str, Any]]:
         """

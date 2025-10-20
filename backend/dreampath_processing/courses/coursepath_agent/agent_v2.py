@@ -1,6 +1,7 @@
 from instructor import from_openai
 from openai import OpenAI
 import os
+from typing import Optional
 from dotenv import load_dotenv
 from dreampath_processing.courses.coursepath_agent.types import (
     CoursePathAgentState,
@@ -231,7 +232,7 @@ def on_user_cancel(state: CoursePathAgentState, config: dict, tools: CoursePathT
 # MAIN CONTROLLER
 # ------------------------------------------------------------
 class CoursePathAgent:
-    def __init__(self, tools: CoursePathTools, require_user_confirmation: bool=True):
+    def __init__(self, tools: Optional[CoursePathTools]=None, require_user_confirmation: bool=True):
         self.state = CoursePathAgentState(thread_id="", plan_id="", plan_version=0, pending_op=None, facts={}, summary="", recent_messages=[])
         self.config = {}
         self.tools = tools

@@ -35,3 +35,10 @@ def log_messages_to_file(messages: list, log_file: str = "dreampath_debug.log"):
             print(f"--- Message {i} [role={msg['role']}] ---")
             print(f"Content: {msg['content']}")
         print("=== END MESSAGES ===")
+
+def clear_log_file(log_file: str = "dreampath_debug.log"):
+    """
+    Clear the log file.
+    """
+    if os.path.exists(log_file):
+        os.remove(log_file)

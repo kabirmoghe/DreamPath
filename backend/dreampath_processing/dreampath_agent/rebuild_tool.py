@@ -42,7 +42,7 @@ def format_deep_course_search_results(course_search_results: List[CourseSearchRe
 
     return results
 
-def execute_rebuild_tool(state: DreamPathAgentState, config: dict, parameter_weights: Optional[Dict[str, float]]=None, from_scratch: bool=True, N: int=15) -> RebuildCoursePathOutput:
+def execute_rebuild_tool(state: DreamPathAgentState, config: dict, parameter_weights: Optional[Dict[str, float]]=None, N: int=15) -> RebuildCoursePathOutput:
     
     output = {}
 
@@ -51,7 +51,7 @@ def execute_rebuild_tool(state: DreamPathAgentState, config: dict, parameter_wei
     # -----------------------------------------------------
     current_profile = config["configurable"]["student_profile"]
 
-    if not from_scratch:
+    if not state.init_mode: # not in init mode, so we need to modify the profile to capture shift in user's interests, goals, etc.
         print("Modifying student profile...")
         modified_profile, _ = modify_student_profile(state, config)
 
