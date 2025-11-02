@@ -2,6 +2,7 @@ from pydantic import BaseModel, Field, constr
 from typing import Optional, List, Dict, Literal, Annotated, Set
 from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentOutput
 import operator
+from langchain_core.messages import BaseMessage
 
 class OrchestratorDecision(BaseModel):
     route: Literal["course_search", "plan_builder", "course_path", "modify_profile", "rebuild_course_path", "finalize"]
@@ -70,35 +71,38 @@ class CoursePathOperations(BaseModel):
 
 class DreamPathAgentState(BaseModel):
     model_config = {'arbitrary_types_allowed': True}
-    
+
+    # Thread management
     thread_id: Optional[str] = Field(default=None)
     plan_id: Optional[str] = Field(default=None)
-    major: Optional[str] = Field(default=None)
-
-    # Historical conversation state
+    
+    # Historical conversation (YOUR FORMAT for context building)
     summary: str = Field(default="")
-    messages: Annotated[List[Dict[str, str | dict]], operator.add] = Field(default_factory=list)
+    dreampath_messages: Annotated[List[Dict[str, str | dict]], operator.add] = Field(default_factory=list)
+    messages: Annotated[List[BaseMessage], operator.add] = Field(default_factory=list)
     summary_end: int = 0
-
-    # Current conversation state
+    
+    # Current turn (YOUR FORMAT for orchestrator isolation)
     init_mode: Optional[bool] = Field(default=False)
     require_user_confirmation: Optional[bool] = Field(default=True)
     current_user_msg: Optional[str] = Field(default=None)
     turn_messages: List[Dict[str, str | dict]] = Field(default_factory=list)
-
+    
     # Routing
-    route: Optional[Literal["orchestrator", "course_search", "plan_builder", "course_path", "modify_profile", "rebuild_course_path", "finalize"]] = Field(default=None)
+    route: Optional[Literal["orchestrator", "course_search", "plan_builder", 
+                            "course_path", "modify_profile", "rebuild_course_path", "finalize"]] = Field(default=None)
     handoff: Optional[str] = Field(default=None)
-
-    # Search + planning
-    topics: Optional[Dict[str, int]] = Field(default_factory=dict)
-    search_results: Optional[CourseSearchOutput] = Field(default=None)
+    
+    # Course path operations
     worklist: List[str] = Field(default_factory=list)
     cursor: int = 0
-    
-    # Current CoursePath Agent outcome + reply
     current_cp_agent_outcomes: Optional[Dict[str, CoursePathAgentOutput]] = Field(default=None)
-    ui_reply: Optional[str] = Field(default=None)    
-
-    # Pending profile modification (used to avoid re-computing on interrupt resume)
+    
+    # Output
+    ui_reply: Optional[str] = Field(default=None)
+    
+    # Interrupt handling
     pending_pre_interrupt: Optional[CoursePathAgentOutput | ModifiedStudentProfile] = Field(default=None)
+    
+    # NOTE: 'messages' field inherited from MessagesState
+    # Contains LangChain BaseMessage objects for service streaming

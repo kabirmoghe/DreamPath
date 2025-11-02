@@ -20,7 +20,9 @@ CHROME_OPTIONS.add_argument("--headless")
 
 DEGREES_URL = 'https://home.dartmouth.edu/degrees'
 DEPARTMENTS_URL = 'https://dartmouth.smartcatalogiq.com/en/current/orc/departments-programs-undergraduate'
-DATA_DIR = "dreampath_processing/courses/data"
+
+# Use absolute path based on this file's location (works regardless of CWD)
+DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "data")
 
 def normalize_text(text):
     """

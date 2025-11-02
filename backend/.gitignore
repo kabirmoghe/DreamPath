@@ -1,4 +1,9 @@
 data/
 vectorstores/
 *.png
+*.txt
 *.log
+INTERRUPT_HANDLING.md
+create_sample_data.py
+test_*.py
+streamlit_app.py

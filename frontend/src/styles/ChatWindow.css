@@ -1,0 +1,339 @@
+/* Compass - Sliding chat panel from the right */
+
+.compass-window {
+  position: fixed;
+  right: 0;
+  top: var(--navbar-height, 68px);
+  width: 500px;
+  height: calc(100vh - var(--navbar-height, 68px));
+  z-index: 1000;
+  box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease-out;
+  border-radius: 0;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.compass-window .card {
+  border: none;
+  border-radius: 0;
+  height: 100%;
+}
+
+.compass-header {
+  background: linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%);
+  color: white;
+  border-bottom: none;
+  padding: 16px 20px;
+  border-radius: 0 !important;
+}
+
+.compass-header h6 {
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.3px;
+}
+
+.compass-header .btn-link {
+  color: white;
+  text-decoration: none;
+}
+
+.compass-header .btn-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  overflow-y: auto;
+  height: calc(100vh - 180px);
+  background: #f8f9fa;
+}
+
+.chat-welcome {
+  text-align: center;
+  padding: 20px;
+  font-family: 'Lora', serif;
+}
+
+.chat-welcome ul {
+  text-align: left;
+  margin-top: 12px;
+  padding-left: 20px;
+}
+
+.message {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.message-user {
+  justify-content: flex-end;
+}
+
+.message-assistant {
+  justify-content: flex-start;
+}
+
+.message-content {
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.message-user .message-content {
+  background: linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 16px 16px 4px 16px;
+}
+
+.message-assistant .message-content {
+  background: white;
+  color: #333;
+  padding: 10px 14px;
+  border-radius: 16px 16px 16px 4px;
+  border: 1px solid #e0e0e0;
+}
+
+.message-status {
+  justify-content: flex-start;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.message-status .message-content {
+  background: linear-gradient(135deg, rgba(138, 107, 193, 0.1) 0%, rgba(107, 143, 199, 0.1) 100%);
+  color: #666;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(138, 107, 193, 0.2);
+  max-width: 90%;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ellipses {
+  0% { content: ''; }
+  25% { content: '.'; }
+  50% { content: '..'; }
+  75% { content: '...'; }
+  100% { content: ''; }
+}
+
+.ellipses-animation {
+  display: inline-block;
+  width: 20px;
+}
+
+.ellipses-animation::after {
+  content: '';
+  animation: ellipses 2s infinite;
+}
+
+.status-with-ellipses {
+  display: flex;
+  align-items: center;
+}
+
+/* Thinking Text Gradient Animation */
+.thinking-text {
+  font-weight: bold;
+  background: linear-gradient(90deg, #8A6BC1 0%, #b39ddb 25%, #c9b8e0 50%, #b39ddb 75%, #8A6BC1 100%);
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGradient 2s ease-in-out infinite;
+}
+
+@keyframes textGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.message-text {
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.chat-input-container {
+  padding: 16px 20px;
+  background: white;
+  border-top: 1px solid #e0e0e0;
+}
+
+.chat-input {
+  border: 1px solid #d6cdea;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  resize: none;
+  max-height: 150px;
+  overflow-y: auto;
+  font-family: 'Lora', serif;
+}
+
+.chat-input:focus {
+  border-color: #8A6BC1;
+  box-shadow: 0 0 0 0.2rem rgba(138, 107, 193, 0.25);
+}
+
+.send-button {
+  background: linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-left: 8px;
+}
+
+.send-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #7A5BB1 0%, #5B7FB7 100%);
+}
+
+.send-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Toggle button - appears as a tab on the right edge */
+.compass-toggle-button {
+  position: fixed;
+  right: 0;
+  bottom: 2%;
+  transform: translateY(0);
+  width: auto;
+  height: auto;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  background: linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15), 0 6px 12px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: slideInTab 0.3s ease-out;
+}
+
+@keyframes slideInTab {
+  from {
+    transform: translate(100%, 0);
+  }
+  to {
+    transform: translate(0, 0);
+  }
+}
+
+.compass-toggle-button:hover {
+  transform: translateX(-4px);
+  box-shadow: -6px 0 16px rgba(0, 0, 0, 0.2);
+}
+
+.compass-toggle-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+}
+
+.compass-label {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-family: 'Lora', serif;
+  color: #ddd4f5;
+}
+
+/* Compass swivel animation for loading state */
+@keyframes compassSwivel {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(-15deg);
+  }
+  35% {
+    transform: rotate(12deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+  65% {
+    transform: rotate(10deg);
+  }
+  80% {
+    transform: rotate(-12deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.compass-swivel {
+  animation: compassSwivel 1.5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Scrollbar styling */
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #8A6BC1;
+  border-radius: 10px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+  background: #7A5BB1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .compass-window {
+    width: 100vw;
+  }
+
+  .compass-toggle-button {
+    width: 40px;
+    height: 100px;
+  }
+
+  .compass-label {
+    font-size: 11px;
+  }
+}

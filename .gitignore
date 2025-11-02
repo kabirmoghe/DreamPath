@@ -4,4 +4,26 @@ Linkedin Test.ipynb
 .env
 .ipynb_checkpoints
 notebooks
+media
 __pycache__
+.cursor
+checkpoints*
+
+# Markdown
+CLAUDE.md
+SUPABASE_MIGRATION_GUIDE.md
+INTEGRATION_ANALYSIS.md
+COURSES_REFACTOR_SUMMARY.md
+DEPLOYMENT_*
+
+# Miscellaneous
+*.txt
+*.log
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.mp4
+*.mp3
+*.wav
+*.pdf

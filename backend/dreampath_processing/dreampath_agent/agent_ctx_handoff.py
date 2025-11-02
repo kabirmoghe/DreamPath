@@ -5,7 +5,7 @@ from langgraph.types import interrupt, Command
 from langgraph.checkpoint.memory import InMemorySaver
 from dreampath_processing.dreampath_agent.rebuild_tool import execute_rebuild_tool
 from dreampath_processing.dreampath_agent.debug_logger import clear_log_file
-from dreampath_processing.dreampath_agent.types import DreamPathAgentState
+from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
 from dreampath_processing.dreampath_agent.node_helpers import (
     decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, modify_student_profile, determine_user_confirmation, 
@@ -14,10 +14,15 @@ from dreampath_processing.dreampath_agent.node_helpers import (
 )
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import construct_course
+from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
 from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
 from dreampath_processing.courses.coursepath_agent.agent_v2 import CoursePathAgent, CoursePathTools
+from dreampath_processing.courses.schedule_modules.course_path import CoursePath
 from dreampath_processing.modules.student_profile import StudentProfile
 from typing import Generator, Tuple, Optional
+from dreampath_processing.database.connection import get_db_connection
+import asyncio
+from dreampath_processing.database.student_service import StudentDatabaseService
 
 def orchestrator_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     print(f"Orchestrator thinking...")
@@ -36,10 +41,13 @@ def orchestrator_node(state: DreamPathAgentState, config) -> DreamPathAgentState
         },
     }
 
+    orchestrator_msg_lc = dreampath_to_langchain(orchestrator_decision)
+
     return {
         "route": decision.route,
         "handoff": decision.handoff,
         "turn_messages": state.turn_messages + [orchestrator_decision],
+        "messages": [orchestrator_msg_lc],
         **state_updates,
     }
 
@@ -49,6 +57,8 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
     # print(f"********** CourseSearchNode: queries={queries}")
 
     tool_messages = []
+    langchain_messages = []
+
     for query in queries.queries:
 
         # Build tool call
@@ -63,6 +73,7 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
         }
 
         tool_messages.append(tool_call)
+        langchain_messages.append(dreampath_to_langchain(tool_call))
 
         # Execute tool call
         search_results = course_search_tool.structured_hybrid_search(query)
@@ -76,9 +87,11 @@ def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentStat
         }
 
         tool_messages.append(tool_result)
+        langchain_messages.append(dreampath_to_langchain(tool_result))
 
     return {
         "turn_messages": state.turn_messages + tool_messages,
+        "messages": langchain_messages,
     }
     
 def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
@@ -91,11 +104,15 @@ def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgentState
             "result": format_worklist(ops.operations),
         },
     }
+
+    tool_result_lc = dreampath_to_langchain(tool_result)
+
     return {
         "worklist": ops.operations, # List[str], e.g., ["Add QSS41 to term 6.", "Add COSC50 to term 6."]
         "cursor": 0,
         "current_cp_agent_outcomes": {},   # start fresh for this batch
         "turn_messages": state.turn_messages + [tool_result],
+        "messages": [tool_result_lc],
     }
 
 def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
@@ -106,6 +123,7 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     outcomes = state.current_cp_agent_outcomes
     worklist = state.worklist
     tool_messages = []
+    langchain_messages = []
 
     print(f"| → CoursePathAgent: worklist={worklist}, cursor={cursor}")
 
@@ -122,6 +140,7 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
             },
         }
         tool_messages.append(tool_call)
+        langchain_messages.append(dreampath_to_langchain(tool_call))
         coursepath_agent.save_previous_course_path()
 
     # Execute operations one by one
@@ -163,10 +182,13 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
             },
         }
         tool_messages.append(tool_result)
+        langchain_messages.append(dreampath_to_langchain(tool_result))
         
-    # Update the config with the new course path
+    # Update the config with the new course path | TODO: separate profile and course path
     modified_cp = coursepath_agent.tools.cp
-    config["configurable"]["student_profile"].course_path = modified_cp
+
+
+    # TODO: asynchronously save the student profile + course path to the database
 
     return {
         "turn_messages": state.turn_messages + tool_messages,
@@ -175,11 +197,14 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
         "worklist": worklist,
         "cursor": cursor,
         "route": route,
+        "messages": langchain_messages,
     }
 
 def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     # Check if we already computed the modified profile (to avoid re-computing on interrupt resume)
     print(f"| → ProfileModifier")
+
+    langchain_messages = []
 
     if state.pending_pre_interrupt is not None:
         print("| * Using cached modified profile (avoiding re-computation)")
@@ -215,6 +240,10 @@ def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentSta
             },
         }
 
+        langchain_messages.append(dreampath_to_langchain(tool_result))
+
+        # TODO: asynchronously save the student profile to the database
+
         return {
             "turn_messages": state.turn_messages + [tool_result],
             "pending_pre_interrupt": None,
@@ -223,22 +252,10 @@ def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentSta
         return {}
 
 def rebuild_course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
+    # Workhorse func to rebuild the course path
     output = execute_rebuild_tool(state, config)
     
-    # If we created a new course path and coursepath_agent was None, create it now
-    coursepath_agent: CoursePathAgent = config["configurable"]["coursepath_agent"]
-    if state.init_mode and coursepath_agent.tools is None:
-        print(f"|   - Creating coursepath_agent's tools (init_mode=True and .tools=None)...")
-        student_profile = config["configurable"]["student_profile"]
-        if student_profile.course_path is not None:
-            coursepath_tools = CoursePathTools(
-                course_path=student_profile.course_path,
-                major=student_profile.major
-            )
-            coursepath_agent.tools = coursepath_tools
-        else:
-            raise ValueError("Course path must exist before rebuild_course_path_node can run")
-
+    # If we created a new course path, 'execute_rebuild_tool' will have created a new coursepath_agent with tools
     tool_result = {
         "role": "assistant",
         "content": {
@@ -247,9 +264,28 @@ def rebuild_course_path_node(state: DreamPathAgentState, config) -> DreamPathAge
         },
     }
 
+    tool_result_lc = dreampath_to_langchain(tool_result)
+
+    # TODO: asynchronously save the student profile + course path to the database
+    modified_profile = config["configurable"]["student_profile"]
+    course_path = config["configurable"]["coursepath_agent"].tools.cp
+    user_id = config["configurable"]["user_id"]
+    student_db_service = config["configurable"]["student_db_service"]
+    
+    # Run async database operations in sequence
+    async def save_to_db():
+        # Save profile first (this sets active_profile_id in users table)
+        await student_db_service.save_student_profile(modified_profile, user_id)
+        # Then save course path (depends on active_profile_id being set)
+        await student_db_service.save_course_path(course_path, user_id)
+    
+    # Execute the async function
+    asyncio.run(save_to_db())
+
     return {
         "turn_messages": state.turn_messages + [tool_result],
         "require_user_confirmation": False,
+        "messages": [tool_result_lc],
     }
 
 def finalize_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
@@ -257,13 +293,24 @@ def finalize_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     # Add turn messages to state's messages
     reply, _ = render_final_reply(state, config)
 
-    compiled_turn_messages = [{"role": "system" if state.init_mode else "user", "content": state.current_user_msg}] + state.turn_messages + [{"role": "assistant", "content": reply}]
+    usr_msg_dict = {
+        "role": "system" if state.init_mode else "user",
+        "content": state.current_user_msg
+    }
+    reply_msg_dict = {
+        "role": "assistant",
+        "content": reply
+    }
+    compiled_turn_messages = [usr_msg_dict] + state.turn_messages + [reply_msg_dict]
     
+    # Convert reply to LangChain format for streaming
+    reply_msg_lc = dreampath_to_langchain(reply_msg_dict)
+
     return {
         "ui_reply": reply,
         "current_cp_agent_outcomes": {},
-        "search_results": None,
-        "messages": compiled_turn_messages,
+        "dreampath_messages": compiled_turn_messages,
+        "messages": [reply_msg_lc],
         "current_user_msg": None,
         "turn_messages": [],
         "init_mode": False, # Default: not in init mode
@@ -285,24 +332,46 @@ class DreampathAgent:
     - Academic planning and scheduling
     """
     
-    def __init__(self, student_profile: StudentProfile, thread_id: str = "default", generate_diagram: bool=False):
+    def __init__(self, user_id: int, thread_id: str = "default", generate_diagram: bool=False, student_profile: Optional[StudentProfile] = None, course_path: Optional[CoursePath] = None):
         """
         Initialize the DreampathAgent.
         
         Args:
-            student_profile: StudentProfile containing student information and course path
+            user_id: User ID for database operations
             thread_id: Unique identifier for the conversation thread
+            student_profile: Optional StudentProfile (if None, loads from database)
+            course_path: Optional CoursePath (if None, loads from database)
         """
         self.thread_id = thread_id
+        self.user_id = user_id
+        
+        # Initialize database service
+        db_conn = get_db_connection()
+        self.student_db_service = StudentDatabaseService(db_conn)
+        
+        # Load or use provided data
+        if student_profile is None:
+            # Load from database
+            self.student_profile = asyncio.run(self.student_db_service.load_student_profile(user_id))
+            if self.student_profile is None:
+                raise ValueError(f"No student profile found for user {user_id}")
+        else:
+            self.student_profile = student_profile
+            
+        if course_path is None:
+            # Load from database
+            self.course_path = asyncio.run(self.student_db_service.load_course_path(user_id))
+        else:
+            self.course_path = course_path
         
         # Initialize components
         self.course_search_tool = CourseSearchTool()
         
-        # Set up coursepath agent only if course_path exists
-        if student_profile.course_path is not None:
+        # Set up coursepath agent
+        if self.course_path is not None:
             coursepath_tools = CoursePathTools(
-                course_path=student_profile.course_path, 
-                major=student_profile.major
+                course_path=self.course_path, 
+                major=self.student_profile.major
             )
         else:
             coursepath_tools = None
@@ -319,9 +388,11 @@ class DreampathAgent:
         self.config = {
             "configurable": {
                 "thread_id": self.thread_id,
+                "user_id": self.user_id,
                 "coursepath_agent": self.coursepath_agent,
-                "student_profile": student_profile,
-                "course_search_tool": self.course_search_tool
+                "student_profile": self.student_profile,
+                "course_search_tool": self.course_search_tool,
+                "student_db_service": self.student_db_service
             }
         }
         
@@ -417,9 +488,12 @@ class DreampathAgent:
                     {"role": "assistant", "content": interrupt_msg},
                     {"role": "user", "content": user_response}
                 ]
+
+                # Convert messages to LangChain format
+                messages_to_add_lc = [dreampath_to_langchain(msg) for msg in messages_to_add]
                 
                 state_dict = self.app.invoke(
-                    Command(resume=user_response, update={"turn_messages": state_dict.get("turn_messages", []) + messages_to_add, "pending_pre_interrupt": pending_pre_interrupt}), 
+                    Command(resume=user_response, update={"turn_messages": state_dict.get("turn_messages", []) + messages_to_add, "pending_pre_interrupt": pending_pre_interrupt, "messages": messages_to_add_lc}), 
                     self.config
                 )
             
@@ -461,7 +535,7 @@ class DreampathAgent:
     
     def get_course_path_visualization(self) -> str:
         """Get a visualization of the current course path."""
-        current_path = self.config["configurable"]["student_profile"].course_path
+        current_path = self.config["configurable"]["coursepath_agent"].tools.cp
         if current_path is None:
             return "No course path created yet."
         return f"CoursePath (@ term={current_path.curr_window_start})\n{current_path.visualize_by_term_idx()}"
@@ -473,6 +547,21 @@ class DreampathAgent:
 # ------------------------------------------------------------
 # MAIN GRAPH (for backwards compatibility)
 # ------------------------------------------------------------
+
+from langchain_core.messages import BaseMessage
+from typing import List
+from datetime import datetime
+
+def clear_langchain_messages():
+    file = "current_LC_messages.txt"
+    with open(file, "w") as f:
+        f.write("Cleared at: " + datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+
+def log_langchain_messages(messages: List[BaseMessage]):
+    file = "current_LC_messages.txt"
+    with open(file, "w") as f:
+        for msg in messages:
+            f.write(f"💬 {msg.type}: {msg.content}\n")
 
 if __name__ == "__main__":
     
@@ -496,12 +585,33 @@ if __name__ == "__main__":
         college_interests="I want to focus on international relations and current events (specifically courses on Israel / Palestine, diplomacy); I want to dabble in AI and data science for social sciences",
         post_grad_goals="work hands on as a data scientists and engineer at a tech company or startup, be knowledgeable about data security/privacy, etc.",
         career_goals="Become a CDO or hands on CEO developing a b2b saas platform for data aggregation across different BI tools.",
-        # course_path=test_course_path,
     )
     
+    # Create a user in the database first
+    async def create_test_user():
+        db_conn = get_db_connection()
+        student_service = StudentDatabaseService(db_conn)
+        
+        # Create user
+        await student_service.db.execute_command(
+            "INSERT INTO users (email, name) VALUES ($1, $2) ON CONFLICT (email) DO NOTHING",
+            "kabir@test.com", "Kabir Moghe"
+        )
+        
+        # Get the user ID
+        user_result = await student_service.db.execute_one(
+            "SELECT id FROM users WHERE email = $1", "kabir@test.com"
+        )
+        return user_result['id']
+    
+    # Create user and get user_id
+    user_id = asyncio.run(create_test_user())
+    print(f"Created user with ID: {user_id}")
+    
     # Create the agent
-    agent = DreampathAgent(student_profile=student_profile, thread_id="1")
+    agent = DreampathAgent(student_profile=student_profile, thread_id="1", user_id=user_id)
     clear_log_file()
+    clear_langchain_messages()
 
     # Initialize course path
     init_response = agent.init_course_path()
@@ -510,6 +620,8 @@ if __name__ == "__main__":
     print("DreampathAgent ready. Type 'quit' to exit.\n")
 
     while True:
+        log_langchain_messages(agent.state.messages)
+
         # Show current course path
         print(f"----------\n{agent.get_course_path_visualization()}\n----------")
         print(f"Student profile: {agent.get_student_profile_summary()}")

@@ -1,152 +1,144 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Container, Row, Col, Card, Form, Button, Alert } from 'react-bootstrap';
-import { supabase } from '../../lib/supabase';
+import React, { useState } from 'react';
+import { Container, Form, Button, Card, Alert } from 'react-bootstrap';
+import { useNavigate, Link } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+/**
+ * Login - User authentication component
+ *
+ * Uses AuthContext for localStorage-based authentication
+ */
 function Login() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
-  const [error, setError] = useState(null);
+  const { signIn } = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        navigate('/dashboard');
-      }
-    };
-    checkAuth();
-  }, [navigate]);
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
-
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    setError('');
     setLoading(true);
-    setError(null);
 
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email: formData.email,
-        password: formData.password
-      });
+      const { user, error } = await signIn(email, password);
 
-      if (error) throw error;
-
-      // After successful login:
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        // Check if minimal profile exists
-        const { data: existingProfile, error } = await supabase
-          .from('profiles')
-          .select('*')
-          .eq('id', user.id)
-          .single();
-
-        if (!existingProfile) {
-          // Insert minimal profile
-          await supabase.from('profiles').insert([{
-            id: user.id,
-            email: user.email,
-            full_name: user.user_metadata.full_name || ''
-          }]);
-        }
-
-        // Now check for detailed user profile
-        const { data: detailedProfiles, error: detailedProfileError } = await supabase
-          .from('detailed_profiles')
-          .select('*')
-          .eq('user_id', user.id)
-          .order('created_at', { ascending: false })
-          .limit(1);
-
-        if (!detailedProfiles || detailedProfiles.length === 0) {
-          navigate('/create-detailed-profile');
-        } else {
-          navigate('/dashboard');
-        }
+      if (error) {
+        setError(error);
+      } else if (user) {
+        navigate('/dashboard');
       }
-    } catch (error) {
-      setError(error.message);
+    } catch (err) {
+      setError(err.message || 'Failed to sign in');
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <Container className="py-5">
-      <Row className="justify-content-center">
-        <Col md={6} lg={5}>
-          <Card className="shadow-sm">
-            <Card.Body className="p-4 p-md-5">
-              <div className="text-center mb-4">
-                <h1 className="h3 mb-3" style={{ fontFamily: 'Lora, serif' }}>Welcome Back</h1>
-                <p className="text-muted">Sign in to continue your journey</p>
-              </div>
+    <div
+      style={{
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Container>
+        <div className="row justify-content-center">
+          <div className="col-md-6 col-lg-4">
+            <Card
+              style={{
+                border: 'none',
+                borderRadius: 16,
+                boxShadow: '0 10px 40px rgba(0, 0, 0, 0.15)',
+              }}
+            >
+              <Card.Body style={{ padding: '2rem' }}>
+                <div className="text-center mb-4">
+                  <h2
+                    style={{
+                      fontFamily: 'Lora, serif',
+                      fontWeight: 400,
+                      color: '#333',
+                    }}
+                  >
+                    DreamPath
+                  </h2>
+                  <p className="text-muted">Sign in to your account</p>
+                </div>
 
-              {error && (
-                <Alert variant="danger" className="mb-4">
-                  {error}
-                </Alert>
-              )}
+                {error && <Alert variant="danger">{error}</Alert>}
 
-              <Form onSubmit={handleSubmit}>
-                <Form.Group className="mb-3">
-                  <Form.Label>Email</Form.Label>
-                  <Form.Control
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    placeholder="Enter your email"
-                  />
-                </Form.Group>
+                <Form onSubmit={handleLogin}>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      type="email"
+                      placeholder="Enter your email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      style={{
+                        borderRadius: 8,
+                        border: '1px solid #d6cdea',
+                        padding: '10px 14px',
+                      }}
+                    />
+                  </Form.Group>
 
-                <Form.Group className="mb-4">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    required
-                    placeholder="Enter your password"
-                  />
-                </Form.Group>
+                  <Form.Group className="mb-3">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                      type="password"
+                      placeholder="Enter your password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      required
+                      style={{
+                        borderRadius: 8,
+                        border: '1px solid #d6cdea',
+                        padding: '10px 14px',
+                      }}
+                    />
+                  </Form.Group>
 
-                <Button
-                  variant="primary"
-                  type="submit"
-                  className="w-100 mb-3"
-                  disabled={loading}
-                >
-                  {loading ? 'Signing in...' : 'Sign In'}
-                </Button>
+                  <Button
+                    type="submit"
+                    disabled={loading}
+                    style={{
+                      width: '100%',
+                      padding: '12px',
+                      borderRadius: 8,
+                      background: 'linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%)',
+                      border: 'none',
+                      fontWeight: 500,
+                    }}
+                  >
+                    {loading ? 'Signing in...' : 'Sign In'}
+                  </Button>
+                </Form>
 
-                <div className="text-center">
-                  <p className="mb-0">
+                <div className="text-center mt-3">
+                  <p className="text-muted small">
                     Don't have an account?{' '}
-                    <Link to="/signup" className="text-decoration-none">
+                    <Link
+                      to="/signup"
+                      style={{ color: '#8A6BC1', textDecoration: 'none' }}
+                    >
                       Sign up
                     </Link>
                   </p>
                 </div>
-              </Form>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
+              </Card.Body>
+            </Card>
+          </div>
+        </div>
+      </Container>
+    </div>
   );
 }
 

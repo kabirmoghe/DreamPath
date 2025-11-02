@@ -27,8 +27,8 @@ client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
 def build_messages(state: CoursePathAgentState, user_input: str, prompt: str):
     # Include only short episodic summary if needed
     msgs = [{"role": "system", "content": prompt}]
-    if state.summary:
-        msgs.append({"role": "assistant", "content": f"Summary: ...{state.summary[-800:]}"})
+    if state.history:
+        msgs.append({"role": "assistant", "content": f"Summary: ...{state.history[-800:]}"})
 
     # Include last few turns for continuity
     if state.recent_messages:
@@ -37,7 +37,6 @@ def build_messages(state: CoursePathAgentState, user_input: str, prompt: str):
     # Current user input
     msgs.append({"role": "user", "content": user_input})
 
-    # print(f"~~~\nSummary: {state.summary}\n~~~\n")
 
     return msgs
 
@@ -59,8 +58,7 @@ def extract_course_op(state: CoursePathAgentState, user_input: str, op_type: Ext
     # Map op type to op class
     extraction_model = OP_INFO[op_type.type]['extraction_model']
     messages = build_messages(state=state, user_input=user_input, prompt=PARAM_EXTRACTOR_SYS.format(op_type=op_type.type))
-
-    print(f"Messages: {messages}")
+    print(f"| CPAgent Ctx:\n{messages}")
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=messages,
@@ -161,6 +159,7 @@ def handle_user_turn(state: CoursePathAgentState, config: dict, tools: CoursePat
             return CoursePathAgentOutput(
                 status="ask",
                 ui_text=render_confirm_msg(state.pending_op, summarize_diff(state.trial_op_execution.diff)),
+                op_string=str(state.pending_op),
                 diff=state.trial_op_execution.diff,
                 error=None
             )
@@ -176,13 +175,14 @@ def handle_user_turn(state: CoursePathAgentState, config: dict, tools: CoursePat
                 return CoursePathAgentOutput(
                     status="ask",
                     ui_text=render_reschedule_msg(state.pending_op, summarize_diff(state.trial_op_execution.diff)),
+                    op_string=str(state.pending_op),
                     diff=state.trial_op_execution.diff,
                     error=None
                 )
             else:
                 return on_user_confirm(state)
         else:
-            state.summary += f"\nExecution failed for {state.pending_op_type.type}: {state.trial_op_execution.error}"
+            state.history += f"\nExecution failed for {state.pending_op_type.type}: {state.trial_op_execution.error}"
             output = CoursePathAgentOutput(
                 status="error",
                 ui_text=f"Cannot apply {state.pending_op_type.type} | [{state.trial_op_execution.error.get('code','EXEC_FAIL')}]: {state.trial_op_execution.error}",
@@ -192,7 +192,7 @@ def handle_user_turn(state: CoursePathAgentState, config: dict, tools: CoursePat
             clear_op_state(state)
             return output
     else:
-        state.summary += f"\nExecution failed for {state.pending_op_type.type}: {state.trial_op_execution.error}"
+        state.history += f"\nExecution failed for {state.pending_op_type.type}: {state.trial_op_execution.error}"
         output = CoursePathAgentOutput(
             status="error",
             ui_text=f"Error [{state.trial_op_execution.error.get('code','EXEC_FAIL')}]: {state.trial_op_execution.error}",
@@ -208,7 +208,7 @@ def on_user_confirm(state: CoursePathAgentState) -> CoursePathAgentOutput:
     attempt = state.trial_op_execution
     
     # Assume at this point attempt.ok is True because we already checked in handle_user_turn
-    state.summary += f"\nApplied: {op}."
+    state.history += f"\nApplied: {op}."
     clear_op_state(state)
 
     return CoursePathAgentOutput(
@@ -232,9 +232,9 @@ def on_user_cancel(state: CoursePathAgentState, config: dict, tools: CoursePathT
 # MAIN CONTROLLER
 # ------------------------------------------------------------
 class CoursePathAgent:
-    def __init__(self, tools: Optional[CoursePathTools]=None, require_user_confirmation: bool=True):
-        self.state = CoursePathAgentState(thread_id="", plan_id="", plan_version=0, pending_op=None, facts={}, summary="", recent_messages=[])
-        self.config = {}
+    def __init__(self, tools: Optional[CoursePathTools]=None, require_user_confirmation: bool=True, config: Optional[dict]={}):
+        self.state = CoursePathAgentState()
+        self.config = config
         self.tools = tools
         self.require_user_confirmation = require_user_confirmation
 
@@ -249,7 +249,6 @@ class CoursePathAgent:
         return summarize_diff(diff)
 
     def run(self, text: str) -> CoursePathAgentOutput:
-        print(f"Summary: {self.state.summary}")
         print(f"Recent messages: {self.state.recent_messages}")
 
         # Route based on whether we’re waiting for a confirm
@@ -282,7 +281,7 @@ if __name__ == "__main__":
 
     # Build agent
     tools = CoursePathTools(course_path=test_course_path, major=major)
-    agent = CoursePathAgent(tools=tools, require_user_confirmation=False)
+    agent = CoursePathAgent(tools=tools)
 
     # Run agent
     print("CoursePathAgent ready. Type 'quit' to exit.\n")

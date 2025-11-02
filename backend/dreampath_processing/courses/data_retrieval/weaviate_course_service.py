@@ -2,8 +2,8 @@ import weaviate
 import threading
 from typing import Optional, Dict, Any, List
 from weaviate.classes.query import Filter
-import pandas as pd
 import json
+import os
 from dreampath_processing.courses.data_retrieval.college_info_retrieval import DATA_DIR
 
 class WeaviateCourseService:
@@ -25,9 +25,15 @@ class WeaviateCourseService:
                     cls._instance._initialized = False
         return cls._instance
     
-    def __init__(self, http_host="localhost", http_port=8080, http_secure=False, 
-                 grpc_host="localhost", grpc_port=50051, grpc_secure=False):
+    def __init__(self, http_host=None, http_port=None, http_secure=False, 
+                 grpc_host=None, grpc_port=None, grpc_secure=False):
         if not self._initialized:
+            # Use environment variables with fallbacks to your defaults
+            http_host = http_host or os.getenv("WEAVIATE_HTTP_HOST", "localhost")
+            http_port = http_port or int(os.getenv("WEAVIATE_HTTP_PORT", "8080"))
+            grpc_host = grpc_host or os.getenv("WEAVIATE_GRPC_HOST", "localhost")
+            grpc_port = grpc_port or int(os.getenv("WEAVIATE_GRPC_PORT", "50051"))
+            
             self.client = weaviate.connect_to_custom(
                 http_host=http_host,
                 http_port=http_port,
@@ -36,6 +42,7 @@ class WeaviateCourseService:
                 grpc_port=grpc_port,
                 grpc_secure=grpc_secure,
             )
+
             self.course_collection = self.client.collections.get("Course")
             self.major_collection = self.client.collections.get("Major")
             self._initialized = True

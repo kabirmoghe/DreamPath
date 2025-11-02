@@ -1,9 +1,9 @@
 from dataclasses import dataclass, field
-from typing import List, Set, Dict, Tuple, Optional
+from typing import List, Set, Dict, Tuple, Optional, Any
 from .course import Course
 from copy import deepcopy
 from collections import defaultdict
-from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, get_direct_prereqs, rebuild_prereq_graph, find_lingering_courses, PrereqGraph
+from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, get_direct_prereqs, rebuild_prereq_graph, find_lingering_courses, PrereqGraph, construct_course
 from dreampath_processing.courses.scheduling_helpers import (_topo_order,
                                                              compute_asap_for_graph,
                                                              compute_alap_for_graph,
@@ -126,7 +126,6 @@ class CoursePath:
     # ─────────────────────────────────────────────────────────────────────────────
     # VALIDATE COURSE PLAN
     # ─────────────────────────────────────────────────────────────────────────────
-
     @staticmethod
     def _validate_plan(course_path: List[List[str]], course_bank: Dict[str, Course], verbose: bool=False) -> List[Dict]:
         """
@@ -206,11 +205,14 @@ class CoursePath:
                 # else: prereq is satisfied
 
         return violations
+
+    @staticmethod
+    def _format_violations(violations: list[dict[str, Any]]) -> str:
+        return "\n".join([f"- {violation}" for violation in violations])
     
     # ─────────────────────────────────────────────────────────────────────────────
     # REBUILD COURSE PATH
     # ─────────────────────────────────────────────────────────────────────────────
-    
     def rebuild(self, window_start_term: Optional[int] = None, must_have_course_map: Dict[str, Course] = {}, max_terms: int = 12, for_op: bool = False, verbose: int = 2):
         if window_start_term is None:
             window_start_term = self.curr_window_start
@@ -240,7 +242,7 @@ class CoursePath:
             must_have_course_bank[c].must_have_window = c_object.must_have_window
 
             for c_prereq in c_prereq_set:
-                must_have_course_bank[c_prereq] = must_have_course_bank.get(c_prereq, Course(course_code=c_prereq, course_type=must_have_course_bank[c].course_type))
+                must_have_course_bank[c_prereq] = must_have_course_bank.get(c_prereq, construct_course(course_code=c_prereq, hardcoded_type=must_have_course_bank[c].course_type))
                 must_have_course_bank[c_prereq].is_prereq = True
 
                 # To maintain scheduling accuracy for pre-window courses upon merging must-have and prior course banks
@@ -295,6 +297,7 @@ class CoursePath:
         self.lingering_courses = set()
         
         return self
+
     # ─────────────────────────────────────────────────────────────────────────────
     # REMOVE COURSE
     # ────────────────────────────────────────────────────────────────────────────
@@ -354,7 +357,7 @@ class CoursePath:
                 print(f"* Violations for REMOVE course '{course_code_to_remove}' in term {course_to_remove.term_idx}:\n{removal_violations}")
             
             if course_code_to_remove not in self.recommended_courses or self.course_bank[course_code_to_remove].is_prereq:
-                raise Exception(f"\n* Course '{course_code_to_remove}' is a pre-requisite for a recommended course, cannot be removed. [prereq={course_to_remove.is_prereq}]")
+                raise Exception(f"\n* Course '{course_code_to_remove}' is a pre-requisite for a recommended course, cannot be removed.")
             
             # Reschedule if requested
             elif reschedule:
@@ -372,7 +375,10 @@ class CoursePath:
                 # Rebuild course path with must-have courses
                 self.rebuild(window_start_term=self.curr_window_start, for_op=True)
             else:
-                raise Exception(f"Cannot remove course '{course_code_to_remove}' due to scheduling violations, requires rescheduling.")
+                # Add violations to error message line by line
+                error_msg = f"Cannot remove course '{course_code_to_remove}' due to scheduling violations, requires rescheduling. Violations:"
+                error_msg += self._format_violations(removal_violations)
+                raise Exception(error_msg)
 
         # Simple removal successful, update course info
         else:
@@ -464,7 +470,9 @@ class CoursePath:
                 add_as_must_have = {course_to_add.course_code: course_to_add}
                 self.rebuild(window_start_term=self.curr_window_start, must_have_course_map=add_as_must_have, for_op=True)
             else:
-                raise Exception(f"Cannot add course '{course_to_add.course_code}' due to scheduling violations, requires rescheduling.")
+                error_msg = f"Cannot add course '{course_to_add.course_code}' due to scheduling violations, requires rescheduling. Violations:\n"
+                error_msg += self._format_violations(add_violations)
+                raise Exception(error_msg)
             
         # Simple addition successful, update course info
         else: 
@@ -546,7 +554,9 @@ class CoursePath:
                 # Override must-have course map to treat course as new
                 self.rebuild(must_have_course_map={course_to_move.course_code: course_to_move}, window_start_term=self.curr_window_start, for_op=True)
             else:
-                raise Exception(f"Cannot move course '{course_code_to_move}' due to scheduling violations, requires rescheduling.")
+                error_msg = f"Cannot move course '{course_code_to_move}' due to scheduling violations, requires rescheduling. Violations:"
+                error_msg += self._format_violations(move_violations)
+                raise Exception(error_msg)
 
         # Simple move successful, update course info
         else:
@@ -636,7 +646,9 @@ class CoursePath:
                 # Rebuild course path with must-have courses
                 self.rebuild(window_start_term=self.curr_window_start, must_have_course_map={new_course.course_code: new_course}, for_op=True)
             else:
-                raise Exception(f"Cannot replace course '{old_course_code}' with '{new_course.course_code}' due to scheduling violations, requires rescheduling.")
+                error_msg = f"Cannot replace course '{old_course_code}' with '{new_course.course_code}' due to scheduling violations, requires rescheduling. Violations:"
+                error_msg += self._format_violations(replacement_violations)
+                raise Exception(error_msg)
 
         # Simple replacement successful, update course info
         else:
@@ -726,7 +738,9 @@ class CoursePath:
         if swap_violations:
             if verbose:
                 print(f"* Swap violations for courses '{course_code_1}' and '{course_code_2}': {swap_violations}")
-            raise Exception(f"Cannot swap courses '{course_code_1}' [term={course_1.term_idx} -> {course_1_new_term_idx}] and '{course_code_2}' [term={course_2.term_idx} -> {course_2_new_term_idx}] due to scheduling violations.")
+            error_msg = f"Cannot swap courses '{course_code_1}' [term={course_1.term_idx} -> {course_1_new_term_idx}] and '{course_code_2}' [term={course_2.term_idx} -> {course_2_new_term_idx}] due to scheduling violations. Violations:"
+            error_msg += self._format_violations(swap_violations)
+            raise Exception(error_msg)
         
         # Simple swap successful, update course info
         course_1.term_idx = course_1_new_term_idx

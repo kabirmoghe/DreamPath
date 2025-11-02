@@ -1,5 +1,5 @@
 from typing import List, Dict, Any, Optional
-from dreampath_processing.dreampath_agent.types import CourseSearchOutput, CourseSearchResult, CourseSearchParams
+from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchOutput, CourseSearchResult, CourseSearchParams
 from dreampath_processing.courses.data_retrieval.weaviate_course_service import get_weaviate_course_service
 
 class CourseSearchTool:

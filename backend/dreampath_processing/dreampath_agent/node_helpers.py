@@ -1,70 +1,92 @@
-from instructor import from_openai
-from openai import OpenAI
-from dotenv import load_dotenv
 import os
-from typing import Tuple, Dict, List, Union
-from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentOutput
-from dreampath_processing.dreampath_agent.types import (
-    OrchestratorDecision, DreamPathAgentState, CoursePathOperations, CourseSearchQueries, CourseSearchResult, CourseSearchOutput, ModifiedStudentProfile, RebuildCoursePathOutput
-)
-from dreampath_processing.dreampath_agent.chat_prompts import (
-    ORCHESTRATOR_DECISION_SYS, BUILD_OPERATIONS_SYS, CRAFT_FINAL_REPLY_SYS, COURSE_SEARCH_SYS, MODIFY_PROFILE_SYS, DETERMINE_USER_CONFIRMATION_SYS
-)
-from dreampath_processing.dreampath_agent.context_building import extract_structured_output_from_context
+
+from dotenv import load_dotenv
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import construct_course
-from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
-from dreampath_processing.courses.coursepath_agent.agent_v2 import CoursePathTools
-from dreampath_processing.courses.coursepath_agent.agent_v2 import CoursePathAgent
+from dreampath_processing.courses.coursepath_agent.agent_v2 import CoursePathAgent, CoursePathTools
+from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentOutput
+from dreampath_processing.courses.schedule_modules.course import COMPLEMENTARY, MAJOR
+from dreampath_processing.dreampath_agent.chat_prompts import (
+    BUILD_OPERATIONS_SYS,
+    COURSE_SEARCH_SYS,
+    CRAFT_FINAL_REPLY_SYS,
+    MODIFY_PROFILE_SYS,
+    ORCHESTRATOR_DECISION_SYS,
+)
+from dreampath_processing.dreampath_agent.context_building import (
+    extract_structured_output_from_context,
+)
 from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
+from dreampath_processing.dreampath_agent.dreampath_types import (
+    CoursePathOperations,
+    CourseSearchOutput,
+    CourseSearchQueries,
+    CourseSearchResult,
+    DreamPathAgentState,
+    ModifiedStudentProfile,
+    OrchestratorDecision,
+    RebuildCoursePathOutput,
+)
 from dreampath_processing.modules.student_profile import StudentProfile
+from instructor import from_openai
+from openai import OpenAI
 
 load_dotenv()
 
 # -----------------------------------------------------
 # ORCHESTRATOR NODE
 # -----------------------------------------------------
-def decide_next_route(state: DreamPathAgentState, config) -> Tuple[OrchestratorDecision, dict]:
-    student_profile = config["configurable"]["student_profile"]
+async def decide_next_route(state: DreamPathAgentState, config) -> tuple[OrchestratorDecision, dict]:
+    # Query fresh profile from DB
+    student_profile = await config["configurable"]["student_db_service"].load_student_profile(
+        config["configurable"]["user_id"]
+    )
     student_name = student_profile.name
-    return extract_structured_output_from_context(state=state, config=config, system_prompt=ORCHESTRATOR_DECISION_SYS.format(student_name=student_name), response_model=OrchestratorDecision, small_context=False, model="o4-mini", task_prompt="What should happen next?", verbose=True)
+    return await extract_structured_output_from_context(state=state, config=config, system_prompt=ORCHESTRATOR_DECISION_SYS.format(student_name=student_name), response_model=OrchestratorDecision, small_context=False, model="o4-mini", task_prompt="What should happen next?", verbose=True)
 
 # -----------------------------------------------------
 # COURSE SEARCH NODE
 # -----------------------------------------------------
-def determine_course_search_queries(state: DreamPathAgentState, config) -> Tuple[CourseSearchQueries, dict]:
-    student_profile = config["configurable"]["student_profile"]
+async def determine_course_search_queries(state: DreamPathAgentState, config) -> tuple[CourseSearchQueries, dict]:
+    # Query fresh profile from DB
+    student_profile = await config["configurable"]["student_db_service"].load_student_profile(
+        config["configurable"]["user_id"]
+    )
     student_name = student_profile.name
-    return extract_structured_output_from_context(state=state, config=config, system_prompt=COURSE_SEARCH_SYS.format(student_name=student_name), response_model=CourseSearchQueries, small_context=True, model="gpt-4o")
+    return await extract_structured_output_from_context(state=state, config=config, system_prompt=COURSE_SEARCH_SYS.format(student_name=student_name), response_model=CourseSearchQueries, small_context=True, model="gpt-4o")
 
 # -----------------------------------------------------
 # PLAN BUILDER NODE
 # -----------------------------------------------------
-def build_operations_from_context_and_results(state: DreamPathAgentState, config) -> Tuple[CoursePathOperations, dict]:
-    student_profile = config["configurable"]["student_profile"]
-    current_term = student_profile.course_path.curr_window_start
-    return extract_structured_output_from_context(state=state, config=config, system_prompt=BUILD_OPERATIONS_SYS.format(current_term=current_term), response_model=CoursePathOperations, small_context=True, model="gpt-4o")
+async def build_operations_from_context_and_results(state: DreamPathAgentState, config) -> tuple[CoursePathOperations, dict]:
+    return await extract_structured_output_from_context(state=state, config=config, system_prompt=BUILD_OPERATIONS_SYS, response_model=CoursePathOperations, small_context=True, model="gpt-4o")
 
 # -----------------------------------------------------
 # MODIFY PROFILE NODE
 # -----------------------------------------------------
-def modify_student_profile(state: DreamPathAgentState, config) -> Tuple[ModifiedStudentProfile, dict]:
-    student_profile = config["configurable"]["student_profile"]
+async def modify_student_profile(state: DreamPathAgentState, config) -> tuple[ModifiedStudentProfile, dict]:
+    # Query fresh profile from DB
+    student_profile = await config["configurable"]["student_db_service"].load_student_profile(
+        config["configurable"]["user_id"]
+    )
     student_name = student_profile.name
-    return extract_structured_output_from_context(state=state, config=config, system_prompt=MODIFY_PROFILE_SYS.format(student_name=student_name), response_model=ModifiedStudentProfile, small_context=True, model="gpt-4o", temperature=0.1)
+    return await extract_structured_output_from_context(state=state, config=config, system_prompt=MODIFY_PROFILE_SYS.format(student_name=student_name), response_model=ModifiedStudentProfile, small_context=True, model="gpt-4o", temperature=0.1)
 
 # -----------------------------------------------------
 # FINAL REPLY RENDERER NODE
 # -----------------------------------------------------
-def render_final_reply(state: DreamPathAgentState, config) -> Tuple[str, dict]:
-    student_profile = config["configurable"]["student_profile"]
+async def render_final_reply(state: DreamPathAgentState, config) -> tuple[str, dict]:
+    # Query fresh profile from DB
+    student_profile = await config["configurable"]["student_db_service"].load_student_profile(
+        config["configurable"]["user_id"]
+    )
     student_name = student_profile.name
-    return extract_structured_output_from_context(state=state, config=config, system_prompt=CRAFT_FINAL_REPLY_SYS.format(student_name=student_name), response_model=str, small_context=False, model="gpt-4o", temperature=0.1)
+    return await extract_structured_output_from_context(state=state, config=config, system_prompt=CRAFT_FINAL_REPLY_SYS.format(student_name=student_name), response_model=str, small_context=False, model="gpt-4o", temperature=0.1)
 
 # -----------------------------------------------------
 # DETERMINE USER CONFIRMATION (MINI-HELPER)
 # -----------------------------------------------------
-def determine_user_confirmation(user_response: str) -> Tuple[bool, dict]:
+def determine_user_confirmation(user_response: str) -> tuple[bool, dict]:
 
     client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
 
@@ -107,7 +129,7 @@ def format_course_search_output(output: CourseSearchOutput) -> str:
 # -----------------------------------------------------
 # FORMAT WORKLIST (COURSE PATH MODIFICATION OPERATIONS)
 # -----------------------------------------------------
-def format_worklist(worklist: List[str]) -> str:
+def format_worklist(worklist: list[str]) -> str:
     output_str = "<worklist>\n"
     for op in worklist:
         output_str += "Ops. awaiting execution:\n"
@@ -118,13 +140,16 @@ def format_worklist(worklist: List[str]) -> str:
 # -----------------------------------------------------
 # FORMAT AGGREGATE COURSEPATH AGENT RESULT
 # -----------------------------------------------------
-def format_aggregate_coursepath_agent_result(outcomes: Dict[str, CoursePathAgentOutput], diff: str) -> str:
+def format_aggregate_coursepath_agent_result(outcomes: dict[str, CoursePathAgentOutput], diff: str | None=None) -> str:
     outcomes_str = ""
 
     for op, outcome in outcomes.items():
         outcomes_str += f"<op_result>\n* For op '{op}': {outcome.ui_text}\n</op_result>\n"
 
-    diff_str = f"<aggregate_diff>{diff}\n</aggregate_diff>"
+    if diff:
+        diff_str = f"<aggregate_diff>{diff}\n</aggregate_diff>"
+    else:
+        diff_str = ""
 
     return f"{outcomes_str}{diff_str}"
 
@@ -152,13 +177,13 @@ def format_rebuild_course_path_output(output: RebuildCoursePathOutput) -> str:
 
     # Course search queries by parameter
     if output.course_search_queries_by_parameter:
-        output_str += f"<course_search_by_profile_parameter>\n"
+        output_str += "<course_search_by_profile_parameter>\n"
         for parameter, queries in output.course_search_queries_by_parameter.items():
             output_str += f"<{parameter}>\n"
             for query in queries.queries:
                 output_str += f"<query>{query.query}</query>\n"
             output_str += f"</{parameter}>\n"
-        output_str += f"</course_search_by_profile_parameter>\n"
+        output_str += "</course_search_by_profile_parameter>\n"
 
     # Updated recommended courses
     if output.updated_recommended_courses:
@@ -166,9 +191,9 @@ def format_rebuild_course_path_output(output: RebuildCoursePathOutput) -> str:
 
     # Course path update mode
     if output.course_path_update_mode == "new":
-        output_str += f"<course_path_update_mode>\nNo existing course path found. New course path constructed.\n</course_path_update_mode>\n"
+        output_str += "<course_path_update_mode>\nNo existing course path found. New course path constructed.\n</course_path_update_mode>\n"
     elif output.course_path_update_mode == "update_existing":
-        output_str += f"<course_path_update_mode>\nExisting course path updated.\n</course_path_update_mode>"
+        output_str += "<course_path_update_mode>\nExisting course path updated.\n</course_path_update_mode>"
 
     return output_str
 
