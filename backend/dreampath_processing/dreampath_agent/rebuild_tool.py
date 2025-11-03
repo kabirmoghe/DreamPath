@@ -1,5 +1,7 @@
 import asyncio
 
+from langchain_core.messages import AIMessage
+
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import (
     build_prereq_tree,
@@ -61,9 +63,28 @@ def format_deep_course_search_results(course_search_results: list[CourseSearchRe
 
     return results
 
-async def execute_rebuild_tool(state: DreamPathAgentState, config: dict, parameter_weights: dict[str, float] | None=None, N: int=15) -> RebuildCoursePathOutput:
-    
+async def execute_rebuild_tool(state: DreamPathAgentState, config: dict, parameter_weights: dict[str, float] | None=None, N: int=15, writer=None) -> RebuildCoursePathOutput:
+
     output = {}
+
+    # Helper function to emit status updates
+    def emit_status(reason: str):
+        if writer:
+            status_event = AIMessage(
+                content="",
+                additional_kwargs={
+                    "event_type": "node_status",
+                    "node": "rebuild_course_path",
+                    "status": "node_info",
+                    "next_node": "rebuild_course_path",
+                    "reason": reason
+                }
+            )
+            try:
+                writer(status_event)
+                print(f"🔄 REBUILD: Emitted status - rebuild_course_path: {reason}")
+            except Exception as e:
+                print(f"🔄 REBUILD: Error emitting status: {e}")
 
     # -----------------------------------------------------
     # 1. Modify profile
@@ -72,6 +93,7 @@ async def execute_rebuild_tool(state: DreamPathAgentState, config: dict, paramet
     current_profile = await student_db_service.load_student_profile(config["configurable"]["user_id"])
 
     if not state.init_mode: # not in init mode, so we need to modify the profile to capture shift in user's interests, goals, etc.
+        emit_status("Adjusting your profile")
         print("Modifying student profile...")
         modified_profile, _ = await modify_student_profile(state, config)
 
@@ -105,6 +127,7 @@ async def execute_rebuild_tool(state: DreamPathAgentState, config: dict, paramet
     # -----------------------------------------------------
     # 3. For each parameter, generate 5 course search queries
     # -----------------------------------------------------
+    emit_status("Performing deep course search")
     course_search_queries = {}
     student_name = current_profile.name
 
@@ -151,6 +174,7 @@ async def execute_rebuild_tool(state: DreamPathAgentState, config: dict, paramet
     # -----------------------------------------------------
     # 6. Update recommended courses, must-have courses
     # -----------------------------------------------------
+    emit_status("Adjusting course recommendations")
     print("Updating recommended courses...")
 
     current_course_path = await student_db_service.load_course_path(config["configurable"]["user_id"])
@@ -178,6 +202,7 @@ async def execute_rebuild_tool(state: DreamPathAgentState, config: dict, paramet
 
     # 7. Construct updated course path
     if current_course_path is None:
+        emit_status("Building CoursePath")
         course_bank = {c: construct_course(course_code=c, major=current_profile.major) for c in updated_recommendations.courses}
         new_course_path = build_course_path(updated_recommendations.courses, course_bank)
         # coursepath_agent.tools = CoursePathTools(course_path=new_course_path, major=current_profile.major)
@@ -188,6 +213,7 @@ async def execute_rebuild_tool(state: DreamPathAgentState, config: dict, paramet
         output["course_path_update_mode"] = "new"
         # No need to update config - context building queries DB live
     else:
+        emit_status("Rebuilding CoursePath")
         # Update recommended courses & must-have courses
         current_course_path.recommended_courses = updated_recommendations.courses
 

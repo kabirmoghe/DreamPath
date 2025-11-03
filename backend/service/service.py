@@ -25,7 +25,6 @@ from agents import DEFAULT_AGENT, AgentGraph, get_agent, get_all_agent_info, loa
 from core import settings
 from memory import initialize_database, initialize_store
 from dreampath_processing.database.student_service import StudentDatabaseService
-from dreampath_processing.courses.coursepath_agent.agent_v2 import CoursePathAgent, CoursePathTools
 from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
 from schema import (

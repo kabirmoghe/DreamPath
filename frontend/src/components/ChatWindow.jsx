@@ -594,7 +594,7 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
 
           {/* Node Status Indicator */}
           {nodeStatus && (
-            nodeStatus.status === 'running' ? (
+            nodeStatus.status === 'thinking' ? (
               // Thinking status - with bubble
               <div className="message message-status">
                 <div className="message-content">
@@ -608,11 +608,11 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
                 </div>
               </div>
             ) : (
-              // Complete status - keep bubble
+              // Node info status - keep bubble
               <div className="message message-status">
                 <div className="message-content">
                   <div className="message-text" style={{ fontFamily: 'Lora, serif', color: '#666' }}>
-                    {nodeStatus.status === 'complete' && nodeStatus.next_node && (
+                    {nodeStatus.status === 'node_info' && nodeStatus.next_node && (
                       <div style={{ fontSize: '14px', opacity: 0.8 }}>
                         <div className="status-with-ellipses" style={{ fontWeight: 'bold' }}>
                           {routeMessages[nodeStatus.next_node] || nodeStatus.next_node}

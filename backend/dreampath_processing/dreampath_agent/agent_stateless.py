@@ -45,7 +45,7 @@ async def orchestrator_node(state: DreamPathAgentState, config, *, writer=None) 
         additional_kwargs={
             "event_type": "node_status",
             "node": "orchestrator",
-            "status": "running",
+            "status": "thinking",
             "message": "Thinking"
         }
     )
@@ -86,7 +86,7 @@ async def orchestrator_node(state: DreamPathAgentState, config, *, writer=None) 
         additional_kwargs={
             "event_type": "node_status",
             "node": "orchestrator",
-            "status": "complete",
+            "status": "node_info",
             "next_node": decision.route,
             "reason": decision.reason
         }
@@ -344,10 +344,10 @@ async def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAg
     else:
         return {}
 
-async def rebuild_course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
+async def rebuild_course_path_node(state: DreamPathAgentState, config, *, writer=None) -> DreamPathAgentState:
     # Workhorse func to rebuild the course path
-    output = await execute_rebuild_tool(state, config)
-    
+    output = await execute_rebuild_tool(state, config, writer=writer)
+
     # If we created a new course path, 'execute_rebuild_tool' will have created a new coursepath_agent with tools
     tool_result = {
         "role": "assistant",
