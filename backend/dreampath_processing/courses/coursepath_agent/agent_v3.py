@@ -45,7 +45,7 @@ class CoursePathAPIService:
         self.agent_service = CoursePathAgentService(conn)
         self.student_db_service = StudentDatabaseService(conn)
 
-    async def run_stateless(self, user_id: int, message: str, major: Optional[str]="Computer Science", require_user_confirmation: bool=True) -> CoursePathAgentOutput:
+    async def run_stateless(self, user_id: str, message: str, major: Optional[str]="Computer Science", require_user_confirmation: bool=True) -> CoursePathAgentOutput:
         # Fresh stateless agent instance 
         course_path = await self.student_db_service.load_course_path(user_id)
         pending_course_path = await self.student_db_service.load_course_path(user_id, pending_approval=True)

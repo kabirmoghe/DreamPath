@@ -4,9 +4,12 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider } from './contexts/AuthContext';
 import LandingPage from './components/LandingPage';
 import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
+import Onboarding from './components/Onboarding';
 import Dashboard from './components/Dashboard';
 import Courses from './components/Courses';
 import ProtectedRoute from './components/ProtectedRoute';
+import OverlayTest from './components/OverlayTest';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -24,9 +27,10 @@ const queryClient = new QueryClient({
  * App - Main application structure
  *
  * Features:
- * - Uses AuthProvider for localStorage-based authentication
- * - Includes Dashboard, Login, Courses components
+ * - Uses AuthProvider with Supabase authentication (JWT + email confirmation)
+ * - React Query for data fetching and caching
  * - Protected routes for authenticated pages
+ * - Routes: / → /signup → /login → /onboarding → /dashboard → /courses
  */
 function App() {
   return (
@@ -37,6 +41,15 @@ function App() {
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route
+                path="/onboarding"
+                element={
+                  <ProtectedRoute>
+                    <Onboarding />
+                  </ProtectedRoute>
+                }
+              />
               <Route
                 path="/dashboard"
                 element={
@@ -53,6 +66,7 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path="/overlay-test" element={<OverlayTest />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>

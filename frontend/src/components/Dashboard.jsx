@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Form, Toast, ToastContainer } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '../contexts/AuthContext';
@@ -60,6 +60,7 @@ function Dashboard() {
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [typedText, setTypedText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
+  const [showWelcome, setShowWelcome] = useState(false);
 
   // Get first name from profile (from DB) instead of AuthContext
   const fullName = profile?.name || '';
@@ -71,6 +72,15 @@ function Dashboard() {
       return;
     }
   }, [user, navigate]);
+
+  // Redirect to onboarding if profile doesn't exist (incomplete onboarding)
+  useEffect(() => {
+    if (!profileLoading && !profileError && profile === null) {
+      // Profile doesn't exist - user needs to complete onboarding
+      console.log('No profile found, redirecting to onboarding');
+      navigate('/onboarding');
+    }
+  }, [profile, profileLoading, profileError, navigate]);
 
   // Sync editProfile when profile changes (including after agent updates)
   // Map backend fields to frontend field names
@@ -85,6 +95,20 @@ function Dashboard() {
       }
     }
   }, [profile, isEditing]);
+
+  // Welcome flow for first-time users (after init)
+  useEffect(() => {
+    if (!user?.id || !coursePathData) return;
+
+    const hasSeenWelcome = localStorage.getItem(`welcome_shown_${user.id}`);
+    if (!hasSeenWelcome) {
+      setShowWelcome(true);
+      localStorage.setItem(`welcome_shown_${user.id}`, 'true');
+
+      // Auto-hide after 8 seconds
+      setTimeout(() => setShowWelcome(false), 8000);
+    }
+  }, [user?.id, coursePathData]);
 
   // Typing animation effect
   useEffect(() => {
@@ -731,6 +755,24 @@ function Dashboard() {
         </Row>
         </Container>
       </div>
+
+      {/* Welcome Toast for first-time users */}
+      <ToastContainer position="top-end" className="p-3" style={{ zIndex: 10000 }}>
+        <Toast
+          show={showWelcome}
+          onClose={() => setShowWelcome(false)}
+          bg="success"
+          delay={8000}
+          autohide
+        >
+          <Toast.Header>
+            <strong className="me-auto">🎉 Welcome to DreamPath!</strong>
+          </Toast.Header>
+          <Toast.Body style={{ color: 'white' }}>
+            Your personalized path has been built! Explore your courses and chat with Compass to make changes.
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
 
       {/* Chat Window */}
       <ChatWindow

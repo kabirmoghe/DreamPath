@@ -99,15 +99,9 @@ async def get_course_path(
         )
 
     try:
-        # Convert user_id to int for database query
-        user_id_int = int(user_id) if user_id.isdigit() else None
-        if user_id_int is None:
-            # Try as UUID (for Supabase users)
-            # For now, use user_id as string
-            user_id_int = user_id
-
+        # user_id is now a UUID string from Supabase
         # Load course path from database
-        course_path = await student_db_service.load_course_path(user_id_int)
+        course_path = await student_db_service.load_course_path(user_id)
 
         if not course_path:
             raise HTTPException(
@@ -116,7 +110,7 @@ async def get_course_path(
             )
 
         # Get student profile for major
-        student_profile = await student_db_service.load_student_profile(user_id_int)
+        student_profile = await student_db_service.load_student_profile(user_id)
         major = student_profile.major if student_profile else "Unknown"
 
         # Convert course_bank (Dict[str, Course]) to API format
@@ -166,10 +160,8 @@ async def get_course_path_visualization(
         )
 
     try:
-        # Convert user_id
-        user_id_int = int(user_id) if user_id.isdigit() else user_id
-
-        course_path = await student_db_service.load_course_path(user_id_int)
+        # user_id is now a UUID string from Supabase
+        course_path = await student_db_service.load_course_path(user_id)
 
         if not course_path:
             raise HTTPException(
@@ -178,7 +170,7 @@ async def get_course_path_visualization(
             )
 
         # Get student profile for major
-        student_profile = await student_db_service.load_student_profile(user_id_int)
+        student_profile = await student_db_service.load_student_profile(user_id)
         major = student_profile.major if student_profile else "Unknown"
 
         # Use the built-in visualization method

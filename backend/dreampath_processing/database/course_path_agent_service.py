@@ -15,7 +15,7 @@ class CoursePathAgentService:
     def __init__(self, db_connection: DatabaseConnection):
         self.db = db_connection
 
-    async def save_agent_state(self, user_id: int, agent_state: CoursePathAgentState) -> None:
+    async def save_agent_state(self, user_id: str, agent_state: CoursePathAgentState) -> None:
         """Save or update agent state for a user. Only maintains one state row per user."""
         state_data = serialize_course_path_agent_state(agent_state)
         
@@ -47,7 +47,7 @@ class CoursePathAgentService:
             json.dumps(state_data["recent_messages"])
         )
     
-    async def load_agent_state(self, user_id: int) -> Optional[CoursePathAgentState]:
+    async def load_agent_state(self, user_id: str) -> Optional[CoursePathAgentState]:
         """Get agent state for a user."""
         row = await self.db.execute_one(
             """
@@ -75,7 +75,7 @@ class CoursePathAgentService:
         
         return deserialize_course_path_agent_state(data)
     
-    async def delete_agent_state(self, user_id: int) -> None:
+    async def delete_agent_state(self, user_id: str) -> None:
         """Delete agent state for a user."""
         await self.db.execute_command(
             """
@@ -85,7 +85,7 @@ class CoursePathAgentService:
             user_id
         )
     
-    async def agent_state_exists(self, user_id: int) -> bool:
+    async def agent_state_exists(self, user_id: str) -> bool:
         """Check if agent state exists for a user."""
         row = await self.db.execute_one(
             """

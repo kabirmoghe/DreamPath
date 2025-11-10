@@ -13,6 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, StreamingResponse
 from fastapi.routing import APIRoute
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from pydantic import BaseModel
 from langchain_core._api import LangChainBetaWarning
 from langchain_core.messages import AIMessage, AIMessageChunk, AnyMessage, HumanMessage, ToolMessage
 from langchain_core.runnables import RunnableConfig
@@ -210,15 +211,14 @@ async def _initialize_dreampath_config(
 
     # Update config with ONLY infrastructure
     print(f"[DEBUG] Updating config with infrastructure...")
-    # Convert user_id to int for DreamPath database queries
-    user_id_int = int(user_id)
+    # Use user_id as-is (UUID string from Supabase)
     config["configurable"].update({
-        "user_id": user_id_int,  # ← Store as integer for database queries
+        "user_id": user_id,  # ← Store as UUID string for database queries
         "course_search_tool": course_search_tool,
         "conn": conn,
         "student_db_service": student_db_service
     })
-    print(f"[DEBUG] Config updated successfully with user_id={user_id_int}")
+    print(f"[DEBUG] Config updated successfully with user_id={user_id}")
 
 
 async def _handle_input(user_input: UserInput, agent: AgentGraph) -> tuple[dict[str, Any], UUID]:
@@ -335,9 +335,15 @@ async def _handle_input(user_input: UserInput, agent: AgentGraph) -> tuple[dict[
             # Create Command with resume and update
             input = Command(resume=user_input.message, update=update_dict if update_dict else None)
         else:
+            is_init = getattr(user_input, 'init_mode', False)
+            human_msg = HumanMessage(
+                content=user_input.message,
+                additional_kwargs={"is_init_message": True} if is_init else {}
+            )
             input = {
                 "current_user_msg": user_input.message,
-                "messages": [HumanMessage(content=user_input.message)]
+                "init_mode": is_init,
+                "messages": [human_msg]
             }
     else:
         if interrupted_tasks:
@@ -425,10 +431,13 @@ async def message_generator(
 
     try:
         # Process streamed events from the graph and yield messages over the SSE stream.
+        import time
+        service_start = time.time()
+        token_receive_count = 0
+
         async for stream_event in agent.astream(
             **kwargs, stream_mode=["updates", "messages", "custom"], subgraphs=True
         ):
-            print(f"🔥 SERVICE: Received stream_event from astream: {stream_event[:2] if isinstance(stream_event, tuple) else stream_event}")
             if not isinstance(stream_event, tuple):
                 continue
             # Handle different stream event structures based on subgraphs
@@ -438,6 +447,14 @@ async def message_generator(
             else:
                 # Without subgraphs: (stream_mode, event)
                 stream_mode, event = stream_event
+
+            # Track when custom events arrive
+            if stream_mode == "custom":
+                token_receive_count += 1
+                elapsed = time.time() - service_start
+                if token_receive_count == 1:
+                    print(f"🟢 SERVICE: First custom event received at t={elapsed:.3f}s")
+                print(f"🟢 SERVICE: Custom event #{token_receive_count} at t={elapsed:.3f}s, type: {type(event).__name__}")
             new_messages = []
             if stream_mode == "updates":
                 for node, updates in event.items():
@@ -492,6 +509,14 @@ async def message_generator(
                     new_messages.extend(update_messages)
 
             if stream_mode == "custom":
+                # Handle token streaming from custom events
+                if isinstance(event, AIMessageChunk) and user_input.stream_tokens:
+                    content = remove_tool_calls(event.content)
+                    if content:
+                        token_content = convert_message_content_to_string(content)
+                        print(f"🟢 SERVICE: Yielding token from custom stream: {repr(token_content)}")
+                        yield f"data: {json.dumps({'type': 'token', 'content': token_content})}\n\n"
+                    continue  # Skip normal message processing for tokens
                 new_messages = [event]
 
             # LangGraph streaming may emit tuples: (field_name, field_value)
@@ -544,7 +569,8 @@ async def message_generator(
                     # Empty content in the context of OpenAI usually means
                     # that the model is asking for a tool to be invoked.
                     # So we only print non-empty content.
-                    yield f"data: {json.dumps({'type': 'token', 'content': convert_message_content_to_string(content)})}\n\n"
+                    token_content = convert_message_content_to_string(content)
+                    yield f"data: {json.dumps({'type': 'token', 'content': token_content})}\n\n"
     except Exception as e:
         logger.error(f"Error in message generator: {e}")
         yield f"data: {json.dumps({'type': 'error', 'content': 'Internal server error'})}\n\n"
@@ -599,6 +625,89 @@ async def stream(user_input: StreamInput, agent_id: str = DEFAULT_AGENT) -> Stre
     )
 
 
+class InitRequest(BaseModel):
+    """Request body for initializing a course path."""
+    user_id: str
+
+
+@router.post("/init", response_class=StreamingResponse, responses=_sse_response_example())
+async def initialize_course_path(request: InitRequest) -> StreamingResponse:
+    """
+    Initialize course path for a new user.
+
+    Validates that:
+    - User profile exists
+    - Course path doesn't already exist
+
+    Then streams the init process using existing infrastructure.
+    """
+    global student_db_service
+    user_id = request.user_id
+
+    if student_db_service is None:
+        raise HTTPException(
+            status_code=500,
+            detail="Student database service not initialized"
+        )
+
+    # Validate profile exists
+    try:
+        # user_id is now a UUID string from Supabase
+        profile = await student_db_service.load_student_profile(user_id)
+        if not profile:
+            raise HTTPException(
+                status_code=400,
+                detail="Profile must exist before initialization"
+            )
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Invalid user or profile: {str(e)}"
+        )
+
+    # Validate coursepath doesn't exist (prevent double-init)
+    try:
+        coursepath = await student_db_service.load_course_path(user_id)
+        if coursepath:
+            raise HTTPException(
+                status_code=400,
+                detail="User already initialized"
+            )
+    except Exception as e:
+        # If error is "not found", that's fine - means no coursepath exists yet
+        pass
+
+    # Create thread for init
+    thread_id = str(uuid4())
+
+    # Hardcode init message (same as old init_course_path method)
+    init_message = "Student completed their profile for the first time. Please build a course path for them."
+
+    # Create StreamInput with init_mode flag
+    user_input = StreamInput(
+        message=init_message,
+        user_id=user_id,
+        thread_id=thread_id,
+        stream_tokens=False,  # Don't stream tokens during init
+        init_mode=True  # Enable init mode
+    )
+
+    # Wrap message_generator to include thread_id at the end
+    async def init_generator():
+        async for chunk in message_generator(user_input, "dreampath-agent"):
+            if chunk == "data: [DONE]\n\n":
+                # Send thread_id before [DONE]
+                yield f"data: {json.dumps({'type': 'thread_id', 'content': thread_id})}\n\n"
+            yield chunk
+
+    return StreamingResponse(
+        init_generator(),
+        media_type="text/event-stream"
+    )
+
+
 @router.post("/feedback")
 async def feedback(feedback: Feedback) -> FeedbackResponse:
     """
@@ -637,6 +746,10 @@ async def history(input: ChatHistoryInput) -> ChatHistory:
         for msg in messages:
             # Skip ToolMessages (internal routing, worklist, plan_builder results)
             if isinstance(msg, ToolMessage):
+                continue
+
+            # Skip init messages (hardcoded system prompt for initialization)
+            if hasattr(msg, 'additional_kwargs') and msg.additional_kwargs.get('is_init_message'):
                 continue
 
             # Skip node_status messages (transient routing decisions)
@@ -680,7 +793,9 @@ async def health_check():
 # Include additional routers
 from service.coursepath_routes import router as coursepath_router
 from service.profile_routes import router as profile_router
+from service.majors_routes import router as majors_router
 
 app.include_router(coursepath_router)
 app.include_router(profile_router)
+app.include_router(majors_router)
 app.include_router(router)

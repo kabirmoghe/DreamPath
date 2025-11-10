@@ -61,16 +61,6 @@ function Courses() {
     navigate('/login');
   };
 
-  // Helper: Format parameter names
-  function formatParameterName(parameter) {
-    switch(parameter) {
-      case 'college_interests': return 'College Interests';
-      case 'post_grad_goal': return 'Post-Graduation Goal';
-      case 'long_term_goal': return 'Long-Term Aspirations';
-      default: return parameter.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-    }
-  }
-
   // Get course details from course_bank
   const getCourseDetails = (courseCode) => {
     if (!coursePathData || !coursePathData.course_bank) return null;
@@ -200,7 +190,12 @@ function Courses() {
   function renderDetailsPanel() {
     const courseDetails = expandedCourse ? getCourseDetails(expandedCourse) : null;
     const isPrerequisite = courseDetails?.is_prereq || false;
-    const showPrereqMessage = isPrerequisite && activeTab === 'coursePath';
+
+    // Check if course is in recommended_courses
+    const isRecommended = coursePathData?.recommended_courses?.includes(expandedCourse);
+
+    // Only show prereq message if it's a prerequisite AND not a recommended course
+    const showPrereqMessage = isPrerequisite && activeTab === 'coursePath' && !isRecommended;
 
     return (
       <>
@@ -534,6 +529,11 @@ function Courses() {
         }
 
         .course-path-card {
+          border-radius: 8px;
+          transition: all 0.2s;
+        }
+
+        .course-path-card-old {
           border-radius: 8px;
           border: 2px solid #e0e0e0;
           transition: all 0.2s;

@@ -171,6 +171,9 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
       // Stream the response
       let assistantMessage = '';
       let isFirstChunk = true;
+      let receivedTokens = false; // Track if we're receiving token stream
+      let streamStartTime = null;
+      let tokenCount = 0;
 
       for await (const chunk of apiClient.stream({
         message: userMessage,
@@ -181,7 +184,19 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
 
         if (typeof chunk === 'string') {
           // Token streaming
+          tokenCount++;
           assistantMessage += chunk;
+          receivedTokens = true;
+
+          if (!streamStartTime) {
+            streamStartTime = Date.now();
+            console.log('🔵 FRONTEND: Token streaming started');
+          }
+
+          // ALWAYS clear node status when receiving tokens
+          flushSync(() => {
+            setNodeStatus(null);
+          });
 
           // Use flushSync to prevent React from batching updates
           // This ensures tokens appear immediately as they stream in
@@ -203,16 +218,25 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
         } else if (typeof chunk === 'object') {
           // Check if this is a node status event
           if (chunk.custom_data && chunk.custom_data.event_type === 'node_status') {
-            // Handle node status updates
-            flushSync(() => {
-              setNodeStatus(chunk.custom_data);
-            });
+            // Don't show node status if we're already receiving token stream
+            if (!receivedTokens) {
+              flushSync(() => {
+                setNodeStatus(chunk.custom_data);
+              });
+            }
           } else if (chunk.type === 'ai') {
             // Only process AI messages that have meaningful content or structured data
             const hasContent = chunk.content && chunk.content.trim().length > 0;
             const hasStructuredData = chunk.custom_data && chunk.custom_data.event_type;
 
             if (hasContent || hasStructuredData) {
+              // Skip complete message if we already received tokens
+              // (the complete message would overwrite the accumulated tokens)
+              if (receivedTokens && hasContent && !hasStructuredData) {
+                console.log('🔵 FRONTEND: Skipping complete message (tokens already streamed)');
+                continue;
+              }
+
               // Clear node status when actual content arrives
               flushSync(() => {
                 setNodeStatus(null);
@@ -234,6 +258,11 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
             }
           }
         }
+      }
+
+      if (streamStartTime) {
+        const elapsed = Date.now() - streamStartTime;
+        console.log(`🔵 FRONTEND: Token streaming ended (${tokenCount} tokens in ${elapsed}ms)`);
       }
 
       // Stream completed successfully - invalidate queries to refetch
@@ -599,10 +628,8 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
               <div className="message message-status">
                 <div className="message-content">
                   <div className="message-text" style={{ fontFamily: 'Lora, serif', color: '#666' }}>
-                    <div style={{ fontSize: '14px', opacity: 0.8 }}>
-                      <div style={{ fontWeight: 'bold' }}>
-                        <span className="thinking-text">{nodeStatus.message || 'Thinking'}</span>
-                      </div>
+                    <div style={{ opacity: 0.8 }}>
+                      <span className="thinking-text">{nodeStatus.message || 'Thinking'}</span>
                     </div>
                   </div>
                 </div>

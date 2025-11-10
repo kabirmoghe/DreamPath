@@ -4,12 +4,36 @@
  * Replaces Supabase with direct PostgreSQL access via FastAPI backend
  */
 
+import { createClient } from '@supabase/supabase-js';
+
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
+// Initialize Supabase client for getting auth tokens
+const supabase = createClient(
+  import.meta.env.VITE_SUPABASE_URL,
+  import.meta.env.VITE_SUPABASE_ANON_KEY
+);
 
 class APIClient {
   constructor(baseUrl = API_BASE_URL) {
     this.baseUrl = baseUrl;
     this.agent = 'dreampath-agent';
+  }
+
+  /**
+   * Get authorization headers with Supabase JWT token
+   */
+  async getAuthHeaders() {
+    const { data: { session } } = await supabase.auth.getSession();
+    const headers = {
+      'Content-Type': 'application/json',
+    };
+
+    if (session?.access_token) {
+      headers['Authorization'] = `Bearer ${session.access_token}`;
+    }
+
+    return headers;
   }
 
   /**
@@ -54,6 +78,7 @@ class APIClient {
    * Returns an async generator that yields messages
    */
   async* stream({ message, userId, threadId = null, model = null, streamTokens = true }) {
+    const headers = await this.getAuthHeaders();
     const payload = {
       message,
       user_id: userId,
@@ -64,9 +89,7 @@ class APIClient {
 
     const response = await fetch(`${this.baseUrl}/${this.agent}/stream`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers,
       body: JSON.stringify(payload),
     });
 
@@ -77,11 +100,21 @@ class APIClient {
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
     let buffer = '';
+    let tokenCount = 0;
+    const streamStart = Date.now();
+
+    console.log('🌐 API: Stream started, waiting for data...');
 
     while (true) {
       const { done, value } = await reader.read();
 
-      if (done) break;
+      if (done) {
+        console.log(`🌐 API: Stream done at t=${Date.now() - streamStart}ms`);
+        break;
+      }
+
+      const elapsed = Date.now() - streamStart;
+      console.log(`🌐 API: Received chunk at t=${elapsed}ms (${value.length} bytes)`);
 
       buffer += decoder.decode(value, { stream: true });
       const lines = buffer.split('\n');
@@ -94,6 +127,7 @@ class APIClient {
           const data = line.slice(6);
 
           if (data === '[DONE]') {
+            console.log(`🌐 API: Received [DONE] at t=${Date.now() - streamStart}ms`);
             return;
           }
 
@@ -101,8 +135,11 @@ class APIClient {
             const parsed = JSON.parse(data);
 
             if (parsed.type === 'token') {
+              tokenCount++;
+              console.log(`🌐 API: Token #${tokenCount} at t=${Date.now() - streamStart}ms: ${JSON.stringify(parsed.content)}`);
               yield parsed.content;
             } else if (parsed.type === 'message') {
+              console.log(`🌐 API: Message at t=${Date.now() - streamStart}ms`);
               yield parsed.content;
             } else if (parsed.type === 'error') {
               throw new Error(parsed.content);
@@ -163,11 +200,10 @@ class APIClient {
    * Returns full course path data including course_bank
    */
   async getCoursePath(userId) {
+    const headers = await this.getAuthHeaders();
     const response = await fetch(`${this.baseUrl}/coursepath/${userId}`, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers,
     });
 
     if (!response.ok) {
@@ -221,11 +257,10 @@ class APIClient {
    * Get user's profile from PostgreSQL
    */
   async getProfile(userId) {
+    const headers = await this.getAuthHeaders();
     const response = await fetch(`${this.baseUrl}/profile/${userId}`, {
       method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers,
     });
 
     if (!response.ok) {
@@ -242,11 +277,10 @@ class APIClient {
    * Update user's profile in PostgreSQL
    */
   async updateProfile(userId, profileData) {
+    const headers = await this.getAuthHeaders();
     const response = await fetch(`${this.baseUrl}/profile/${userId}`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers,
       body: JSON.stringify(profileData),
     });
 
@@ -333,6 +367,97 @@ class APIClient {
    */
   switchThread(userId, threadId) {
     this.setCurrentThreadId(userId, threadId);
+  }
+
+  /**
+   * Create a complete student profile from onboarding data
+   */
+  async createProfile(profileData) {
+    const headers = await this.getAuthHeaders();
+    const response = await fetch(`${this.baseUrl}/profile`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(profileData),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.detail || 'Failed to create profile');
+    }
+
+    return response.json();
+  }
+
+  /**
+   * Initialize course path for a new user (streaming)
+   * Returns an async generator that yields streaming events
+   * The last yielded value will have type='thread_id' with the thread_id
+   */
+  async *initCoursePath(userId) {
+    const headers = await this.getAuthHeaders();
+    const response = await fetch(`${this.baseUrl}/init`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ user_id: userId }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.detail || 'Initialization failed');
+    }
+
+    // Parse SSE stream (same as existing stream method)
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = '';
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split('\n');
+
+      // Keep last partial line in buffer
+      buffer = lines.pop() || '';
+
+      for (const line of lines) {
+        if (line.startsWith('data: ')) {
+          const data = line.slice(6);
+          if (data === '[DONE]') return;
+
+          try {
+            const parsed = JSON.parse(data);
+            if (parsed.type === 'message') {
+              yield parsed.content;
+            } else if (parsed.type === 'thread_id') {
+              // Yield thread_id event so caller can capture it
+              yield { type: 'thread_id', thread_id: parsed.content };
+            }
+          } catch (e) {
+            console.error('Failed to parse SSE:', e);
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Get all available majors from Weaviate
+   */
+  async getMajors() {
+    const response = await fetch(`${this.baseUrl}/majors`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch majors');
+    }
+
+    return response.json();
   }
 }
 

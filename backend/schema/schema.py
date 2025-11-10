@@ -74,6 +74,10 @@ class StreamInput(UserInput):
         description="Whether to stream LLM tokens to the client.",
         default=True,
     )
+    init_mode: bool = Field(
+        description="Whether this is an initialization request for a new user.",
+        default=False,
+    )
 
 
 class ToolCall(TypedDict):

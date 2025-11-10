@@ -332,7 +332,7 @@ class DreampathAgent:
     - Academic planning and scheduling
     """
     
-    def __init__(self, user_id: int, thread_id: str = "default", generate_diagram: bool=False, student_profile: Optional[StudentProfile] = None, course_path: Optional[CoursePath] = None):
+    def __init__(self, user_id: str, thread_id: str = "default", generate_diagram: bool=False, student_profile: Optional[StudentProfile] = None, course_path: Optional[CoursePath] = None):
         """
         Initialize the DreampathAgent.
         

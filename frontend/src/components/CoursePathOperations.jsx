@@ -30,25 +30,25 @@ function CoursePathOperations({ operations, opString, isPending = false }) {
     switch (type) {
       case 'add':
         return {
-          backgroundColor: 'rgba(76, 175, 80, 0.1)',
+          backgroundColor: 'rgba(76, 175, 80, 0.15)',
           borderLeft: '3px solid #4CAF50',
           color: '#2e7d32',
         };
       case 'remove':
         return {
-          backgroundColor: 'rgba(244, 67, 54, 0.1)',
+          backgroundColor: 'rgba(244, 67, 54, 0.15)',
           borderLeft: '3px solid #f44336',
           color: '#c62828',
         };
       case 'move':
         return {
-          backgroundColor: 'rgba(33, 150, 243, 0.1)',
+          backgroundColor: 'rgba(33, 150, 243, 0.15)',
           borderLeft: '3px solid #2196F3',
           color: '#1565c0',
         };
       default:
         return {
-          backgroundColor: 'rgba(158, 158, 158, 0.1)',
+          backgroundColor: 'rgba(158, 158, 158, 0.15)',
           borderLeft: '3px solid #9e9e9e',
           color: '#424242',
         };
@@ -88,7 +88,7 @@ function CoursePathOperations({ operations, opString, isPending = false }) {
 
       <Card
         style={{
-          background: 'linear-gradient(135deg, rgba(255, 152, 0, 0.08) 0%, rgba(255, 193, 7, 0.08) 100%)',
+          background: 'linear-gradient(135deg, rgb(250 238 219) 0%, rgb(255 249 232) 100%)',
           border: '1px solid rgba(255, 152, 0, 0.3)',
           borderRadius: '8px',
           padding: '0',

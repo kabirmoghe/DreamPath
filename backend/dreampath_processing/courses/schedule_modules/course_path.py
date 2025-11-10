@@ -564,6 +564,7 @@ class CoursePath:
             course_to_move.must_have_window = move_window
 
             self.course_path = move_course_path
+            self.must_have_courses = self.must_have_courses | {course_to_move.course_code}
 
         if verbose:
             print(f"* Course '{course_code_to_move}' moved successfully.")

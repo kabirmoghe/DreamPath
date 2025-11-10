@@ -29,6 +29,19 @@ class ProfileInitializeRequest(BaseModel):
     name: str
 
 
+class ProfileCreateRequest(BaseModel):
+    """Request to create a complete user profile (from onboarding)"""
+    user_id: str
+    name: str
+    major: str
+    college_interests: str
+    post_grad_goals: str
+    career_goals: str
+    minors: Optional[list[str]] = None
+    clubs: Optional[list[str]] = None
+    career: Optional[list[str]] = None
+
+
 class ProfileUpdateRequest(BaseModel):
     """Request to update user profile"""
     major: Optional[str] = None
@@ -50,6 +63,46 @@ class ProfileResponse(BaseModel):
     career_goals: str
     clubs: Optional[list[str]] = None
     career: Optional[list[str]] = None
+
+
+@router.post("", status_code=status.HTTP_201_CREATED)
+async def create_profile(request: ProfileCreateRequest):
+    """
+    Create a complete user profile from onboarding data.
+
+    This is called after the user completes the onboarding wizard
+    and is ready to initialize their course path.
+    """
+    try:
+        # user_id is now a UUID string from Supabase
+        # Create complete profile with onboarding data
+        profile = StudentProfile(
+            name=request.name,
+            major=request.major,
+            college_interests=request.college_interests,
+            post_grad_goals=request.post_grad_goals,
+            career_goals=request.career_goals,
+            minors=request.minors or [],
+            clubs=request.clubs or [],
+            career=request.career or [],
+        )
+
+        # Save to database
+        await student_db_service.save_student_profile(profile, request.user_id)
+
+        return {
+            "status": "success",
+            "message": "Profile created successfully",
+            "user_id": request.user_id
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to create profile: {str(e)}"
+        )
 
 
 @router.post("/initialize", status_code=status.HTTP_201_CREATED)
@@ -115,15 +168,8 @@ async def get_profile(
         )
 
     try:
-        # Convert user_id to int for database query
-        user_id_int = int(user_id) if user_id.isdigit() else None
-        if user_id_int is None:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Invalid user_id format"
-            )
-
-        profile = await student_db_service.load_student_profile(user_id_int)
+        # user_id is now a UUID string from Supabase
+        profile = await student_db_service.load_student_profile(user_id)
 
         if not profile:
             raise HTTPException(
@@ -172,16 +218,9 @@ async def update_profile(
         )
 
     try:
-        # Convert user_id to int for database query
-        user_id_int = int(user_id) if user_id.isdigit() else None
-        if user_id_int is None:
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail="Invalid user_id format"
-            )
-
+        # user_id is now a UUID string from Supabase
         # Load existing profile
-        profile = await student_db_service.load_student_profile(user_id_int)
+        profile = await student_db_service.load_student_profile(user_id)
 
         if not profile:
             raise HTTPException(
@@ -202,7 +241,7 @@ async def update_profile(
             profile.minors = request.minors
 
         # Save updated profile
-        await student_db_service.save_student_profile(profile, user_id_int)
+        await student_db_service.save_student_profile(profile, user_id)
 
         return ProfileResponse(
             user_id=user_id,

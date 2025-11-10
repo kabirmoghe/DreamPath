@@ -15,7 +15,7 @@ from pydantic import BaseModel
 
 load_dotenv()
 client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
-SUMMARIZATION_MODEL = "gpt-5-nano"
+SUMMARIZATION_MODEL = "gpt-4o-mini" #"gpt-5-nano"
 
 # -----------------------------------------------------
 # Update Summary
@@ -140,7 +140,7 @@ def _render_turn_block(current_user_msg: str, turn_messages: list[dict], init_mo
         
     return "\n".join(lines)
 
-async def _render_dreampath_context_block(user_id: int, student_db_service) -> str:
+async def _render_dreampath_context_block(user_id: str, student_db_service) -> str:
     """
     Render the DreamPath context block by querying fresh data from the database.
 

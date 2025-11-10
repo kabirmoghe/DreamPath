@@ -365,10 +365,15 @@ async def rebuild_course_path_node(state: DreamPathAgentState, config, *, writer
         "messages": [tool_result_lc],
     }
 
-async def finalize_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
+async def finalize_node(state: DreamPathAgentState, config, *, writer=None) -> DreamPathAgentState:
 
     # Add turn messages to state's messages
-    reply, _ = await render_final_reply(state, config)
+    # Use streaming version if writer is available, otherwise use blocking version
+    if writer:
+        from .node_helpers import render_final_reply_streaming
+        reply, _ = await render_final_reply_streaming(state, config, writer)
+    else:
+        reply, _ = await render_final_reply(state, config)
 
     usr_msg_dict = {
         "role": "system" if state.init_mode else "user",
@@ -409,7 +414,7 @@ class DreampathAgent:
     - Academic planning and scheduling
     """
     
-    def __init__(self, user_id: int, thread_id: str = "default", generate_diagram: bool=False):
+    def __init__(self, user_id: str, thread_id: str = "default", generate_diagram: bool=False):
         """
         Initialize the DreampathAgent.
 
