@@ -125,25 +125,21 @@ async def render_final_reply_streaming(state: DreamPathAgentState, config, write
     start_time = time.time()
     token_count = 0
 
-    print(f"🟡 FINALIZE: Starting ASYNC token emission loop")
-    async for chunk in stream:  # ← ASYNC iteration
+    async for chunk in stream:
         if chunk.choices and chunk.choices[0].delta.content:
             token = chunk.choices[0].delta.content
             full_response += token
             token_count += 1
 
-            # Show each token as it arrives
-            print(f"🟡 FINALIZE: Token #{token_count} at t={time.time() - start_time:.3f}s: {repr(token)}")
-
             # Emit AIMessageChunk
             if writer:
                 chunk_msg = AIMessageChunk(content=token)
                 writer(chunk_msg)
-                print(f"    ↳ writer() called")
 
     elapsed = time.time() - start_time
-    print(f"🟡 FINALIZE: ASYNC loop completed at t={elapsed:.3f}s (emitted {token_count} tokens)")
-    print(f"🟡 FINALIZE: Returning from render_final_reply_streaming()")
+    # Only log summary, not every token
+    if token_count > 0:
+        print(f"🟡 FINALIZE: Streamed {token_count} tokens in {elapsed:.2f}s")
 
     return full_response, state_updates
 

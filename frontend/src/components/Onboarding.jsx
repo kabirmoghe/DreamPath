@@ -175,9 +175,14 @@ function Onboarding() {
   });
 
   // Check if user already has a profile - redirect to dashboard if so
+  // Use ref to ensure this only runs once
+  const profileChecked = React.useRef(false);
+
   useEffect(() => {
     const checkProfile = async () => {
-      if (!user?.id) return;
+      if (!user?.id || profileChecked.current) return;
+
+      profileChecked.current = true;
 
       try {
         const profile = await apiClient.getProfile(String(user.id));
@@ -192,7 +197,7 @@ function Onboarding() {
     };
 
     checkProfile();
-  }, [user, navigate]);
+  }, [user?.id, navigate]);
 
   // Fetch majors from backend on mount
   useEffect(() => {
@@ -321,11 +326,12 @@ function Onboarding() {
       }
       console.log('Init stream complete');
 
-      // 4. Save thread to localStorage if we got a thread_id
+      // 4. Set current thread ID in localStorage if we got a thread_id
+      // (Thread was already created in database by the backend)
       if (capturedThreadId) {
-        console.log('Creating thread in localStorage:', capturedThreadId);
-        apiClient.createThread(String(user.id), capturedThreadId);
-        console.log('Thread saved successfully');
+        console.log('Setting current thread ID in localStorage:', capturedThreadId);
+        apiClient.setCurrentThreadId(String(user.id), capturedThreadId);
+        console.log('Current thread ID set successfully');
       }
 
       // 5. Hide overlay

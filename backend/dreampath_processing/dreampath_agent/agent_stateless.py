@@ -36,7 +36,6 @@ async def orchestrator_node(state: DreamPathAgentState, config, *, writer=None) 
     from langchain_core.messages import AIMessage
     import time
 
-    print("🎯 ORCHESTRATOR: Node called")
     start_time = time.time()
 
     # Create thinking status event
@@ -51,24 +50,17 @@ async def orchestrator_node(state: DreamPathAgentState, config, *, writer=None) 
     )
 
     # Emit thinking status IMMEDIATELY via custom event stream
-    # writer is injected by LangGraph when stream_mode includes "custom"
     if writer:
         try:
-            writer(thinking_event)  # Call synchronously, not async
-            print(f"🎯 ORCHESTRATOR: Emitted thinking event via writer at t={time.time() - start_time:.3f}s")
+            writer(thinking_event)
         except Exception as e:
             print(f"🎯 ORCHESTRATOR: Error emitting thinking event: {e}")
-    else:
-        print(f"🎯 ORCHESTRATOR: No writer available (not in streaming mode)")
 
-    # Do the actual LLM processing (this takes time)
-    print("🎯 ORCHESTRATOR: Starting decide_next_route (LLM call)...")
+    # Do the actual LLM processing
     decision, state_updates = await decide_next_route(state, config)
-    print(f"🎯 ORCHESTRATOR: Finished decide_next_route (took {time.time() - start_time:.3f}s total)")
 
-    print(f"| → Decision: {decision.route} | Reason: {decision.reason} | Confidence: {decision.confidence}")
-    if decision.handoff:
-        print(f"| + Handoff: {decision.handoff}")
+    # Log decision
+    print(f"| → Orchestrator: {decision.route} | {decision.reason}")
 
     orchestrator_decision = {
         "role": "assistant",
@@ -91,10 +83,6 @@ async def orchestrator_node(state: DreamPathAgentState, config, *, writer=None) 
             "reason": decision.reason
         }
     )
-    print(f"🎯 ORCHESTRATOR: Created complete event at t={time.time() - start_time:.3f}s")
-
-    print(f"🎯 ORCHESTRATOR: Returning final state (total time: {time.time() - start_time:.3f}s)")
-    print("🎯 ORCHESTRATOR: Node complete")
 
     # Return with routing info in messages list
     # (thinking_event was already streamed immediately via writer)

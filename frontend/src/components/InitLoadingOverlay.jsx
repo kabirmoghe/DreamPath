@@ -40,8 +40,8 @@ function InitLoadingOverlay({ isOpen, nodeStatus }) {
 
         {nodeStatus && nodeStatus.status === 'thinking' && (
           <div className="init-status">
-            <span className="thinking-text">
-              {nodeStatus.message || 'Analyzing'}
+            <span className="init-thinking-text">
+              Analyzing
             </span>
           </div>
         )}

@@ -43,25 +43,34 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
 
   // Initialize thread on mount
   useEffect(() => {
-    if (!userId) return;
+    const initializeThreads = async () => {
+      if (!userId) return;
 
-    // Load threads from localStorage
-    const userThreads = apiClient.getUserThreads(userId);
-    setThreads(userThreads);
+      try {
+        // Load threads from database
+        const userThreads = await apiClient.getUserThreads(userId);
+        setThreads(userThreads);
 
-    // Get or create current thread
-    let currentThreadId = apiClient.getCurrentThreadId(userId);
-    if (!currentThreadId || userThreads.length === 0) {
-      // Create first thread
-      const newThread = apiClient.createThread(userId);
-      currentThreadId = newThread.id;
-      setThreads([newThread]);
-    }
+        // Get or create current thread
+        let currentThreadId = apiClient.getCurrentThreadId(userId);
+        if (!currentThreadId || userThreads.length === 0) {
+          // Create first thread in database
+          const newThread = await apiClient.createThread(userId);
+          currentThreadId = newThread.id;
+          setThreads([newThread]);
+        }
 
-    setThreadId(currentThreadId);
+        setThreadId(currentThreadId);
 
-    // Load history for this thread
-    loadThreadHistory(currentThreadId);
+        // Load history for this thread
+        await loadThreadHistory(currentThreadId);
+      } catch (error) {
+        console.error('Failed to initialize threads:', error);
+        setError('Failed to load conversation threads');
+      }
+    };
+
+    initializeThreads();
   }, [userId]);
 
   // Load history for a thread
@@ -128,13 +137,18 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
   }, [input]);
 
   // Create new thread
-  const handleCreateNewThread = () => {
-    const newThread = apiClient.createThread(userId);
-    setThreadId(newThread.id);
-    setThreads([newThread, ...threads]);
-    setMessages([]);
-    setError(null);
-    setNodeStatus(null);
+  const handleCreateNewThread = async () => {
+    try {
+      const newThread = await apiClient.createThread(userId);
+      setThreadId(newThread.id);
+      setThreads([newThread, ...threads]);
+      setMessages([]);
+      setError(null);
+      setNodeStatus(null);
+    } catch (error) {
+      console.error('Failed to create thread:', error);
+      setError('Failed to create new conversation');
+    }
   };
 
   // Switch to a different thread
@@ -286,6 +300,16 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
     } finally {
       setIsLoading(false);
       setNodeStatus(null); // Clear node status when done
+
+      // Update thread's last_message_at timestamp in database
+      if (threadId) {
+        try {
+          await apiClient.updateThreadTimestamp(userId, threadId);
+        } catch (err) {
+          console.error('Failed to update thread timestamp:', err);
+          // Non-critical error, don't show to user
+        }
+      }
     }
   };
 
@@ -629,7 +653,7 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
                 <div className="message-content">
                   <div className="message-text" style={{ fontFamily: 'Lora, serif', color: '#666' }}>
                     <div style={{ opacity: 0.8 }}>
-                      <span className="thinking-text">{nodeStatus.message || 'Thinking'}</span>
+                      <span className="chat-thinking-text">{nodeStatus.message || 'Thinking'}</span>
                     </div>
                   </div>
                 </div>

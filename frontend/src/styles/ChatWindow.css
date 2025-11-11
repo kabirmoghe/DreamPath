@@ -155,8 +155,9 @@
 }
 
 /* Thinking Text Gradient Animation */
-.thinking-text {
-  font-size: 13.5px;
+.chat-thinking-text {
+  font-size: 14px;
+  font-weight: 600;
   background: linear-gradient(90deg, #8A6BC1 0%, #b39ddb 25%, #c9b8e0 50%, #b39ddb 75%, #8A6BC1 100%);
   background-size: 200% 100%;
   background-clip: text;

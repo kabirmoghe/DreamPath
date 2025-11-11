@@ -292,28 +292,29 @@ class APIClient {
   }
 
   /**
-   * Thread Management - LocalStorage helpers
+   * Thread Management - Database API (replaces localStorage)
    */
 
   /**
-   * Get all threads for a user from localStorage
+   * Get all threads for a user from database
    */
-  getUserThreads(userId) {
-    const key = `dreampath_threads_${userId}`;
-    const stored = localStorage.getItem(key);
-    return stored ? JSON.parse(stored) : [];
+  async getUserThreads(userId) {
+    const headers = await this.getAuthHeaders();
+    const response = await fetch(`${this.baseUrl}/threads/user/${userId}`, {
+      method: 'GET',
+      headers,
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch threads');
+    }
+
+    const data = await response.json();
+    return data.threads;
   }
 
   /**
-   * Save threads for a user to localStorage
-   */
-  saveUserThreads(userId, threads) {
-    const key = `dreampath_threads_${userId}`;
-    localStorage.setItem(key, JSON.stringify(threads));
-  }
-
-  /**
-   * Get current thread ID for a user
+   * Get current thread ID for a user from localStorage (kept for client-side state)
    */
   getCurrentThreadId(userId) {
     const key = `dreampath_current_thread_${userId}`;
@@ -321,7 +322,7 @@ class APIClient {
   }
 
   /**
-   * Set current thread ID for a user
+   * Set current thread ID for a user in localStorage (kept for client-side state)
    */
   setCurrentThreadId(userId, threadId) {
     const key = `dreampath_current_thread_${userId}`;
@@ -329,22 +330,27 @@ class APIClient {
   }
 
   /**
-   * Create a new thread
+   * Create a new thread in database
    */
-  createThread(userId, threadId = null) {
+  async createThread(userId, threadId = null) {
+    const headers = await this.getAuthHeaders();
     const id = threadId || `thread-${Date.now()}`;
-    const threads = this.getUserThreads(userId);
-    const label = `Discussion #${threads.length + 1}`;
 
-    const newThread = {
-      id,
-      label,
-      createdAt: new Date().toISOString(),
-      lastMessageAt: new Date().toISOString(),
-    };
+    const response = await fetch(`${this.baseUrl}/threads`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        thread_id: id,
+        user_id: userId,
+        name: null, // Use auto-generated label
+      }),
+    });
 
-    threads.unshift(newThread); // Add to beginning
-    this.saveUserThreads(userId, threads);
+    if (!response.ok) {
+      throw new Error('Failed to create thread');
+    }
+
+    const newThread = await response.json();
     this.setCurrentThreadId(userId, id);
 
     return newThread;
@@ -353,12 +359,15 @@ class APIClient {
   /**
    * Update thread's last message timestamp
    */
-  updateThreadTimestamp(userId, threadId) {
-    const threads = this.getUserThreads(userId);
-    const thread = threads.find(t => t.id === threadId);
-    if (thread) {
-      thread.lastMessageAt = new Date().toISOString();
-      this.saveUserThreads(userId, threads);
+  async updateThreadTimestamp(userId, threadId) {
+    const headers = await this.getAuthHeaders();
+    const response = await fetch(`${this.baseUrl}/threads/${threadId}/last-message`, {
+      method: 'PUT',
+      headers,
+    });
+
+    if (!response.ok) {
+      console.error('Failed to update thread timestamp');
     }
   }
 
@@ -367,6 +376,23 @@ class APIClient {
    */
   switchThread(userId, threadId) {
     this.setCurrentThreadId(userId, threadId);
+  }
+
+  /**
+   * Get a specific thread by ID
+   */
+  async getThread(threadId) {
+    const headers = await this.getAuthHeaders();
+    const response = await fetch(`${this.baseUrl}/threads/${threadId}`, {
+      method: 'GET',
+      headers,
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch thread');
+    }
+
+    return response.json();
   }
 
   /**

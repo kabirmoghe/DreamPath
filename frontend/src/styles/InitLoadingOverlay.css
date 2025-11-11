@@ -24,19 +24,20 @@
 
 .init-card {
   position: relative;
-  background: white;
+  background: #7875bc;
   border-radius: 20px;
   padding: 60px 80px;
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.25);
   text-align: center;
+  min-height: 420px;
   max-width: 700px;
   width: 90%;
 }
 
 .init-logo {
-  height: 120px;
+  height: 90px;
   width: auto;
-  margin-bottom: 32px;
+  margin-bottom: 25px;
   object-fit: contain;
 }
 
@@ -44,8 +45,8 @@
   position: absolute;
   bottom: 24px;
   right: 24px;
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   animation: compassSwivel 1.5s ease-in-out infinite;
   transform-origin: center;
   opacity: 0.9;
@@ -80,8 +81,8 @@
   font-family: 'Lora', serif;
   font-size: 32px;
   font-weight: 600;
-  color: #9989d0;
-  margin-bottom: 40px;
+  color: #d9d4ea;
+  margin-bottom: 80px;
 }
 
 .init-status {
@@ -89,9 +90,9 @@
 }
 
 /* Thinking status - gradient text with pulsing animation */
-.thinking-text {
+.init-thinking-text {
   font-family: 'Lora', serif;
-  font-size: 22px;
+  font-size: 20px !important;
   font-weight: 600;
   background: linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%);
   -webkit-background-clip: text;
@@ -112,18 +113,16 @@
 /* Node info status */
 .status-step {
   font-family: 'Lora', serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 600;
-  color: #333;
-  margin-bottom: 12px;
+  color: #aea2c1;
+  margin-bottom: 5px;
 }
 
 .status-reason {
-  font-family: 'Lora', serif;
-  font-size: 16px;
+  font-size: 15px;
   font-style: italic;
-  color: #666;
-  margin-bottom: 20px;
+  color: #aea2c1;
 }
 
 /* Animated ellipses */
@@ -138,9 +137,9 @@
 .dot {
   font-size: 28px;
   font-weight: bold;
-  color: #8A6BC1 !important;
+  color: #d9d4ea !important;
   background: none !important;
-  -webkit-text-fill-color: #8A6BC1 !important;
+  -webkit-text-fill-color: #d9d4ea !important;
   animation: dotBounce 1.4s ease-in-out infinite;
 }
 

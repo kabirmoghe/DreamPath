@@ -88,8 +88,8 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
                 await store.setup()
 
             # NEW: Initialize student database service
-            print(f"[DEBUG] Initializing student_db_service...")
-            print(f"[DEBUG] Saver type: {type(saver)}")
+            # print(f"[DEBUG] Initializing student_db_service...")
+            # print(f"[DEBUG] Saver type: {type(saver)}")
 
             # Create DatabaseConnection using our custom class
             from dreampath_processing.database.connection import get_db_connection
@@ -97,13 +97,13 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
 
             # Initialize the pool if not already done
             if db_connection.pool is None:
-                print(f"[DEBUG] Initializing database connection pool...")
+                # print(f"[DEBUG] Initializing database connection pool...")
                 await db_connection.init_pool()
-                print(f"[DEBUG] Database pool initialized")
+                # print(f"[DEBUG] Database pool initialized")
 
             student_db_service = StudentDatabaseService(db_connection)
             logger.info("Student database service initialized")
-            print(f"[DEBUG] student_db_service created successfully")
+            # print(f"[DEBUG] student_db_service created successfully")
 
             # Configure agents with both memory components and async loading
             agents = get_all_agent_info()
@@ -184,11 +184,11 @@ async def _initialize_dreampath_config(
     """
     global student_db_service
 
-    print(f"[DEBUG] _initialize_dreampath_config called")
+    # print(f"[DEBUG] _initialize_dreampath_config called")
 
     # Check if already initialized
     if "student_db_service" in config["configurable"]:
-        print(f"[DEBUG] Already initialized, skipping")
+        # print(f"[DEBUG] Already initialized, skipping")
         return
 
     if student_db_service is None:
@@ -198,19 +198,19 @@ async def _initialize_dreampath_config(
             detail="Student database service not initialized"
         )
 
-    print(f"[DEBUG] Creating CourseSearchTool...")
+    # print(f"[DEBUG] Creating CourseSearchTool...")
     # Initialize components - NO mutable state in config
     course_search_tool = CourseSearchTool()
-    print(f"[DEBUG] CourseSearchTool created")
+    # print(f"[DEBUG] CourseSearchTool created")
 
     # Get database connection from the global service
-    print(f"[DEBUG] Getting DB connection...")
+    # print(f"[DEBUG] Getting DB connection...")
     from dreampath_processing.database.connection import get_db_connection
     conn = get_db_connection()
-    print(f"[DEBUG] DB connection obtained")
+    # print(f"[DEBUG] DB connection obtained")
 
     # Update config with ONLY infrastructure
-    print(f"[DEBUG] Updating config with infrastructure...")
+    # print(f"[DEBUG] Updating config with infrastructure...")
     # Use user_id as-is (UUID string from Supabase)
     config["configurable"].update({
         "user_id": user_id,  # ← Store as UUID string for database queries
@@ -218,7 +218,7 @@ async def _initialize_dreampath_config(
         "conn": conn,
         "student_db_service": student_db_service
     })
-    print(f"[DEBUG] Config updated successfully with user_id={user_id}")
+    # print(f"[DEBUG] Config updated successfully with user_id={user_id}")
 
 
 async def _handle_input(user_input: UserInput, agent: AgentGraph) -> tuple[dict[str, Any], UUID]:
@@ -241,7 +241,6 @@ async def _handle_input(user_input: UserInput, agent: AgentGraph) -> tuple[dict[
 
         callbacks.append(langfuse_handler)
 
-    print("USER INPUT: ", user_input)
 
     if user_input.agent_config:
         # Check for reserved keys (including 'model' even if not in configurable)
@@ -261,11 +260,8 @@ async def _handle_input(user_input: UserInput, agent: AgentGraph) -> tuple[dict[
 
     # NEW: Initialize dreampath config if this is the dreampath agent
     if hasattr(agent, 'name') and agent.name == "dreampath-agent":
-        print(f"[DEBUG] Initializing dreampath config for user_id={user_id}, thread_id={thread_id}")
         try:
             await _initialize_dreampath_config(thread_id, user_id, config)
-            print(f"[DEBUG] Dreampath config initialized successfully")
-            print(f"[DEBUG] Config keys: {config['configurable'].keys()}")
         except Exception as e:
             print(f"[ERROR] Failed to initialize dreampath config: {e}")
             import traceback
@@ -273,9 +269,7 @@ async def _handle_input(user_input: UserInput, agent: AgentGraph) -> tuple[dict[
             raise
 
     # Check for interrupts that need to be resumed
-    print(f"[DEBUG] Getting agent state...")
     state = await agent.aget_state(config=config)
-    print(f"[DEBUG] Got agent state")
     interrupted_tasks = [
         task for task in state.tasks if hasattr(task, "interrupts") and task.interrupts
     ]
@@ -330,7 +324,6 @@ async def _handle_input(user_input: UserInput, agent: AgentGraph) -> tuple[dict[
                 update_dict["turn_messages"] = current_turn_messages + messages_to_add
                 update_dict["messages"] = messages_to_add_lc
 
-                print(f"[DEBUG] Resuming with pending_pre_interrupt: {type(pending_pre_interrupt)}")
 
             # Create Command with resume and update
             input = Command(resume=user_input.message, update=update_dict if update_dict else None)
@@ -377,15 +370,15 @@ async def invoke(user_input: UserInput, agent_id: str = DEFAULT_AGENT) -> ChatMe
     # you'd want to include it. You could update the API to return a list of ChatMessages
     # in that case.
     agent: AgentGraph = get_agent(agent_id)
-    print(f"[DEBUG] Got agent: {agent_id}")
+    # print(f"[DEBUG] Got agent: {agent_id}")
 
     kwargs, run_id = await _handle_input(user_input, agent)
-    print(f"[DEBUG] Input kwargs prepared: input keys = {kwargs['input'].keys() if isinstance(kwargs['input'], dict) else type(kwargs['input'])}")
+    # print(f"[DEBUG] Input kwargs prepared: input keys = {kwargs['input'].keys() if isinstance(kwargs['input'], dict) else type(kwargs['input'])}")
 
     try:
-        print(f"[DEBUG] Invoking agent...")
+        # print(f"[DEBUG] Invoking agent...")
         response_events: list[tuple[str, Any]] = await agent.ainvoke(**kwargs, stream_mode=["updates", "values"])  # type: ignore # fmt: skip
-        print(f"[DEBUG] Agent invoked successfully, processing response...")
+        # print(f"[DEBUG] Agent invoked successfully, processing response...")
         response_type, response = response_events[-1]
         if response_type == "values":
             # Normal response, the agent completed successfully
@@ -448,13 +441,12 @@ async def message_generator(
                 # Without subgraphs: (stream_mode, event)
                 stream_mode, event = stream_event
 
-            # Track when custom events arrive
+            # Track when custom events arrive (summary only)
             if stream_mode == "custom":
                 token_receive_count += 1
                 elapsed = time.time() - service_start
                 if token_receive_count == 1:
                     print(f"🟢 SERVICE: First custom event received at t={elapsed:.3f}s")
-                print(f"🟢 SERVICE: Custom event #{token_receive_count} at t={elapsed:.3f}s, type: {type(event).__name__}")
             new_messages = []
             if stream_mode == "updates":
                 for node, updates in event.items():
@@ -514,7 +506,6 @@ async def message_generator(
                     content = remove_tool_calls(event.content)
                     if content:
                         token_content = convert_message_content_to_string(content)
-                        print(f"🟢 SERVICE: Yielding token from custom stream: {repr(token_content)}")
                         yield f"data: {json.dumps({'type': 'token', 'content': token_content})}\n\n"
                     continue  # Skip normal message processing for tokens
                 new_messages = [event]
@@ -694,10 +685,29 @@ async def initialize_course_path(request: InitRequest) -> StreamingResponse:
         init_mode=True  # Enable init mode
     )
 
-    # Wrap message_generator to include thread_id at the end
+    # Wrap message_generator to include thread_id at the end and save thread to database
     async def init_generator():
+        init_complete = False
         async for chunk in message_generator(user_input, "dreampath-agent"):
             if chunk == "data: [DONE]\n\n":
+                # Save thread to database before sending [DONE]
+                if not init_complete:
+                    try:
+                        from dreampath_processing.database.connection import get_db_connection
+                        from dreampath_processing.database.thread_service import ThreadDatabaseService
+
+                        db = get_db_connection()
+                        thread_service = ThreadDatabaseService(db)
+                        await thread_service.create_thread(
+                            thread_id=thread_id,
+                            user_id=user_id,
+                            name=None  # Use auto-generated label
+                        )
+                        init_complete = True
+                    except Exception as e:
+                        logger.error(f"Failed to save thread to database: {e}")
+                        # Continue anyway - thread metadata is not critical
+
                 # Send thread_id before [DONE]
                 yield f"data: {json.dumps({'type': 'thread_id', 'content': thread_id})}\n\n"
             yield chunk
@@ -794,8 +804,10 @@ async def health_check():
 from service.coursepath_routes import router as coursepath_router
 from service.profile_routes import router as profile_router
 from service.majors_routes import router as majors_router
+from service.thread_routes import router as thread_router
 
 app.include_router(coursepath_router)
 app.include_router(profile_router)
 app.include_router(majors_router)
+app.include_router(thread_router)
 app.include_router(router)
