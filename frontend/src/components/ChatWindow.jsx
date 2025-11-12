@@ -81,7 +81,21 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
       if (history && history.messages) {
         // Limit to last 50 messages for performance
         const recentMessages = history.messages.slice(-50);
-        setMessages(recentMessages);
+
+        // Process messages to mark confirm/cancel responses as hidden
+        const processedMessages = recentMessages.map((msg, idx) => {
+          // Check if this is a confirmation response (comes after coursepath_operations)
+          if (msg.type === 'human' && (msg.content === 'confirm' || msg.content === 'cancel')) {
+            // Check if previous message was a coursepath operation
+            const prevMsg = recentMessages[idx - 1];
+            if (prevMsg && prevMsg.type === 'ai' && prevMsg.custom_data?.event_type === 'coursepath_operations') {
+              return { ...msg, hideInUI: true };
+            }
+          }
+          return msg;
+        });
+
+        setMessages(processedMessages);
       } else {
         setMessages([]);
       }
@@ -164,10 +178,10 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
     await loadThreadHistory(tid);
   };
 
-  const handleSend = async () => {
-    if (!input.trim() || isLoading || !threadId) return;
+  const handleSend = async (messageOverride = null) => {
+    const userMessage = messageOverride || input.trim();
+    if (!userMessage || isLoading || !threadId) return;
 
-    const userMessage = input.trim();
     setInput('');
     setError(null);
     setNodeStatus(null); // Clear any previous node status
@@ -178,7 +192,13 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
     }
 
     // Add user message to chat
-    setMessages(prev => [...prev, { type: 'human', content: userMessage }]);
+    // Mark confirm/cancel messages as hidden (don't render in UI, but send to backend)
+    const isConfirmationResponse = userMessage === 'confirm' || userMessage === 'cancel';
+    setMessages(prev => [...prev, {
+      type: 'human',
+      content: userMessage,
+      ...(isConfirmationResponse && { hideInUI: true })
+    }]);
     setIsLoading(true);
 
     try {
@@ -320,6 +340,41 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
     }
   };
 
+  // Check if there's a pending coursepath operation requiring confirmation
+  const hasPendingCoursePathOperation = () => {
+    if (messages.length === 0 || isLoading) return false;
+
+    // Check last message (skip hidden messages)
+    let lastVisibleMsg = null;
+    let secondToLastVisibleMsg = null;
+
+    for (let i = messages.length - 1; i >= 0; i--) {
+      const msg = messages[i];
+      // Skip hidden messages (confirm/cancel responses)
+      if (msg.hideInUI) {
+        continue;
+      }
+      if (!lastVisibleMsg) {
+        lastVisibleMsg = msg;
+      } else if (!secondToLastVisibleMsg) {
+        secondToLastVisibleMsg = msg;
+        break;
+      }
+    }
+
+    if (!lastVisibleMsg) return false;
+
+    // Check if last visible message is a coursepath operation
+    if (lastVisibleMsg.type === 'ai' &&
+        lastVisibleMsg.custom_data?.event_type === 'coursepath_operations') {
+      return true;
+    }
+
+    return false;
+  };
+
+  const showConfirmButtons = hasPendingCoursePathOperation();
+
   // Custom lightweight markdown renderer
   const renderMarkdown = (text) => {
     if (!text) return null;
@@ -445,6 +500,11 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
   };
 
   const renderMessage = (msg, idx) => {
+    // Skip hidden messages (e.g., confirm/cancel responses)
+    if (msg.hideInUI) {
+      return null;
+    }
+
     const isUser = msg.type === 'human';
 
     // Check for structured message types
@@ -457,6 +517,20 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
     const isSecondToLast = idx === messages.length - 2;
     const lastMessageIsUser = messages.length > 0 && messages[messages.length - 1].type === 'human';
     const isPending = isLastMessage || (isSecondToLast && lastMessageIsUser);
+
+    // Determine confirmation status for CoursePathOperations
+    let confirmationStatus = 'pending';
+    if (msg.custom_data?.event_type === 'coursepath_operations') {
+      // Check if next message is a confirm/cancel response (hidden or from history)
+      const nextMsg = messages[idx + 1];
+      if (nextMsg && nextMsg.type === 'human') {
+        if (nextMsg.content === 'confirm') {
+          confirmationStatus = 'confirmed';
+        } else if (nextMsg.content === 'cancel') {
+          confirmationStatus = 'skipped';
+        }
+      }
+    }
 
     return (
       <div
@@ -491,6 +565,7 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
                   operations={msg.custom_data.operations}
                   opString={msg.custom_data.op_string}
                   isPending={isPending}
+                  confirmationStatus={confirmationStatus}
                 />
               )}
               {msg.custom_data.event_type === 'profile_update' && (
@@ -692,6 +767,29 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
         </Card.Body>
 
         <Card.Footer className="chat-input-container">
+          {/* Confirm/Skip buttons positioned above textarea */}
+          {showConfirmButtons && (
+            <div className="confirm-buttons-container">
+              <div className="confirm-buttons">
+                <button
+                  onClick={() => handleSend('confirm')}
+                  disabled={isLoading}
+                  className="confirm-btn"
+                >
+                  Confirm
+                </button>
+                <button
+                  onClick={() => handleSend('cancel')}
+                  disabled={isLoading}
+                  className="skip-btn"
+                >
+                  Skip
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Text input - always visible, disabled when buttons showing */}
           <Form.Group className="mb-0">
             <div className="input-group">
               <Form.Control
@@ -701,14 +799,14 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={handleKeyPress}
-                disabled={isLoading}
+                disabled={isLoading || showConfirmButtons}
                 className="chat-input"
                 style={{ minHeight: '40px', fontSize: '14px' }}
               />
               <Button
                 variant="primary"
-                onClick={handleSend}
-                disabled={isLoading || !input.trim()}
+                onClick={() => handleSend()}
+                disabled={isLoading || !input.trim() || showConfirmButtons}
                 className="send-button"
               >
                 {isLoading ? (

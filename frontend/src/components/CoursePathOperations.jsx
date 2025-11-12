@@ -20,8 +20,10 @@ const pulseAnimation = `
  * - Green "+" for additions
  * - Red "-" for removals
  * - Blue "↔" for moves
+ *
+ * @param {string} confirmationStatus - "pending", "confirmed", or "skipped"
  */
-function CoursePathOperations({ operations, opString, isPending = false }) {
+function CoursePathOperations({ operations, opString, isPending = false, confirmationStatus = "pending" }) {
   if (!operations || operations.length === 0) {
     return null;
   }
@@ -145,18 +147,24 @@ function CoursePathOperations({ operations, opString, isPending = false }) {
       ))}
       </div>
 
-      {/* Footer with CONFIRM/CANCEL instruction */}
+      {/* Footer with status */}
       <div
         style={{
           padding: '10px 12px',
-          borderTop: '1px solid rgba(255, 152, 0, 0.2)',
-          fontSize: '12px',
-          color: '#666',
+          borderTop: confirmationStatus === 'pending' ? '1px solid rgba(255, 152, 0, 0.2)' : 'none',
+          fontSize: confirmationStatus === 'pending' ? '12px' : '11px',
+          color: confirmationStatus === 'confirmed' ? '#2e7d32' : confirmationStatus === 'skipped' ? '#5a5a5a' : '#666',
           fontFamily: 'Lora, serif',
           textAlign: 'center',
+          fontWeight: confirmationStatus !== 'pending' ? 700 : 400,
+          backgroundColor: confirmationStatus === 'confirmed' ? '#e5f1d3' : confirmationStatus === 'skipped' ? '#e8e8e8' : 'transparent',
+          borderBottomLeftRadius: '8px',
+          borderBottomRightRadius: '8px',
         }}
       >
-        Reply <strong>CONFIRM</strong> or <strong>CANCEL</strong>
+        {confirmationStatus === 'pending' && 'Awaiting Confirmation'}
+        {confirmationStatus === 'confirmed' && '✓ CONFIRMED'}
+        {confirmationStatus === 'skipped' && '✗ SKIPPED'}
       </div>
     </Card>
     </>
