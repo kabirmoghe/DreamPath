@@ -53,11 +53,22 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
 
         // Get or create current thread
         let currentThreadId = apiClient.getCurrentThreadId(userId);
-        if (!currentThreadId || userThreads.length === 0) {
-          // Create first thread in database
+
+        if (userThreads.length === 0) {
+          // No threads exist - create first thread
           const newThread = await apiClient.createThread(userId);
           currentThreadId = newThread.id;
           setThreads([newThread]);
+        } else if (!currentThreadId) {
+          // Threads exist but no current selection (e.g., incognito) - use most recent
+          currentThreadId = userThreads[0].id;
+        } else {
+          // Have a stored thread ID - verify it still exists
+          const threadExists = userThreads.some(t => t.id === currentThreadId);
+          if (!threadExists) {
+            // Stored thread doesn't exist anymore - use most recent
+            currentThreadId = userThreads[0].id;
+          }
         }
 
         setThreadId(currentThreadId);

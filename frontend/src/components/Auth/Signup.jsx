@@ -103,21 +103,104 @@ function Signup() {
 
                 {confirmationSent ? (
                   <div>
-                    <Alert variant="success">
-                      <Alert.Heading>Account Created!</Alert.Heading>
-                      <p>
-                        We've sent a confirmation email to <strong>{email}</strong>.
+                    <div
+                      style={{
+                        background: 'linear-gradient(135deg, #e5f1d3 0%, #f0f8e8 100%)',
+                        border: '2px solid #a8d5a8',
+                        borderRadius: '12px',
+                        padding: '30px',
+                        textAlign: 'center',
+                      }}
+                    >
+                      {/* Checkmark icon */}
+                      <div style={{ marginBottom: '20px' }}>
+                        <svg
+                          width="60"
+                          height="60"
+                          viewBox="0 0 60 60"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          style={{ margin: '0 auto', display: 'block' }}
+                        >
+                          <circle cx="30" cy="30" r="30" fill="#a8d5a8" />
+                          <path
+                            d="M18 30L26 38L42 22"
+                            stroke="#2d5f2d"
+                            strokeWidth="4"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          />
+                        </svg>
+                      </div>
+
+                      <h4
+                        style={{
+                          fontFamily: 'Lora, serif',
+                          fontWeight: 700,
+                          color: '#2d5f2d',
+                          fontSize: '24px',
+                          marginBottom: '15px',
+                        }}
+                      >
+                        Account Created!
+                      </h4>
+
+                      <p
+                        style={{
+                          fontFamily: 'Lora, serif',
+                          color: '#4a5f4a',
+                          fontSize: '15px',
+                          lineHeight: '1.6',
+                          marginBottom: '10px',
+                        }}
+                      >
+                        We've sent a confirmation email to{' '}
+                        <strong style={{ color: '#2d5f2d' }}>{email}</strong>.
+                      </p>
+
+                      <p
+                        style={{
+                          fontFamily: 'Lora, serif',
+                          color: '#4a5f4a',
+                          fontSize: '15px',
+                          lineHeight: '1.6',
+                          marginBottom: '20px',
+                        }}
+                      >
                         Please check your inbox and click the link to verify your account.
                       </p>
-                      <hr />
-                      <p className="mb-0">
-                        After confirming, you'll be redirected to complete your profile.
-                      </p>
-                    </Alert>
-                    <div className="text-center mt-3">
+
+                      <div
+                        style={{
+                          borderTop: '1px solid rgba(168, 213, 168, 0.4)',
+                          paddingTop: '20px',
+                          marginTop: '10px',
+                        }}
+                      >
+                        <p
+                          style={{
+                            fontFamily: 'Lora, serif',
+                            color: '#5a6f5a',
+                            fontSize: '14px',
+                            fontStyle: 'italic',
+                            marginBottom: 0,
+                          }}
+                        >
+                          After confirming, you'll be redirected to complete your profile.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="text-center mt-4">
                       <Link
                         to="/login"
-                        style={{ color: '#8A6BC1', textDecoration: 'none', fontWeight: 500 }}
+                        style={{
+                          color: '#8A6BC1',
+                          textDecoration: 'none',
+                          fontWeight: 600,
+                          fontFamily: 'Lora, serif',
+                          fontSize: '15px',
+                        }}
                       >
                         ← Back to Sign In
                       </Link>

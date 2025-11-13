@@ -160,11 +160,41 @@ function CoursePathOperations({ operations, opString, isPending = false, confirm
           backgroundColor: confirmationStatus === 'confirmed' ? '#e5f1d3' : confirmationStatus === 'skipped' ? '#e8e8e8' : 'transparent',
           borderBottomLeftRadius: '8px',
           borderBottomRightRadius: '8px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '6px',
         }}
       >
         {confirmationStatus === 'pending' && 'Awaiting Confirmation'}
-        {confirmationStatus === 'confirmed' && '✓ CONFIRMED'}
-        {confirmationStatus === 'skipped' && '✗ SKIPPED'}
+        {confirmationStatus === 'confirmed' && (
+          <>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M2 7L5.5 10.5L12 3.5"
+                stroke="#2e7d32"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span>CONFIRMED</span>
+          </>
+        )}
+        {confirmationStatus === 'skipped' && (
+          <>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M2 2L10 10M10 2L2 10"
+                stroke="#5a5a5a"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span>SKIPPED</span>
+          </>
+        )}
       </div>
     </Card>
     </>

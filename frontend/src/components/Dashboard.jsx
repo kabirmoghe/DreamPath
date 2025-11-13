@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col, Card, Button, Form, Toast, ToastContainer } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useAuth } from '../contexts/AuthContext';
@@ -7,6 +7,7 @@ import { apiClient } from '../lib/api';
 import DashboardNavbar from './DashboardNavbar';
 import LeftSidebar from './LeftSidebar';
 import ChatWindow from './ChatWindow';
+import WelcomeOverlay from './WelcomeOverlay';
 import { BookIcon, PeopleIcon, NetworkIcon } from './icons/DreamPathIcons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -756,23 +757,8 @@ function Dashboard() {
         </Container>
       </div>
 
-      {/* Welcome Toast for first-time users */}
-      <ToastContainer position="top-end" className="p-3" style={{ zIndex: 10000 }}>
-        <Toast
-          show={showWelcome}
-          onClose={() => setShowWelcome(false)}
-          bg="success"
-          delay={8000}
-          autohide
-        >
-          <Toast.Header>
-            <strong className="me-auto">🎉 Welcome to DreamPath!</strong>
-          </Toast.Header>
-          <Toast.Body style={{ color: 'white' }}>
-            Your personalized path has been built! Explore your courses and chat with Compass to make changes.
-          </Toast.Body>
-        </Toast>
-      </ToastContainer>
+      {/* Welcome Overlay for first-time users */}
+      <WelcomeOverlay show={showWelcome} onClose={() => setShowWelcome(false)} />
 
       {/* Chat Window */}
       <ChatWindow
