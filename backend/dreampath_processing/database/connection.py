@@ -57,11 +57,14 @@ class DatabaseConnection:
             return await conn.execute(command, *args)
 
 # Global database instance
-DB_HOST = os.getenv("POSTGRES_HOST", os.getenv("DB_HOST", "localhost"))
-DB_PORT = int(os.getenv("POSTGRES_PORT", os.getenv("DB_PORT", "5432")))
-DB_USER = os.getenv("POSTGRES_USER", os.getenv("DB_USER", "kabirmoghe"))
-DB_PASSWORD = os.getenv("POSTGRES_PASSWORD", os.getenv("DB_PASSWORD", "postgres"))
-DB_DATABASE = os.getenv("POSTGRES_DB", os.getenv("DB_DATABASE", "postgres"))
+DB_HOST = os.getenv("POSTGRES_HOST", os.getenv("DB_HOST"))
+DB_PORT = int(os.getenv("POSTGRES_PORT", os.getenv("DB_PORT")))
+DB_USER = os.getenv("POSTGRES_USER", os.getenv("DB_USER"))
+DB_PASSWORD = os.getenv("POSTGRES_PASSWORD", os.getenv("DB_PASSWORD"))
+DB_DATABASE = os.getenv("POSTGRES_DB", os.getenv("DB_DATABASE"))
+
+if not all([DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE]):
+    raise ValueError("Missing required database environment variables")   
 
 def get_db_connection() -> DatabaseConnection:
     """Get a configured database connection."""

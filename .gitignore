@@ -1,7 +1,7 @@
 .DS_Store
 Course Match Exploration.ipynb
 Linkedin Test.ipynb
-.env
+.env*
 .ipynb_checkpoints
 notebooks
 media

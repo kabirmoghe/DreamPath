@@ -9,6 +9,10 @@ import '../styles/InitLoadingOverlay.css';
  */
 function InitLoadingOverlay({ isOpen, nodeStatus }) {
   const routeMessages = {
+    'course_search': 'Searching Courses',
+    'plan_builder': 'Planning CoursePath Modifications',
+    'course_path': 'Executing CoursePath Operations',
+    'modify_profile': 'Updating Profile',
     'rebuild_course_path': 'Building CoursePath',
     'finalize': 'Finalizing',
   };
