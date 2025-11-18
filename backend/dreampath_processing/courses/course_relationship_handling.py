@@ -17,6 +17,9 @@ def get_weaviate_service():
         _weaviate_service = WeaviateCourseService()
     return _weaviate_service
 
+def is_major_course(course_code: str, major: str) -> bool:
+    return get_weaviate_service().is_major_course(course_code, major)
+
 def construct_course(course_code: str, major: Optional[str] = None, hardcoded_type: Optional[CourseType] = None, must_have_window: Optional[List[int]] = None) -> Course:
     """Construct a Course object from a course code and major name"""
     
@@ -31,7 +34,7 @@ def construct_course(course_code: str, major: Optional[str] = None, hardcoded_ty
     if not hardcoded_type:
         if not major:
             raise ValueError("Must provide major name if hardcoded_type is not provided")
-        ctype = MAJOR if get_weaviate_service().is_major_course(course_code, major) else COMPLEMENTARY
+        ctype = MAJOR if is_major_course(course_code, major) else COMPLEMENTARY
     else:
         ctype = hardcoded_type
 
@@ -62,7 +65,7 @@ class PrereqGraph:
 # -----------------------------------------------------
 # Building prerequisite tree for individual courses
 # -----------------------------------------------------
-def build_prereq_tree(course_code, base_tokens=("IP"), visited=None, prereq_accumulator=None):
+def build_prereq_tree(course_code, base_tokens=("IP", "AP", "LP"), visited=None, prereq_accumulator=None, verbose=False):
     """
     Build the prereq. tree for a given course code
 
@@ -85,19 +88,20 @@ def build_prereq_tree(course_code, base_tokens=("IP"), visited=None, prereq_accu
 
     enhanced_course = get_weaviate_service().get_course_by_code(course_code)
     if enhanced_course is None:
-        print(f"Course {course_code} not found")
+        if verbose:
+            print(f"Course '{course_code}' not found...")
         return {}, set()
 
     prereq_children = eval(enhanced_course['best_prereq_path'])
 
     tree_children = []
     for child in prereq_children:
-        if child in base_tokens:
-            tree_children.append(child)
-        elif child not in ('AP', 'LP'):
+        if child not in ('AP', 'LP'):
             prereq_accumulator.add(child)
-            subtree, _ = build_prereq_tree(child, base_tokens, visited.copy(), prereq_accumulator)
+            subtree, _ = build_prereq_tree(child, base_tokens, visited.copy(), prereq_accumulator, verbose)
             tree_children.append(subtree)
+        elif verbose:
+            print(f"Skipping base satisfaction token '{child}' for course '{course_code}'...")
 
     return {course_code: tree_children}, prereq_accumulator
 
@@ -176,6 +180,7 @@ def rebuild_prereq_graph(course_bank: Dict[str, Course], courses: Set[str]=None,
             c_object.prereq_tree = c_prereq_tree
 
         if to_prune:
+            print(f"Pruning prereq. tree for course '{c}'...")
             c_prereq_tree = prune_prereqs_from_tree(c_prereq_tree, to_prune)
 
         course_prereq_trees.append(c_prereq_tree)
@@ -196,7 +201,7 @@ def find_lingering_courses(old_prereq_graph: PrereqGraph, new_prereq_graph: Prer
     return lingering_courses
 
 # Get direct prereqs (i.e., direct children) for course
-def get_direct_prereqs(prereq_tree, course_code):
+def get_direct_prereqs(prereq_tree, course_code, verbose=False):
     """
     Get direct prereqs for a given course code from a prereq. tree
 
@@ -215,14 +220,13 @@ def get_direct_prereqs(prereq_tree, course_code):
             # In case of missing course code for prereq.
             if child_dict:
                 direct_children.append(list(child_dict.keys())[0])
-            else:
-                print("Empty")
+            elif verbose:
+                    print(f"Empty prereq. tree for course '{course_code}'...")
 
         return direct_children
     except:
-        pass
-        # print(f'Error getting direct prereqs for {course_code}')
-        # print(prereq_tree)
+        if verbose:
+            print(f"Error getting direct prereqs for course '{course_code}'...")
     return direct_children
 
 # Remove prereq. branches for a given set of courses

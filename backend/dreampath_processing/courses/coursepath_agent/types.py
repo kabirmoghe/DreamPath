@@ -79,15 +79,16 @@ class ExecuteOpResult(BaseModel):
 class CoursePathAgentOutput(BaseModel):
     status: Literal["ask", "confirm", "execute", "error", "cancel"]
     ui_text: str
+    op_string: Optional[str] = None # for frontend rendering
     diff: Optional[Dict[str, Any]] = None
     error: Optional[Dict] = None
 
 # Agent State
 class CoursePathAgentState(BaseModel):
     # CP maintenance
-    thread_id: str
-    plan_id: str
-    plan_version: int
+    thread_id: Optional[str] = None
+    plan_id: Optional[str] = None
+    plan_version: Optional[int] = None
 
     # Operation execution
     pending_op_type: Optional[ExtractedOpType] = None
@@ -97,7 +98,7 @@ class CoursePathAgentState(BaseModel):
     facts: Dict[str, str | int | List[str]] = Field(default_factory=dict)
 
     # Conversation state
-    summary: str = Field(default="")
+    history: str = Field(default="")
     recent_messages: List[Dict] = Field(default_factory=list)
 
 # Operation Info

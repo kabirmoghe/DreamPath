@@ -1,5 +1,5 @@
 from typing import List, Dict, Any, Optional
-from dreampath_processing.dreampath_agent.types import CourseSearchOutput, CourseSearchResult, CourseSearchParams
+from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchOutput, CourseSearchResult, CourseSearchParams
 from dreampath_processing.courses.data_retrieval.weaviate_course_service import get_weaviate_course_service
 
 class CourseSearchTool:
@@ -101,7 +101,6 @@ class CourseSearchTool:
                 course_result = CourseSearchResult(
                     course_code=result.get('course_code', ''),
                     department=result.get('department', ''),
-                    department_id=result.get('department_id', ''),
                     course_title=result.get('course_title', ''),
                     description=result.get('description', ''),
                     prerequisites=result.get('prerequisites', ''),
@@ -113,8 +112,8 @@ class CourseSearchTool:
                 continue
         
         return CourseSearchOutput(results=results)
-    
-    def get_course_by_code(self, course_code: str) -> Optional[Dict[str, Any]]:
+ 
+    def structured_get_course_by_code(self, course_code: str) -> Optional[CourseSearchResult]:
         """
         Get a specific course by its code.
         
@@ -124,20 +123,20 @@ class CourseSearchTool:
         Returns:
             Course dictionary or None if not found
         """
-        return self.service.get_course_by_code(course_code)
-    
-    def get_courses_by_department(self, department: str, limit: int = 100) -> List[Dict[str, Any]]:
-        """
-        Get all courses for a specific department.
-        
-        Args:
-            department: Department code
-            limit: Maximum number of courses to return
-            
-        Returns:
-            List of course dictionaries
-        """
-        return self.service.get_courses_by_department(department, limit)
+        result = self.service.get_course_by_code(course_code)
+
+        print(f"Result: {result}")
+
+        if result:
+            return CourseSearchResult(
+                course_code=result.get('course_code', ''),
+                department=result.get('department', ''),
+                course_title=result.get('course_title', ''),
+                description=result.get('description', ''),
+                prerequisites=result.get('prerequisites', ''),
+                course_url=result.get('course_url', ''))
+        else:
+            return None
 
 if __name__ == "__main__":
     tool = CourseSearchTool()

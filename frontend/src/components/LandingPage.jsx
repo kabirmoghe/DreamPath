@@ -1,19 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { supabase } from '../lib/supabase';
+import { useAuth } from '../contexts/AuthContext';
 import { BookIcon, PeopleIcon, NetworkIcon } from './icons/DreamPathIcons';
 
 const LandingPage = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      setUser(user);
-    };
-    checkAuth();
-  }, []);
+  const { user } = useAuth();
 
   return (
     <div className="min-vh-100 bg-light">
