@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from 'react-bootstrap';
 
 // Add keyframe animation for pulsating glow
@@ -24,6 +24,8 @@ const pulseAnimation = `
  * @param {string} confirmationStatus - "pending", "confirmed", or "skipped"
  */
 function CoursePathOperations({ operations, opString, isPending = false, confirmationStatus = "pending" }) {
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
   if (!operations || operations.length === 0) {
     return null;
   }
@@ -97,6 +99,8 @@ function CoursePathOperations({ operations, opString, isPending = false, confirm
           marginTop: '8px',
           fontFamily: 'monospace',
           fontSize: '13px',
+          width: '100%',
+          boxSizing: 'border-box',
           ...(isPending && { animation: 'orangePulse 3s ease-in-out infinite' }),
         }}
       >
@@ -105,6 +109,7 @@ function CoursePathOperations({ operations, opString, isPending = false, confirm
         style={{
           padding: '12px',
           borderBottom: '1px solid rgba(255, 152, 0, 0.2)',
+          position: 'relative',
         }}
       >
         <div style={{ fontWeight: 'bold', color: '#f57c00', fontSize: '12px', marginBottom: '4px', fontFamily: 'Lora, serif' }}>
@@ -115,43 +120,98 @@ function CoursePathOperations({ operations, opString, isPending = false, confirm
             {opString}
           </div>
         )}
-      </div>
-
-      {/* Operation details */}
-      <div style={{ padding: '12px' }}>
-      {operations.map((op, idx) => (
-        <div
-          key={idx}
+        {/* Collapse/Expand button */}
+        <button
+          onClick={() => setIsCollapsed(!isCollapsed)}
           style={{
-            ...getOperationStyle(op.type),
-            padding: '8px 12px',
-            marginBottom: '6px',
+            position: 'absolute',
+            top: '2px',
+            right: '2px',
+            background: 'transparent',
+            border: 'none',
             borderRadius: '4px',
+            width: '18px',
+            height: '18px',
             display: 'flex',
             alignItems: 'center',
-            transition: 'all 0.2s',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+            padding: '0',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(255, 152, 0, 0.2)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'transparent';
           }}
         >
-          <span
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
             style={{
-              fontWeight: 'bold',
-              marginRight: '12px',
-              fontSize: '16px',
-              minWidth: '20px',
+              transform: isCollapsed ? 'rotate(0deg)' : 'rotate(180deg)',
+              transition: 'transform 0.2s ease',
             }}
           >
-            {getOperationPrefix(op.type)}
-          </span>
-          <span>{formatOperation(op)}</span>
-        </div>
-      ))}
+            <path
+              d="M2 4L6 8L10 4"
+              stroke="#f57c00"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+
+      {/* Operation details - collapsible */}
+      <div
+        style={{
+          padding: isCollapsed ? '0 12px' : '12px',
+          maxHeight: isCollapsed ? '0' : '1000px',
+          overflow: 'hidden',
+          transition: isCollapsed
+            ? 'max-height 0.05s ease, padding 0.05s ease'
+            : 'max-height 0.1s ease, padding 0.1s ease',
+        }}
+      >
+        {operations.map((op, idx) => (
+          <div
+            key={idx}
+            style={{
+              ...getOperationStyle(op.type),
+              padding: '8px 12px',
+              marginBottom: '6px',
+              borderRadius: '4px',
+              display: 'flex',
+              alignItems: 'center',
+              transition: 'all 0.2s',
+            }}
+          >
+            <span
+              style={{
+                fontWeight: 'bold',
+                marginRight: '12px',
+                fontSize: '16px',
+                minWidth: '20px',
+              }}
+            >
+              {getOperationPrefix(op.type)}
+            </span>
+            <span>{formatOperation(op)}</span>
+          </div>
+        ))}
       </div>
 
       {/* Footer with status */}
       <div
         style={{
           padding: '10px 12px',
-          borderTop: confirmationStatus === 'pending' ? '1px solid rgba(255, 152, 0, 0.2)' : 'none',
+          borderTop: (!isCollapsed && confirmationStatus === 'pending') ? '1px solid rgba(255, 152, 0, 0.2)' : 'none',
           fontSize: confirmationStatus === 'pending' ? '12px' : '11px',
           color: confirmationStatus === 'confirmed' ? '#2e7d32' : confirmationStatus === 'skipped' ? '#5a5a5a' : '#666',
           fontFamily: 'Lora, serif',

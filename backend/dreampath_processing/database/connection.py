@@ -23,7 +23,10 @@ class DatabaseConnection:
                 host=self.host,
                 port=self.port,
                 min_size=min_size,
-                max_size=max_size
+                max_size=max_size,
+                # Disable prepared statements for pgbouncer compatibility
+                # (Supabase transaction pooler uses pgbouncer in transaction mode)
+                statement_cache_size=0
             )
 
     async def close_pool(self):

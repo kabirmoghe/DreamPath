@@ -1,0 +1,20 @@
+# Dockerfile for deploying Weaviate to Render
+# Based on official Weaviate image with persistence enabled
+
+FROM cr.weaviate.io/semitechnologies/weaviate:latest
+
+# Weaviate configuration
+ENV AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED=true
+ENV ENABLE_MODULES=bm25,text2vec-openai,reranker-openai
+ENV PERSISTENCE_DATA_PATH=/var/lib/weaviate
+ENV CLUSTER_HOSTNAME=node1
+ENV QUERY_DEFAULTS_LIMIT=25
+ENV DISK_USE_READONLY_PERCENTAGE=95
+
+# OpenAI API key will be set via Render environment variable
+# OPENAI_APIKEY will be passed from Render
+
+EXPOSE 8080 50051
+
+# Use persistent volume at /var/lib/weaviate
+VOLUME ["/var/lib/weaviate"]

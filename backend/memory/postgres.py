@@ -61,7 +61,13 @@ async def get_postgres_saver():
         max_size=settings.POSTGRES_MAX_CONNECTIONS_PER_POOL,
         # Langgraph requires autocommmit=true and row_factory to be set to dict_row.
         # Application_name is passed so you can identify the connection in your Postgres database connection manager.
-        kwargs={"autocommit": True, "row_factory": dict_row, "application_name": application_name},
+        # prepare_threshold=None disables prepared statements for pgbouncer compatibility (Supabase transaction pooler)
+        kwargs={
+            "autocommit": True,
+            "row_factory": dict_row,
+            "application_name": application_name,
+            "prepare_threshold": None,  # Disable prepared statements for Supabase pooler
+        },
         # makes sure that the connection is still valid before using it
         check=AsyncConnectionPool.check_connection,
     ) as pool:
@@ -90,7 +96,13 @@ async def get_postgres_store():
         max_size=settings.POSTGRES_MAX_CONNECTIONS_PER_POOL,
         # Langgraph requires autocommmit=true and row_factory to be set to dict_row
         # Application_name is passed so you can identify the connection in your Postgres database connection manager.
-        kwargs={"autocommit": True, "row_factory": dict_row, "application_name": application_name},
+        # prepare_threshold=None disables prepared statements for pgbouncer compatibility (Supabase transaction pooler)
+        kwargs={
+            "autocommit": True,
+            "row_factory": dict_row,
+            "application_name": application_name,
+            "prepare_threshold": None,  # Disable prepared statements for Supabase pooler
+        },
         # makes sure that the connection is still valid before using it
         check=AsyncConnectionPool.check_connection,
     ) as pool:

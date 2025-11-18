@@ -1,17 +1,18 @@
 from contextlib import AbstractAsyncContextManager
+from typing import TYPE_CHECKING
 
-from langgraph.checkpoint.mongodb.aio import AsyncMongoDBSaver
+# from langgraph.checkpoint.mongodb.aio import AsyncMongoDBSaver  # Commented out - not installed
 from langgraph.checkpoint.postgres.aio import AsyncPostgresSaver
 from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 
 from core.settings import DatabaseType, settings
-from memory.mongodb import get_mongo_saver
+# from memory.mongodb import get_mongo_saver  # Commented out - MongoDB not used
 from memory.postgres import get_postgres_saver, get_postgres_store
 from memory.sqlite import get_sqlite_saver, get_sqlite_store
 
 
 def initialize_database() -> AbstractAsyncContextManager[
-    AsyncSqliteSaver | AsyncPostgresSaver | AsyncMongoDBSaver
+    AsyncSqliteSaver | AsyncPostgresSaver  # | AsyncMongoDBSaver
 ]:
     """
     Initialize the appropriate database checkpointer based on configuration.
@@ -19,8 +20,8 @@ def initialize_database() -> AbstractAsyncContextManager[
     """
     if settings.DATABASE_TYPE == DatabaseType.POSTGRES:
         return get_postgres_saver()
-    if settings.DATABASE_TYPE == DatabaseType.MONGO:
-        return get_mongo_saver()
+    # if settings.DATABASE_TYPE == DatabaseType.MONGO:
+    #     return get_mongo_saver()  # MongoDB not installed
     else:  # Default to SQLite
         return get_sqlite_saver()
 
