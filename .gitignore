@@ -23,3 +23,7 @@ checkpoints*
 *.mp3
 *.wav
 *.pdf
+# Documentation (keep local only)
+DEPLOYMENT_GUIDE.md
+DEPLOYMENT_TROUBLESHOOTING.md
+docs/archive/

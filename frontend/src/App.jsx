@@ -9,7 +9,6 @@ import Onboarding from './components/Onboarding';
 import Dashboard from './components/Dashboard';
 import Courses from './components/Courses';
 import ProtectedRoute from './components/ProtectedRoute';
-import OverlayTest from './components/OverlayTest';
 
 // Create a client
 const queryClient = new QueryClient({
@@ -66,7 +65,6 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/overlay-test" element={<OverlayTest />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </div>

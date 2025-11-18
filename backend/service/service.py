@@ -137,6 +137,7 @@ app.add_middleware(
         "http://127.0.0.1:5173",
         "http://127.0.0.1:3000",
     ],
+    allow_origin_regex=r"https://.*\.vercel\.app",  # Allow all Vercel deployments
     allow_credentials=True,
     allow_methods=["*"],  # Allow all HTTP methods
     allow_headers=["*"],  # Allow all headers
@@ -749,7 +750,7 @@ async def history(input: ChatHistoryInput) -> ChatHistory:
         state_snapshot = await agent.aget_state(
             config=RunnableConfig(configurable={"thread_id": input.thread_id})
         )
-        messages: list[AnyMessage] = state_snapshot.values["messages"]
+        messages: list[AnyMessage] = state_snapshot.values.get("messages", [])
 
         # Filter out internal messages that shouldn't be displayed to users
         filtered_messages = []

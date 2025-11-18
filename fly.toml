@@ -1,0 +1,61 @@
+# Fly.io configuration for DreamPath Backend (FastAPI)
+app = "dreampath-backend"
+primary_region = "iad" # US East (same as Weaviate for low latency)
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  # Weaviate connection via private network (.internal addresses)
+  WEAVIATE_HTTP_HOST = "dreampath-weaviate.internal"
+  WEAVIATE_HTTP_PORT = "8080"
+  WEAVIATE_HTTP_SECURE = "false"
+  WEAVIATE_GRPC_HOST = "dreampath-weaviate.internal"
+  WEAVIATE_GRPC_PORT = "50051"
+  WEAVIATE_GRPC_SECURE = "false"
+
+  # Database settings
+  DATABASE_TYPE = "postgres"
+
+  # Python environment
+  PYTHONUNBUFFERED = "1"
+
+# Secrets (set separately via flyctl secrets set):
+# - OPENAI_API_KEY
+# - ANTHROPIC_API_KEY
+# - POSTGRES_USER
+# - POSTGRES_PASSWORD
+# - POSTGRES_HOST
+# - POSTGRES_PORT
+# - POSTGRES_DB
+# - SUPABASE_URL (if different from POSTGRES_HOST)
+# - SUPABASE_SERVICE_KEY (if needed)
+# - LANGCHAIN_API_KEY (optional, for tracing)
+# - LANGFUSE_PUBLIC_KEY (optional, for observability)
+# - LANGFUSE_SECRET_KEY (optional, for observability)
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true  # Save costs when idle
+  auto_start_machines = true
+  min_machines_running = 0   # Scale to zero when idle
+
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 200
+    hard_limit = 250
+
+# Health check configuration
+[[http_service.checks]]
+  grace_period = "10s"
+  interval = "30s"
+  method = "GET"
+  timeout = "5s"
+  path = "/health"
+
+# Machine configuration
+[[vm]]
+  memory = "1gb"  # Need at least 1GB (512MB failed on Render)
+  cpu_kind = "shared"
+  cpus = 1

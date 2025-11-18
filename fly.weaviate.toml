@@ -1,0 +1,37 @@
+# Fly.io configuration for Weaviate
+app = "dreampath-weaviate"
+primary_region = "iad" # US East (change if needed: sjc=West, lhr=London)
+
+[build]
+  dockerfile = "Dockerfile.weaviate"
+
+[env]
+  AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED = "true"
+  ENABLE_MODULES = "bm25,text2vec-openai,reranker-openai"
+  PERSISTENCE_DATA_PATH = "/var/lib/weaviate"
+  CLUSTER_HOSTNAME = "node1"
+  QUERY_DEFAULTS_LIMIT = "25"
+  GRPC_PORT = "50051"
+
+# OpenAI API key - will be set via secrets
+# OPENAI_APIKEY will be set separately
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+
+# Expose gRPC port for data operations
+[[services]]
+  internal_port = 50051
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 50051
+    handlers = []  # Raw TCP passthrough for gRPC
+
+[mounts]
+  source = "weaviate_data"
+  destination = "/var/lib/weaviate"

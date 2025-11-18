@@ -11,7 +11,7 @@ class WeaviateCourseService:
     Service for efficient course data retrieval using Weaviate vector database.
     Thread-safe and designed for production use across multiple application components.
     """
-    
+
     _instance = None
     _lock = threading.Lock()
     
@@ -25,15 +25,17 @@ class WeaviateCourseService:
                     cls._instance._initialized = False
         return cls._instance
     
-    def __init__(self, http_host=None, http_port=None, http_secure=False, 
-                 grpc_host=None, grpc_port=None, grpc_secure=False):
+    def __init__(self, http_host=None, http_port=None, http_secure=None,
+                 grpc_host=None, grpc_port=None, grpc_secure=None):
         if not self._initialized:
-            # Use environment variables with fallbacks to your defaults
+            # Use environment variables with fallbacks to defaults
             http_host = http_host or os.getenv("WEAVIATE_HTTP_HOST", "localhost")
             http_port = http_port or int(os.getenv("WEAVIATE_HTTP_PORT", "8080"))
+            http_secure = http_secure if http_secure is not None else os.getenv("WEAVIATE_HTTP_SECURE", "false").lower() == "true"
             grpc_host = grpc_host or os.getenv("WEAVIATE_GRPC_HOST", "localhost")
             grpc_port = grpc_port or int(os.getenv("WEAVIATE_GRPC_PORT", "50051"))
-            
+            grpc_secure = grpc_secure if grpc_secure is not None else os.getenv("WEAVIATE_GRPC_SECURE", "false").lower() == "true"
+
             self.client = weaviate.connect_to_custom(
                 http_host=http_host,
                 http_port=http_port,
@@ -41,6 +43,7 @@ class WeaviateCourseService:
                 grpc_host=grpc_host,
                 grpc_port=grpc_port,
                 grpc_secure=grpc_secure,
+                skip_init_checks=True,  # Skip gRPC health check for cloud deployments
             )
 
             self.course_collection = self.client.collections.get("Course")
