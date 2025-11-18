@@ -10,12 +10,7 @@ __pycache__
 checkpoints*
 
 # Markdown
-CLAUDE.md
-SUPABASE_MIGRATION_GUIDE.md
-INTEGRATION_ANALYSIS.md
-COURSES_REFACTOR_SUMMARY.md
-DEPLOYMENT_*
-MIGRATION_PLAN.md
+*.md
 
 # Miscellaneous
 *.txt
