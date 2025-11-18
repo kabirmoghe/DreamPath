@@ -1,3 +1,4 @@
 *.txt
 test_*.py
 debug_*.py
+*.md
