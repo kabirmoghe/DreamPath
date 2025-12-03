@@ -37,9 +37,9 @@ primary_region = "iad" # US East (same as Weaviate for low latency)
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = true  # Save costs when idle
+  auto_stop_machines = true
   auto_start_machines = true
-  min_machines_running = 0   # Scale to zero when idle
+  min_machines_running = 1   # Keep 1 machine warm to avoid cold starts (~$2-5/month)
 
   [http_service.concurrency]
     type = "requests"

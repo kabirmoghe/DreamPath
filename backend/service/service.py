@@ -121,6 +121,16 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
                 # Set store for long-term memory (cross-conversation knowledge)
                 agent.store = store
             yield
+
+            # Cleanup on shutdown
+            logger.info("Shutting down: cleaning up database connections...")
+            if student_db_service:
+                # Close the database connection pool
+                from dreampath_processing.database.connection import get_db_connection
+                db_connection = get_db_connection()
+                if db_connection.pool:
+                    await db_connection.close_pool()
+                    logger.info("Database connection pool closed")
     except Exception as e:
         logger.error(f"Error during database/store/agents initialization: {e}")
         raise
@@ -136,6 +146,8 @@ app.add_middleware(
         "http://localhost:3000",  # Alternative dev port
         "http://127.0.0.1:5173",
         "http://127.0.0.1:3000",
+        "https://dreampath.live",  # Production custom domain
+        "https://www.dreampath.live",  # Production custom domain (www)
     ],
     allow_origin_regex=r"https://.*\.vercel\.app",  # Allow all Vercel deployments
     allow_credentials=True,

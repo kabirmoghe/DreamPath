@@ -1,0 +1,35 @@
+name: Deploy to Fly.io
+
+on:
+  push:
+    branches:
+      - dev  # Deploy when pushing to dev branch (change to 'main' if preferred)
+  workflow_dispatch:  # Allow manual trigger from GitHub UI
+
+jobs:
+  deploy:
+    name: Deploy Backend to Fly.io
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Fly.io CLI
+        uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Deploy to Fly.io
+        run: flyctl deploy --remote-only -a dreampath-backend
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: Ensure machine is started
+        run: |
+          # Get the machine ID (there should be only one for the app process)
+          MACHINE_ID=$(flyctl machine list -a dreampath-backend --json | jq -r '.[0].id')
+          echo "Machine ID: $MACHINE_ID"
+
+          # Start the machine (will be a no-op if already running)
+          flyctl machine start $MACHINE_ID -a dreampath-backend || echo "Machine already running or start not needed"
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

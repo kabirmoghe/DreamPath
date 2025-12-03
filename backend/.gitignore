@@ -7,3 +7,7 @@ INTERRUPT_HANDLING.md
 create_sample_data.py
 test_*.py
 streamlit_app.py
+check*.py
+debug_*.py
+delete_*.py
+weaviate_export/
