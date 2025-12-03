@@ -78,7 +78,7 @@ function Login() {
                     <Form.Label>Email</Form.Label>
                     <Form.Control
                       type="email"
-                      placeholder="Enter your email"
+                      placeholder="@dartmouth.edu"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required

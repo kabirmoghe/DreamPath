@@ -36,6 +36,11 @@ function Signup() {
       return;
     }
 
+    if (!email.toLowerCase().endsWith('@dartmouth.edu')) {
+      setError('Only @dartmouth.edu addresses are accepted');
+      return;
+    }
+
     if (password.length < 6) {
       setError('Password must be at least 6 characters');
       return;
@@ -224,7 +229,7 @@ function Signup() {
                         <Form.Label>Email address</Form.Label>
                         <Form.Control
                           type="email"
-                          placeholder="Enter email"
+                          placeholder="@dartmouth.edu"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                           required
