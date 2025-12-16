@@ -45,11 +45,66 @@ class CoursePathAgentInput(BaseModel):
     thread_id: str
     plan_id: str
 
+# Literal type with all valid Dartmouth majors
+ValidMajor = Literal[
+    "African and African American Studies",
+    "Anthropology",
+    "Art History",
+    "Asian Societies, Cultures, and Languages",
+    "Biological Sciences",
+    "Biological Chemistry",
+    "Biophysical Chemistry",
+    "Chemistry",
+    "Ancient History",
+    "Classical Archaeology",
+    "Classical Languages and Literatures",
+    "Classical Studies",
+    "Cognitive Science",
+    "Comparative Literature",
+    "Computer Science",
+    "Earth Sciences",
+    "Russian",
+    "Russian Area Studies",
+    "Economics",
+    "Biomedical Engineering Sciences",
+    "Engineering Physics",
+    "Engineering Sciences",
+    "English",
+    "Film and Media Studies",
+    "French",
+    "French Studies",
+    "Italian",
+    "Italian Studies",
+    "Romance Languages",
+    "Geography",
+    "German Studies",
+    "Government",
+    "History",
+    "Latin American, Latino, and Caribbean Studies",
+    "Linguistics",
+    "Mathematics",
+    "Music",
+    "Native American Studies",
+    "Philosophy",
+    "Astronomy",
+    "Physics",
+    "Neuroscience",
+    "Psychology",
+    "Quantitative Social Science",
+    "Religion",
+    "Sociology",
+    "Hispanic Studies",
+    "Romance Studies",
+    "Studio Art",
+    "Theater",
+    "Women's, Gender & Sexuality Studies",
+]
+
 # ================================
 # Modify Profile Tool
 # ================================
 class ModifiedStudentProfile(BaseModel):
-    major: str
+    major: ValidMajor  # Now uses Literal type with all valid majors
     college_interests: str
     post_grad_goals: str
     career_goals: str

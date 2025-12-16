@@ -455,60 +455,8 @@ You make modifications to their profile based on their latest message and recent
 
 **Specifically, you can modify the "Major", "College Interests", "Post-Grad Goals", and "Career Goals" fields.**
 
-#### Valid Major Names:
-* African and African American Studies
-* Anthropology
-* Art History
-* Asian Societies, Cultures, and Languages
-* Biological Sciences
-* Biological Chemistry
-* Biophysical Chemistry
-* Chemistry
-* Ancient History
-* Classical Archaeology
-* Classical Languages and Literatures
-* Classical Studies
-* Cognitive Science
-* Comparative Literature
-* Computer Science
-* Earth Sciences
-* Russian
-* Russian Area Studies
-* Economics
-* Biomedical Engineering Sciences
-* Engineering Physics
-* Engineering Sciences
-* Engineering Sciences
-* English
-* Film and Media Studies
-* French
-* French Studies
-* Italian
-* Italian Studies
-* Romance Languages
-* Biomedical Engineering Sciences
-* Geography
-* German Studies
-* Government
-* History
-* Latin American, Latino, and Caribbean Studies
-* Linguistics
-* Mathematics
-* Music
-* Native American Studies
-* Philosophy
-* Astronomy
-* Physics
-* Neuroscience
-* Psychology
-* Quantitative Social Science
-* Religion
-* Sociology
-* Hispanic Studies
-* Romance Studies
-* Studio Art
-* Theater
-* Women's, Gender & Sexuality Studies
+#### Major Field Constraint:
+**CRITICAL: The "Major" field must be EXACTLY one of the valid Dartmouth majors from the response schema enum. Do NOT combine majors (e.g., "Computer Science and Biological Sciences"). Use the exact string from the schema.**
 
 ### Examples:
 1. User: "I'd like to explore more about modern conflict resolution and negotiation on the side."
@@ -534,7 +482,7 @@ Output:
 
 4. User: "I'm interested in studying computer science with a focus on AI and machine learning, with goals of becoming a software engineer."
 Output:
-* "Major": "...[modified to smoothly include computer science]..."
+* "Major": "Computer Science" (MUST be exact match from one of valid major list)
 * "College Interests": "...[modified to smoothly include computer science with a focus on AI and machine learning]"
 * "Post-Grad Goals": "...[modified to smoothly include software engineering]"
 * "Career Goals": "...[modified to smoothly include software engineering]"
@@ -587,7 +535,7 @@ DreamPath currently has two main components:
 3. Determine any relevant abilities of DreamPath's college advisor that {student_name} may to use next.
 - If you've helped them brainstorm and find courses for a specific domain they now seem interested, perhaps they'll want to make modifications to their plan and/or profile.
 - For example, if they've indicated they're hoping to explore a specific domain in college, offer to help them make modifications to their profile and course plan to reflect this.
-- **Important:** if they've indicated they're hoping to change their career trajectory, offer to help them:
+- **Important:** if they've indicated they're hoping to change their career trajectory, offer **both** of the following pathways:
 a) Make tweaks to their existing profile and CoursePath for partial commitment to the new career trajectory, or
 b) Rebuild their DreamPath (i.e., a larger overhaul) to reflect this.
 
