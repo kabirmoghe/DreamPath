@@ -577,6 +577,8 @@ async def message_generator(
                     yield f"data: {json.dumps({'type': 'token', 'content': token_content})}\n\n"
     except Exception as e:
         logger.error(f"Error in message generator: {e}")
+        import traceback
+        traceback.print_exc()
         yield f"data: {json.dumps({'type': 'error', 'content': 'Internal server error'})}\n\n"
     finally:
         yield "data: [DONE]\n\n"
