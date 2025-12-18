@@ -147,7 +147,7 @@ function Signup() {
                           marginBottom: '15px',
                         }}
                       >
-                        Account Created!
+                        Check Your Email
                       </h4>
 
                       <p
@@ -159,8 +159,8 @@ function Signup() {
                           marginBottom: '10px',
                         }}
                       >
-                        We've sent a confirmation email to{' '}
-                        <strong style={{ color: '#2d5f2d' }}>{email}</strong>.
+                        If <strong style={{ color: '#2d5f2d' }}>{email}</strong> is not already registered,
+                        we've sent a confirmation email.
                       </p>
 
                       <p
@@ -195,6 +195,22 @@ function Signup() {
                         </p>
                       </div>
                     </div>
+
+                    {/* Already have account warning */}
+                    <Alert variant="info" className="mt-3" style={{
+                      borderLeft: '4px solid #8A6BC1',
+                      backgroundColor: '#f8f9fa'
+                    }}>
+                      <strong>Already have an account?</strong> If you don't receive an email within a few minutes,
+                      you may already be registered. Try{' '}
+                      <Link
+                        to="/login"
+                        style={{ color: '#8A6BC1', fontWeight: 600 }}
+                      >
+                        signing in
+                      </Link>{' '}
+                      instead.
+                    </Alert>
 
                     <div className="text-center mt-4">
                       <Link
