@@ -104,21 +104,9 @@ const LandingPage = () => {
       {/* Footer */}
       <footer className="bg-dark text-white py-4">
         <Container>
-          <Row className="align-items-center">
-            <Col md={6} className="mb-3 mb-md-0">
-              <h2 className="h4 mb-0" style={{ fontFamily: 'Lora, serif' }}>DreamPath</h2>
-            </Col>
-            <Col md={6}>
-              <div className="d-flex gap-4 justify-content-md-end">
-                <a href="#" className="text-white text-decoration-none">About</a>
-                <a href="#" className="text-white text-decoration-none">Privacy</a>
-                <a href="#" className="text-white text-decoration-none">Terms</a>
-                <a href="#" className="text-white text-decoration-none">Contact</a>
-              </div>
-            </Col>
-          </Row>
           <Row>
             <Col>
+              <h2 className="h4 mb-0" style={{ fontFamily: 'Lora, serif' }}>DreamPath</h2>
               <p className="text-muted small mt-3 mb-0">© 2025 DreamPath. All rights reserved.</p>
             </Col>
           </Row>

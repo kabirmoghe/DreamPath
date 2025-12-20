@@ -78,12 +78,31 @@ function Signup() {
     <div
       style={{
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        background: 'linear-gradient(135deg, #8A6BC1, #6B8FC7, #7A7DC4, #8A6BC1)',
+        backgroundSize: '400% 400%',
+        animation: 'gradientShift 15s ease infinite',
       }}
     >
+      <style>
+        {`
+          @keyframes gradientShift {
+            0% {
+              background-position: 0% 50%;
+            }
+            50% {
+              background-position: 100% 50%;
+            }
+            100% {
+              background-position: 0% 50%;
+            }
+          }
+        `}
+      </style>
       <Container>
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-5">
@@ -99,9 +118,22 @@ function Signup() {
                   >
                     Join DreamPath
                   </h2>
-                  <p className="text-muted">
-                    {confirmationSent ? 'Check your email' : 'Create your account to get started'}
-                  </p>
+                  {confirmationSent ? (
+                    <p className="text-muted">Check your email</p>
+                  ) : (
+                    <p className="text-muted" style={{ fontSize: '14px' }}>
+                      Interested in trying out DreamPath? Reach out to me at{' '}
+                      <a
+                        href="mailto:kabir.moghe.26@dartmouth.edu"
+                        style={{
+                          color: '#8A6BC1',
+                          textDecoration: 'none',
+                        }}
+                      >
+                        kabir.moghe.26@dartmouth.edu
+                      </a>
+                    </p>
+                  )}
                 </div>
 
                 {error && <Alert variant="danger">{error}</Alert>}
@@ -229,7 +261,7 @@ function Signup() {
                   </div>
                 ) : (
                   <>
-                    <Form onSubmit={handleSignup}>
+                    <Form onSubmit={(e) => e.preventDefault()}>
                       <Form.Group className="mb-3" controlId="fullName">
                         <Form.Label>Full Name</Form.Label>
                         <Form.Control
@@ -237,7 +269,7 @@ function Signup() {
                           placeholder="Enter your full name"
                           value={fullName}
                           onChange={(e) => setFullName(e.target.value)}
-                          required
+                          disabled
                         />
                       </Form.Group>
 
@@ -248,7 +280,7 @@ function Signup() {
                           placeholder="@dartmouth.edu"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          required
+                          disabled
                         />
                       </Form.Group>
 
@@ -259,11 +291,8 @@ function Signup() {
                           placeholder="Password"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
-                          required
+                          disabled
                         />
-                        <Form.Text className="text-muted">
-                          Must be at least 6 characters
-                        </Form.Text>
                       </Form.Group>
 
                       <Form.Group className="mb-3" controlId="confirmPassword">
@@ -273,7 +302,7 @@ function Signup() {
                           placeholder="Confirm password"
                           value={confirmPassword}
                           onChange={(e) => setConfirmPassword(e.target.value)}
-                          required
+                          disabled
                         />
                       </Form.Group>
 
@@ -281,7 +310,7 @@ function Signup() {
                         variant="primary"
                         type="submit"
                         className="w-100"
-                        disabled={loading}
+                        disabled
                         style={{
                           background: 'linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%)',
                           border: 'none',
@@ -289,7 +318,7 @@ function Signup() {
                           fontWeight: 500,
                         }}
                       >
-                        {loading ? 'Creating Account...' : 'Sign Up'}
+                        Sign Up
                       </Button>
                     </Form>
 
