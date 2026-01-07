@@ -1,10 +1,15 @@
 import weaviate
 import threading
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any
 from weaviate.classes.query import Filter
 import json
 import os
+import warnings
 from dreampath_processing.courses.data_retrieval.college_info_retrieval import DATA_DIR
+
+# Suppress Weaviate ResourceWarnings - singleton pattern keeps connection open intentionally
+warnings.filterwarnings('ignore', category=ResourceWarning, module='weaviate')
+warnings.filterwarnings('ignore', message='.*connection.*not closed.*')
 
 class WeaviateCourseService:
     """
@@ -124,15 +129,16 @@ class WeaviateCourseService:
             
         return major_data.objects[0].properties
     
-    def _build_filters(self, department: Optional[str], num_prereqs_max: Optional[int], 
-                      course_code: Optional[str] = None):
+    def _build_filters(self, department: Optional[str]=None, course_code: Optional[str]=None, max_num_prereqs: Optional[int]=None, difficulty_classification: Optional[str]=None, value_classification: Optional[str]=None):
         """
         Build Weaviate filters based on search parameters.
         
         Args:
             department: Department name (e.g., "Computer Science")
-            num_prereqs_max: Maximum number of prerequisites
             course_code: Specific course code to filter by
+            max_num_prereqs: Maximum number of prerequisites
+            difficulty_classification: Difficulty classification (e.g., "Low", "Medium", "High")
+            value_classification: Value classification (e.g., "High", "Medium", "Low")
             
         Returns:
             Weaviate Filter object or None
@@ -149,14 +155,22 @@ class WeaviateCourseService:
             else:
                 raise ValueError(f"Invalid department: {department}")
                 
-        if num_prereqs_max is not None:
-            prereq_filter = Filter.by_property("num_prereqs").less_or_equal(num_prereqs_max)
-            filters = prereq_filter if filters is None else (filters & prereq_filter)
-            
         if course_code:
             code_filter = Filter.by_property("course_code").equal(course_code)
             filters = code_filter if filters is None else (filters & code_filter)
+
+        if max_num_prereqs is not None:
+            prereq_filter = Filter.by_property("num_prereqs").less_or_equal(max_num_prereqs)
+            filters = prereq_filter if filters is None else (filters & prereq_filter)
             
+        if difficulty_classification:
+            difficulty_filter = Filter.by_property("global_difficulty_classification").equal(difficulty_classification)
+            filters = difficulty_filter if filters is None else (filters & difficulty_filter)
+
+        if value_classification:
+            value_filter = Filter.by_property("global_value_classification").equal(value_classification)
+            filters = value_filter if filters is None else (filters & value_filter)
+
         return filters
     
     def close(self):
@@ -172,6 +186,6 @@ class WeaviateCourseService:
             pass
 
 # Global instance accessor
-def get_weaviate_course_service() -> WeaviateCourseService:
+def  get_weaviate_course_service() -> WeaviateCourseService:
     """Get the singleton WeaviateCourseService instance"""
     return WeaviateCourseService() 

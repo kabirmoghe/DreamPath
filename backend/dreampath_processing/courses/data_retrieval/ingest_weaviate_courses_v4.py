@@ -35,6 +35,32 @@ def infer_num_prereqs(best_prereq_path_str: str) -> int:
     best_prereq_path = ast.literal_eval(best_prereq_path_str)
     return len(best_prereq_path)
 
+# ---- Safe type converters for review data ----------------------------------
+
+def safe_float(value):
+    """Convert value to float, handling NaN/None."""
+    if pd.isna(value):
+        return None
+    try:
+        return float(value)
+    except (ValueError, TypeError):
+        return None
+
+def safe_int(value):
+    """Convert value to int, handling NaN/None."""
+    if pd.isna(value):
+        return None
+    try:
+        return int(value)
+    except (ValueError, TypeError):
+        return None
+
+def safe_str(value):
+    """Convert value to str, handling NaN/None."""
+    if pd.isna(value) or value in ["", "nan", "None"]:
+        return None
+    return str(value).strip()
+
 # ---- Schema / Collection (v4) ----------------------------------------------
 
 def ensure_course_collection(client, name="Course", recreate=False, use_openai=True):
@@ -55,12 +81,13 @@ def ensure_course_collection(client, name="Course", recreate=False, use_openai=T
     coll = client.collections.create(
         name=name,
         properties=[
+            # ========== EXISTING COURSE CATALOG FIELDS ==========
             wc.Property(name="course_id",        data_type=wc.DataType.TEXT, index_filterable=True, skip_vectorization=True),
             wc.Property(name="course_code",      data_type=wc.DataType.TEXT, index_searchable=True, index_filterable=True, skip_vectorization=True),
             wc.Property(name="department_id",    data_type=wc.DataType.UUID, index_filterable=True, skip_vectorization=True),
             wc.Property(name="department",       data_type=wc.DataType.TEXT, index_searchable=True, index_filterable=True, skip_vectorization=True),
-            wc.Property(name="course_title",     data_type=wc.DataType.TEXT, index_searchable=True),  # Will be vectorized
-            wc.Property(name="description",      data_type=wc.DataType.TEXT, index_searchable=True),  # Will be vectorized
+            wc.Property(name="course_title",     data_type=wc.DataType.TEXT, index_searchable=True),  # Vectorized
+            wc.Property(name="description",      data_type=wc.DataType.TEXT, index_searchable=True),  # Vectorized
             wc.Property(name="level",            data_type=wc.DataType.INT, index_filterable=True),
             wc.Property(name="prerequisites",    data_type=wc.DataType.TEXT, index_searchable=True, skip_vectorization=True),
             wc.Property(name="best_prereq_path", data_type=wc.DataType.TEXT, index_searchable=True, skip_vectorization=True),
@@ -69,6 +96,37 @@ def ensure_course_collection(client, name="Course", recreate=False, use_openai=T
             wc.Property(name="course_url",       data_type=wc.DataType.TEXT, skip_vectorization=True),
             wc.Property(name="tags",             data_type=wc.DataType.TEXT_ARRAY, index_searchable=True, index_filterable=True, skip_vectorization=True),
             wc.Property(name="updated_at",       data_type=wc.DataType.DATE, index_filterable=True, skip_vectorization=True),
+
+            # ========== NEW ENRICHED REVIEW FIELDS ==========
+            # Review count
+            wc.Property(name="total_reviews", data_type=wc.DataType.INT, index_filterable=True, skip_vectorization=True),
+
+            # Difficulty metrics (numeric scores - filterable)
+            wc.Property(name="global_difficulty_score", data_type=wc.DataType.NUMBER, index_filterable=True, skip_vectorization=True),
+            wc.Property(name="global_difficulty_normalized", data_type=wc.DataType.NUMBER, index_filterable=True, skip_vectorization=True),
+            wc.Property(name="global_difficulty_percentile", data_type=wc.DataType.NUMBER, index_filterable=True, skip_vectorization=True),
+            wc.Property(name="dept_difficulty_percentile", data_type=wc.DataType.NUMBER, index_filterable=True, skip_vectorization=True),
+
+            # Difficulty classifications (text - searchable + filterable)
+            wc.Property(name="global_difficulty_classification", data_type=wc.DataType.TEXT, index_searchable=True, index_filterable=True, skip_vectorization=True),
+            wc.Property(name="dept_difficulty_classification", data_type=wc.DataType.TEXT, index_searchable=True, index_filterable=True, skip_vectorization=True),
+
+            # Difficulty blurb (VECTORIZED for semantic search)
+            wc.Property(name="difficulty_blurb", data_type=wc.DataType.TEXT, index_searchable=True),
+
+            # Learning value metrics (numeric scores - filterable)
+            wc.Property(name="global_value_score", data_type=wc.DataType.NUMBER, index_filterable=True, skip_vectorization=True),
+            wc.Property(name="global_value_normalized", data_type=wc.DataType.NUMBER, index_filterable=True, skip_vectorization=True),
+            wc.Property(name="global_value_percentile", data_type=wc.DataType.NUMBER, index_filterable=True, skip_vectorization=True),
+            wc.Property(name="dept_value_percentile", data_type=wc.DataType.NUMBER, index_filterable=True, skip_vectorization=True),
+
+            # Learning value classifications (text - searchable + filterable)
+            wc.Property(name="global_value_classification", data_type=wc.DataType.TEXT, index_searchable=True, index_filterable=True, skip_vectorization=True),
+            wc.Property(name="dept_value_classification", data_type=wc.DataType.TEXT, index_searchable=True, index_filterable=True, skip_vectorization=True),
+
+            # Learning value blurbs (VECTORIZED for semantic search)
+            wc.Property(name="learning_value_blurb", data_type=wc.DataType.TEXT, index_searchable=True),
+            wc.Property(name="target_audience_blurb", data_type=wc.DataType.TEXT, index_searchable=True),
         ],
         vectorizer_config=vector_cfg,
         # Optional: enable generative/reranker modules if your server has them
@@ -88,11 +146,30 @@ def main():
     try:
         coll = ensure_course_collection(client, name=args.collection, recreate=args.recreate, use_openai=(not args.no_openai))
 
+
         df = load_dataframes(args.inputs)
         expected = ["department","department_id","course_title","course_url","course_code","description",
                     "prerequisites","degree_req","html_content","best_prereq_path"]
+        # Add expected review fields (optional for backward compatibility)
+        review_fields = [
+            "total_reviews",
+            "global_difficulty_score", "global_difficulty_normalized",
+            "global_difficulty_percentile", "global_difficulty_classification",
+            "dept_difficulty_percentile", "dept_difficulty_classification", "difficulty_blurb",
+            "global_value_score", "global_value_normalized",
+            "global_value_percentile", "global_value_classification",
+            "dept_value_percentile", "dept_value_classification",
+            "learning_value_blurb", "target_audience_blurb"
+        ]
+        expected.extend(review_fields)
+
+        # Fill missing columns (backward compatibility)
         for col in expected:
-            if col not in df: df[col] = ""
+            if col not in df:
+                if col in review_fields:
+                    df[col] = None  # Review fields default to None
+                else:
+                    df[col] = ""  # Catalog fields default to empty string
 
         df["course_id"] = [stable_course_id(d, c) for d,c in zip(df["department"], df["course_code"])]
         df["updated_at"] = dt.datetime.now(dt.UTC).strftime('%Y-%m-%dT%H:%M:%SZ')
@@ -106,6 +183,7 @@ def main():
         rows = []
         for _, r in df.iterrows():
             rows.append({
+                # ========== EXISTING CATALOG FIELDS ==========
                 "course_id": r["course_id"],
                 "course_code": r["course_code"],
                 "department_id": r["department_id"],
@@ -121,6 +199,28 @@ def main():
                 "tags": (list(r["tags"]) if isinstance(r["tags"], (list,tuple))
                          else ([r["tags"]] if str(r["tags"]).strip() not in ["","nan","None"] else [])),
                 "updated_at": r["updated_at"],
+
+                # ========== NEW REVIEW FIELDS ==========
+                "total_reviews": safe_int(r.get("total_reviews")),
+
+                # Difficulty metrics
+                "global_difficulty_score": safe_float(r.get("global_difficulty_score")),
+                "global_difficulty_normalized": safe_float(r.get("global_difficulty_normalized")),
+                "global_difficulty_percentile": safe_float(r.get("global_difficulty_percentile")),
+                "dept_difficulty_percentile": safe_float(r.get("dept_difficulty_percentile")),
+                "global_difficulty_classification": safe_str(r.get("global_difficulty_classification")),
+                "dept_difficulty_classification": safe_str(r.get("dept_difficulty_classification")),
+                "difficulty_blurb": safe_str(r.get("difficulty_blurb")),
+
+                # Learning value metrics
+                "global_value_score": safe_float(r.get("global_value_score")),
+                "global_value_normalized": safe_float(r.get("global_value_normalized")),
+                "global_value_percentile": safe_float(r.get("global_value_percentile")),
+                "dept_value_percentile": safe_float(r.get("dept_value_percentile")),
+                "global_value_classification": safe_str(r.get("global_value_classification")),
+                "dept_value_classification": safe_str(r.get("dept_value_classification")),
+                "learning_value_blurb": safe_str(r.get("learning_value_blurb")),
+                "target_audience_blurb": safe_str(r.get("target_audience_blurb")),
             })
         # Process in smaller chunks to avoid gRPC message size limits
         chunk_size = 100  # Adjust based on your data size
@@ -133,6 +233,14 @@ def main():
             print(f"Ingested chunk {i//chunk_size + 1}: {len(chunk)} objects (total: {total_ingested}/{len(rows)})")
 
         print(f"Successfully ingested {total_ingested} objects into collection '{args.collection}'.")
+
+        # Print review data statistics
+        courses_with_reviews = sum(1 for r in rows if r.get("total_reviews") is not None and r["total_reviews"] > 0)
+        if courses_with_reviews > 0:
+            print(f"\n📊 Review Data Statistics:")
+            print(f"   Courses with reviews: {courses_with_reviews}")
+            print(f"   Courses without reviews: {total_ingested - courses_with_reviews}")
+            print(f"   Coverage: {courses_with_reviews/total_ingested*100:.1f}%")
     finally:
         client.close()
 

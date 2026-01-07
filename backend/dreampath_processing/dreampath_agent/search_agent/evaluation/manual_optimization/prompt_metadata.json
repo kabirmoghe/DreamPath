@@ -1,0 +1,13 @@
+{
+  "prompt_0.py": {
+    "description": "Initial output prompt from GEPA"
+  },
+  "prompt_1.py": {
+    "description": "Wove with original search prompt, added 6 few shots from golden examples",
+    "removed": "inaccuracies with ValidDifficulty, contradictory instructions"
+  },
+  "prompt_2.py": {
+    "description": "Added more detail about query detail expansion",
+    "version": "best"
+  }
+}

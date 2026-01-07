@@ -4,7 +4,7 @@ import weaviate
 from weaviate.classes.query import Filter
 
 st.set_page_config(page_title="Course Browser", layout="wide")
-st.title("Course Browser (Weaviate)")
+st.title("Vector Course Browser")
 
 # Connect (adjust if you changed ports)
 client = weaviate.connect_to_custom(
@@ -29,27 +29,26 @@ flt = None
 if department:
     flt = Filter.by_property("department").equal(department)
 
+return_ppts = ["department","course_code","course_title","description","prerequisites","num_prereqs","level","course_url"]
+return_ppts += ["total_reviews","global_difficulty_percentile","global_difficulty_classification", "difficulty_blurb", "global_value_percentile", "global_value_classification","learning_value_blurb"]
+
 # Query
 if q:
     res = coll.query.hybrid(
         query=q, alpha=alpha, limit=limit,
         filters=flt,
-        return_properties=[
-            "department","course_code","course_title","description","prerequisites","num_prereqs","level","course_url"
-        ],
+        return_properties=return_ppts,
     )
     objs = res.objects
 else:
     res = coll.query.fetch_objects(
         limit=limit, filters=flt,
-        return_properties=[
-            "department","course_code","course_title","description","prerequisites","num_prereqs","level","course_url"
-        ],
+        return_properties=return_ppts,
     )
     objs = res.objects
 
 rows = [o.properties for o in objs]
 df = pd.DataFrame(rows)
-st.dataframe(df, use_container_width=True)
+st.dataframe(df, width='stretch')
 
 client.close()
