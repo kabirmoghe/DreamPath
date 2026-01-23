@@ -147,6 +147,7 @@ async def execute_rebuild_tool(state: DreamPathAgentState, config: dict, paramet
     for parameter, queries in course_search_queries.items():
         print(f"Executing course search queries for parameter: {parameter}...")
         for query in queries.queries:
+            print(f">>> Executing course search query: {query}...")
             search_results = course_search_tool.structured_hybrid_search(query)
             for result in search_results.results:
                 if result.course_code not in course_search_results:

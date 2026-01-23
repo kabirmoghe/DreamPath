@@ -38,11 +38,32 @@ class CourseSearchTool:
         """
         # The WeaviateCourseService doesn't have hybrid_search method yet, so let's use the existing logic
         # but delegate the Weaviate operations to the service
-        return_props = ["department", "course_code", "course_title", "description", "prerequisites", "level", "course_url"]
+        return_props = [
+            "department",
+            "course_code",
+            "course_title",
+            "description",
+            "prerequisites",
+            "level",
+            "course_url",
+            "num_prereqs",
+            "total_reviews",
+            "global_difficulty_percentile",
+            "global_difficulty_classification",
+            "dept_difficulty_percentile",
+            "dept_difficulty_classification",
+            "difficulty_blurb",
+            "global_value_percentile",
+            "global_value_classification",
+            "dept_value_percentile",
+            "dept_value_classification",
+            "learning_value_blurb",
+            "target_audience_blurb"
+        ]
 
         try:
-            # Build filters using the service's method
-            flt = self.service._build_filters(department, num_prereqs_max, course_code)
+            # Build filters using the service's method (note: positional args are department, course_code, max_num_prereqs)
+            flt = self.service._build_filters(department=department, course_code=course_code, max_num_prereqs=num_prereqs_max)
 
             # 1) Exact lookup path: if a course_code is provided, we can skip vectors entirely
             if course_code and (not query or query.strip() == "" or alpha is None):
@@ -104,13 +125,26 @@ class CourseSearchTool:
                     course_title=result.get('course_title', ''),
                     description=result.get('description', ''),
                     prerequisites=result.get('prerequisites', ''),
-                    course_url=result.get('course_url', '')
+                    course_url=result.get('course_url', ''),
+                    num_prereqs=result.get('num_prereqs', 0),
+                    total_reviews=result.get('total_reviews'),
+                    global_difficulty_percentile=result.get('global_difficulty_percentile'),
+                    global_difficulty_classification=result.get('global_difficulty_classification'),
+                    dept_difficulty_percentile=result.get('dept_difficulty_percentile'),
+                    dept_difficulty_classification=result.get('dept_difficulty_classification'),
+                    difficulty_blurb=result.get('difficulty_blurb'),
+                    global_value_percentile=result.get('global_value_percentile'),
+                    global_value_classification=result.get('global_value_classification'),
+                    dept_value_percentile=result.get('dept_value_percentile'),
+                    dept_value_classification=result.get('dept_value_classification'),
+                    learning_value_blurb=result.get('learning_value_blurb'),
+                    target_audience_blurb=result.get('target_audience_blurb')
                 )
                 results.append(course_result)
             except Exception as e:
                 print(f"Error creating CourseSearchResult: {e}")
                 continue
-        
+
         return CourseSearchOutput(results=results)
  
     def structured_get_course_by_code(self, course_code: str) -> Optional[CourseSearchResult]:
@@ -134,7 +168,21 @@ class CourseSearchTool:
                 course_title=result.get('course_title', ''),
                 description=result.get('description', ''),
                 prerequisites=result.get('prerequisites', ''),
-                course_url=result.get('course_url', ''))
+                course_url=result.get('course_url', ''),
+                num_prereqs=result.get('num_prereqs', 0),
+                total_reviews=result.get('total_reviews'),
+                global_difficulty_percentile=result.get('global_difficulty_percentile'),
+                global_difficulty_classification=result.get('global_difficulty_classification'),
+                dept_difficulty_percentile=result.get('dept_difficulty_percentile'),
+                dept_difficulty_classification=result.get('dept_difficulty_classification'),
+                difficulty_blurb=result.get('difficulty_blurb'),
+                global_value_percentile=result.get('global_value_percentile'),
+                global_value_classification=result.get('global_value_classification'),
+                dept_value_percentile=result.get('dept_value_percentile'),
+                dept_value_classification=result.get('dept_value_classification'),
+                learning_value_blurb=result.get('learning_value_blurb'),
+                target_audience_blurb=result.get('target_audience_blurb')
+            )
         else:
             return None
 

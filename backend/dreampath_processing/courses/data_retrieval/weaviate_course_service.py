@@ -74,9 +74,15 @@ class WeaviateCourseService:
                 filters=Filter.by_property("course_code").equal(course_code),
                 limit=1,
                 return_properties=[
-                    "course_code", "department_id", "department", "course_title", "description", 
-                    "prerequisites", "best_prereq_path", "num_prereqs", 
-                    "level", "degree_req", "course_url", "course_id"
+                    "course_code", "department_id", "department", "course_title", "description",
+                    "prerequisites", "best_prereq_path", "num_prereqs",
+                    "level", "degree_req", "course_url", "course_id",
+                    "total_reviews",
+                    "global_difficulty_percentile", "global_difficulty_classification",
+                    "dept_difficulty_percentile", "dept_difficulty_classification", "difficulty_blurb",
+                    "global_value_percentile", "global_value_classification",
+                    "dept_value_percentile", "dept_value_classification",
+                    "learning_value_blurb", "target_audience_blurb"
                 ]
             )
             

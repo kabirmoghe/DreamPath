@@ -4,11 +4,13 @@ from dreampath_processing.courses.scheduling_helpers import schedule_courses_by_
 from dreampath_processing.courses.schedule_modules.course_path import CoursePath
 
 # major_courses, complementary_courses, 
-def build_course_path(recommended_courses, course_bank, visualize_course_connections=False) -> CoursePath:
+def build_course_path(recommended_courses, course_bank, visualize_course_connections=False, verbose=False) -> CoursePath:
     # Build prereq trees
     prereq_trees = []
 
-    print('Building prereq. trees for recommended courses...')
+    if verbose:
+        print('Building prereq. trees for recommended courses...')
+        
     # Modify course objects in course bank
     for course in recommended_courses:
         course_prereq_tree, course_prereqs = build_prereq_tree(course)
@@ -37,7 +39,7 @@ def build_course_path(recommended_courses, course_bank, visualize_course_connect
         visualize_graph(flattened_graph, prereq_graph.all_courses)
 
     # Build course path
-    course_path_components = schedule_courses_by_term(course_graph=prereq_graph, course_bank=course_bank, max_terms=12, max_courses_per_term=3, verbose=True)
+    course_path_components = schedule_courses_by_term(course_graph=prereq_graph, course_bank=course_bank, max_terms=12, max_courses_per_term=3, verbose=verbose)
     course_path = course_path_components["plan"]
 
     # Formalize output course path
