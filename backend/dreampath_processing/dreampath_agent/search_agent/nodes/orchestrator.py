@@ -184,16 +184,16 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig, *, 
         config=config
     )
 
-    print("  [ORCH] Context messages:")
-    for message in context_messages:
-        print(f"    {message['role']}: {message['content']}")
+    # print("  [ORCH] Context messages:")
+    # for message in context_messages:
+    #     print(f"    {message['role']}: {message['content']}")
 
     print(f"  [ORCH] Context built: {len(context_messages)} messages, {token_updates['iteration_tokens'][-1]} tokens")
 
     # ============================================
     # 2. GET STRUCTURED OUTPUT FROM LLM (instructor)
     # ============================================
-    print(f"  [ORCH] Calling instructor API...")
+    # print(f"  [ORCH] Calling instructor API...")
     client = from_openai(AsyncOpenAI())
 
     # Our messages are already in OpenAI format (role + content dicts)
@@ -203,7 +203,7 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig, *, 
         response_model=NextAction,
         temperature=0
     )
-    print(f"  [ORCH] Got response from instructor")
+    # print(f"  [ORCH] Got response from instructor")
 
     # ============================================
     # 3. LOG DECISION
@@ -245,7 +245,7 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig, *, 
     # ============================================
     # 5. RETURN STATE UPDATES
     # ============================================
-    print(f"  [ORCH] Returning state updates")
+    # print(f"  [ORCH] Returning state updates")
     return {
         "next_action": next_action,
         "search_trace": state.search_trace + [decision_msg],

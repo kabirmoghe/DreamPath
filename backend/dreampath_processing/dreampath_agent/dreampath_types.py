@@ -26,13 +26,26 @@ class CourseSearchQueries(BaseModel):
     queries: List[CourseSearchParams] = Field(default_factory=list)
 
 class CourseSearchResult(BaseModel):
+    """Course search result with all relevant fields"""
     department: str
-    department_id: Optional[str] = Field(default=None)
     course_code: str
     course_title: str
     description: str
     prerequisites: str
     course_url: str
+    num_prereqs: int
+    total_reviews: Optional[int] = None
+    global_difficulty_percentile: Optional[float] = None
+    global_difficulty_classification: Optional[str] = None
+    dept_difficulty_percentile: Optional[float] = None
+    dept_difficulty_classification: Optional[str] = None
+    difficulty_blurb: Optional[str] = None
+    global_value_percentile: Optional[float] = None
+    global_value_classification: Optional[str] = None
+    dept_value_percentile: Optional[float] = None
+    dept_value_classification: Optional[str] = None
+    learning_value_blurb: Optional[str] = None
+    target_audience_blurb: Optional[str] = None
 
 class CourseSearchOutput(BaseModel):
     results: List[CourseSearchResult] = Field(default_factory=list)

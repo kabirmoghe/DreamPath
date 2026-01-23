@@ -113,8 +113,8 @@ def _render_markdown_from_structured(summary: FinalSearchSummary) -> str:
                     lines.append(f"- Prerequisites: {course.num_prereqs}")
                 lines.append("")
 
-        # Show all other courses as a compact list
-        other_courses = [c for c in task_summary.all_courses if c.course_code not in task_summary.top_results]
+        # Show all other courses as a compact list (only remaining 10)
+        other_courses = [c for c in task_summary.all_courses if c.course_code not in task_summary.top_results][:10]
         if other_courses:
             lines.append("### 📚 Other Results")
             lines.append("")

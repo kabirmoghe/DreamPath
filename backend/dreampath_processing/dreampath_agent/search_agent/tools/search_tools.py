@@ -78,7 +78,6 @@ async def module_search(search_input: str) -> tuple[CourseSearchParams, CourseSe
     client = CourseSearchClient()
     try:
         result = client.structured_hybrid_search(params)
-        print(result)
         return (params, result)
     finally:
         client.close()
