@@ -75,7 +75,7 @@ function Login() {
 
                 <Form onSubmit={handleLogin}>
                   <Form.Group className="mb-3">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label style={{ fontWeight: 400 }}>Email</Form.Label>
                     <Form.Control
                       type="email"
                       placeholder="@dartmouth.edu"
@@ -91,7 +91,7 @@ function Login() {
                   </Form.Group>
 
                   <Form.Group className="mb-3">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label style={{ fontWeight: 400 }}>Password</Form.Label>
                     <Form.Control
                       type="password"
                       placeholder="Enter your password"

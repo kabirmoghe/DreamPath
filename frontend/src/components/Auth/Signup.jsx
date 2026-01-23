@@ -87,14 +87,20 @@ function Signup() {
       <Container>
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-5">
-            <Card className="shadow-lg border-0">
+            <Card
+              style={{
+                border: 'none',
+                borderRadius: 16,
+                boxShadow: '0 10px 40px rgba(0, 0, 0, 0.15)',
+              }}
+            >
               <Card.Body className="p-5">
                 <div className="text-center mb-4">
                   <h2
                     style={{
                       fontFamily: 'Lora, serif',
-                      fontWeight: 600,
-                      color: '#8A6BC1',
+                      fontWeight: 400,
+                      color: '#333',
                     }}
                   >
                     Join DreamPath
@@ -215,7 +221,7 @@ function Signup() {
                   <>
                     <Form onSubmit={handleSignup}>
                       <Form.Group className="mb-3" controlId="fullName">
-                        <Form.Label>Full Name</Form.Label>
+                        <Form.Label style={{ fontWeight: 400 }}>Full Name</Form.Label>
                         <Form.Control
                           type="text"
                           placeholder="Enter your full name"
@@ -226,7 +232,7 @@ function Signup() {
                       </Form.Group>
 
                       <Form.Group className="mb-3" controlId="email">
-                        <Form.Label>Email address</Form.Label>
+                        <Form.Label style={{ fontWeight: 400 }}>Email address</Form.Label>
                         <Form.Control
                           type="email"
                           placeholder="@dartmouth.edu"
@@ -237,7 +243,7 @@ function Signup() {
                       </Form.Group>
 
                       <Form.Group className="mb-3" controlId="password">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label style={{ fontWeight: 400 }}>Password</Form.Label>
                         <Form.Control
                           type="password"
                           placeholder="Password"
@@ -251,7 +257,7 @@ function Signup() {
                       </Form.Group>
 
                       <Form.Group className="mb-3" controlId="confirmPassword">
-                        <Form.Label>Confirm Password</Form.Label>
+                        <Form.Label style={{ fontWeight: 400 }}>Confirm Password</Form.Label>
                         <Form.Control
                           type="password"
                           placeholder="Confirm password"

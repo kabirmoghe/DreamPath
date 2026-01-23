@@ -319,9 +319,19 @@ function Courses() {
       <Row xs={1} md={2} className="g-4">
         {sortedCourses.map((course, idx) => {
           const rankBadgeClass = tab === 'major' ? 'rank-badge-major' : 'rank-badge-complementary';
+          const hasWindow = course.must_have_window && course.must_have_window.length > 0;
+
+          // Compute window text if exists
+          let windowText = null;
+          if (hasWindow) {
+            const startTerm = Math.min(...course.must_have_window) + 1;
+            const endTerm = Math.max(...course.must_have_window) + 1;
+            windowText = startTerm === endTerm ? `${startTerm}` : `${startTerm} ↔ ${endTerm}`;
+          }
+
           return (
             <Col key={course.course_code}>
-              <Card className="h-100 shadow-sm border-0" style={{ background: '#fff', borderRadius: 14, marginBottom: 12 }}>
+              <Card className="h-100 shadow-sm border-0" style={{ background: '#fff', borderRadius: 14, marginBottom: 12, position: 'relative' }}>
                 <Card.Header className="d-flex justify-content-between align-items-center bg-white border-0" style={{ borderRadius: 14 }}>
                   <Badge pill className={rankBadgeClass}>{idx + 1}</Badge>
                   <span className="ms-2 fw-bold" style={{ fontSize: 18 }}>{course.course_code}</span>
@@ -367,6 +377,25 @@ function Courses() {
                     </Button>
                   </div>
                 </Card.Body>
+                {hasWindow && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      bottom: '10px',
+                      right: '10px',
+                      backgroundColor: '#ffe0e0',
+                      borderRadius: '12px',
+                      padding: '4px 8px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                      zIndex: 1
+                    }}
+                  >
+                    <Lock size={11} color="#d32f2f" />
+                    <span style={{ fontSize: '11px', color: '#d32f2f', fontWeight: 500 }}>{windowText}</span>
+                  </div>
+                )}
               </Card>
             </Col>
           );
