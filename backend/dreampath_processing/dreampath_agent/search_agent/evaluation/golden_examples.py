@@ -3,15 +3,16 @@
 Contains 5 initial examples covering diverse query patterns and parameter extraction challenges.
 """
 
-from pydantic import BaseModel, Field
-from typing import Optional, List
 import sys
 from pathlib import Path
+
+from pydantic import BaseModel, Field
 
 # Add parent directory to path for imports
 sys.path.append(str(Path(__file__).parent.parent.parent.parent.parent))
 
 from dreampath_processing.dreampath_agent.search_agent.search_types import CourseSearchParams
+
 
 class GoldenExample(BaseModel):
     """Structure for a golden query example"""
@@ -24,7 +25,7 @@ class GoldenExample(BaseModel):
 
     # Metadata
     archetype: str = Field(description="Query pattern category")
-    key_features: List[str] = Field(description="Extraction skills this tests")
+    key_features: list[str] = Field(description="Extraction skills this tests")
 
     # Evaluation guidance
     intent_description: str = Field(description="What the user actually wants")
@@ -980,12 +981,12 @@ GOLDEN_EXAMPLES = [
 # Helper Functions
 # ============================================================================
 
-def get_examples_by_archetype(archetype: str) -> List[GoldenExample]:
+def get_examples_by_archetype(archetype: str) -> list[GoldenExample]:
     """Get all examples of a specific archetype"""
     return [ex for ex in GOLDEN_EXAMPLES if ex.archetype == archetype]
 
 
-def get_examples_by_feature(feature: str) -> List[GoldenExample]:
+def get_examples_by_feature(feature: str) -> list[GoldenExample]:
     """Get all examples that test a specific feature"""
     return [ex for ex in GOLDEN_EXAMPLES if feature in ex.key_features]
 
@@ -1027,7 +1028,7 @@ def print_dataset_summary():
     print(f"  - Value classification set: {value_set}/{len(GOLDEN_EXAMPLES)}")
     print(f"  - Prereq constraint set: {prereq_set}/{len(GOLDEN_EXAMPLES)}")
     print(f"  - Sort by level enabled: {sort_set}/{len(GOLDEN_EXAMPLES)}")
-    print(f"\nAlpha distribution:")
+    print("\nAlpha distribution:")
     print(f"  - Low (≤0.5): {alpha_low} examples (exact/keyword-focused)")
     print(f"  - Mid (0.5-0.7): {alpha_mid} examples (hybrid)")
     print(f"  - High (>0.7): {alpha_high} examples (semantic-focused)")
@@ -1078,7 +1079,7 @@ if __name__ == "__main__":
         print(f"\n[Example {i}: {example.archetype}]")
         print(f"Search Description: {example.search_description}")
         print(f"Intent: {example.intent_description}")
-        print(f"\nExpected Parameters:")
+        print("\nExpected Parameters:")
         params = example.expected_params
         print(f"  - query: '{params.query}'")
         print(f"  - alpha: {params.alpha}")

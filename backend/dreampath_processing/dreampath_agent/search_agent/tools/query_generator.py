@@ -1,15 +1,16 @@
-from pathlib import Path
 import sys
-from typing import Optional
+from pathlib import Path
+
 sys.path.append(str(Path(__file__).parent.parent))
 
 from dreampath_processing.dreampath_agent.search_agent.search_types import CourseSearchParams
 
-class CourseQueryGenerator():
+
+class CourseQueryGenerator:
     def __init__(self, client):
         self.client = client
 
-    def configure(self, system_prompt: Optional[str]=None, model: Optional[str]="gpt-4o"):
+    def configure(self, system_prompt: str | None=None, model: str | None="gpt-4o"):
         if system_prompt is not None:
             self.system_prompt = system_prompt
         if model is not None:
@@ -34,11 +35,12 @@ class CourseQueryGenerator():
         return query
 
 if __name__ == "__main__":
-    from dotenv import load_dotenv    
     import os
+
+    from dotenv import load_dotenv
+    from evaluation.utils import load_best_prompt
     from instructor import from_openai
     from openai import OpenAI
-    from evaluation.utils import load_best_prompt
 
     load_dotenv()
 

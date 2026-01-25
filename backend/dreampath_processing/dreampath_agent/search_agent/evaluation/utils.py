@@ -1,6 +1,10 @@
 import json
 from pathlib import Path
-from dreampath_processing.dreampath_agent.search_agent.evaluation.manual_optimization.tuning_utils import PromptEvaluationManager
+
+from dreampath_processing.dreampath_agent.search_agent.evaluation.manual_optimization.tuning_utils import (
+    PromptEvaluationManager,
+)
+
 
 def load_best_prompt(prompt_dir: str | Path="dreampath_processing/dreampath_agent/search_agent/evaluation/manual_optimization/prompts", prompt_metadata_path: str | Path="dreampath_processing/dreampath_agent/search_agent/evaluation/manual_optimization/prompt_metadata.json", evaluation_performance_path: str | Path="dreampath_processing/dreampath_agent/search_agent/evaluation/manual_optimization/evaluation_performance.json"):
     """
@@ -21,7 +25,7 @@ def load_best_prompt(prompt_dir: str | Path="dreampath_processing/dreampath_agen
     if not prompt_metadata_path.exists():
         raise FileNotFoundError(f"Metadata file not found: {prompt_metadata_path}")
     
-    with open(prompt_metadata_path, "r") as f:
+    with open(prompt_metadata_path) as f:
         prompt_metadata = json.load(f)
     
     # Find prompt with version='best'

@@ -10,11 +10,11 @@ import os
 if 'TOKENIZERS_PARALLELISM' not in os.environ:
     os.environ['TOKENIZERS_PARALLELISM'] = 'false'
 
-from typing import Dict, Any, Optional
-from pydantic import BaseModel, Field
+from typing import Any
+
 from dreampath_processing.dreampath_agent.search_agent.search_types import CourseSearchParams
 from evaluation.golden_examples import GoldenExample
-
+from pydantic import BaseModel, Field
 
 # ============================================================================
 # LLM Judge Structured Output
@@ -89,8 +89,8 @@ def query_overlap_score(predicted: str, expected: str, use_semantic: bool = True
 
     # Semantic similarity using sentence embeddings
     try:
-        from sentence_transformers import SentenceTransformer
         import numpy as np
+        from sentence_transformers import SentenceTransformer
 
         # Use cached model (loaded once per process)
         if not hasattr(query_overlap_score, '_model'):
@@ -171,7 +171,7 @@ def parameter_completeness_score(predicted: CourseSearchParams, expected: Course
 def compute_programmatic_score(
     example: GoldenExample,
     prediction: CourseSearchParams
-) -> Dict[str, float]:
+) -> dict[str, float]:
     """Compute all programmatic metrics and return breakdown + weighted score"""
 
     expected = example.expected_params
@@ -309,8 +309,8 @@ def format_params(params: CourseSearchParams) -> str:
 def evaluate_query_generation(
     example,  # dspy.Example or GoldenExample
     prediction,  # dspy.Prediction or CourseSearchParams
-    llm: Optional[Any] = None,
-    trace: Optional[Dict[str, Any]] = None
+    llm: Any | None = None,
+    trace: dict[str, Any] | None = None
 ) -> float:
     """
     Combined metric for GEPA optimization and manual evaluation.
@@ -329,7 +329,9 @@ def evaluate_query_generation(
     # Handle DSPy types vs direct types
     if hasattr(example, 'expected_params'):
         # DSPy Example - reconstruct GoldenExample for evaluation
-        from dreampath_processing.dreampath_agent.search_agent.evaluation.golden_examples import GoldenExample
+        from dreampath_processing.dreampath_agent.search_agent.evaluation.golden_examples import (
+            GoldenExample,
+        )
         golden = GoldenExample(
             task_description=example.search_description,
             expected_params=example.expected_params,
@@ -350,7 +352,9 @@ def evaluate_query_generation(
         prediction_params = prediction
     else:
         # DSPy Prediction - convert to CourseSearchParams (cleans quotes)
-        from dreampath_processing.dreampath_agent.search_agent.query_generator_dspy import dspy_prediction_to_params
+        from dreampath_processing.dreampath_agent.search_agent.query_generator_dspy import (
+            dspy_prediction_to_params,
+        )
         prediction_params = dspy_prediction_to_params(prediction)
 
     # Programmatic scoring (fast, objective)
@@ -397,9 +401,9 @@ def evaluate_query_generation(
 def evaluate_all_examples(
     examples: list[GoldenExample],
     predictions: list[CourseSearchParams],
-    llm: Optional[Any] = None,
+    llm: Any | None = None,
     verbose: bool = True
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """
     Evaluate predictions against all golden examples.
 

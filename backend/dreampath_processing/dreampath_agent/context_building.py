@@ -1,38 +1,70 @@
 import os
+from collections.abc import Callable
 
 import tiktoken
 from dotenv import load_dotenv
-from dreampath_processing.dreampath_agent.chat_prompts import (
+from dreampath_processing.dreampath_agent.debug_logger import log_messages_to_file
+from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
+from dreampath_processing.dreampath_agent.nodes.prompts import (
     MASTER_CONTEXT,
     MASTER_CONTEXT_SHORT,
     SUMMARY_SYS_PROMPT,
 )
-from dreampath_processing.dreampath_agent.debug_logger import log_messages_to_file
-from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
 from instructor import from_openai
+from langchain_core.messages import AIMessage
 from openai import OpenAI
 from pydantic import BaseModel
 
 load_dotenv()
 client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
-SUMMARIZATION_MODEL = "gpt-4o-mini" #"gpt-5-nano"
+SUMMARIZATION_MODEL = "gpt-4o-mini"
+
 
 # -----------------------------------------------------
 # Update Summary
 # -----------------------------------------------------
-def handle_summary_get_context_messages(state: DreamPathAgentState, k=20, h=10):
+def handle_summary_get_context_messages(
+    state: DreamPathAgentState,
+    k: int = 20,
+    h: int = 10,
+    writer: Callable | None = None,
+):
+    """
+    Handle conversation summarization and get recent context messages.
 
+    Args:
+        state: Current agent state
+        k: Number of recent messages to keep in context
+        h: Threshold for triggering summarization
+        writer: Optional callback to emit status events
+    """
     # Get recent messages from YOUR format
     recent_start = max(len(state.dreampath_messages) - k, 0)
     recent_messages = state.dreampath_messages[recent_start:]
 
     # Get new messages to summarize
     new_messages = state.dreampath_messages[state.summary_end:recent_start]
-    
+
     state_updates = {}
 
     # Summarize new messages
     if len(new_messages) > h:
+        # Emit status event before summarizing
+        if writer:
+            try:
+                status_event = AIMessage(
+                    content="",
+                    additional_kwargs={
+                        "event_type": "node_status",
+                        "node": "orchestrator",
+                        "status": "thinking",
+                        "message": "Reviewing Conversation"
+                    }
+                )
+                writer(status_event)
+            except Exception as e:
+                print(f"⚠️ SUMMARY: Error emitting status: {e}")
+
         print(f"| Summarizing {len(new_messages)} new messages from {state.summary_end} to {recent_start}")
         new_summary = client.chat.completions.create(
             model=SUMMARIZATION_MODEL,
@@ -40,7 +72,6 @@ def handle_summary_get_context_messages(state: DreamPathAgentState, k=20, h=10):
                 {"role": "system", "content": SUMMARY_SYS_PROMPT},
                 {"role": "assistant", "content": f"<summary>\n...{state.summary}\n</summary>"},
                 {"role": "user", "content": f"<new_messages>\n{new_messages}\n</new_messages>"}
-
             ],
             response_model=str
         )
@@ -167,11 +198,17 @@ async def _render_dreampath_context_block(user_id: str, student_db_service) -> s
 # -----------------------------------------------------
 # Build Messages
 # -----------------------------------------------------
-async def build_complete_context(state: DreamPathAgentState, prompt: str, config: dict, task_prompt: str | None=None, init_mode: bool=False):
-
+async def build_complete_context(
+    state: DreamPathAgentState,
+    prompt: str,
+    config: dict,
+    task_prompt: str | None = None,
+    init_mode: bool = False,
+    writer: Callable | None = None,
+):
     # Init messages and go through summarization if needed
     msgs = [{"role": "system", "content": prompt}]
-    recent_messages, state_updates = handle_summary_get_context_messages(state)
+    recent_messages, state_updates = handle_summary_get_context_messages(state, writer=writer)
 
     # Render context blocks
 
@@ -219,12 +256,26 @@ async def build_small_context(state: DreamPathAgentState, prompt: str, config: d
 # -----------------------------------------------------
 # Baseline For Extracting Structured Output from Context
 # -----------------------------------------------------
-async def extract_structured_output_from_context(state: DreamPathAgentState, config: dict, system_prompt: str, response_model: BaseModel, small_context: bool=False, model="gpt-4o-mini", temperature=0, show_token_count=True, task_prompt: str | None=None, verbose=False):
+async def extract_structured_output_from_context(
+    state: DreamPathAgentState,
+    config: dict,
+    system_prompt: str,
+    response_model: BaseModel,
+    small_context: bool = False,
+    model: str = "gpt-4o-mini",
+    temperature: float = 0,
+    show_token_count: bool = True,
+    task_prompt: str | None = None,
+    verbose: bool = False,
+    writer: Callable | None = None,
+):
     if small_context:
         messages = await build_small_context(state, system_prompt, config, state.handoff)
         state_updates = {}
     else:
-        messages, state_updates = await build_complete_context(state, system_prompt, config, task_prompt)
+        messages, state_updates = await build_complete_context(
+            state, system_prompt, config, task_prompt, writer=writer
+        )
 
     if verbose:
         log_messages_to_file(messages)

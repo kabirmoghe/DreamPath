@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field, create_model
 
+
 def system_field(default=..., **kwargs):
     """Mark a field as system-managed (LLM cannot see or modify)"""
     return Field(default, json_schema_extra={'llm_managed': False}, **kwargs)

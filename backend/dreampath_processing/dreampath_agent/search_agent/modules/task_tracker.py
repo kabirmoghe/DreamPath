@@ -1,14 +1,17 @@
-from dreampath_processing.dreampath_agent.search_agent.search_types import SearchTask, TaskStateUpdate, SearchAgentState
-from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchOutput
-from typing import Optional
-from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
+
+from dreampath_processing.dreampath_agent.search_agent.search_types import (
+    SearchAgentState,
+    SearchTask,
+    TaskStateUpdate,
+)
+from langchain_core.messages import AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 
 # ============================================================================
 # Task Tracker Prompts
 # ============================================================================
 
-TASK_TRACKER_SYSTEM_PROMPT = f"""You are the task tracker for a course search agent, an agent that identifies highly relevant college courses for a given search goal.
+TASK_TRACKER_SYSTEM_PROMPT = """You are the task tracker for a course search agent, an agent that identifies highly relevant college courses for a given search goal.
 
 # Search Agent Overview
 
@@ -136,7 +139,7 @@ def format_tasks_for_display(tasks: list[SearchTask]) -> str:
             course_codes = [c.course_code for c in task.results.results]
             output.append(f"  Results: {', '.join(course_codes)}")
         else:
-            output.append(f"  Results: None yet")
+            output.append("  Results: None yet")
 
         output.append("")
 

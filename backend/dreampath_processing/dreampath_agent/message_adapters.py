@@ -1,13 +1,14 @@
-from langchain_core.messages import AIMessage, HumanMessage, ToolMessage, BaseMessage
-from typing import Dict, List
 import json
 from uuid import uuid4
+
+from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, ToolMessage
+
 
 def generate_tool_call_id() -> str:
     """Generate unique tool call ID."""
     return f"call_{uuid4().hex[:24]}"
 
-def dreampath_to_langchain(msg: Dict[str, str | dict]) -> BaseMessage:
+def dreampath_to_langchain(msg: dict[str, str | dict]) -> BaseMessage:
     """
     Convert your dict-format message to LangChain BaseMessage.
 
@@ -65,6 +66,6 @@ def dreampath_to_langchain(msg: Dict[str, str | dict]) -> BaseMessage:
     # Fallback
     return HumanMessage(content=str(content))
 
-def convert_turn_messages(turn_messages: List[Dict[str, str | dict]]) -> List[BaseMessage]:
+def convert_turn_messages(turn_messages: list[dict[str, str | dict]]) -> list[BaseMessage]:
     """Convert a list of your dict messages to LangChain messages."""
     return [dreampath_to_langchain(msg) for msg in turn_messages]

@@ -5,13 +5,15 @@ Functions to create structured LangChain messages with metadata for rich fronten
 These messages include additional_kwargs with structured data while keeping LLM context intact.
 """
 
-from langchain_core.messages import AIMessage
+from typing import Any
+
 from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentOutput
 from dreampath_processing.dreampath_agent.dreampath_types import ModifiedStudentProfile
-from typing import Dict, List, Any
+from dreampath_processing.modules.student_profile import StudentProfile
+from langchain_core.messages import AIMessage
 
 
-def extract_coursepath_operations_metadata(cp_agent_output: CoursePathAgentOutput) -> Dict[str, Any]:
+def extract_coursepath_operations_metadata(cp_agent_output: CoursePathAgentOutput) -> dict[str, Any]:
     """
     Extract structured metadata from a single CoursePathAgentOutput for interrupt display.
 
@@ -110,8 +112,8 @@ def extract_coursepath_operations_metadata(cp_agent_output: CoursePathAgentOutpu
 
 def extract_profile_update_metadata(
     modified_profile: ModifiedStudentProfile,
-    original_profile: 'StudentProfile'
-) -> Dict[str, Any]:
+    original_profile: StudentProfile
+) -> dict[str, Any]:
     """
     Extract structured metadata from profile modification for interrupt display.
 
@@ -158,7 +160,7 @@ def extract_profile_update_metadata(
 
 def create_coursepath_operations_message(
     content: str,
-    outcomes: Dict[str, CoursePathAgentOutput]
+    outcomes: dict[str, CoursePathAgentOutput]
 ) -> AIMessage:
     """
     Create a LangChain message with structured CoursePath operations metadata.
@@ -222,7 +224,7 @@ def create_coursepath_operations_message(
 def create_profile_update_message(
     content: str,
     modified_profile: ModifiedStudentProfile,
-    original_profile: 'StudentProfile'
+    original_profile: StudentProfile
 ) -> AIMessage:
     """
     Create a LangChain message with structured profile update metadata.

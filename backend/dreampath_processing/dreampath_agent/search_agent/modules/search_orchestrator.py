@@ -1,7 +1,10 @@
-from dreampath_processing.dreampath_agent.search_agent.search_types import SearchAgentState, SearchTask
-from dreampath_processing.dreampath_agent.search_agent.tools import module_search, manual_search
-from typing import Optional
-from langchain_core.messages import SystemMessage, AIMessage
+
+from dreampath_processing.dreampath_agent.search_agent.search_types import (
+    SearchAgentState,
+    SearchTask,
+)
+from dreampath_processing.dreampath_agent.search_agent.tools import manual_search, module_search
+from langchain_core.messages import SystemMessage
 from langchain_openai import ChatOpenAI
 
 # ============================================================================
@@ -141,7 +144,7 @@ def format_tasks_for_agent(tasks: list[SearchTask]) -> str:
             course_codes = [c.course_code for c in task.results.results]
             output.append(f"  - Results found: {', '.join(course_codes)}")
         else:
-            output.append(f"  - Results: None yet")
+            output.append("  - Results: None yet")
 
         # Show task tracker's notes/guidance
         if task.tracker_notes:
@@ -176,7 +179,7 @@ async def agent_node(state: SearchAgentState, config) -> dict:
     )
 
     # Log what agent sees
-    print(f"[AGENT] Current task view:")
+    print("[AGENT] Current task view:")
     for line in formatted_tasks.split('\n'):
         if line.strip():
             print(f"  {line}")

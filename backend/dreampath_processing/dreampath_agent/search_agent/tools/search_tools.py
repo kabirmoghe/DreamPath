@@ -6,14 +6,18 @@ Two search modes:
 2. manual_search - Precise control (user provides exact params)
 """
 
-from dreampath_processing.dreampath_agent.search_agent.search_types import CourseSearchParams
-from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchOutput
-from dreampath_processing.dreampath_agent.search_agent.tools.course_search_client import CourseSearchClient
-from dreampath_processing.dreampath_agent.search_agent.tools.query_generator import CourseQueryGenerator
-from instructor import from_openai
-from openai import OpenAI
 import os
 
+from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchOutput
+from dreampath_processing.dreampath_agent.search_agent.search_types import CourseSearchParams
+from dreampath_processing.dreampath_agent.search_agent.tools.course_search_client import (
+    CourseSearchClient,
+)
+from dreampath_processing.dreampath_agent.search_agent.tools.query_generator import (
+    CourseQueryGenerator,
+)
+from instructor import from_openai
+from openai import OpenAI
 
 # ============================================
 # Initialize Query Generator (singleton pattern)
@@ -36,7 +40,9 @@ def _get_query_generator():
 
         # Load best prompt from evaluation
         try:
-            from dreampath_processing.dreampath_agent.search_agent.evaluation.utils import load_best_prompt
+            from dreampath_processing.dreampath_agent.search_agent.evaluation.utils import (
+                load_best_prompt,
+            )
             prompt = load_best_prompt()
             _query_generator.configure(system_prompt=prompt, model="gpt-4o-mini")
         except Exception as e:
@@ -113,6 +119,7 @@ async def manual_search(params: CourseSearchParams) -> tuple[CourseSearchParams,
 
 if __name__ == "__main__":
     import asyncio
+
     from dotenv import load_dotenv
 
     load_dotenv()

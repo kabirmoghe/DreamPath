@@ -6,23 +6,22 @@ Handles:
 2. TaskUpdateAction - Apply task updates deterministically
 """
 
-from dreampath_processing.dreampath_agent.search_agent.search_types import (
-    SearchAgentState,
-    SearchAction,
-    TaskUpdateAction,
-    CompleteAction,
-    TaskSearch,
-    SearchExecution,
-    SearchTask,
-    CourseSearchParams,
-    CourseSearchOutput
-)
-from typing import List, Dict, Any, Optional
 import asyncio
 import time
-from langchain_core.runnables import RunnableConfig
-from langchain_core.messages import ToolMessage
 
+from dreampath_processing.dreampath_agent.search_agent.search_types import (
+    CompleteAction,
+    CourseSearchOutput,
+    CourseSearchParams,
+    SearchAction,
+    SearchAgentState,
+    SearchExecution,
+    SearchTask,
+    TaskSearch,
+    TaskUpdateAction,
+)
+from langchain_core.messages import ToolMessage
+from langchain_core.runnables import RunnableConfig
 
 # ============================================
 # SEARCH EXECUTION
@@ -220,7 +219,7 @@ async def _execute_searches(
     }
 
 
-def _get_unique_courses_from_executions(search_executions: List[SearchExecution]) -> List:
+def _get_unique_courses_from_executions(search_executions: list[SearchExecution]) -> list:
     """
     Get all unique courses from search executions (deduplicated by course_code).
     """

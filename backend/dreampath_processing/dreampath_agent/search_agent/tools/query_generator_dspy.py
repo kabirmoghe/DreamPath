@@ -7,20 +7,19 @@ Note: Input field is named "task_description" for compatibility with DSPy traini
 dataset, but semantically represents an atomic search description.
 """
 
-import dspy
-from typing import Optional
 import sys
 from pathlib import Path
+
+import dspy
 
 sys.path.append(str(Path(__file__).parent.parent.parent.parent))
 
 from dreampath_processing.dreampath_agent.search_agent.search_types import (
+    CourseSearchParams,
     ValidDepartment,
     ValidDifficulty,
     ValidValue,
-    CourseSearchParams
 )
-
 
 # ============================================================================
 # DSPy Signature
@@ -83,23 +82,23 @@ class CourseSearchSignature(dspy.Signature):
     alpha: float = dspy.OutputField(
         desc="Hybrid search weight 0-1 (0.3=exact, 0.5-0.6=hybrid, 0.7+=semantic)"
     )
-    department: Optional[ValidDepartment] = dspy.OutputField(
+    department: ValidDepartment | None = dspy.OutputField(
         desc="Department name or None for cross-departmental",
         default=None
     )
-    course_code: Optional[str] = dspy.OutputField(
+    course_code: str | None = dspy.OutputField(
         desc="Specific course code (e.g., 'COSC74') or None",
         default=None
     )
-    max_num_prereqs: Optional[int] = dspy.OutputField(
+    max_num_prereqs: int | None = dspy.OutputField(
         desc="Maximum prerequisites or None",
         default=None
     )
-    difficulty_classification: Optional[ValidDifficulty] = dspy.OutputField(
+    difficulty_classification: ValidDifficulty | None = dspy.OutputField(
         desc="Difficulty level or None",
         default=None
     )
-    value_classification: Optional[ValidValue] = dspy.OutputField(
+    value_classification: ValidValue | None = dspy.OutputField(
         desc="Value level (set only with explicit quality signals) or None",
         default=None
     )

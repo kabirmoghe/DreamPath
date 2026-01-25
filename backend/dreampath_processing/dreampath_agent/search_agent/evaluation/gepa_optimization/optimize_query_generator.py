@@ -1,17 +1,18 @@
 """Optimize CourseQueryGenerator with GEPA"""
 
-from pathlib import Path
-import sys
 import os
+import sys
+from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
 import dspy
-from langchain_openai import ChatOpenAI
-
-from dreampath_processing.dreampath_agent.search_agent.query_generator_dspy import CourseQueryGenerator
+from dreampath_processing.dreampath_agent.search_agent.query_generator_dspy import (
+    CourseQueryGenerator,
+)
 from evaluation.golden_examples import to_dspy_examples
 from evaluation.metrics import evaluate_query_generation
+from langchain_openai import ChatOpenAI
 
 
 def main():
@@ -107,7 +108,7 @@ def main():
 
     # Show per-example breakdown
     if hasattr(pre_result, 'results') and pre_result.results:
-        print(f"\nPer-Example Scores:")
+        print("\nPer-Example Scores:")
         for i, result_tuple in enumerate(pre_result.results):
             example = test_set[i]
             # Result tuple is (example, prediction, score)
@@ -136,7 +137,7 @@ def main():
         print(f"Overall Score: {score*100:.1f}%")
 
         # Expected vs Predicted
-        print(f"\n--- EXPECTED PARAMETERS ---")
+        print("\n--- EXPECTED PARAMETERS ---")
         exp = example.expected_params
         print(f"  query: '{exp.query}'")
         print(f"  alpha: {exp.alpha}")
@@ -148,7 +149,7 @@ def main():
         print(f"  sort_by_level: {exp.sort_by_level}")
         print(f"  limit: {exp.limit}")
 
-        print(f"\n--- PREDICTED PARAMETERS ---")
+        print("\n--- PREDICTED PARAMETERS ---")
         print(f"  query: '{prediction.query}' | ({type(prediction.query)})")
         print(f"  alpha: {prediction.alpha} | ({type(prediction.alpha)})")
         print(f"  department: {prediction.department} | ({type(prediction.department)})")
@@ -161,7 +162,7 @@ def main():
 
         # Programmatic metrics breakdown
         if 'programmatic_metrics' in trace:
-            print(f"\n--- PROGRAMMATIC METRICS (70% weight) ---")
+            print("\n--- PROGRAMMATIC METRICS (70% weight) ---")
             print(f"  Overall: {trace['programmatic_score']*100:.1f}%")
             metrics = trace['programmatic_metrics']
             for metric_name, metric_score in metrics.items():
@@ -170,18 +171,18 @@ def main():
 
         # LLM judge breakdown
         if 'llm_scores' in trace:
-            print(f"\n--- LLM JUDGE (30% weight) ---")
+            print("\n--- LLM JUDGE (30% weight) ---")
             print(f"  Overall: {trace['llm_score']*100:.1f}%")
             llm_scores = trace['llm_scores']
             for dim, val in llm_scores.items():
                 print(f"    {dim}: {val*100:.0f}%")
 
         if 'llm_feedback' in trace:
-            print(f"\n--- LLM FEEDBACK ---")
+            print("\n--- LLM FEEDBACK ---")
             print(f"  {trace['llm_feedback']}")
 
         if 'improvement_suggestions' in trace:
-            print(f"\n--- IMPROVEMENT SUGGESTIONS ---")
+            print("\n--- IMPROVEMENT SUGGESTIONS ---")
             print(f"  {trace['improvement_suggestions']}")
 
     print("\n" + "=" * 70)
@@ -225,7 +226,6 @@ def main():
     print("\n✓ GEPA optimization complete!")
 
     # Save the optimized program
-    import json
     from datetime import datetime
 
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -278,7 +278,7 @@ def main():
 
     # Show per-example breakdown
     if hasattr(post_result, 'results') and post_result.results:
-        print(f"\nPer-Example Scores:")
+        print("\nPer-Example Scores:")
         for i, result_tuple in enumerate(post_result.results):
             example = test_set[i]
             score = result_tuple[2] if len(result_tuple) > 2 else result_tuple[-1]
@@ -300,7 +300,7 @@ def main():
     if post_score > pre_score:
         print(f"\n🎉 GEPA improved performance by {post_score - pre_score:.1f} percentage points!")
     elif post_score == pre_score:
-        print(f"\n→ No change in performance")
+        print("\n→ No change in performance")
     else:
         print(f"\n⚠️  Performance decreased by {pre_score - post_score:.1f} percentage points")
 

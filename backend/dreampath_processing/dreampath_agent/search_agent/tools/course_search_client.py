@@ -1,7 +1,14 @@
-from typing import List, Dict, Any, Optional
-from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchOutput, CourseSearchResult
-from dreampath_processing.courses.data_retrieval.weaviate_course_service import get_weaviate_course_service
+from typing import Any
+
+from dreampath_processing.courses.data_retrieval.weaviate_course_service import (
+    get_weaviate_course_service,
+)
+from dreampath_processing.dreampath_agent.dreampath_types import (
+    CourseSearchOutput,
+    CourseSearchResult,
+)
 from dreampath_processing.dreampath_agent.search_agent.search_types import CourseSearchParams
+
 
 class CourseSearchClient:
     """
@@ -19,9 +26,9 @@ class CourseSearchClient:
         # as other components might still be using it. The service manages its own lifecycle.
         pass
 
-    def hybrid_search(self, query: Optional[str] = None, alpha: Optional[float] = None, department: Optional[str] = None, course_code: Optional[str] = None,
-                     max_num_prereqs: Optional[int] = None, difficulty_classification: Optional[str] = None, value_classification: Optional[str] = None, 
-                     sort_by_level: bool = False, limit: int = 5) -> List[Dict[str, Any]]:
+    def hybrid_search(self, query: str | None = None, alpha: float | None = None, department: str | None = None, course_code: str | None = None,
+                     max_num_prereqs: int | None = None, difficulty_classification: str | None = None, value_classification: str | None = None, 
+                     sort_by_level: bool = False, limit: int = 5) -> list[dict[str, Any]]:
         """
         Perform hybrid search using the WeaviateCourseService.
         
@@ -153,7 +160,7 @@ class CourseSearchClient:
         
         return CourseSearchOutput(results=results)
  
-    def structured_get_course_by_code(self, course_code: str) -> Optional[CourseSearchResult]:
+    def structured_get_course_by_code(self, course_code: str) -> CourseSearchResult | None:
         """
         Get a specific course by its code.
         

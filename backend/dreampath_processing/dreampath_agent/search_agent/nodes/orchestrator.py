@@ -1,16 +1,16 @@
+import time
+
+from dreampath_processing.dreampath_agent.search_agent.context.building import build_search_context
 from dreampath_processing.dreampath_agent.search_agent.search_types import (
-    SearchAgentState,
+    CompleteAction,
     NextAction,
     SearchAction,
+    SearchAgentState,
     TaskUpdateAction,
-    CompleteAction,
 )
-from typing import Optional, Callable
-import time
-from dreampath_processing.dreampath_agent.search_agent.context.building import build_search_context
-from langchain_core.runnables import RunnableConfig
-from langchain_core.messages import AIMessage
 from instructor import from_openai
+from langchain_core.messages import AIMessage
+from langchain_core.runnables import RunnableConfig
 from openai import AsyncOpenAI
 
 SEARCH_ORCHESTRATOR_SYS = """
@@ -177,7 +177,7 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig, *, 
     # ============================================
     # 1. BUILD CONTEXT (two-block structure)
     # ============================================
-    print(f"  [ORCH] Building context...")
+    print("  [ORCH] Building context...")
     context_messages, token_updates = build_search_context(
         state=state,
         prompt=SEARCH_ORCHESTRATOR_SYS,

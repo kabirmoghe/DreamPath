@@ -1,8 +1,14 @@
-from typing import List, Dict, Tuple
 import json
-from dreampath_processing.dreampath_agent.search_agent.search_types import SearchAgentState, SearchTask, SearchExecution, CourseSearchParams, CourseSearchResult, CourseSearchOutput
-from dreampath_processing.dreampath_agent.search_agent.context.templates import SEARCH_MASTER_CONTEXT_TEMPLATE
+
 from dreampath_processing.dreampath_agent.context_building import calculate_token_count
+from dreampath_processing.dreampath_agent.search_agent.context.templates import (
+    SEARCH_MASTER_CONTEXT_TEMPLATE,
+)
+from dreampath_processing.dreampath_agent.search_agent.search_types import (
+    SearchAgentState,
+    SearchTask,
+)
+
 
 def _render_message_lines(message: dict) -> list[str]:
     """Render a message into a list of lines
@@ -65,7 +71,7 @@ def _render_message_lines(message: dict) -> list[str]:
 
     return lines
 
-def _render_search_trace_block(goal: str, search_trace: List[dict]) -> str:
+def _render_search_trace_block(goal: str, search_trace: list[dict]) -> str:
     """
     Render search trace block (all past iterations).
     """
@@ -84,7 +90,7 @@ def _render_search_trace_block(goal: str, search_trace: List[dict]) -> str:
             # Start new iteration block if needed
             if msg_iter != current_iter:
                 if current_iter is not None:
-                    lines.append(f"</iteration>")
+                    lines.append("</iteration>")
                 lines.append(f"<iteration number='{msg_iter}'>")
                 current_iter = msg_iter
 
@@ -93,14 +99,14 @@ def _render_search_trace_block(goal: str, search_trace: List[dict]) -> str:
 
         # Close last iteration block
         if current_iter is not None:
-            lines.append(f"</iteration>")
+            lines.append("</iteration>")
 
         lines.append("</trace>")
 
     lines.append("</search_trace>")
     return "\n".join(lines)
 
-def _render_task_state_block(goal: str, iteration: int, tasks: List[SearchTask]) -> str:
+def _render_task_state_block(goal: str, iteration: int, tasks: list[SearchTask]) -> str:
     """
     Render current task state (always fresh, never cached).
 
@@ -130,21 +136,21 @@ def _render_task_state_block(goal: str, iteration: int, tasks: List[SearchTask])
         lines.append(f"<description>{task.description}</description>")
 
         # 2. Show search execution history
-        lines.append(f"<search_attempts>")
+        lines.append("<search_attempts>")
         for ex in task.search_executions:
-            lines.append(f"<search_execution>")
-            lines.append(f"<query_params>")
+            lines.append("<search_execution>")
+            lines.append("<query_params>")
 
             for key, value in ex.params.model_dump().items():
                 lines.append(f"{key}: {value}")
 
-            lines.append(f"</query_params>")
-            lines.append(f"</search_execution>")
+            lines.append("</query_params>")
+            lines.append("</search_execution>")
 
-        lines.append(f"</search_attempts>")
+        lines.append("</search_attempts>")
 
         # 3. Show results: summary, top results
-        lines.append(f"<results>")
+        lines.append("<results>")
 
         num_searches = len(task.search_executions)
         total_courses_found = sum(len(ex.output.results) for ex in task.search_executions)
@@ -154,19 +160,19 @@ def _render_task_state_block(goal: str, iteration: int, tasks: List[SearchTask])
         if task.top_results:
             lines.append(f"<top_results>{', '.join(task.top_results)}</top_results>")
         else:
-            lines.append(f"<top_results>None selected yet</top_results>")
+            lines.append("<top_results>None selected yet</top_results>")
 
-        lines.append(f"</results>")
+        lines.append("</results>")
 
         if task.orchestrator_notes:
             lines.append(f"<orchestrator_notes>{task.orchestrator_notes}</orchestrator_notes>")
 
-        lines.append(f"</task>")
+        lines.append("</task>")
 
     lines.append("</task_state>")
     return "\n".join(lines)
 
-def build_search_context(state: SearchAgentState, prompt: str, config: dict={}) -> Tuple[List[Dict], Dict]:
+def build_search_context(state: SearchAgentState, prompt: str, config: dict={}) -> tuple[list[dict], dict]:
     """
     Build complete context for orchestrator using two-block structure.
 

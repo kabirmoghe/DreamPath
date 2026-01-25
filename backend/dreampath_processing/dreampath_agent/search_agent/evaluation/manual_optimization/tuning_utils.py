@@ -1,10 +1,9 @@
-from pathlib import Path
 import importlib.util
 import json
-import warnings
 import os
 import sys
-from typing import Optional
+import warnings
+from pathlib import Path
 
 # Suppress litellm deprecation warning about asyncio.get_event_loop()
 # This warning comes from litellm (used by langfuse) and is harmless
@@ -15,9 +14,16 @@ from openai import OpenAI
 
 sys.path.append(str(Path(__file__).parent.parent.parent))
 
-from dreampath_processing.dreampath_agent.search_agent.tools.query_generator import CourseQueryGenerator
-from dreampath_processing.dreampath_agent.search_agent.evaluation.metrics import evaluate_query_generation
-from dreampath_processing.dreampath_agent.search_agent.evaluation.golden_examples import GoldenExample, GOLDEN_EXAMPLES
+from dreampath_processing.dreampath_agent.search_agent.evaluation.golden_examples import (
+    GoldenExample,
+)
+from dreampath_processing.dreampath_agent.search_agent.evaluation.metrics import (
+    evaluate_query_generation,
+)
+from dreampath_processing.dreampath_agent.search_agent.tools.query_generator import (
+    CourseQueryGenerator,
+)
+
 
 class PromptEvaluationManager:
     def __init__(self, prompt_dir: str, prompt_metadata_path: str='prompt_metadata.json', evaluation_performance_path: str='evaluation_performance.json', llm_judge=None):
@@ -55,9 +61,9 @@ class PromptEvaluationManager:
         # Load existing metadata if file exists
         if self.prompt_metadata_path.exists():
             try:
-                with open(self.prompt_metadata_path, 'r') as f:
+                with open(self.prompt_metadata_path) as f:
                     metadata = json.load(f)
-            except (json.JSONDecodeError, IOError):
+            except (OSError, json.JSONDecodeError):
                 metadata = {}
         else:
             metadata = {}
@@ -112,7 +118,7 @@ class PromptEvaluationManager:
         
         return getattr(module, prompt_name)
 
-    def evaluate_prompt_batch_on_example(self, query_generator: CourseQueryGenerator, example: GoldenExample, models_by_prompt: Optional[dict[str, list[str]]]=None, default_models: Optional[list[str]]=None):
+    def evaluate_prompt_batch_on_example(self, query_generator: CourseQueryGenerator, example: GoldenExample, models_by_prompt: dict[str, list[str]] | None=None, default_models: list[str] | None=None):
         """
         Evaluates a batch of prompts for a given example (task-specific).
         Returns dict indexed by prompt_id (stem), with values being performance dicts indexed by model.
@@ -176,9 +182,9 @@ class PromptEvaluationManager:
         # Load existing data if file exists
         if self.evaluation_performance_path.exists():
             try:
-                with open(self.evaluation_performance_path, 'r') as f:
+                with open(self.evaluation_performance_path) as f:
                     existing_data = json.load(f)
-            except (json.JSONDecodeError, IOError):
+            except (OSError, json.JSONDecodeError):
                 existing_data = {}
         else:
             existing_data = {}
@@ -216,9 +222,9 @@ class PromptEvaluationManager:
             return {}
         
         try:
-            with open(self.evaluation_performance_path, 'r') as f:
+            with open(self.evaluation_performance_path) as f:
                 return json.load(f)
-        except (json.JSONDecodeError, IOError) as e:
+        except (OSError, json.JSONDecodeError) as e:
             raise ValueError(f"Failed to load evaluation performance: {e}")
 
     def get_prompt_statistics(self, prompt_id: str = None) -> dict:

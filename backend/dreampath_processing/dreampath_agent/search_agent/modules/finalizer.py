@@ -1,5 +1,9 @@
-from dreampath_processing.dreampath_agent.search_agent.search_types import SearchAgentState, SearchTask
+from dreampath_processing.dreampath_agent.search_agent.search_types import (
+    SearchAgentState,
+    SearchTask,
+)
 from langchain_core.messages import AIMessage
+
 
 def format_task_summary(tasks: list[SearchTask]) -> str:
     """Format task completion summary"""
@@ -51,16 +55,16 @@ async def finalize_node(state: SearchAgentState, config) -> dict:
 
     # Build summary
     summary_parts = [
-        f"# Search Complete",
-        f"",
+        "# Search Complete",
+        "",
         f"**Goal:** {state.goal}",
-        f"",
-        f"## Summary",
+        "",
+        "## Summary",
         f"- Total unique courses found: {unique_count}",
         f"- Tasks completed: {completed}/{len(state.tasks)}",
         f"- Tasks failed: {failed}",
         f"- Tasks in progress: {in_progress}",
-        f"",
+        "",
     ]
 
     # Group courses by task

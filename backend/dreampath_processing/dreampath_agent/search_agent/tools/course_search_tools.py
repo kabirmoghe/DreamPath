@@ -1,16 +1,17 @@
-from dreampath_processing.dreampath_agent.search_agent.query_generator import CourseQueryGenerator
-from dreampath_processing.dreampath_agent.search_agent.course_search_client import CourseSearchClient
+import os
+import warnings
+
+from dotenv import load_dotenv
+from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchOutput
+from dreampath_processing.dreampath_agent.search_agent.course_search_client import (
+    CourseSearchClient,
+)
+from dreampath_processing.dreampath_agent.search_agent.evaluation.utils import load_best_prompt
 from dreampath_processing.dreampath_agent.search_agent.query_generator import CourseQueryGenerator
 from dreampath_processing.dreampath_agent.search_agent.search_types import CourseSearchParams
-from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchOutput
-from dotenv import load_dotenv
-import os
 from instructor import from_openai
-from openai import OpenAI
-from typing import Optional
-from dreampath_processing.dreampath_agent.search_agent.evaluation.utils import load_best_prompt
 from langchain_core.tools import tool
-import warnings
+from openai import OpenAI
 
 load_dotenv()
 
@@ -70,10 +71,10 @@ def module_search(search_description: str) -> CourseSearchOutput:
 @tool
 def manual_search(
     query: str,
-    department: Optional[str] = None,
-    difficulty_classification: Optional[str] = None,  # "Low" | "Medium" | "High"
-    value_classification: Optional[str] = None,  # "Low" | "Medium" | "High"
-    max_num_prereqs: Optional[int] = None,
+    department: str | None = None,
+    difficulty_classification: str | None = None,  # "Low" | "Medium" | "High"
+    value_classification: str | None = None,  # "Low" | "Medium" | "High"
+    max_num_prereqs: int | None = None,
     sort_by_level: bool = False,
     limit: int = 10,
     alpha: float = 0.5  # Hybrid search weight (0=keyword, 1=semantic)

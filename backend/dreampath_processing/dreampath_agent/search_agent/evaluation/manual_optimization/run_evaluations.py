@@ -1,11 +1,13 @@
-from pathlib import Path
+import argparse
 import os
+from pathlib import Path
+
+from golden_examples import GOLDEN_EXAMPLES
 from instructor import from_openai
 from openai import OpenAI
 from query_generator import CourseQueryGenerator
 from tuning_utils import PromptEvaluationManager
-import argparse
-from golden_examples import GOLDEN_EXAMPLES
+
 
 def main(args):
     client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))

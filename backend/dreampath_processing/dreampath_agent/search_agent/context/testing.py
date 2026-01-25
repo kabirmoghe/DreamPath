@@ -1,6 +1,15 @@
-from dreampath_processing.dreampath_agent.search_agent.search_types import SearchAgentState, SearchTask, SearchExecution, CourseSearchParams, CourseSearchResult, CourseSearchOutput
-from dreampath_processing.dreampath_agent.search_agent.nodes.orchestrator import SEARCH_ORCHESTRATOR_SYS
 from dreampath_processing.dreampath_agent.search_agent.context.building import build_search_context
+from dreampath_processing.dreampath_agent.search_agent.nodes.orchestrator import (
+    SEARCH_ORCHESTRATOR_SYS,
+)
+from dreampath_processing.dreampath_agent.search_agent.search_types import (
+    CourseSearchOutput,
+    CourseSearchParams,
+    CourseSearchResult,
+    SearchAgentState,
+    SearchExecution,
+    SearchTask,
+)
 
 if __name__ == "__main__":
 

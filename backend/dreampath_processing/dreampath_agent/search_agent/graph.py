@@ -1,8 +1,8 @@
-from langgraph.graph import StateGraph, START, END
+from dreampath_processing.dreampath_agent.search_agent.nodes.finalizer import finalize_node
 from dreampath_processing.dreampath_agent.search_agent.nodes.orchestrator import orchestrator_node
 from dreampath_processing.dreampath_agent.search_agent.nodes.tool_executor import tool_executor_node
-from dreampath_processing.dreampath_agent.search_agent.nodes.finalizer import finalize_node
 from dreampath_processing.dreampath_agent.search_agent.search_types import SearchAgentState
+from langgraph.graph import END, START, StateGraph
 
 # Max iterations safety limit
 MAX_ITERATIONS = 20

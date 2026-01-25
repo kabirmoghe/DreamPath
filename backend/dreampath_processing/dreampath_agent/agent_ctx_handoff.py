@@ -1,31 +1,38 @@
-import os
+import asyncio
 import json
-from langgraph.graph import StateGraph, START, END
-from langgraph.types import interrupt, Command
-from langgraph.checkpoint.memory import InMemorySaver
-from dreampath_processing.dreampath_agent.rebuild_tool import execute_rebuild_tool
-from dreampath_processing.dreampath_agent.debug_logger import clear_log_file
-from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
-from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
-from dreampath_processing.dreampath_agent.node_helpers import (
-    decide_next_route, build_operations_from_context_and_results, determine_course_search_queries, modify_student_profile, determine_user_confirmation, 
-    format_orchestrator_decision, format_course_search_output, format_aggregate_coursepath_agent_result, format_worklist, format_modified_student_profile, 
-    format_rebuild_course_path_output, render_final_reply
-)
-from dreampath_processing.courses.build_major_course_path import build_course_path
-from dreampath_processing.courses.course_relationship_handling import construct_course
-from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
-from dreampath_processing.courses.schedule_modules.course import MAJOR, COMPLEMENTARY
+from collections.abc import Generator
+
 from dreampath_processing.courses.coursepath_agent.agent_v2 import CoursePathAgent, CoursePathTools
 from dreampath_processing.courses.schedule_modules.course_path import CoursePath
-from dreampath_processing.modules.student_profile import StudentProfile
-from typing import Generator, Tuple, Optional
 from dreampath_processing.database.connection import get_db_connection
-import asyncio
 from dreampath_processing.database.student_service import StudentDatabaseService
+from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
+from dreampath_processing.dreampath_agent.debug_logger import clear_log_file
+from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
+from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
+from dreampath_processing.dreampath_agent.node_helpers import (
+    build_operations_from_context_and_results,
+    decide_next_route,
+    determine_course_search_queries,
+    determine_user_confirmation,
+    format_aggregate_coursepath_agent_result,
+    format_course_search_output,
+    format_modified_student_profile,
+    format_orchestrator_decision,
+    format_rebuild_course_path_output,
+    format_worklist,
+    modify_student_profile,
+    render_final_reply,
+)
+from dreampath_processing.dreampath_agent.rebuild_tool import execute_rebuild_tool
+from dreampath_processing.modules.student_profile import StudentProfile
+from langgraph.checkpoint.memory import InMemorySaver
+from langgraph.graph import END, START, StateGraph
+from langgraph.types import Command, interrupt
+
 
 def orchestrator_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
-    print(f"Orchestrator thinking...")
+    print("Orchestrator thinking...")
 
     decision, state_updates = decide_next_route(state, config)
 
@@ -202,7 +209,7 @@ def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
 
 def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
     # Check if we already computed the modified profile (to avoid re-computing on interrupt resume)
-    print(f"| → ProfileModifier")
+    print("| → ProfileModifier")
 
     langchain_messages = []
 
@@ -332,7 +339,7 @@ class DreampathAgent:
     - Academic planning and scheduling
     """
     
-    def __init__(self, user_id: str, thread_id: str = "default", generate_diagram: bool=False, student_profile: Optional[StudentProfile] = None, course_path: Optional[CoursePath] = None):
+    def __init__(self, user_id: str, thread_id: str = "default", generate_diagram: bool=False, student_profile: StudentProfile | None = None, course_path: CoursePath | None = None):
         """
         Initialize the DreampathAgent.
         
@@ -445,7 +452,7 @@ class DreampathAgent:
             with open("my_graph.png", "wb") as f:
                 f.write(png_graph)
     
-    def run(self, user_input: str, init_mode: bool=False) -> Generator[Tuple[str, Optional[str]], str, str]:
+    def run(self, user_input: str, init_mode: bool=False) -> Generator[tuple[str, str | None], str, str]:
         """
         Process user input and return a generator that yields conversation turns.
         
@@ -548,16 +555,17 @@ class DreampathAgent:
 # MAIN GRAPH (for backwards compatibility)
 # ------------------------------------------------------------
 
-from langchain_core.messages import BaseMessage
-from typing import List
 from datetime import datetime
+
+from langchain_core.messages import BaseMessage
+
 
 def clear_langchain_messages():
     file = "current_LC_messages.txt"
     with open(file, "w") as f:
         f.write("Cleared at: " + datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 
-def log_langchain_messages(messages: List[BaseMessage]):
+def log_langchain_messages(messages: list[BaseMessage]):
     file = "current_LC_messages.txt"
     with open(file, "w") as f:
         for msg in messages:

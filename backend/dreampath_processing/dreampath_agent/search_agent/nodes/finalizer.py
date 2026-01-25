@@ -6,16 +6,14 @@ Generates final summary from completed tasks in two formats:
 2. Markdown (for display)
 """
 
+
+from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchResult
 from dreampath_processing.dreampath_agent.search_agent.search_types import (
     SearchAgentState,
-    SearchTask,
-    SearchExecution
+    SearchExecution,
 )
-from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchResult
-from pydantic import BaseModel, Field
-from typing import List
 from langchain_core.messages import AIMessage
-
+from pydantic import BaseModel, Field
 
 # ============================================
 # STRUCTURED OUTPUT TYPES
@@ -26,8 +24,8 @@ class TaskSummary(BaseModel):
     task_id: int
     description: str
     status: str
-    top_results: List[str] = Field(description="Orchestrator-curated course codes")
-    all_courses: List[CourseSearchResult] = Field(description="All unique courses found")
+    top_results: list[str] = Field(description="Orchestrator-curated course codes")
+    all_courses: list[CourseSearchResult] = Field(description="All unique courses found")
     search_attempt_count: int
     total_courses_found: int  # Before deduplication across searches
     unique_courses_found: int  # After deduplication
@@ -41,7 +39,7 @@ class FinalSearchSummary(BaseModel):
     completed_tasks: int
     failed_tasks: int
     total_iterations: int
-    task_summaries: List[TaskSummary]
+    task_summaries: list[TaskSummary]
     total_unique_courses: int
 
 
@@ -49,7 +47,7 @@ class FinalSearchSummary(BaseModel):
 # HELPER FUNCTIONS
 # ============================================
 
-def _get_unique_courses_from_executions(search_executions: List[SearchExecution]) -> List[CourseSearchResult]:
+def _get_unique_courses_from_executions(search_executions: list[SearchExecution]) -> list[CourseSearchResult]:
     """
     Get all unique courses from search executions (deduplicated by course_code).
     """

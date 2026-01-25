@@ -1,10 +1,15 @@
-from pydantic import BaseModel, Field, create_model, field_validator
-from dreampath_processing.dreampath_agent.search_agent.utils.structured_output import LLMManagedModel, system_field, llm_field
-from typing import Optional, Literal, List, Annotated, Dict, Any, Union
-from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchOutput, CourseSearchResult
-from langchain_core.messages import BaseMessage
 import operator
 import time
+from typing import Annotated, Any, Literal, Union
+
+from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchOutput
+from dreampath_processing.dreampath_agent.search_agent.utils.structured_output import (
+    LLMManagedModel,
+    llm_field,
+    system_field,
+)
+from langchain_core.messages import BaseMessage
+from pydantic import BaseModel, Field, field_validator
 
 # Valid Dartmouth departments (from course catalog)
 ValidDepartment = Literal[
@@ -73,25 +78,25 @@ class CourseSearchParams(BaseModel):
     - Level range filters removed: sort_by_level handles "advanced"/"upper-level" queries
     """
     # Semantic search
-    query: Optional[str] = Field(default=None, description="The semantic/keyword query to search for courses")
-    alpha: Optional[float] = Field(default=0.5, description="Hybrid search weight (0=keyword, 1=semantic)")
+    query: str | None = Field(default=None, description="The semantic/keyword query to search for courses")
+    alpha: float | None = Field(default=0.5, description="Hybrid search weight (0=keyword, 1=semantic)")
 
     # Filters - Department & Course
-    department: Optional[ValidDepartment] = Field(default=None, description="The department to filter by")
-    course_code: Optional[str] = Field(default=None, description="Specific course code to search for")
+    department: ValidDepartment | None = Field(default=None, description="The department to filter by")
+    course_code: str | None = Field(default=None, description="Specific course code to search for")
 
     # Filters - Prerequisites
-    max_num_prereqs: Optional[int] = Field(default=None, description="Maximum number of prerequisites")
+    max_num_prereqs: int | None = Field(default=None, description="Maximum number of prerequisites")
 
     # Filters - Difficulty (classification only, percentiles for UI display)
-    difficulty_classification: Optional[ValidDifficulty] = Field(default=None, description="Difficulty level filter")
+    difficulty_classification: ValidDifficulty | None = Field(default=None, description="Difficulty level filter")
 
     # Filters - Learning Value (classification only, percentiles for UI display)
-    value_classification: Optional[ValidValue] = Field(default=None, description="Learning value classification filter")
+    value_classification: ValidValue | None = Field(default=None, description="Learning value classification filter")
 
     # Modifiers
-    sort_by_level: Optional[bool] = Field(default=False, description="Whether to sort results by course level number")
-    limit: Optional[int] = Field(default=10, description="Maximum number of results to return")
+    sort_by_level: bool | None = Field(default=False, description="Whether to sort results by course level number")
+    limit: int | None = Field(default=10, description="Maximum number of results to return")
 
 # ================================
 # Agent State
@@ -112,7 +117,7 @@ class SearchTask(LLMManagedModel):
     # ============================================
     task_id: int = system_field(description="Auto-assigned task ID")
 
-    search_executions: List[SearchExecution] = system_field(
+    search_executions: list[SearchExecution] = system_field(
         default_factory=list,
         description="Complete search history with params + outputs (system-managed)"
     )
@@ -130,12 +135,12 @@ class SearchTask(LLMManagedModel):
         description="Current status"
     )
 
-    top_results: List[str] = llm_field(
+    top_results: list[str] = llm_field(
         default_factory=list,
         description="Course codes for most relevant results"
     )
 
-    orchestrator_notes: Optional[str] = llm_field(
+    orchestrator_notes: str | None = llm_field(
         default=None,
         description="Why status was set, what to try next"
     )
@@ -164,7 +169,7 @@ class TaskSearch(BaseModel):
 class SearchAction(BaseModel):
     """Execute one or more searches in parallel"""
     action_type: Literal["search"] = Field(default="search", description="Action type discriminator")
-    searches: List[TaskSearch] = Field(
+    searches: list[TaskSearch] = Field(
         min_length=1,
         max_length=5,
         description="1-5 atomic searches with task_id assignments"
@@ -175,7 +180,7 @@ class TaskUpdate(BaseModel):
     """Single task update (status, top results, and notes)"""
     task_id: int
     new_status: Literal["not_started", "in_progress", "complete", "failed"]
-    top_results: List[str] = Field(
+    top_results: list[str] = Field(
         max_length=10,
         description="Course codes for most relevant results (max 10)"
     )
@@ -185,7 +190,7 @@ class TaskUpdate(BaseModel):
 class TaskUpdateAction(BaseModel):
     """Update task statuses and notes (results updated automatically by searches)"""
     action_type: Literal["update_tasks"] = Field(default="update_tasks", description="Action type discriminator")
-    task_updates: List[TaskUpdate] = Field(description="Updates for each task")
+    task_updates: list[TaskUpdate] = Field(description="Updates for each task")
     reasoning: str = Field(description="Why these updates")
 
 class CompleteAction(BaseModel):
@@ -207,12 +212,12 @@ class SearchAgentState(BaseModel):
     # GOAL & TASK STATE
     # ============================================
     goal: str = Field(description="Original search goal for this execution")
-    tasks: List[SearchTask] = Field(default_factory=list, description="Current task list")
+    tasks: list[SearchTask] = Field(default_factory=list, description="Current task list")
 
     # ============================================
     # SEARCH TRACE (accumulates across all iterations within THIS execution)
     # ============================================
-    search_trace: List[Dict[str, Any]] = Field(
+    search_trace: list[dict[str, Any]] = Field(
         default_factory=list,
         description="All orchestrator decisions + tool results across all iterations"
     )
@@ -225,7 +230,7 @@ class SearchAgentState(BaseModel):
     # ============================================
     # ORCHESTRATOR OUTPUT (drives routing)
     # ============================================
-    next_action: Optional[NextAction] = Field(
+    next_action: NextAction | None = Field(
         default=None,
         description="Structured action from orchestrator (search/update/complete)"
     )
@@ -233,7 +238,7 @@ class SearchAgentState(BaseModel):
     # ============================================
     # STREAMING & METADATA
     # ============================================
-    messages: Annotated[List[BaseMessage], operator.add] = Field(
+    messages: Annotated[list[BaseMessage], operator.add] = Field(
         default_factory=list,
         description="LangChain messages for streaming to frontend ONLY"
     )
@@ -241,11 +246,11 @@ class SearchAgentState(BaseModel):
     # ============================================
     # FINAL OUTPUT
     # ============================================
-    final_summary: Optional[str] = Field(default=None)
+    final_summary: str | None = Field(default=None)
 
     # ============================================
     # OBSERVABILITY
     # ============================================
     cumulative_tokens: int = Field(default=0)
-    iteration_tokens: List[int] = Field(default_factory=list)
+    iteration_tokens: list[int] = Field(default_factory=list)
     
