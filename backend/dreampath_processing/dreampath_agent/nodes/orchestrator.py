@@ -47,25 +47,9 @@ async def orchestrator_node(state: DreamPathAgentState, config, *, writer=None) 
     - Current turn trace (tool calls/results)
     - Student's profile and course path context
     """
-    # Create thinking status event
-    thinking_event = AIMessage(
-        content="",
-        additional_kwargs={
-            "event_type": "node_status",
-            "node": "orchestrator",
-            "status": "thinking",
-            "message": "Thinking"
-        }
-    )
-
-    # Emit thinking status IMMEDIATELY via custom event stream
-    if writer:
-        try:
-            writer(thinking_event)
-        except Exception as e:
-            print(f"🎯 ORCHESTRATOR: Error emitting thinking event: {e}")
-
-    # Do the actual LLM processing (pass writer for status updates during summarization)
+    # Do the actual LLM processing
+    # Status events ("Reviewing Conversation", "Thinking") are emitted within
+    # extract_structured_output_from_context at the appropriate times
     decision, state_updates = await decide_next_route(state, config, writer=writer)
 
     # Log decision
@@ -94,7 +78,6 @@ async def orchestrator_node(state: DreamPathAgentState, config, *, writer=None) 
     )
 
     # Return with routing info in messages list
-    # (thinking_event was already streamed immediately via writer)
     return {
         "route": decision.route,
         "handoff": decision.handoff,

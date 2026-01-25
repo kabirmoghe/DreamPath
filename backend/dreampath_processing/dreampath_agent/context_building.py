@@ -4,26 +4,29 @@ from collections.abc import Callable
 import tiktoken
 from dotenv import load_dotenv
 from dreampath_processing.dreampath_agent.debug_logger import log_messages_to_file
-from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
+from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState, OrchestratorDecision
 from dreampath_processing.dreampath_agent.nodes.prompts import (
     MASTER_CONTEXT,
     MASTER_CONTEXT_SHORT,
     SUMMARY_SYS_PROMPT,
 )
-from instructor import from_openai
+import instructor
 from langchain_core.messages import AIMessage
-from openai import OpenAI
+from openai import AsyncOpenAI
 from pydantic import BaseModel
 
 load_dotenv()
-client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
+
+# Async client for all LLM calls (allows event loop to yield during API calls)
+async_client = instructor.from_openai(AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY")))
+
 SUMMARIZATION_MODEL = "gpt-4o-mini"
 
 
 # -----------------------------------------------------
 # Update Summary
 # -----------------------------------------------------
-def handle_summary_get_context_messages(
+async def handle_summary_get_context_messages(
     state: DreamPathAgentState,
     k: int = 20,
     h: int = 10,
@@ -66,7 +69,9 @@ def handle_summary_get_context_messages(
                 print(f"⚠️ SUMMARY: Error emitting status: {e}")
 
         print(f"| Summarizing {len(new_messages)} new messages from {state.summary_end} to {recent_start}")
-        new_summary = client.chat.completions.create(
+        # Use async client so the event loop can yield during the API call,
+        # allowing the "Reviewing Conversation" status to be sent immediately
+        new_summary = await async_client.chat.completions.create(
             model=SUMMARIZATION_MODEL,
             messages=[
                 {"role": "system", "content": SUMMARY_SYS_PROMPT},
@@ -208,9 +213,9 @@ async def build_complete_context(
 ):
     # Init messages and go through summarization if needed
     msgs = [{"role": "system", "content": prompt}]
-    recent_messages, state_updates = handle_summary_get_context_messages(state, writer=writer)
+    recent_messages, state_updates = await handle_summary_get_context_messages(state, writer=writer)
 
-    # Render context blocks
+    # [ Render context blocks ]
 
     # 1) Thread Block (prior to current turn)
     thread_block = _render_thread_block(state.summary, recent_messages)
@@ -260,7 +265,7 @@ async def extract_structured_output_from_context(
     state: DreamPathAgentState,
     config: dict,
     system_prompt: str,
-    response_model: BaseModel,
+    response_model: type[BaseModel],
     small_context: bool = False,
     model: str = "gpt-4o-mini",
     temperature: float = 0,
@@ -283,14 +288,33 @@ async def extract_structured_output_from_context(
     if show_token_count:
         print(f"[ MODEL={model} | TOKEN COUNT: {calculate_token_count(messages, model)} ]")
 
+    # Emit "Thinking" status right before orchestrator LLM call
+    # Only for orchestrator (identified by OrchestratorDecision response model)
+    # This overwrites "Reviewing Conversation" if summarization happened
+    if writer and response_model is OrchestratorDecision:
+        try:
+            thinking_event = AIMessage(
+                content="",
+                additional_kwargs={
+                    "event_type": "node_status",
+                    "node": "orchestrator",
+                    "status": "thinking",
+                    "message": "Thinking"
+                }
+            )
+            writer(thinking_event)
+        except Exception as e:
+            print(f"⚠️ ORCHESTRATOR: Error emitting thinking status: {e}")
+
+    # Use async client so event loop can deliver status events while waiting for response
     if model == "o3-mini" or model == "o4-mini":
-        response = client.chat.completions.create(
+        response = await async_client.chat.completions.create(
             model=model,
             messages=messages,
             response_model=response_model,
         )
     else:
-        response = client.chat.completions.create(
+        response = await async_client.chat.completions.create(
             model=model,
             messages=messages,
             response_model=response_model,

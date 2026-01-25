@@ -7,7 +7,7 @@ MASTER_CONTEXT = """
 # Current Turn Trace (what's happened this turn)
 {turn_block}
 
-# DreamPath Context (current student profile and course path)
+# DreamPath Context (urrent Student Profile and CoursePath)
 {dreampath_context_block}
 """
 
@@ -15,7 +15,7 @@ MASTER_CONTEXT_SHORT = """
 # Current Turn Trace (what's happened this turn)
 {turn_block}
 
-# DreamPath Context (current student profile and course path)
+# DreamPath Context (current Student Profile and CoursePath)
 {dreampath_context_block}
 
 # Task
@@ -23,7 +23,7 @@ MASTER_CONTEXT_SHORT = """
 """
 
 SUMMARY_SYS_PROMPT = """
-You are a helpful assistant that summarizes conversation history.
+You are a helpful assistant that summarizes conversation history between a student and a college advising agent.
 
 ### Instructions:
 You are given a summary of the conversation so far and a list of new messages.

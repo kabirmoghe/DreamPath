@@ -85,6 +85,9 @@ Guidelines for task decomposition:
 - KEEP AS ONE TASK when multiple constraints apply to the SAME search
   Example: "Easy AND highly-rated philosophy" → 1 task (filters on same search)
   Example: "Machine learning with few prereqs" → 1 task (query + filter)
+
+- KEEP AS ONE TASK for information regarding a single course, since a single lookup provides all the information needed
+  Example: "Find information about course <course_code>" → 1 task (look up course)
   
 - Broad example:
   "Identify relevant courses for interdisciplinary computational biology courses, covering a mix of easy and difficult courses that cover bioinformatics and data analysis fundamentals, as well as a relevant AI for drug discovery course"
