@@ -8,6 +8,7 @@ from dreampath_processing.dreampath_agent.search_agent.search_types import (
     SearchAgentState,
     TaskUpdateAction,
 )
+import instructor
 from instructor import from_openai
 from langchain_core.messages import AIMessage
 from langchain_core.runnables import RunnableConfig
@@ -164,7 +165,27 @@ def _format_complete_content(action: CompleteAction) -> str:
     return f"Reasoning: {action.reasoning}"
 
 
-async def orchestrator_node(state: SearchAgentState, config: RunnableConfig, *, writer=None) -> dict:
+def _emit_status(config: RunnableConfig, reason: str):
+    """Emit a status message if writer is available in config."""
+    writer = config.get("configurable", {}).get("writer")
+    if writer:
+        status_event = AIMessage(
+            content="",
+            additional_kwargs={
+                "event_type": "node_status",
+                "node": "course_search",
+                "status": "node_info",
+                "next_node": "course_search",
+                "reason": reason
+            }
+        )
+        try:
+            writer(status_event)
+        except Exception as e:
+            print(f"  [ORCH] Error emitting status: {e}")
+
+
+async def orchestrator_node(state: SearchAgentState, config: RunnableConfig) -> dict:
     """
     Main search orchestrator node - decides next action via structured output.
 
@@ -194,7 +215,9 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig, *, 
     # 2. GET STRUCTURED OUTPUT FROM LLM (instructor)
     # ============================================
     # print(f"  [ORCH] Calling instructor API...")
-    client = from_openai(AsyncOpenAI())
+    # Set mode at client creation time to ensure JSON mode is used
+    # This avoids instructor's Response wrapper issue with discriminated unions
+    client = from_openai(AsyncOpenAI(), mode=instructor.Mode.JSON)
 
     # Our messages are already in OpenAI format (role + content dicts)
     next_action: NextAction = await client.chat.completions.create(
@@ -245,10 +268,11 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig, *, 
     # ============================================
     # 5. RETURN STATE UPDATES
     # ============================================
-    # print(f"  [ORCH] Returning state updates")
+    # Note: Don't return messages here - they get streamed via subgraphs=True
+    # and cause intermediate content to appear in frontend. Status updates
+    # are sent via writer instead.
     return {
         "next_action": next_action,
         "search_trace": state.search_trace + [decision_msg],
-        "messages": [AIMessage(content=content)],  # For streaming to frontend
         **token_updates
     }

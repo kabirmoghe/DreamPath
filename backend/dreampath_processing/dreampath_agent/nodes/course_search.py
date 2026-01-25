@@ -1,17 +1,17 @@
-import json
+"""
+Course search node that invokes the search agent subgraph.
 
-from dreampath_processing.dreampath_agent.context_building import (
-    extract_structured_output_from_context,
-)
-from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
+This replaces the legacy single-shot query generation with an iterative
+search agent that can refine queries and evaluate results.
+"""
+
 from dreampath_processing.dreampath_agent.dreampath_types import (
-    CourseSearchOutput,
-    CourseSearchQueries,
     CourseSearchResult,
     DreamPathAgentState,
 )
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
-from dreampath_processing.dreampath_agent.nodes.prompts import COURSE_SEARCH_SYS
+from dreampath_processing.dreampath_agent.search_agent.graph import build_search_agent
+from dreampath_processing.dreampath_agent.search_agent.search_types import SearchAgentState
 
 
 def format_course_search_result(course_obj: CourseSearchResult) -> str:
@@ -25,77 +25,155 @@ def format_course_search_result(course_obj: CourseSearchResult) -> str:
     return course_str
 
 
-def format_course_search_output(output: CourseSearchOutput) -> str:
-    """Format course search output for context."""
-    output_str = ""
-    for result in output.results:
-        output_str += f"<course_search_result>\n{format_course_search_result(result)}\n</course_search_result>\n"
-    return output_str
-
-
-async def determine_course_search_queries(state: DreamPathAgentState, config) -> tuple[CourseSearchQueries, dict]:
-    """Determine the course search queries based on user intent and context."""
-    # Query fresh profile from DB
-    student_profile = await config["configurable"]["student_db_service"].load_student_profile(
-        config["configurable"]["user_id"]
-    )
-    student_name = student_profile.name
-    return await extract_structured_output_from_context(
-        state=state,
-        config=config,
-        system_prompt=COURSE_SEARCH_SYS.format(student_name=student_name),
-        response_model=CourseSearchQueries,
-        small_context=True,
-        model="gpt-4o"
-    )
-
-
-async def course_search_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
+def _extract_all_course_results(final_state: dict) -> list[CourseSearchResult]:
     """
-    Course search node that handles course lookup and semantic search.
+    Extract all unique CourseSearchResult objects from the search agent's final state.
+
+    Returns deduplicated list of courses across all tasks.
+    """
+    all_courses = []
+    seen_codes = set()
+
+    tasks = final_state.get("tasks", [])
+    for task in tasks:
+        for execution in task.search_executions:
+            for course in execution.output.results:
+                if course.course_code not in seen_codes:
+                    seen_codes.add(course.course_code)
+                    all_courses.append(course)
+
+    return all_courses
+
+
+# Build the search agent graph once at module load
+# (compiled graph is reusable and thread-safe)
+_search_agent_graph = None
+
+
+def _get_search_agent():
+    """Get or build the search agent graph (lazy initialization)."""
+    global _search_agent_graph
+    if _search_agent_graph is None:
+        _search_agent_graph = build_search_agent()
+    return _search_agent_graph
+
+
+async def course_search_node(state: DreamPathAgentState, config, *, writer=None) -> dict:
+    """
+    Course search node that invokes the search agent subgraph.
+
+    Uses state.handoff as the search goal and returns the search agent's
+    final_summary directly as the tool result.
 
     Supports:
-    - Specific course lookups by code
-    - Semantic search by topic/description
-    - Filtered searches by department, prerequisites, etc.
+    - Iterative search refinement via search agent
+    - Multi-task decomposition for complex queries
+    - Curated top results from search orchestrator
     """
-    course_search_tool: CourseSearchTool = config["configurable"]["course_search_tool"]
-    queries, _ = await determine_course_search_queries(state, config)
-    print(f"| CourseSearchNode: queries={queries}")
+    # Get the search goal from handoff
+    search_goal = state.handoff
+    if not search_goal:
+        # Fallback: use current user message if no handoff
+        search_goal = state.current_user_msg or "Find relevant courses"
 
-    tool_messages = []
-    langchain_messages = []
+    print(f"| CourseSearchNode: invoking search agent with goal='{search_goal[:80]}...'")
 
-    for query in queries.queries:
-        # Build tool call
-        tool_call = {
-            "role": "assistant",
-            "content": {
-                "name": "course_search",
-                "arguments": {
-                    "queries": json.dumps(query.model_dump()),
-                }
-            },
+    # Initialize search agent state
+    search_state = SearchAgentState(goal=search_goal)
+
+    # Pass writer through config so search agent nodes can emit status updates
+    search_config = {
+        **config,
+        "configurable": {
+            **config.get("configurable", {}),
+            "writer": writer
         }
+    }
 
-        tool_messages.append(tool_call)
-        langchain_messages.append(dreampath_to_langchain(tool_call))
+    # Invoke the search agent subgraph
+    search_agent = _get_search_agent()
+    final_state = await search_agent.ainvoke(search_state, search_config)
 
-        # Execute tool call
-        search_results = course_search_tool.structured_hybrid_search(query)
+    print(f"| CourseSearchNode: search agent completed with {len(final_state.get('tasks', []))} tasks")
 
-        tool_result = {
-            "role": "assistant",
-            "content": {
-                "name": "course_search",
-                "result": format_course_search_output(search_results),
-            },
-        }
+    # Use the search agent's final_summary directly
+    final_summary = final_state.get("final_summary", "No results found.")
 
-        tool_messages.append(tool_result)
-        langchain_messages.append(dreampath_to_langchain(tool_result))
+    # Create tool call message (shows what was searched)
+    tool_call = {
+        "role": "assistant",
+        "content": {
+            "name": "course_search",
+            "arguments": {"goal": search_goal}
+        },
+    }
+
+    # Create tool result message (use final_summary from search agent)
+    tool_result = {
+        "role": "assistant",
+        "content": {
+            "name": "course_search",
+            "result": final_summary,
+        },
+    }
+
+    # Convert to LangChain messages
+    tool_call_lc = dreampath_to_langchain(tool_call)
+    tool_result_lc = dreampath_to_langchain(tool_result)
 
     return {
-        "turn_messages": state.turn_messages + tool_messages,
-        "messages": langchain_messages,
+        "turn_messages": state.turn_messages + [tool_call, tool_result],
+        "messages": [tool_call_lc, tool_result_lc],
     }
+
+
+# ============================================
+# UTILITY FUNCTIONS FOR REBUILD INTEGRATION
+# ============================================
+
+async def invoke_search_agent(goal: str, config: dict) -> dict:
+    """
+    Invoke the search agent with a goal and return the final state.
+
+    This is a utility function for use by other nodes (e.g., rebuild_course_path)
+    that need to run searches without the full node machinery.
+
+    Args:
+        goal: The search goal
+        config: The config dict (passed through to search agent)
+
+    Returns:
+        The final state dict from the search agent
+    """
+    search_state = SearchAgentState(goal=goal)
+    search_agent = _get_search_agent()
+    return await search_agent.ainvoke(search_state, config)
+
+
+def get_top_course_codes_from_search(final_state: dict) -> list[str]:
+    """
+    Extract all top_results course codes from search agent state.
+
+    Returns a deduplicated list of course codes that were curated
+    as top results by the search orchestrator.
+    """
+    top_codes = []
+    seen = set()
+
+    for task in final_state.get("tasks", []):
+        for code in task.top_results:
+            if code not in seen:
+                seen.add(code)
+                top_codes.append(code)
+
+    return top_codes
+
+
+def get_all_courses_from_search(final_state: dict) -> list[CourseSearchResult]:
+    """
+    Extract all unique CourseSearchResult objects from search agent state.
+
+    This is useful for rebuild operations that need the full course objects,
+    not just the codes.
+    """
+    return _extract_all_course_results(final_state)

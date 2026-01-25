@@ -50,6 +50,20 @@ async def render_final_reply_streaming(state: DreamPathAgentState, config, write
     # Build context
     messages, state_updates = await build_complete_context(state, system_prompt, config, task_prompt=None)
 
+    # Log context to file for debugging
+    with open("finalize_context.txt", "w") as f:
+        f.write("=" * 80 + "\n")
+        f.write("FINALIZE NODE - MESSAGE CONTEXT\n")
+        f.write("=" * 80 + "\n\n")
+        for i, msg in enumerate(messages):
+            role = msg.get("role", "unknown")
+            content = msg.get("content", "")
+            f.write(f"\n[{i}] ROLE: {role}\n")
+            f.write("-" * 40 + "\n")
+            f.write(f"{content}\n")
+            f.write("\n")
+    print("  ✓ Logged context to finalize_context.txt")
+
     # Log token count
     model = "gpt-4o"
     print(f"[ MODEL={model} | TOKEN COUNT: {calculate_token_count(messages, model)} ]")

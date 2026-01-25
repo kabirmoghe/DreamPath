@@ -9,7 +9,7 @@ from dreampath_processing.dreampath_agent.search_agent.utils.structured_output i
     system_field,
 )
 from langchain_core.messages import BaseMessage
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Discriminator, Field, field_validator
 
 # Valid Dartmouth departments (from course catalog)
 ValidDepartment = Literal[
@@ -198,8 +198,11 @@ class CompleteAction(BaseModel):
     action_type: Literal["complete"] = Field(default="complete", description="Action type discriminator")
     reasoning: str = Field(description="Why search is complete")
 
-# Union type for routing
-NextAction = Union[SearchAction, TaskUpdateAction, CompleteAction]
+# Union type for routing - use explicit discriminator for instructor compatibility
+NextAction = Annotated[
+    Union[SearchAction, TaskUpdateAction, CompleteAction],
+    Discriminator('action_type')
+]
 
 # ================================
 # Search Agent State

@@ -13,6 +13,7 @@ from dreampath_processing.dreampath_agent.search_agent.search_types import (
     SearchExecution,
 )
 from langchain_core.messages import AIMessage
+from langchain_core.runnables import RunnableConfig
 from pydantic import BaseModel, Field
 
 # ============================================
@@ -95,7 +96,7 @@ def _render_markdown_from_structured(summary: FinalSearchSummary) -> str:
         lines.append("")
 
         if task_summary.top_results:
-            lines.append("### 🎯 Top Recommendations")
+            lines.append("### Top Recommendations")
             lines.append("")
 
             # Show detailed info for top results
@@ -103,13 +104,26 @@ def _render_markdown_from_structured(summary: FinalSearchSummary) -> str:
             top_courses = [c for c in task_summary.all_courses if c.course_code in top_course_codes]
 
             for course in top_courses:
-                lines.append(f"**{course.course_code}: {course.course_title}**")
+                lines.append(f"<course>**{course.course_code}: {course.course_title}**")
                 lines.append(f"- Department: {course.department}")
-                lines.append(f"- Difficulty: {course.global_difficulty_classification} (Percentile: {course.global_difficulty_percentile})")
-                lines.append(f"- Learning Value: {course.global_value_classification} (Percentile: {course.global_value_percentile})")
                 if course.num_prereqs > 0:
-                    lines.append(f"- Prerequisites: {course.num_prereqs}")
-                lines.append("")
+                    lines.append(f"- Prerequisites: {course.prerequisites}")
+                if course.course_url:
+                    lines.append(f"- URL: {course.course_url}")
+                if course.global_difficulty_classification:
+                    lines.append(f"- Difficulty: {course.global_difficulty_classification}{' (Percentile: ' + str(round(course.global_difficulty_percentile, 2)) + ')' if course.global_difficulty_percentile else ''}")
+                if course.global_value_classification:
+                    lines.append(f"- Learning Value: {course.global_value_classification}{' (Percentile: ' + str(round(course.global_value_percentile, 2)) + ')' if course.global_value_percentile else ''}")
+
+                if course.difficulty_blurb or course.learning_value_blurb or course.target_audience_blurb:
+                    lines.append(f"- Students sentiment:")
+                    if course.difficulty_blurb:
+                        lines.append(f"\t→ About difficulty: {course.difficulty_blurb}")
+                    if course.learning_value_blurb:
+                        lines.append(f"\t→ About learning value: {course.learning_value_blurb}")
+                    if course.target_audience_blurb:
+                        lines.append(f"\t→ Target audience: {course.target_audience_blurb}")
+                lines.append("</course>")
 
         # Show all other courses as a compact list (only remaining 10)
         other_courses = [c for c in task_summary.all_courses if c.course_code not in task_summary.top_results][:10]
@@ -134,7 +148,7 @@ def _render_markdown_from_structured(summary: FinalSearchSummary) -> str:
 # FINALIZER NODE
 # ============================================
 
-def finalize_node(state: SearchAgentState) -> dict:
+def finalize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
     """
     Generate final summary in two formats:
     1. Structured (FinalSearchSummary) - For frontend programmatic access
@@ -198,7 +212,9 @@ def finalize_node(state: SearchAgentState) -> dict:
     # ============================================
     # 3. RETURN STATE UPDATES
     # ============================================
+    # Note: Don't return messages here - they get streamed via subgraphs=True
+    # and cause intermediate content to appear in frontend.
+    # The final_summary is used by course_search_node to construct the tool result.
     return {
         "final_summary": markdown,
-        "messages": [AIMessage(content=markdown)]
     }

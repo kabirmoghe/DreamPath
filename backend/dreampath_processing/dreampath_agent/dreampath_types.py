@@ -174,4 +174,4 @@ class DreamPathAgentState(BaseModel):
     pending_pre_interrupt: CoursePathAgentOutput | ModifiedStudentProfile | None = Field(default=None)
     
     # NOTE: 'messages' field inherited from MessagesState
-    # Contains LangChain BaseMessage objects for service streaming
+    # Contains LangChain BaseMessage objects for service streaming    

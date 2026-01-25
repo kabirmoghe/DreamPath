@@ -20,8 +20,28 @@ from dreampath_processing.dreampath_agent.search_agent.search_types import (
     TaskSearch,
     TaskUpdateAction,
 )
-from langchain_core.messages import ToolMessage
+from langchain_core.messages import AIMessage
 from langchain_core.runnables import RunnableConfig
+
+
+def _emit_status(config: RunnableConfig, reason: str):
+    """Emit a status message if writer is available in config."""
+    writer = config.get("configurable", {}).get("writer")
+    if writer:
+        status_event = AIMessage(
+            content="",
+            additional_kwargs={
+                "event_type": "node_status",
+                "node": "course_search",
+                "status": "node_info",
+                "next_node": "course_search",
+                "reason": reason
+            }
+        )
+        try:
+            writer(status_event)
+        except Exception as e:
+            print(f"  [TOOL] Error emitting status: {e}")
 
 # ============================================
 # SEARCH EXECUTION
@@ -139,6 +159,7 @@ async def _execute_searches(
     """
 
     print(f"\n[TOOL EXECUTOR] Executing {len(action.searches)} searches in parallel...")
+    _emit_status(config, f"Executing {len(action.searches)} search{'es' if len(action.searches) > 1 else ''}")
 
     # ============================================
     # 1. EXECUTE SEARCHES IN PARALLEL
@@ -212,10 +233,11 @@ async def _execute_searches(
     # ============================================
     # 3. RETURN STATE UPDATES
     # ============================================
+    # Note: Don't return messages here - they get streamed via subgraphs=True
+    # and cause intermediate content to appear in frontend
     return {
         "tasks": updated_tasks,
         "search_trace": state.search_trace + tool_messages,
-        "messages": [ToolMessage(content=msg["content"], tool_call_id=f"search_{i}") for i, msg in enumerate(tool_messages)]
     }
 
 
@@ -279,6 +301,8 @@ async def _execute_task_updates(
             )
             updated_tasks.append(new_task)
             print(f"    Created Task {i}: {new_task.description[:60]}...")
+
+        _emit_status(config, f"Created {len(updated_tasks)} search tasks")
 
     else:
         # Update existing tasks
