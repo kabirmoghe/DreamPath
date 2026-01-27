@@ -26,7 +26,6 @@ from agents import DEFAULT_AGENT, AgentGraph, get_agent, get_all_agent_info, loa
 from core import settings
 from memory import initialize_database, initialize_store
 from dreampath_processing.database.student_service import StudentDatabaseService
-from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
 from schema import (
     ChatHistory,
@@ -211,11 +210,6 @@ async def _initialize_dreampath_config(
             detail="Student database service not initialized"
         )
 
-    # print(f"[DEBUG] Creating CourseSearchTool...")
-    # Initialize components - NO mutable state in config
-    course_search_tool = CourseSearchTool()
-    # print(f"[DEBUG] CourseSearchTool created")
-
     # Get database connection from the global service
     # print(f"[DEBUG] Getting DB connection...")
     from dreampath_processing.database.connection import get_db_connection
@@ -227,7 +221,6 @@ async def _initialize_dreampath_config(
     # Use user_id as-is (UUID string from Supabase)
     config["configurable"].update({
         "user_id": user_id,  # ← Store as UUID string for database queries
-        "course_search_tool": course_search_tool,
         "conn": conn,
         "student_db_service": student_db_service
     })

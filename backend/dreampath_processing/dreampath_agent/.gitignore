@@ -1,3 +1,19 @@
 *.txt
 test_*.py
-*.md
+
+# Legacy re-export stubs (migrated to nodes/ and graph.py)
+agent_stateless.py
+chat_prompts.py
+build_prompts.py
+node_helpers.py
+rebuild_tool.py
+
+# Dead code
+agent_ctx_handoff.py
+
+# Vestigial (replaced by search_agent/tools/course_search_client.py)
+course_search_tool.py
+
+# Legacy node implementations
+nodes/course_search_legacy.py
+nodes/rebuild_legacy.py

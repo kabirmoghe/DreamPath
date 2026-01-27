@@ -12,7 +12,7 @@ from dreampath_processing.dreampath_agent.search_agent.search_types import Cours
 
 class CourseSearchClient:
     """
-    Course search tool that uses the WeaviateCourseService for efficient course lookups.
+    Course search client that uses the WeaviateCourseService for efficient course lookups.
     This approach reuses the singleton service connection instead of creating new connections.
     """
     
@@ -115,7 +115,7 @@ class CourseSearchClient:
             CourseSearchOutput with structured results
         """
 
-        print(f"Structured hybrid search with params: {params}")
+        # print(f"Structured hybrid search with params: {params}")
 
         raw_results = self.hybrid_search(
             query=params.query,

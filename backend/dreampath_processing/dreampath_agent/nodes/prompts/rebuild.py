@@ -1,3 +1,6 @@
+# ================================
+# Legacy Parameter Course Search Queries Prompt
+# ================================
 PARAMETER_COURSE_SEARCH_QUERIES_SYS = """You are an expert course search parameter determiner for student '{student_name}'.
 
 ### About DreamPath Student Profile:
@@ -97,7 +100,69 @@ Output:
 Return a list of 5 maps of search parameters according to the provided schema. Each map corresponds to a single search.
 """
 
-UPDATE_COURSE_RECOMMENDATIONS_SYS = """You help update DreamPath's course recommendations for college student {student_name}.
+# ================================
+# CourseRec Synthesis Prompt
+# ================================
+COURSE_REC_SYNTHESIS_SYS = """You synthesize course search results into recommendations for a college student.
+
+### Context
+Three searches were run in parallel, each focused on one profile parameter:
+1. **Interests Search**: Courses relevant to the student's college interests
+2. **Post-Grad Search**: Courses relevant to their post-graduation goals
+3. **Career Search**: Courses relevant to their long-term career goals
+
+Your job is to synthesize these broader results into a unified list of course recommendations with parameter alignment tracking. 
+You should refine the list to **maximize value, relevance, and coverage for the student's profile**.
+
+### Input
+
+**Student Profile:**
+- Major: {major}
+- College Interests: '{college_interests}'
+- Post-Grad Goals: '{post_grad_goals}'
+- Career Goals: '{career_goals}'
+
+**Search Results by Parameter:**
+<interests_results>
+{interests_courses}
+</interests_results>
+
+<post_grad_results>
+{post_grad_courses}
+</post_grad_results>
+
+<career_results>
+{career_courses}
+</career_results>
+
+**Existing Recommended Courses (from current course path):**
+{existing_recommendations}
+
+### Instructions
+1. Review all search results and the existing recommendations
+2. Understand the resulting courses' data (e.g., description, value, etc.)
+2. Then, for each course you recommend:
+   - Assign `aligned_parameters` based on which searches returned it:
+     - "interests" if it appeared in interests_results
+     - "post_grad" if it appeared in post_grad_results
+     - "career" if it appeared in career_results
+   - A course can have multiple alignments (e.g., both "interests" and "post_grad")
+3. For existing recommendations you keep:
+   - If the course also appeared in the new search results, update its `aligned_parameters` accordingly
+   - If it didn't appear in any search but is still relevant to the profile, assign alignments based on your judgment of which parameters it best serves
+4. Target approximately {target_count} courses total
+5. Prefer courses that align with multiple parameters
+
+### Output Format
+Return a list of CourseRec objects, each with:
+- `course_code`: The course code (e.g., "COSC74")
+- `aligned_parameters`: Set of parameters this course aligns with ("interests", "post_grad", "career")
+"""
+
+# ================================
+# Legacy Update Course Recommendations Prompt
+# ================================
+UPDATE_COURSE_RECOMMENDATIONS_SYS = """You help update DreamPath's course recommendations for a college student.
 
 ### DreamPath Context:
 DreamPath is a college advising platform that helps students explore their options and make decisions about their course plan and overall profile.
@@ -137,8 +202,8 @@ COSC89.27: 'Introduction to Machine Learning'
 - Prereqs: ...
 - Description: ...
 ...
-
-→ **Output:** {{'COSC74', 'COSC89.27', ...}}
+ 
+→ **Output:** {{'COSC74','COSC89.27', ...}}
 
 2. User: "I want to shift from computer science / SWE to more cybersecurity..."
 

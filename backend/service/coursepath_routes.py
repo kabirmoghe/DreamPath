@@ -35,8 +35,30 @@ class CourseData(BaseModel):
     must_have_window: Optional[List[int]] = None
     term_idx: Optional[int] = None
     term_idx_in_term: Optional[int] = None
+    # DreamPath-specific
+    aligned_parameters: Optional[List[str]] = None
+    # Basic course info
     course_title: Optional[str] = None
     course_description: Optional[str] = None
+    department: Optional[str] = None
+    prerequisites: Optional[str] = None
+    course_url: Optional[str] = None
+    num_prereqs: Optional[int] = None
+    total_reviews: Optional[int] = None
+    # Difficulty metrics
+    global_difficulty_percentile: Optional[float] = None
+    global_difficulty_classification: Optional[str] = None
+    dept_difficulty_percentile: Optional[float] = None
+    dept_difficulty_classification: Optional[str] = None
+    difficulty_blurb: Optional[str] = None
+    # Value metrics
+    global_value_percentile: Optional[float] = None
+    global_value_classification: Optional[str] = None
+    dept_value_percentile: Optional[float] = None
+    dept_value_classification: Optional[str] = None
+    learning_value_blurb: Optional[str] = None
+    # Target audience
+    target_audience_blurb: Optional[str] = None
 
 
 class CoursePathResponse(BaseModel):
@@ -58,19 +80,56 @@ class CoursePathVisualizationResponse(BaseModel):
     visualization: str
 
 
+import math
+
+def _clean_nan(value):
+    """Convert NaN values to None for JSON serialization."""
+    if value is None:
+        return None
+    if isinstance(value, float) and math.isnan(value):
+        return None
+    if isinstance(value, str) and value.lower() == 'nan':
+        return None
+    return value
+
+
 def course_to_dict(course: Course) -> Dict[str, Any]:
     """Convert Course object to dictionary for API response."""
     return {
+        # Required
         "course_code": course.course_code,
         "course_type": course.course_type.value,  # Convert enum to string
+        # Scheduling state
         "is_prereq": course.is_prereq,
         "scheduled": course.scheduled,
         "prereq_tree": course.prereq_tree,
         "must_have_window": course.must_have_window,
         "term_idx": course.term_idx,
         "term_idx_in_term": course.term_idx_in_term,
+        # DreamPath-specific
+        "aligned_parameters": list(course.aligned_parameters) if course.aligned_parameters else None,
+        # Basic course info
         "course_title": course.course_title,
         "course_description": course.course_description,
+        "department": course.department,
+        "prerequisites": _clean_nan(course.prerequisites),
+        "course_url": course.course_url,
+        "num_prereqs": course.num_prereqs,
+        "total_reviews": course.total_reviews,
+        # Difficulty metrics
+        "global_difficulty_percentile": course.global_difficulty_percentile,
+        "global_difficulty_classification": course.global_difficulty_classification,
+        "dept_difficulty_percentile": course.dept_difficulty_percentile,
+        "dept_difficulty_classification": course.dept_difficulty_classification,
+        "difficulty_blurb": _clean_nan(course.difficulty_blurb),
+        # Value metrics
+        "global_value_percentile": course.global_value_percentile,
+        "global_value_classification": course.global_value_classification,
+        "dept_value_percentile": course.dept_value_percentile,
+        "dept_value_classification": course.dept_value_classification,
+        "learning_value_blurb": _clean_nan(course.learning_value_blurb),
+        # Target audience
+        "target_audience_blurb": _clean_nan(course.target_audience_blurb),
     }
 
 

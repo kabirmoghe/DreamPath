@@ -11,3 +11,4 @@ check*.py
 debug_*.py
 delete_*.py
 weaviate_export/
+alumni_exploration/

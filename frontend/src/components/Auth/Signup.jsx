@@ -37,7 +37,7 @@ function Signup() {
     }
 
     if (!email.toLowerCase().endsWith('@dartmouth.edu')) {
-      setError('Only @dartmouth.edu addresses are accepted');
+      setError('You must use a @dartmouth.edu address to sign up');
       return;
     }
 

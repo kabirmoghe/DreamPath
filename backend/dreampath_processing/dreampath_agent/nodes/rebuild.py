@@ -1,3 +1,14 @@
+"""
+Rebuild course path node with search agent integration.
+
+This implementation uses 3 parallel search agent invocations (one per profile parameter)
+and synthesizes results with parameter alignment tracking.
+"""
+
+import asyncio
+import os
+
+import instructor
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.course_relationship_handling import (
     build_prereq_tree,
@@ -5,55 +16,73 @@ from dreampath_processing.courses.course_relationship_handling import (
     is_major_course,
 )
 from dreampath_processing.courses.schedule_modules.course import COMPLEMENTARY, MAJOR
-from dreampath_processing.dreampath_agent.context_building import (
-    extract_structured_output_from_context,
-)
-from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
 from dreampath_processing.dreampath_agent.dreampath_types import (
-    CourseSearchQueries,
-    CourseSearchResult,
+    CourseRec,
+    CourseRecsOutput,
     DreamPathAgentState,
     RebuildCoursePathOutput,
 )
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
-from dreampath_processing.dreampath_agent.nodes.course_search import format_course_search_result
+from dreampath_processing.dreampath_agent.nodes.course_search import invoke_search_agent
 from dreampath_processing.dreampath_agent.nodes.modify_profile import modify_student_profile
-from dreampath_processing.dreampath_agent.nodes.prompts import (
-    PARAMETER_COURSE_SEARCH_QUERIES_SYS,
-    UPDATE_COURSE_RECOMMENDATIONS_SYS,
+from dreampath_processing.dreampath_agent.nodes.prompts import COURSE_REC_SYNTHESIS_SYS
+from dreampath_processing.dreampath_agent.search_agent.nodes.finalizer import (
+    render_search_summary_markdown,
 )
 from langchain_core.messages import AIMessage
-from pydantic import BaseModel
+from openai import AsyncOpenAI
+
+# Async client for LLM calls
+_async_client = instructor.from_openai(AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY")))
 
 
-class CourseRecommendations(BaseModel):
-    courses: set[str]
+def _truncate(text: str | None, max_len: int) -> str:
+    """Truncate text to max_len, adding ellipsis if needed."""
+    if not text:
+        return ""
+    if len(text) <= max_len:
+        return text
+    return text[:max_len - 3] + "..."
 
 
-def format_recommended_courses(recommended_courses: set[str], course_search_tool: CourseSearchTool) -> str:
-    """Format recommended courses for display."""
-    if len(recommended_courses) == 0:
+def format_existing_recommendations(
+    course_codes: set[str],
+    course_bank: dict,
+    description_max_len: int = 500,
+) -> str:
+    """
+    Format existing recommended courses for the synthesizer prompt.
+
+    Uses course_bank to get course details (code, title, description, previous alignment).
+    """
+    if not course_codes:
         return "None"
-    else:
-        results = ""
-        for course_code in recommended_courses:
-            print(f"Getting course {course_code}...")
-            course_result = course_search_tool.structured_get_course_by_code(course_code)
-            if course_result:
-                results += format_course_search_result(course_result)
-            else:
-                print(f"Course {course_code} not found. Skipping...")
-        return results
 
+    lines = ["## Existing Recommended Courses", ""]
 
-def format_deep_course_search_results(course_search_results: list[CourseSearchResult]) -> str:
-    """Format deep course search results for display."""
-    results = ""
-    for result in course_search_results:
-        results += "<course>\n"
-        results += format_course_search_result(result)
-        results += "</course>\n"
-    return results
+    for code in sorted(course_codes):
+        course = course_bank.get(code)
+        if not course:
+            lines.append(f"**{code}** (not in course bank)")
+            lines.append("")
+            continue
+
+        # Title
+        title = course.course_title or "Unknown Title"
+        lines.append(f"**{course.course_code}: {title}**")
+
+        # Previous alignment
+        if course.aligned_parameters:
+            aligned_str = ", ".join(sorted(course.aligned_parameters))
+            lines.append(f"- Previous alignment: {aligned_str} *(to be re-evaluated)*")
+
+        # Description (truncated)
+        if course.course_description:
+            lines.append(f"- {_truncate(course.course_description, description_max_len)}")
+
+        lines.append("")
+
+    return "\n".join(lines)
 
 
 def format_rebuild_course_path_output(output: RebuildCoursePathOutput) -> str:
@@ -70,19 +99,17 @@ def format_rebuild_course_path_output(output: RebuildCoursePathOutput) -> str:
     else:
         output_str += "<modify_profile>\nProfile not modified.\n</modify_profile>\n"
 
-    # Course search queries by parameter
-    if output.course_search_queries_by_parameter:
-        output_str += "<course_search_by_profile_parameter>\n"
-        for parameter, queries in output.course_search_queries_by_parameter.items():
-            output_str += f"<{parameter}>\n"
-            for query in queries.queries:
-                output_str += f"<query>{query.query}</query>\n"
-            output_str += f"</{parameter}>\n"
-        output_str += "</course_search_by_profile_parameter>\n"
+    # Search summary
+    if output.search_summary:
+        output_str += f"<search_summary>\n{output.search_summary}\n</search_summary>\n"
 
-    # Updated recommended courses
+    # Updated recommended courses with alignment info
     if output.updated_recommended_courses:
-        output_str += f"<updated_recommended_courses>\n{output.updated_recommended_courses}\n</updated_recommended_courses>\n"
+        output_str += "<updated_recommended_courses>\n"
+        for rec in output.updated_recommended_courses:
+            aligned = ", ".join(sorted(rec.aligned_parameters)) if rec.aligned_parameters else "none"
+            output_str += f"  {rec.course_code} (aligned: {aligned})\n"
+        output_str += "</updated_recommended_courses>\n"
 
     # Course path update mode
     if output.course_path_update_mode == "new":
@@ -93,21 +120,90 @@ def format_rebuild_course_path_output(output: RebuildCoursePathOutput) -> str:
     return output_str
 
 
+def filter_and_prioritize_recommendations(
+    recs: list[CourseRec],
+    major: str,
+    target_count: int = 20,
+    major_floor_proportion: float = 0.6
+) -> list[CourseRec]:
+    """
+    Filter and prioritize course recommendations.
+
+    1. Deduplicate by course_code (merge aligned_parameters)
+    2. Try to maintain 60% major courses (skip if not achievable)
+    3. Sort by parameter priority (interests + post_grad > interests OR post_grad > career only)
+    4. Cap at target_count
+    """
+    # Deduplicate: merge aligned_parameters for duplicate course codes
+    deduped: dict[str, CourseRec] = {}
+    for rec in recs:
+        if rec.course_code in deduped:
+            deduped[rec.course_code].aligned_parameters |= rec.aligned_parameters
+        else:
+            deduped[rec.course_code] = rec
+    recs = list(deduped.values())
+
+    # Count major courses
+    major_courses = [r for r in recs if is_major_course(r.course_code, major)]
+    non_major_courses = [r for r in recs if not is_major_course(r.course_code, major)]
+
+    # Priority scoring function
+    def priority_score(r: CourseRec) -> int:
+        """
+        2 points if aligned with BOTH interests AND post_grad
+        1 point if aligned with just interests OR just post_grad
+        0 points if only aligned with career
+        """
+        has_interests = "interests" in r.aligned_parameters
+        has_post_grad = "post_grad" in r.aligned_parameters
+        if has_interests and has_post_grad:
+            return 2
+        elif has_interests or has_post_grad:
+            return 1
+        return 0
+
+    # Sort both lists by priority
+    major_courses.sort(key=priority_score, reverse=True)
+    non_major_courses.sort(key=priority_score, reverse=True)
+
+    # Try to maintain major floor proportion
+    major_floor = int(major_floor_proportion * target_count)
+
+    if len(major_courses) >= major_floor:
+        # We can meet the floor - take major_floor majors, fill rest with non-major
+        result = major_courses[:major_floor]
+        remaining_slots = target_count - len(result)
+        result.extend(non_major_courses[:remaining_slots])
+        # If we still have room and more major courses, add them
+        if len(result) < target_count:
+            additional_majors = major_courses[major_floor:target_count - len(result) + major_floor]
+            result.extend(additional_majors)
+    else:
+        # Can't meet floor - use all major courses, fill with non-major
+        print(f"⚠️ REBUILD: Only {len(major_courses)} major courses available, skipping 60% floor")
+        result = major_courses[:]
+        remaining_slots = target_count - len(result)
+        result.extend(non_major_courses[:remaining_slots])
+
+    # Final sort by priority for the combined list
+    result.sort(key=priority_score, reverse=True)
+
+    return result[:target_count]
+
+
 async def execute_rebuild_tool(
     state: DreamPathAgentState,
     config: dict,
-    parameter_weights: dict[str, float] | None = None,
-    N: int = 15,
     writer=None
 ) -> RebuildCoursePathOutput:
     """
-    Execute the rebuild tool to regenerate the course path.
+    Execute the rebuild tool using search agent for course discovery.
 
     Steps:
     1. Modify profile (if not init_mode)
-    2. Generate course search queries per parameter
-    3. Execute searches and score courses
-    4. Update recommendations
+    2. Run 3 parallel search agents (interests, post_grad, career)
+    3. Synthesize results into CourseRec list with alignment tracking
+    4. Filter and prioritize recommendations
     5. Build/rebuild course path
     """
     output = {}
@@ -132,7 +228,7 @@ async def execute_rebuild_tool(
                 print(f"🔄 REBUILD: Error emitting status: {e}")
 
     # -----------------------------------------------------
-    # 1. Modify profile
+    # 1. Modify profile (if not init_mode)
     # -----------------------------------------------------
     student_db_service = config["configurable"]["student_db_service"]
     current_profile = await student_db_service.load_student_profile(config["configurable"]["user_id"])
@@ -157,129 +253,149 @@ async def execute_rebuild_tool(
         output["modified_profile"] = None
 
     # -----------------------------------------------------
-    # 2. Extract parameter weights, default weights
-    # -----------------------------------------------------
-    if parameter_weights is None:
-        parameter_weights = {
-            "college_interests": 1.0,
-            "post_grad_goals": 1.0,
-            "long_term_goal": 0.5
-        }
-
-    # -----------------------------------------------------
-    # 3. For each parameter, generate 5 course search queries
+    # 2. Run 3 parallel search agents (one per parameter)
     # -----------------------------------------------------
     emit_status("Performing deep course search")
-    course_search_queries = {}
-    student_name = current_profile.name
 
-    for parameter, _ in parameter_weights.items():
-        print(f"Generating course search queries for parameter: {parameter}...")
-        course_search_queries[parameter], _ = await extract_structured_output_from_context(
-            state=state,
-            config=config,
-            system_prompt=PARAMETER_COURSE_SEARCH_QUERIES_SYS.format(
-                student_name=student_name,
-                parameter=parameter.replace("_", " ").capitalize()
-            ),
-            response_model=CourseSearchQueries,
-            small_context=True,
-            model="gpt-4o",
-            verbose=True
-        )
+    # Build simple, concise goals for each parameter
+    major = current_profile.major
+    interests_goal = f"{major} student. College interests: '{current_profile.college_interests}'.\nFind relevant courses."
+    post_grad_goal = f"{major} student. Post-grad goals: '{current_profile.post_grad_goals}'.\nFind relevant courses."
+    career_goal = f"{major} student. Career goals: '{current_profile.career_goals}'.\nFind relevant courses."
 
-    output["course_search_queries_by_parameter"] = course_search_queries
+    # DEBUG: Save search goals to files
+    with open("/tmp/search_goal_interests.txt", "w") as f:
+        f.write(interests_goal)
+    with open("/tmp/search_goal_postgrad.txt", "w") as f:
+        f.write(post_grad_goal)
+    with open("/tmp/search_goal_career.txt", "w") as f:
+        f.write(career_goal)
 
-    # -----------------------------------------------------
-    # 4. Execute course search queries
-    # -----------------------------------------------------
-    course_search_tool: CourseSearchTool = config["configurable"]["course_search_tool"]
-    course_search_results = {}
+    print("🔍 REBUILD: Launching 3 parallel search agents...")
+    print(f"  - Interests: {interests_goal[:60]}...")
+    print(f"  - Post-grad: {post_grad_goal[:60]}...")
+    print(f"  - Career: {career_goal[:60]}...")
 
-    for parameter, queries in course_search_queries.items():
-        print(f"Executing course search queries for parameter: {parameter}...")
-        for query in queries.queries:
-            print(f">>> Executing course search query: {query}...")
-            search_results = course_search_tool.structured_hybrid_search(query)
-            for result in search_results.results:
-                if result.course_code not in course_search_results:
-                    course_search_results[result.course_code] = {}
-                current_hits = course_search_results[result.course_code].get(parameter, 0)
-                course_search_results[result.course_code][parameter] = current_hits + 1
-                course_search_results[result.course_code]["result"] = result
-
-    # -----------------------------------------------------
-    # 5. Score courses by weights, sort by score
-    # -----------------------------------------------------
-    print("Scoring courses...")
-    scored_course_results = {}
-
-    for course, results_dict in course_search_results.items():
-        score = sum(
-            results_dict.get(parameter, 0) * parameter_weights[parameter]
-            for parameter in parameter_weights.keys()
-        )
-        scored_course_results[course] = {
-            "score": score,
-            "result": results_dict["result"]
-        }
-
-    sorted_course_results = sorted(
-        scored_course_results.items(),
-        key=lambda x: x[1]["score"],
-        reverse=True
+    # Run all 3 searches in parallel
+    search_results = await asyncio.gather(
+        invoke_search_agent(interests_goal, config),
+        invoke_search_agent(post_grad_goal, config),
+        invoke_search_agent(career_goal, config),
+        return_exceptions=True
     )
-    top_course_results = [result["result"] for _, result in sorted_course_results[:N]]
+
+    # Rendered markdown per parameter (for synthesizer prompt)
+    parameter_markdown: dict[str, str] = {
+        "interests": "None",
+        "post_grad": "None",
+        "career": "None"
+    }
+
+    search_summaries = []
+
+    for param, result in zip(parameter_markdown.keys(), search_results):
+        if isinstance(result, Exception):
+            print(f"⚠️ REBUILD: Search for {param} failed: {result}")
+            continue
+
+        # Render markdown for synthesizer (verbosity=1: medium detail with descriptions/blurbs)
+        structured_summary = result.get("structured_summary")
+        if structured_summary:
+            print(f"✓ REBUILD: {param} search returned {structured_summary.total_unique_courses} courses")
+            parameter_markdown[param] = render_search_summary_markdown(
+                structured_summary,
+                verbosity=1,
+            )
+            # Collect minimal summaries for orchestrator context
+            minimal_summary = render_search_summary_markdown(structured_summary, verbosity=0)
+            search_summaries.append(f"[{param}]\n{minimal_summary}")
+        else:
+            print(f"⚠️ REBUILD: {param} search returned no structured summary")
+
+    # Combine search summaries for output
+    output["search_summary"] = "\n\n".join(search_summaries) if search_summaries else "No search results."
 
     # -----------------------------------------------------
-    # 6. Update recommended courses, must-have courses
+    # 3. Synthesize results into CourseRec list
     # -----------------------------------------------------
-    emit_status("Adjusting course recommendations")
-    print("Updating recommended courses...")
+    emit_status("Curating course recommendations")
+    print("Synthesizing course recommendations with alignment tracking...")
 
+    # Get existing recommendations
     current_course_path = await student_db_service.load_course_path(config["configurable"]["user_id"])
 
     if current_course_path is None:
-        recommended_courses = set()
+        existing_recommendations = "None"
     else:
-        recommended_courses = current_course_path.recommended_courses
+        existing_recommendations = format_existing_recommendations(
+            current_course_path.recommended_courses,
+            current_course_path.course_bank
+        )
 
-    # Approximate number of recommended courses based on rough capacity remaining
+    # Approximate target count based on remaining capacity
     window_start_term = current_course_path.curr_window_start if current_course_path is not None else 0
-    num_recommended_courses = int(20 * (12 - window_start_term) / 12)
+    target_count = max(10, int(20 * (12 - window_start_term) / 12))
 
-    formatted_recommended_courses = format_recommended_courses(recommended_courses, course_search_tool)
-    formatted_top_courses = format_deep_course_search_results(top_course_results)
-    formatted_updated_course_recommendation_prompt = UPDATE_COURSE_RECOMMENDATIONS_SYS.format(
-        student_name=student_name,
-        recommended_courses=formatted_recommended_courses,
-        course_search_results=formatted_top_courses,
-        num_recommended_courses=num_recommended_courses
+    synthesis_prompt = COURSE_REC_SYNTHESIS_SYS.format(
+        student_name=current_profile.name,
+        major=major,
+        college_interests=current_profile.college_interests,
+        post_grad_goals=current_profile.post_grad_goals,
+        career_goals=current_profile.career_goals,
+        interests_courses=parameter_markdown["interests"],
+        post_grad_courses=parameter_markdown["post_grad"],
+        career_courses=parameter_markdown["career"],
+        existing_recommendations=existing_recommendations,
+        target_count=target_count
     )
 
-    updated_recommendations, _ = await extract_structured_output_from_context(
-        state=state,
-        config=config,
-        system_prompt=formatted_updated_course_recommendation_prompt,
-        response_model=CourseRecommendations,
-        small_context=True,
+    # DEBUG: Save synthesizer context to file
+    with open("/tmp/synthesizer_context.txt", "w") as f:
+        f.write(synthesis_prompt)
+    print("📝 DEBUG: Saved synthesizer context to /tmp/synthesizer_context.txt")
+
+    synthesized_recs = await _async_client.chat.completions.create(
         model="gpt-4o",
-        verbose=True
+        messages=[{"role": "system", "content": synthesis_prompt}],
+        response_model=CourseRecsOutput,
+        temperature=0
     )
 
-    print(f"Updated recommendations: {updated_recommendations.courses}")
-    output["updated_recommended_courses"] = updated_recommendations.courses
+    print(f"LLM synthesized {len(synthesized_recs.recommendations)} course recommendations")
 
     # -----------------------------------------------------
-    # 7. Construct updated course path
+    # 4. Filter and prioritize recommendations
+    # -----------------------------------------------------
+    filtered_recs = filter_and_prioritize_recommendations(
+        synthesized_recs.recommendations,
+        major=major,
+        target_count=target_count
+    )
+
+    print(f"After filtering: {len(filtered_recs)} recommendations")
+    for rec in filtered_recs[:5]:
+        print(f"  - {rec.course_code}: {rec.aligned_parameters}")
+
+    output["updated_recommended_courses"] = filtered_recs
+
+    # -----------------------------------------------------
+    # 5. Build/rebuild course path with aligned_parameters
     # -----------------------------------------------------
     if current_course_path is None:
         emit_status("Building CoursePath")
-        course_bank = {
-            c: construct_course(course_code=c, major=current_profile.major)
-            for c in updated_recommendations.courses
-        }
-        new_course_path = build_course_path(updated_recommendations.courses, course_bank)
+
+        # Build course bank from filtered recommendations
+        course_bank = {}
+        for course_rec in filtered_recs:
+            course_obj = construct_course(course_code=course_rec.course_code, major=major)
+            if course_obj is not None:
+                course_obj.aligned_parameters = course_rec.aligned_parameters
+                course_bank[course_rec.course_code] = course_obj
+
+        # Extract course codes for path building
+        recommended_codes = {rec.course_code for rec in filtered_recs if rec.course_code in course_bank}
+
+        new_course_path = build_course_path(recommended_codes, course_bank)
         course_path_id = await student_db_service.save_course_path(
             new_course_path,
             config["configurable"]["user_id"]
@@ -287,16 +403,24 @@ async def execute_rebuild_tool(
         output["course_path_update_mode"] = "new"
     else:
         emit_status("Rebuilding CoursePath")
-        # Update recommended courses & must-have courses
-        current_course_path.recommended_courses = updated_recommendations.courses
+
+        # Get new recommended course codes
+        new_recommended_codes = {rec.course_code for rec in filtered_recs}
+
+        # Update recommended courses
+        current_course_path.recommended_courses = new_recommended_codes
 
         # Remove windows from removed must-have courses
-        for course_code in current_course_path.must_have_courses - updated_recommendations.courses:
-            current_course_path.course_bank[course_code].must_have_window = None
+        for course_code in current_course_path.must_have_courses - new_recommended_codes:
+            if course_code in current_course_path.course_bank:
+                current_course_path.course_bank[course_code].must_have_window = None
 
         current_course_path.must_have_courses = (
             current_course_path.recommended_courses & current_course_path.must_have_courses
         )
+
+        # Build alignment lookup from filtered_recs
+        alignment_lookup = {rec.course_code: rec.aligned_parameters for rec in filtered_recs}
 
         # Update course bank with new courses
         course_bank = current_course_path.course_bank
@@ -304,16 +428,22 @@ async def execute_rebuild_tool(
         for course in current_course_path.recommended_courses:
             # (Re)construct course object
             if course not in course_bank:
-                course_obj = construct_course(course_code=course, major=current_profile.major)
+                course_obj = construct_course(course_code=course, major=major)
+                if course_obj is None:
+                    print(f"⚠️ REBUILD: Could not construct course {course}, skipping")
+                    continue
             else:
                 course_obj = course_bank[course]
-                course_obj.course_type = MAJOR if is_major_course(course, current_profile.major) else COMPLEMENTARY
+                course_obj.course_type = MAJOR if is_major_course(course, major) else COMPLEMENTARY
+
+            # Set aligned_parameters from synthesis results
+            course_obj.aligned_parameters = alignment_lookup.get(course, set())
 
             course_prereq_tree, course_prereqs = build_prereq_tree(course)
             course_obj.prereq_tree = course_prereq_tree
             course_bank[course] = course_obj
 
-            # Add prereq. objects to course bank
+            # Add prereq objects to course bank
             for prereq in course_prereqs:
                 print(f"Prereq: {prereq}, parent course: {course}")
                 if prereq not in course_bank:
@@ -353,11 +483,18 @@ async def rebuild_course_path_node(state: DreamPathAgentState, config, *, writer
     """
     output = await execute_rebuild_tool(state, config, writer=writer)
 
+    formatted_output = format_rebuild_course_path_output(output)
+
+    # DEBUG: Save formatted output to file
+    with open("/tmp/rebuild_output.txt", "w") as f:
+        f.write(formatted_output)
+        print("📝 DEBUG: Saved formatted output to /tmp/rebuild_output.txt")
+
     tool_result = {
         "role": "assistant",
         "content": {
             "name": "rebuild_course_path",
-            "result": format_rebuild_course_path_output(output),
+            "result": formatted_output,
         },
     }
 
@@ -368,3 +505,105 @@ async def rebuild_course_path_node(state: DreamPathAgentState, config, *, writer
         "require_user_confirmation": False,
         "messages": [tool_result_lc],
     }
+
+async def test_execute_rebuild_tool():
+    """
+    Test execute_rebuild_tool with a real profile.
+
+    Run with: PYTHONPATH=backend uv run python backend/dreampath_processing/dreampath_agent/nodes/rebuild.py
+    """
+    from dotenv import load_dotenv
+    load_dotenv()
+
+    from dreampath_processing.database.student_service import StudentDatabaseService
+    from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
+    from dreampath_processing.modules.student_profile import StudentProfile
+
+    print("=" * 60)
+    print("TESTING execute_rebuild_tool")
+    print("=" * 60)
+
+    # Initialize services
+    print("\n1. Initializing services...")
+    from dreampath_processing.database.connection import get_db_connection
+    db_connection = get_db_connection()
+    student_db_service = StudentDatabaseService(db_connection)
+    course_search_tool = CourseSearchTool()
+
+    # Create test user ID
+    test_user_id = "test-rebuild-user-001"
+
+    # Create and save a test profile
+    print("\n2. Creating test profile...")
+    test_profile = StudentProfile(
+        name="Test Student",
+        major="Computer Science",
+        college_interests="within CS, applied AI, cutting-edge developments, more deep things like OS, compilers; outside CS, I'm passionate about exploring international relations and history, middle eastern studies and contemporary conflicts for personal knowledge",
+        post_grad_goals="work as a software engineer at an AI or cutting-edge tech startup or FAANG-like company, or build a startup and pursue entrepreneurship; could also engage in grad school to equip myself with important domain knowledge and delay the mentioned options to after",
+        career_goals="I want to become a successful serial entrepreneur and maybe dabble in VC, becoming a leader in AI and impactful applications of it, specifically by being a pioneer in AI and employing it in meaningful ways"
+    )
+    await student_db_service.save_student_profile(test_profile, test_user_id)
+    print(f"   Saved profile for user: {test_user_id}")
+
+    # Create state (init_mode=True to skip profile modification)
+    print("\n3. Creating agent state (init_mode=True)...")
+    state = DreamPathAgentState(
+        current_user_msg="Build my initial course path",
+        init_mode=True,
+        dreampath_messages=[],
+        turn_messages=[],
+    )
+
+    # Create config
+    config = {
+        "configurable": {
+            "user_id": test_user_id,
+            "student_db_service": student_db_service,
+            "course_search_tool": course_search_tool,
+        }
+    }
+
+    # Execute rebuild
+    print("\n4. Executing rebuild tool...")
+    print("-" * 60)
+    try:
+        output = await execute_rebuild_tool(state, config, writer=None)
+
+        print("-" * 60)
+        print("\n5. Results:")
+        print(f"   - Modified profile: {output.modified_profile}")
+        print(f"   - Course path mode: {output.course_path_update_mode}")
+        print(f"   - Recommended courses: {len(output.updated_recommended_courses) if output.updated_recommended_courses else 0}")
+
+        if output.updated_recommended_courses:
+            print("\n   Top 5 recommendations:")
+            for rec in output.updated_recommended_courses:
+                aligned = ", ".join(sorted(rec.aligned_parameters)) if rec.aligned_parameters else "none"
+                print(f"     - {rec.course_code} (aligned: {aligned})")
+
+        print("\n" + "=" * 60)
+        print("TEST PASSED")
+        print("=" * 60)
+
+        formatted_output = format_rebuild_course_path_output(output)
+
+        # DEBUG: Save formatted output to file
+        with open("/tmp/rebuild_output.txt", "w") as f:
+            f.write(formatted_output)
+            print("📝 DEBUG: Saved formatted output to /tmp/rebuild_output.txt")
+
+    except Exception as e:
+        print(f"\n❌ ERROR: {e}")
+        import traceback
+        traceback.print_exc()
+
+    finally:
+        # Cleanup: remove test data
+        print("\n6. Cleaning up test data...")
+        # Note: Add cleanup if needed
+        await student_db_service.db.close_pool()
+
+
+if __name__ == "__main__":
+    import asyncio
+    asyncio.run(test_execute_rebuild_tool())

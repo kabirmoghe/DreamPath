@@ -426,7 +426,7 @@ function Onboarding() {
                 }}
               />
               <Form.Text className="helper-text" style={{ marginTop: '8px', display: 'block' }}>
-                💡 The more specific you are, the better we can personalize your journey
+                The more specific you are, the better we can personalize your journey
               </Form.Text>
             </Form.Group>
           </div>
@@ -457,7 +457,7 @@ function Onboarding() {
                 }}
               />
               <Form.Text className="helper-text" style={{ marginTop: '8px', display: 'block' }}>
-                🎓 We'll align your academic path with your aspirations
+                We'll align your academic path with your aspirations
               </Form.Text>
             </Form.Group>
           </div>
@@ -488,7 +488,7 @@ function Onboarding() {
                 }}
               />
               <Form.Text className="helper-text" style={{ marginTop: '8px', display: 'block' }}>
-                🌟 Your career vision shapes your academic roadmap
+                Your career vision shapes your academic roadmap
               </Form.Text>
             </Form.Group>
           </div>

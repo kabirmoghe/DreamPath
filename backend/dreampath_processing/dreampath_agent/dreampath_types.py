@@ -3,7 +3,7 @@ from typing import Annotated, Literal
 
 from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentOutput
 from langchain_core.messages import BaseMessage
-from pydantic import BaseModel, Field, constr
+from pydantic import BaseModel, Field, constr, field_validator
 
 
 class OrchestratorDecision(BaseModel):
@@ -127,10 +127,29 @@ class ModifiedStudentProfile(BaseModel):
 # ================================
 # Rebuild Course Path Tool
 # ================================
+class CourseRec(BaseModel):
+    """Course recommendation with parameter alignment tracking."""
+    course_code: str
+    aligned_parameters: set[Literal["interests", "post_grad", "career"]] = Field(default_factory=set)
+
+    @field_validator("aligned_parameters", mode="before")
+    @classmethod
+    def convert_list_to_set(cls, v):
+        """Convert list to set if needed (handles JSON deserialization)."""
+        if isinstance(v, list):
+            return set(v)
+        return v
+
+
+class CourseRecsOutput(BaseModel):
+    """Output model for LLM synthesis of course recommendations."""
+    recommendations: list[CourseRec] = Field(default_factory=list)
+
+
 class RebuildCoursePathOutput(BaseModel):
     modified_profile: ModifiedStudentProfile | None = Field(default=None)
-    course_search_queries_by_parameter: dict[str, CourseSearchQueries] | None = Field(default=None)
-    updated_recommended_courses: set[str] | None = Field(default=None)
+    search_summary: str | None = Field(default=None)
+    updated_recommended_courses: list[CourseRec] | None = Field(default=None)
     course_path_update_mode: Literal["new", "update_existing"] | None = Field(default=None)
 
 # ================================

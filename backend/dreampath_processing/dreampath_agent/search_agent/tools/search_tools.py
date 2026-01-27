@@ -47,8 +47,11 @@ def _get_query_generator():
             _query_generator.configure(system_prompt=prompt, model="gpt-4o-mini")
         except Exception as e:
             print(f"Warning: Could not load best prompt: {e}")
-            print("Using default configuration")
-            _query_generator.configure(model="gpt-4o-mini")
+            print("Using fallback prompt_2")
+            from dreampath_processing.dreampath_agent.search_agent.evaluation.manual_optimization.prompts.prompt_2 import (
+                QUERY_GENERATION_PROMPT,
+            )
+            _query_generator.configure(system_prompt=QUERY_GENERATION_PROMPT, model="gpt-4o-mini")
 
     return _query_generator
 
@@ -78,7 +81,7 @@ async def module_search(search_input: str) -> tuple[CourseSearchParams, CourseSe
     # 1. Generate params using instructor
     params = query_generator.generate(search_input)
 
-    print(f"      [Query Gen] Generated params: query='{params.query}', dept={params.department}, difficulty={params.difficulty_classification}")
+    # print(f"      [Query Gen] Generated params: query='{params.query}', dept={params.department}, difficulty={params.difficulty_classification}")
 
     # 2. Execute search
     client = CourseSearchClient()

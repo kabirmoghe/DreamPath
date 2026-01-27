@@ -1,8 +1,11 @@
 import operator
 import time
-from typing import Annotated, Any, Literal, Union
+from typing import Annotated, Any, Literal
 
-from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchOutput
+from dreampath_processing.dreampath_agent.dreampath_types import (
+    CourseSearchOutput,
+    CourseSearchResult,
+)
 from dreampath_processing.dreampath_agent.search_agent.utils.structured_output import (
     LLMManagedModel,
     llm_field,
@@ -200,9 +203,37 @@ class CompleteAction(BaseModel):
 
 # Union type for routing - use explicit discriminator for instructor compatibility
 NextAction = Annotated[
-    Union[SearchAction, TaskUpdateAction, CompleteAction],
+    SearchAction | TaskUpdateAction | CompleteAction,
     Discriminator('action_type')
 ]
+
+# ================================
+# Final Summary Types (defined before SearchAgentState to avoid forward refs)
+# ================================
+
+class TaskSummary(BaseModel):
+    """Structured summary for a single task"""
+    task_id: int
+    description: str
+    status: str
+    top_results: list[str] = Field(description="Orchestrator-curated course codes")
+    all_courses: list[CourseSearchResult] = Field(description="All unique courses found")
+    search_attempt_count: int
+    total_courses_found: int  # Before deduplication across searches
+    unique_courses_found: int  # After deduplication
+    orchestrator_notes: str
+
+
+class FinalSearchSummary(BaseModel):
+    """Complete structured summary of search execution"""
+    goal: str
+    total_tasks: int
+    completed_tasks: int
+    failed_tasks: int
+    total_iterations: int
+    task_summaries: list[TaskSummary]
+    total_unique_courses: int
+
 
 # ================================
 # Search Agent State
@@ -249,11 +280,10 @@ class SearchAgentState(BaseModel):
     # ============================================
     # FINAL OUTPUT
     # ============================================
-    final_summary: str | None = Field(default=None)
+    structured_summary: FinalSearchSummary | None = Field(default=None)
 
     # ============================================
     # OBSERVABILITY
     # ============================================
     cumulative_tokens: int = Field(default=0)
     iteration_tokens: list[int] = Field(default_factory=list)
-    

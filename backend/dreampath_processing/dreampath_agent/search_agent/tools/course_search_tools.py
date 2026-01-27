@@ -3,14 +3,13 @@ import warnings
 
 from dotenv import load_dotenv
 from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchOutput
-from dreampath_processing.dreampath_agent.search_agent.course_search_client import (
+from dreampath_processing.dreampath_agent.search_agent.tools.course_search_client import (
     CourseSearchClient,
 )
 from dreampath_processing.dreampath_agent.search_agent.evaluation.utils import load_best_prompt
-from dreampath_processing.dreampath_agent.search_agent.query_generator import CourseQueryGenerator
+from dreampath_processing.dreampath_agent.search_agent.tools.query_generator import CourseQueryGenerator
 from dreampath_processing.dreampath_agent.search_agent.search_types import CourseSearchParams
 from instructor import from_openai
-from langchain_core.tools import tool
 from openai import OpenAI
 
 load_dotenv()
@@ -20,7 +19,9 @@ load_dotenv()
 warnings.filterwarnings('ignore', message='.*Weaviate.*not closed properly.*')
 warnings.filterwarnings('ignore', category=ResourceWarning, module='weaviate')
 
-@tool
+# ============================================
+# Modular Search Tool
+# ============================================
 def module_search(search_description: str) -> CourseSearchOutput:
     """Search for courses using AI module-generated optimal parameters.
 
@@ -68,7 +69,9 @@ def module_search(search_description: str) -> CourseSearchOutput:
     results = course_search_client.structured_hybrid_search(query)
     return results
 
-@tool
+# ============================================
+# Manual Search Tool
+# ============================================
 def manual_search(
     query: str,
     department: str | None = None,

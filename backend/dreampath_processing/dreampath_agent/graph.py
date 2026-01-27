@@ -10,7 +10,6 @@ from datetime import datetime
 
 from dreampath_processing.database.connection import get_db_connection
 from dreampath_processing.database.student_service import StudentDatabaseService
-from dreampath_processing.dreampath_agent.course_search_tool import CourseSearchTool
 from dreampath_processing.dreampath_agent.debug_logger import clear_log_file
 from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
@@ -138,9 +137,6 @@ class DreampathAgent:
         db_conn = get_db_connection()
         self.student_db_service = StudentDatabaseService(db_conn)
 
-        # Initialize components
-        self.course_search_tool = CourseSearchTool()
-
         # Build the graph
         self._build_graph(generate_diagram=generate_diagram)
 
@@ -152,7 +148,6 @@ class DreampathAgent:
             "configurable": {
                 "thread_id": self.thread_id,
                 "user_id": self.user_id,
-                "course_search_tool": self.course_search_tool,
                 "conn": db_conn,
                 "student_db_service": self.student_db_service
             }

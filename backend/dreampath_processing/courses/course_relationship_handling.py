@@ -21,15 +21,17 @@ def is_major_course(course_code: str, major: str) -> bool:
     return get_weaviate_service().is_major_course(course_code, major)
 
 def construct_course(course_code: str, major: Optional[str] = None, hardcoded_type: Optional[CourseType] = None, must_have_window: Optional[List[int]] = None) -> Course:
-    """Construct a Course object from a course code and major name"""
-    
-    # Validate existence externally
-    enhanced_course = get_weaviate_service().get_course_by_code(course_code)
+    """Construct a Course object from a course code and major name.
 
-    if enhanced_course is None:
+    Populates all available Weaviate metadata fields.
+    """
+    # Fetch from Weaviate
+    wv_course = get_weaviate_service().get_course_by_code(course_code)
+
+    if wv_course is None:
         print(f"Unknown course code '{course_code}'.")
         return None
-    
+
     # Determine course type
     if not hardcoded_type:
         if not major:
@@ -39,18 +41,42 @@ def construct_course(course_code: str, major: Optional[str] = None, hardcoded_ty
         ctype = hardcoded_type
 
     print(f"Constructing course: {course_code} | {ctype} | {must_have_window}")
-    
+
     return Course(
+        # Required
         course_code=course_code,
         course_type=ctype,
+        # Scheduling state
         scheduled=False,
         is_prereq=False,
         prereq_tree=None,
         must_have_window=must_have_window,
         term_idx=None,
         term_idx_in_term=None,
-        course_title=enhanced_course['course_title'],
-        course_description=enhanced_course['description'],
+        # DreamPath-specific (set later)
+        aligned_parameters=None,
+        # Basic course info
+        course_title=wv_course.get('course_title'),
+        course_description=wv_course.get('description'),
+        department=wv_course.get('department'),
+        prerequisites=wv_course.get('prerequisites'),
+        course_url=wv_course.get('course_url'),
+        num_prereqs=wv_course.get('num_prereqs'),
+        total_reviews=wv_course.get('total_reviews'),
+        # Difficulty metrics
+        global_difficulty_percentile=wv_course.get('global_difficulty_percentile'),
+        global_difficulty_classification=wv_course.get('global_difficulty_classification'),
+        dept_difficulty_percentile=wv_course.get('dept_difficulty_percentile'),
+        dept_difficulty_classification=wv_course.get('dept_difficulty_classification'),
+        difficulty_blurb=wv_course.get('difficulty_blurb'),
+        # Value metrics
+        global_value_percentile=wv_course.get('global_value_percentile'),
+        global_value_classification=wv_course.get('global_value_classification'),
+        dept_value_percentile=wv_course.get('dept_value_percentile'),
+        dept_value_classification=wv_course.get('dept_value_classification'),
+        learning_value_blurb=wv_course.get('learning_value_blurb'),
+        # Target audience
+        target_audience_blurb=wv_course.get('target_audience_blurb'),
     )
 
 # -----------------------------------------------------

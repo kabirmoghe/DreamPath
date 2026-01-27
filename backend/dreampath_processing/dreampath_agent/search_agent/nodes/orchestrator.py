@@ -168,26 +168,6 @@ def _format_complete_content(action: CompleteAction) -> str:
     return f"Reasoning: {action.reasoning}"
 
 
-def _emit_status(config: RunnableConfig, reason: str):
-    """Emit a status message if writer is available in config."""
-    writer = config.get("configurable", {}).get("writer")
-    if writer:
-        status_event = AIMessage(
-            content="",
-            additional_kwargs={
-                "event_type": "node_status",
-                "node": "course_search",
-                "status": "node_info",
-                "next_node": "course_search",
-                "reason": reason
-            }
-        )
-        try:
-            writer(status_event)
-        except Exception as e:
-            print(f"  [ORCH] Error emitting status: {e}")
-
-
 async def orchestrator_node(state: SearchAgentState, config: RunnableConfig) -> dict:
     """
     Main search orchestrator node - decides next action via structured output.

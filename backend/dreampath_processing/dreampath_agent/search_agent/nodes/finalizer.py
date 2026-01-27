@@ -1,48 +1,18 @@
 """
 Finalizer node for search agent.
 
-Generates final summary from completed tasks in two formats:
-1. Structured (for programmatic access)
-2. Markdown (for display)
+Generates structured summary from completed tasks. The render function
+can be called separately with different modes (full vs top_results_only).
 """
-
 
 from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchResult
 from dreampath_processing.dreampath_agent.search_agent.search_types import (
+    FinalSearchSummary,
     SearchAgentState,
     SearchExecution,
+    TaskSummary,
 )
-from langchain_core.messages import AIMessage
 from langchain_core.runnables import RunnableConfig
-from pydantic import BaseModel, Field
-
-# ============================================
-# STRUCTURED OUTPUT TYPES
-# ============================================
-
-class TaskSummary(BaseModel):
-    """Structured summary for a single task"""
-    task_id: int
-    description: str
-    status: str
-    top_results: list[str] = Field(description="Orchestrator-curated course codes")
-    all_courses: list[CourseSearchResult] = Field(description="All unique courses found")
-    search_attempt_count: int
-    total_courses_found: int  # Before deduplication across searches
-    unique_courses_found: int  # After deduplication
-    orchestrator_notes: str
-
-
-class FinalSearchSummary(BaseModel):
-    """Complete structured summary of search execution"""
-    goal: str
-    total_tasks: int
-    completed_tasks: int
-    failed_tasks: int
-    total_iterations: int
-    task_summaries: list[TaskSummary]
-    total_unique_courses: int
-
 
 # ============================================
 # HELPER FUNCTIONS
@@ -67,8 +37,50 @@ def _get_unique_courses_from_executions(search_executions: list[SearchExecution]
     return unique_courses
 
 
-def _render_markdown_from_structured(summary: FinalSearchSummary) -> str:
-    """Render markdown summary from structured data"""
+def _truncate(text: str | None, max_len: int) -> str:
+    """Truncate text to max_len, adding ellipsis if needed."""
+    if not text:
+        return ""
+    if len(text) <= max_len:
+        return text
+    return text[:max_len - 3] + "..."
+
+
+# ============================================
+# RENDER FUNCTIONS (Exported)
+# ============================================
+
+def render_search_summary_markdown(
+    summary: FinalSearchSummary,
+    verbosity: int = 2,
+    description_max_len: int = 300,
+    blurb_max_len: int = 200,
+) -> str:
+    """
+    Render markdown summary from structured search data.
+
+    Args:
+        summary: The structured search summary
+        verbosity: Level of detail (0=minimal, 1=medium, 2=full)
+            - 0: Minimal - code, title, difficulty/value classifications, truncated target audience
+            - 1: Medium - adds description and blurbs
+            - 2: Full - complete summary with task status, search counts, other results
+        description_max_len: Max chars for course description (verbosity 1)
+        blurb_max_len: Max chars for blurbs (verbosity 1)
+
+    Returns:
+        Markdown-formatted string
+    """
+    if verbosity == 0:
+        return _render_minimal(summary, blurb_max_len)
+    elif verbosity == 1:
+        return _render_medium(summary, description_max_len, blurb_max_len)
+    else:
+        return _render_full_summary(summary)
+
+
+def _render_full_summary(summary: FinalSearchSummary) -> str:
+    """Render full markdown summary with task status, search counts, etc."""
 
     lines = [
         f"# Search Results: {summary.goal}",
@@ -116,7 +128,7 @@ def _render_markdown_from_structured(summary: FinalSearchSummary) -> str:
                     lines.append(f"- Learning Value: {course.global_value_classification}{' (Percentile: ' + str(round(course.global_value_percentile, 2)) + ')' if course.global_value_percentile else ''}")
 
                 if course.difficulty_blurb or course.learning_value_blurb or course.target_audience_blurb:
-                    lines.append(f"- Students sentiment:")
+                    lines.append("- Students sentiment:")
                     if course.difficulty_blurb:
                         lines.append(f"\t→ About difficulty: {course.difficulty_blurb}")
                     if course.learning_value_blurb:
@@ -144,24 +156,131 @@ def _render_markdown_from_structured(summary: FinalSearchSummary) -> str:
     return "\n".join(lines)
 
 
+def _render_minimal(
+    summary: FinalSearchSummary,
+    blurb_max_len: int
+) -> str:
+    """
+    Render minimal format - just essentials for quick synthesis.
+
+    Format:
+    - Course code + title
+    - Difficulty + Value classifications (no blurbs)
+    - Target audience (truncated)
+    """
+    lines = ["## Top Courses", ""]
+
+    # Collect all top results across all tasks
+    all_top_courses: list[CourseSearchResult] = []
+    seen_codes = set()
+
+    for task_summary in summary.task_summaries:
+        top_codes = set(task_summary.top_results)
+        for course in task_summary.all_courses:
+            if course.course_code in top_codes and course.course_code not in seen_codes:
+                seen_codes.add(course.course_code)
+                all_top_courses.append(course)
+
+    if not all_top_courses:
+        lines.append("No courses found.")
+        return "\n".join(lines)
+
+    for course in all_top_courses:
+        lines.append(f"**{course.course_code}: {course.course_title}**")
+
+        # Difficulty + Value on one line
+        diff = course.global_difficulty_classification or "Unknown"
+        val = course.global_value_classification or "Unknown"
+        lines.append(f"- Difficulty: {diff} | Learning Value: {val}")
+
+        # Target Audience (truncated)
+        if course.target_audience_blurb:
+            lines.append(f"- Target Audience: '{_truncate(course.target_audience_blurb, blurb_max_len)}'")
+
+        lines.append("")
+
+    return "\n".join(lines)
+
+
+def _render_medium(
+    summary: FinalSearchSummary,
+    description_max_len: int,
+    blurb_max_len: int
+) -> str:
+    """
+    Render medium format for synthesizer - top results with key info.
+
+    Format:
+    - Course code + title
+    - Description (truncated)
+    - Difficulty classification + blurb
+    - Learning value classification + blurb
+    - Target audience blurb
+    """
+    lines = ["## Top Courses", ""]
+
+    # Collect all top results across all tasks
+    all_top_courses: list[CourseSearchResult] = []
+    seen_codes = set()
+
+    for task_summary in summary.task_summaries:
+        top_codes = set(task_summary.top_results)
+        for course in task_summary.all_courses:
+            if course.course_code in top_codes and course.course_code not in seen_codes:
+                seen_codes.add(course.course_code)
+                all_top_courses.append(course)
+
+    if not all_top_courses:
+        lines.append("No courses found.")
+        return "\n".join(lines)
+
+    for course in all_top_courses:
+        lines.append(f"**{course.course_code}: {course.course_title}**")
+
+        # Description (truncated)
+        if course.description:
+            lines.append(f"- {_truncate(course.description, description_max_len)}")
+
+        # Difficulty
+        if course.global_difficulty_classification:
+            diff_line = f"- Difficulty: {course.global_difficulty_classification}"
+            lines.append(diff_line)
+
+        # Learning Value
+        if course.global_value_classification:
+            val_line = f"- Learning Value: {course.global_value_classification}"
+            if course.learning_value_blurb:
+                val_line += f" | '{course.learning_value_blurb}'"
+            lines.append(val_line)
+
+        # Target Audience
+        if course.target_audience_blurb:
+            lines.append(f"- Target Audience: '{course.target_audience_blurb}'")
+
+        lines.append("")
+
+    return "\n".join(lines)
+
+
 # ============================================
 # FINALIZER NODE
 # ============================================
 
 def finalize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
     """
-    Generate final summary in two formats:
-    1. Structured (FinalSearchSummary) - For frontend programmatic access
-    2. Markdown (string) - For display
+    Generate structured summary from search execution.
 
     Returns:
-        State updates with final_summary and structured_summary
+        State updates with structured_summary (FinalSearchSummary object)
+
+    Note: Callers should use render_search_summary_markdown() to convert
+    to markdown as needed, with appropriate mode (full vs top_results_only).
     """
 
     print(f"\n[FINALIZER] Generating summary for {len(state.tasks)} tasks...")
 
     # ============================================
-    # 1. BUILD STRUCTURED SUMMARY
+    # BUILD STRUCTURED SUMMARY
     # ============================================
     task_summaries = []
     all_unique_courses_set = set()
@@ -201,20 +320,13 @@ def finalize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
         total_unique_courses=len(all_unique_courses_set)
     )
 
-    # ============================================
-    # 2. RENDER MARKDOWN
-    # ============================================
-    markdown = _render_markdown_from_structured(structured_summary)
-
     print(f"  ✓ Summary complete: {completed_count}/{len(state.tasks)} tasks completed")
     print(f"  ✓ Total unique courses: {len(all_unique_courses_set)}")
 
     # ============================================
-    # 3. RETURN STATE UPDATES
+    # RETURN STATE UPDATES
     # ============================================
-    # Note: Don't return messages here - they get streamed via subgraphs=True
-    # and cause intermediate content to appear in frontend.
-    # The final_summary is used by course_search_node to construct the tool result.
+    # Return structured_summary object - callers render to markdown as needed
     return {
-        "final_summary": markdown,
+        "structured_summary": structured_summary,
     }

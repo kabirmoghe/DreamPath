@@ -11,6 +11,9 @@ from dreampath_processing.dreampath_agent.dreampath_types import (
 )
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
 from dreampath_processing.dreampath_agent.search_agent.graph import build_search_agent
+from dreampath_processing.dreampath_agent.search_agent.nodes.finalizer import (
+    render_search_summary_markdown,
+)
 from dreampath_processing.dreampath_agent.search_agent.search_types import SearchAgentState
 
 
@@ -96,8 +99,12 @@ async def course_search_node(state: DreamPathAgentState, config, *, writer=None)
 
     print(f"| CourseSearchNode: search agent completed with {len(final_state.get('tasks', []))} tasks")
 
-    # Use the search agent's final_summary directly
-    final_summary = final_state.get("final_summary", "No results found.")
+    # Get structured summary and render to full markdown
+    structured_summary = final_state.get("structured_summary")
+    if structured_summary:
+        final_summary = render_search_summary_markdown(structured_summary, verbosity=2)
+    else:
+        final_summary = "No results found."
 
     # Create tool call message (shows what was searched)
     tool_call = {
