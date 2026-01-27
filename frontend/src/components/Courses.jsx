@@ -282,8 +282,8 @@ function Courses() {
               {courseDetails.term_idx !== null && courseDetails.term_idx !== undefined && (
                 <div className="side-tab-row">
                   <span className="side-term-badge">
-                    <span className="term-short">T. {courseDetails.term_idx + 1}</span>
-                    <span className="term-full">Scheduled: Term {courseDetails.term_idx + 1}</span>
+                    <span className="term-short">T: {courseDetails.term_idx + 1}</span>
+                    <span className="term-full">Scheduled in Term {courseDetails.term_idx + 1}</span>
                   </span>
                 </div>
               )}
@@ -297,8 +297,8 @@ function Courses() {
                       const endTerm = Math.max(...window) + 1;
                       const shortText = startTerm === endTerm ? `${startTerm}` : `${startTerm} ↔ ${endTerm}`;
                       const fullText = startTerm === endTerm
-                        ? `Prioritized for term ${startTerm}`
-                        : `Prioritized between terms ${startTerm} ➞ ${endTerm}`;
+                        ? `Prioritized for Term ${startTerm}`
+                        : `Prioritized for Terms ${startTerm} ↔ ${endTerm}`;
                       return (
                         <>
                           <span className="priority-short">{shortText}</span>
@@ -340,7 +340,7 @@ function Courses() {
                 {/* Aligned Parameters */}
                 {hasAlignedParams && (
                   <div className="modal-section aligned-section">
-                    <h6 className="section-title">Aligns With Your Profile</h6>
+                    <h6 className="section-title">Alignment</h6>
                     {renderAlignedParameters(courseDetails.aligned_parameters)}
                   </div>
                 )}
@@ -523,24 +523,6 @@ function Courses() {
                       course.course_description.substring(0, 180) + (course.course_description.length > 180 ? '...' : '')
                       : 'No description available.'}
                   </Card.Text>
-                  {course.term_idx !== null && course.term_idx !== undefined && (
-                    <div className="mb-2">
-                      <span
-                        className="small"
-                        style={{
-                          padding: '4px 10px',
-                          borderRadius: '6px',
-                          background: 'rgba(76, 175, 80, 0.1)',
-                          border: '1px solid rgba(76, 175, 80, 0.3)',
-                          color: '#2e7d32',
-                          fontWeight: 500,
-                          display: 'inline-block'
-                        }}
-                      >
-                        Scheduled: Term {course.term_idx + 1}
-                      </span>
-                    </div>
-                  )}
                   <div className="text-center mt-2">
                     <Button
                       variant="outline-secondary"
@@ -557,23 +539,20 @@ function Courses() {
                     </Button>
                   </div>
                 </Card.Body>
-                {hasWindow && (
-                  <div
-                    style={{
-                      position: 'absolute',
-                      bottom: '10px',
-                      right: '10px',
-                      backgroundColor: '#ffe0e0',
-                      borderRadius: '12px',
-                      padding: '4px 8px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '5px',
-                      zIndex: 1
-                    }}
-                  >
-                    <Lock size={11} color="#d32f2f" />
-                    <span style={{ fontSize: '11px', color: '#d32f2f', fontWeight: 500 }}>{windowText}</span>
+                {/* Bottom right badges: scheduled term + lock pill */}
+                {((course.term_idx !== null && course.term_idx !== undefined) || hasWindow) && (
+                  <div className="course-card-bottom-badges">
+                    {course.term_idx !== null && course.term_idx !== undefined && (
+                      <span className="course-card-term-badge">
+                        Term {course.term_idx + 1}
+                      </span>
+                    )}
+                    {hasWindow && (
+                      <span className="course-card-lock-pill">
+                        <Lock size={11} color="#d32f2f" />
+                        <span>{windowText}</span>
+                      </span>
+                    )}
                   </div>
                 )}
               </Card>
@@ -803,6 +782,7 @@ function Courses() {
 
         /* Course Details Modal */
         .course-details-modal {
+          font-family: 'Lora', serif;
           position: fixed;
           top: 50%;
           left: 50%;
@@ -1110,7 +1090,7 @@ function Courses() {
 
         /* Aligned Parameters */
         .aligned-section {
-          background: linear-gradient(135deg, rgba(176, 210, 158, 0.4) 0%, rgba(107, 143, 199, 0.06) 100%);
+          background: linear-gradient(135deg, rgb(239 232 249) 0%, rgba(107, 143, 199, 0.06) 100%);
           margin: -4px -24px 5px;
           padding: 16px 24px;
           border-bottom: none;
@@ -1125,13 +1105,15 @@ function Courses() {
         .aligned-param-badge {
           display: flex;
           align-items: center;
-          gap: 8px;
+          gap: 3px;
           padding: 8px 14px;
           background: white;
           border-radius: 10px;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
           font-size: 13px;
           font-weight: 500;
+          font-spacing: 0.5px;
+          font-style: italic;
           color: #555;
         }
 
@@ -1284,6 +1266,42 @@ function Courses() {
           padding: 20px;
           color: #888;
           font-style: italic;
+        }
+
+        /* Bottom badges for major/complementary course cards */
+        .course-card-bottom-badges {
+          position: absolute;
+          bottom: 10px;
+          right: 10px;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          z-index: 1;
+        }
+
+        .course-card-term-badge {
+          font-size: 12px;
+          font-weight: 600;
+          color: #2e7d32;
+          background: rgba(76, 175, 80, 0.15);
+          padding: 4px 8px;
+          border-radius: 4px;
+          line-height: 1.2;
+        }
+
+        .course-card-lock-pill {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          background-color: #ffe0e0;
+          border-radius: 12px;
+          padding: 4px 8px;
+        }
+
+        .course-card-lock-pill span {
+          font-size: 11px;
+          color: #d32f2f;
+          font-weight: 500;
         }
       `}</style>
 

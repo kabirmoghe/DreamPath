@@ -302,7 +302,7 @@ async def _execute_task_updates(
             updated_tasks.append(new_task)
             print(f"    Created Task {i}: {new_task.description[:60]}...")
 
-        _emit_status(config, f"Created {len(updated_tasks)} search tasks")
+        _emit_status(config, f"Created {len(updated_tasks)} search task{'s' if len(updated_tasks) > 1 else ''}")
 
     else:
         # Update existing tasks

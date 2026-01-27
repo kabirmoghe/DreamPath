@@ -31,6 +31,7 @@ Consult the following examples for reference:
 - User: "Let's add that in" (referring to course X from course search result) → operations = ["add X"] # **No term number specified**
 - User: "Add cosc50 in term 6" → operations = ["add COSC50 to term 6"]
 - User: "Shift COSC50 to term 6" → operations = ["move COSC50 to term 6"]
+- User: "Swap COSC50 with COSC51" → operations = ["swap COSC50 with COSC51"]
 - User: "Get rid of COSC50 and add COSC51" → operations = ["remove COSC50", "add COSC51"]
 - User: "Replace COSC50 with an course on Middle Eastern Studies" + course_search=[{{"code": "GOVT40.09", "title": "Politics of Israel & Palestine"}}] → operations = ["replace COSC50 with GOVT40.09"]
 - User: "Delete COSC50 and COSC51 and schedule some AI courses in term 6" + course_search=[{{"code": "COSC89", "title": "Introduction to AI"}}, {{"code": "COSC89.01", "title": "Large Language Models"}}] → operations = ["remove COSC50", "remove COSC51", "add COSC89 to term 6", "add COSC89.01 to term 6"]
@@ -39,6 +40,9 @@ Consult the following examples for reference:
 **Important:**
 Pay particular attention to term numbers. If they are mentioned, you must include them without modification. Likewise, if they are omitted, you must not fabricate them.
 For example, if the user says "Add COSC50 to term 6", you must include the term number 6 in the operation.
+
+**Efficiency for First Pass:**
+Unless previous attempts have failed (e.g., a prior swap fails, then decide to move courses individually), make use of the most efficient operation(s) for the desired outcome.
 
 ### Output format:
 Return a list of operations according to the provided schema.
