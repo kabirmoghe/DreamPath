@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Brain, BookOpen, Users } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import { BookIcon, PeopleIcon, NetworkIcon } from './icons/DreamPathIcons';
 
 const LandingPage = () => {
   const { user } = useAuth();
@@ -11,7 +11,7 @@ const LandingPage = () => {
     <div className="min-vh-100 bg-light">
       {/* Header/Hero Section */}
       <header className="text-white py-5" style={{ 
-        background: 'linear-gradient(135deg, #8A6BC1 0%, #6A4C93 100%)',
+        background: '#8A6BC1',
         minHeight: '600px',
         display: 'flex',
         alignItems: 'center'
@@ -39,10 +39,10 @@ const LandingPage = () => {
                 Plan Your Academic Journey with Purpose
               </h2>
               <p className="lead mb-4">
-                DreamPath helps students align courses, clubs, and alumni connections with their career goals and personal interests.
+                In a changing world, DreamPath helps students prepare for their dream careers by aligning their college journey with their interests and goals.
               </p>
               <Link to="/signup">
-                <Button variant="primary" size="lg" className="d-flex align-items-center mx-auto">
+                <Button variant="primary" size="lg" className="d-flex align-items-center mx-auto" style={{ backgroundColor:'rgb(151 123 203)', border: 'none', fontFamily: 'Lora, serif' }}>
                   Get Started
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ms-2" style={{ width: '20px', height: '20px' }}>
                     <path d="M5 12h14"></path>
@@ -72,8 +72,17 @@ const LandingPage = () => {
           <Row>
             <Col md={4} className="mb-4">
               <div className="bg-light p-4 rounded h-100">
-                <div className="bg-purple-100 p-3 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '48px', height: '48px', backgroundColor: '#f3e8ff' }}>
-                  <BookIcon size={24} color="#8A6BC1" />
+                <div className="d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: '#f3e8ff' }}>
+                  <Brain size={24} color="#8A6BC1" />
+                </div>
+                <h3 className="h4 mb-3">Deep Industry Knowledge</h3>
+                <p className="text-muted">Grounded in research about careers, changing specifications, and other dynamic factors to make accurate, actionable recommendations.</p>
+              </div>
+            </Col>
+            <Col md={4} className="mb-4">
+              <div className="bg-light p-4 rounded h-100">
+                <div className="d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: '#f3e8ff' }}>
+                  <BookOpen size={24} color="#8A6BC1" />
                 </div>
                 <h3 className="h4 mb-3">Smart Course Planning</h3>
                 <p className="text-muted">Get personalized course recommendations based on your interests, major requirements, and career goals.</p>
@@ -81,20 +90,11 @@ const LandingPage = () => {
             </Col>
             <Col md={4} className="mb-4">
               <div className="bg-light p-4 rounded h-100">
-                <div className="bg-purple-100 p-3 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '48px', height: '48px', backgroundColor: '#f3e8ff' }}>
-                  <PeopleIcon size={24} color="#8A6BC1" />
+                <div className="d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: '#f3e8ff' }}>
+                  <Users size={24} color="#8A6BC1" />
                 </div>
                 <h3 className="h4 mb-3">Club Involvement</h3>
-                <p className="text-muted">Discover student organizations that align with your interests and enhance your college experience.</p>
-              </div>
-            </Col>
-            <Col md={4} className="mb-4">
-              <div className="bg-light p-4 rounded h-100">
-                <div className="bg-purple-100 p-3 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style={{ width: '48px', height: '48px', backgroundColor: '#f3e8ff' }}>
-                  <NetworkIcon size={24} color="#8A6BC1" />
-                </div>
-                <h3 className="h4 mb-3">Alumni Connections</h3>
-                <p className="text-muted">Connect with alumni in your field of interest for mentorship, advice, and career opportunities.</p>
+                <p className="text-muted">Discover a range student organizations and activities that align with your interests and enhance your college experience.</p>
               </div>
             </Col>
           </Row>
@@ -107,14 +107,6 @@ const LandingPage = () => {
           <Row className="align-items-center">
             <Col md={6} className="mb-3 mb-md-0">
               <h2 className="h4 mb-0" style={{ fontFamily: 'Lora, serif' }}>DreamPath</h2>
-            </Col>
-            <Col md={6}>
-              <div className="d-flex gap-4 justify-content-md-end">
-                <a href="#" className="text-white text-decoration-none">About</a>
-                <a href="#" className="text-white text-decoration-none">Privacy</a>
-                <a href="#" className="text-white text-decoration-none">Terms</a>
-                <a href="#" className="text-white text-decoration-none">Contact</a>
-              </div>
             </Col>
           </Row>
           <Row>

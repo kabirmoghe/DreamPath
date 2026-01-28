@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Form, Button, Card, Alert } from 'react-bootstrap';
 import { useNavigate, Link } from 'react-router-dom';
+import { ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -45,9 +46,31 @@ function Login() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        position: 'relative',
       }}
     >
       <Container>
+        <Link
+          to="/"
+          style={{
+            position: 'absolute',
+            top: '24px',
+            left: '24px',
+            textDecoration: 'none',
+            transition: 'all 0.2s ease',
+            opacity: 0.8,
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.opacity = '1';
+            e.currentTarget.style.transform = 'translateX(-2px)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.opacity = '0.8';
+            e.currentTarget.style.transform = 'translateX(0)';
+          }}
+        >
+          <ArrowLeft size={28} color="#ffffff" />
+        </Link>
         <div className="row justify-content-center">
           <div className="col-md-6 col-lg-4">
             <Card
@@ -122,8 +145,8 @@ function Login() {
                   </Button>
                 </Form>
 
-                <div className="text-center mt-3">
-                  <p className="text-muted small">
+                <div className="text-center" style={{ marginTop: '20px', marginBottom: 0 }}>
+                  <p className="text-muted small" style={{ marginBottom: 0 }}>
                     Don't have an account?{' '}
                     <Link
                       to="/signup"

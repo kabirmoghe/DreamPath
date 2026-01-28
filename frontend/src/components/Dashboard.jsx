@@ -697,7 +697,7 @@ function Dashboard() {
                     >
                       <h4 style={{ fontSize: '15px', fontWeight: '600', color: '#c95d5d', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <NetworkIcon size={16} />
-                        Alumni
+                        Action Items
                       </h4>
                       <div>
                         <div style={{

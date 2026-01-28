@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { apiClient } from '../lib/api';
 import InitLoadingOverlay from './InitLoadingOverlay';
+import { Target, Rocket, Brain, Shield, Building2, Map, Users, HelpCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Custom styles for enhanced onboarding wizard
@@ -143,6 +144,271 @@ const onboardingStyles = `
     line-height: 1.6;
     margin-bottom: 0;
   }
+
+  /* Intro Slide Styles */
+  .intro-slide-container {
+    position: relative;
+    overflow: hidden;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    animation: fadeSlideIn 0.4s ease-out;
+  }
+
+  .intro-slide.slide-left {
+    animation: slideOutLeft 0.3s ease-in forwards;
+  }
+
+  .intro-slide.slide-right {
+    animation: slideOutRight 0.3s ease-in forwards;
+  }
+
+  @keyframes fadeSlideIn {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideOutLeft {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+  }
+
+  @keyframes slideOutRight {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+  }
+
+  .intro-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .intro-icon svg {
+    width: 40px;
+    height: 40px;
+    color: #8A6BC1;
+    stroke-width: 1.5;
+  }
+
+  .intro-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 28px;
+  }
+
+  .intro-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .intro-compass {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 24px;
+  }
+
+  .intro-compass img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .intro-content {
+    font-family: 'Lora', serif;
+    font-size: 21px;
+    line-height: 1.7;
+    color: #6a6a7a;
+    max-width: 500px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .intro-content strong {
+    color: #8A6BC1;
+    font-weight: 600;
+  }
+
+  .intro-feature-box {
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .intro-feature {
+    flex: 1;
+    min-width: 200px;
+    max-width: 220px;
+    background: linear-gradient(135deg, #f8f6fb 0%, #f5f8fc 100%);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #e8e0f5;
+  }
+
+  .intro-feature-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    box-shadow: 0 2px 8px rgba(138, 107, 193, 0.15);
+  }
+
+  .intro-feature-icon svg {
+    width: 24px;
+    height: 24px;
+    color: #8A6BC1;
+    stroke-width: 1.5;
+  }
+
+  .intro-feature-title {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #8A6BC1;
+    margin-bottom: 6px;
+  }
+
+  .intro-feature-desc {
+    font-family: 'Lora', serif;
+    font-size: 13px;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  .intro-progress-dots {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 32px;
+  }
+
+  .intro-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #d6cdea;
+    transition: all 0.3s ease;
+  }
+
+  .intro-dot.active {
+    width: 20px;
+    border-radius: 3px;
+    background: linear-gradient(135deg, #8A6BC1 0%, #7B8FC7 100%);
+  }
+
+  .intro-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .intro-nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid #e8e0f5;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .intro-nav-btn:hover:not(:disabled) {
+    border-color: #8A6BC1;
+    background: linear-gradient(135deg, #f8f6fb 0%, #f5f8fc 100%);
+  }
+
+  .intro-nav-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .intro-nav-btn svg {
+    width: 20px;
+    height: 20px;
+    color: #8A6BC1;
+  }
+
+  .intro-skip-link {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    font-family: 'Lora', serif;
+    font-size: 14px;
+    color: #a8a8a8;
+    cursor: pointer;
+    transition: color 0.2s ease;
+    text-decoration: none;
+    font-style: italic;
+  }
+
+  .intro-skip-link:hover {
+    color: #8A6BC1;
+  }
+
+  .intro-ready-btn {
+    padding: 16px 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    box-shadow: 0 4px 15px rgba(138, 107, 193, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 24px;
+  }
+
+  .intro-ready-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(138, 107, 193, 0.4);
+  }
 `;
 
 /**
@@ -151,6 +417,65 @@ const onboardingStyles = `
  * Collects profile information and triggers course path initialization
  * Steps: Major → Interests → Post-grad Goals → Career Goals → Review
  */
+// Intro slides data
+const introSlides = [
+  {
+    icon: null,
+    isLogoSlide: true,
+    content: "Hi, there! Welcome to <strong>DreamPath</strong>."
+  },
+  {
+    icon: Target,
+    content: "DreamPath is a tool dedicated to helping you succeed with whatever you hope to do, taking you from curious student to your <strong>dream career</strong>."
+  },
+  {
+    icon: Rocket,
+    content: "DreamPath transforms college into your personalized <strong>launchpad</strong> for strategic exploration and career success."
+  },
+  {
+    icon: Brain,
+    content: "Powered by an intelligent AI system that's hyper-knowledgeable about emerging careers and changing market landscapes, DreamPath stays <strong>up to date</strong> about how the professional world is changing."
+  },
+  {
+    icon: Shield,
+    content: "Worried about the impact of AI automation, or new qualifications for a once tried-and-true role? <strong>DreamPath knows all.</strong>"
+  },
+  {
+    icon: Building2,
+    content: "With this knowledge in its back pocket, DreamPath is plugged into your school's resources in real time: <strong>Courses, Clubs, Research groups...</strong>"
+  },
+  {
+    icon: null, // Special slide with two features
+    isFeatureSlide: true,
+    features: [
+      {
+        icon: Map,
+        title: "CoursePath",
+        description: "Your personalized academic roadmap, optimized for your goals"
+      },
+      {
+        icon: Users,
+        title: "ClubPath",
+        description: "Discover activities and communities that align with your interests"
+      }
+    ]
+  },
+  {
+    icon: HelpCircle,
+    content: "Three terms, or even two years down the line, what if <strong>something changes</strong>? Or what if you need a course at a specific point in time?"
+  },
+  {
+    icon: null,
+    isCompassSlide: true,
+    content: "Meet <strong>Compass</strong> — your conversational advising assistant that helps you brainstorm, make changes, and engage in structured career pivots."
+  },
+  {
+    icon: null,
+    content: "What's next? After telling us a bit about yourself, we'll build your personalized DreamPath.",
+    isFinalSlide: true
+  }
+];
+
 function Onboarding() {
   const navigate = useNavigate();
   const { user } = useAuth();
@@ -160,6 +485,11 @@ function Onboarding() {
   const [error, setError] = useState('');
   const [majors, setMajors] = useState([]);
   const [loadingMajors, setLoadingMajors] = useState(true);
+
+  // Intro flow state
+  const [introSlide, setIntroSlide] = useState(0);
+  const [introComplete, setIntroComplete] = useState(false);
+  const [slideDirection, setSlideDirection] = useState(null);
 
   // Autocomplete state
   const [majorInputValue, setMajorInputValue] = useState('');
@@ -345,6 +675,199 @@ function Onboarding() {
       setError(err.message || 'Failed to build your DreamPath. Please try again.');
       setIsInitializing(false);
     }
+  };
+
+  // Intro navigation handlers
+  const handleIntroNext = () => {
+    if (introSlide < introSlides.length - 1) {
+      setSlideDirection('left');
+      setTimeout(() => {
+        setIntroSlide(introSlide + 1);
+        setSlideDirection(null);
+      }, 300);
+    }
+  };
+
+  const handleIntroBack = () => {
+    if (introSlide > 0) {
+      setSlideDirection('right');
+      setTimeout(() => {
+        setIntroSlide(introSlide - 1);
+        setSlideDirection(null);
+      }, 300);
+    }
+  };
+
+  const handleSkipIntro = () => {
+    setIntroComplete(true);
+  };
+
+  const handleIntroComplete = () => {
+    setIntroComplete(true);
+  };
+
+  // Render intro slide content
+  const renderIntroSlide = () => {
+    const slide = introSlides[introSlide];
+    const slideClass = slideDirection === 'left' ? 'slide-left' : slideDirection === 'right' ? 'slide-right' : '';
+
+    if (slide.isFeatureSlide) {
+      return (
+        <div className={`intro-slide ${slideClass}`}>
+          <div className="intro-content" style={{ marginBottom: '8px' }}>
+            These resources power your personalized <strong>paths</strong>:
+          </div>
+          <div className="intro-feature-box">
+            {slide.features.map((feature, idx) => (
+              <div key={idx} className="intro-feature">
+                <div className="intro-feature-icon">
+                  <feature.icon />
+                </div>
+                <div className="intro-feature-title">{feature.title}</div>
+                <div className="intro-feature-desc">{feature.description}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    const IconComponent = slide.icon;
+    return (
+      <div className={`intro-slide ${slideClass}`}>
+        {slide.isLogoSlide ? (
+          <div className="intro-logo">
+            <img src="/logo.png" alt="DreamPath" />
+          </div>
+        ) : slide.isCompassSlide ? (
+          <div className="intro-compass">
+            <img src="/compass.svg" alt="Compass" />
+          </div>
+        ) : IconComponent ? (
+          <div className="intro-icon">
+            <IconComponent />
+          </div>
+        ) : null}
+        <div
+          className="intro-content"
+          dangerouslySetInnerHTML={{ __html: slide.content }}
+        />
+        {slide.isFinalSlide && (
+          <button className="intro-ready-btn" onClick={handleIntroComplete}>
+            I'm Ready
+          </button>
+        )}
+      </div>
+    );
+  };
+
+  // Render the full intro flow
+  const renderIntroFlow = () => {
+    return (
+      <>
+        <style>{onboardingStyles}</style>
+        <div
+          style={{
+            minHeight: '100vh',
+            background: 'linear-gradient(145deg, #f5f0fa 0%, #e8e0f5 50%, #dfe8f5 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            padding: '60px 20px',
+          }}
+        >
+          <Container>
+            <div className="row justify-content-center">
+              <div className="col-md-10 col-lg-8">
+                <Card className="onboarding-card" style={{
+                  border: '1px solid rgba(138, 107, 193, 0.12)',
+                  borderRadius: 24,
+                  boxShadow: '0 8px 40px rgba(138, 107, 193, 0.15)',
+                  position: 'relative',
+                }}>
+                  <Card.Body style={{ padding: '52px 60px' }}>
+                    <span className="intro-skip-link" onClick={handleSkipIntro}>
+                      Skip intro →
+                    </span>
+
+                    <div className="text-center mb-4">
+                      <h1
+                        style={{
+                          fontFamily: 'Lora, serif',
+                          fontSize: '40px',
+                          fontWeight: 600,
+                          background: 'linear-gradient(135deg, #7B5BA6 0%, #5B7BB6 100%)',
+                          WebkitBackgroundClip: 'text',
+                          WebkitTextFillColor: 'transparent',
+                          backgroundClip: 'text',
+                          marginBottom: '4px',
+                          letterSpacing: '-0.02em'
+                        }}
+                      >
+                        DreamPath
+                      </h1>
+                      <p
+                        style={{
+                          fontFamily: 'Lora, serif',
+                          fontSize: '15px',
+                          color: '#8a8a9a',
+                          fontStyle: 'italic',
+                          marginBottom: 0
+                        }}
+                      >
+                        Your journey starts here
+                      </p>
+                    </div>
+
+                    <div className="intro-slide-container">
+                      {renderIntroSlide()}
+                    </div>
+
+                    <div className="intro-progress-dots">
+                      {introSlides.map((_, idx) => (
+                        <div
+                          key={idx}
+                          className={`intro-dot ${idx === introSlide ? 'active' : ''}`}
+                        />
+                      ))}
+                    </div>
+
+                    {!introSlides[introSlide].isFinalSlide && (
+                      <div className="intro-nav">
+                        <button
+                          className="intro-nav-btn"
+                          onClick={handleIntroBack}
+                          disabled={introSlide === 0}
+                        >
+                          <ChevronLeft />
+                        </button>
+                        <button
+                          className="intro-nav-btn"
+                          onClick={handleIntroNext}
+                          disabled={introSlide === introSlides.length - 1}
+                        >
+                          <ChevronRight />
+                        </button>
+                      </div>
+                    )}
+
+                    {introSlides[introSlide].isFinalSlide && (
+                      <div className="intro-nav" style={{ justifyContent: 'center' }}>
+                        <button
+                          className="intro-nav-btn"
+                          onClick={handleIntroBack}
+                        >
+                          <ChevronLeft />
+                        </button>
+                      </div>
+                    )}
+                  </Card.Body>
+                </Card>
+              </div>
+            </div>
+          </Container>
+        </div>
+      </>
+    );
   };
 
   const renderStep = () => {
@@ -554,6 +1077,12 @@ function Onboarding() {
     }
   };
 
+  // Show intro flow if not complete
+  if (!introComplete) {
+    return renderIntroFlow();
+  }
+
+  // Show profile creation steps
   return (
     <>
       <style>{onboardingStyles}</style>
@@ -591,7 +1120,7 @@ function Onboarding() {
                           marginBottom: '12px'
                         }}
                       >
-                        Welcome to DreamPath
+                        Build Your Profile
                       </h1>
                       <p style={{
                         color: '#666',
@@ -599,7 +1128,7 @@ function Onboarding() {
                         fontWeight: 400,
                         marginBottom: '24px'
                       }}>
-                        The journey from college to your dream career begins here.
+                        Tell us about yourself so we can personalize your DreamPath.
                       </p>
                     </div>
                     <ProgressBar

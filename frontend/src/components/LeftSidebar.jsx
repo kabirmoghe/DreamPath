@@ -26,7 +26,7 @@ const LeftSidebar = () => {
     { path: '/dashboard', icon: HouseIcon, label: 'Home', disabled: false },
     { path: '/courses', icon: BookIcon, label: 'Courses', disabled: false },
     { path: '/clubs', icon: PeopleIcon, label: 'Clubs', disabled: true },
-    { path: '/alumni', icon: NetworkIcon, label: 'Alumni', disabled: true },
+    { path: '/action-items', icon: NetworkIcon, label: 'To-Do', disabled: true },
   ];
 
   return (
