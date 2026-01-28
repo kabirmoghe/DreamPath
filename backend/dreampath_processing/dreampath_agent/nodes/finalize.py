@@ -29,7 +29,6 @@ async def render_final_reply(state: DreamPathAgentState, config) -> tuple[str, d
         response_model=str,
         small_context=False,
         model="gpt-4o",
-        temperature=0.1
     )
 
 
@@ -75,7 +74,6 @@ async def render_final_reply_streaming(state: DreamPathAgentState, config, write
     stream = await openai_client.chat.completions.create(
         model=model,
         messages=messages,
-        temperature=0.1,
         stream=True
     )
 

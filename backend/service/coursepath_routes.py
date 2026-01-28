@@ -250,6 +250,57 @@ async def get_course_path_visualization(
         )
 
 
+class UpdateCurrentTermRequest(BaseModel):
+    """Request to update current term"""
+    term_index: int
+
+
+@router.patch("/{user_id}/current-term", status_code=status.HTTP_200_OK)
+async def update_current_term(
+    user_id: str,
+    request: UpdateCurrentTermRequest,
+    authenticated_user_id: Optional[str] = Depends(get_current_user_id_optional)
+):
+    """
+    Update the current term (curr_window_start) for a user's course path.
+
+    This allows users to mark which term they're currently in.
+    """
+    # Security check (enforced in production)
+    if authenticated_user_id and user_id != authenticated_user_id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You can only update your own course path"
+        )
+
+    try:
+        success = await student_db_service.update_current_term(user_id, request.term_index)
+
+        if not success:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail="Course path not found"
+            )
+
+        return {"message": "Current term updated", "curr_window_start": request.term_index}
+
+    except ValueError as e:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(e)
+        )
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"Error updating current term: {e}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to update current term: {str(e)}"
+        )
+
+
 @router.delete("/{user_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_course_path(
     user_id: str,

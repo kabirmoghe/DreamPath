@@ -258,6 +258,25 @@ class APIClient {
   }
 
   /**
+   * Update current term (curr_window_start) for user's course path
+   */
+  async updateCurrentTerm(userId, termIndex) {
+    const headers = await this.getAuthHeaders();
+    const response = await fetch(`${this.baseUrl}/coursepath/${userId}/current-term`, {
+      method: 'PATCH',
+      headers,
+      body: JSON.stringify({ term_index: termIndex }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => ({}));
+      throw new Error(error.detail || 'Failed to update current term');
+    }
+
+    return response.json();
+  }
+
+  /**
    * Get user's profile from PostgreSQL
    */
   async getProfile(userId) {

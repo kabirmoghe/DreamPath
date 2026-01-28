@@ -7,7 +7,7 @@ import { apiClient } from '../lib/api';
 import DashboardNavbar from './DashboardNavbar';
 import LeftSidebar from './LeftSidebar';
 import ChatWindow from './ChatWindow';
-import { Calendar, CheckSquare, Lightbulb, Lock, BoxArrowUpRight } from 'react-bootstrap-icons';
+import { Calendar, CheckSquare, Lightbulb, Lock, BoxArrowUpRight, PeopleFill, CheckCircleFill } from 'react-bootstrap-icons';
 
 /**
  * Courses - Course path visualization and management
@@ -44,8 +44,29 @@ function Courses() {
   const [expandedCourse, setExpandedCourse] = useState(null);
   const [detailsPanelVisible, setDetailsPanelVisible] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isUpdatingTerm, setIsUpdatingTerm] = useState(false);
   const detailsPanelRef = useRef(null);
   const scrollContainerRef = useRef(null);
+  const hasAutoScrolled = useRef(false);
+
+  // Get current term from course path data
+  const currentTermIndex = coursePathData?.curr_window_start ?? 0;
+
+  // Handle setting a new current term
+  const handleSetCurrentTerm = async (termIndex) => {
+    if (!user?.id || termIndex === currentTermIndex || isUpdatingTerm) return;
+
+    setIsUpdatingTerm(true);
+    try {
+      await apiClient.updateCurrentTerm(String(user.id), termIndex);
+      // Refetch to get updated data
+      await fetchCoursePath();
+    } catch (error) {
+      console.error('Failed to update current term:', error);
+    } finally {
+      setIsUpdatingTerm(false);
+    }
+  };
 
   useEffect(() => {
     if (!user) {
@@ -53,6 +74,25 @@ function Courses() {
       return;
     }
   }, [user, navigate]);
+
+  // Auto-scroll to current term on initial page load only
+  useEffect(() => {
+    if (coursePathData?.course_path && scrollContainerRef.current && !hasAutoScrolled.current) {
+      hasAutoScrolled.current = true;
+
+      // Term width (250px) + gap (20px) = 270px per term
+      const termWidth = 270;
+      const scrollPosition = currentTermIndex * termWidth;
+
+      // Small delay to ensure DOM is rendered
+      setTimeout(() => {
+        scrollContainerRef.current?.scrollTo({
+          left: scrollPosition,
+          behavior: 'smooth'
+        });
+      }, 100);
+    }
+  }, [coursePathData, currentTermIndex]);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
@@ -171,28 +211,44 @@ function Courses() {
 
     return (
       <>
-        <div className="tab-description" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0px' }}>
-          <p style={{ margin: 0 }}>Your recommended course trajectory, term by term.</p>
-          <div className="course-path-navigation">
+        <div className="tab-description" style={{ display: 'flex', alignItems: 'center', marginBottom: '0px', position: 'relative' }}>
+          <p style={{ margin: 0, flex: 1, textAlign: 'center' }}>Your recommended course trajectory, term by term.</p>
+          <div className="course-path-navigation" style={{ position: 'absolute', right: 0 }}>
             <button className="term-nav-button" onClick={scrollLeft}>← Previous Terms</button>
             <button className="term-nav-button" onClick={scrollRight}>Next Terms →</button>
           </div>
         </div>
         <div className="course-path-container">
           <div className="course-path-scroll" ref={scrollContainerRef}>
-          {coursePathData.course_path.map((termCourses, termIndex) => (
-            <div key={`term-${termIndex}`} className="term-container">
-              <h5 className="term-header">Term {termIndex + 1}</h5>
-              <div className="term-courses">
-                {termCourses.map((courseCode) => (
-                  <div key={`${termIndex}-${courseCode}`} className="term-course">
-                    {renderCoursePathCard(courseCode, termIndex)}
-                  </div>
-                ))}
-                {termCourses.length === 0 && <p className="no-courses" style={{ color: '#888' }}>No courses</p>}
+          {coursePathData.course_path.map((termCourses, termIndex) => {
+            const isPast = termIndex < currentTermIndex;
+            const isCurrent = termIndex === currentTermIndex;
+            const termStateClass = isPast ? 'term-past' : isCurrent ? 'term-current' : 'term-future';
+
+            return (
+              <div key={`term-${termIndex}`} className={`term-container ${termStateClass}`}>
+                <div
+                  className={`term-header-wrapper ${isUpdatingTerm ? 'updating' : ''}`}
+                  onClick={() => handleSetCurrentTerm(termIndex)}
+                  title={isCurrent ? 'Current term' : `Click to set as current term`}
+                >
+                  <h5 className="term-header">
+                    {isPast && <CheckCircleFill className="term-check-icon" size={14} />}
+                    Term {termIndex + 1}
+                  </h5>
+                  {isCurrent && <Badge bg="secondary" className="current-term-badge">Current</Badge>}
+                </div>
+                <div className="term-courses">
+                  {termCourses.map((courseCode) => (
+                    <div key={`${termIndex}-${courseCode}`} className="term-course">
+                      {renderCoursePathCard(courseCode, termIndex)}
+                    </div>
+                  ))}
+                  {termCourses.length === 0 && <p className="no-courses" style={{ color: '#888' }}>No courses</p>}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
       </>
@@ -362,36 +418,6 @@ function Courses() {
                   )}
                 </div>
 
-                {/* Difficulty Metrics */}
-                {hasDifficultyMetrics && (
-                  <div className="modal-section metrics-section">
-                    <h6 className="section-title">Difficulty</h6>
-                    <div className="metric-row">
-                      <div className="metric-header">
-                        <span className="metric-label">Overall</span>
-                        <span className={`classification-badge difficulty-${courseDetails.global_difficulty_classification?.toLowerCase()}`}>
-                          {courseDetails.global_difficulty_classification}
-                        </span>
-                      </div>
-                      {renderPercentileBar(courseDetails.global_difficulty_percentile, courseDetails.global_difficulty_classification, true)}
-                    </div>
-                    {courseDetails.dept_difficulty_percentile !== null && courseDetails.dept_difficulty_percentile !== undefined && (
-                      <div className="metric-row">
-                        <div className="metric-header">
-                          <span className="metric-label">Within {courseDetails.department || 'Dept'}</span>
-                          <span className={`classification-badge difficulty-${courseDetails.dept_difficulty_classification?.toLowerCase()}`}>
-                            {courseDetails.dept_difficulty_classification}
-                          </span>
-                        </div>
-                        {renderPercentileBar(courseDetails.dept_difficulty_percentile, courseDetails.dept_difficulty_classification, true)}
-                      </div>
-                    )}
-                    {courseDetails.difficulty_blurb && (
-                      <p className="metric-blurb">{courseDetails.difficulty_blurb}</p>
-                    )}
-                  </div>
-                )}
-
                 {/* Learning Value Metrics */}
                 {hasValueMetrics && (
                   <div className="modal-section metrics-section">
@@ -422,29 +448,57 @@ function Courses() {
                   </div>
                 )}
 
+                {/* Difficulty Metrics */}
+                {hasDifficultyMetrics && (
+                  <div className="modal-section metrics-section">
+                    <h6 className="section-title">Difficulty</h6>
+                    <div className="metric-row">
+                      <div className="metric-header">
+                        <span className="metric-label">Overall</span>
+                        <span className={`classification-badge difficulty-${courseDetails.global_difficulty_classification?.toLowerCase()}`}>
+                          {courseDetails.global_difficulty_classification}
+                        </span>
+                      </div>
+                      {renderPercentileBar(courseDetails.global_difficulty_percentile, courseDetails.global_difficulty_classification, true)}
+                    </div>
+                    {courseDetails.dept_difficulty_percentile !== null && courseDetails.dept_difficulty_percentile !== undefined && (
+                      <div className="metric-row">
+                        <div className="metric-header">
+                          <span className="metric-label">Within {courseDetails.department || 'Dept'}</span>
+                          <span className={`classification-badge difficulty-${courseDetails.dept_difficulty_classification?.toLowerCase()}`}>
+                            {courseDetails.dept_difficulty_classification}
+                          </span>
+                        </div>
+                        {renderPercentileBar(courseDetails.dept_difficulty_percentile, courseDetails.dept_difficulty_classification, true)}
+                      </div>
+                    )}
+                    {courseDetails.difficulty_blurb && (
+                      <p className="metric-blurb">{courseDetails.difficulty_blurb}</p>
+                    )}
+                  </div>
+                )}
+
                 {/* Target Audience */}
                 {hasTargetAudience && (
                   <div className="modal-section">
                     <h6 className="section-title">Target Audience</h6>
                     <p className="description-text">{courseDetails.target_audience_blurb}</p>
+                    {courseDetails.total_reviews !== null && courseDetails.total_reviews !== undefined && (
+                      <div className="reviews-count" data-tooltip={`Sentiment from ${courseDetails.total_reviews >= 25 ? '25+' : courseDetails.total_reviews} students`}>
+                        <PeopleFill size={14} color="#666" />
+                        <span>{courseDetails.total_reviews >= 25 ? '25+' : courseDetails.total_reviews}</span>
+                      </div>
+                    )}
                   </div>
                 )}
 
                 {/* Additional Info */}
-                {(courseDetails.prerequisites || courseDetails.total_reviews) && (
+                {courseDetails.prerequisites && (
                   <div className="modal-section additional-info">
-                    {courseDetails.prerequisites && (
-                      <div className="info-item">
-                        <span className="info-label">Prerequisites:</span>
-                        <span className="info-value">{courseDetails.prerequisites}</span>
-                      </div>
-                    )}
-                    {courseDetails.total_reviews !== null && courseDetails.total_reviews !== undefined && (
-                      <div className="info-item">
-                        <span className="info-label">Total Reviews:</span>
-                        <span className="info-value">{courseDetails.total_reviews}</span>
-                      </div>
-                    )}
+                    <div className="info-item">
+                      <span className="info-label">Prerequisites:</span>
+                      <span className="info-value">{courseDetails.prerequisites}</span>
+                    </div>
                   </div>
                 )}
               </>
@@ -639,13 +693,13 @@ function Courses() {
                   </Tab.Pane>
                   <Tab.Pane eventKey="major">
                     <div className="tab-description">
-                      <p style={{ margin: 0 }}>Personalized major courses in your course path.</p>
+                      <p style={{ margin: 0, textAlign: 'center', width: '100%' }}>Personalized major courses in your course path.</p>
                     </div>
                     {renderCourseList(getMajorCourses(), 'major')}
                   </Tab.Pane>
                   <Tab.Pane eventKey="complementary">
                     <div className="tab-description">
-                      <p style={{ margin: 0 }}>Complementary courses from other departments.</p>
+                      <p style={{ margin: 0, textAlign: 'center', width: '100%' }}>Complementary courses from other departments.</p>
                     </div>
                     {renderCourseList(getComplementaryCourses(), 'complementary')}
                   </Tab.Pane>
@@ -697,13 +751,87 @@ function Courses() {
         .term-container {
           min-width: 250px;
           flex-shrink: 0;
+          transition: opacity 0.2s ease;
+        }
+
+        /* Past term styling */
+        .term-container.term-past {
+          opacity: 0.6;
+        }
+
+        .term-container.term-past .course-path-card {
+          background: #f5f5f5;
+        }
+
+        .term-container.term-past .term-header-wrapper {
+          background: rgba(0, 0, 0, 0.04);
+        }
+
+        /* Current term styling */
+        .term-container.term-current {
+          position: relative;
+        }
+
+        .term-container.term-current .term-header-wrapper {
+          background: linear-gradient(135deg, rgba(138, 107, 193, 0.12) 0%, rgba(107, 143, 199, 0.12) 100%);
+        }
+
+        .term-container.term-current .term-header {
+          color: #6B4FA0;
+        }
+
+        /* Future term styling - default */
+        .term-container.term-future .term-header-wrapper:hover {
+          background: rgba(138, 107, 193, 0.06);
+        }
+
+        /* Term header wrapper - clickable */
+        .term-header-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 8px 12px;
+          border-radius: 8px;
+          margin-bottom: 12px;
+          cursor: pointer;
+          transition: background 0.2s ease, transform 0.1s ease;
+          user-select: none;
+        }
+
+        .term-header-wrapper:hover {
+          transform: translateY(-1px);
+        }
+
+        .term-header-wrapper:active {
+          transform: translateY(0);
+        }
+
+        .term-header-wrapper.updating {
+          pointer-events: none;
+          opacity: 0.7;
+        }
+
+        .term-check-icon {
+          color: #78976e;
+          flex-shrink: 0;
+        }
+
+        .current-term-badge {
+          font-size: 10px;
+          padding: 4px 8px;
+          background: linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%) !important;
+          border-radius: 4px;
+          border: none;
         }
 
         .term-header {
           font-size: 16px;
           font-weight: 600;
-          margin-bottom: 12px;
+          margin: 0;
           color: #333;
+          display: flex;
+          align-items: center;
+          gap: 6px;
         }
 
         .term-courses {
@@ -1081,6 +1209,41 @@ function Courses() {
           color: #555;
         }
 
+        .reviews-count {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          margin-top: 10px;
+          font-size: 13px;
+          color: #666;
+          position: relative;
+          cursor: default;
+        }
+
+        .reviews-count::after {
+          content: attr(data-tooltip);
+          position: absolute;
+          left: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+          margin-left: 8px;
+          padding: 5px 10px;
+          background: #333;
+          color: #fff;
+          font-size: 11px;
+          white-space: nowrap;
+          border-radius: 4px;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.2s, visibility 0.2s;
+          pointer-events: none;
+        }
+
+        .reviews-count:hover::after {
+          opacity: 1;
+          visibility: visible;
+        }
+
         .no-data-text {
           margin: 0;
           font-size: 14px;
@@ -1125,7 +1288,6 @@ function Courses() {
 
         /* Metrics Styling */
         .metrics-section {
-          background: #fafafa;
           margin: 0 -24px 20px;
           padding: 16px 24px;
           border-radius: 0;
@@ -1217,9 +1379,8 @@ function Courses() {
 
         /* Additional Info */
         .additional-info {
-          background: #fafafa;
           margin: 0 -24px 0;
-          padding: 16px 24px;
+          padding: 5px 24px;
           border-bottom: none;
         }
 

@@ -7,8 +7,18 @@ from dreampath_processing.dreampath_agent.search_agent.search_types import Cours
 
 
 class CourseQueryGenerator:
-    def __init__(self, client):
+    """Query generator that supports both sync and async clients."""
+
+    def __init__(self, client, async_client=None):
+        """
+        Initialize with sync client, optionally with async client for parallel execution.
+
+        Args:
+            client: Sync instructor client (for backwards compatibility)
+            async_client: Async instructor client (for true parallel execution)
+        """
         self.client = client
+        self.async_client = async_client
 
     def configure(self, system_prompt: str | None=None, model: str | None="gpt-4o"):
         if system_prompt is not None:
@@ -17,7 +27,7 @@ class CourseQueryGenerator:
             self.model = model
 
     def generate(self, search_description: str) -> CourseSearchParams:
-        """Generate CourseSearchParams from an atomic search description.
+        """Generate CourseSearchParams from an atomic search description (sync).
 
         Args:
             search_description: Atomic description of courses to find
@@ -27,6 +37,33 @@ class CourseQueryGenerator:
         """
         messages = [{'role': 'system', 'content': self.system_prompt}, {'role': 'user', 'content': search_description}]
         query = self.client.chat.completions.create(
+            model=self.model,
+            messages=messages,
+            response_model=CourseSearchParams,
+        )
+
+        return query
+
+    async def generate_async(self, search_description: str) -> CourseSearchParams:
+        """Generate CourseSearchParams from an atomic search description (async).
+
+        This method yields to the event loop during the API call, enabling true
+        parallel execution when used with asyncio.gather().
+
+        Args:
+            search_description: Atomic description of courses to find
+
+        Returns:
+            CourseSearchParams with optimized search parameters
+
+        Raises:
+            ValueError: If async_client was not provided during initialization
+        """
+        if self.async_client is None:
+            raise ValueError("async_client not configured. Pass async_client to __init__() to use generate_async().")
+
+        messages = [{'role': 'system', 'content': self.system_prompt}, {'role': 'user', 'content': search_description}]
+        query = await self.async_client.chat.completions.create(
             model=self.model,
             messages=messages,
             response_model=CourseSearchParams,

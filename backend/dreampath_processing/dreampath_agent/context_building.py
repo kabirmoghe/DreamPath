@@ -269,6 +269,7 @@ async def extract_structured_output_from_context(
     small_context: bool = False,
     model: str = "gpt-4o-mini",
     temperature: float = 0,
+    reasoning_effort: str | None = None,
     show_token_count: bool = True,
     task_prompt: str | None = None,
     verbose: bool = False,
@@ -307,12 +308,18 @@ async def extract_structured_output_from_context(
             print(f"⚠️ ORCHESTRATOR: Error emitting thinking status: {e}")
 
     # Use async client so event loop can deliver status events while waiting for response
-    if model == "o3-mini" or model == "o4-mini":
-        response = await async_client.chat.completions.create(
-            model=model,
-            messages=messages,
-            response_model=response_model,
-        )
+    # Reasoning models (o-series, gpt-5) use reasoning_effort instead of temperature
+    is_reasoning_model = model in ("o3-mini", "o4-mini") or "5" in model
+
+    if is_reasoning_model:
+        kwargs = {
+            "model": model,
+            "messages": messages,
+            "response_model": response_model,
+        }
+        if reasoning_effort:
+            kwargs["reasoning_effort"] = reasoning_effort
+        response = await async_client.chat.completions.create(**kwargs)
     else:
         response = await async_client.chat.completions.create(
             model=model,

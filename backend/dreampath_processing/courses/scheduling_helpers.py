@@ -314,6 +314,8 @@ def schedule_courses_by_term(course_graph: PrereqGraph,
         if verbose:
             print(f"Layer B: {slots} slots remaining")
 
+        skipped_major = None  # Track first major skipped due to limit (for Layer C)
+
         if slots > 0:
             pool = [c for c in ready if c not in due_now]
             pool.sort(key=_priority)
@@ -324,10 +326,13 @@ def schedule_courses_by_term(course_graph: PrereqGraph,
                 if slots == 0:
                     break
 
-                is_major = (c in course_bank and course_bank[c].course_type == MAJOR)
                 # policy: ≤2 majors/term (soft—feasibility already handled in Layer A)
+                is_major = (c in course_bank and course_bank[c].course_type == MAJOR)
                 if is_major and majors_used >= 2:
+                    if skipped_major is None:
+                        skipped_major = c
                     continue
+
                 # place
                 courses_this_term.append(c)
                 placed_now.append(c)
@@ -338,6 +343,21 @@ def schedule_courses_by_term(course_graph: PrereqGraph,
                     course_bank[c].scheduled = True
                     course_bank[c].term_idx = term
                 slots -= 1
+
+        # Layer C — Fill remaining slot if skipped a major and no complementary was available
+        if slots > 0 and skipped_major:
+            if verbose:
+                print(f"Layer C: Filling remaining slot with skipped major {skipped_major}")
+
+            courses_this_term.append(skipped_major)
+            placed_now.append(skipped_major)
+            scheduled.add(skipped_major)
+            ready_since.pop(skipped_major)
+
+            if skipped_major in course_bank:
+                course_bank[skipped_major].scheduled = True
+                course_bank[skipped_major].term_idx = term
+            slots -= 1
 
         # Update plan
         plan[term] = courses_this_term

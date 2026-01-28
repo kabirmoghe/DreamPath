@@ -165,3 +165,32 @@ class StudentDatabaseService:
         # Parse JSON string back to dict
         course_path_data = json.loads(row['course_path_data'])
         return deserialize_course_path(course_path_data)
+
+    async def update_current_term(self, user_id: str, new_term_index: int) -> bool:
+        """Update curr_window_start for the active course path. Returns True if successful."""
+        # Load current course path
+        course_path = await self.load_course_path(user_id)
+        if not course_path:
+            return False
+
+        # Validate new term index
+        if new_term_index < 0 or new_term_index >= len(course_path.course_path):
+            raise ValueError(f"Term index {new_term_index} out of range [0, {len(course_path.course_path) - 1}]")
+
+        # Update the curr_window_start
+        course_path.curr_window_start = new_term_index
+
+        # Save updated course path (this creates a new version)
+        course_path_json = json.dumps(serialize_course_path(course_path))
+
+        # Update the active course path in place (not creating new version for this minor change)
+        result = await self.db.execute_command(
+            """
+            UPDATE course_paths
+            SET course_path_data = $1, updated_at = NOW()
+            WHERE user_id = $2 AND is_active = true
+            """,
+            course_path_json, user_id
+        )
+
+        return True
