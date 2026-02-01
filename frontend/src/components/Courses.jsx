@@ -211,9 +211,10 @@ function Courses() {
 
     return (
       <>
-        <div className="tab-description" style={{ display: 'flex', alignItems: 'center', marginBottom: '0px', position: 'relative' }}>
-          <p style={{ margin: 0, flex: 1, textAlign: 'center' }}>Your recommended course trajectory, term by term.</p>
-          <div className="course-path-navigation" style={{ position: 'absolute', right: 0 }}>
+        <div className="tab-description course-path-header">
+          <div className="course-path-spacer" />
+          <p className="course-path-subtitle">Your recommended course trajectory, term by term.</p>
+          <div className="course-path-navigation">
             <button className="term-nav-button" onClick={scrollLeft}>← Previous Terms</button>
             <button className="term-nav-button" onClick={scrollRight}>Next Terms →</button>
           </div>
@@ -246,7 +247,25 @@ function Courses() {
                         {renderCoursePathCard(courseCode, termIndex)}
                       </div>
                     ))}
-                    {termCourses.length === 0 && <p className="no-courses" style={{ color: '#888' }}>No courses</p>}
+                    {termCourses.length < 3 && (
+                      <>
+                        {Array.from({ length: 3 - termCourses.length }, (_, i) => (
+                          <div key={`empty-${termIndex}-${i}`} className="term-course">
+                            <Card className="empty-course-slot">
+                              <Card.Header className="d-flex justify-content-between align-items-center p-2">
+                                <span className="fw-bold">&nbsp;</span>
+                              </Card.Header>
+                              <Card.Body className="p-2">
+                                <p className="small mb-2">&nbsp;</p>
+                                <div className="text-center">
+                                  <Button variant="outline-secondary" size="sm" className="invisible">Details</Button>
+                                </div>
+                              </Card.Body>
+                            </Card>
+                          </div>
+                        ))}
+                      </>
+                    )}
                   </div>
                 </div>
                 {showYearDivider && <div className="year-divider" />}
@@ -724,6 +743,7 @@ function Courses() {
           display: flex;
           align-items: center;
           font-family: 'Lora', serif;
+          margin-bottom: 20px;
         }
 
         .course-path-container {
@@ -882,10 +902,44 @@ function Courses() {
           border-color: #6B8FC7;
         }
 
+        .course-path-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .course-path-spacer {
+          flex: 1;
+        }
+
+        .course-path-subtitle {
+          margin: 0;
+          text-align: center;
+          flex-shrink: 0;
+        }
+
         .course-path-navigation {
           display: flex;
           gap: 12px;
-          justify-content: center;
+          flex: 1;
+          justify-content: flex-end;
+        }
+
+        @media (max-width: 768px) {
+          .course-path-spacer {
+            display: none;
+          }
+
+          .course-path-header {
+            flex-direction: column;
+            gap: 10px;
+          }
+
+          .course-path-navigation {
+            order: -1;
+            flex: none;
+            align-self: flex-end;
+          }
         }
 
         .term-nav-button {
@@ -1452,6 +1506,20 @@ function Courses() {
           padding: 20px;
           color: #888;
           font-style: italic;
+        }
+
+        .empty-course-slot {
+          border: 1px dashed rgb(237, 232, 245) !important;
+          border-radius: 8px;
+          background: transparent !important;
+          box-shadow: 0 2px 4px rgb(68 60 86 / 10%)
+          margin: -0.5px 0px;
+        }
+
+        .empty-course-slot .card-header,
+        .empty-course-slot .card-body {
+          background: transparent !important;
+          border: none !important;
         }
 
         /* Bottom badges for major/complementary course cards */
