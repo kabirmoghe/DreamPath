@@ -138,9 +138,9 @@ function Courses() {
         <Card.Header className="d-flex justify-content-between align-items-center p-2">
           <span className="fw-bold">{courseCode}</span>
           <div className="ms-auto d-flex gap-1">
-            {isPrereq && <Badge bg="secondary" pill className="prereq-badge">Prereq</Badge>}
-            {isMajor && <Badge bg="primary" pill>Major</Badge>}
-            {isComplementary && <Badge bg="info" pill>Comp</Badge>}
+            {isPrereq && <Badge bg="secondary" pill className="mini-type-badge">Prereq</Badge>}
+            {isMajor && <Badge bg="primary" pill className="mini-type-badge">Major</Badge>}
+            {isComplementary && <Badge bg="info" pill className="mini-type-badge">Comp</Badge>}
           </div>
         </Card.Header>
         <Card.Body className="p-2">
@@ -224,29 +224,33 @@ function Courses() {
             const isPast = termIndex < currentTermIndex;
             const isCurrent = termIndex === currentTermIndex;
             const termStateClass = isPast ? 'term-past' : isCurrent ? 'term-current' : 'term-future';
+            const showYearDivider = (termIndex + 1) % 3 === 0 && termIndex < coursePathData.course_path.length - 1;
 
             return (
-              <div key={`term-${termIndex}`} className={`term-container ${termStateClass}`}>
-                <div
-                  className={`term-header-wrapper ${isUpdatingTerm ? 'updating' : ''}`}
-                  onClick={() => handleSetCurrentTerm(termIndex)}
-                  title={isCurrent ? 'Current term' : `Click to set as current term`}
-                >
-                  <h5 className="term-header">
-                    {isPast && <CheckCircleFill className="term-check-icon" size={14} />}
-                    Term {termIndex + 1}
-                  </h5>
-                  {isCurrent && <Badge bg="secondary" className="current-term-badge">Current</Badge>}
+              <React.Fragment key={`term-${termIndex}`}>
+                <div className={`term-container ${termStateClass}`}>
+                  <div
+                    className={`term-header-wrapper ${isUpdatingTerm ? 'updating' : ''}`}
+                    onClick={() => handleSetCurrentTerm(termIndex)}
+                    title={isCurrent ? 'Current term' : `Click to set as current term`}
+                  >
+                    <h5 className="term-header">
+                      {isPast && <CheckCircleFill className="term-check-icon" size={14} />}
+                      Term {termIndex + 1}
+                    </h5>
+                    {isCurrent && <Badge bg="secondary" className="current-term-badge">Current</Badge>}
+                  </div>
+                  <div className="term-courses">
+                    {termCourses.map((courseCode) => (
+                      <div key={`${termIndex}-${courseCode}`} className="term-course">
+                        {renderCoursePathCard(courseCode, termIndex)}
+                      </div>
+                    ))}
+                    {termCourses.length === 0 && <p className="no-courses" style={{ color: '#888' }}>No courses</p>}
+                  </div>
                 </div>
-                <div className="term-courses">
-                  {termCourses.map((courseCode) => (
-                    <div key={`${termIndex}-${courseCode}`} className="term-course">
-                      {renderCoursePathCard(courseCode, termIndex)}
-                    </div>
-                  ))}
-                  {termCourses.length === 0 && <p className="no-courses" style={{ color: '#888' }}>No courses</p>}
-                </div>
-              </div>
+                {showYearDivider && <div className="year-divider" />}
+              </React.Fragment>
             );
           })}
         </div>
@@ -326,7 +330,8 @@ function Courses() {
     const hasDifficultyMetrics = courseDetails?.global_difficulty_percentile !== null && courseDetails?.global_difficulty_percentile !== undefined;
     const hasValueMetrics = courseDetails?.global_value_percentile !== null && courseDetails?.global_value_percentile !== undefined;
     const hasTargetAudience = courseDetails?.target_audience_blurb;
-    const hasAlignedParams = courseDetails?.aligned_parameters && courseDetails.aligned_parameters.length > 0;
+    // Only show aligned params for courses that are actually recommended (not prereqs that lost recommendation status)
+    const hasAlignedParams = courseDetails?.aligned_parameters && courseDetails.aligned_parameters.length > 0 && isRecommended;
 
     return (
       <>
@@ -669,7 +674,7 @@ function Courses() {
                       }}
                     >
                       <CheckSquare className="tab-icon me-1" style={{ color: activeTab === 'major' ? '#8A6BC1' : '#888' }} /> Major Courses
-                      <Badge bg="primary" pill className="ms-2">{getMajorCourses().length}</Badge>
+                      <Badge bg="primary" pill className="ms-2 tab-count-badge">{getMajorCourses().length}</Badge>
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
@@ -683,7 +688,7 @@ function Courses() {
                       }}
                     >
                       <Lightbulb className="tab-icon me-1" style={{ color: activeTab === 'complementary' ? '#3873a0' : '#888' }} /> Complementary Courses
-                      <Badge bg="info" pill className="ms-2">{getComplementaryCourses().length}</Badge>
+                      <Badge bg="info" pill className="ms-2 tab-count-badge">{getComplementaryCourses().length}</Badge>
                     </Nav.Link>
                   </Nav.Item>
                 </Nav>
@@ -718,6 +723,7 @@ function Courses() {
           min-height: 40px !important;
           display: flex;
           align-items: center;
+          font-family: 'Lora', serif;
         }
 
         .course-path-container {
@@ -783,6 +789,15 @@ function Courses() {
         /* Future term styling - default */
         .term-container.term-future .term-header-wrapper:hover {
           background: rgba(138, 107, 193, 0.06);
+        }
+
+        /* Year divider - vertical line between every 3 terms */
+        .year-divider {
+          width: 3px;
+          background: linear-gradient(to bottom, transparent 0%, #d6cdea 20%, #d6cdea 80%, transparent 100%);
+          margin: 0 10px;
+          flex-shrink: 0;
+          align-self: stretch;
         }
 
         /* Term header wrapper - clickable */
@@ -1411,15 +1426,25 @@ function Courses() {
         }
 
         .rank-badge-major {
+          font-family: 'Lora', serif;
           background: linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%);
         }
 
         .rank-badge-complementary {
+          font-family: 'Lora', serif;
           background: linear-gradient(135deg, #6B8FC7 0%, #5A9FC7 100%);
         }
 
-        .prereq-badge {
+        .mini-type-badge {
           font-size: 0.7rem;
+          font-family: 'Lora', serif;
+          border-radius: 8px !important;
+        }
+
+        .tab-count-badge {
+          font-family: 'Lora', serif;
+          border-radius: 5px !important;
+          padding: 5px 8px !important;
         }
 
         .no-courses {

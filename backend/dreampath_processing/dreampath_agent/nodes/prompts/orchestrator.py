@@ -28,12 +28,13 @@ You have the following routes to choose from:
 
 #### Available Routes:
 
-- "course_search" [*requires handoff*]: sub-agent node that can handle course search requests ranging from simple lookups to complex high-level search goals.
-- "plan_builder" [*requires handoff*]: tool for requests that involve modifying the course path; creates list of operations to be executed by the CoursePathAgent (a human-in-the-loop sub-agent that actually modifies the course path).
-- "course_path": human-in-the-loop course path modifier agent (a small agent that executes all operations in `worklist` created by the `plan_builder`).
-- "modify_profile" [*requires handoff*]: human-in-the-loop node for requests that involve modifying the student profile.
-- "rebuild_course_path" [*requires handoff*]: tool for requests that involve rebuilding the entire course path (only for major upheavals, large pivots across fields, etc.)
-- "finalize": node for general conversation / requests that signal directly wrapping up, summarizing final results from `course_search` and/or `course_path`, and generally producing a final answer for the user.
+1. "course_search" [*requires handoff*]: sub-agent node that can handle course search requests ranging from simple lookups to complex high-level search goals.
+2. "plan_builder" [*requires handoff*]: tool for requests that involve modifying the course path; creates list of operations to be executed by the CoursePathAgent (a human-in-the-loop sub-agent that actually modifies the course path).
+3. "course_path": human-in-the-loop course path modifier agent (a small agent that executes all operations in `worklist` created by the `plan_builder`).
+- Has a scheduling algorithm that ensures prereq constraints are met by default and can prioritize courses in certain terms if simple scheduling fails (e.g., need course X in a full term, can try again by scheduling around it).
+4. "modify_profile" [*requires handoff*]: human-in-the-loop node for requests that involve modifying the student profile.
+5. "rebuild_course_path" [*requires handoff*]: tool for requests that involve rebuilding the entire course path (only for major upheavals, large pivots across fields, etc.)
+6. "finalize": node for general conversation / requests that signal directly wrapping up, summarizing final results from `course_search` and/or `course_path`, and generally producing a final answer for the user.
 
 ### Examples:
 
@@ -70,7 +71,9 @@ Sample Orchestration Trace:
   | → course_search_queries: [{{"query": "AI and machine learning", "limit": 5, "alpha": 0.5, "sort_by_level": true}}]
   | → course_search_results: [{{"code": "COSC89", "title": "..."}}, {{"code": "COSC89.01", "title": "..."}}, ...]
 - route: "plan_builder", handoff: "COSC89 and COSC89.01 are highly relevant courses. Create operations to add the courses"
-  | → output: worklist=["add COSC89", "add COSC89.01"], course_path_agent_results=...
+  | → output: worklist=["add COSC89", "add COSC89.01"]
+- route: "course_path"
+  | → course_path_agent_results: ...
 - route: "finalize" → output: final_reply=...
 
 ----- 3: Course Search, Plan Builder -----
@@ -137,10 +140,10 @@ Sample Orchestration Trace:
   | → course_path_agent_results: ... success ...
 - route: "finalize" → output: final_reply=...
 
------ 7: Rebuild Course Path: Large-Scale Upheavals -----
+----- 7: Rebuild Course Path: Large-Scale Upheavals, Pivots from Career X to Y -----
 User: "... Yes, after discussing, I do want to make the big shift from SWE to quant. research. Can you help me make this happen?"
 Sample Orchestration Trace:
-- route: "rebuild_course_path", handoff: "Student wants to pivot from software engineering to quantitative research. Build their course path accordingly"
+- route: "rebuild_course_path", handoff: "Student wants to pivot from software engineering to quantitative research. They specifically want to <...> . Build their course path accordingly"
   | → output: ... modified profile ... executed course search queries ... updated recommended courses ... etc.
 - [ *May need to route to other nodes to make tweaks (e.g., profile adjustments, missing crucial topics in plan, etc.)* ]
 - route: "finalize" → output: final_reply=...

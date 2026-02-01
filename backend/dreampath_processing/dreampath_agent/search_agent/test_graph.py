@@ -130,7 +130,6 @@ if __name__ == "__main__":
     # results = course_search_client.hybrid_search(query='', course_code='COSC74', limit=1, alpha=0.0, sort_by_level=False, department=None, max_num_prereqs=None, difficulty_classification=None, value_classification=None)
     # print(results)
 
-
     while True:
         goal = input("Enter a search goal: ")
         if goal == "exit":

@@ -305,11 +305,13 @@ async def _execute_task_updates(
         _emit_status(config, f"Created {len(updated_tasks)} search task{'s' if len(updated_tasks) > 1 else ''}")
 
     else:
+        _emit_status(config, f"Updating {len(action.task_updates)} task{'s' if len(action.task_updates) > 1 else ''}...")
         # Update existing tasks
         for update in action.task_updates:
             task = next((t for t in updated_tasks if t.task_id == update.task_id), None)
 
             if task:
+
                 # Update LLM-managed fields
                 old_status = task.status
                 task.status = update.new_status

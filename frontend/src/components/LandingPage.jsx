@@ -111,7 +111,7 @@ const LandingPage = () => {
           </Row>
           <Row>
             <Col>
-              <p className="text-muted small mt-3 mb-0">© 2025 DreamPath. All rights reserved.</p>
+              <p className="text-muted small mt-3 mb-0">© 2026 DreamPath</p>
             </Col>
           </Row>
         </Container>

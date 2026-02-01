@@ -86,7 +86,7 @@ Guidelines for task decomposition:
   Example: "Easy AND highly-rated philosophy" → 1 task (filters on same search)
   Example: "Machine learning with few prereqs" → 1 task (query + filter)
 
-- KEEP AS ONE TASK for information regarding a single course, since a single lookup provides all the information needed
+- KEEP AS ONE TASK for information regarding a single course, since **a single lookup search provides all the information needed (e.g., prereqs., description, sentiment)**
   Example: "Find information about course <course_code>" → 1 task (look up course)
   
 - Broad example:
@@ -177,6 +177,10 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig) -> 
     """
 
     print(f"  [ORCH] Starting orchestrator_node for iteration {state.iteration}")
+
+    if state.iteration == 0:
+        print(f"  [ORCH] Initial iteration")
+        print(f"  [ORCH] Goal: {state.goal}")
 
     # ============================================
     # 1. BUILD CONTEXT (two-block structure)

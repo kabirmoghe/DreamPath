@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { apiClient } from '../lib/api';
 import InitLoadingOverlay from './InitLoadingOverlay';
-import { Target, Rocket, Brain, Shield, Building2, Map, Users, HelpCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Handshake, Rocket, Brain, Shield, Building2, Map, Users, HelpCircle, ChevronLeft, ChevronRight } from 'lucide-react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Custom styles for enhanced onboarding wizard
@@ -425,7 +425,7 @@ const introSlides = [
     content: "Hi, there! Welcome to <strong>DreamPath</strong>."
   },
   {
-    icon: Target,
+    icon: Handshake,
     content: "DreamPath is a tool dedicated to helping you succeed with whatever you hope to do, taking you from curious student to your <strong>dream career</strong>."
   },
   {
@@ -442,7 +442,7 @@ const introSlides = [
   },
   {
     icon: Building2,
-    content: "With this knowledge in its back pocket, DreamPath is plugged into your school's resources in real time: <strong>Courses, Clubs, Research groups...</strong>"
+    content: "With this knowledge in its back pocket, DreamPath is plugged into your school's resources in real time: <strong>Courses, clubs, research, and more.</strong>"
   },
   {
     icon: null, // Special slide with two features

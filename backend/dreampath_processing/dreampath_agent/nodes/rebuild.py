@@ -7,13 +7,22 @@ and synthesizes results with parameter alignment tracking.
 
 import asyncio
 import os
+import re
+from pathlib import Path
+from typing import Optional
 
 import instructor
 from dreampath_processing.courses.build_major_course_path import build_course_path
+from dreampath_processing.courses.schedule_modules.course_path import CoursePath
 from dreampath_processing.courses.course_relationship_handling import (
     build_prereq_tree,
     construct_course,
     is_major_course,
+)
+from dreampath_processing.courses.coursepath_agent.operation_tools import (
+    compute_diff,
+    snapshot_path,
+    summarize_diff,
 )
 from dreampath_processing.courses.schedule_modules.course import COMPLEMENTARY, MAJOR
 from dreampath_processing.dreampath_agent.dreampath_types import (
@@ -44,6 +53,24 @@ def _truncate(text: str | None, max_len: int) -> str:
         return text
     return text[:max_len - 3] + "..."
 
+def _save_context_to_file(context: str, file_prefix: str):
+    tmp_dir = Path("tmp")
+    tmp_dir.mkdir(exist_ok=True)  # Create directory if it doesn't exist
+    pattern = re.compile(f"{file_prefix}_(\d+)\.txt")
+
+    # Find highest existing ID
+    max_id = 0
+    for p in tmp_dir.iterdir():
+        m = pattern.fullmatch(p.name)
+        if m:
+            max_id = max(max_id, int(m.group(1)))
+
+    next_id = max_id + 1
+    path = tmp_dir / f"{file_prefix}_{next_id}.txt"
+
+    path.write_text(context)
+
+    print(f"📝 DEBUG: Saved context to {path}")
 
 def format_existing_recommendations(
     course_codes: set[str],
@@ -111,11 +138,18 @@ def format_rebuild_course_path_output(output: RebuildCoursePathOutput) -> str:
             output_str += f"  {rec.course_code} (aligned: {aligned})\n"
         output_str += "</updated_recommended_courses>\n"
 
-    # Course path update mode
+    # Course path rebuild result - make it clear work is DONE
+    output_str += "<course_path_rebuild_result status=\"COMPLETE\">\n"
     if output.course_path_update_mode == "new":
-        output_str += "<course_path_update_mode>\nNo existing course path found. New course path constructed.\n</course_path_update_mode>\n"
+        output_str += "New course path built and saved.\n"
     elif output.course_path_update_mode == "update_existing":
-        output_str += "<course_path_update_mode>\nExisting course path updated.\n</course_path_update_mode>"
+        output_str += "Existing course path rebuilt and saved.\n"
+
+    # Include the diff showing what changed
+    if output.scheduled_courses_diff:
+        output_str += f"\nSchedule changes applied:\n{output.scheduled_courses_diff}\n"
+
+    output_str += "</course_path_rebuild_result>"
 
     return output_str
 
@@ -322,7 +356,7 @@ async def execute_rebuild_tool(
     print("Synthesizing course recommendations with alignment tracking...")
 
     # Get existing recommendations
-    current_course_path = await student_db_service.load_course_path(config["configurable"]["user_id"])
+    current_course_path: Optional[CoursePath] = await student_db_service.load_course_path(config["configurable"]["user_id"])
 
     if current_course_path is None:
         existing_recommendations = "None"
@@ -350,9 +384,7 @@ async def execute_rebuild_tool(
     )
 
     # DEBUG: Save synthesizer context to file
-    with open("/tmp/synthesizer_context.txt", "w") as f:
-        f.write(synthesis_prompt)
-    print("📝 DEBUG: Saved synthesizer context to /tmp/synthesizer_context.txt")
+    _save_context_to_file(synthesis_prompt, "synthesizer_context")
 
     synthesized_recs = await _async_client.chat.completions.create(
         model="gpt-4o",
@@ -401,8 +433,15 @@ async def execute_rebuild_tool(
             config["configurable"]["user_id"]
         )
         output["course_path_update_mode"] = "new"
+
+        # For new paths, show what was scheduled
+        scheduled = {c for c, obj in new_course_path.course_bank.items() if obj.scheduled}
+        output["scheduled_courses_diff"] = f"Scheduled {len(scheduled)} courses: {', '.join(sorted(scheduled))}"
     else:
         emit_status("Rebuilding CoursePath")
+
+        # Snapshot before rebuild for diff calculation
+        before_snapshot = snapshot_path(current_course_path)
 
         # Get new recommended course codes
         new_recommended_codes = {rec.course_code for rec in filtered_recs}
@@ -424,6 +463,13 @@ async def execute_rebuild_tool(
 
         # Update course bank with new courses
         course_bank = current_course_path.course_bank
+
+        # TODO: Clear aligned_parameters for courses that were previously recommended
+        # but are no longer in recommended_courses. Currently, these courses retain
+        # their old aligned_parameters, which causes the frontend to show both the
+        # prereq message AND the aligned parameters badge (inconsistent UI).
+        # Fix: iterate over course_bank and clear aligned_parameters for courses
+        # not in new_recommended_codes. When doing so, additionally correct the course_type for the course.
 
         for course in current_course_path.recommended_courses:
             # (Re)construct course object
@@ -460,6 +506,11 @@ async def execute_rebuild_tool(
 
         # Rebuild course path
         current_course_path.rebuild()
+
+        # Compute diff between before and after rebuild
+        diff = compute_diff(before_snapshot, current_course_path)
+        output["scheduled_courses_diff"] = summarize_diff(diff) if any(diff.values()) else "No changes to scheduled courses."
+
         course_path_id = await student_db_service.save_course_path(
             current_course_path,
             config["configurable"]["user_id"]
@@ -486,9 +537,7 @@ async def rebuild_course_path_node(state: DreamPathAgentState, config, *, writer
     formatted_output = format_rebuild_course_path_output(output)
 
     # DEBUG: Save formatted output to file
-    with open("/tmp/rebuild_output.txt", "w") as f:
-        f.write(formatted_output)
-        print("📝 DEBUG: Saved formatted output to /tmp/rebuild_output.txt")
+    _save_context_to_file(formatted_output, "rebuild_output")
 
     tool_result = {
         "role": "assistant",
@@ -588,9 +637,7 @@ async def test_execute_rebuild_tool():
         formatted_output = format_rebuild_course_path_output(output)
 
         # DEBUG: Save formatted output to file
-        with open("/tmp/rebuild_output.txt", "w") as f:
-            f.write(formatted_output)
-            print("📝 DEBUG: Saved formatted output to /tmp/rebuild_output.txt")
+        _save_context_to_file(formatted_output, "rebuild_output")
 
     except Exception as e:
         print(f"\n❌ ERROR: {e}")

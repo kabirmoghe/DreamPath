@@ -262,6 +262,7 @@ async def _handle_input(user_input: UserInput, agent: AgentGraph) -> tuple[dict[
         configurable=configurable,
         run_id=run_id,
         callbacks=callbacks,
+        recursion_limit=75,  # Increase from default 25 to handle complex multi-step operations
     )
 
     # NEW: Initialize dreampath config if this is the dreampath agent

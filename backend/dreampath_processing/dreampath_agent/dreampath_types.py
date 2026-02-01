@@ -151,6 +151,7 @@ class RebuildCoursePathOutput(BaseModel):
     search_summary: str | None = Field(default=None)
     updated_recommended_courses: list[CourseRec] | None = Field(default=None)
     course_path_update_mode: Literal["new", "update_existing"] | None = Field(default=None)
+    scheduled_courses_diff: str | None = Field(default=None, description="Summary of changes to scheduled courses")
 
 # ================================
 # DreamPath Agent

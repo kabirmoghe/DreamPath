@@ -109,7 +109,7 @@ CREATE INDEX idx_threads_last_message_at ON threads(last_message_at DESC);
 CREATE INDEX idx_threads_active ON threads(user_id, is_archived) WHERE is_archived = FALSE;
 
 -- ============================================================================
--- 5. ROW LEVEL SECURITY (RLS)
+-- 5. RLS
 -- ============================================================================
 -- Enable RLS on all custom tables to ensure users can only access their own data
 -- Note: LangGraph tables (checkpoints, etc.) don't have user_id columns,
@@ -206,10 +206,10 @@ END $$;
 COMMIT;
 
 -- ============================================================================
--- NOTES FOR PRODUCTION
+-- NOTES FOR PROD
 -- ============================================================================
 --
--- 1. Row Level Security (RLS) - ALREADY APPLIED ✓
+-- 1. RLS - ALREADY APPLIED ✓
 --    RLS is enabled on all 4 custom tables with policies that ensure
 --    users can only access their own data via auth.uid()::TEXT = user_id
 --
