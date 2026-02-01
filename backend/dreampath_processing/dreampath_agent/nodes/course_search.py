@@ -11,7 +11,7 @@ from dreampath_processing.dreampath_agent.dreampath_types import (
 )
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
 from dreampath_processing.dreampath_agent.search_agent.graph import build_search_agent
-from dreampath_processing.dreampath_agent.search_agent.nodes.finalizer import (
+from dreampath_processing.dreampath_agent.search_agent.nodes.summarize import (
     render_search_summary_markdown,
 )
 from dreampath_processing.dreampath_agent.search_agent.search_types import SearchAgentState

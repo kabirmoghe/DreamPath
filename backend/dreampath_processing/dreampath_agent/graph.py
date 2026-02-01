@@ -76,22 +76,15 @@ def build_dreampath_graph(
         "finalize": "finalize",
     })
 
-    # Sub-nodes loop back to orchestrator
+    # Sub-nodes loop back to orchestrator so it can evaluate results and decide next action
+    def sub_node_router(state: DreamPathAgentState):
+        return state.route or "orchestrator"
+
     g.add_edge("course_search", "orchestrator")
     g.add_edge("plan_builder", "orchestrator")
-
-    # course_path has special routing: loops to itself while processing worklist,
-    # then goes directly to finalize when done (bypassing orchestrator to avoid
-    # unnecessary additional cycles that could hit recursion limit)
-    def course_path_router(state: DreamPathAgentState):
-        if state.route == "course_path":
-            return "course_path"  # Still processing worklist
-        # Worklist complete - go directly to finalize
-        return "finalize"
-
-    g.add_conditional_edges("course_path", course_path_router, {
+    g.add_conditional_edges("course_path", sub_node_router, {
         "course_path": "course_path",
-        "finalize": "finalize",
+        "orchestrator": "orchestrator",
     })
 
     g.add_edge("modify_profile", "orchestrator")

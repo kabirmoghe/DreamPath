@@ -1,5 +1,5 @@
 """
-Finalizer node for search agent.
+Summarize node for search agent.
 
 Generates structured summary from completed tasks. The render function
 can be called separately with different modes (full vs top_results_only).
@@ -263,10 +263,10 @@ def _render_medium(
 
 
 # ============================================
-# FINALIZER NODE
+# SUMMARIZE NODE
 # ============================================
 
-def finalize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
+def summarize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
     """
     Generate structured summary from search execution.
 
@@ -277,7 +277,7 @@ def finalize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
     to markdown as needed, with appropriate mode (full vs top_results_only).
     """
 
-    print(f"\n[FINALIZER] Generating summary for {len(state.tasks)} tasks...")
+    print(f"\n[SUMMARIZE] Generating summary for {len(state.tasks)} tasks...")
 
     # ============================================
     # BUILD STRUCTURED SUMMARY

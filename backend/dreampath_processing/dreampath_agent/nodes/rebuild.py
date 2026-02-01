@@ -35,7 +35,7 @@ from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_l
 from dreampath_processing.dreampath_agent.nodes.course_search import invoke_search_agent
 from dreampath_processing.dreampath_agent.nodes.modify_profile import modify_student_profile
 from dreampath_processing.dreampath_agent.nodes.prompts import COURSE_REC_SYNTHESIS_SYS
-from dreampath_processing.dreampath_agent.search_agent.nodes.finalizer import (
+from dreampath_processing.dreampath_agent.search_agent.nodes.summarize import (
     render_search_summary_markdown,
 )
 from langchain_core.messages import AIMessage
