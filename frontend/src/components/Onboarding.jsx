@@ -434,11 +434,11 @@ const introSlides = [
   },
   {
     icon: Brain,
-    content: "Powered by an intelligent AI system that's hyper-knowledgeable about emerging careers and changing market landscapes, DreamPath stays <strong>up to date</strong> about how the professional world is changing."
+    content: "Powered by an intelligent AI system that's knowledgeable about emerging careers and changing market landscapes, DreamPath stays <strong>up to date</strong> about how the professional world is changing."
   },
   {
     icon: Shield,
-    content: "Worried about the impact of AI automation, or new qualifications for a once tried-and-true role? <strong>DreamPath knows all.</strong>"
+    content: "Worried about the impact of AI automation, or new qualifications for a once tried-and-true role? <strong>DreamPath's got you covered.</strong>"
   },
   {
     icon: Building2,
@@ -451,12 +451,12 @@ const introSlides = [
       {
         icon: Map,
         title: "CoursePath",
-        description: "Your personalized academic roadmap, optimized for your goals"
+        description: "Your personalized academic roadmap to equip you with the right knowledge and skills."
       },
       {
         icon: Users,
         title: "ClubPath",
-        description: "Discover activities and communities that align with your interests"
+        description: "Discover activities and groups that help you acquire valuable experience and interactions."
       }
     ]
   },
@@ -467,7 +467,7 @@ const introSlides = [
   {
     icon: null,
     isCompassSlide: true,
-    content: "Meet <strong>Compass</strong> — your conversational advising assistant that helps you brainstorm, make changes, and engage in structured career pivots."
+    content: "Meet <strong>Compass</strong> — the conversational advising assistant that helps you brainstorm, make changes, and engage in structured career pivots."
   },
   {
     icon: null,
@@ -715,7 +715,7 @@ function Onboarding() {
       return (
         <div className={`intro-slide ${slideClass}`}>
           <div className="intro-content" style={{ marginBottom: '8px' }}>
-            These resources power your personalized <strong>paths</strong>:
+            These resources power your <strong>personalized path</strong>:
           </div>
           <div className="intro-feature-box">
             {slide.features.map((feature, idx) => (

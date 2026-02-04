@@ -272,6 +272,22 @@ function Dashboard() {
                       variant="outline-primary"
                       size="sm"
                       onClick={() => setIsEditing(true)}
+                      style={{
+                        fontFamily: 'Lora, serif',
+                        border: '1px solid #8A6BC1',
+                        color: '#8A6BC1',
+                        background: 'transparent',
+                        borderRadius: 8,
+                        transition: 'all 0.2s ease',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = '#8A6BC1';
+                        e.currentTarget.style.color = 'white';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'transparent';
+                        e.currentTarget.style.color = '#8A6BC1';
+                      }}
                     >
                       Edit
                     </Button>
@@ -468,19 +484,47 @@ function Dashboard() {
                   {isEditing && (
                     <div className="d-flex justify-content-end gap-2">
                       <Button
-                        variant="secondary"
+                        variant="outline-secondary"
                         onClick={() => {
                           setEditProfile(profile);
                           setIsEditing(false);
                         }}
-                        style={{ minWidth: 100 }}
+                        style={{
+                          minWidth: 100,
+                          fontFamily: 'Lora, serif',
+                          border: '1px solid #d6cdea',
+                          color: '#7b7b93',
+                          background: 'transparent',
+                          borderRadius: 8,
+                          transition: 'all 0.2s ease',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = '#f5f3f8';
+                          e.currentTarget.style.borderColor = '#c4b8d9';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = 'transparent';
+                          e.currentTarget.style.borderColor = '#d6cdea';
+                        }}
                       >
                         Cancel
                       </Button>
                       <Button
-                        variant="primary"
                         onClick={handleSaveProfile}
-                        style={{ minWidth: 100 }}
+                        style={{
+                          minWidth: 100,
+                          fontFamily: 'Lora, serif',
+                          background: '#8A6BC1',
+                          border: 'none',
+                          borderRadius: 8,
+                          transition: 'all 0.2s ease',
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = '#7559a8';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = '#8A6BC1';
+                        }}
                       >
                         Save
                       </Button>

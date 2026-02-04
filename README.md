@@ -2,11 +2,10 @@
 
 An AI platform that equips students with the tools to achieve their goals and maximize career readiness by making the most of the college experience.
 
-Outfitted with an agentic system that generates personalized, dynamic recommendations **grounded in successful alumni trajectories** and **real time data**, DreamPath guides students across 3 core college pillars:
+Outfitted with an agentic system that generates personalized, dynamic recommendations **grounded in career success signals** and **real time data**, DreamPath guides students across 2 core college pillars:
 
 1. **Courses** — the courses you take, within and outside of your major
 2. **Clubs** — your on-campus extracurricular activities
-3. **Career** – your personal alumni network
 
 ## Architecture
 
@@ -16,7 +15,7 @@ Compass takes action via tools (e.g, hybrid search, modifying students' profiles
 
 > *Stateless system implemented in LangGraph with custom context handling and hybrid vector search in Weaviate.*
 
-![DreamPath Architecture](media/compass_architecture.svg)
+![DreamPath Architecture](media/simplified_architecture.png)
 
 ## Infrastructure / Stack
 
@@ -46,7 +45,7 @@ backend/
 ├── agents/                    # Agent service toolkit integration
 ├── dreampath_processing/      # Core DreamPath logic
 │   ├── dreampath_agent/       # Main agent (stateless orchestrator)
-│   │   └── agent_stateless.py # Active node implementations
+│   │   └── search_agent/      # Course search sub-agent
 │   ├── courses/               # Course path building & scheduling
 │   │   └── coursepath_agent/  # Course path sub-agent
 │   ├── database/              # PostgreSQL services & schema
@@ -61,6 +60,46 @@ frontend/
 │   ├── lib/                   # API client, utilities
 │   └── styles/                # CSS (base, components, course path)
 ```
+
+## Development Setup
+
+### Prerequisites
+
+- **Python 3.12** (NOT 3.11, NOT 3.13 - LangChain has import issues with 3.13)
+- **Node.js 18+** (for frontend)
+- **Docker** (for local infrastructure)
+- **uv** (Python package manager) - `pip install uv` or `brew install uv`
+- **OpenAI API Key** (required for Weaviate embeddings)
+
+### Quick Start
+
+```bash
+# 1. Clone and install dependencies
+git clone https://github.com/kabirmoghe/dreampath.git
+cd dreampath
+uv sync
+
+# 2. Create .env file with API keys and config (ask maintainer for template)
+
+# 3. Start infrastructure (Weaviate + PostgreSQL)
+docker compose up -d
+
+# 4. Setup database schema
+python backend/setup_database.py
+
+# 5. Import Weaviate data (see backend/README.md for details)
+python backend/import_weaviate_data.py
+
+# 6. Start backend
+python backend/run_service.py
+# API at http://localhost:8080/docs
+
+# 7. Start frontend (new terminal)
+cd frontend && npm install && npm run dev
+# App at http://localhost:5173
+```
+
+See [backend/README.md](backend/README.md) for Weaviate data setup details.
 
 ## Acknowledgments
 

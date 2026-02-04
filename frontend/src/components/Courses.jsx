@@ -45,6 +45,8 @@ function Courses() {
   const [detailsPanelVisible, setDetailsPanelVisible] = useState(false);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isUpdatingTerm, setIsUpdatingTerm] = useState(false);
+  const [typedText, setTypedText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
   const detailsPanelRef = useRef(null);
   const scrollContainerRef = useRef(null);
   const hasAutoScrolled = useRef(false);
@@ -106,6 +108,38 @@ function Courses() {
       document.body.style.overflow = '';
     };
   }, [detailsPanelVisible]);
+
+  // Typing animation effect
+  useEffect(() => {
+    const fullText = 'Courses';
+    let currentIndex = 0;
+    setTypedText(''); // Reset
+    setShowCursor(true); // Reset cursor visibility
+
+    // Cursor blinking effect
+    const cursorInterval = setInterval(() => {
+      setShowCursor((prev) => !prev);
+    }, 500);
+
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setTypedText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+        // Let cursor blink for 1.5 seconds, then stop and hide
+        setTimeout(() => {
+          clearInterval(cursorInterval);
+          setShowCursor(false);
+        }, 1500);
+      }
+    }, 50); // 50ms per character
+
+    return () => {
+      clearInterval(typingInterval);
+      clearInterval(cursorInterval);
+    };
+  }, []);
 
   const handleTabChange = (tab) => setActiveTab(tab);
 
@@ -564,13 +598,31 @@ function Courses() {
       return <p className="text-muted">No course recommendations available.</p>;
     }
 
-    // Sort courses: scheduled courses first, then unscheduled
+    // Priority scoring based on aligned_parameters (same as rebuild node)
+    // 2 points: both interests AND post_grad
+    // 1 point: either interests OR post_grad
+    // 0 points: only career or no alignment
+    const getPriorityScore = (course) => {
+      const aligned = course.aligned_parameters || [];
+      const hasInterests = aligned.includes('interests');
+      const hasPostGrad = aligned.includes('post_grad');
+      if (hasInterests && hasPostGrad) return 2;
+      if (hasInterests || hasPostGrad) return 1;
+      return 0;
+    };
+
+    // Sort: scheduled first, then by priority score within each group
     const sortedCourses = [...courses].sort((a, b) => {
+      // Primary: scheduled courses on top
       const aScheduled = a.term_idx !== null && a.term_idx !== undefined;
       const bScheduled = b.term_idx !== null && b.term_idx !== undefined;
       if (aScheduled && !bScheduled) return -1;
       if (!aScheduled && bScheduled) return 1;
-      return 0;
+
+      // Secondary: sort by priority score within each group
+      const aScore = getPriorityScore(a);
+      const bScore = getPriorityScore(b);
+      return bScore - aScore;
     });
 
     return (
@@ -648,7 +700,10 @@ function Courses() {
       <LeftSidebar />
       <div className="content-with-sidebar">
         <Container className="py-4">
-        <h2 className="mb-4" style={{ fontFamily: 'Lora, serif', fontWeight: 400, fontSize: 32, letterSpacing: 0.5, color: '#7b7b93' }}>Courses</h2>
+        <h2 className="mb-4" style={{ fontFamily: 'Lora, serif', fontWeight: 400, fontSize: 32, letterSpacing: 0.5, color: '#7b7b93' }}>
+          {typedText}
+          <span style={{ opacity: showCursor ? 1 : 0, transition: 'opacity 0.1s' }}>|</span>
+        </h2>
         <Card className="shadow-sm border-0" style={{ borderRadius: 18, background: '#fff', padding: 0 }}>
           <Card.Body style={{ padding: '1rem' }}>
             {loading ? (
@@ -717,7 +772,7 @@ function Courses() {
                   </Tab.Pane>
                   <Tab.Pane eventKey="major">
                     <div className="tab-description">
-                      <p style={{ margin: 0, textAlign: 'center', width: '100%' }}>Personalized major courses in your course path.</p>
+                      <p style={{ margin: 0, textAlign: 'center', width: '100%' }}>Personalized major courses in your CoursePath.</p>
                     </div>
                     {renderCourseList(getMajorCourses(), 'major')}
                   </Tab.Pane>
@@ -1061,7 +1116,7 @@ function Courses() {
           border-radius: 8px 0 0 8px;
           box-shadow: -4px 2px 12px rgba(0, 0, 0, 0.1);
           cursor: default;
-          transition: all 0.25s ease;
+          transition: all 0.35s ease-out;
           border: 1px solid #e0e0e0;
           border-right: none;
           overflow: hidden;
@@ -1085,13 +1140,13 @@ function Courses() {
           max-width: 0;
           overflow: hidden;
           opacity: 0;
-          transition: max-width 0.2s ease, opacity 0.2s ease;
+          transition: max-width 0.3s ease-out, opacity 0.25s ease-out;
         }
 
         .side-schedule-tab:hover .side-tab-text {
           max-width: 200px;
           opacity: 1;
-          transition: max-width 0.25s ease, opacity 0.2s ease 0.2s;
+          transition: max-width 0.35s ease-out, opacity 0.3s ease-out 0.1s;
         }
 
         .side-schedule-tab:hover {
@@ -1512,7 +1567,7 @@ function Courses() {
           border: 1px dashed rgb(237, 232, 245) !important;
           border-radius: 8px;
           background: transparent !important;
-          box-shadow: 0 2px 4px rgb(68 60 86 / 10%)
+          box-shadow: 0 4px 16px rgba(140, 110, 180, 0.13)
           margin: -0.5px 0px;
         }
 

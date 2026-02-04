@@ -8,7 +8,7 @@ const LandingPage = () => {
   const { user } = useAuth();
 
   return (
-    <div className="min-vh-100 bg-light">
+    <div className="min-vh-100 bg-light d-flex flex-column">
       {/* Header/Hero Section */}
       <header className="text-white py-5" style={{ 
         background: '#8A6BC1',
@@ -76,7 +76,7 @@ const LandingPage = () => {
                   <Brain size={24} color="#8A6BC1" />
                 </div>
                 <h3 className="h4 mb-3">Deep Industry Knowledge</h3>
-                <p className="text-muted">Grounded in research about careers, changing specifications, and other dynamic factors to make accurate, actionable recommendations.</p>
+                <p className="text-muted">Grounded in research about careers, changing qualifications, and other dynamic factors to make accurate, actionable recommendations.</p>
               </div>
             </Col>
             <Col md={4} className="mb-4">
@@ -85,7 +85,7 @@ const LandingPage = () => {
                   <BookOpen size={24} color="#8A6BC1" />
                 </div>
                 <h3 className="h4 mb-3">Smart Course Planning</h3>
-                <p className="text-muted">Get personalized course recommendations based on your interests, major requirements, and career goals.</p>
+                <p className="text-muted">Curates personalized course recommendations based on your interests, major requirements, and career goals.</p>
               </div>
             </Col>
             <Col md={4} className="mb-4">
@@ -94,7 +94,7 @@ const LandingPage = () => {
                   <Users size={24} color="#8A6BC1" />
                 </div>
                 <h3 className="h4 mb-3">Club Involvement</h3>
-                <p className="text-muted">Discover a range student organizations and activities that align with your interests and enhance your college experience.</p>
+                <p className="text-muted">Connected to student organizations and activities to help you acquire valuable real-world experience.</p>
               </div>
             </Col>
           </Row>
@@ -102,7 +102,7 @@ const LandingPage = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-dark text-white py-4">
+      <footer className="bg-dark text-white py-4 mt-auto">
         <Container>
           <Row className="align-items-center">
             <Col md={6} className="mb-3 mb-md-0">
