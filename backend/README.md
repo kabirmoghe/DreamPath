@@ -9,65 +9,57 @@ FastAPI service with LangGraph-based agent for DreamPath backend processing.
 docker compose up -d
 
 # 2. Setup PostgreSQL schema (first time only)
-python backend/setup_database.py
+uv run python backend/setup_database.py
 
-# 3. Import Weaviate data (see "Weaviate Data Setup" below)
-python backend/import_weaviate_data.py
+# 3. Setup Weaviate data (see "Weaviate Data Setup" below)
+uv run python backend/setup_weaviate.py
 
 # 4. Run server
-python backend/run_service.py
+uv run python backend/run_service.py
 # API at http://localhost:8080/docs
 ```
 
 ## Weaviate Data Setup
 
-The course search functionality requires course data in Weaviate. Data files are **not in git** (too large).
+The course search functionality requires course data in Weaviate.
 
 ### Prerequisites
 
 - Docker running (`docker compose up -d`)
-- OpenAI API key in `.env` (required for embeddings)
+- OpenAI API key in `.env` (required for `text2vec-openai` embeddings)
 
-### Option A: Import from Export (Recommended)
-
-If you have a `weaviate_export/` directory:
+### Local Development
 
 ```bash
-python backend/import_weaviate_data.py
+# Create Course + Major collections and ingest from CSVs
+uv run python backend/setup_weaviate.py
+
+# To drop and recreate collections from scratch
+uv run python backend/setup_weaviate.py --recreate
 ```
 
-This imports pre-computed embeddings - fast and no API costs.
-
-### Option B: Ingest from CSV
-
-If you have raw CSV data files in `dreampath_processing/courses/data/`:
-
-```bash
-# Ingest courses (generates embeddings via OpenAI - costs ~$2-5)
-python backend/dreampath_processing/courses/data_retrieval/ingest_weaviate_courses_v4.py \
-  backend/dreampath_processing/courses/data/all_courses_with_reviews.csv --recreate
-
-# Ingest majors
-python backend/dreampath_processing/courses/data_retrieval/ingest_weaviate_majors_v4.py \
-  backend/dreampath_processing/courses/data/dartmouth_majors.csv --recreate
-```
+This reads from the CSV data files in `dreampath_processing/courses/data/` and generates
+embeddings via OpenAI. Safe to re-run — skips ingestion if collections already have data.
 
 ### Required Data Files
 
-| File | Size | Purpose | How to Get |
-|------|------|---------|------------|
-| `weaviate_export/` | ~50MB | Pre-computed embeddings | Request from maintainer |
-| **OR** | | | |
-| `all_courses_with_reviews.csv` | ~315MB | Raw course data | Request from maintainer |
-| `dartmouth_majors.csv` | ~11KB | Major definitions | Request from maintainer |
+| File | Location | Purpose | How to Get |
+|------|----------|---------|------------|
+| `all_courses_with_reviews.csv` | `courses/data/` | Course catalog + review data | Request from maintainer |
+| `dartmouth_majors.csv` | `courses/data/` | Major definitions | In repo |
 
-### Exporting Data (For Sharing)
+### Advanced: Individual Ingestion
 
-To create an export:
+The underlying ingest scripts can be run individually if needed:
 
 ```bash
-python backend/export_weaviate_data.py
-# Creates weaviate_export/ with course_data.json, major_data.json, and schemas
+# Courses only
+uv run python backend/dreampath_processing/courses/data_retrieval/ingest_weaviate_courses_v4.py \
+  backend/dreampath_processing/courses/data/all_courses_with_reviews.csv --recreate
+
+# Majors only
+uv run python backend/dreampath_processing/courses/data_retrieval/ingest_weaviate_majors_v4.py \
+  backend/dreampath_processing/courses/data/dartmouth_majors.csv --recreate
 ```
 
 ### Verify Weaviate Data
@@ -76,8 +68,8 @@ python backend/export_weaviate_data.py
 # Check Weaviate is ready
 curl http://localhost:8080/v1/.well-known/ready
 
-# Check collection counts (from Python)
-python -c "
+# Check collection counts
+uv run python -c "
 import weaviate
 client = weaviate.connect_to_local()
 print('Courses:', client.collections.get('Course').aggregate.over_all(total_count=True))
@@ -92,9 +84,10 @@ client.close()
 backend/
 ├── run_service.py              # Entry point - starts FastAPI server
 ├── run_agent.py                # Direct agent execution (testing)
-├── setup_database.py           # Database schema setup
-├── import_weaviate_data.py     # Course data import to Weaviate
-├── export_weaviate_data.py     # Export Weaviate data for sharing
+├── setup_database.py           # PostgreSQL schema setup (local dev)
+├── setup_weaviate.py           # Weaviate collection + data setup (local dev)
+├── import_weaviate_data.py     # (Legacy) Cloud Weaviate import from JSON exports
+├── export_weaviate_data.py     # (Legacy) Export Weaviate data to JSON
 │
 ├── agents/                     # Agent registry and loading
 │   └── dreampath_agent.py      # Service layer entry point
@@ -146,15 +139,15 @@ backend/
 
 ```bash
 # Run agent directly (testing without API)
-python backend/run_agent.py
+uv run python backend/run_agent.py
 
 # Test search agent in isolation
 cd backend/dreampath_processing/dreampath_agent/search_agent
-python test_graph.py
+uv run python test_graph.py
 
 # Run linting
-ruff check backend/
+uv run ruff check backend/
 
 # Run type checking
-mypy backend/
+uv run mypy backend/
 ```

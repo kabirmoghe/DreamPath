@@ -85,13 +85,13 @@ uv sync
 docker compose up -d
 
 # 4. Setup database schema
-python backend/setup_database.py
+uv run python backend/setup_database.py
 
-# 5. Import Weaviate data (see backend/README.md for details)
-python backend/import_weaviate_data.py
+# 5. Setup Weaviate data (creates collections + ingests course/major CSVs)
+uv run python backend/setup_weaviate.py
 
 # 6. Start backend
-python backend/run_service.py
+uv run python backend/run_service.py
 # API at http://localhost:8080/docs
 
 # 7. Start frontend (new terminal)
@@ -99,7 +99,7 @@ cd frontend && npm install && npm run dev
 # App at http://localhost:5173
 ```
 
-See [backend/README.md](backend/README.md) for Weaviate data setup details.
+See [backend/README.md](backend/README.md) for more Weaviate data details.
 
 ## Acknowledgments
 
