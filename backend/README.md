@@ -95,6 +95,9 @@ backend/
 ├── service/                    # FastAPI routes and middleware
 │   ├── service.py              # Main API routes
 │   └── coursepath_routes.py    # Course path endpoints
+│   └── profile_routes.py       # Student profile endpoints
+│   └── majors_routes.py        # Major data endpoints
+│   └── thread_routes.py        # Compass thread endpoints
 │
 ├── dreampath_processing/       # Core domain logic
 │   ├── dreampath_agent/        # Main agent implementation
@@ -108,8 +111,8 @@ backend/
 │   │   │   ├── modify_profile.py
 │   │   │   ├── rebuild.py
 │   │   │   ├── finalize.py
-│   │   │   └── prompts/        # Prompt templates
-│   │   └── search_agent/       # Course search subagent
+│   │   │   └── prompts/        # Context versions + prompt templates
+│   │   └── search_agent/       # Course search sub-agent
 │   │       ├── graph.py
 │   │       ├── nodes/
 │   │       └── tools/
@@ -117,7 +120,7 @@ backend/
 │   ├── courses/                # Course scheduling logic
 │   │   ├── schedule_modules/   # CoursePath, Course classes
 │   │   ├── coursepath_agent/   # Course operation sub-agent
-│   │   └── data_retrieval/     # Weaviate ingestion & search
+│   │   └── data_retrieval/     # Weaviate ingestion & search, manual sanity-check Streamlit viewer
 │   │       ├── ingest_weaviate_courses_v4.py
 │   │       ├── ingest_weaviate_majors_v4.py
 │   │       └── weaviate_course_service.py
@@ -125,9 +128,9 @@ backend/
 │   ├── database/               # PostgreSQL integration
 │   │   ├── connection.py       # Connection pooling
 │   │   ├── student_service.py  # Profile CRUD
-│   │   └── serializers.py      # DB ↔ Pydantic conversion
+│   │   └── serializers.py      # DB ↔ Pydantic
 │   │
-│   ├── clubs/                  # Club matching (future)
+│   ├── clubs/                  # Club pillar (future)
 │   └── modules/                # Shared utilities
 │
 ├── core/                       # Settings and LLM config

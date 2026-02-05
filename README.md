@@ -11,7 +11,7 @@ Outfitted with an agentic system that generates personalized, dynamic recommenda
 
 DreamPath makes use of *Compass*, an agentic advising system to provide a means of long-term communication with students to factor in changes to their interests, goals, and lives and make dynamic, adaptive recommendations for their bast path forward.
 
-Compass takes action via tools (e.g, hybrid search, modifying students' profiles, building a modification plan, executing a full-scale upheaval of recommendations for things like career pivots) and subagents (e.g., dedicated mini-agent for executing 'CoursePath' modifications). Tool and agent execution / results, student data, and running summaries are dynamically engineered into agent nodes' context for greater awareness of relevant information and efficiency.
+Compass takes action via tools (e.g, hybrid search, modifying students' profiles, building a modification plan, executing a full-scale upheaval of recommendations for things like career pivots) and sub-agents (e.g., for search and executing CoursePath modifications). Tool and agent execution / results, student data, and running summaries are dynamically engineered into agent nodes' context for greater awareness of relevant information and efficiency. Sub-agents additionally help abstract away low-level operations and minimize unnecessary rot for Compass' orchestrator.
 
 > *Stateless system implemented in LangGraph with custom context handling and hybrid vector search in Weaviate.*
 
@@ -22,7 +22,7 @@ Compass takes action via tools (e.g, hybrid search, modifying students' profiles
 ### Backend
 - **Framework**: FastAPI
 - **Agent Orchestration**: LangGraph (custom node-based orchestration with handoff routing)
-- **LLM Providers**: OpenAI, Anthropic
+- **(Current) LLM Providers**: OpenAI, Anthropic
 - **Vector Database**: Weaviate v4 (hybrid search with BM25 + embeddings)
 - **Database**: PostgreSQL (Supabase transaction pooler)
 
@@ -31,9 +31,8 @@ Compass takes action via tools (e.g, hybrid search, modifying students' profiles
 ### Frontend 
 - **Framework**: React + Vite
 - **State Management**: React Query + Context API
-- **Authentication**: Supabase Auth (JWT-based)
-- **Styling**: Custom CSS with CSS variables (purple/blue gradient theme)
-- **API Client**: Axios with streaming support
+- **Authentication**: JWT-based Supabase Auth
+- **API Client**: Axios w/ streaming support
 
 > *Hosted on Vercel*
 

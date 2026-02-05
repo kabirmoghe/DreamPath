@@ -442,7 +442,7 @@ const introSlides = [
   },
   {
     icon: Building2,
-    content: "With this knowledge in its back pocket, DreamPath is plugged into your school's resources in real time: <strong>Courses, clubs, research, and more.</strong>"
+    content: "With this knowledge in hand, DreamPath is plugged into school resources in real time — every <strong>course</strong>, <strong>club</strong>, and <strong>research group</strong> you can think of."
   },
   {
     icon: null, // Special slide with two features
@@ -451,7 +451,7 @@ const introSlides = [
       {
         icon: Map,
         title: "CoursePath",
-        description: "Your personalized academic roadmap to equip you with the right knowledge and skills."
+        description: "Your curated academic roadmap to equip you with the right knowledge and skills."
       },
       {
         icon: Users,
@@ -471,7 +471,7 @@ const introSlides = [
   },
   {
     icon: null,
-    content: "What's next? After telling us a bit about yourself, we'll build your personalized DreamPath.",
+    content: "What's next? After telling us a bit about yourself, we'll build your personalized <strong>DreamPath</strong>.",
     isFinalSlide: true
   }
 ];
@@ -612,7 +612,13 @@ function Onboarding() {
 
   const handleBack = () => {
     setError('');
-    setCurrentStep(currentStep - 1);
+    if (currentStep === 1) {
+      // Go back to intro slides (last slide)
+      setIntroComplete(false);
+      setIntroSlide(introSlides.length - 1);
+    } else {
+      setCurrentStep(currentStep - 1);
+    }
   };
 
   const handleBuildDreamPath = async () => {
@@ -715,7 +721,7 @@ function Onboarding() {
       return (
         <div className={`intro-slide ${slideClass}`}>
           <div className="intro-content" style={{ marginBottom: '8px' }}>
-            These resources power your <strong>personalized path</strong>:
+            These resources power your <strong>personalized journey</strong>:
           </div>
           <div className="intro-feature-box">
             {slide.features.map((feature, idx) => (
@@ -1154,7 +1160,6 @@ function Onboarding() {
                       <Button
                         variant="outline-secondary"
                         onClick={handleBack}
-                        disabled={currentStep === 1}
                         style={{
                           padding: '12px 32px',
                           borderRadius: 10,
@@ -1162,7 +1167,6 @@ function Onboarding() {
                           color: '#8A6BC1',
                           fontWeight: 500,
                           backgroundColor: 'transparent',
-                          opacity: currentStep === 1 ? 0.5 : 1
                         }}
                       >
                         ← Back

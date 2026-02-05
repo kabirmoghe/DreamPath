@@ -49,6 +49,6 @@ else:
 
 rows = [o.properties for o in objs]
 df = pd.DataFrame(rows)
-st.dataframe(df, width='stretch')
+st.dataframe(df)
 
 client.close()
