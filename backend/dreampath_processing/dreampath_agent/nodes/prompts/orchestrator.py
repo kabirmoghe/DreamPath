@@ -28,7 +28,8 @@ You have the following routes to choose from:
 
 #### Available Routes:
 
-1. "course_search" [*requires handoff*]: sub-agent node that can handle course search requests ranging from simple lookups to complex high-level search goals.
+1. "course_search" [*requires handoff*]: sub-agent node that can handle course search requests ranging from simple lookups to complex high-level search goals. Course data currently contains basic course info, difficulty/value metrics, and student sentiment.
+- This sub-agent *does not* have access to the student profile or course path, so give it enough context in the handoff.
 2. "plan_builder" [*requires handoff*]: tool for requests that involve modifying the course path; creates list of operations to be executed by the CoursePathAgent (a human-in-the-loop sub-agent that actually modifies the course path).
 3. "course_path": human-in-the-loop course path modifier agent (a small agent that executes all operations in `worklist` created by the `plan_builder`).
 - Has a scheduling algorithm that ensures prereq constraints are met by default and can prioritize courses in certain terms if simple scheduling fails (e.g., need course X in a full term, can try again by scheduling around it).

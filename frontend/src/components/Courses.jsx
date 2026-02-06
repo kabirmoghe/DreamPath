@@ -550,15 +550,70 @@ function Courses() {
                   </div>
                 )}
 
-                {/* Additional Info */}
-                {courseDetails.prerequisites && (
-                  <div className="modal-section additional-info">
-                    <div className="info-item">
-                      <span className="info-label">Prerequisites:</span>
-                      <span className="info-value">{courseDetails.prerequisites}</span>
-                    </div>
-                  </div>
-                )}
+                {/* Additional Info - Prerequisites */}
+                {(() => {
+                  // Check if prereq_tree exists and has content
+                  const prereqTree = courseDetails.prereq_tree;
+                  const courseCode = courseDetails.course_code;
+
+                  if (prereqTree && courseCode && prereqTree[courseCode]) {
+                    // Extract direct children from prereq_tree
+                    const directChildren = prereqTree[courseCode];
+                    if (Array.isArray(directChildren) && directChildren.length > 0) {
+                      // Each child is an object like { "COSC10": [...] }
+                      const prereqItems = directChildren
+                        .map(child => {
+                          const code = Object.keys(child)[0];
+                          if (!code) return null;
+                          const prereqCourse = coursePathData?.course_bank?.[code];
+                          if (prereqCourse && prereqCourse.term_idx !== null && prereqCourse.term_idx !== undefined) {
+                            return {
+                              code,
+                              termIdx: prereqCourse.term_idx,
+                              courseType: prereqCourse.course_type || 'other'
+                            };
+                          }
+                          return null;
+                        })
+                        .filter(Boolean);
+
+                      if (prereqItems.length > 0) {
+                        return (
+                          <div className="modal-section additional-info">
+                            <div className="info-item prereq-badges-row">
+                              <span className="info-label">Scheduled Prerequisites:</span>
+                              <span className="prereq-badges">
+                                {prereqItems.map((item, idx) => (
+                                  <span
+                                    key={item.code}
+                                    className={`prereq-badge prereq-badge-${item.courseType}`}
+                                    data-tooltip={`Scheduled in Term ${item.termIdx + 1}`}
+                                  >
+                                    {item.code}
+                                  </span>
+                                ))}
+                              </span>
+                            </div>
+                          </div>
+                        );
+                      }
+                    }
+                  }
+
+                  // Fallback: show raw prerequisites text if available
+                  if (courseDetails.prerequisites) {
+                    return (
+                      <div className="modal-section additional-info">
+                        <div className="info-item">
+                          <span className="info-label">Prerequisites:</span>
+                          <span className="info-value">{courseDetails.prerequisites}</span>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  return null;
+                })()}
               </>
             ) : (
               <div className="no-details">
@@ -1043,7 +1098,7 @@ function Courses() {
           max-width: 90vw;
           max-height: 85vh;
           background: white;
-          border-radius: 20px;
+          border-radius: 10px;
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
           z-index: 2001;
           opacity: 0;
@@ -1393,7 +1448,7 @@ function Courses() {
           display: flex;
           align-items: center;
           gap: 3px;
-          padding: 8px 14px;
+          padding: 6px 12px;
           background: white;
           border-radius: 10px;
           box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -1403,6 +1458,9 @@ function Courses() {
           font-style: italic;
           color: #555;
         }
+          /*    background: #e8f4e9;
+    padding: 1px 6px;
+    border-radius: 4px;*/
 
         .aligned-param-icon {
           width: 22px;
@@ -1526,6 +1584,67 @@ function Courses() {
 
         .info-value {
           color: #666;
+        }
+
+        /* Prerequisite badges */
+        .prereq-badges-row {
+          flex-wrap: wrap;
+          align-items: center;
+        }
+
+        .prereq-badges {
+          display: flex;
+          gap: 6px;
+          flex-wrap: wrap;
+        }
+
+        .prereq-badge {
+          padding: 1px 5px;
+          border-radius: 4px;
+          font-size: 12px;
+          font-weight: 500;
+          position: relative;
+          cursor: default;
+        }
+
+        .prereq-badge-major {
+          background: #e8dced;
+          color:rgb(77, 72, 86);
+        }
+
+        .prereq-badge-complementary {
+          background: #dce8ed;
+          color:rgb(66, 77, 84);
+        }
+
+        .prereq-badge-other {
+          background: #e8e8e8;
+          color: #555;
+        }
+
+        .prereq-badge::after {
+          content: attr(data-tooltip);
+          position: absolute;
+          bottom: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          margin-bottom: 6px;
+          padding: 5px 10px;
+          background: #333;
+          color: #fff;
+          font-size: 11px;
+          white-space: nowrap;
+          border-radius: 4px;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.2s, visibility 0.2s;
+          pointer-events: none;
+          z-index: 10;
+        }
+
+        .prereq-badge:hover::after {
+          opacity: 1;
+          visibility: visible;
         }
 
         .no-details {
