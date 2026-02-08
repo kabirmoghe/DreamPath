@@ -34,6 +34,7 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
   // Mapping of route names to user-friendly messages
   const routeMessages = {
     'course_search': 'Searching Courses',
+    'career_search': 'Understanding Careers',
     'plan_builder': 'Planning CoursePath Modifications',
     'course_path': 'Executing CoursePath Operations',
     'modify_profile': 'Updating Profile',
@@ -504,7 +505,12 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
         parts.push(processedLine);
       }
 
-      elements.push(<div key={`line-${lineIdx}`}>{parts}</div>);
+      // Empty lines become visible paragraph breaks
+      if (processedLine.trim() === '') {
+        elements.push(<div key={`line-${lineIdx}`} style={{ height: '0.5em' }} />);
+      } else {
+        elements.push(<div key={`line-${lineIdx}`}>{parts}</div>);
+      }
     });
 
     return elements;

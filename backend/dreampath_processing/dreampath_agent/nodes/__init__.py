@@ -6,6 +6,7 @@
 __all__ = [
     "orchestrator_node",
     "course_search_node",
+    "career_search_node",
     "plan_builder_node",
     "course_path_node",
     "modify_profile_node",
@@ -21,6 +22,9 @@ def __getattr__(name: str):
     elif name == "course_search_node":
         from .course_search import course_search_node
         return course_search_node
+    elif name == "career_search_node":
+        from .career_search import career_search_node
+        return career_search_node
     elif name == "plan_builder_node":
         from .plan_builder import plan_builder_node
         return plan_builder_node

@@ -14,6 +14,7 @@ from dreampath_processing.dreampath_agent.debug_logger import clear_log_file
 from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
 from dreampath_processing.dreampath_agent.nodes import (
+    career_search_node,
     course_path_node,
     course_search_node,
     finalize_node,
@@ -54,6 +55,7 @@ def build_dreampath_graph(
     # Add nodes
     g.add_node("orchestrator", orchestrator_node)
     g.add_node("course_search", course_search_node)
+    g.add_node("career_search", career_search_node)
     g.add_node("plan_builder", plan_builder_node)
     g.add_node("course_path", course_path_node)
     g.add_node("modify_profile", modify_profile_node)
@@ -69,6 +71,7 @@ def build_dreampath_graph(
 
     g.add_conditional_edges("orchestrator", router, {
         "course_search": "course_search",
+        "career_search": "career_search",
         "plan_builder": "plan_builder",
         "course_path": "course_path",
         "modify_profile": "modify_profile",
@@ -81,6 +84,7 @@ def build_dreampath_graph(
         return state.route or "orchestrator"
 
     g.add_edge("course_search", "orchestrator")
+    g.add_edge("career_search", "orchestrator")
     g.add_edge("plan_builder", "orchestrator")
     g.add_conditional_edges("course_path", sub_node_router, {
         "course_path": "course_path",

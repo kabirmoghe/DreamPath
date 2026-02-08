@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field, constr, field_validator
 
 
 class OrchestratorDecision(BaseModel):
-    route: Literal["course_search", "plan_builder", "course_path", "modify_profile", "rebuild_course_path", "finalize"]
+    route: Literal["course_search", "career_search", "plan_builder", "course_path", "modify_profile", "rebuild_course_path", "finalize"]
     reason: constr(max_length=200)
     handoff: str | None = Field(default=None, description="The handoff message for the next node")
     confidence: float | None = Field(default=None, description="The confidence in the routing decision")
@@ -179,7 +179,7 @@ class DreamPathAgentState(BaseModel):
     turn_messages: list[dict[str, str | dict]] = Field(default_factory=list)
     
     # Routing
-    route: Literal["orchestrator", "course_search", "plan_builder", "course_path", "modify_profile", "rebuild_course_path", "finalize"] | None = Field(default=None)
+    route: Literal["orchestrator", "course_search", "career_search", "plan_builder", "course_path", "modify_profile", "rebuild_course_path", "finalize"] | None = Field(default=None)
     handoff: str | None = Field(default=None)
     
     # Course path operations
