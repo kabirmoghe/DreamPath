@@ -100,6 +100,23 @@ Output:
 Return a list of 5 maps of search parameters according to the provided schema. Each map corresponds to a single search.
 """
 
+PARAMETER_COURSE_SEARCH_GOAL = """A {major} student has the following profile. Your job is to find courses for ONE specific parameter.
+
+## YOUR SEARCH TARGET — {parameter}:
+Student: "{target_value}"
+
+## Background Context (DO NOT search for these — separate search agents handle them):
+{context_block}
+
+# Instructions:
+Search for courses that directly serve the student's **{parameter}** above.
+
+The background context is provided ONLY so you can better interpret the target
+parameter (e.g., knowing interests in "comp bio" clarifies what "research" means
+under Post-Grad Goals). Do NOT create search tasks for topics that appear only in
+the background context — separate, parallel search agents are already covering those.
+"""
+
 # ================================
 # CourseRec Synthesis Prompt
 # ================================
@@ -139,7 +156,7 @@ You should refine the list to **maximize value, relevance, and coverage for the 
 {existing_recommendations}
 
 # Instructions
-1. Review all search results and the existing recommendations
+1. Review all search results and the existing recommendations — search results will naturally include some loosely relevant courses, so be selective and thoughtful
 2. Understand the resulting courses' data (e.g., description, value, etc.)
 3. Then, for each course you recommend:
    - Assign `aligned_parameters` based on which searches returned it:

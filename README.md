@@ -15,7 +15,7 @@ Compass takes action via tools (e.g, hybrid search, modifying students' profiles
 
 > *Stateless system implemented in LangGraph with custom context handling and hybrid vector search in Weaviate.*
 
-![DreamPath Architecture](media/simplified_architecture.png)
+![DreamPath Architecture](media/simplified_architecture_dr.png)
 
 ## Infrastructure / Stack
 

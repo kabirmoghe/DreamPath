@@ -34,7 +34,7 @@ from dreampath_processing.dreampath_agent.dreampath_types import (
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
 from dreampath_processing.dreampath_agent.nodes.course_search import invoke_search_agent
 from dreampath_processing.dreampath_agent.nodes.modify_profile import modify_student_profile
-from dreampath_processing.dreampath_agent.nodes.prompts import COURSE_REC_SYNTHESIS_SYS
+from dreampath_processing.dreampath_agent.nodes.prompts import PARAMETER_COURSE_SEARCH_GOAL, COURSE_REC_SYNTHESIS_SYS
 from dreampath_processing.dreampath_agent.search_agent.nodes.summarize import (
     render_search_summary_markdown,
 )
@@ -291,11 +291,29 @@ async def execute_rebuild_tool(
     # -----------------------------------------------------
     emit_status("Performing deep course search")
 
-    # Build simple, concise goals for each parameter
+    # Build parameter-specific goals with target/context separation
     major = current_profile.major
-    interests_goal = f"{major} student. College interests: '{current_profile.college_interests}'.\nFind relevant courses."
-    post_grad_goal = f"{major} student. Post-grad goals: '{current_profile.post_grad_goals}'.\nFind relevant courses."
-    career_goal = f"{major} student. Career goals: '{current_profile.career_goals}'.\nFind relevant courses."
+    param_map = {
+        "College Interests": current_profile.college_interests,
+        "Post-Grad Goals": current_profile.post_grad_goals,
+        "Career Goals": current_profile.career_goals,
+    }
+
+    def build_goal(target_param: str) -> str:
+        target_value = param_map[target_param]
+        context_lines = [
+            f"- **{p}**: {v}" for p, v in param_map.items() if p != target_param
+        ]
+        return PARAMETER_COURSE_SEARCH_GOAL.format(
+            major=major,
+            parameter=target_param,
+            target_value=target_value,
+            context_block="\n".join(context_lines),
+        )
+
+    interests_goal = build_goal("College Interests")
+    post_grad_goal = build_goal("Post-Grad Goals")
+    career_goal = build_goal("Career Goals")
 
     # DEBUG: Save search goals to files
     with open("/tmp/search_goal_interests.txt", "w") as f:

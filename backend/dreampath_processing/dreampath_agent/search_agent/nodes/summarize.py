@@ -323,6 +323,10 @@ def summarize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
     print(f"  ✓ Summary complete: {completed_count}/{len(state.tasks)} tasks completed")
     print(f"  ✓ Total unique courses: {len(all_unique_courses_set)}")
 
+    # Save structured_summary to file
+    with open("structured_summary.json", "w") as f:
+        f.write(structured_summary.model_dump_json())
+
     # ============================================
     # RETURN STATE UPDATES
     # ============================================

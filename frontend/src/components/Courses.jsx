@@ -197,25 +197,22 @@ function Courses() {
             </Button>
           </div>
         </Card.Body>
-        {hasWindow && (
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '6px',
-              right: '6px',
-              backgroundColor: '#ffe0e0',
-              borderRadius: '50%',
-              width: '22px',
-              height: '22px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 1
-            }}
-          >
-            <Lock size={11} color="#d32f2f" />
-          </div>
-        )}
+        {hasWindow && (() => {
+          const window = course.must_have_window;
+          const startTerm = Math.min(...window) + 1;
+          const endTerm = Math.max(...window) + 1;
+          const tooltipText = startTerm === endTerm
+            ? `Prioritized for Term ${startTerm}`
+            : `Prioritized for Terms ${startTerm} – ${endTerm}`;
+          return (
+            <div
+              className="course-path-lock-circle"
+              data-tooltip={tooltipText}
+            >
+              <Lock size={11} color="#d32f2f" />
+            </div>
+          );
+        })()}
       </Card>
     );
   };
@@ -1262,6 +1259,48 @@ function Courses() {
 
         .side-schedule-tab:hover .priority-full {
           display: inline;
+        }
+
+        .course-path-lock-circle {
+          position: absolute;
+          bottom: 6px;
+          right: 6px;
+          background-color: #ffe0e0;
+          border-radius: 50%;
+          width: 22px;
+          height: 22px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1;
+          cursor: default;
+        }
+
+        .course-path-lock-circle::after {
+          content: attr(data-tooltip);
+          position: absolute;
+          left: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+          margin-left: 8px;
+          padding: 5px 10px;
+          background: #333;
+          color: #fff;
+          font-family: 'Lora', serif;
+          font-size: 11px;
+          font-weight: 500;
+          white-space: nowrap;
+          border-radius: 4px;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.2s, visibility 0.2s;
+          pointer-events: none;
+          z-index: 10;
+        }
+
+        .course-path-lock-circle:hover::after {
+          opacity: 1;
+          visibility: visible;
         }
 
         /* Course Header Section */
