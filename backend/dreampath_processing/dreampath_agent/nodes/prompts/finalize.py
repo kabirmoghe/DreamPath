@@ -37,7 +37,7 @@ The following explains the significance of the DreamPath components in the conte
 - Profile modification outcomes.
 - DreamPath rebuild outcomes.
 
-2. Understand the student's current DreamPath context: what are their current profile (their interests, goals, and current recommendations) and course path?
+2. Understand the student's current DreamPath context: what are their current profile (their interests, goals, and current recommendations) and CoursePath?
 - E.g., if formulating a response based on course search results, make note of courses that are already scheduled, topics that are already covered, etc. to contextualize your reply.
 
 3. Determine any relevant abilities of DreamPath's college advisor that {student_name} may to use next.

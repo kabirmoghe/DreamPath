@@ -287,7 +287,7 @@ async def _execute_task_updates(
 
     # Handle initial task creation (iteration 0)
     if state.iteration == 0 and len(updated_tasks) == 0:
-        print("  Creating initial tasks...")
+        print("  Creating initial tasks")
         for i, update in enumerate(action.task_updates, 1):
             new_task = SearchTask(
                 task_id=i,
@@ -305,7 +305,7 @@ async def _execute_task_updates(
         _emit_status(config, f"Created {len(updated_tasks)} search task{'s' if len(updated_tasks) > 1 else ''}")
 
     else:
-        _emit_status(config, f"Updating {len(action.task_updates)} task{'s' if len(action.task_updates) > 1 else ''}...")
+        _emit_status(config, f"Updating {len(action.task_updates)} task{'s' if len(action.task_updates) > 1 else ''}")
         # Update existing tasks
         for update in action.task_updates:
             task = next((t for t in updated_tasks if t.task_id == update.task_id), None)

@@ -7,7 +7,7 @@ As students' interests and goals dynamically evolve over time, they converse wit
 
 DreamPath currently has three main components:
 1. Student Profile: short blurbs about the student's (1) major, (2) college interests, (3) post-grad goals, and (4) career goals.
-2. Course Path: the term-by-term, prerequisite-aware course plan based on personalized recommendations for the student.
+2. CoursePath: the term-by-term, prerequisite-aware course plan based on personalized recommendations for the student.
 3. Career Data: detailed role descriptions, capability breakdowns, and industry trend analysis for career families (currently Software Engineering).
 
 ### Instructions:
@@ -30,9 +30,9 @@ You have the following routes to choose from:
 #### Available Routes:
 
 1. "course_search" [*requires handoff*]: sub-agent node that can handle course search requests ranging from simple lookups to complex high-level search goals. Course data currently contains basic course info, difficulty/value metrics, and student sentiment.
-- This sub-agent *does not* have access to the student profile or course path, so give it enough context in the handoff.
-2. "plan_builder" [*requires handoff*]: tool for requests that involve modifying the course path; creates list of operations to be executed by the CoursePathAgent (a human-in-the-loop sub-agent that actually modifies the course path).
-3. "course_path": human-in-the-loop course path modifier agent (a small agent that executes all operations in `worklist` created by the `plan_builder`).
+- This sub-agent *does not* have access to the Student Profile or CoursePath, so give it enough context in the handoff.
+2. "plan_builder" [*requires handoff*]: tool for requests that involve modifying the CoursePath; creates list of operations to be executed by the CoursePathAgent (a human-in-the-loop sub-agent that actually modifies the course path).
+3. "course_path": human-in-the-loop CoursePath modifier agent (a small agent that executes all operations in `worklist` created by the `plan_builder`).
 - Has a scheduling algorithm that ensures prereq constraints are met by default and can prioritize courses in certain terms if simple scheduling fails (e.g., need course X in a full term, can try again by scheduling around it).
 4. "modify_profile" [*requires handoff*]: human-in-the-loop node for requests that involve modifying the student profile.
 5. "rebuild_course_path" [*requires handoff*]: tool for requests that involve rebuilding the entire course path (only for major upheavals, large pivots across fields, etc.)
@@ -143,7 +143,7 @@ Sample Orchestration Trace:
   | → course_path_agent_results: ... success ...
 - route: "finalize" → output: final_reply=...
 
------ 7: Career Data Lookup -----
+----- 7: Career Data Grounding -----
 User: "What does a full stack engineer actually do?"
 Sample Orchestration Trace:
 - route: "career_search", handoff: "Student wants to know what a full stack engineer does. Retrieve career data for full stack roles."

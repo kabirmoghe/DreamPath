@@ -629,20 +629,16 @@ function Courses() {
     setTimeout(() => setExpandedCourse(null), 300);
   }
 
-  // Get major and complementary courses from course_bank
-  const getMajorCourses = () => {
-    if (!coursePathData || !coursePathData.course_bank) return [];
-    return Object.values(coursePathData.course_bank).filter(
-      course => course.course_type === 'major' && !course.is_prereq
-    );
+  // Get major and complementary courses from recommended_courses (source of truth)
+  const getRecommendedByType = (type) => {
+    if (!coursePathData?.recommended_courses || !coursePathData?.course_bank) return [];
+    return coursePathData.recommended_courses
+      .map(code => coursePathData.course_bank[code])
+      .filter(course => course && course.course_type === type);
   };
 
-  const getComplementaryCourses = () => {
-    if (!coursePathData || !coursePathData.course_bank) return [];
-    return Object.values(coursePathData.course_bank).filter(
-      course => course.course_type === 'complementary' && !course.is_prereq
-    );
-  };
+  const getMajorCourses = () => getRecommendedByType('major');
+  const getComplementaryCourses = () => getRecommendedByType('complementary');
 
   // Render course list (for major/complementary tabs)
   function renderCourseList(courses, tab) {

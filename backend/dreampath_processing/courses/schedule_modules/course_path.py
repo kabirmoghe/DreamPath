@@ -242,7 +242,11 @@ class CoursePath:
             must_have_course_bank[c].must_have_window = c_object.must_have_window
 
             for c_prereq in c_prereq_set:
-                must_have_course_bank[c_prereq] = must_have_course_bank.get(c_prereq, construct_course(course_code=c_prereq, hardcoded_type=must_have_course_bank[c].course_type))
+                prereq_obj = must_have_course_bank.get(c_prereq, construct_course(course_code=c_prereq, hardcoded_type=must_have_course_bank[c].course_type))
+                if prereq_obj is None:
+                    print(f"Unknown prereq course code '{c_prereq}'.")
+                    continue
+                must_have_course_bank[c_prereq] = prereq_obj
                 must_have_course_bank[c_prereq].is_prereq = True
 
                 # To maintain scheduling accuracy for pre-window courses upon merging must-have and prior course banks

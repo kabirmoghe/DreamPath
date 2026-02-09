@@ -122,7 +122,7 @@ def build_prereq_tree(course_code, base_tokens=("IP", "AP", "LP"), visited=None,
 
     tree_children = []
     for child in prereq_children:
-        if child not in ('AP', 'LP'):
+        if child not in base_tokens:
             prereq_accumulator.add(child)
             subtree, _ = build_prereq_tree(child, base_tokens, visited.copy(), prereq_accumulator, verbose)
             tree_children.append(subtree)
