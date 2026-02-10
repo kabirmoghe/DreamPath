@@ -683,7 +683,7 @@ async def initialize_course_path(request: InitRequest) -> StreamingResponse:
     thread_id = str(uuid4())
 
     # Hardcode init message (same as old init_course_path method)
-    init_message = "Student completed their profile for the first time. Please build a course path for them."
+    init_message = "Student completed their profile for the first time. Please build a CoursePath for them."
 
     # Create StreamInput with init_mode flag
     user_input = StreamInput(

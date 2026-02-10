@@ -624,10 +624,15 @@ function Onboarding() {
   const handleBuildDreamPath = async () => {
     setError('');
 
+    if (isInitializing) return; // Guard against double-click
+
     if (!user?.id) {
       setError('User not authenticated');
       return;
     }
+
+    // Set immediately to prevent duplicate calls
+    setIsInitializing(true);
 
     try {
       // 1. Save profile to backend - WAITS for completion
@@ -642,10 +647,7 @@ function Onboarding() {
       });
       console.log('Profile created successfully');
 
-      // 2. Show loading overlay (only after profile saved)
-      setIsInitializing(true);
-
-      // 3. Stream init via /init endpoint (only after steps 1 & 2)
+      // 2. Stream init via /init endpoint (overlay already showing from above)
       console.log('Starting init stream...');
       let capturedThreadId = null;
 
@@ -1052,6 +1054,7 @@ function Onboarding() {
             </div>
             <Button
               onClick={handleBuildDreamPath}
+              disabled={isInitializing}
               style={{
                 width: '100%',
                 padding: '18px',

@@ -158,17 +158,18 @@ You should refine the list to **maximize value, relevance, and coverage for the 
 # Instructions
 1. Review all search results and the existing recommendations — search results will naturally include some loosely relevant courses, so be selective and thoughtful
 2. Understand the resulting courses' data (e.g., description, value, etc.)
-3. Then, for each course you recommend:
+3. Deduplicate crosslisted and overlapping courses — when courses are crosslisted (e.g., COSC50 and ENGS50) or have significant content overlap based on their title, description, and coverage, keep the one most aligned with the student's major and profile
+4. Then, for each course you recommend:
    - Assign `aligned_parameters` based on which searches returned it:
      - "interests" if it appeared in interests_results
      - "post_grad" if it appeared in post_grad_results
      - "career" if it appeared in career_results
    - A course can have multiple alignments (e.g., both "interests" and "post_grad")
-4. For existing recommendations you keep:
+5. For existing recommendations you keep:
    - If the course also appeared in the new search results, update its `aligned_parameters` accordingly
    - If it didn't appear in any search but is still relevant to the profile, assign alignments based on your judgment of which parameters it best serves
-5. Target approximately {target_count} courses total
-6. Prefer courses that align with multiple parameters
+6. Target approximately {target_count} courses total
+7. Prefer courses that align with multiple parameters
 
 # Output Format
 Return a list of CourseRec objects, each with:
