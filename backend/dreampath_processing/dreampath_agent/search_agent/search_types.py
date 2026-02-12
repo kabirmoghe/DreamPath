@@ -1,3 +1,6 @@
+# Max iterations safety limit (shared across graph.py and summarize.py)
+MAX_ITERATIONS = 20
+
 import operator
 import time
 from typing import Annotated, Any, Literal
@@ -125,6 +128,11 @@ class SearchTask(LLMManagedModel):
         description="Complete search history with params + outputs (system-managed)"
     )
 
+    course_index: dict[str, CourseSearchResult] = system_field(
+        default_factory=dict,
+        description="course_code lookup → CourseSearchResult (populated incrementally by search execution)"
+    )
+
     created_iteration: int = system_field(description="When task was created")
     last_updated_iteration: int = system_field(description="When last modified")
 
@@ -152,7 +160,7 @@ class TaskSearch(BaseModel):
     """Wrapper linking a search to a specific task"""
     task_id: int = Field(description="Which task this search is for")
     action_type: Literal["module_search", "manual_search"] = "module_search"
-    search_input: str | CourseSearchParams = Field(description="Search input: single string search descriotion module_search(search_input) or refined params for manual_search(params)")
+    search_input: str | CourseSearchParams = Field(description="Search input: single string search description for module_search(search_input) or refined params for manual_search(params)")
 
     @field_validator('search_input')
     @classmethod
@@ -233,6 +241,7 @@ class FinalSearchSummary(BaseModel):
     total_iterations: int
     task_summaries: list[TaskSummary]
     total_unique_courses: int
+    completion_reasoning: str = Field(default="", description="Orchestrator reasoning for completing search (from CompleteAction or last action if max iterations hit)")
 
 
 # ================================
@@ -267,6 +276,10 @@ class SearchAgentState(BaseModel):
     next_action: NextAction | None = Field(
         default=None,
         description="Structured action from orchestrator (search/update/complete)"
+    )
+    latest_reasoning: str = Field(
+        default="",
+        description="Most recent orchestrator reasoning (overwritten each iteration)"
     )
 
     # ============================================

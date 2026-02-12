@@ -104,7 +104,14 @@ class CoursePath:
     def __str__(self):
         cp_str = ""
         for term_idx, term in enumerate(self.course_path):
-            cp_str += f"#### Term {term_idx} Courses{' [**Current Term**]' if term_idx == self.curr_window_start else ''}:\n"
+            cp_str += f"#### Term {term_idx} Courses"
+            if term_idx < self.curr_window_start:
+                cp_str += f" [**Completed Term, Cannot Modify**]"
+            elif term_idx == self.curr_window_start:
+                cp_str += f" [**Current Term**]"
+            else:
+                cp_str += f" [**Future Term**]"
+            cp_str += f":\n"
             
             # Add actual courses
             for course in term:

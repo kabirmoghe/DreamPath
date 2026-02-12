@@ -71,9 +71,80 @@ def _render_message_lines(message: dict) -> list[str]:
 
     return lines
 
-def _render_search_trace_block(goal: str, search_trace: list[dict]) -> str:
+def _render_tool_result(msg: dict, compact: bool = False) -> list[str]:
     """
-    Render search trace block (all past iterations).
+    Render a tool result message from structured data stored in additional_kwargs.
+
+    Always shows: task description, action type (module/manual), full search params.
+    compact=True: + course code:title list only
+    compact=False: + full course details (description, blurbs, metrics)
+    """
+    kwargs = msg.get("additional_kwargs", {})
+    args = msg.get("args", {})
+    task_id = args.get("task_id", "?")
+    action_type = kwargs.get("action_type", args.get("name", "search"))
+    task_desc = kwargs.get("task_description", "")
+    params = kwargs.get("params", {})
+    courses = kwargs.get("courses", [])
+    error = kwargs.get("error")
+
+    lines = [f"<tool task_id='{task_id}' type='{action_type}'>"]
+
+    if error:
+        lines.append(f"Search failed: {error}")
+        lines.append("</tool>")
+        return lines
+
+    lines.append(f"Task: {task_desc}")
+    search_desc = kwargs.get("search_description", "")
+    if search_desc:
+        lines.append(f"Search description: {search_desc}")
+    lines.append(f"Params: {json.dumps(params, ensure_ascii=False)}")
+
+    if compact:
+        if courses:
+            course_list = "".join(f"\n - {c['code']}: {c['title']}" for c in courses)
+            lines.append(f"Found {len(courses)} courses:{course_list}")
+        else:
+            lines.append("No courses found")
+    else:
+        if not courses:
+            lines.append("No courses found")
+        else:
+            lines.append(f"Found {len(courses)} courses:")
+            lines.append("")
+            for i, c in enumerate(courses, 1):
+                lines.append(f"{i}. {c['code']} - {c['title']}")
+                lines.append(f"   Dept: {c['department']}, Diff: {c['difficulty']}, Value: {c['value']}, Prereqs: {c['num_prereqs']}")
+
+                desc = c.get("description", "")
+                if desc:
+                    if len(desc) > 500:
+                        desc = desc[:500] + "..."
+                    lines.append(f"   Description: {desc}")
+
+                if c.get("difficulty_blurb"):
+                    lines.append(f"   Difficulty Blurb: {c['difficulty_blurb']}")
+                if c.get("learning_value_blurb"):
+                    lines.append(f"   Learning Value Blurb: {c['learning_value_blurb']}")
+                if c.get("target_audience_blurb"):
+                    lines.append(f"   Target Audience Blurb: {c['target_audience_blurb']}")
+
+                lines.append("")
+
+    lines.append("</tool>")
+    return lines
+
+
+def _render_search_trace_block(goal: str, search_trace: list[dict], current_iteration: int, recent_window: int = 2) -> str:
+    """
+    Render search trace block with compaction for older iterations.
+
+    For iterations older than (current_iteration - recent_window):
+      - Orchestrator decisions: rendered normally (already concise)
+      - Tool results: compacted to course codes + titles only
+
+    For recent iterations: full content rendered.
     """
     lines = ["<search_trace>"]
     lines.append(f"<goal>{goal}</goal>")
@@ -81,6 +152,8 @@ def _render_search_trace_block(goal: str, search_trace: list[dict]) -> str:
     if not search_trace:
         lines.append("<trace>empty - iteration 0</trace>")
     else:
+        compact_cutoff = current_iteration - recent_window
+
         lines.append("<trace>")
         # Group messages by iteration
         current_iter = None
@@ -94,8 +167,13 @@ def _render_search_trace_block(goal: str, search_trace: list[dict]) -> str:
                 lines.append(f"<iteration number='{msg_iter}'>")
                 current_iter = msg_iter
 
-            # Delegate to _render_message_lines for each message
-            lines.extend(_render_message_lines(msg))
+            # Tool results: use unified renderer with compact flag based on age
+            # Everything else (orchestrator decisions): render normally
+            if msg.get("role") == "tool":
+                is_old = msg_iter <= compact_cutoff
+                lines.extend(_render_tool_result(msg, compact=is_old))
+            else:
+                lines.extend(_render_message_lines(msg))
 
         # Close last iteration block
         if current_iter is not None:
@@ -104,22 +182,19 @@ def _render_search_trace_block(goal: str, search_trace: list[dict]) -> str:
         lines.append("</trace>")
 
     lines.append("</search_trace>")
+
+    with open(f"search_trace_iteration_{current_iteration}.txt", "w") as f:
+        f.write(f"========== Iteration {current_iteration} ==========\n")
+        f.write("\n".join(lines))
+        
     return "\n".join(lines)
 
 def _render_task_state_block(goal: str, iteration: int, tasks: list[SearchTask]) -> str:
     """
     Render current task state (always fresh, never cached).
 
-    Format:
-    <task_state>
-    <task id="1" status="complete">
-      <description>Find easy ML courses</description>
-      <search_attempts>3 searches executed, 12 total courses found</search_attempts>
-      <top_results>COSC74, COSC75, COSC16</top_results>
-      <notes>Task complete, good variety found</notes>
-    </task>
-    ...
-    </task_state>
+    Includes course title + truncated description for top_results courses
+    so the orchestrator can cross-check relevance against the task description.
     """
     lines = ["<task_state>", f"<goal>{goal}</goal>", f"<iteration>{iteration}</iteration>"]
 
@@ -149,16 +224,24 @@ def _render_task_state_block(goal: str, iteration: int, tasks: list[SearchTask])
 
         lines.append("</search_attempts>")
 
-        # 3. Show results: summary, top results
+        # 3. Show results: summary, top results with course details
         lines.append("<results>")
 
         num_searches = len(task.search_executions)
         total_courses_found = sum(len(ex.output.results) for ex in task.search_executions)
         lines.append(f"<summary>{num_searches} searches executed, {total_courses_found} total courses found</summary>")
-    
-        # Show orchestrator-curated top results
+
+        # Show top results with title + description for cross-checking
         if task.top_results:
-            lines.append(f"<top_results>{', '.join(task.top_results)}</top_results>")
+            lines.append("<top_results>")
+            for code in task.top_results:
+                course = task.course_index.get(code)
+                if course:
+                    desc = course.description[:200] + "..." if course.description and len(course.description) > 200 else (course.description or "No description")
+                    lines.append(f"- {code}: {course.course_title} | {desc}")
+                else:
+                    lines.append(f"- {code}")
+            lines.append("</top_results>")
         else:
             lines.append("<top_results>None selected yet</top_results>")
 
@@ -189,8 +272,8 @@ def build_search_context(state: SearchAgentState, prompt: str, config: dict={}) 
 
     # Render context blocks
 
-    # 1) Search Trace Block (all past actions)
-    search_trace_block = _render_search_trace_block(goal=state.goal, search_trace=state.search_trace)
+    # 1) Search Trace Block (all past actions, older iterations compacted)
+    search_trace_block = _render_search_trace_block(goal=state.goal, search_trace=state.search_trace, current_iteration=state.iteration)
 
     # 2) Task State Block (live from system)
     task_state_block = _render_task_state_block(goal=state.goal, iteration=state.iteration, tasks=state.tasks)

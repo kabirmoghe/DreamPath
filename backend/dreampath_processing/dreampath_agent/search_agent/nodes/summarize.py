@@ -7,6 +7,7 @@ can be called separately with different modes (full vs top_results_only).
 
 from dreampath_processing.dreampath_agent.dreampath_types import CourseSearchResult
 from dreampath_processing.dreampath_agent.search_agent.search_types import (
+    MAX_ITERATIONS,
     FinalSearchSummary,
     SearchAgentState,
     SearchExecution,
@@ -83,14 +84,18 @@ def _render_full_summary(summary: FinalSearchSummary) -> str:
     """Render full markdown summary with task status, search counts, etc."""
 
     lines = [
-        f"# Search Results: {summary.goal}",
+        f"# Search Results:",
         "",
+        f"**Goal:** {summary.goal}",
         f"**Status:** {summary.completed_tasks}/{summary.total_tasks} tasks completed in {summary.total_iterations} iterations",
         f"**Total Courses Found:** {summary.total_unique_courses} unique courses",
-        "",
-        "---",
-        ""
     ]
+
+    if summary.completion_reasoning:
+        lines.append(f"**SearchAgent Final Notes:** {summary.completion_reasoning}")
+        lines.append("")
+
+    lines.extend(["---", ""])
 
     for task_summary in summary.task_summaries:
         status_emoji = {
@@ -118,6 +123,8 @@ def _render_full_summary(summary: FinalSearchSummary) -> str:
             for course in top_courses:
                 lines.append(f"<course>**{course.course_code}: {course.course_title}**")
                 lines.append(f"- Department: {course.department}")
+                if course.description:
+                    lines.append(f"- Description: {course.description}")
                 if course.num_prereqs > 0:
                     lines.append(f"- Prerequisites: {course.prerequisites}")
                 if course.course_url:
@@ -147,56 +154,10 @@ def _render_full_summary(summary: FinalSearchSummary) -> str:
             lines.append("")
 
         if task_summary.orchestrator_notes:
-            lines.append(f"**Notes:** {task_summary.orchestrator_notes}")
+            lines.append(f"**SearchAgent Task Notes:** {task_summary.orchestrator_notes}")
             lines.append("")
 
         lines.append("---")
-        lines.append("")
-
-    return "\n".join(lines)
-
-
-def _render_minimal(
-    summary: FinalSearchSummary,
-    blurb_max_len: int
-) -> str:
-    """
-    Render minimal format - just essentials for quick synthesis.
-
-    Format:
-    - Course code + title
-    - Difficulty + Value classifications (no blurbs)
-    - Target audience (truncated)
-    """
-    lines = ["## Top Courses", ""]
-
-    # Collect all top results across all tasks
-    all_top_courses: list[CourseSearchResult] = []
-    seen_codes = set()
-
-    for task_summary in summary.task_summaries:
-        top_codes = set(task_summary.top_results)
-        for course in task_summary.all_courses:
-            if course.course_code in top_codes and course.course_code not in seen_codes:
-                seen_codes.add(course.course_code)
-                all_top_courses.append(course)
-
-    if not all_top_courses:
-        lines.append("No courses found.")
-        return "\n".join(lines)
-
-    for course in all_top_courses:
-        lines.append(f"**{course.course_code}: {course.course_title}**")
-
-        # Difficulty + Value on one line
-        diff = course.global_difficulty_classification or "Unknown"
-        val = course.global_value_classification or "Unknown"
-        lines.append(f"- Difficulty: {diff} | Learning Value: {val}")
-
-        # Target Audience (truncated)
-        if course.target_audience_blurb:
-            lines.append(f"- Target Audience: '{_truncate(course.target_audience_blurb, blurb_max_len)}'")
-
         lines.append("")
 
     return "\n".join(lines)
@@ -262,6 +223,51 @@ def _render_medium(
     return "\n".join(lines)
 
 
+def _render_minimal(
+    summary: FinalSearchSummary,
+    blurb_max_len: int
+) -> str:
+    """
+    Render minimal format - just essentials for quick synthesis.
+
+    Format:
+    - Course code + title
+    - Difficulty + Value classifications (no blurbs)
+    - Target audience (truncated)
+    """
+    lines = ["## Top Courses", ""]
+
+    # Collect all top results across all tasks
+    all_top_courses: list[CourseSearchResult] = []
+    seen_codes = set()
+
+    for task_summary in summary.task_summaries:
+        top_codes = set(task_summary.top_results)
+        for course in task_summary.all_courses:
+            if course.course_code in top_codes and course.course_code not in seen_codes:
+                seen_codes.add(course.course_code)
+                all_top_courses.append(course)
+
+    if not all_top_courses:
+        lines.append("No courses found.")
+        return "\n".join(lines)
+
+    for course in all_top_courses:
+        lines.append(f"**{course.course_code}: {course.course_title}**")
+
+        # Difficulty + Value on one line
+        diff = course.global_difficulty_classification or "Unknown"
+        val = course.global_value_classification or "Unknown"
+        lines.append(f"- Difficulty: {diff} | Learning Value: {val}")
+
+        # Target Audience (truncated)
+        if course.target_audience_blurb:
+            lines.append(f"- Target Audience: '{_truncate(course.target_audience_blurb, blurb_max_len)}'")
+
+        lines.append("")
+
+    return "\n".join(lines)
+
 # ============================================
 # SUMMARIZE NODE
 # ============================================
@@ -278,6 +284,27 @@ def summarize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
     """
 
     print(f"\n[SUMMARIZE] Generating summary for {len(state.tasks)} tasks...")
+
+    # ============================================
+    # DETECT EXHAUSTION & CLEAN UP TASK STATUSES
+    # ============================================
+    exhausted = state.iteration >= MAX_ITERATIONS
+
+    if exhausted:
+        print(f"  ⚠️ Search exhausted (iteration {state.iteration} >= {MAX_ITERATIONS})")
+
+    # Ensure all tasks have a terminal status (complete or failed)
+    terminal_statuses = {"complete", "failed"}
+    for task in state.tasks:
+        if task.status not in terminal_statuses:
+            task.status = "failed"
+            if exhausted:
+                task.orchestrator_notes = (
+                    f"Search exhausted after {state.iteration} iterations without finding directly relevant courses. "
+                    f"Last reasoning: {state.latest_reasoning}"
+                )
+            else:
+                task.orchestrator_notes = task.orchestrator_notes or "Task did not reach completion."
 
     # ============================================
     # BUILD STRUCTURED SUMMARY
@@ -310,6 +337,15 @@ def summarize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
     completed_count = sum(1 for t in state.tasks if t.status == "complete")
     failed_count = sum(1 for t in state.tasks if t.status == "failed")
 
+    # Set completion reasoning
+    if exhausted:
+        completion_reasoning = (
+            "SearchAgent reached maximum iterations without completing all tasks. "
+            "Unfinished tasks have been marked as failed — the course catalog may not have courses that directly match those topics."
+        )
+    else:
+        completion_reasoning = state.latest_reasoning
+
     structured_summary = FinalSearchSummary(
         goal=state.goal,
         total_tasks=len(state.tasks),
@@ -317,7 +353,8 @@ def summarize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
         failed_tasks=failed_count,
         total_iterations=state.iteration,
         task_summaries=task_summaries,
-        total_unique_courses=len(all_unique_courses_set)
+        total_unique_courses=len(all_unique_courses_set),
+        completion_reasoning=completion_reasoning,
     )
 
     print(f"  ✓ Summary complete: {completed_count}/{len(state.tasks)} tasks completed")

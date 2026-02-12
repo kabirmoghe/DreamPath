@@ -97,7 +97,7 @@ Task Scope:
 - If the goal refers to a broad field or topic, (sparingly) use multiple tasks to cover different topics or subfields that are necessary / relevant to the goal.
 
 ### 2. Mid-Turn Task Analysis
-- For each in-progress or non-started task, analyze the corresponding results (for that task ID)
+For each in-progress or non-started task, analyze the corresponding results (for that task ID)
 - Set status based on result quality (not just presence of results)
 - Curate top_results: Select up to 10 most relevant course codes from search_executions
   - Review all courses found in search_executions
@@ -105,19 +105,68 @@ Task Scope:
   - Consider diversity, difficulty, prerequisites, relevance w.r.t the task and goal
 - Provide actionable orchestrator_notes for "in_progress" tasks
   Example: "Try Biology/Chemistry depts, current results are CS-focused"
-- Mark "complete" only if results satisfy the task description
-- Mark "failed" after multiple attempts with poor results
+- Mark "complete" only if top_results contain courses that **directly** address the task description.
+  - Apply this test: if a student asked specifically for [task description], would these courses be a satisfying, on-topic answer? **Be strict here!** if you'd need to stretch or rationalize relevance, the task is NOT complete.
+- Mark "failed" after 2-3 search rounds with poor or irrelevant results, and update orchestrator_notes explaining why you marked it failed.
+  - **It is perfectly acceptable — and encouraged — to mark a task as "failed" when the course catalog simply doesn't have courses that directly match.**
+  - Not every topic has dedicated courses. A failed task with an honest note like "No courses directly cover prompt engineering for LLMs" is far more valuable than a "complete" task with tangentially related results.
 
 ### Top Results Curation
 The top_results field is YOUR selection of the best courses:
 - Review search_executions to see all courses found
 - Choose up to 10 most relevant course codes
+- **Only include courses whose content directly addresses the task description.** Do not pad top_results with loosely related courses just to have results.
+- It is better to have 1-2 genuinely relevant courses (or zero, with a "failed" status) than 5 tangentially related ones.
 - This is your expert judgment on which results best satisfy the task
 - Frontend will display these as primary results
 
 ## CompleteAction: Complete Guidelines
 When you study the tasks and determine they have all been completed or failed, you must return CompleteAction.
 This signals the end of search execution for the provided goal.
+
+# Core Example
+
+This example illustrates correct orchestrator behavior — especially honest failure. Completing a task with loosely related courses is far worse than marking it failed with a clear explanation.
+
+## Mixed Success and Failure
+
+Goal: "Find courses on DevOps/CI-CD practices, blockchain development, and systems programming"
+
+Iteration 0 → TaskUpdateAction
+  Task 1: "Find courses on DevOps practices, CI/CD pipelines, and infrastructure automation"
+  Task 2: "Find courses on blockchain development and distributed ledger technology"
+  Task 3: "Find courses on systems programming: C, OS internals, low-level computing"
+
+Iteration 1 → SearchAction
+  Task 1: module_search(search_description='DevOps CI/CD pipeline infrastructure automation courses')
+  Task 2: module_search(search_description='Blockchain development distributed ledger technology courses')
+  Task 3: module_search(search_description='Systems programming C operating systems low-level')
+  → Task 1: finds COSC50 (Software Design) and ENGS65 (Engineering Software Design) — software eng, but not DevOps
+  → Task 2: finds cryptography/distributed systems courses but nothing on blockchain
+  → Task 3: finds COSC58 (OS), COSC50 (C programming), COSC51 (Architecture) — direct matches
+
+Iteration 2 → TaskUpdateAction
+  Task 1: in_progress | top_results: []
+  Notes: "COSC50 covers software engineering and COSC52 covers web deployment, but neither addresses DevOps tooling, CI/CD pipelines, or infrastructure-as-code. Try deployment/automation angle."
+  Task 2: in_progress | top_results: []
+  Notes: "No blockchain courses found. COSC60 covers networking but not distributed ledgers. Try broader search."
+  Task 3: complete | top_results: [COSC58, COSC50, COSC51]
+  Notes: "Strong systems coverage: COSC58 (OS internals), COSC50 (C, UNIX tools), COSC51 (architecture)."
+
+Iteration 3 → SearchAction
+  Task 1: module_search(search_description='Software deployment automation continuous integration')
+  Task 2: module_search(search_description='Cryptography distributed systems peer-to-peer networks')
+  → Task 1: general CS courses again — still nothing on DevOps/CI-CD
+  → Task 2: finds COSC60 (Networks), MATH75 (Crypto) — adjacent but not blockchain
+
+Iteration 4 → TaskUpdateAction
+  Task 1: failed | top_results: []
+  Notes: "After 2 rounds, no courses cover DevOps, CI/CD, or infrastructure automation. COSC50 teaches software practices and COSC52 touches deployment, but neither addresses DevOps tooling or CI/CD workflows."
+  Task 2: failed | top_results: []
+  Notes: "No courses cover blockchain or distributed ledger technology. Found adjacent courses (COSC60 networking, MATH75 cryptography) but none address blockchain itself. The catalog does not offer blockchain-focused courses."
+
+Iteration 5 → CompleteAction
+  "1 of 3 tasks completed. Strong systems programming coverage found. DevOps/CI-CD and blockchain are industry-specific topics not represented in the academic catalog."
 
 # Output Format
 Return an Action according to the provided schema.
@@ -128,24 +177,13 @@ def _format_search_action_content(action: SearchAction) -> str:
     lines = [f"Reasoning: {action.reasoning}", "", "Searches:"]
 
     for i, task_search in enumerate(action.searches, 1):
-        lines.append(f"{i}. Task {task_search.task_id} - {task_search.action_type}")
-
-        # Format search input based on type
         if task_search.action_type == "module_search":
-            lines.append(f"   Query: {task_search.search_input}")
+            lines.append(f"{i}. Task {task_search.task_id} - module_search(search_description='{task_search.search_input}')")
         else:  # manual_search
             params = task_search.search_input
-            lines.append(f"   Query: {params.query}")
-            if params.department:
-                lines.append(f"   Department: {params.department}")
-            if params.course_code:
-                lines.append(f"   Course code: {params.course_code}")
-            if params.max_num_prereqs is not None:
-                lines.append(f"   Max prereqs: {params.max_num_prereqs}")
-            if params.difficulty_classification:
-                lines.append(f"   Difficulty: {params.difficulty_classification}")
-            if params.value_classification:
-                lines.append(f"   Value: {params.value_classification}")
+            kwargs = {k: v for k, v in params.model_dump().items() if v is not None}
+            kwargs_str = ", ".join(f"{k}='{v}'" if isinstance(v, str) else f"{k}={v}" for k, v in kwargs.items())
+            lines.append(f"{i}. Task {task_search.task_id} - manual_search({kwargs_str})")
 
     return "\n".join(lines)
 
@@ -192,10 +230,6 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig) -> 
         config=config
     )
 
-    # print("  [ORCH] Context messages:")
-    # for message in context_messages:
-    #     print(f"    {message['role']}: {message['content']}")
-
     print(f"  [ORCH] Context built: {len(context_messages)} messages, {token_updates['iteration_tokens'][-1]} tokens")
 
     # ============================================
@@ -211,7 +245,7 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig) -> 
         model="gpt-4o",
         messages=context_messages,
         response_model=NextAction,
-        temperature=0
+        temperature=0,
     )
     # print(f"  [ORCH] Got response from instructor")
 
@@ -225,7 +259,7 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig) -> 
     if isinstance(next_action, SearchAction):
         print(f"  Searches planned: {len(next_action.searches)}")
         for i, search in enumerate(next_action.searches, 1):
-            search_desc = search.search_input if isinstance(search.search_input, str) else search.search_input.query
+            search_desc = search.search_input if isinstance(search.search_input, str) else (search.search_input.query or str(search.search_input))
             print(f"    {i}. Task {search.task_id}: {search_desc[:60]}...")
 
     # ============================================
@@ -260,6 +294,7 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig) -> 
     # are sent via writer instead.
     return {
         "next_action": next_action,
+        "latest_reasoning": next_action.reasoning,
         "search_trace": state.search_trace + [decision_msg],
         **token_updates
     }

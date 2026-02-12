@@ -22,6 +22,8 @@ async def render_final_reply(state: DreamPathAgentState, config) -> tuple[str, d
         config["configurable"]["user_id"]
     )
     student_name = student_profile.name
+
+
     return await extract_structured_output_from_context(
         state=state,
         config=config,
@@ -47,7 +49,7 @@ async def render_final_reply_streaming(state: DreamPathAgentState, config, write
     system_prompt = CRAFT_FINAL_REPLY_SYS.format(student_name=student_name)
 
     # Build context
-    messages, state_updates = await build_complete_context(state, system_prompt, config, task_prompt=None)
+    messages, state_updates = await build_complete_context(state, system_prompt, config)
 
     # Log context to file for debugging
     with open("finalize_context.txt", "w") as f:

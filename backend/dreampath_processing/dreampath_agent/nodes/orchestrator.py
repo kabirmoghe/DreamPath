@@ -11,7 +11,13 @@ from langchain_core.messages import AIMessage
 
 
 def format_orchestrator_decision(decision: OrchestratorDecision) -> str:
-    return f"route: {decision.route}\nreason: {decision.reason}\nconfidence: {decision.confidence}\nhandoff: {decision.handoff}"
+    orchestrator_decision = f"route: {decision.route}\nreason: {decision.reason}\nconfidence: {decision.confidence}"
+
+    # Avoid redundant finalize handoff
+    if decision.handoff:
+        orchestrator_decision += f"\nhandoff: {decision.handoff}"
+
+    return orchestrator_decision
 
 
 async def decide_next_route(

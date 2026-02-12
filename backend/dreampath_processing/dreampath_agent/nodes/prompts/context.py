@@ -7,7 +7,7 @@ MASTER_CONTEXT = """
 # Current Turn Trace (what's happened this turn)
 {turn_block}
 
-# DreamPath Context (urrent Student Profile and CoursePath)
+# DreamPath Context (current Student Profile and CoursePath)
 {dreampath_context_block}
 """
 

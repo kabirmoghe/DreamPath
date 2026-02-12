@@ -66,7 +66,8 @@ async def _execute_single_search(task_search: TaskSearch, iteration: int) -> tup
         else:  # manual_search
             from dreampath_processing.dreampath_agent.search_agent.tools import manual_search
 
-            print(f"    [SEARCH] Task {task_search.task_id} - manual_search: {task_search.search_input.query[:60]}...")
+            search_desc = task_search.search_input.query or task_search.search_input.course_code or str(task_search.search_input)
+            print(f"    [SEARCH] Task {task_search.task_id} - manual_search: {search_desc[:60]}...")
             params, result = await manual_search(task_search.search_input)
             return (task_search, (params, result))
 
@@ -75,70 +76,57 @@ async def _execute_single_search(task_search: TaskSearch, iteration: int) -> tup
         return (task_search, e)
 
 
-def _format_search_result_content(
+def _build_tool_result_data(
     task_search: TaskSearch,
-    params_and_result: tuple[CourseSearchParams, CourseSearchOutput] | Exception
-) -> str:
+    task: SearchTask | None,
+    params_and_result: tuple[CourseSearchParams, CourseSearchOutput] | Exception,
+) -> dict:
     """
-    Format search result into human-readable content for context.
-    Shows ALL courses and the params used (especially important for module_search).
-    Node's responsibility to format content!
+    Build structured data for a tool result message.
+
+    Stores raw data so rendering (compact vs full) can happen at context-build time.
     """
     import json
 
     if isinstance(params_and_result, Exception):
-        return f"Search failed: {str(params_and_result)}"
+        return {
+            "error": str(params_and_result),
+            "task_description": task.description if task else "",
+            "search_description": "",
+            "params": {},
+            "courses": [],
+        }
 
     params, result = params_and_result
-    num_results = len(result.results)
 
-    lines = []
+    # module_search: search_input is the orchestrator's description string (query generator converts to params)
+    # manual_search: search_input is CourseSearchParams (orchestrator sets params directly)
+    search_description = task_search.search_input if task_search.action_type == "module_search" else ""
 
-    # Show search description for module_search (what the orchestrator asked for)
-    if task_search.action_type == "module_search":
-        lines.append(f"Search description: {task_search.search_input}")
+    courses = []
+    for course in result.results[:25]:  # Cap at 25 per search
+        courses.append({
+            "code": course.course_code,
+            "title": course.course_title,
+            "department": course.department,
+            "description": course.description or "",
+            "difficulty": course.global_difficulty_classification,
+            "value": course.global_value_classification,
+            "num_prereqs": course.num_prereqs,
+            "difficulty_blurb": course.difficulty_blurb or "",
+            "learning_value_blurb": course.learning_value_blurb or "",
+            "target_audience_blurb": course.target_audience_blurb or "",
+        })
 
-    # Show params as compact JSON (what was actually executed)
     params_dict = {k: v for k, v in params.model_dump().items() if v is not None}
-    lines.append(f"Params: {json.dumps(params_dict, ensure_ascii=False)}")
-    lines.append("")
 
-    # Show results (max 25 per search for context management)
-    MAX_RESULTS_SHOWN = 25
-
-    if num_results == 0:
-        lines.append("No courses found")
-    else:
-        lines.append(f"Found {num_results} course{'s' if num_results != 1 else ''}:")
-        lines.append("")
-
-        # Show up to 25 results
-        results_to_show = result.results[:MAX_RESULTS_SHOWN]
-        for i, course in enumerate(results_to_show, 1):
-            lines.append(f"{i}. {course.course_code} - {course.course_title}")
-            lines.append(f"   Dept: {course.department}, Diff: {course.global_difficulty_classification}, Value: {course.global_value_classification}, Prereqs: {course.num_prereqs}")
-
-            # Show first 500 chars of description
-            desc = course.description[:500]
-            if len(course.description) > 500:
-                desc += "..."
-            lines.append(f"   Description: {desc}")
-
-            # Show complete blurbs if present (critical for decision making)
-            if course.difficulty_blurb:
-                lines.append(f"   Difficulty Blurb: {course.difficulty_blurb}")
-            if course.learning_value_blurb:
-                lines.append(f"   Learning Value Blurb: {course.learning_value_blurb}")
-            if course.target_audience_blurb:
-                lines.append(f"   Target Audience Blurb: {course.target_audience_blurb}")
-
-            lines.append("")  # Blank line between courses
-
-        # Indicate if there are more results
-        if num_results > MAX_RESULTS_SHOWN:
-            lines.append(f"... and {num_results - MAX_RESULTS_SHOWN} more courses not shown")
-
-    return "\n".join(lines)
+    return {
+        "task_description": task.description if task else "",
+        "search_description": search_description,
+        "action_type": task_search.action_type,
+        "params": params_dict,
+        "courses": courses,
+    }
 
 
 async def _execute_searches(
@@ -199,19 +187,17 @@ async def _execute_searches(
             task.search_executions.append(execution)
             task.last_updated_iteration = state.iteration
 
+            # Update course index for course_code lookup
+            for course in result.results:
+                if course.course_code not in task.course_index:
+                    task.course_index[course.course_code] = course
+
             total_courses = len(result.results)
             total_unique = len(_get_unique_courses_from_executions(task.search_executions))
             print(f"    → Task {task_id} now has {len(task.search_executions)} searches, {total_unique} unique courses")
 
-        # Format tool message (node's responsibility!)
-        # Pass the full params_and_result tuple (or exception) to formatter
-        content = _format_search_result_content(task_search, params_and_result)
-
-        # Extract num_results for metadata
-        num_results = 0
-        if not isinstance(params_and_result, Exception):
-            _, result = params_and_result
-            num_results = len(result.results)
+        # Build structured data for rendering at context-build time
+        tool_data = _build_tool_result_data(task_search, task, params_and_result)
 
         tool_msg = {
             "role": "tool",
@@ -220,11 +206,10 @@ async def _execute_searches(
                 "type": "result",
                 "task_id": task_id,
             },
-            "content": content,
             "additional_kwargs": {
                 "iteration": state.iteration,
                 "timestamp": time.time(),
-                "num_results": num_results
+                **tool_data,
             }
         }
 

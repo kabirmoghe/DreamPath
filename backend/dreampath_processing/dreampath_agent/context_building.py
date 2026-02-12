@@ -41,7 +41,7 @@ async def handle_summary_get_context_messages(
         h: Threshold for triggering summarization
         writer: Optional callback to emit status events
     """
-    # Get recent messages from YOUR format
+    # Get recent messages from DreamPath format
     recent_start = max(len(state.dreampath_messages) - k, 0)
     recent_messages = state.dreampath_messages[recent_start:]
 

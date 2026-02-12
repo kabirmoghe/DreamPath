@@ -1,11 +1,8 @@
 from dreampath_processing.dreampath_agent.search_agent.nodes.orchestrator import orchestrator_node
 from dreampath_processing.dreampath_agent.search_agent.nodes.summarize import summarize_node
 from dreampath_processing.dreampath_agent.search_agent.nodes.tool_executor import tool_executor_node
-from dreampath_processing.dreampath_agent.search_agent.search_types import SearchAgentState
+from dreampath_processing.dreampath_agent.search_agent.search_types import MAX_ITERATIONS, SearchAgentState
 from langgraph.graph import END, START, StateGraph
-
-# Max iterations safety limit
-MAX_ITERATIONS = 20
 
 def build_search_agent():
     """
