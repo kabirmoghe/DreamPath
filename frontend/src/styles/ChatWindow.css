@@ -59,6 +59,12 @@
   height: calc(100vh - 180px);
 }
 
+.chat-messages::after {
+  content: '';
+  min-height: 25px;
+  flex-shrink: 0;
+}
+
 .chat-welcome {
   text-align: center;
   padding: 20px;
@@ -184,11 +190,56 @@
   line-height: 1.6;
 }
 
+/* Heading pill style for markdown headings in chat */
+.chat-heading-pill {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(138, 107, 193, 0.1) 0%, rgba(107, 143, 199, 0.1) 100%);
+  border-left: 3px solid #8A6BC1;
+  border-radius: 2px 8px 8px 2px;
+  padding: 4px 12px 4px 10px;
+  font-weight: 600;
+  font-family: 'Lora', serif;
+  color: #4a3d6b;
+  letter-spacing: 0.2px;
+  margin-bottom: 2px;
+}
+
 .chat-input-container {
   position: relative;
   padding: 16px 20px;
   background: white;
   border-top: 1px solid #e0e0e0;
+}
+
+/* Compass mascot that peeks above the input */
+.compass-mascot {
+  position: absolute;
+  left: 20px;
+  bottom: calc(100% + 4px);
+  width: 60px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));
+  pointer-events: none;
+  /* Tucked down and hidden */
+  transform: translateY(40%);
+  opacity: 0.6;
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.compass-mascot-active {
+  transform: translateY(30%);
+  /* z-index: 11; */
+}
+
+.compass-mascot-scrolled {
+  transform: translateY(90%);
+  opacity: 0;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.compass-mascot-wide {
+  width: 75px;
 }
 
 /* Confirm/Skip buttons for coursepath operations */

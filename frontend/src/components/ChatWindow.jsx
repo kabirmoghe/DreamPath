@@ -18,6 +18,24 @@ import '../styles/ChatWindow.css';
  * - Thread management (create, list, switch)
  * - Slides in from the right
  */
+const getCompassIcon = (nodeStatus) => {
+  if (!nodeStatus) return '/compass_baseline.png';
+  if (nodeStatus.status === 'thinking') return '/compass_baseline.png';
+
+  const node = nodeStatus.next_node;
+  if (node === 'course_search' || node === 'career_search') return '/compass_search.png';
+  if (node === 'plan_builder' || node === 'course_path' || node === 'modify_profile') return '/compass_edit.png';
+  if (node === 'rebuild_course_path') {
+    const reason = (nodeStatus.reason || '').toLowerCase();
+    if (reason.includes('search')) return '/compass_search.png';
+    if (reason.includes('building') || reason.includes('rebuilding') || reason.includes('curating'))
+      return '/compass_edit.png';
+    return '/compass_search.png';
+  }
+  if (node === 'finalize') return '/compass_finalize.png';
+  return '/compass_baseline.png';
+};
+
 function ChatWindow({ userId, isOpen = true, onToggle }) {
   const queryClient = useQueryClient();
   const [messages, setMessages] = useState([]);
@@ -30,6 +48,23 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
   const [loadingHistory, setLoadingHistory] = useState(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
+  const chatBodyRef = useRef(null);
+  const [isScrolledUp, setIsScrolledUp] = useState(false);
+
+  // Track scroll position — tuck mascot when user scrolls up
+  useEffect(() => {
+    const el = chatBodyRef.current;
+    if (!el) return;
+
+    const handleScroll = () => {
+      const threshold = 80;
+      const atBottom = el.scrollHeight - el.scrollTop - el.clientHeight < threshold;
+      setIsScrolledUp(!atBottom);
+    };
+
+    el.addEventListener('scroll', handleScroll, { passive: true });
+    return () => el.removeEventListener('scroll', handleScroll);
+  }, [isOpen]);
 
   // Mapping of route names to user-friendly messages
   const routeMessages = {
@@ -401,14 +436,33 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
       let lastIndex = 0;
       let key = 0;
 
-      // Check if line is a heading (###, ##, #)
-      const headingMatch = line.match(/^(#{1,3})\s+(.+)$/);
+      // Check if line is a heading
+      const headingMatch = line.match(/^(#{1,4})\s+(.+)$/);
       if (headingMatch) {
-        elements.push(
-          <div key={`line-${lineIdx}`} style={{ fontWeight: 'bold', marginTop: lineIdx > 0 ? '8px' : 0 }}>
-            {headingMatch[2]}
-          </div>
-        );
+        const level = headingMatch[1].length;
+        if (level <= 3) {
+          // h1-h3: pill style
+          const fontSize = level === 1 ? '16px' : level === 2 ? '15px' : '14px';
+          elements.push(
+            <div
+              key={`line-${lineIdx}`}
+              className="chat-heading-pill"
+              style={{
+                fontSize,
+                marginTop: lineIdx > 0 ? '10px' : 0,
+              }}
+            >
+              {headingMatch[2]}
+            </div>
+          );
+        } else {
+          // h4: simple bold
+          elements.push(
+            <div key={`line-${lineIdx}`} style={{ fontWeight: 'bold', marginTop: lineIdx > 0 ? '8px' : 0 }}>
+              {headingMatch[2]}
+            </div>
+          );
+        }
         return;
       }
 
@@ -708,7 +762,7 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
           </div>
         </Card.Header>
 
-        <Card.Body className="chat-messages">
+        <Card.Body ref={chatBodyRef} className="chat-messages">
 
           {loadingHistory ? (
             <div className="d-flex justify-content-center align-items-center" style={{ height: '200px' }}>
@@ -784,6 +838,19 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
         </Card.Body>
 
         <Card.Footer className="chat-input-container">
+          {/* Compass mascot - peeks up when agent is working */}
+          {(() => {
+            const icon = getCompassIcon(nodeStatus);
+            const isWide = icon === '/compass_plan_modify.png';
+            return (
+              <img
+                src={icon}
+                alt="Compass"
+                className={`compass-mascot ${isLoading ? 'compass-mascot-active' : ''} ${isScrolledUp ? 'compass-mascot-scrolled' : ''} ${isWide ? 'compass-mascot-wide' : ''}`}
+              />
+            );
+          })()}
+
           {/* Confirm/Skip buttons positioned above textarea */}
           {showConfirmButtons && (
             <div className="confirm-buttons-container">

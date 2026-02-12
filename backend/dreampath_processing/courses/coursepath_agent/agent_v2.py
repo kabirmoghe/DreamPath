@@ -58,7 +58,6 @@ def extract_course_op(state: CoursePathAgentState, user_input: str, op_type: Ext
     # Map op type to op class
     extraction_model = OP_INFO[op_type.type]['extraction_model']
     messages = build_messages(state=state, user_input=user_input, prompt=PARAM_EXTRACTOR_SYS.format(op_type=op_type.type))
-    print(f"| CPAgent Ctx:\n{messages}")
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=messages,
@@ -185,7 +184,7 @@ def handle_user_turn(state: CoursePathAgentState, config: dict, tools: CoursePat
             state.history += f"\nExecution failed for {state.pending_op_type.type}: {state.trial_op_execution.error}"
             output = CoursePathAgentOutput(
                 status="error",
-                ui_text=f"Cannot apply {state.pending_op_type.type} | [{state.trial_op_execution.error.get('code','EXEC_FAIL')}]: {state.trial_op_execution.error}",
+                ui_text=f"Cannot apply {state.pending_op_type.type} | [{state.trial_op_execution.error.get('code','EXEC_FAIL')}]: {state.trial_op_execution.error.get('details', 'Unknown error')}",
                 diff=None,
                 error=state.trial_op_execution.error
             )
@@ -195,7 +194,7 @@ def handle_user_turn(state: CoursePathAgentState, config: dict, tools: CoursePat
         state.history += f"\nExecution failed for {state.pending_op_type.type}: {state.trial_op_execution.error}"
         output = CoursePathAgentOutput(
             status="error",
-            ui_text=f"Error [{state.trial_op_execution.error.get('code','EXEC_FAIL')}]: {state.trial_op_execution.error}",
+            ui_text=f"Error [{state.trial_op_execution.error.get('code','EXEC_FAIL')}]: {state.trial_op_execution.error.get('details', 'Unknown error')}",
             diff=None,
             error=state.trial_op_execution.error
         )
@@ -249,7 +248,11 @@ class CoursePathAgent:
         return summarize_diff(diff)
 
     def run(self, text: str) -> CoursePathAgentOutput:
-        print(f"Recent messages: {self.state.recent_messages}")
+        print("CoursePathAgent running...")
+        print("| Recent messages (last 5):")
+        for message in self.state.recent_messages[-5:]:
+            print(f"<{message['role']}>\n{message['content']}\n</{message['role']}>")
+        print('-----')
 
         # Route based on whether we’re waiting for a confirm
         if self.state.pending_op and text.strip().upper() == "CONFIRM":
@@ -277,7 +280,7 @@ if __name__ == "__main__":
 
     # Build initial course path + course bank updated with prereqs + scheduling info
     test_course_path = build_course_path(recommended_courses, course_bank)
-    test_course_path.curr_window_start = 6 # Example
+    test_course_path.curr_window_start = 0 # Example
 
     # Build agent
     tools = CoursePathTools(course_path=test_course_path, major=major)

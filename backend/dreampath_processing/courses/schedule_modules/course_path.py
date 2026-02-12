@@ -116,7 +116,7 @@ class CoursePath:
             # Add actual courses
             for course in term:
                 course_obj = self.course_bank[course]
-                cp_str += f"{course_obj.course_code}: '{course_obj.course_title.strip() if course_obj.course_title is not None else ''}' |"
+                cp_str += f"- {course_obj.course_code}: '{course_obj.course_title.strip() if course_obj.course_title is not None else ''}' |"
 
                 if course_obj.is_prereq:
                     cp_str += f" Prereq.\n"
@@ -125,7 +125,7 @@ class CoursePath:
             
             # Add empty slots if term has fewer than 3 courses
             for _ in range(len(term), 3):
-                cp_str += "*Empty*\n"
+                cp_str += " - *Empty*\n"
 
             cp_str += "\n"
         return cp_str
@@ -215,7 +215,16 @@ class CoursePath:
 
     @staticmethod
     def _format_violations(violations: list[dict[str, Any]]) -> str:
-        return "\n".join([f"- {violation}" for violation in violations])
+        lines = []
+        for v in violations:
+            if "prereq" in v:
+                prereq_loc = f"term {v['prereq_term']}" if v.get("prereq_term") is not None else "not scheduled"
+                lines.append(f"- {v['course']} (term {v['course_term']}): prereq {v['prereq']} ({prereq_loc}) — {v['issue']}")
+            elif "course_terms" in v:
+                lines.append(f"- {v['course']}: duplicate in terms {v['course_terms']}")
+            else:
+                lines.append(f"- {v['course']}: {v['issue']}")
+        return "\n".join(lines)
     
     # ─────────────────────────────────────────────────────────────────────────────
     # REBUILD COURSE PATH
@@ -368,7 +377,9 @@ class CoursePath:
                 print(f"* Violations for REMOVE course '{course_code_to_remove}' in term {course_to_remove.term_idx}:\n{removal_violations}")
             
             if course_code_to_remove not in self.recommended_courses or self.course_bank[course_code_to_remove].is_prereq:
-                raise Exception(f"\n* Course '{course_code_to_remove}' is a pre-requisite for a recommended course, cannot be removed.")
+                error_msg = f"Course '{course_code_to_remove}' is a pre-requisite for a scheduled recommended course(s), cannot be directly removed. Violations:\n"
+                error_msg += self._format_violations(removal_violations)
+                raise Exception(error_msg)
             
             # Reschedule if requested
             elif reschedule:
