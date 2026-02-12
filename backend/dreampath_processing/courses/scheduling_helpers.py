@@ -1,94 +1,12 @@
+"""
+Scheduling helpers for CoursePath building.
+"""
+
 from dreampath_processing.courses.course_relationship_handling import build_prereq_tree, get_direct_prereqs, PrereqGraph
 from collections import defaultdict, deque
 from typing import List, Set, Dict, Any, Tuple, Deque
 import copy
 from dreampath_processing.courses.schedule_modules.course import Course, MAJOR
-
-# -----------------------------------------------------
-# SCHEDULING FUNCTIONS
-# -----------------------------------------------------
-
-def validate_plan(course_path: List[List[str]], course_bank: Dict[str, Course], verbose: bool = False) -> List[Dict]:
-    """
-    Validate a course plan by checking for duplicates and prerequisite violations
-
-    Args:
-        course_plan (list): List of lists, where each inner list represents a term and contains course codes
-        course_bank (dict): Dictionary of course codes to Courses
-        verbose (bool): Whether to print verbose output
-
-    Returns:
-        list: List of dictionaries, each containing a violation
-    """
-    if verbose:
-        print(f"Validating plan...")
-
-    # 1. Build a mapping from course → list of terms it appears in
-    occurrences = defaultdict(list)
-    for term_idx, term_courses in enumerate(course_path):
-        for c in term_courses:
-            occurrences[c].append(term_idx)
-
-    violations = []
-
-    # 2. Flag any duplicates
-    for course, terms in occurrences.items():
-        if len(terms) > 1:
-            violations.append({
-                "course": course,
-                "course_terms": terms,
-                "issue": "Duplicate course scheduled in multiple terms."
-            })
-
-    # 3. Build reverse map from course → single term (for prereq checking)
-    #    Note: if duplicate, this will pick the last occurrence, but that doesn't block
-    term_of = {course: terms[-1] for course, terms in occurrences.items()}
-
-    # Build direct prereq. map
-    direct_prereq_map = {}
-    for term in course_path:
-        for course in term:
-            # In case course prereq. tree is already built, use it; otherwise, build it
-            course_obj = course_bank.get(course, None)
-            if course_obj and course_obj.prereq_tree is not None:
-                if verbose:
-                    print(f"* Using prereq. tree for course {course} from course bank.")
-                prereq_tree = course_obj.prereq_tree
-            else:
-                if verbose:
-                    print(f"* Building prereq. tree for course {course}.")
-                prereq_tree, _ = build_prereq_tree(course)
-
-            direct_prereqs = get_direct_prereqs(prereq_tree, course)
-            direct_prereq_map[course] = direct_prereqs
-
-    # 4. Prerequisite violations
-    for c, prereqs in direct_prereq_map.items():
-        # skip any course not in the plan
-        if c not in term_of:
-            continue
-
-        c_term = term_of[c]
-        for p in prereqs:
-            if p not in term_of:
-                violations.append({
-                    "course": c,
-                    "course_term": c_term,
-                    "prereq": p,
-                    "prereq_term": None,
-                    "issue": "Prerequisite not scheduled."
-                })
-            elif term_of[p] >= c_term:
-                violations.append({
-                    "course": c,
-                    "course_term": c_term,
-                    "prereq": p,
-                    "prereq_term": term_of[p],
-                    "issue": "Prerequisite not complete in time."
-                })
-            # else: prereq is satisfied
-
-    return violations
 
 # ---------------------------------------
 # Topological order (on the pruned subgraph)

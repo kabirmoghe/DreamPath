@@ -3,7 +3,7 @@ import re
 import pandas as pd
 from langchain.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI
-from dreampath_processing.courses.prompts.course_matching_prompts import PREREQ_GRAMMAR_PROMPT
+from dreampath_processing.courses.prompts.data_cleansing import PREREQ_GRAMMAR_PROMPT
 
 # Grammar and transformer for parsing prereqs
 prereq_grammar = """
