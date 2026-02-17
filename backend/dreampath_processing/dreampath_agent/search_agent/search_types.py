@@ -141,7 +141,7 @@ class SearchTask(LLMManagedModel):
     # ============================================
     description: str = llm_field(description="What to find")
 
-    status: Literal["not_started", "in_progress", "complete", "failed"] = llm_field(
+    status: Literal["not_started", "in_progress", "partially_complete", "complete", "failed"] = llm_field(
         default="not_started",
         description="Current status"
     )
@@ -190,7 +190,7 @@ class SearchAction(BaseModel):
 class TaskUpdate(BaseModel):
     """Single task update (status, top results, and notes)"""
     task_id: int
-    new_status: Literal["not_started", "in_progress", "complete", "failed"]
+    new_status: Literal["not_started", "in_progress", "partially_complete", "complete", "failed"]
     top_results: list[str] = Field(
         max_length=10,
         description="Course codes for most relevant results (max 10)"
@@ -237,6 +237,7 @@ class FinalSearchSummary(BaseModel):
     goal: str
     total_tasks: int
     completed_tasks: int
+    partially_completed_tasks: int
     failed_tasks: int
     total_iterations: int
     task_summaries: list[TaskSummary]
@@ -300,3 +301,8 @@ class SearchAgentState(BaseModel):
     # ============================================
     cumulative_tokens: int = Field(default=0)
     iteration_tokens: list[int] = Field(default_factory=list)
+
+    # ============================================
+    # GUARDRAILS
+    # ============================================
+    system_warning: bool = Field(default=False, description="Whether to warn the system that the search is incomplete")

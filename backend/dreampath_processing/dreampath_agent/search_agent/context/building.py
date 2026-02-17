@@ -202,6 +202,7 @@ def _render_task_state_block(goal: str, iteration: int, tasks: list[SearchTask])
     for task in tasks:
         status_emoji = {
             "complete": "✓",
+            "partially_complete": "~",
             "in_progress": "→",
             "failed": "✗",
             "not_started": "○"

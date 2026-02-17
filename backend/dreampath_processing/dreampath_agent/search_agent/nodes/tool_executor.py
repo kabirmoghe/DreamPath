@@ -47,7 +47,7 @@ def _emit_status(config: RunnableConfig, reason: str):
 # SEARCH EXECUTION
 # ============================================
 
-async def _execute_single_search(task_search: TaskSearch, iteration: int) -> tuple[TaskSearch, tuple[CourseSearchParams, CourseSearchOutput] | Exception]:
+async def _execute_single_search(task_search: TaskSearch, iteration: int, verbose=False) -> tuple[TaskSearch, tuple[CourseSearchParams, CourseSearchOutput] | Exception]:
     """
     Execute a single search (module_search or manual_search).
 
@@ -59,7 +59,8 @@ async def _execute_single_search(task_search: TaskSearch, iteration: int) -> tup
         if task_search.action_type == "module_search":
             from dreampath_processing.dreampath_agent.search_agent.tools import module_search
 
-            print(f"    [SEARCH] Task {task_search.task_id} - module_search: {task_search.search_input[:60]}...")
+            if verbose:
+                print(f"    [SEARCH] Task {task_search.task_id} - module_search: {task_search.search_input[:60]}...")
             params, result = await module_search(task_search.search_input)
             return (task_search, (params, result))
 
@@ -67,7 +68,9 @@ async def _execute_single_search(task_search: TaskSearch, iteration: int) -> tup
             from dreampath_processing.dreampath_agent.search_agent.tools import manual_search
 
             search_desc = task_search.search_input.query or task_search.search_input.course_code or str(task_search.search_input)
-            print(f"    [SEARCH] Task {task_search.task_id} - manual_search: {search_desc[:60]}...")
+
+            if verbose:
+                print(f"    [SEARCH] Task {task_search.task_id} - manual_search: {search_desc[:60]}...")
             params, result = await manual_search(task_search.search_input)
             return (task_search, (params, result))
 
@@ -86,7 +89,6 @@ def _build_tool_result_data(
 
     Stores raw data so rendering (compact vs full) can happen at context-build time.
     """
-    import json
 
     if isinstance(params_and_result, Exception):
         return {
@@ -132,7 +134,8 @@ def _build_tool_result_data(
 async def _execute_searches(
     state: SearchAgentState,
     action: SearchAction,
-    config: RunnableConfig
+    config: RunnableConfig,
+    verbose=False
 ) -> dict:
     """
     Execute multiple searches in parallel and AUTOMATICALLY update task results.
@@ -146,7 +149,8 @@ async def _execute_searches(
         State updates dict
     """
 
-    print(f"\n[TOOL EXECUTOR] Executing {len(action.searches)} searches in parallel...")
+    if verbose:
+        print(f"\n[TOOL EXECUTOR] Executing {len(action.searches)} searches in parallel...")
     _emit_status(config, f"Executing {len(action.searches)} search{'es' if len(action.searches) > 1 else ''}")
 
     # ============================================
@@ -194,7 +198,9 @@ async def _execute_searches(
 
             total_courses = len(result.results)
             total_unique = len(_get_unique_courses_from_executions(task.search_executions))
-            print(f"    → Task {task_id} now has {len(task.search_executions)} searches, {total_unique} unique courses")
+
+            if verbose:
+                print(f"    → Task {task_id} now has {len(task.search_executions)} searches, {total_unique} unique courses")
 
         # Build structured data for rendering at context-build time
         tool_data = _build_tool_result_data(task_search, task, params_and_result)
@@ -252,7 +258,8 @@ def _get_unique_courses_from_executions(search_executions: list[SearchExecution]
 async def _execute_task_updates(
     state: SearchAgentState,
     action: TaskUpdateAction,
-    config: RunnableConfig
+    config: RunnableConfig,
+    verbose=False
 ) -> dict:
     """
     Apply task updates deterministically (no LLM involved).
@@ -266,13 +273,15 @@ async def _execute_task_updates(
     Note: task.search_executions updated automatically during search execution.
     """
 
-    print(f"\n[TOOL EXECUTOR] Applying {len(action.task_updates)} task updates...")
+    if verbose:
+        print(f"\n[TOOL EXECUTOR] Applying {len(action.task_updates)} task updates...")
 
     updated_tasks = [task.model_copy(deep=True) for task in state.tasks]
 
     # Handle initial task creation (iteration 0)
     if state.iteration == 0 and len(updated_tasks) == 0:
-        print("  Creating initial tasks")
+        if verbose:
+            print("  Creating initial tasks")
         for i, update in enumerate(action.task_updates, 1):
             new_task = SearchTask(
                 task_id=i,
@@ -285,7 +294,9 @@ async def _execute_task_updates(
                 last_updated_iteration=state.iteration
             )
             updated_tasks.append(new_task)
-            print(f"    Created Task {i}: {new_task.description[:60]}...")
+
+            if verbose:
+                print(f"    Created Task {i}: {new_task.description[:60]}...")
 
         _emit_status(config, f"Created {len(updated_tasks)} search task{'s' if len(updated_tasks) > 1 else ''}")
 
@@ -296,7 +307,6 @@ async def _execute_task_updates(
             task = next((t for t in updated_tasks if t.task_id == update.task_id), None)
 
             if task:
-
                 # Update LLM-managed fields
                 old_status = task.status
                 task.status = update.new_status
@@ -307,15 +317,26 @@ async def _execute_task_updates(
                 # Calculate metrics for logging
                 total_unique = len(_get_unique_courses_from_executions(task.search_executions))
 
-                print(f"  Task {task.task_id}: {old_status} → {task.status}")
-                print(f"    Search history: {len(task.search_executions)} searches, {total_unique} unique courses")
-                print(f"    Top results: {len(task.top_results)} curated ({', '.join(task.top_results[:3])}...)")
+                if verbose:
+                    print(f"  Task {task.task_id}: {old_status} → {task.status}")
+                    print(f"    Search history: {len(task.search_executions)} searches, {total_unique} unique courses")
+                    print(f"    Top results: {len(task.top_results)} curated ({', '.join(task.top_results[:3])}...)")
 
     return {
         "tasks": updated_tasks,
     }
 
+def _verify_task_completion(tasks: list[SearchTask]) -> bool:
+    """
+    Check if all tasks are complete, partially complete, or failed.
+    """
+    flagged_task_ids = []
 
+    for task in tasks:
+        if task.status not in ["complete", "partially_complete", "failed"]:
+            flagged_task_ids.append(task.task_id)
+
+    return flagged_task_ids
 # ============================================
 # MAIN TOOL EXECUTOR
 # ============================================
@@ -336,19 +357,32 @@ async def tool_executor_node(state: SearchAgentState, config: RunnableConfig) ->
 
     if isinstance(next_action, SearchAction):
         result = await _execute_searches(state, next_action, config)
-        # Increment iteration when looping back to orchestrator
         result["iteration"] = state.iteration + 1
         return result
 
     elif isinstance(next_action, TaskUpdateAction):
         result = await _execute_task_updates(state, next_action, config)
-        # Increment iteration when looping back to orchestrator
+        # Increment iteration on 1st iteration
         result["iteration"] = state.iteration + 1
         return result
 
     elif isinstance(next_action, CompleteAction):
         # No execution needed, router will send to finalize
-        return {}
+        flagged_task_ids = _verify_task_completion(state.tasks)
+        if flagged_task_ids:
+            warning_content = (f"⚠️  Warning: CompleteAction called with tasks {', '.join([str(task_id) for task_id in flagged_task_ids])} not in valid terminal statuses (complete, partially complete, failed).",
+                           "If you meant to complete the search, update task statuses and notes properly before calling CompleteAction.")
+            warning_msg = {
+                "role": "system",
+                "content": warning_content,
+            }
+
+            return {
+                "system_warning": True,
+                "search_trace": state.search_trace + [warning_msg]
+            }
+        else:
+            return {}
 
     else:
         raise ValueError(f"Unknown action type: {type(next_action)}")

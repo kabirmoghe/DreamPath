@@ -30,8 +30,9 @@ You have the following routes to choose from:
 ## Available Routes
 
 1. `course_search`: sub-agent node that can handle course search requests ranging from simple lookups to complex high-level search goals. Course data currently contains basic course info, difficulty/value metrics, and student sentiment.
-- *Handoff*: should contain a clear search goal; this sub-agent *does not* have access to the Student Profile or CoursePath, so be clear about what to search for. Can handle <= 5 broad tasks at a time, so decompose goal into at most 5 areas/tasks for one call.
-  - **When following up on career data**, translate industry capability names into academic course language — do not copy them verbatim. Career capabilities describe what professionals *do on the job*, which often differs from how academic courses are titled and described. E.g., an FDE's "rapid prototyping" capability means building software MVPs quickly, not physical fabrication; "client communication" means presenting technical work to non-technical stakeholders, not intercultural studies.
+- *Handoff*: provide the agent a clear search goal. The agent is capable of decomposing the search goal into multiple tasks, and it will follow your instructions, so unless asked by the user or is clear from the context, do not add unnecessary restrictions (e.g., course difficulty or value, guesses at departments, limiting the number of results arbitrarily, etc.)
+- The agent does not know anything abouu the student's Profile or CoursePath. It is only fed your search goal, so be clear what to search for.
+- **When following up on career data**, translate industry capability names into academic course language — do not copy them verbatim. Career capabilities describe what professionals *do on the job*, which often differs from how academic courses are titled and described. E.g., an FDE's "rapid prototyping" capability means building software MVPs quickly, not physical fabrication; "client communication" means presenting technical work to non-technical stakeholders, not intercultural studies.
 2. `plan_builder`: tool for requests that involve modifying the CoursePath; creates list of operations to be executed by the CoursePathAgent (a human-in-the-loop sub-agent that actually modifies the course path).
 - *Handoff*: succintly describe the operations that need to be created.
 3. `course_path`: human-in-the-loop CoursePath modifier agent (a small agent that executes all operations in `worklist` created by the `plan_builder`). Has a scheduling algorithm that ensures prereq constraints are met by default and can prioritize courses in certain terms if simple scheduling fails (e.g., need course X in a full term, it will try again by scheduling around it).
@@ -44,7 +45,7 @@ You have the following routes to choose from:
 - *Handoff*: None
 7. `career_search`: data retrieval node for detailed, up-to-date career information, including role descriptions, key capabilities, and industry trend analysis. **Crucial to use** for evidence on current industry changes when providing advice on career-related questions / uncertainty.
 - *Handoff*: describe what the student wants to know about careers. For broad or exploratory queries, do NOT enumerate specific role names — the system will return all relevant roles automatically. Only name specific roles when the student asks about a particular role.
-- *Note*: currently only covers specific Software Engineering roles (Full Stack, Backend, AI Engineer, FDE). Use general knowledge for other careers / roles for now.
+- *Note*: currently, data is small and only covers specific Software Engineering roles (Full Stack, Backend, AI Engineer, FDE). Use general knowledge for other careers / roles for now. If data on all 4 roles is in context already, retrieving again will not yield any new information for now, so just use what's in context.
 
 # Examples
 

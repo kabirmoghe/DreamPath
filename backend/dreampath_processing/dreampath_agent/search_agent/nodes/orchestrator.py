@@ -10,7 +10,6 @@ from dreampath_processing.dreampath_agent.search_agent.search_types import (
 )
 import instructor
 from instructor import from_openai
-from langchain_core.messages import AIMessage
 from langchain_core.runnables import RunnableConfig
 from openai import AsyncOpenAI
 
@@ -32,7 +31,7 @@ Your job is to decide the next action based on:
 - Return SearchAction with 1-5 atomic searches to refine/complete those tasks
 - OR return TaskUpdateAction if you need to re-evaluate statuses first
 
-**If all tasks are "complete" or "failed"**:
+**If all tasks are "complete", "partially_complete", or "failed"**:
 - Return CompleteAction to finalize
 
 # Output Instructions
@@ -41,7 +40,7 @@ You MUST only return structured output (SearchAction | TaskUpdateAction | Comple
 After you return an action:
 - SearchAction → Tool executor runs searches, updates task.search_executions automatically
 - TaskUpdateAction → System applies your updates to task.status, task.top_results, task.orchestrator_notes
-- CompleteAction → Finalizer generates summary from all tasks
+- CompleteAction → Summarizer generates summary from all tasks
 
 ## SearchAction: Search Guidelines
 For each TaskSearch you create in this Action, you must choose one of the following search tools:
@@ -51,6 +50,7 @@ For each TaskSearch you create in this Action, you must choose one of the follow
 - Best for 90% of cases when you want intelligent parameter selection, or for initial search attemps
 - You provide ATOMIC search descriptions (specific, focused, single-query scope)
 - **Atomic search constraint**:
+  - Use terms and concepts that are likely to be found in a course catelog (e.g., computer science instead of software engineering, )
   - Search descriptions must be atomic, with specific, focused, and single-query scope
   - If relevant, only include explicit references to ≤ ONE department, ≤ ONE difficulty classification, and ≤ ONE value classification
   - Under the hood, these are 3 filters that the AI-optimized search will use, but each accepts a single value
@@ -74,6 +74,15 @@ For each TaskSearch you create in this Action, you must choose one of the follow
 
 **Searches are atomic in nature to improve efficiency, but you are encouraged to use multiple searches when relevant to tasks.**
 
+### Search Strategy: Explore Before Settling
+- **First search round**: Use broad, department-agnostic module_search to discover which departments have relevant courses.
+- **Follow-up rounds**: If initial results are mediocre or narrowly concentrated in one department, explicitly explore adjacent departments rather than rewording the same query.
+  - Many topics span multiple departments. E.g., "data analysis" lives in Computer Science, Mathematics, QSS, Economics, and Engineering.
+  - Industry-specific terms (e.g., "consulting", "software engineering", "product management") may not appear in academic course catalogs. When these terms yield poor results, pivot to the underlying academic disciplines and explore specific departments.
+    Example: "consulting skills" → try searches in Economics, Speech, Psychology departments
+    Example: "software engineering" → try Computer Science, or Engineering Sciences departments depending on goal's implied domain, desired skills, etc.
+- **Do not** mark a task complete or partially_complete after only one search round unless the results are clearly strong and goal scope is inherently hyper-specific. If initial results are decent but narrow, run at least one more round targeting different departments before settling.
+
 ## TaskUpdateAction: Task Update Guidelines
 When returning TaskUpdateAction:
 
@@ -96,32 +105,60 @@ Guidelines for task decomposition:
 Task Scope:
 - If the goal refers to a broad field or topic, (sparingly) use multiple tasks to cover different topics or subfields that are necessary / relevant to the goal.
 
+#### Ensuring Focus on Right Domains / Field of Study
+- When decomposing complex goals, ensure tasks explicitly specify the relevant domains / fields of study so keyword similarity does not lead you to surface courses from unrelated disciplines.
+  Example: "design" --> within task, specify "UI/UX", or "architecture", or "product", or "graphic", etc.
+  Example: "modeling" --> within task, specify "statistical / ML", or "financial", or "3D / CAD", etc.
+  Example: "prototyping" --> within task, specify "hardware", or "software", etc.
+
 ### 2. Mid-Turn Task Analysis
-For each in-progress or non-started task, analyze the corresponding results (for that task ID)
+For each in-progress or non-started task, analyze the corresponding results (for that task ID) by following the steps below.
+
+#### Top Results Curation
+The top_results field is YOUR selection of the best courses that satisfy the description for a given task
+- Review search_executions to see all courses found
+- Consider diversity, difficulty, prerequisites, relevance w.r.t the task and goal
+- Avoid highly redundant courses unless there is a clear reason to include them. If courses have highly overlapping titles, descriptions, and content, prioritize the one most relevant to the task (e.g., in the most related department)
+
+- Pay extremely careful attention to any specified fields of study / domains in the task.
+  - If courses naively have similar keywords, ensure they are actually relevant to any specified domains and weed them out if not.
+    Example: if the task specifies courses on "architecture" for a software engineering student, obviously omit courses from unrelated architectural design.
+    Example: if the task specifies courses on "prototyping" for a software engineering student, top courses should not include courses from unrelated hardware prototyping.
+
+- **Only include courses whose content directly addresses the task description.** Do not pad top_results with loosely related courses just to have results.
+  - Ex: if looking for software courses, do not include hardware engineering courses that happen to have some keyword alignment in common.
+- It is better to have 1-2 genuinely relevant courses (or zero, with a "failed" status) than 5 tangentially related ones.
+
+**Choose up to 10 most relevant course codes. Frontend will display these as primary results.**
+
+#### Status Determination
 - Set status based on result quality (not just presence of results)
-- Curate top_results: Select up to 10 most relevant course codes from search_executions
-  - Review all courses found in search_executions
-  - Choose the best matches for the task description
-  - Consider diversity, difficulty, prerequisites, relevance w.r.t the task and goal
-- Provide actionable orchestrator_notes for "in_progress" tasks
-  Example: "Try Biology/Chemistry depts, current results are CS-focused"
-- Mark "complete" only if top_results contain courses that **directly** address the task description.
+- Mark / keep tasks "in_progress" if there is still potential for improved completion through future search iterations.
+
+**The following are terminal statuses that signify that a given task's potential for completion has been maximized and that it should not be revisited:**
+- Mark "complete" only if top_results contain courses that address the task description well, and update orchestrator_notes to explain why you marked it complete.
   - Apply this test: if a student asked specifically for [task description], would these courses be a satisfying, on-topic answer? **Be strict here!** if you'd need to stretch or rationalize relevance, the task is NOT complete.
-- Mark "failed" after 2-3 search rounds with poor or irrelevant results, and update orchestrator_notes explaining why you marked it failed.
+- Mark "partially_complete" if top_results do a decent job of addressing the task description, but are not comprehensive or perfect. Update orchestrator_notes to explain why you marked it partially complete.
+  - This is important to surface moderate matches that are still likely relevant to the task and true nature of the overall goal. 
+  - For example, perhaps there are slightly less advanced courses that offer the similar but less advanced skills / knowledge.
+- Mark "failed" after 4+ search iterations (excluding task updates) with poor or irrelevant results, and update orchestrator_notes explaining why you marked it failed.
   - **It is perfectly acceptable — and encouraged — to mark a task as "failed" when the course catalog simply doesn't have courses that directly match.**
   - Not every topic has dedicated courses. A failed task with an honest note like "No courses directly cover prompt engineering for LLMs" is far more valuable than a "complete" task with tangentially related results.
+  - It is highly encouraged to highlight limitations with course relevance, e.g., "...course covers multi-robot systems and might be similar but is not directly relevant to multi-agent LLM-based systems."
 
-### Top Results Curation
-The top_results field is YOUR selection of the best courses:
-- Review search_executions to see all courses found
-- Choose up to 10 most relevant course codes
-- **Only include courses whose content directly addresses the task description.** Do not pad top_results with loosely related courses just to have results.
-- It is better to have 1-2 genuinely relevant courses (or zero, with a "failed" status) than 5 tangentially related ones.
-- This is your expert judgment on which results best satisfy the task
-- Frontend will display these as primary results
+#### Orchestrator Note Bookkeeping
+- Provide actionable orchestrator_notes for "in_progress" tasks, or descriptive rationale for terminal tasks
+- Carefully note which courses are the best matches, weaker matches, etc. for each task.
+- Make note of potential departmental areas worth exploring, other filter values worth relaxing, and other exploration to help steer yourself in future search iterations.
+  - Example: "Try Biology/Chemistry depts, current results are CS-focused"
+  - Example: "Prototyping keyword searches yielded specific courses for hardware, let's focus on CS courses"
+  - Example: "Maybe setting value_classification to high is too restrictive, there may not be reviews. We should try removing the constraint."
+- **Track which departments have been explored.** If results are weak, note untried departments explicitly so the next SearchAction targets them rather than rewording the same query.
+  - Example: "Searched broadly — results only from CS. Next: try Engineering Sciences, QSS departments."
 
 ## CompleteAction: Complete Guidelines
-When you study the tasks and determine they have all been completed or failed, you must return CompleteAction.
+Before returning CompleteAction, carefully understand your orchestrator_notes to determine if certain tasks are worth exploring further.
+Then, if you have studied the tasks and determined they are all terminal (completed, partially completed, or failed), you must return CompleteAction.
 This signals the end of search execution for the provided goal.
 
 # Core Example
@@ -159,13 +196,25 @@ Iteration 3 → SearchAction
   → Task 1: general CS courses again — still nothing on DevOps/CI-CD
   → Task 2: finds COSC60 (Networks), MATH75 (Crypto) — adjacent but not blockchain
 
-Iteration 4 → TaskUpdateAction
+Iteration 4 → TaskUpdateAction ...
+
+Iteration 5 → SearchAction ...
+
+Iteration 6 → TaskUpdateAction ...
+
+Iteration 7 → SearchAction ...
+
+Iteration 8 → TaskUpdateAction ...
+
+Iteration 9 → SearchAction ...
+
+Iteration 10 → TaskUpdateAction
   Task 1: failed | top_results: []
-  Notes: "After 2 rounds, no courses cover DevOps, CI/CD, or infrastructure automation. COSC50 teaches software practices and COSC52 touches deployment, but neither addresses DevOps tooling or CI/CD workflows."
+  Notes: "After multiple diverse search rounds, no courses cover DevOps, CI/CD, or infrastructure automation. COSC50 teaches software practices and COSC52 touches deployment, but neither addresses DevOps tooling or CI/CD workflows."
   Task 2: failed | top_results: []
   Notes: "No courses cover blockchain or distributed ledger technology. Found adjacent courses (COSC60 networking, MATH75 cryptography) but none address blockchain itself. The catalog does not offer blockchain-focused courses."
 
-Iteration 5 → CompleteAction
+Iteration 11 → CompleteAction
   "1 of 3 tasks completed. Strong systems programming coverage found. DevOps/CI-CD and blockchain are industry-specific topics not represented in the academic catalog."
 
 # Output Format
@@ -206,7 +255,7 @@ def _format_complete_content(action: CompleteAction) -> str:
     return f"Reasoning: {action.reasoning}"
 
 
-async def orchestrator_node(state: SearchAgentState, config: RunnableConfig) -> dict:
+async def orchestrator_node(state: SearchAgentState, config: RunnableConfig, verbose=False) -> dict:
     """
     Main search orchestrator node - decides next action via structured output.
 
@@ -214,23 +263,23 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig) -> 
         State updates dict (merged by LangGraph)
     """
 
-    print(f"  [ORCH] Starting orchestrator_node for iteration {state.iteration}")
-
-    if state.iteration == 0:
-        print(f"  [ORCH] Initial iteration")
+    if verbose:
+        print(f"  [ORCH] Starting orchestrator_node for iteration {state.iteration}")
         print(f"  [ORCH] Goal: {state.goal}")
 
     # ============================================
     # 1. BUILD CONTEXT (two-block structure)
     # ============================================
-    print("  [ORCH] Building context...")
+    if verbose:
+        print("  [ORCH] Building context...")
     context_messages, token_updates = build_search_context(
         state=state,
         prompt=SEARCH_ORCHESTRATOR_SYS,
         config=config
     )
 
-    print(f"  [ORCH] Context built: {len(context_messages)} messages, {token_updates['iteration_tokens'][-1]} tokens")
+    if verbose:
+        print(f"  [ORCH] Context built: {len(context_messages)} messages, {token_updates['iteration_tokens'][-1]} tokens")
 
     # ============================================
     # 2. GET STRUCTURED OUTPUT FROM LLM (instructor)
@@ -252,15 +301,18 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig) -> 
     # ============================================
     # 3. LOG DECISION
     # ============================================
-    print(f"\n[ORCHESTRATOR] Iteration {state.iteration}")
-    print(f"  Action: {next_action.action_type}")
-    print(f"  Reasoning: {next_action.reasoning[:100]}...")
+    if verbose:
+        print(f"\n[ORCHESTRATOR] Iteration {state.iteration}")
+        print(f"  Action: {next_action.action_type}")
+        print(f"  Reasoning: {next_action.reasoning[:100]}...")
 
     if isinstance(next_action, SearchAction):
-        print(f"  Searches planned: {len(next_action.searches)}")
+        if verbose:
+            print(f"  Searches planned: {len(next_action.searches)}")
         for i, search in enumerate(next_action.searches, 1):
             search_desc = search.search_input if isinstance(search.search_input, str) else (search.search_input.query or str(search.search_input))
-            print(f"    {i}. Task {search.task_id}: {search_desc[:60]}...")
+            if verbose:
+                print(f"    {i}. Task {search.task_id}: {search_desc[:60]}...")
 
     # ============================================
     # 4. FORMAT DECISION AS MESSAGE (Option A format)
@@ -296,5 +348,6 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig) -> 
         "next_action": next_action,
         "latest_reasoning": next_action.reasoning,
         "search_trace": state.search_trace + [decision_msg],
+        "system_warning": False,
         **token_updates
     }

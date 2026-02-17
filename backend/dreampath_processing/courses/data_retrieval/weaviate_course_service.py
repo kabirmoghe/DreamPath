@@ -7,9 +7,8 @@ import os
 import warnings
 from dreampath_processing.courses.data_retrieval.college_info_retrieval import DATA_DIR
 
-# Suppress Weaviate ResourceWarnings - singleton pattern keeps connection open intentionally
-warnings.filterwarnings('ignore', category=ResourceWarning, module='weaviate')
-warnings.filterwarnings('ignore', message='.*connection.*not closed.*')
+# Suppress ResourceWarnings from Weaviate - singleton pattern keeps connections open intentionally
+warnings.filterwarnings('ignore', category=ResourceWarning, message='unclosed')
 
 class WeaviateCourseService:
     """

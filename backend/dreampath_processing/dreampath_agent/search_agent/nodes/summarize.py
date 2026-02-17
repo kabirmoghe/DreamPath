@@ -87,7 +87,10 @@ def _render_full_summary(summary: FinalSearchSummary) -> str:
         f"# Search Results:",
         "",
         f"**Goal:** {summary.goal}",
-        f"**Status:** {summary.completed_tasks}/{summary.total_tasks} tasks completed in {summary.total_iterations} iterations",
+        f"**Status:** in {summary.total_iterations} iterations:",
+        f"  - {summary.completed_tasks}/{summary.total_tasks} tasks completed",
+        f"  - {summary.partially_completed_tasks}/{summary.total_tasks} tasks partially completed",
+        f"  - {summary.failed_tasks}/{summary.total_tasks} tasks failed",
         f"**Total Courses Found:** {summary.total_unique_courses} unique courses",
     ]
 
@@ -100,6 +103,7 @@ def _render_full_summary(summary: FinalSearchSummary) -> str:
     for task_summary in summary.task_summaries:
         status_emoji = {
             "complete": "✅",
+            "partially_complete": "🟡",
             "failed": "❌",
             "in_progress": "🔄",
             "not_started": "⭕"
@@ -272,7 +276,7 @@ def _render_minimal(
 # SUMMARIZE NODE
 # ============================================
 
-def summarize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
+def summarize_node(state: SearchAgentState, config: RunnableConfig, verbose=False) -> dict:
     """
     Generate structured summary from search execution.
 
@@ -283,7 +287,8 @@ def summarize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
     to markdown as needed, with appropriate mode (full vs top_results_only).
     """
 
-    print(f"\n[SUMMARIZE] Generating summary for {len(state.tasks)} tasks...")
+    if verbose:
+        print(f"\n[SUMMARIZE] Generating summary for {len(state.tasks)} tasks...")
 
     # ============================================
     # DETECT EXHAUSTION & CLEAN UP TASK STATUSES
@@ -291,16 +296,17 @@ def summarize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
     exhausted = state.iteration >= MAX_ITERATIONS
 
     if exhausted:
-        print(f"  ⚠️ Search exhausted (iteration {state.iteration} >= {MAX_ITERATIONS})")
+        if verbose:
+            print(f"  ⚠️ Search exhausted (iteration {state.iteration} >= {MAX_ITERATIONS})")
 
-    # Ensure all tasks have a terminal status (complete or failed)
-    terminal_statuses = {"complete", "failed"}
+    # Ensure all tasks have a terminal status (complete, partially_complete, failed)
+    terminal_statuses = {"complete", "partially_complete", "failed"}
     for task in state.tasks:
         if task.status not in terminal_statuses:
             task.status = "failed"
             if exhausted:
                 task.orchestrator_notes = (
-                    f"Search exhausted after {state.iteration} iterations without finding directly relevant courses. "
+                    f"Search exhausted after {state.iteration} iterations. Agent likely failed to find directly relevant courses. "
                     f"Last reasoning: {state.latest_reasoning}"
                 )
             else:
@@ -335,6 +341,7 @@ def summarize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
         ))
 
     completed_count = sum(1 for t in state.tasks if t.status == "complete")
+    partially_completed_count = sum(1 for t in state.tasks if t.status == "partially_complete")
     failed_count = sum(1 for t in state.tasks if t.status == "failed")
 
     # Set completion reasoning
@@ -350,6 +357,7 @@ def summarize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
         goal=state.goal,
         total_tasks=len(state.tasks),
         completed_tasks=completed_count,
+        partially_completed_tasks=partially_completed_count,
         failed_tasks=failed_count,
         total_iterations=state.iteration,
         task_summaries=task_summaries,
@@ -357,8 +365,9 @@ def summarize_node(state: SearchAgentState, config: RunnableConfig) -> dict:
         completion_reasoning=completion_reasoning,
     )
 
-    print(f"  ✓ Summary complete: {completed_count}/{len(state.tasks)} tasks completed")
-    print(f"  ✓ Total unique courses: {len(all_unique_courses_set)}")
+    if verbose:
+        print(f"  ✓ Summary complete: {completed_count}/{len(state.tasks)} tasks completed, {partially_completed_count}/{len(state.tasks)} tasks partially completed, {failed_count}/{len(state.tasks)} tasks failed")
+        print(f"  ✓ Total unique courses: {len(all_unique_courses_set)}")
 
     # Save structured_summary to file
     with open("structured_summary.json", "w") as f:

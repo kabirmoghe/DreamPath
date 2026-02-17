@@ -4,7 +4,7 @@ from dreampath_processing.dreampath_agent.search_agent.nodes.tool_executor impor
 from dreampath_processing.dreampath_agent.search_agent.search_types import MAX_ITERATIONS, SearchAgentState
 from langgraph.graph import END, START, StateGraph
 
-def build_search_agent():
+def build_search_agent(save_diagram: bool = False, diagram_path: str = "search_agent_graph.png"):
     """
     Build the search agent graph.
 
@@ -42,7 +42,10 @@ def build_search_agent():
 
         # Normal routing based on action type
         if state.next_action.action_type == "complete":
-            return "summarize"
+            if state.system_warning:
+                return "orchestrator"
+            else:
+                return "summarize"
         else:
             # Loop back to orchestrator - increment iteration via state update
             return "orchestrator"
@@ -64,12 +67,13 @@ def build_search_agent():
     compiled_graph = graph.compile()
 
     # Generate visualization
-    try:
-        png_graph = compiled_graph.get_graph().draw_mermaid_png()
-        with open("search_architecture.png", "wb") as f:
-            f.write(png_graph)
-        print("✓ Graph visualization saved to search_architecture.png")
-    except Exception as e:
-        print(f"Warning: Could not generate graph visualization: {e}")
+    if save_diagram:
+        try:
+            png_graph = compiled_graph.get_graph().draw_mermaid_png()
+            with open(diagram_path, "wb") as f:
+                f.write(png_graph)
+            print(f"✓ Graph visualization saved to {diagram_path}")
+        except Exception as e:
+            print(f"Warning: Could not generate graph visualization: {e}")
 
     return compiled_graph

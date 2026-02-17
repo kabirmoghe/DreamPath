@@ -36,6 +36,23 @@ Your job is to determine the best query for a given atomic course-search task us
 - If cross-departmental or unclear, use None.
 - If a request doesn't contain a ValidDepartment, use common sense to determine if there is a similar department and use accordingly.
 
+**Department Aliases & Notes**
+Some departments have non-obvious names. Use these mappings when the search implies a field that doesn't match a ValidDepartment literally:
+- Political Science → "Government"
+- Business / Marketing / Management → "Economics" (core business courses),
+  "Tuck Undergraduate" (marketing, communication, strategy, entrepreneurship)
+- Psychology / Neuroscience → "Psychological and Brain Sciences"
+- Astronomy → "Physics and Astronomy"
+- International Relations / IR → "Government" or "The John Sloan Dickey Center For International Understanding"
+- Data Science / QSS → "Quantitative Social Science"
+- Writing / Rhetoric → "Institute for Writing and Rhetoric"
+  (distinct from "English and Creative Writing" which is literature/fiction)
+- Public Policy → "The Nelson A Rockefeller Center for Public Policy"
+- Middle East / Arabic → "Middle Eastern Studies"
+- East Asian / Chinese / Japanese → "Asian Societies, Cultures, and Languages"
+- Environmental Science → "Environmental Studies Program" or "Earth Sciences"
+  (Earth Sciences for geology/climate; Env Studies for policy/interdisciplinary)
+
 4) course_code (str or None)
 - If a specific course is mentioned (e.g., “COSC74”, “COSC 74”), set course_code to that exact code (normalize by removing spaces), and set query = "".
 - Otherwise None.
