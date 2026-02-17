@@ -96,11 +96,12 @@
 }
 
 .message-user .message-content {
-  background: linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%);
-  color: white;
+  background: #f4f8e7;
+  color: #5c695b;
   padding: 10px 14px;
-  border-radius: 16px 16px 4px 16px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 3px 8px
+  font-weight: 500;
+  border: 2px #e2e7d8 dashed;
+  border-radius: 11px 11px 1px 11px;
 }
 
 .message-assistant .message-content {
