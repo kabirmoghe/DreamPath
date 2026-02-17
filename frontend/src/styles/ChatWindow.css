@@ -201,7 +201,7 @@
   font-family: 'Lora', serif;
   color: #4a3d6b;
   letter-spacing: 0.2px;
-  margin-bottom: 2px;
+  margin: 7.5px 0;
 }
 
 .chat-input-container {
@@ -223,7 +223,6 @@
   pointer-events: none;
   /* Tucked down and hidden */
   transform: translateY(40%);
-  opacity: 0.6;
   transition: transform 0.4s ease, opacity 0.3s ease;
 }
 

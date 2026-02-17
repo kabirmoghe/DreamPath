@@ -233,8 +233,8 @@ const onboardingStyles = `
   }
 
   .intro-compass {
-    width: 48px;
-    height: 48px;
+    width: 64px;
+    height: 64px;
     margin-bottom: 24px;
   }
 
@@ -426,7 +426,7 @@ const introSlides = [
   },
   {
     icon: Handshake,
-    content: "DreamPath is a tool dedicated to helping you succeed with whatever you hope to do, taking you from curious student to your <strong>dream career</strong>."
+    content: "DreamPath is a platform dedicated to taking you from a curious student to a confident new-grad pursuing your <strong>dream career</strong>."
   },
   {
     icon: Rocket,
@@ -462,7 +462,7 @@ const introSlides = [
   },
   {
     icon: HelpCircle,
-    content: "Three terms, or even two years down the line, what if <strong>something changes</strong>? Or what if you need a course at a specific point in time?"
+    content: "Three terms, or even two years down the line, what if <strong>something changes</strong>? What if you need a course at a specific point in time?"
   },
   {
     icon: null,
@@ -749,7 +749,7 @@ function Onboarding() {
           </div>
         ) : slide.isCompassSlide ? (
           <div className="intro-compass">
-            <img src="/compass.svg" alt="Compass" />
+            <img src="/compass_baseline.png" alt="Compass" />
           </div>
         ) : IconComponent ? (
           <div className="intro-icon">
@@ -822,7 +822,7 @@ function Onboarding() {
                           marginBottom: 0
                         }}
                       >
-                        Your journey starts here
+                        Your journey to success starts here
                       </p>
                     </div>
 

@@ -452,14 +452,14 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
                 marginTop: lineIdx > 0 ? '10px' : 0,
               }}
             >
-              {headingMatch[2]}
+              {headingMatch[2].replace(/\*\*/g, '')}
             </div>
           );
         } else {
           // h4: simple bold
           elements.push(
             <div key={`line-${lineIdx}`} style={{ fontWeight: 'bold', marginTop: lineIdx > 0 ? '8px' : 0 }}>
-              {headingMatch[2]}
+              {headingMatch[2].replace(/\*\*/g, '')}
             </div>
           );
         }
@@ -470,7 +470,8 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
       const patterns = [
         { regex: /\[([^\]]+)\]\(([^)]+)\)/g, type: 'link' },      // [text](url)
         { regex: /\*\*([^*]+)\*\*/g, type: 'bold' },              // **bold**
-        { regex: /\*([^*]+)\*/g, type: 'italic' },                // *italic*
+        { regex: /(?<!\*)\*(?!\*)([^*]+)\*(?!\*)/g, type: 'italic' },  // *italic* (not **)
+
         { regex: /`([^`]+)`/g, type: 'code' },                    // `code`
       ];
 
