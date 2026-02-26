@@ -1,7 +1,7 @@
 """Validate enriched review data ingestion into Weaviate."""
 
 import argparse
-from dreampath_processing.courses.data_retrieval.ingest_weaviate_courses_v4 import connect_local_with_openai
+from dreampath_processing.weaviate.connection import connect_local_with_openai
 from weaviate.classes.query import Filter
 
 

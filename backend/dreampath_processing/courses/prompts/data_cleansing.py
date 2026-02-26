@@ -1,9 +1,7 @@
 # Extracting prerequisites for a given course
-PREREQ_GRAMMAR_PROMPT = """
-Context:
-    You are converting a natural-language course prerequisite statement into a standardized logical grammar.
+PREREQ_GRAMMAR_PROMPT = """You are an expert that converts a natural-language course prerequisite statement into a standardized logical grammar.
 
-    Here is the input prerequisite text for a course that belongs to the "{dept_code}" department:
+Here is the input prerequisite text for a course that belongs to the "{dept_code}" department:
 
 "{prerequisite_text}"
 
@@ -31,5 +29,4 @@ Examples:
     6. "COSC 1,COSC 10,MATH 8" → COSC1 AND COSC10 AND MATH8
 
 Return only the grammar expression. If there are no required prerequisites, return a blank string (i.e., "").
-
 """

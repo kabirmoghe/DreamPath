@@ -2,3 +2,4 @@ change_management/
 course_scaffolding_testing.py
 *legacy*
 review_extraction/
+semantic_course_search.py

@@ -1,8 +1,8 @@
 """
-Setup Weaviate collections and ingest course/major data for local development.
+Setup Weaviate collections and ingest course/major/activity data for local development.
 
 Reads OPENAI_API_KEY from .env (required for text2vec-openai embeddings).
-Creates Course and Major collections, then ingests from the CSV data files.
+Creates Course, Major, and Activity collections, then ingests from CSV data files.
 
 Usage:
     uv run python backend/setup_weaviate.py              # create + ingest (skip existing)
@@ -23,24 +23,29 @@ load_dotenv(project_root / ".env")
 # Add backend/ to sys.path so dreampath_processing imports work
 sys.path.insert(0, str(Path(__file__).parent))
 
-from dreampath_processing.courses.data_retrieval.ingest_weaviate_courses_v4 import (
-    connect_local_with_openai,
+from dreampath_processing.weaviate.connection import connect_local_with_openai
+from dreampath_processing.weaviate.ingest_courses import (
     ensure_course_collection,
     stable_course_id,
     infer_level,
     infer_num_prereqs,
-    safe_float,
-    safe_int,
-    safe_str,
+    build_course_rows,
 )
-from dreampath_processing.courses.data_retrieval.ingest_weaviate_majors_v4 import (
-    ensure_major_collection,
+from dreampath_processing.weaviate.ingest_majors import ensure_major_collection, build_major_rows
+from dreampath_processing.weaviate.ingest_clubs import (
+    ensure_activity_collection,
+    build_activity_rows,
+    load_evidence,
 )
 from dreampath_processing.courses.data_retrieval.college_info_retrieval import load_dataframes
 
 DATA_DIR = Path(__file__).parent / "dreampath_processing" / "courses" / "data"
 COURSE_CSV = DATA_DIR / "all_courses_with_reviews.csv"
 MAJOR_CSV = DATA_DIR / "dartmouth_majors.csv"
+
+CLUBS_DATA_DIR = Path(__file__).parent / "dreampath_processing" / "clubs" / "data"
+ACTIVITY_CSV = CLUBS_DATA_DIR / "activities.csv"
+EVIDENCE_CSV = CLUBS_DATA_DIR / "activity_evidence.csv"
 
 
 def ingest_courses(client, recreate: bool = False):
@@ -62,7 +67,6 @@ def ingest_courses(client, recreate: bool = False):
 
     df = load_dataframes([str(COURSE_CSV)])
 
-    # Fill missing columns for backward compatibility
     review_fields = [
         "total_reviews",
         "global_difficulty_score", "global_difficulty_normalized",
@@ -73,12 +77,12 @@ def ingest_courses(client, recreate: bool = False):
         "dept_value_percentile", "dept_value_classification",
         "learning_value_blurb", "target_audience_blurb",
     ]
-    expected = [
+    catalog_fields = [
         "department", "department_id", "course_title", "course_url", "course_code",
         "description", "prerequisites", "degree_req", "html_content", "best_prereq_path",
-    ] + review_fields
+    ]
 
-    for col in expected:
+    for col in catalog_fields + review_fields:
         if col not in df:
             df[col] = None if col in review_fields else ""
 
@@ -90,43 +94,7 @@ def ingest_courses(client, recreate: bool = False):
     if "tags" not in df.columns:
         df["tags"] = [[] for _ in range(len(df))]
 
-    rows = []
-    for _, r in df.iterrows():
-        rows.append({
-            "course_id": r["course_id"],
-            "course_code": r["course_code"],
-            "department_id": r["department_id"],
-            "department": r["department"],
-            "course_title": r["course_title"],
-            "description": r["description"],
-            "level": r["level"],
-            "prerequisites": r["prerequisites"],
-            "best_prereq_path": r["best_prereq_path"],
-            "num_prereqs": r["num_prereqs"],
-            "degree_req": r["degree_req"],
-            "course_url": r["course_url"],
-            "tags": (
-                list(r["tags"]) if isinstance(r["tags"], (list, tuple))
-                else ([r["tags"]] if str(r["tags"]).strip() not in ["", "nan", "None"] else [])
-            ),
-            "updated_at": r["updated_at"],
-            "total_reviews": safe_int(r.get("total_reviews")),
-            "global_difficulty_score": safe_float(r.get("global_difficulty_score")),
-            "global_difficulty_normalized": safe_float(r.get("global_difficulty_normalized")),
-            "global_difficulty_percentile": safe_float(r.get("global_difficulty_percentile")),
-            "dept_difficulty_percentile": safe_float(r.get("dept_difficulty_percentile")),
-            "global_difficulty_classification": safe_str(r.get("global_difficulty_classification")),
-            "dept_difficulty_classification": safe_str(r.get("dept_difficulty_classification")),
-            "difficulty_blurb": safe_str(r.get("difficulty_blurb")),
-            "global_value_score": safe_float(r.get("global_value_score")),
-            "global_value_normalized": safe_float(r.get("global_value_normalized")),
-            "global_value_percentile": safe_float(r.get("global_value_percentile")),
-            "dept_value_percentile": safe_float(r.get("dept_value_percentile")),
-            "global_value_classification": safe_str(r.get("global_value_classification")),
-            "dept_value_classification": safe_str(r.get("dept_value_classification")),
-            "learning_value_blurb": safe_str(r.get("learning_value_blurb")),
-            "target_audience_blurb": safe_str(r.get("target_audience_blurb")),
-        })
+    rows = build_course_rows(df)
 
     chunk_size = 100
     total = 0
@@ -150,7 +118,6 @@ def ingest_majors(client, recreate: bool = False):
 
     coll = ensure_major_collection(client, recreate=recreate)
 
-    # Check if already populated
     if not recreate:
         count = coll.aggregate.over_all(total_count=True).total_count
         if count > 0:
@@ -165,14 +132,7 @@ def ingest_majors(client, recreate: bool = False):
 
     df["updated_at"] = dt.datetime.now(dt.UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
 
-    rows = []
-    for _, r in df.iterrows():
-        rows.append({
-            "major": r["major"],
-            "department_id": r["department_id"],
-            "department": r["department"],
-            "updated_at": r["updated_at"],
-        })
+    rows = build_major_rows(df)
 
     chunk_size = 100
     total = 0
@@ -186,21 +146,60 @@ def ingest_majors(client, recreate: bool = False):
     return True
 
 
+def ingest_activities(client, recreate: bool = False):
+    """Create Activity collection and ingest club/activity data."""
+    print("\n--- Activities ---")
+
+    if not ACTIVITY_CSV.exists():
+        print(f"Activity data not found: {ACTIVITY_CSV}")
+        return False
+
+    if not EVIDENCE_CSV.exists():
+        print(f"Evidence data not found: {EVIDENCE_CSV}")
+        return False
+
+    coll = ensure_activity_collection(client, recreate=recreate)
+
+    if not recreate:
+        count = coll.aggregate.over_all(total_count=True).total_count
+        if count > 0:
+            print(f"Activity collection already has {count} objects, skipping (use --recreate to reimport)")
+            return True
+
+    import pandas as pd
+    activities_df = pd.read_csv(str(ACTIVITY_CSV))
+    evidence_by_slug = load_evidence(str(EVIDENCE_CSV))
+    rows = build_activity_rows(activities_df, evidence_by_slug)
+
+    chunk_size = 100
+    total = 0
+    for i in range(0, len(rows), chunk_size):
+        chunk = rows[i : i + chunk_size]
+        coll.data.insert_many(chunk)
+        total += len(chunk)
+        print(f"  Ingested {total}/{len(rows)} activities")
+
+    print(f"Activities: {total} objects ingested")
+    return True
+
+
 def main():
     ap = argparse.ArgumentParser(description="Setup Weaviate for local development")
     ap.add_argument("--recreate", action="store_true", help="Drop and recreate collections before ingesting")
     args = ap.parse_args()
 
     print("Setting up Weaviate...")
-    print(f"Course data: {COURSE_CSV}")
-    print(f"Major data:  {MAJOR_CSV}")
+    print(f"Course data:   {COURSE_CSV}")
+    print(f"Major data:    {MAJOR_CSV}")
+    print(f"Activity data: {ACTIVITY_CSV}")
 
     client = connect_local_with_openai()
     try:
         course_ok = ingest_courses(client, recreate=args.recreate)
         major_ok = ingest_majors(client, recreate=args.recreate)
+        activity_ok = ingest_activities(client, recreate=args.recreate)
 
-        if course_ok and major_ok:
+        if course_ok and major_ok and activity_ok:
             print("\nWeaviate setup complete!")
         else:
             print("\nWeaviate setup completed with errors (see above)")
