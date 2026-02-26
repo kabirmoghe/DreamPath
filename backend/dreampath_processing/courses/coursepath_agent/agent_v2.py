@@ -1,4 +1,3 @@
-from instructor import from_openai
 from openai import OpenAI
 import os
 from typing import Optional
@@ -19,7 +18,7 @@ from dreampath_processing.courses.course_relationship_handling import construct_
 
 load_dotenv()
 
-client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # ------------------------------------------------------------
 # CONTEXT BUILDING
@@ -45,28 +44,26 @@ def build_messages(state: CoursePathAgentState, user_input: str, prompt: str):
 # ------------------------------------------------------------
 def extract_op_type(state: CoursePathAgentState, user_input: str) -> ExtractedOpType:
     messages = build_messages(state=state, user_input=user_input, prompt=OP_EXTRACTOR_SYS)
-    response = client.chat.completions.create(
+    completion = client.chat.completions.parse(
         model="gpt-4o-mini",
         messages=messages,
-        response_model=ExtractedOpType,
+        response_format=ExtractedOpType,
         temperature=0
     )
-    return response
+    return completion.choices[0].message.parsed
 
 # Extract operation from user input
 def extract_course_op(state: CoursePathAgentState, user_input: str, op_type: ExtractedOpType) -> Op:
     # Map op type to op class
     extraction_model = OP_INFO[op_type.type]['extraction_model']
     messages = build_messages(state=state, user_input=user_input, prompt=PARAM_EXTRACTOR_SYS.format(op_type=op_type.type))
-    response = client.chat.completions.create(
+    completion = client.chat.completions.parse(
         model="gpt-4o-mini",
         messages=messages,
-        response_model=extraction_model,
+        response_format=extraction_model,
         temperature=0.1
     )
-    
-    # print(f"Pending Op: {response}")
-    return response
+    return completion.choices[0].message.parsed
 
 def handle_missing_fields(state: CoursePathAgentState, op: Op):
     op_type = state.pending_op_type.type

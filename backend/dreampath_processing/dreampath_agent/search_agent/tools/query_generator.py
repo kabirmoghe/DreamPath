@@ -36,13 +36,12 @@ class CourseQueryGenerator:
             CourseSearchParams with optimized search parameters
         """
         messages = [{'role': 'system', 'content': self.system_prompt}, {'role': 'user', 'content': search_description}]
-        query = self.client.chat.completions.create(
+        completion = self.client.chat.completions.parse(
             model=self.model,
             messages=messages,
-            response_model=CourseSearchParams,
+            response_format=CourseSearchParams,
         )
-
-        return query
+        return completion.choices[0].message.parsed # generated query
 
     async def generate_async(self, search_description: str) -> CourseSearchParams:
         """Generate CourseSearchParams from an atomic search description (async).
@@ -63,25 +62,23 @@ class CourseQueryGenerator:
             raise ValueError("async_client not configured. Pass async_client to __init__() to use generate_async().")
 
         messages = [{'role': 'system', 'content': self.system_prompt}, {'role': 'user', 'content': search_description}]
-        query = await self.async_client.chat.completions.create(
+        completion = await self.async_client.chat.completions.parse(
             model=self.model,
             messages=messages,
-            response_model=CourseSearchParams,
+            response_format=CourseSearchParams,
         )
-
-        return query
+        return completion.choices[0].message.parsed # generated query
 
 if __name__ == "__main__":
     import os
 
     from dotenv import load_dotenv
     from evaluation.utils import load_best_prompt
-    from instructor import from_openai
     from openai import OpenAI
 
     load_dotenv()
 
-    client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
+    client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
     query_generator = CourseQueryGenerator(client)
     query_generator_prompt = load_best_prompt()
     query_generator.configure(system_prompt=query_generator_prompt)

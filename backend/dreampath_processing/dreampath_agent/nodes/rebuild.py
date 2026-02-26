@@ -11,7 +11,6 @@ import re
 from pathlib import Path
 from typing import Optional
 
-import instructor
 from dreampath_processing.courses.build_major_course_path import build_course_path
 from dreampath_processing.courses.schedule_modules.course_path import CoursePath
 from dreampath_processing.courses.course_relationship_handling import (
@@ -42,7 +41,7 @@ from langchain_core.messages import AIMessage
 from openai import AsyncOpenAI
 
 # Async client for LLM calls
-_async_client = instructor.from_openai(AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY")))
+_async_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 
 def _truncate(text: str | None, max_len: int) -> str:
@@ -404,12 +403,13 @@ async def execute_rebuild_tool(
     # DEBUG: Save synthesizer context to file
     _save_context_to_file(synthesis_prompt, "synthesizer_context")
 
-    synthesized_recs = await _async_client.chat.completions.create(
+    _synthesis_completion = await _async_client.chat.completions.parse(
         model="gpt-4o",
         messages=[{"role": "system", "content": synthesis_prompt}],
-        response_model=CourseRecsOutput,
+        response_format=CourseRecsOutput,
         temperature=0
     )
+    synthesized_recs = _synthesis_completion.choices[0].message.parsed
 
     print(f"LLM synthesized {len(synthesized_recs.recommendations)} course recommendations")
 

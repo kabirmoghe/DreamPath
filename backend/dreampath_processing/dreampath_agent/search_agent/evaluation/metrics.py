@@ -215,7 +215,7 @@ def compute_programmatic_score(
 def llm_judge_score(
     example: GoldenExample,
     prediction: CourseSearchParams,
-    llm: Any  # OpenAI client (from instructor)
+    llm: Any  # OpenAI client
 ) -> LLMJudgeEvaluation:
     """Use LLM to evaluate parameter extraction quality with structured feedback"""
 
@@ -273,18 +273,16 @@ Please evaluate the predicted parameters against the expected parameters and pro
 3. Specific feedback on what's good/bad
 4. Concrete improvement suggestions"""
 
-    # Call OpenAI with structured output (using instructor)
-    result = llm.chat.completions.create(
+    completion = llm.chat.completions.parse(
         model="gpt-4o-mini",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
         ],
-        response_model=LLMJudgeEvaluation,
+        response_format=LLMJudgeEvaluation,
         temperature=0
     )
-
-    return result
+    return completion.choices[0].message.parsed
 
 
 def format_params(params: CourseSearchParams) -> str:

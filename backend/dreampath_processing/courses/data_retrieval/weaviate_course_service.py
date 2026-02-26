@@ -48,6 +48,7 @@ class WeaviateCourseService:
                 grpc_port=grpc_port,
                 grpc_secure=grpc_secure,
                 skip_init_checks=True,  # Skip gRPC health check for cloud deployments
+                headers={"X-OpenAI-Api-Key": os.getenv("OPENAI_API_KEY", "")},
             )
 
             self.course_collection = self.client.collections.get("Course")

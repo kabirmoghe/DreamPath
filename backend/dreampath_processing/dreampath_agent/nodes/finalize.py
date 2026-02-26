@@ -28,7 +28,6 @@ async def render_final_reply(state: DreamPathAgentState, config) -> tuple[str, d
         state=state,
         config=config,
         system_prompt=CRAFT_FINAL_REPLY_SYS.format(student_name=student_name),
-        response_model=str,
         small_context=False,
         model="gpt-4o",
     )

@@ -50,6 +50,8 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
   const inputRef = useRef(null);
   const chatBodyRef = useRef(null);
   const [isScrolledUp, setIsScrolledUp] = useState(false);
+  const [confirmNote, setConfirmNote] = useState('');
+  const [showConfirmNote, setShowConfirmNote] = useState(false);
 
   // Track scroll position — tuck mascot when user scrolls up
   useEffect(() => {
@@ -129,13 +131,17 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
         // Limit to last 50 messages for performance
         const recentMessages = history.messages.slice(-50);
 
-        // Process messages to mark confirm/cancel responses as hidden
+        // Process messages to mark confirmation responses as hidden in UI
         const processedMessages = recentMessages.map((msg, idx) => {
-          // Check if this is a confirmation response (comes after coursepath_operations)
-          if (msg.type === 'human' && (msg.content === 'confirm' || msg.content === 'cancel')) {
-            // Check if previous message was a coursepath operation
+          if (msg.type === 'human' && (
+            msg.content?.startsWith('confirm') || msg.content?.startsWith('reject') ||
+            msg.content?.startsWith('accept') || msg.content?.startsWith('cancel')
+          )) {
             const prevMsg = recentMessages[idx - 1];
-            if (prevMsg && prevMsg.type === 'ai' && prevMsg.custom_data?.event_type === 'coursepath_operations') {
+            if (prevMsg?.type === 'ai' && (
+              prevMsg.custom_data?.event_type === 'coursepath_operations' ||
+              prevMsg.custom_data?.event_type === 'profile_update'
+            )) {
               return { ...msg, hideInUI: true };
             }
           }
@@ -230,6 +236,8 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
     if (!userMessage || isLoading || !threadId) return;
 
     setInput('');
+    setConfirmNote('');
+    setShowConfirmNote(false);
     setError(null);
     setNodeStatus(null); // Clear any previous node status
 
@@ -239,8 +247,10 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
     }
 
     // Add user message to chat
-    // Mark confirm/cancel messages as hidden (don't render in UI, but send to backend)
-    const isConfirmationResponse = userMessage === 'confirm' || userMessage === 'cancel';
+    // Mark confirmation responses as hidden (don't render in UI, but send to backend)
+    const isConfirmationResponse =
+      userMessage.startsWith('confirm') || userMessage.startsWith('reject') ||
+      userMessage.startsWith('accept') || userMessage.startsWith('cancel');
     setMessages(prev => [...prev, {
       type: 'human',
       content: userMessage,
@@ -387,40 +397,36 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
     }
   };
 
-  // Check if there's a pending coursepath operation requiring confirmation
-  const hasPendingCoursePathOperation = () => {
-    if (messages.length === 0 || isLoading) return false;
+  // Return the event_type of the pending confirmation, or null if none
+  const getPendingConfirmationType = () => {
+    if (messages.length === 0 || isLoading) return null;
 
-    // Check last message (skip hidden messages)
+    // Find last visible message (skip hidden confirm/reject responses)
     let lastVisibleMsg = null;
-    let secondToLastVisibleMsg = null;
-
     for (let i = messages.length - 1; i >= 0; i--) {
       const msg = messages[i];
-      // Skip hidden messages (confirm/cancel responses)
-      if (msg.hideInUI) {
-        continue;
-      }
-      if (!lastVisibleMsg) {
-        lastVisibleMsg = msg;
-      } else if (!secondToLastVisibleMsg) {
-        secondToLastVisibleMsg = msg;
-        break;
-      }
+      if (msg.hideInUI) continue;
+      lastVisibleMsg = msg;
+      break;
     }
 
-    if (!lastVisibleMsg) return false;
+    if (!lastVisibleMsg) return null;
 
-    // Check if last visible message is a coursepath operation
+    const eventType = lastVisibleMsg.custom_data?.event_type;
     if (lastVisibleMsg.type === 'ai' &&
-        lastVisibleMsg.custom_data?.event_type === 'coursepath_operations') {
-      return true;
+        (eventType === 'coursepath_operations' || eventType === 'profile_update')) {
+      return eventType;
     }
 
-    return false;
+    return null;
   };
 
-  const showConfirmButtons = hasPendingCoursePathOperation();
+  const pendingConfirmationType = getPendingConfirmationType();
+  const showConfirmButtons = pendingConfirmationType !== null;
+
+  // Build the action message, appending the optional note if provided
+  const buildActionMessage = (action) =>
+    confirmNote.trim() ? `${action}: ${confirmNote.trim()}` : action;
 
   // Custom lightweight markdown renderer
   const renderMarkdown = (text) => {
@@ -590,16 +596,21 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
     const lastMessageIsUser = messages.length > 0 && messages[messages.length - 1].type === 'human';
     const isPending = isLastMessage || (isSecondToLast && lastMessageIsUser);
 
-    // Determine confirmation status for CoursePathOperations
+    // Determine confirmation status for structured cards
     let confirmationStatus = 'pending';
-    if (msg.custom_data?.event_type === 'coursepath_operations') {
-      // Check if next message is a confirm/cancel response (hidden or from history)
-      const nextMsg = messages[idx + 1];
-      if (nextMsg && nextMsg.type === 'human') {
-        if (nextMsg.content === 'confirm') {
+    const nextMsg = messages[idx + 1];
+    if (nextMsg && nextMsg.type === 'human') {
+      if (msg.custom_data?.event_type === 'coursepath_operations') {
+        if (nextMsg.content?.startsWith('confirm')) {
           confirmationStatus = 'confirmed';
-        } else if (nextMsg.content === 'cancel') {
-          confirmationStatus = 'skipped';
+        } else if (nextMsg.content?.startsWith('reject') || nextMsg.content?.startsWith('cancel')) {
+          confirmationStatus = 'rejected';
+        }
+      } else if (msg.custom_data?.event_type === 'profile_update') {
+        if (nextMsg.content?.startsWith('accept')) {
+          confirmationStatus = 'accepted';
+        } else if (nextMsg.content?.startsWith('reject')) {
+          confirmationStatus = 'rejected';
         }
       }
     }
@@ -641,7 +652,7 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
                 />
               )}
               {msg.custom_data.event_type === 'profile_update' && (
-                <ProfileUpdate changes={msg.custom_data.changes} isPending={isPending} />
+                <ProfileUpdate changes={msg.custom_data.changes} isPending={isPending} confirmationStatus={confirmationStatus} />
               )}
             </div>
           )}
@@ -852,23 +863,74 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
             );
           })()}
 
-          {/* Confirm/Skip buttons positioned above textarea */}
+          {/* Confirm/Accept + Reject buttons positioned above textarea */}
           {showConfirmButtons && (
             <div className="confirm-buttons-container">
+              {/* Note textarea — appears above the button row when expanded */}
+              {showConfirmNote && (
+                <textarea
+                  value={confirmNote}
+                  onChange={(e) => setConfirmNote(e.target.value)}
+                  placeholder="Wanted a different term, prefer a different course..."
+                  rows={2}
+                  style={{
+                    width: '100%',
+                    border: '1px dashed rgb(227 222 237)',
+                    borderRadius: '6px',
+                    padding: '6px 8px',
+                    fontSize: '12px',
+                    fontFamily: 'Lora, serif',
+                    color: 'rgb(85, 85, 85)',
+                    resize: 'none',
+                    outline: 'none',
+                    background: 'rgb(248 239 255 / 95%)',
+                    marginBottom: '6px',
+                    display: 'block',
+                  }}
+                />
+              )}
+              {/* Action buttons + pencil note toggle — all inline */}
               <div className="confirm-buttons">
                 <button
-                  onClick={() => handleSend('confirm')}
+                  onClick={() => handleSend(buildActionMessage(pendingConfirmationType === 'profile_update' ? 'accept' : 'confirm'))}
                   disabled={isLoading}
                   className="confirm-btn"
                 >
-                  Confirm
+                  {pendingConfirmationType === 'profile_update' ? 'Accept' : 'Confirm'}
                 </button>
                 <button
-                  onClick={() => handleSend('cancel')}
+                  onClick={() => handleSend(buildActionMessage('reject'))}
                   disabled={isLoading}
                   className="skip-btn"
                 >
-                  Skip
+                  Reject
+                </button>
+                {/* Pencil icon toggles note textarea */}
+                <button
+                  onClick={() => setShowConfirmNote(!showConfirmNote)}
+                  title="Add a note"
+                  style={{
+                    background: showConfirmNote ? 'rgba(138, 107, 193, 0.12)' : 'transparent',
+                    border: 'none',
+                    borderRadius: '6px',
+                    padding: '4px 6px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: showConfirmNote ? '#8A6BC1' : '#aaa',
+                    transition: 'all 0.15s',
+                  }}
+                >
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M9.5 1.5L11.5 3.5L4.5 10.5H2.5V8.5L9.5 1.5Z"
+                      stroke="currentColor"
+                      strokeWidth="1.4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </button>
               </div>
             </div>

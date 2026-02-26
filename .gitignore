@@ -8,6 +8,7 @@ media
 __pycache__
 .cursor
 checkpoints*
+*.Rhistory
 
 # Markdown
 *.md
@@ -23,7 +24,11 @@ checkpoints*
 *.mp3
 *.wav
 *.pdf
+
 # Documentation (keep local only)
 DEPLOYMENT_GUIDE.md
 DEPLOYMENT_TROUBLESHOOTING.md
 docs/archive/
+
+# Debugging files
+structured_summary.json

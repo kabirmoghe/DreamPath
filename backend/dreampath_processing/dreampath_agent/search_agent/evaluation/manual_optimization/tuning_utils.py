@@ -9,7 +9,6 @@ from pathlib import Path
 # This warning comes from litellm (used by langfuse) and is harmless
 warnings.filterwarnings("ignore", message="There is no current event loop", category=DeprecationWarning)
 
-from instructor import from_openai
 from openai import OpenAI
 
 sys.path.append(str(Path(__file__).parent.parent.parent))
@@ -37,8 +36,7 @@ class PromptEvaluationManager:
         """Lazy-load the LLM judge (OpenAI client with instructor) on first access."""
         if self._llm_judge is None:
             # Only create when actually needed - no heavy LangChain imports!
-            client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
-            self._llm_judge = client
+            self._llm_judge = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         return self._llm_judge
 
     def save_prompt_metadata(self, prompt_filename: str, **kwargs):

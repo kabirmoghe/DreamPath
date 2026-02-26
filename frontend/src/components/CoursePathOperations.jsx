@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 
 // Add keyframe animation for pulsating glow
@@ -21,10 +21,17 @@ const pulseAnimation = `
  * - Red "-" for removals
  * - Blue "↔" for moves
  *
- * @param {string} confirmationStatus - "pending", "confirmed", or "skipped"
+ * @param {string} confirmationStatus - "pending", "confirmed", "rejected", or "skipped"
  */
 function CoursePathOperations({ operations, opString, isPending = false, confirmationStatus = "pending" }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
+
+  // Auto-collapse when a final status is reached
+  useEffect(() => {
+    if (confirmationStatus === 'confirmed' || confirmationStatus === 'rejected' || confirmationStatus === 'skipped') {
+      setIsCollapsed(true);
+    }
+  }, [confirmationStatus]);
 
   if (!operations || operations.length === 0) {
     return null;
@@ -213,11 +220,11 @@ function CoursePathOperations({ operations, opString, isPending = false, confirm
           padding: '10px 12px',
           borderTop: (!isCollapsed && confirmationStatus === 'pending') ? '1px solid rgba(255, 152, 0, 0.2)' : 'none',
           fontSize: confirmationStatus === 'pending' ? '12px' : '11px',
-          color: confirmationStatus === 'confirmed' ? '#2e7d32' : confirmationStatus === 'skipped' ? '#5a5a5a' : '#666',
+          color: confirmationStatus === 'confirmed' ? '#2e7d32' : (confirmationStatus === 'skipped' || confirmationStatus === 'rejected') ? '#5a5a5a' : '#666',
           fontFamily: 'Lora, serif',
           textAlign: 'center',
           fontWeight: confirmationStatus !== 'pending' ? 700 : 400,
-          backgroundColor: confirmationStatus === 'confirmed' ? '#e5f1d3' : confirmationStatus === 'skipped' ? '#e8e8e8' : 'transparent',
+          backgroundColor: confirmationStatus === 'confirmed' ? '#e5f1d3' : (confirmationStatus === 'skipped' || confirmationStatus === 'rejected') ? '#e8e8e8' : 'transparent',
           borderBottomLeftRadius: '8px',
           borderBottomRightRadius: '8px',
           display: 'flex',
@@ -239,6 +246,20 @@ function CoursePathOperations({ operations, opString, isPending = false, confirm
               />
             </svg>
             <span>CONFIRMED</span>
+          </>
+        )}
+        {confirmationStatus === 'rejected' && (
+          <>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M2 2L10 10M10 2L2 10"
+                stroke="#5a5a5a"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            <span>REJECTED</span>
           </>
         )}
         {confirmationStatus === 'skipped' && (

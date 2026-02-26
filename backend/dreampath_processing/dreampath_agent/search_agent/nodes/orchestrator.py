@@ -4,12 +4,11 @@ from dreampath_processing.dreampath_agent.search_agent.context.building import b
 from dreampath_processing.dreampath_agent.search_agent.search_types import (
     CompleteAction,
     NextAction,
+    OrchestratorResult,
     SearchAction,
     SearchAgentState,
     TaskUpdateAction,
 )
-import instructor
-from instructor import from_openai
 from langchain_core.runnables import RunnableConfig
 from openai import AsyncOpenAI
 
@@ -282,21 +281,19 @@ async def orchestrator_node(state: SearchAgentState, config: RunnableConfig, ver
         print(f"  [ORCH] Context built: {len(context_messages)} messages, {token_updates['iteration_tokens'][-1]} tokens")
 
     # ============================================
-    # 2. GET STRUCTURED OUTPUT FROM LLM (instructor)
+    # 2. GET STRUCTURED OUTPUT FROM LLM
     # ============================================
-    # print(f"  [ORCH] Calling instructor API...")
-    # Set mode at client creation time to ensure JSON mode is used
-    # This avoids instructor's Response wrapper issue with discriminated unions
-    client = from_openai(AsyncOpenAI(), mode=instructor.Mode.JSON)
+    # OrchestratorResult wraps NextAction so the discriminated union gets a concrete
+    # BaseModel schema the API can enforce at the token level (see search_types.py).
+    client = AsyncOpenAI()
 
-    # Our messages are already in OpenAI format (role + content dicts)
-    next_action: NextAction = await client.chat.completions.create(
+    _completion = await client.chat.completions.parse(
         model="gpt-4o",
         messages=context_messages,
-        response_model=NextAction,
+        response_format=OrchestratorResult,
         temperature=0,
     )
-    # print(f"  [ORCH] Got response from instructor")
+    next_action: NextAction = _completion.choices[0].message.parsed.action
 
     # ============================================
     # 3. LOG DECISION

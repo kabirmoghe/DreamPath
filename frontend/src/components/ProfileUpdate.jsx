@@ -18,7 +18,7 @@ const pulseAnimation = `
  *
  * Shows before/after values for changed fields with highlighted styling
  */
-function ProfileUpdate({ changes, isPending = false }) {
+function ProfileUpdate({ changes, isPending = false, confirmationStatus = "pending" }) {
   if (!changes || Object.keys(changes).length === 0) {
     return null;
   }
@@ -106,18 +106,42 @@ function ProfileUpdate({ changes, isPending = false }) {
           ))}
         </div>
 
-        {/* Footer with confirmation message */}
+        {/* Footer with status */}
         <div
           style={{
             padding: '10px 12px',
-            borderTop: '1px solid rgba(138, 107, 193, 0.2)',
-            fontSize: '12px',
-            color: '#666',
+            borderTop: confirmationStatus === 'pending' ? '1px solid rgba(138, 107, 193, 0.2)' : 'none',
+            fontSize: confirmationStatus === 'pending' ? '12px' : '11px',
+            color: confirmationStatus === 'accepted' ? '#2e7d32' : confirmationStatus === 'rejected' ? '#5a5a5a' : '#666',
             fontFamily: 'Lora, serif',
             textAlign: 'center',
+            fontWeight: confirmationStatus !== 'pending' ? 700 : 400,
+            backgroundColor: confirmationStatus === 'accepted' ? '#e5f1d3' : confirmationStatus === 'rejected' ? '#e8e8e8' : 'transparent',
+            borderBottomLeftRadius: '8px',
+            borderBottomRightRadius: '8px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '6px',
           }}
         >
-          How do you feel about these updates?
+          {confirmationStatus === 'pending' && 'Awaiting Confirmation'}
+          {confirmationStatus === 'accepted' && (
+            <>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 7L5.5 10.5L12 3.5" stroke="#2e7d32" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span>ACCEPTED</span>
+            </>
+          )}
+          {confirmationStatus === 'rejected' && (
+            <>
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2L10 10M10 2L2 10" stroke="#5a5a5a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span>REJECTED</span>
+            </>
+          )}
         </div>
       </Card>
     </>

@@ -21,7 +21,6 @@ from dreampath_processing.dreampath_agent.search_agent.tools.course_search_clien
 from dreampath_processing.dreampath_agent.search_agent.tools.query_generator import (
     CourseQueryGenerator,
 )
-from instructor import from_openai
 from openai import AsyncOpenAI, OpenAI
 
 # ============================================
@@ -39,9 +38,9 @@ def _get_query_generator():
         if not os.getenv("OPENAI_API_KEY"):
             raise ValueError("OPENAI_API_KEY not set - required for module_search")
 
-        # Initialize both sync and async instructor clients
-        sync_client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
-        async_client = from_openai(AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY")))
+        # Initialize both sync and async clients
+        sync_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        async_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         _query_generator = CourseQueryGenerator(sync_client, async_client=async_client)
 
         # Load best prompt from evaluation

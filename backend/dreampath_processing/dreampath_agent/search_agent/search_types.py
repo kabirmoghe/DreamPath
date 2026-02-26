@@ -209,11 +209,23 @@ class CompleteAction(BaseModel):
     action_type: Literal["complete"] = Field(default="complete", description="Action type discriminator")
     reasoning: str = Field(description="Why search is complete")
 
-# Union type for routing - use explicit discriminator for instructor compatibility
+# Union type for routing
 NextAction = Annotated[
     SearchAction | TaskUpdateAction | CompleteAction,
     Discriminator('action_type')
 ]
+
+class OrchestratorResult(BaseModel):
+    """Wrapper so NextAction can be used with OpenAI structured output.
+    NextAction is a type alias (not a BaseModel subclass), so it can't be passed
+    to response_format directly. This gives the API a concrete schema to enforce
+    at the token level.
+
+    Note: plain union (no Discriminator) is intentional — Pydantic generates anyOf
+    for plain unions, which OpenAI structured output supports. Discriminator generates
+    oneOf, which OpenAI rejects. The action_type Literal fields in each submodel are
+    sufficient for the model and Pydantic to disambiguate correctly."""
+    action: SearchAction | TaskUpdateAction | CompleteAction
 
 # ================================
 # Final Summary Types (defined before SearchAgentState to avoid forward refs)

@@ -1,5 +1,3 @@
-import os
-
 from dotenv import load_dotenv
 from dreampath_processing.dreampath_agent.context_building import (
     extract_structured_output_from_context,
@@ -12,9 +10,7 @@ from dreampath_processing.dreampath_agent.frontend_message_helpers import (
     extract_profile_update_metadata,
 )
 from dreampath_processing.dreampath_agent.nodes.prompts import MODIFY_PROFILE_SYS
-from instructor import from_openai
 from langgraph.types import interrupt
-from openai import OpenAI
 
 load_dotenv()
 
@@ -26,19 +22,6 @@ def format_modified_student_profile(modified_profile: ModifiedStudentProfile) ->
     modified_profile_content += f"post_grad_goals: {modified_profile.post_grad_goals}\n"
     modified_profile_content += f"career_goals: {modified_profile.career_goals}\n"
     return f"<mod_result>\n{modified_profile_content}</mod_result>"
-
-
-def determine_user_confirmation(user_response: str) -> bool:
-    """Determine if user response constitutes a confirmation."""
-    client = from_openai(OpenAI(api_key=os.getenv("OPENAI_API_KEY")))
-
-    response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": user_response}],
-        response_model=bool,
-        temperature=0
-    )
-    return response
 
 
 async def modify_student_profile(state: DreamPathAgentState, config) -> tuple[ModifiedStudentProfile, dict]:
@@ -83,7 +66,7 @@ async def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAg
         print("| * Computing modified profile for the first time")
         modified_profile, _ = await modify_student_profile(state, config)
 
-    # Verify modified profile with user
+    # Verify modified profile with user (skipped when require_user_confirmation=False, e.g. during rebuild)
     if state.require_user_confirmation:
         # Load current profile from DB for comparison
         student_db_service = config["configurable"]["student_db_service"]
@@ -105,35 +88,58 @@ async def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAg
             **structured_metadata
         })
 
-    if state.require_user_confirmation and determine_user_confirmation(user_response):
-        # Reload profile to ensure we have latest data
-        student_db_service = config["configurable"]["student_db_service"]
-        current_profile = await student_db_service.load_student_profile(config["configurable"]["user_id"])
+        # Determine accept/reject directly from button-driven response (startswith 'accept')
+        raw = user_response.strip()
+        accepted = raw.lower().startswith('accept')
+        note = raw.split(':', 1)[1].strip() if ':' in raw else ''
 
-        # Update only the modifiable fields from ModifiedStudentProfile
-        current_profile.major = modified_profile.major
-        current_profile.college_interests = modified_profile.college_interests
-        current_profile.post_grad_goals = modified_profile.post_grad_goals
-        current_profile.career_goals = modified_profile.career_goals
+        if accepted:
+            # Reload profile to ensure we have latest data
+            current_profile = await student_db_service.load_student_profile(config["configurable"]["user_id"])
 
-        print(f"| → ProfileModifier: user confirmed, updated_profile={current_profile}")
+            # Update only the modifiable fields from ModifiedStudentProfile
+            current_profile.major = modified_profile.major
+            current_profile.college_interests = modified_profile.college_interests
+            current_profile.post_grad_goals = modified_profile.post_grad_goals
+            current_profile.career_goals = modified_profile.career_goals
 
-        formatted_result = format_modified_student_profile(modified_profile)
-        tool_result = {
-            "role": "assistant",
-            "content": {
-                "name": "modify_profile",
-                "result": formatted_result,
-            },
-        }
+            print(f"| → ProfileModifier: user accepted, updated_profile={current_profile}")
 
-        # Save the complete StudentProfile back to the database
-        await student_db_service.save_student_profile(current_profile, config["configurable"]["user_id"])
+            formatted_result = format_modified_student_profile(modified_profile)
+            if note:
+                formatted_result += f"\n<user_note>{note}</user_note>"
+            tool_result = {
+                "role": "assistant",
+                "content": {
+                    "name": "modify_profile",
+                    "result": formatted_result,
+                },
+            }
 
-        return {
-            "turn_messages": state.turn_messages + [tool_result],
-            "pending_pre_interrupt": None,
-            "messages": langchain_messages,
-        }
-    else:
-        return {}
+            # Save the complete StudentProfile back to the database
+            await student_db_service.save_student_profile(current_profile, config["configurable"]["user_id"])
+
+            return {
+                "turn_messages": state.turn_messages + [tool_result],
+                "pending_pre_interrupt": None,
+                "messages": langchain_messages,
+            }
+        else:
+            # User rejected — include the proposed changes so the orchestrator can reference them
+            rejection_note = f"\n<user_note>{note}</user_note>" if note else ""
+            proposed = format_modified_student_profile(modified_profile)
+            tool_result = {
+                "role": "assistant",
+                "content": {
+                    "name": "modify_profile",
+                    "result": f"<mod_result>User rejected profile modification.{rejection_note}\n<proposed_changes>{proposed}</proposed_changes></mod_result>",
+                },
+            }
+            return {
+                "turn_messages": state.turn_messages + [tool_result],
+                "pending_pre_interrupt": None,
+                "messages": langchain_messages,
+            }
+
+    # require_user_confirmation=False: profile already handled upstream (e.g. rebuild)
+    return {}

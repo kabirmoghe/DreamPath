@@ -49,7 +49,6 @@ dependencies = [
     "langchain-mcp-adapters>=0.1.10",
     "weaviate-client>=4.17.0",
     "openai>=1.109.1",
-    "instructor>=1.11.3",
     "selenium>=4.37.0",
     "webdriver-manager>=4.0.2",
     "bs4>=0.0.2",

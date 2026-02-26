@@ -68,41 +68,36 @@ class CourseSearchClient:
         "learning_value_blurb",
         "target_audience_blurb"]
 
-        try:
-            # Build filters using the service's method
-            flt = self.service._build_filters(department=department, course_code=course_code, max_num_prereqs=max_num_prereqs, difficulty_classification=difficulty_classification, value_classification=value_classification)
+        # Build filters using the service's method
+        flt = self.service._build_filters(department=department, course_code=course_code, max_num_prereqs=max_num_prereqs, difficulty_classification=difficulty_classification, value_classification=value_classification)
 
-            # 1) Exact lookup path: if a course_code is provided, we can skip vectors entirely
-            # Use exact lookup when: course_code is set AND (no query OR alpha is 0/None)
-            if course_code and (not query or query.strip() == "" or alpha is None or alpha == 0):
-                res = self.service.course_collection.query.fetch_objects(
-                    filters=flt,
-                    limit=min(limit, 25),  # exact lookup rarely needs large limits
-                    return_properties=return_props,
-                )
-                results = [o.properties for o in res.objects]
-            else:
-                # 2) Hybrid path (semantic + keyword)
-                kwargs = dict(
-                    query=query if query else "",
-                    alpha=alpha,
-                    filters=flt,
-                    limit=limit,
-                    return_properties=return_props,
-                )
+        # 1) Exact lookup path: if a course_code is provided, we can skip vectors entirely
+        # Use exact lookup when: course_code is set AND (no query OR alpha is 0/None)
+        if course_code and (not query or query.strip() == "" or alpha is None or alpha == 0):
+            res = self.service.course_collection.query.fetch_objects(
+                filters=flt,
+                limit=min(limit, 25),  # exact lookup rarely needs large limits
+                return_properties=return_props,
+            )
+            results = [o.properties for o in res.objects]
+        else:
+            # 2) Hybrid path (semantic + keyword)
+            kwargs = dict(
+                query=query if query else "",
+                alpha=alpha,
+                filters=flt,
+                limit=limit,
+                return_properties=return_props,
+            )
 
-                res = self.service.course_collection.query.hybrid(**kwargs)
-                results = [o.properties for o in res.objects]
-            
-            # Post-query sorting if requested
-            if sort_by_level and results:
-                results.sort(key=lambda x: x.get("level", float('inf')))
-                
-            return results
-            
-        except Exception as e:
-            print(f"Error in hybrid search: {e}")
-            return []
+            res = self.service.course_collection.query.hybrid(**kwargs)
+            results = [o.properties for o in res.objects]
+
+        # Post-query sorting if requested
+        if sort_by_level and results:
+            results.sort(key=lambda x: x.get("level", float('inf')))
+
+        return results
     
     def structured_hybrid_search(self, params: CourseSearchParams) -> CourseSearchOutput:
         """

@@ -101,10 +101,16 @@ async def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgent
                 **structured_metadata
             })
 
-            # Continue processing with user response
+            # Extract the action word before any optional note (e.g. "confirm: prefer morning")
+            # Map "reject" → "cancel" for the CP sub-agent's exact-match routing
+            action_word = user_response.split(':')[0].strip().lower()
+            if action_word == 'reject':
+                action_word = 'cancel'
+
+            # Continue processing with user response (note is already in turn_messages for orchestrator)
             cp_agent_output = await service.run_stateless(
                 user_id=config['configurable']['user_id'],
-                message=user_response,
+                message=action_word,
                 major=major,
                 require_user_confirmation=state.require_user_confirmation
             )

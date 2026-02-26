@@ -98,10 +98,11 @@
 .message-user .message-content {
   background: #f4f8e7;
   color: #5c695b;
-  padding: 10px 14px;
+  padding: 5px 10px;
   font-weight: 500;
   border: 2px #e2e7d8 dashed;
   border-radius: 11px 11px 1px 11px;
+  letter-spacing: -0.1px;
 }
 
 .message-assistant .message-content {
@@ -242,29 +243,31 @@
   width: 75px;
 }
 
-/* Confirm/Skip buttons for coursepath operations */
+/* Confirm/Accept + Reject buttons for coursepath and profile confirmation flows */
 .confirm-buttons-container {
   position: absolute;
   bottom: 100%;
   right: 20px;
   margin-bottom: 8px;
   z-index: 10;
+  min-width: 240px;
 }
 
 .confirm-buttons {
   display: flex;
-  gap: 10px;
+  gap: 4px;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .confirm-btn {
   background: #a8d5a8;
   border: none;
   border-radius: 8px;
-  padding: 8px 20px;
+  padding: 6px 14px;
   font-family: 'Lora', serif;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   color: #2d5f2d;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -294,10 +297,10 @@
 .skip-btn {
   border: 1px solid #c1c1c1;
   border-radius: 8px;
-  padding: 8px 20px;
+  padding: 6px 14px;
   font-family: 'Lora', serif;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 12px;
   color: #5a5a5a;
   background: rgb(200, 200, 200);
   text-transform: uppercase;

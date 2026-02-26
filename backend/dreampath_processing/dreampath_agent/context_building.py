@@ -10,7 +10,6 @@ from dreampath_processing.dreampath_agent.nodes.prompts import (
     MASTER_CONTEXT_SHORT,
     SUMMARY_SYS_PROMPT,
 )
-import instructor
 from langchain_core.messages import AIMessage
 from openai import AsyncOpenAI
 from pydantic import BaseModel
@@ -18,7 +17,7 @@ from pydantic import BaseModel
 load_dotenv()
 
 # Async client for all LLM calls (allows event loop to yield during API calls)
-async_client = instructor.from_openai(AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY")))
+async_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 SUMMARIZATION_MODEL = "gpt-4o-mini"
 
@@ -71,15 +70,15 @@ async def handle_summary_get_context_messages(
         print(f"| Summarizing {len(new_messages)} new messages from {state.summary_end} to {recent_start}")
         # Use async client so the event loop can yield during the API call,
         # allowing the "Reviewing Conversation" status to be sent immediately
-        new_summary = await async_client.chat.completions.create(
+        _completion = await async_client.chat.completions.create(
             model=SUMMARIZATION_MODEL,
             messages=[
                 {"role": "system", "content": SUMMARY_SYS_PROMPT},
                 {"role": "assistant", "content": f"<summary>\n...{state.summary}\n</summary>"},
                 {"role": "user", "content": f"<new_messages>\n{new_messages}\n</new_messages>"}
             ],
-            response_model=str
         )
+        new_summary = _completion.choices[0].message.content
         new_summary_end = state.summary_end + len(new_messages)
 
         # Update state
@@ -265,7 +264,7 @@ async def extract_structured_output_from_context(
     state: DreamPathAgentState,
     config: dict,
     system_prompt: str,
-    response_model: type[BaseModel],
+    response_model: type[BaseModel] | None = None,
     small_context: bool = False,
     model: str = "gpt-4o-mini",
     temperature: float = 0,
@@ -311,20 +310,30 @@ async def extract_structured_output_from_context(
     # Reasoning models (o-series, gpt-5) use reasoning_effort instead of temperature
     is_reasoning_model = model in ("o3-mini", "o4-mini") or "5" in model
 
+    # No response_model → plain text completion
+    if response_model is None:
+        kwargs: dict = {"model": model, "messages": messages}
+        if is_reasoning_model and reasoning_effort:
+            kwargs["reasoning_effort"] = reasoning_effort
+        elif not is_reasoning_model:
+            kwargs["temperature"] = temperature
+        completion = await async_client.chat.completions.create(**kwargs)
+        return completion.choices[0].message.content, state_updates
+
     if is_reasoning_model:
         kwargs = {
             "model": model,
             "messages": messages,
-            "response_model": response_model,
+            "response_format": response_model,
         }
         if reasoning_effort:
             kwargs["reasoning_effort"] = reasoning_effort
-        response = await async_client.chat.completions.create(**kwargs)
+        completion = await async_client.chat.completions.parse(**kwargs)
     else:
-        response = await async_client.chat.completions.create(
+        completion = await async_client.chat.completions.parse(
             model=model,
             messages=messages,
-            response_model=response_model,
+            response_format=response_model,
             temperature=temperature
         )
-    return response, state_updates
+    return completion.choices[0].message.parsed, state_updates
