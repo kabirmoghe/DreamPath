@@ -3,11 +3,11 @@ from typing import Any
 from dreampath_processing.courses.data_retrieval.weaviate_course_service import (
     get_weaviate_course_service,
 )
-from dreampath_processing.dreampath_agent.dreampath_types import (
+from dreampath_processing.dreampath_agent.search_agent.types.course_types import (
     CourseSearchOutput,
+    CourseSearchParams,
     CourseSearchResult,
 )
-from dreampath_processing.dreampath_agent.search_agent.search_types import CourseSearchParams
 
 
 class CourseSearchClient:

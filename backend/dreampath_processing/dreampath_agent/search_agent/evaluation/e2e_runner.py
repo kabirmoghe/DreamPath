@@ -283,7 +283,7 @@ async def run_evaluation(
     completed = 0
 
     print(f"\n{'='*80}")
-    print(f"SEARCH AGENT E2E EVALUATION")
+    print("SEARCH AGENT E2E EVALUATION")
     print(f"{'='*80}")
     print(f"Test cases: {len(cases)}")
     print(f"Runs per case: {n_runs}")
@@ -463,8 +463,8 @@ def generate_report(results: dict) -> str:
 
         if agg:
             lines.extend([
-                f"| Metric | Value |",
-                f"|--------|-------|",
+                "| Metric | Value |",
+                "|--------|-------|",
                 f"| Runs (successful/total) | {agg['num_runs']}/{len(runs)} |",
                 f"| Avg time | {agg['avg_elapsed_seconds']}s |",
                 f"| Avg iterations | {agg['avg_iterations']} (range: {agg['iteration_range']}) |",
@@ -521,7 +521,7 @@ if __name__ == "__main__":
         cases = [E2E_TEST_CASES[args.index]]
 
     # Default output dir includes timestamp
-    output_dir = args.output_dir or f"evaluation/results"
+    output_dir = args.output_dir or "evaluation/results"
 
     asyncio.run(run_evaluation(
         n_runs=args.num_runs,

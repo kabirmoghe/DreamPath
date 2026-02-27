@@ -1,12 +1,15 @@
-# Max iterations safety limit (shared across graph.py and summarize.py)
-MAX_ITERATIONS = 20
-
 import operator
 import time
 from typing import Annotated, Any, Literal
 
-from dreampath_processing.dreampath_agent.dreampath_types import (
+from dreampath_processing.dreampath_agent.search_agent.types.base import (
+    SearchOutput,
+    SearchParams,
+    SearchResult,
+)
+from dreampath_processing.dreampath_agent.search_agent.types.course_types import (
     CourseSearchOutput,
+    CourseSearchParams,
     CourseSearchResult,
 )
 from dreampath_processing.dreampath_agent.search_agent.utils.structured_output import (
@@ -15,94 +18,21 @@ from dreampath_processing.dreampath_agent.search_agent.utils.structured_output i
     system_field,
 )
 from langchain_core.messages import BaseMessage
-from pydantic import BaseModel, Discriminator, Field, field_validator
+from pydantic import BaseModel, Discriminator, Field
 
-# Valid Dartmouth departments (from course catalog)
-ValidDepartment = Literal[
-    "African and African American Studies",
-    "Anthropology",
-    "Art History",
-    "Asian Societies, Cultures, and Languages",
-    "Biological Sciences",
-    "Chemistry",
-    "Classics",
-    "Cognitive Science",
-    "College Courses",
-    "Comparative Literature",
-    "Computer Science",
-    "Divisional Courses",
-    "Earth Sciences",
-    "East European, Eurasian, and Russian Studies",
-    "Economics",
-    "Education",
-    "Engineering Sciences",
-    "English and Creative Writing",
-    "Environmental Studies Program",
-    "Film and Media Studies",
-    "French and Italian Languages and Literatures",
-    "Geography",
-    "German Studies",
-    "Government",
-    "History",
-    "Humanities",
-    "Institute for Writing and Rhetoric",
-    "Jewish Studies",
-    "Latin American Latino and Caribbean Studies",
-    "Linguistics",
-    "Mathematics",
-    "Middle Eastern Studies",
-    "Music",
-    "Native American and Indigenous Studies",
-    "Philosophy",
-    "Physics and Astronomy",
-    "Psychological and Brain Sciences",
-    "Quantitative Social Science",
-    "Religion",
-    "Sociology",
-    "Spanish and Portuguese Languages and Literatures",
-    "Speech",
-    "Studio Art",
-    "The John Sloan Dickey Center For International Understanding",
-    "The Nelson A Rockefeller Center for Public Policy",
-    "Theater",
-    "Tuck Undergraduate",
-    "Womens, Gender, and Sexuality Studies Program",
+# Max iterations safety limit (shared across graph.py and summarize.py)
+MAX_ITERATIONS = 20
+
+# Re-export for backwards compatibility
+__all__ = [
+    "MAX_ITERATIONS",
+    "SearchParams", "SearchResult", "SearchOutput",
+    "CourseSearchParams", "CourseSearchResult", "CourseSearchOutput",
+    "SearchExecution", "SearchTask", "TaskSearch",
+    "SearchAction", "TaskUpdate", "TaskUpdateAction", "CompleteAction",
+    "NextAction", "OrchestratorResult",
+    "TaskSummary", "FinalSearchSummary", "SearchAgentState",
 ]
-
-# Valid difficulty classifications (from review data)
-ValidDifficulty = Literal["Low", "Medium", "High"]
-
-# Valid learning value classifications (from review data)
-ValidValue = Literal["Low", "Medium", "High"]
-
-class CourseSearchParams(BaseModel):
-    """
-    Simplified course search parameters for Weaviate hybrid search.
-
-    Design decisions:
-    - Percentile filters removed: Classifications (Low/Medium/High) are simpler and sufficient
-    - Level range filters removed: sort_by_level handles "advanced"/"upper-level" queries
-    """
-    # Semantic search
-    query: str | None = Field(default=None, description="The semantic/keyword query to search for courses")
-    alpha: float | None = Field(default=0.5, description="Hybrid search weight (0=keyword, 1=semantic)")
-
-    # Filters - Department & Course
-    department: ValidDepartment | None = Field(default=None, description="The department to filter by")
-    course_code: str | None = Field(default=None, description="Specific course code to search for")
-
-    # Filters - Prerequisites
-    max_num_prereqs: int | None = Field(default=None, description="Maximum number of prerequisites")
-
-    # Filters - Difficulty (classification only, percentiles for UI display)
-    difficulty_classification: ValidDifficulty | None = Field(default=None, description="Difficulty level filter")
-
-    # Filters - Learning Value (classification only, percentiles for UI display)
-    value_classification: ValidValue | None = Field(default=None, description="Learning value classification filter")
-
-    # Modifiers
-    sort_by_level: bool | None = Field(default=False, description="Whether to sort results by course level number")
-    limit: int | None = Field(default=10, description="Maximum number of results to return")
 
 # ================================
 # Agent State
@@ -110,8 +40,8 @@ class CourseSearchParams(BaseModel):
 
 class SearchExecution(BaseModel):
     """Record of a single search execution"""
-    params: CourseSearchParams # single hybrid input query params
-    output: CourseSearchOutput # output course result(s)
+    params: SearchParams  # generalized from CourseSearchParams
+    output: SearchOutput  # generalized from CourseSearchOutput
     timestamp: float = Field(default_factory=time.time)
     iteration: int
 
@@ -128,9 +58,9 @@ class SearchTask(LLMManagedModel):
         description="Complete search history with params + outputs (system-managed)"
     )
 
-    course_index: dict[str, CourseSearchResult] = system_field(
+    result_index: dict[str, SearchResult] = system_field(
         default_factory=dict,
-        description="course_code lookup → CourseSearchResult (populated incrementally by search execution)"
+        description="id → SearchResult lookup (populated incrementally by search execution)"
     )
 
     created_iteration: int = system_field(description="When task was created")
@@ -148,7 +78,7 @@ class SearchTask(LLMManagedModel):
 
     top_results: list[str] = llm_field(
         default_factory=list,
-        description="Course codes for most relevant results"
+        description="IDs for most relevant results"
     )
 
     orchestrator_notes: str | None = llm_field(
@@ -156,22 +86,20 @@ class SearchTask(LLMManagedModel):
         description="Why status was set, what to try next"
     )
 
-class TaskSearch(BaseModel):
-    """Wrapper linking a search to a specific task"""
-    task_id: int = Field(description="Which task this search is for")
-    action_type: Literal["module_search", "manual_search"] = "module_search"
-    search_input: str | CourseSearchParams = Field(description="Search input: single string search description for module_search(search_input) or refined params for manual_search(params)")
+    # Backwards-compat property
+    @property
+    def course_index(self) -> dict[str, SearchResult]:
+        """Alias for result_index (backwards compatibility)."""
+        return self.result_index
 
-    @field_validator('search_input')
-    @classmethod
-    def validate_search_input(cls, v, info):
-        """Validate search_input type matches action_type"""
-        action_type = info.data.get('action_type')
-        if action_type == "module_search" and not isinstance(v, str):
-            raise ValueError("module_search requires string search_input")
-        if action_type == "manual_search" and not isinstance(v, CourseSearchParams):
-            raise ValueError("manual_search requires CourseSearchParams search_input")
-        return v
+class TaskSearch(BaseModel):
+    """Wrapper linking a search description to a specific task.
+
+    The orchestrator emits natural language search descriptions.
+    The domain strategy's query generator translates them into optimized search params.
+    """
+    task_id: int = Field(description="Which task this search is for")
+    search_description: str = Field(description="Atomic search description (natural language)")
 
 # ================================
 # Structured Orchestrator Actions
@@ -193,10 +121,9 @@ class TaskUpdate(BaseModel):
     new_status: Literal["not_started", "in_progress", "partially_complete", "complete", "failed"]
     top_results: list[str] = Field(
         max_length=10,
-        description="Course codes for most relevant results (max 10)"
+        description="IDs for most relevant results (max 10)"
     )
     orchestrator_notes: str = Field(description="Guidance for next iteration")
-    # Note: search_executions updated automatically by search execution, not by LLM
 
 class TaskUpdateAction(BaseModel):
     """Update task statuses and notes (results updated automatically by searches)"""
@@ -215,20 +142,21 @@ NextAction = Annotated[
     Discriminator('action_type')
 ]
 
-class OrchestratorResult(BaseModel):
-    """Wrapper so NextAction can be used with OpenAI structured output.
-    NextAction is a type alias (not a BaseModel subclass), so it can't be passed
-    to response_format directly. This gives the API a concrete schema to enforce
-    at the token level.
+# ================================
+# OrchestratorResult (domain-agnostic)
+# ================================
+# The orchestrator emits search descriptions (natural language), not domain-specific params.
+# A single OrchestratorResult schema works for all domains.
 
-    Note: plain union (no Discriminator) is intentional — Pydantic generates anyOf
-    for plain unions, which OpenAI structured output supports. Discriminator generates
-    oneOf, which OpenAI rejects. The action_type Literal fields in each submodel are
-    sufficient for the model and Pydantic to disambiguate correctly."""
+class OrchestratorResult(BaseModel):
+    """OrchestratorResult wrapper for OpenAI structured output.
+
+    Note: plain union (no Discriminator) is intentional - Pydantic generates anyOf
+    for plain unions, which OpenAI structured output supports."""
     action: SearchAction | TaskUpdateAction | CompleteAction
 
 # ================================
-# Final Summary Types (defined before SearchAgentState to avoid forward refs)
+# Final Summary Types
 # ================================
 
 class TaskSummary(BaseModel):
@@ -236,25 +164,26 @@ class TaskSummary(BaseModel):
     task_id: int
     description: str
     status: str
-    top_results: list[str] = Field(description="Orchestrator-curated course codes")
-    all_courses: list[CourseSearchResult] = Field(description="All unique courses found")
+    top_results: list[str] = Field(description="Orchestrator-curated result IDs")
+    all_results: list[SearchResult] = Field(description="All unique results found")
     search_attempt_count: int
-    total_courses_found: int  # Before deduplication across searches
-    unique_courses_found: int  # After deduplication
+    total_results_found: int  # Before deduplication across searches
+    unique_results_found: int  # After deduplication
     orchestrator_notes: str
 
 
 class FinalSearchSummary(BaseModel):
     """Complete structured summary of search execution"""
     goal: str
+    domain: str = Field(default="course", description="Search domain (course, activity)")
     total_tasks: int
     completed_tasks: int
     partially_completed_tasks: int
     failed_tasks: int
     total_iterations: int
     task_summaries: list[TaskSummary]
-    total_unique_courses: int
-    completion_reasoning: str = Field(default="", description="Orchestrator reasoning for completing search (from CompleteAction or last action if max iterations hit)")
+    total_unique_results: int
+    completion_reasoning: str = Field(default="", description="Orchestrator reasoning for completing search")
 
 
 # ================================
@@ -268,6 +197,7 @@ class SearchAgentState(BaseModel):
     # GOAL & TASK STATE
     # ============================================
     goal: str = Field(description="Original search goal for this execution")
+    domain: str = Field(default="course", description="Search domain (course, activity)")
     tasks: list[SearchTask] = Field(default_factory=list, description="Current task list")
 
     # ============================================

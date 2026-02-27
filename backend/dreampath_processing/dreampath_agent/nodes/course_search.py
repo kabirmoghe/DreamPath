@@ -6,7 +6,6 @@ search agent that can refine queries and evaluate results.
 """
 
 from dreampath_processing.dreampath_agent.dreampath_types import (
-    CourseSearchResult,
     DreamPathAgentState,
 )
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
@@ -15,6 +14,9 @@ from dreampath_processing.dreampath_agent.search_agent.nodes.summarize import (
     render_search_summary_markdown,
 )
 from dreampath_processing.dreampath_agent.search_agent.search_types import SearchAgentState
+from dreampath_processing.dreampath_agent.search_agent.types.course_types import (
+    CourseSearchResult,
+)
 
 
 def format_course_search_result(course_obj: CourseSearchResult) -> str:
@@ -41,7 +43,7 @@ def _extract_all_course_results(final_state: dict) -> list[CourseSearchResult]:
     for task in tasks:
         for execution in task.search_executions:
             for course in execution.output.results:
-                if course.course_code not in seen_codes:
+                if hasattr(course, 'course_code') and course.course_code not in seen_codes:
                     seen_codes.add(course.course_code)
                     all_courses.append(course)
 
@@ -49,7 +51,6 @@ def _extract_all_course_results(final_state: dict) -> list[CourseSearchResult]:
 
 
 # Build the search agent graph once at module load
-# (compiled graph is reusable and thread-safe)
 _search_agent_graph = None
 
 
@@ -64,27 +65,28 @@ def _get_search_agent():
 async def course_search_node(state: DreamPathAgentState, config, *, writer=None) -> dict:
     """
     Course search node that invokes the search agent subgraph.
-
-    Uses state.handoff as the search goal and returns the search agent's
-    final_summary directly as the tool result.
-
-    Supports:
-    - Iterative search refinement via search agent
-    - Multi-task decomposition for complex queries
-    - Curated top results from search orchestrator
     """
-    # Get the search goal from handoff
     search_goal = state.handoff
     if not search_goal:
-        # Fallback: use current user message if no handoff
-        search_goal = state.current_user_msg or "Find relevant courses"
+        print("| CourseSearchNode: ERROR - no handoff goal provided")
+        error_result = {
+            "role": "assistant",
+            "content": {
+                "name": "course_search",
+                "result": "Error: Orchestrator must provide a search goal in handoff message when routing to course_search.",
+            },
+        }
+        error_result_lc = dreampath_to_langchain(error_result)
+        return {
+            "turn_messages": state.turn_messages + [error_result],
+            "messages": [error_result_lc],
+        }
 
     print(f"| CourseSearchNode: invoking search agent with goal='{search_goal[:80]}...'")
 
-    # Initialize search agent state
-    search_state = SearchAgentState(goal=search_goal)
+    search_state = SearchAgentState(goal=search_goal, domain="course")
 
-    # Pass writer through config so search agent nodes can emit status updates
+    # Pass writer through config for status updates
     search_config = {
         **config,
         "configurable": {
@@ -93,7 +95,6 @@ async def course_search_node(state: DreamPathAgentState, config, *, writer=None)
         }
     }
 
-    # Invoke the search agent subgraph
     search_agent = _get_search_agent()
     final_state = await search_agent.ainvoke(search_state, search_config)
 
@@ -106,7 +107,6 @@ async def course_search_node(state: DreamPathAgentState, config, *, writer=None)
     else:
         final_summary = "No results found."
 
-    # Create tool call message (shows what was searched)
     tool_call = {
         "role": "assistant",
         "content": {
@@ -115,7 +115,6 @@ async def course_search_node(state: DreamPathAgentState, config, *, writer=None)
         },
     }
 
-    # Create tool result message (use final_summary from search agent)
     tool_result = {
         "role": "assistant",
         "content": {
@@ -124,7 +123,6 @@ async def course_search_node(state: DreamPathAgentState, config, *, writer=None)
         },
     }
 
-    # Convert to LangChain messages
     tool_call_lc = dreampath_to_langchain(tool_call)
     tool_result_lc = dreampath_to_langchain(tool_result)
 
@@ -138,32 +136,20 @@ async def course_search_node(state: DreamPathAgentState, config, *, writer=None)
 # UTILITY FUNCTIONS FOR REBUILD INTEGRATION
 # ============================================
 
-async def invoke_search_agent(goal: str, config: dict) -> dict:
+async def invoke_search_agent(goal: str, config: dict, domain: str = "course") -> dict:
     """
     Invoke the search agent with a goal and return the final state.
 
-    This is a utility function for use by other nodes (e.g., rebuild_course_path)
+    Utility function for use by other nodes (e.g., rebuild_course_path)
     that need to run searches without the full node machinery.
-
-    Args:
-        goal: The search goal
-        config: The config dict (passed through to search agent)
-
-    Returns:
-        The final state dict from the search agent
     """
-    search_state = SearchAgentState(goal=goal)
+    search_state = SearchAgentState(goal=goal, domain=domain)
     search_agent = _get_search_agent()
     return await search_agent.ainvoke(search_state, config)
 
 
 def get_top_course_codes_from_search(final_state: dict) -> list[str]:
-    """
-    Extract all top_results course codes from search agent state.
-
-    Returns a deduplicated list of course codes that were curated
-    as top results by the search orchestrator.
-    """
+    """Extract all top_results course codes from search agent state."""
     top_codes = []
     seen = set()
 
@@ -177,10 +163,5 @@ def get_top_course_codes_from_search(final_state: dict) -> list[str]:
 
 
 def get_all_courses_from_search(final_state: dict) -> list[CourseSearchResult]:
-    """
-    Extract all unique CourseSearchResult objects from search agent state.
-
-    This is useful for rebuild operations that need the full course objects,
-    not just the codes.
-    """
+    """Extract all unique CourseSearchResult objects from search agent state."""
     return _extract_all_course_results(final_state)

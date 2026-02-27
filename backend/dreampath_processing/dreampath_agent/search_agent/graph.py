@@ -1,8 +1,12 @@
 from dreampath_processing.dreampath_agent.search_agent.nodes.orchestrator import orchestrator_node
 from dreampath_processing.dreampath_agent.search_agent.nodes.summarize import summarize_node
 from dreampath_processing.dreampath_agent.search_agent.nodes.tool_executor import tool_executor_node
-from dreampath_processing.dreampath_agent.search_agent.search_types import MAX_ITERATIONS, SearchAgentState
+from dreampath_processing.dreampath_agent.search_agent.search_types import (
+    MAX_ITERATIONS,
+    SearchAgentState,
+)
 from langgraph.graph import END, START, StateGraph
+
 
 def build_search_agent(save_diagram: bool = False, diagram_path: str = "search_agent_graph.png"):
     """

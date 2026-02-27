@@ -6,20 +6,25 @@ import os
 import time
 import warnings
 
+from dreampath_processing.dreampath_agent.search_agent.context.building import (
+    _render_message_lines,
+    _render_task_state_block,
+    _render_tool_result,
+)
+from dreampath_processing.dreampath_agent.search_agent.graph import build_search_agent
+from dreampath_processing.dreampath_agent.search_agent.nodes.summarize import (
+    render_search_summary_markdown,
+)
+from dreampath_processing.dreampath_agent.search_agent.search_types import (
+    SearchAgentState,
+    SearchTask,
+)
+from dreampath_processing.dreampath_agent.search_agent.strategy import get_strategy
 from rich.console import Console, Group
 from rich.live import Live
 from rich.panel import Panel
 from rich.table import Table
 from rich.text import Text
-
-from dreampath_processing.dreampath_agent.search_agent.graph import build_search_agent
-from dreampath_processing.dreampath_agent.search_agent.nodes.summarize import render_search_summary_markdown
-from dreampath_processing.dreampath_agent.search_agent.search_types import SearchAgentState, SearchTask
-from dreampath_processing.dreampath_agent.search_agent.context.building import (
-    _render_tool_result,
-    _render_message_lines,
-    _render_task_state_block,
-)
 
 # Suppress unclosed transport warnings from async clients
 warnings.filterwarnings("ignore", category=ResourceWarning, message="unclosed transport")
@@ -171,7 +176,7 @@ def _build_display(
 # FILE EXPORT (reuses task_test patterns)
 # ============================================
 
-def _render_full_trace(search_trace: list[dict]) -> str:
+def _render_full_trace(search_trace: list[dict], strategy=None) -> str:
     """Render the entire search trace with no compaction."""
     lines = []
     current_iter = None
@@ -184,7 +189,7 @@ def _render_full_trace(search_trace: list[dict]) -> str:
             current_iter = msg_iter
 
         if msg.get("role") == "tool":
-            lines.extend(_render_tool_result(msg, compact=False))
+            lines.extend(_render_tool_result(msg, compact=False, strategy=strategy))
         else:
             lines.extend(_render_message_lines(msg))
 
@@ -193,7 +198,7 @@ def _render_full_trace(search_trace: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def _export_run(goal: str, final_state: dict, elapsed: float, run_id: str) -> str:
+def _export_run(goal: str, final_state: dict, elapsed: float, run_id: str, strategy=None) -> str:
     """Export full run to file and return the file path."""
     sections = []
 
@@ -206,7 +211,7 @@ def _export_run(goal: str, final_state: dict, elapsed: float, run_id: str) -> st
     sections.append("=" * 80)
     sections.append("SEARCH TRACE (full, uncompacted)")
     sections.append("=" * 80)
-    sections.append(_render_full_trace(final_state['search_trace']))
+    sections.append(_render_full_trace(final_state['search_trace'], strategy=strategy))
     sections.append("")
 
     sections.append("=" * 80)
@@ -216,6 +221,7 @@ def _export_run(goal: str, final_state: dict, elapsed: float, run_id: str) -> st
         goal=goal,
         iteration=final_state['iteration'],
         tasks=final_state['tasks'],
+        strategy=strategy,
     ))
     sections.append("")
 
@@ -298,7 +304,8 @@ async def run_search(goal: str, graph, run_id: str):
     final_state_snapshot.setdefault("cumulative_tokens", 0)
 
     # Export full run
-    filepath = _export_run(goal, final_state_snapshot, elapsed, run_id)
+    strategy = get_strategy(initial_state.domain)
+    filepath = _export_run(goal, final_state_snapshot, elapsed, run_id, strategy=strategy)
     console.print(f"[dim]Full trace exported to {filepath}[/dim]")
 
     # Export summary markdown

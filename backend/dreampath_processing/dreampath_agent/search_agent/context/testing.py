@@ -1,6 +1,6 @@
 from dreampath_processing.dreampath_agent.search_agent.context.building import build_search_context
 from dreampath_processing.dreampath_agent.search_agent.nodes.orchestrator import (
-    SEARCH_ORCHESTRATOR_SYS,
+    SEARCH_ORCHESTRATOR_SKELETON,
 )
 from dreampath_processing.dreampath_agent.search_agent.search_types import (
     CourseSearchOutput,
@@ -136,7 +136,7 @@ if __name__ == "__main__":
     
     ctx, token_updates = build_search_context(
         state=SearchAgentState(goal="Find ML courses", search_trace=sample_search_trace, tasks=sample_task_state),
-        prompt=SEARCH_ORCHESTRATOR_SYS
+        prompt=SEARCH_ORCHESTRATOR_SKELETON
     )
 
     print("=" * 80)

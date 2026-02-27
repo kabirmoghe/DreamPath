@@ -1,8 +1,6 @@
-"""Search tools for the search agent"""
+"""Search tools for the search agent.
 
-from dreampath_processing.dreampath_agent.search_agent.tools.search_tools import (
-    manual_search,
-    module_search,
-)
-
-__all__ = ["module_search", "manual_search"]
+Search execution is now handled by domain strategies (see strategies/).
+The query_generator and course_search_client modules are preserved as
+standalone utilities.
+"""

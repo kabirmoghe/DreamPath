@@ -2,6 +2,12 @@ import operator
 from typing import Annotated, Literal
 
 from dreampath_processing.courses.coursepath_agent.types import CoursePathAgentOutput
+from dreampath_processing.dreampath_agent.search_agent.types.course_types import (
+    CourseSearchOutput as CourseSearchOutput,
+)
+from dreampath_processing.dreampath_agent.search_agent.types.course_types import (
+    CourseSearchResult as CourseSearchResult,
+)
 from langchain_core.messages import BaseMessage
 from pydantic import BaseModel, Field, constr, field_validator
 
@@ -11,46 +17,6 @@ class OrchestratorDecision(BaseModel):
     reason: constr(max_length=200)
     handoff: str | None = Field(default=None, description="The handoff message for the next node")
     confidence: float | None = Field(default=None, description="The confidence in the routing decision")
-
-# ================================
-# Course Search Tool
-# ================================
-class CourseSearchParams(BaseModel):
-    query: str | None = Field(default=None, description="The query to search for courses")
-    department: str | None = Field(default=None, description="The department of the course")
-    course_code: str | None = Field(default=None, description="The code of the course")
-    num_prereqs_max: int | None = Field(default=None, description="The maximum number of prerequisites for the course")
-    sort_by_level: bool | None = Field(default=False, description="Whether to sort the results by level")
-    limit: int | None = Field(default=10, description="The maximum number of results to return")
-    alpha: float | None = Field(default=0.5, description="The alpha value for the hybrid search")
-
-class CourseSearchQueries(BaseModel):
-    queries: list[CourseSearchParams] = Field(default_factory=list)
-
-class CourseSearchResult(BaseModel):
-    """Course search result with all relevant fields"""
-    department: str
-    course_code: str
-    course_title: str
-    description: str
-    prerequisites: str
-    course_url: str
-    num_prereqs: int
-    total_reviews: int | None = None
-    global_difficulty_percentile: float | None = None
-    global_difficulty_classification: str | None = None
-    dept_difficulty_percentile: float | None = None
-    dept_difficulty_classification: str | None = None
-    difficulty_blurb: str | None = None
-    global_value_percentile: float | None = None
-    global_value_classification: str | None = None
-    dept_value_percentile: float | None = None
-    dept_value_classification: str | None = None
-    learning_value_blurb: str | None = None
-    target_audience_blurb: str | None = None
-
-class CourseSearchOutput(BaseModel):
-    results: list[CourseSearchResult] = Field(default_factory=list)
 
 # ================================
 # Course Path Agent

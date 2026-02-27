@@ -9,10 +9,8 @@ import asyncio
 import os
 import re
 from pathlib import Path
-from typing import Optional
 
 from dreampath_processing.courses.build_major_course_path import build_course_path
-from dreampath_processing.courses.schedule_modules.course_path import CoursePath
 from dreampath_processing.courses.course_relationship_handling import (
     build_prereq_tree,
     construct_course,
@@ -24,6 +22,7 @@ from dreampath_processing.courses.coursepath_agent.operation_tools import (
     summarize_diff,
 )
 from dreampath_processing.courses.schedule_modules.course import COMPLEMENTARY, MAJOR
+from dreampath_processing.courses.schedule_modules.course_path import CoursePath
 from dreampath_processing.dreampath_agent.dreampath_types import (
     CourseRec,
     CourseRecsOutput,
@@ -33,7 +32,10 @@ from dreampath_processing.dreampath_agent.dreampath_types import (
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
 from dreampath_processing.dreampath_agent.nodes.course_search import invoke_search_agent
 from dreampath_processing.dreampath_agent.nodes.modify_profile import modify_student_profile
-from dreampath_processing.dreampath_agent.nodes.prompts import PARAMETER_COURSE_SEARCH_GOAL, COURSE_REC_SYNTHESIS_SYS
+from dreampath_processing.dreampath_agent.nodes.prompts import (
+    COURSE_REC_SYNTHESIS_SYS,
+    PARAMETER_COURSE_SEARCH_GOAL,
+)
 from dreampath_processing.dreampath_agent.search_agent.nodes.summarize import (
     render_search_summary_markdown,
 )
@@ -373,7 +375,7 @@ async def execute_rebuild_tool(
     print("Synthesizing course recommendations with alignment tracking...")
 
     # Get existing recommendations
-    current_course_path: Optional[CoursePath] = await student_db_service.load_course_path(config["configurable"]["user_id"])
+    current_course_path: CoursePath | None = await student_db_service.load_course_path(config["configurable"]["user_id"])
 
     if current_course_path is None:
         existing_recommendations = "None"
