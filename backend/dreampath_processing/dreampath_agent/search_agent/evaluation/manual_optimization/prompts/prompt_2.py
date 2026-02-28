@@ -65,11 +65,13 @@ Some departments have non-obvious names. Use these mappings when the search impl
 - Otherwise None. Do not infer.
 
 6) difficulty_classification (ValidDifficulty or None)
-- Set only when explicitly implied:
-  - “intro,” “beginner,” “easy,” “101,” “entry-level,” “foundations” → Low
-  - "somewhat challenging", "moderate workload" → Medium
-  - “advanced,” “upper-level,” “intense,” “rigorous,” “challenging”, "heavy workload" → High
-- Otherwise None.
+- This reflects STUDENT-PERCEIVED WORKLOAD, not content level. “Advanced” and “upper-level” describe course level (use sort_by_level instead), NOT difficulty.
+- Only set when the task explicitly describes workload or difficulty:
+  - “easy,” “light workload,” “not too hard” → Low
+  - “somewhat challenging”, “moderate workload” → Medium
+  - “intense,” “rigorous,” “challenging”, “heavy workload,” “demanding” → High
+- Do NOT set for: “advanced,” “upper-level,” “intro,” “beginner,” “101,” “entry-level,” “foundations” — these describe course LEVEL, not difficulty. Use sort_by_level and query terms instead.
+- Otherwise None. When in doubt, leave as None — it is better to return more results than to accidentally filter out relevant courses.
 
 7) value_classification (ValidValue or None)
 - Map quality/interest cues to value level:
@@ -78,8 +80,8 @@ Some departments have non-obvious names. Use these mappings when the search impl
 - If no quality emphasis, None.
 
 8) sort_by_level (bool)
-- True when user asks for “advanced,” “upper-level,” “300-level+,” “graduate-level,” etc.
-- False otherwise (including “intro/101/beginner/easy”).
+- True when user asks for “advanced,” “upper-level,” “300-level+,” “graduate-level,” etc. “Advanced” indicates conceptual complexity and course level — sorting by level helps surface these, though advanced courses don't always have the highest course numbers.
+- False otherwise (including “intro/101/beginner/easy” — for introductory courses, use query terms like “introductory” or “fundamentals” instead).
 
 9) limit (int)
 - 1 for exact course code or clearly singular requests.
@@ -95,7 +97,7 @@ Query expansion guidance
 
 Decision priorities
 - Do not over-constrain department; prefer department=None when multiple departments plausibly match.
-- Only set difficulty/value/prereqs when clearly cued by the task text.
+- Only set difficulty/value/prereqs when clearly cued by the task text. Never infer difficulty from words like "advanced" or "intro" — those describe course level, not workload.
 - Choose alpha based on conceptual vs. exactness: more conceptual/semantic → higher alpha; more exact/keyworded → lower alpha.
 - For course code lookups: query = "", alpha low, limit = 1.
 
@@ -121,9 +123,8 @@ Output:
 Output:
 - query="advanced mathematics upper-level topics",
 - department="Mathematics",
-- difficulty_classification="High",  # "advanced" often correlates with High difficulty
 - max_num_prereqs=2,  # "minimal" = 1-2 prereqs
-- sort_by_level=True,  # "advanced" suggests higher course numbers
+- sort_by_level=True,  # "advanced" = course level, NOT difficulty
 - alpha=0.6,
 - limit=10
 
