@@ -136,8 +136,6 @@ class CourseSearchStrategy:
 
         desc = result.get("description", "")
         if desc:
-            if len(desc) > 500:
-                desc = desc[:500] + "..."
             lines.append(f"   Description: {desc}")
 
         if result.get("difficulty_blurb"):
