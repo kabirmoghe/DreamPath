@@ -106,7 +106,7 @@ def _build_tasks_table(tasks: list[SearchTask], iteration: int, elapsed: float) 
     return table
 
 
-def _build_trace_panel(search_trace: list[dict]) -> Panel:
+def _build_trace_panel(search_trace: list[dict], strategy) -> Panel:
     """Build a small fixed-height panel showing the most recent trace action."""
     if not search_trace:
         content = "[dim]Waiting for first orchestrator decision...[/dim]"
@@ -117,7 +117,7 @@ def _build_trace_panel(search_trace: list[dict]) -> Panel:
     for msg in search_trace[-2:]:
         role = msg.get("role", "?")
         if role == "tool":
-            rendered = _render_tool_result(msg, compact=True)
+            rendered = _render_tool_result(msg, compact=True, strategy=strategy)
             lines.extend(rendered)
         elif role == "system":
             content = msg.get("content", "")
@@ -156,6 +156,7 @@ def _build_display(
     search_trace: list[dict],
     iteration: int,
     elapsed: float,
+    strategy,
     finished: bool = False,
     tokens: int = 0,
     completion_reasoning: str = "",
@@ -167,7 +168,7 @@ def _build_display(
     if finished:
         bottom = _build_final_panel(elapsed, iteration, tokens, completion_reasoning)
     else:
-        bottom = _build_trace_panel(search_trace)
+        bottom = _build_trace_panel(search_trace, strategy)
 
     return Group(goal_panel, tasks_table, bottom)
 
@@ -176,7 +177,7 @@ def _build_display(
 # FILE EXPORT (reuses task_test patterns)
 # ============================================
 
-def _render_full_trace(search_trace: list[dict], strategy=None) -> str:
+def _render_full_trace(search_trace: list[dict], strategy) -> str:
     """Render the entire search trace with no compaction."""
     lines = []
     current_iter = None
@@ -198,7 +199,7 @@ def _render_full_trace(search_trace: list[dict], strategy=None) -> str:
     return "\n".join(lines)
 
 
-def _export_run(goal: str, final_state: dict, elapsed: float, run_id: str, strategy=None) -> str:
+def _export_run(goal: str, final_state: dict, elapsed: float, run_id: str, strategy) -> str:
     """Export full run to file and return the file path."""
     sections = []
 
@@ -255,6 +256,7 @@ async def run_search(goal: str, graph, run_id: str):
     loop.set_exception_handler(_suppress_async_cleanup_errors)
 
     initial_state = SearchAgentState(goal=goal)
+    strategy = get_strategy(initial_state.domain)
     start_time = time.time()
 
     # Accumulated state for TUI
@@ -264,7 +266,7 @@ async def run_search(goal: str, graph, run_id: str):
     final_state_snapshot: dict = {}
 
     with Live(
-        _build_display(goal, tasks, search_trace, iteration, 0.0),
+        _build_display(goal, tasks, search_trace, iteration, 0.0, strategy=strategy),
         console=console,
         refresh_per_second=4,
         screen=False,
@@ -286,13 +288,13 @@ async def run_search(goal: str, graph, run_id: str):
                 final_state_snapshot.update(updates)
 
             elapsed = time.time() - start_time
-            live.update(_build_display(goal, tasks, search_trace, iteration, elapsed))
+            live.update(_build_display(goal, tasks, search_trace, iteration, elapsed, strategy=strategy))
 
         # Final update: swap trace for completion reasoning
         elapsed = time.time() - start_time
         tokens = final_state_snapshot.get("cumulative_tokens", 0)
         completion_reasoning = final_state_snapshot.get("latest_reasoning", "")
-        live.update(_build_display(goal, tasks, search_trace, iteration, elapsed, finished=True, tokens=tokens, completion_reasoning=completion_reasoning))
+        live.update(_build_display(goal, tasks, search_trace, iteration, elapsed, strategy=strategy, finished=True, tokens=tokens, completion_reasoning=completion_reasoning))
 
     elapsed = time.time() - start_time
 
@@ -304,8 +306,7 @@ async def run_search(goal: str, graph, run_id: str):
     final_state_snapshot.setdefault("cumulative_tokens", 0)
 
     # Export full run
-    strategy = get_strategy(initial_state.domain)
-    filepath = _export_run(goal, final_state_snapshot, elapsed, run_id, strategy=strategy)
+    filepath = _export_run(goal, final_state_snapshot, elapsed, run_id, strategy)
     console.print(f"[dim]Full trace exported to {filepath}[/dim]")
 
     # Export summary markdown

@@ -15,11 +15,12 @@ from dreampath_processing.dreampath_agent.search_agent.search_types import (
     FinalSearchSummary,
     SearchAgentState,
 )
+from dreampath_processing.dreampath_agent.search_agent.strategy import get_strategy
 
 EVAL_OUTPUT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "evaluation", "outputs")
 
 
-def _render_full_trace(search_trace: list[dict]) -> str:
+def _render_full_trace(search_trace: list[dict], strategy) -> str:
     """Render the entire search trace with no compaction."""
     lines = []
     current_iter = None
@@ -32,7 +33,7 @@ def _render_full_trace(search_trace: list[dict]) -> str:
             current_iter = msg_iter
 
         if msg.get("role") == "tool":
-            lines.extend(_render_tool_result(msg, compact=False))
+            lines.extend(_render_tool_result(msg, compact=False, strategy=strategy))
         else:
             lines.extend(_render_message_lines(msg))
 
@@ -41,7 +42,7 @@ def _render_full_trace(search_trace: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def _render_test_output(goal: str, final_state: dict, elapsed: float) -> str:
+def _render_test_output(goal: str, final_state: dict, elapsed: float, strategy) -> str:
     """Render a complete test output file from final state."""
     sections = []
 
@@ -56,7 +57,7 @@ def _render_test_output(goal: str, final_state: dict, elapsed: float) -> str:
     sections.append("=" * 80)
     sections.append("SEARCH TRACE (full, uncompacted)")
     sections.append("=" * 80)
-    sections.append(_render_full_trace(final_state['search_trace']))
+    sections.append(_render_full_trace(final_state['search_trace'], strategy))
     sections.append("")
 
     # Final task state
@@ -67,6 +68,7 @@ def _render_test_output(goal: str, final_state: dict, elapsed: float) -> str:
         goal=goal,
         iteration=final_state['iteration'],
         tasks=final_state['tasks'],
+        strategy=strategy,
     ))
     sections.append("")
 
@@ -88,6 +90,7 @@ async def test(goal: str, index: int) -> FinalSearchSummary:
     graph = build_search_agent()
 
     initial_state = SearchAgentState(goal=goal)
+    strategy = get_strategy(initial_state.domain)
 
     start_time = time.time()
     print(f"\n[Run {index}] Invoking Search Agent...\n")
@@ -102,7 +105,7 @@ async def test(goal: str, index: int) -> FinalSearchSummary:
     # Write full rendered output
     os.makedirs(EVAL_OUTPUT_DIR, exist_ok=True)
     filepath = os.path.join(EVAL_OUTPUT_DIR, f"run_{index}.txt")
-    output = _render_test_output(goal, final_state, elapsed)
+    output = _render_test_output(goal, final_state, elapsed, strategy)
     with open(filepath, "w") as f:
         f.write(output)
     print(f"  Written to {filepath}")

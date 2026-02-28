@@ -44,12 +44,12 @@ class SearchStrategy(Protocol):
         """Return the domain-specific OrchestratorResult schema for structured output."""
         ...
 
-    def render_result_compact(self, result: dict) -> str:
-        """Render a single result compactly (code: title) for old iterations."""
-        ...
+    def render_result(self, result: dict, compact: bool = False) -> list[str]:
+        """Render a single search result.
 
-    def render_result_full(self, result: dict) -> list[str]:
-        """Render a single result with full details for recent iterations."""
+        compact=True: minimal (code: title) for old iterations.
+        compact=False: full details for recent iterations.
+        """
         ...
 
     def render_result_for_summary(self, result: SearchResult, verbosity: int) -> list[str]:

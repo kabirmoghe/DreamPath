@@ -46,7 +46,7 @@ def _emit_status(config: RunnableConfig, reason: str, domain: str = "course"):
 # SEARCH EXECUTION
 # ============================================
 
-async def _execute_single_search(task_search: TaskSearch, state: SearchAgentState, verbose=False):
+async def _execute_single_search(task_search: TaskSearch, strategy, verbose=False):
     """
     Execute a single search using the domain strategy.
 
@@ -57,8 +57,6 @@ async def _execute_single_search(task_search: TaskSearch, state: SearchAgentStat
     Returns:
         (task_search, (params, result) | exception)
     """
-    strategy = get_strategy(state.domain)
-
     try:
         if verbose:
             print(f"    [SEARCH] Task {task_search.task_id} - search: {task_search.search_description[:60]}...")
@@ -72,7 +70,7 @@ async def _execute_single_search(task_search: TaskSearch, state: SearchAgentStat
 
 
 def _build_tool_result_data(
-    task_search: TaskSearch,
+    search_description: str,
     task: SearchTask | None,
     params_and_result,
     strategy,
@@ -86,6 +84,7 @@ def _build_tool_result_data(
         return {
             "error": str(params_and_result),
             "task_description": task.description if task else "",
+            "search_description": search_description,
             "params": {},
             "items": [],
         }
@@ -100,6 +99,7 @@ def _build_tool_result_data(
 
     return {
         "task_description": task.description if task else "",
+        "search_description": search_description,
         "params": params_dict,
         "items": items,
     }
@@ -124,7 +124,7 @@ async def _execute_searches(
     # 1. EXECUTE SEARCHES IN PARALLEL
     # ============================================
     search_tasks = [
-        _execute_single_search(task_search, state)
+        _execute_single_search(task_search, strategy)
         for task_search in action.searches
     ]
 
@@ -168,7 +168,7 @@ async def _execute_searches(
                 print(f"    → Task {task_id} now has {len(task.search_executions)} searches, {total_unique} unique results")
 
         # Build structured data for rendering at context-build time
-        tool_data = _build_tool_result_data(task_search, task, params_and_result, strategy)
+        tool_data = _build_tool_result_data(task_search.search_description, task, params_and_result, strategy)
 
         tool_msg = {
             "role": "tool",
@@ -195,7 +195,7 @@ async def _execute_searches(
     }
 
 
-def _get_unique_results_from_executions(search_executions: list[SearchExecution], strategy=None) -> list:
+def _get_unique_results_from_executions(search_executions: list[SearchExecution], strategy) -> list:
     """
     Get all unique results from search executions (deduplicated by result ID).
     """
@@ -206,7 +206,7 @@ def _get_unique_results_from_executions(search_executions: list[SearchExecution]
     seen_ids = set()
     unique_results = []
     for r in all_results:
-        result_id = strategy.get_result_id(r) if strategy else r.id
+        result_id = strategy.get_result_id(r)
         if result_id not in seen_ids:
             seen_ids.add(result_id)
             unique_results.append(r)
@@ -222,12 +222,12 @@ async def _execute_task_updates(
     state: SearchAgentState,
     action: TaskUpdateAction,
     config: RunnableConfig,
+    strategy,
     verbose=False
 ) -> dict:
     """
     Apply task updates deterministically (no LLM involved).
     """
-    strategy = get_strategy(state.domain)
 
     if verbose:
         print(f"\n[TOOL EXECUTOR] Applying {len(action.task_updates)} task updates...")
@@ -305,6 +305,7 @@ async def tool_executor_node(state: SearchAgentState, config: RunnableConfig) ->
     """
 
     next_action = state.next_action
+    strategy = get_strategy(state.domain)
 
     if isinstance(next_action, SearchAction):
         result = await _execute_searches(state, next_action, config)
@@ -312,7 +313,7 @@ async def tool_executor_node(state: SearchAgentState, config: RunnableConfig) ->
         return result
 
     elif isinstance(next_action, TaskUpdateAction):
-        result = await _execute_task_updates(state, next_action, config)
+        result = await _execute_task_updates(state, next_action, config, strategy)
         result["iteration"] = state.iteration + 1
         return result
 

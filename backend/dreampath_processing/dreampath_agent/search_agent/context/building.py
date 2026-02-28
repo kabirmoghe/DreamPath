@@ -36,7 +36,7 @@ def _render_message_lines(message: dict) -> list[str]:
 
     return lines
 
-def _render_tool_result(msg: dict, compact: bool = False, strategy=None) -> list[str]:
+def _render_tool_result(msg: dict, compact: bool = False, *, strategy) -> list[str]:
     """
     Render a tool result message from structured data stored in additional_kwargs.
 
@@ -46,6 +46,7 @@ def _render_tool_result(msg: dict, compact: bool = False, strategy=None) -> list
     args = msg.get("args", {})
     task_id = args.get("task_id", "?")
     task_desc = kwargs.get("task_description", "")
+    search_desc = kwargs.get("search_description", "")
     params = kwargs.get("params", {})
     items = kwargs.get("items", kwargs.get("courses", []))  # backwards compat
     error = kwargs.get("error")
@@ -58,14 +59,13 @@ def _render_tool_result(msg: dict, compact: bool = False, strategy=None) -> list
         return lines
 
     lines.append(f"Task: {task_desc}")
+    if search_desc:
+        lines.append(f"Search: {search_desc}")
     lines.append(f"Params: {json.dumps(params, ensure_ascii=False)}")
 
     if compact:
         if items:
-            if strategy:
-                item_list = "".join(f"\n{strategy.render_result_compact(item)}" for item in items)
-            else:
-                item_list = "".join(f"\n - {item.get('code', item.get('id', '?'))}: {item.get('title', '')}" for item in items)
+            item_list = "".join(f"\n{strategy.render_result(item, compact=True)[0]}" for item in items)
             lines.append(f"Found {len(items)} results:{item_list}")
         else:
             lines.append("No results found")
@@ -76,19 +76,16 @@ def _render_tool_result(msg: dict, compact: bool = False, strategy=None) -> list
             lines.append(f"Found {len(items)} results:")
             lines.append("")
             for i, item in enumerate(items, 1):
-                if strategy:
-                    result_lines = strategy.render_result_full(item)
-                    lines.append(f"{i}. " + result_lines[0] if result_lines else f"{i}. ???")
-                    lines.extend(result_lines[1:])
-                else:
-                    lines.append(f"{i}. {item.get('code', item.get('id', '?'))} - {item.get('title', '')}")
+                result_lines = strategy.render_result(item)
+                lines.append(f"{i}. " + result_lines[0] if result_lines else f"{i}. ???")
+                lines.extend(result_lines[1:])
                 lines.append("")
 
     lines.append("</tool>")
     return lines
 
 
-def _render_search_trace_block(goal: str, search_trace: list[dict], current_iteration: int, strategy=None, recent_window: int = 2) -> str:
+def _render_search_trace_block(goal: str, search_trace: list[dict], current_iteration: int, *, strategy, recent_window: int = 2) -> str:
     """
     Render search trace block with compaction for older iterations.
     """
@@ -130,7 +127,7 @@ def _render_search_trace_block(goal: str, search_trace: list[dict], current_iter
 
     return "\n".join(lines)
 
-def _render_task_state_block(goal: str, iteration: int, tasks: list[SearchTask], strategy=None) -> str:
+def _render_task_state_block(goal: str, iteration: int, tasks: list[SearchTask], *, strategy) -> str:
     """
     Render current task state (always fresh, never cached).
     """
@@ -168,15 +165,7 @@ def _render_task_state_block(goal: str, iteration: int, tasks: list[SearchTask],
         if task.top_results:
             lines.append("<top_results>")
             for result_id in task.top_results:
-                if strategy:
-                    lines.append(strategy.render_task_top_result(result_id, task.result_index))
-                else:
-                    result = task.result_index.get(result_id)
-                    if result:
-                        desc = result.description[:200] + "..." if result.description and len(result.description) > 200 else (result.description or "No description")
-                        lines.append(f"- {result_id}: {result.title} | {desc}")
-                    else:
-                        lines.append(f"- {result_id}")
+                lines.append(strategy.render_task_top_result(result_id, task.result_index))
             lines.append("</top_results>")
         else:
             lines.append("<top_results>None selected yet</top_results>")

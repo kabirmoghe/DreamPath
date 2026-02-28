@@ -125,12 +125,11 @@ class CourseSearchStrategy:
     # Rendering: Tool Results (context/building.py)
     # ========================================
 
-    def render_result_compact(self, result: dict) -> str:
-        """Compact rendering: code: title."""
-        return f" - {result['code']}: {result['title']}"
+    def render_result(self, result: dict, compact: bool = False) -> list[str]:
+        """Render a course result. Compact for old iterations, full for recent."""
+        if compact:
+            return [f" - {result['code']}: {result['title']}"]
 
-    def render_result_full(self, result: dict) -> list[str]:
-        """Full rendering with all course fields."""
         lines = []
         lines.append(f"{result['code']} - {result['title']}")
         lines.append(f"   Dept: {result['department']}, Diff: {result['difficulty']}, Value: {result['value']}, Prereqs: {result['num_prereqs']}")

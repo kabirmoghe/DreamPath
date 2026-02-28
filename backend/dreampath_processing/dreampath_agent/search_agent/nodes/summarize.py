@@ -19,7 +19,7 @@ from langchain_core.runnables import RunnableConfig
 # HELPER FUNCTIONS
 # ============================================
 
-def _get_unique_results_from_executions(search_executions: list[SearchExecution], strategy=None) -> list:
+def _get_unique_results_from_executions(search_executions: list[SearchExecution], strategy) -> list:
     """Get all unique results from search executions (deduplicated by result ID)."""
     all_results = []
     for execution in search_executions:
@@ -28,7 +28,7 @@ def _get_unique_results_from_executions(search_executions: list[SearchExecution]
     seen_ids = set()
     unique_results = []
     for r in all_results:
-        result_id = strategy.get_result_id(r) if strategy else r.id
+        result_id = strategy.get_result_id(r)
         if result_id not in seen_ids:
             seen_ids.add(result_id)
             unique_results.append(r)
