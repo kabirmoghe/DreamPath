@@ -7,6 +7,7 @@ formatted role information as tool_call + tool_result messages.
 """
 
 import asyncio
+
 from dreampath_processing.careers.career_data import match_query_to_roles
 from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
@@ -43,12 +44,13 @@ async def career_search_node(state: DreamPathAgentState, config, *, writer=None)
     """
     Career search node that looks up career role data.
 
-    Uses state.handoff as the search query. Matches against SWE career
+    Uses tool_input.query as the search query. Matches against SWE career
     family data and returns formatted results. No LLM call needed.
     """
-    search_query = state.handoff
-    if not search_query:
-        search_query = state.current_user_msg or "software engineering careers"
+    from dreampath_processing.dreampath_agent.tools.schemas import CareerSearchInput
+
+    tool_input: CareerSearchInput = state.tool_input
+    search_query = tool_input.query
 
     print(f"| CareerSearchNode: matching query='{search_query[:80]}'")
 

@@ -13,16 +13,18 @@ from dreampath_processing.database.student_service import StudentDatabaseService
 from dreampath_processing.dreampath_agent.debug_logger import clear_log_file
 from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
-from dreampath_processing.dreampath_agent.nodes import (
+from dreampath_processing.dreampath_agent.orchestrator import orchestrator_node
+from dreampath_processing.dreampath_agent.tools.executor import tool_executor_node
+from dreampath_processing.dreampath_agent.tools.nodes import (
     career_search_node,
     course_path_node,
     course_search_node,
     finalize_node,
     modify_profile_node,
-    orchestrator_node,
     plan_builder_node,
     rebuild_course_path_node,
 )
+from dreampath_processing.dreampath_agent.tools.registry import get_node_for_tool
 from langchain_core.messages import BaseMessage
 from langgraph.checkpoint.base import BaseCheckpointSaver
 from langgraph.checkpoint.memory import InMemorySaver
@@ -54,6 +56,7 @@ def build_dreampath_graph(
 
     # Add nodes
     g.add_node("orchestrator", orchestrator_node)
+    g.add_node("tool_executor", tool_executor_node)
     g.add_node("course_search", course_search_node)
     g.add_node("career_search", career_search_node)
     g.add_node("plan_builder", plan_builder_node)
@@ -65,11 +68,14 @@ def build_dreampath_graph(
     # Entry point
     g.add_edge(START, "orchestrator")
 
-    # Orchestrator to sub-nodes
-    def router(state: DreamPathAgentState):
-        return state.route or "finalize"
+    # Orchestrator always goes to tool_executor for parsing
+    g.add_edge("orchestrator", "tool_executor")
 
-    g.add_conditional_edges("orchestrator", router, {
+    # Tool executor routes to target node based on tool_name
+    def tool_router(state: DreamPathAgentState):
+        return get_node_for_tool(state.tool_name)
+
+    g.add_conditional_edges("tool_executor", tool_router, {
         "course_search": "course_search",
         "career_search": "career_search",
         "plan_builder": "plan_builder",
@@ -79,14 +85,18 @@ def build_dreampath_graph(
         "finalize": "finalize",
     })
 
-    # Sub-nodes loop back to orchestrator so it can evaluate results and decide next action
-    def sub_node_router(state: DreamPathAgentState):
-        return state.route or "orchestrator"
-
+    # Sub-nodes loop back to orchestrator
     g.add_edge("course_search", "orchestrator")
     g.add_edge("career_search", "orchestrator")
     g.add_edge("plan_builder", "orchestrator")
-    g.add_conditional_edges("course_path", sub_node_router, {
+
+    # course_path self-loop via cursor/worklist
+    def cp_router(state: DreamPathAgentState):
+        if state.worklist and state.cursor < len(state.worklist):
+            return "course_path"
+        return "orchestrator"
+
+    g.add_conditional_edges("course_path", cp_router, {
         "course_path": "course_path",
         "orchestrator": "orchestrator",
     })

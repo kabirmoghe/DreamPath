@@ -1,10 +1,7 @@
-import re
-import json
-import pandas as pd
 from collections import defaultdict
 from typing import Dict, List, Set, Optional, Tuple
 from dreampath_processing.courses.schedule_modules.course import Course, MAJOR, COMPLEMENTARY, CourseType
-from dreampath_processing.courses.data_retrieval.weaviate_course_service import WeaviateCourseService
+from dreampath_processing.weaviate.course_service import WeaviateCourseService
 
 DATA_DIR = "dreampath_processing/courses/data"
 

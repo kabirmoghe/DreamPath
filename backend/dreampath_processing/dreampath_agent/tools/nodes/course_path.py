@@ -117,10 +117,7 @@ async def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgent
 
         outcomes[current_op] = cp_agent_output
         cursor += 1
-        route = "course_path"
     else:
-        route = "orchestrator"
-
         # Format aggregate outcome
         aggregate_result = format_aggregate_coursepath_agent_result(state.current_cp_agent_outcomes)
         tool_result = {
@@ -138,6 +135,5 @@ async def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgent
         "current_cp_agent_outcomes": outcomes,
         "worklist": worklist,
         "cursor": cursor,
-        "route": route,
         "messages": langchain_messages,
     }

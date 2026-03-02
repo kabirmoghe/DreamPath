@@ -4,8 +4,8 @@ from collections.abc import Callable
 import tiktoken
 from dotenv import load_dotenv
 from dreampath_processing.dreampath_agent.debug_logger import log_messages_to_file
-from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState, OrchestratorDecision
-from dreampath_processing.dreampath_agent.nodes.prompts import (
+from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
+from dreampath_processing.dreampath_agent.tools.nodes.prompts import (
     MASTER_CONTEXT,
     MASTER_CONTEXT_SHORT,
     SUMMARY_SYS_PROMPT,
@@ -240,7 +240,7 @@ async def build_complete_context(
 
     return msgs, state_updates
 
-async def build_small_context(state: DreamPathAgentState, prompt: str, config: dict, handoff: str, init_mode: bool=False):
+async def build_small_context(state: DreamPathAgentState, prompt: str, config: dict, task: str, init_mode: bool=False):
     msgs = [{"role": "system", "content": prompt}]
 
     # 1) Turn Block (current turn)
@@ -253,7 +253,7 @@ async def build_small_context(state: DreamPathAgentState, prompt: str, config: d
     )
 
     # 3) Combine all blocks
-    conversation_msg = MASTER_CONTEXT_SHORT.format(turn_block=turn_block, dreampath_context_block=dreampath_context_block, task=handoff)
+    conversation_msg = MASTER_CONTEXT_SHORT.format(turn_block=turn_block, dreampath_context_block=dreampath_context_block, task=task)
     msgs.append({"role": "system", "content": conversation_msg})
     return msgs
 
@@ -266,6 +266,7 @@ async def extract_structured_output_from_context(
     system_prompt: str,
     response_model: type[BaseModel] | None = None,
     small_context: bool = False,
+    task: str | None = None,
     model: str = "gpt-4o-mini",
     temperature: float = 0,
     reasoning_effort: str | None = None,
@@ -275,7 +276,7 @@ async def extract_structured_output_from_context(
     writer: Callable | None = None,
 ):
     if small_context:
-        messages = await build_small_context(state, system_prompt, config, state.handoff)
+        messages = await build_small_context(state, system_prompt, config, task or "")
         state_updates = {}
     else:
         messages, state_updates = await build_complete_context(
@@ -287,24 +288,6 @@ async def extract_structured_output_from_context(
 
     if show_token_count:
         print(f"[ MODEL={model} | TOKEN COUNT: {calculate_token_count(messages, model)} ]")
-
-    # Emit "Thinking" status right before orchestrator LLM call
-    # Only for orchestrator (identified by OrchestratorDecision response model)
-    # This overwrites "Reviewing Conversation" if summarization happened
-    if writer and response_model is OrchestratorDecision:
-        try:
-            thinking_event = AIMessage(
-                content="",
-                additional_kwargs={
-                    "event_type": "node_status",
-                    "node": "orchestrator",
-                    "status": "thinking",
-                    "message": "Thinking"
-                }
-            )
-            writer(thinking_event)
-        except Exception as e:
-            print(f"⚠️ ORCHESTRATOR: Error emitting thinking status: {e}")
 
     # Use async client so event loop can deliver status events while waiting for response
     # Reasoning models (o-series, gpt-5) use reasoning_effort instead of temperature

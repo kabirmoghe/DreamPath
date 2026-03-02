@@ -8,7 +8,7 @@ from fastapi import APIRouter, HTTPException, status
 from pydantic import BaseModel
 from typing import List
 
-from dreampath_processing.courses.data_retrieval.weaviate_course_service import WeaviateCourseService
+from dreampath_processing.weaviate.course_service import WeaviateCourseService
 
 router = APIRouter(prefix="/majors", tags=["majors"])
 

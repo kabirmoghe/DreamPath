@@ -1,10 +1,9 @@
-# DreamPath Agent Nodes
-# Each node is a separate module with its own logic and prompts
+# DreamPath Tool-Target Nodes
+# Each node is a LangGraph node that implements a specific tool.
 #
 # Uses lazy loading to avoid circular imports with context_building.py
 
 __all__ = [
-    "orchestrator_node",
     "course_search_node",
     "career_search_node",
     "plan_builder_node",
@@ -16,10 +15,7 @@ __all__ = [
 
 # Lazy loading: nodes are imported only when accessed
 def __getattr__(name: str):
-    if name == "orchestrator_node":
-        from .orchestrator import orchestrator_node
-        return orchestrator_node
-    elif name == "course_search_node":
+    if name == "course_search_node":
         from .course_search import course_search_node
         return course_search_node
     elif name == "career_search_node":

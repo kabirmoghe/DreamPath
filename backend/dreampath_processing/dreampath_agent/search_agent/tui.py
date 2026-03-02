@@ -82,15 +82,15 @@ def _build_tasks_table(tasks: list[SearchTask], iteration: int, elapsed: float) 
         style, label = STATUS_STYLE.get(task.status, ("dim", task.status))
         status_text = Text(f"[{label}]", style=style)
 
-        # Top results with course titles
+        # Top results with titles
         top_lines = []
         if task.top_results:
-            for code in task.top_results:
-                course = task.course_index.get(code)
-                if course:
-                    top_lines.append(f"[green]{code}[/green] {course.course_title}")
+            for result_id in task.top_results:
+                result = task.result_index.get(result_id)
+                if result:
+                    top_lines.append(f"[green]{result_id}[/green] {result.title}")
                 else:
-                    top_lines.append(f"[green]{code}[/green]")
+                    top_lines.append(f"[green]{result_id}[/green]")
         top_text = "\n".join(top_lines) if top_lines else "[dim]-[/dim]"
 
         # Notes
@@ -248,15 +248,15 @@ def _export_run(goal: str, final_state: dict, elapsed: float, run_id: str, strat
 # MAIN EXECUTION
 # ============================================
 
-async def run_search(goal: str, graph, run_id: str):
+async def run_search(goal: str, graph, run_id: str, domain: str = "course"):
     """Run the search agent with live TUI, export results."""
 
     # Suppress async cleanup errors for this run
     loop = asyncio.get_running_loop()
     loop.set_exception_handler(_suppress_async_cleanup_errors)
 
-    initial_state = SearchAgentState(goal=goal)
-    strategy = get_strategy(initial_state.domain)
+    initial_state = SearchAgentState(goal=goal, domain=domain)
+    strategy = get_strategy(domain)
     start_time = time.time()
 
     # Accumulated state for TUI
@@ -322,10 +322,21 @@ async def run_search(goal: str, graph, run_id: str):
 
 
 if __name__ == "__main__":
-    console.print("[bold magenta]Search Agent Test Harness[/bold magenta]")
+    import argparse
+    from datetime import datetime
+
+    parser = argparse.ArgumentParser(description="Search Agent Test Harness")
+    parser.add_argument("--domain", default="course", choices=["course", "activity"],
+                        help="Search domain (default: course)")
+    args = parser.parse_args()
+
+    console.print(f"[bold magenta]Search Agent Test Harness[/bold magenta] [dim](domain={args.domain})[/dim]")
     console.print("[dim]Type a search goal and watch the agent work. Type 'exit' to quit.[/dim]\n")
 
     graph = build_search_agent()
+
+    # Use timestamp prefix so runs don't overwrite across sessions
+    session_ts = datetime.now().strftime("%Y%m%d_%H%M%S")
     run_counter = 0
 
     while True:
@@ -339,6 +350,6 @@ if __name__ == "__main__":
             continue
 
         run_counter += 1
-        run_id = f"interactive_{run_counter}"
-        asyncio.run(run_search(goal.strip(), graph, run_id))
+        run_id = f"{args.domain}_{session_ts}_{run_counter}"
+        asyncio.run(run_search(goal.strip(), graph, run_id, domain=args.domain))
         console.print()

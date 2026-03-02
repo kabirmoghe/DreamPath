@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Optional, List
 from enum import Enum
 
 class CourseType(Enum):
@@ -26,39 +25,39 @@ class Course:
     # Scheduling state
     is_prereq: bool = False
     scheduled: bool = False
-    prereq_tree: Optional[dict] = None
-    must_have_window: Optional[List[int]] = None
-    term_idx: Optional[int] = None
-    term_idx_in_term: Optional[int] = None
+    prereq_tree: dict | None = None
+    must_have_window: list[int] | None = None
+    term_idx: int | None = None
+    term_idx_in_term: int | None = None
 
     # DreamPath-specific
-    aligned_parameters: Optional[set] = None  # set of "interests", "post_grad", "career"
+    aligned_parameters: set | None = None  # set of "interests", "post_grad", "career"
 
     # Basic course info (from Weaviate)
-    course_title: Optional[str] = None
-    course_description: Optional[str] = None
-    department: Optional[str] = None
-    prerequisites: Optional[str] = None
-    course_url: Optional[str] = None
-    num_prereqs: Optional[int] = None
-    total_reviews: Optional[int] = None
+    course_title: str | None = None
+    course_description: str | None = None
+    department: str | None = None
+    prerequisites: str | None = None
+    course_url: str | None = None
+    num_prereqs: int | None = None
+    total_reviews: int | None = None
 
     # Difficulty metrics (from Weaviate)
-    global_difficulty_percentile: Optional[float] = None
-    global_difficulty_classification: Optional[str] = None
-    dept_difficulty_percentile: Optional[float] = None
-    dept_difficulty_classification: Optional[str] = None
-    difficulty_blurb: Optional[str] = None
+    global_difficulty_percentile: float | None = None
+    global_difficulty_classification: str | None = None
+    dept_difficulty_percentile: float | None = None
+    dept_difficulty_classification: str | None = None
+    difficulty_blurb: str | None = None
 
     # Value metrics (from Weaviate)
-    global_value_percentile: Optional[float] = None
-    global_value_classification: Optional[str] = None
-    dept_value_percentile: Optional[float] = None
-    dept_value_classification: Optional[str] = None
-    learning_value_blurb: Optional[str] = None
+    global_value_percentile: float | None = None
+    global_value_classification: str | None = None
+    dept_value_percentile: float | None = None
+    dept_value_classification: str | None = None
+    learning_value_blurb: str | None = None
 
     # Target audience (from Weaviate)
-    target_audience_blurb: Optional[str] = None
+    target_audience_blurb: str | None = None
 
     def __str__(self):
         course_str = f"{self.course_code} [{self.course_type}, scheduled={self.scheduled}{', PREREQ' if self.is_prereq else ''}]"

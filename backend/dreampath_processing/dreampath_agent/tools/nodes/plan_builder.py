@@ -1,12 +1,15 @@
 from dreampath_processing.dreampath_agent.context_building import (
-    extract_structured_output_from_context,
+    async_client,
+    build_small_context,
+    calculate_token_count,
 )
 from dreampath_processing.dreampath_agent.dreampath_types import (
     CoursePathOperations,
     DreamPathAgentState,
 )
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
-from dreampath_processing.dreampath_agent.nodes.prompts import BUILD_OPERATIONS_SYS
+from dreampath_processing.dreampath_agent.tools.nodes.prompts import BUILD_OPERATIONS_SYS
+from dreampath_processing.dreampath_agent.tools.schemas import PlanBuilderInput
 
 
 def format_worklist(worklist: list[str]) -> str:
@@ -19,16 +22,17 @@ def format_worklist(worklist: list[str]) -> str:
     return output_str
 
 
-async def build_operations_from_context_and_results(state: DreamPathAgentState, config) -> tuple[CoursePathOperations, dict]:
+async def build_operations_from_context_and_results(state: DreamPathAgentState, config, instructions: str) -> tuple[CoursePathOperations, dict]:
     """Build course path operations based on context and search results."""
-    return await extract_structured_output_from_context(
-        state=state,
-        config=config,
-        system_prompt=BUILD_OPERATIONS_SYS,
-        response_model=CoursePathOperations,
-        small_context=True,
-        model="gpt-4o"
+    messages = await build_small_context(state, BUILD_OPERATIONS_SYS, config, instructions)
+    print(f"[ MODEL=gpt-4o | TOKEN COUNT: {calculate_token_count(messages, 'gpt-4o')} ]")
+    completion = await async_client.chat.completions.parse(
+        model="gpt-4o",
+        messages=messages,
+        response_format=CoursePathOperations,
+        temperature=0
     )
+    return completion.choices[0].message.parsed, {}
 
 
 async def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgentState:
@@ -38,7 +42,8 @@ async def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgen
     Generates a worklist of operations (add, remove, move, swap, replace, rebuild)
     to be executed by the course_path node.
     """
-    ops, _ = await build_operations_from_context_and_results(state, config)
+    tool_input: PlanBuilderInput = state.tool_input
+    ops, _ = await build_operations_from_context_and_results(state, config, instructions=tool_input.instructions)
 
     tool_result = {
         "role": "assistant",

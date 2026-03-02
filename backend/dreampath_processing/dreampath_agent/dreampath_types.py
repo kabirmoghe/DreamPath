@@ -9,14 +9,8 @@ from dreampath_processing.dreampath_agent.search_agent.types.course_types import
     CourseSearchResult as CourseSearchResult,
 )
 from langchain_core.messages import BaseMessage
-from pydantic import BaseModel, Field, constr, field_validator
+from pydantic import BaseModel, Field, field_validator
 
-
-class OrchestratorDecision(BaseModel):
-    route: Literal["course_search", "career_search", "plan_builder", "course_path", "modify_profile", "rebuild_course_path", "finalize"]
-    reason: constr(max_length=200)
-    handoff: str | None = Field(default=None, description="The handoff message for the next node")
-    confidence: float | None = Field(default=None, description="The confidence in the routing decision")
 
 # ================================
 # Course Path Agent
@@ -144,9 +138,10 @@ class DreamPathAgentState(BaseModel):
     current_user_msg: str | None = Field(default=None)
     turn_messages: list[dict[str, str | dict]] = Field(default_factory=list)
     
-    # Routing
-    route: Literal["orchestrator", "course_search", "career_search", "plan_builder", "course_path", "modify_profile", "rebuild_course_path", "finalize"] | None = Field(default=None)
-    handoff: str | None = Field(default=None)
+    # Tool calling (orchestrator → tool_executor → target node)
+    pending_tool_call: dict | None = Field(default=None)  # raw {name, arguments} from orchestrator
+    tool_name: str | None = Field(default=None)  # set by tool_executor after parsing
+    tool_input: BaseModel | None = Field(default=None)  # typed Pydantic model, set by tool_executor
     
     # Course path operations
     worklist: list[str] = Field(default_factory=list)

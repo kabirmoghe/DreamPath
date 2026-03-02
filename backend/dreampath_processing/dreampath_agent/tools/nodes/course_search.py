@@ -66,21 +66,10 @@ async def course_search_node(state: DreamPathAgentState, config, *, writer=None)
     """
     Course search node that invokes the search agent subgraph.
     """
-    search_goal = state.handoff
-    if not search_goal:
-        print("| CourseSearchNode: ERROR - no handoff goal provided")
-        error_result = {
-            "role": "assistant",
-            "content": {
-                "name": "course_search",
-                "result": "Error: Orchestrator must provide a search goal in handoff message when routing to course_search.",
-            },
-        }
-        error_result_lc = dreampath_to_langchain(error_result)
-        return {
-            "turn_messages": state.turn_messages + [error_result],
-            "messages": [error_result_lc],
-        }
+    from dreampath_processing.dreampath_agent.tools.schemas import CourseSearchInput
+
+    tool_input: CourseSearchInput = state.tool_input
+    search_goal = tool_input.goal
 
     print(f"| CourseSearchNode: invoking search agent with goal='{search_goal[:80]}...'")
 

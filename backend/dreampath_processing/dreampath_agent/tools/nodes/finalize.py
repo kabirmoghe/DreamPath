@@ -8,7 +8,7 @@ from dreampath_processing.dreampath_agent.context_building import (
 )
 from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
-from dreampath_processing.dreampath_agent.nodes.prompts import CRAFT_FINAL_REPLY_SYS
+from dreampath_processing.dreampath_agent.tools.nodes.prompts import CRAFT_FINAL_REPLY_SYS
 from langchain_core.messages import AIMessageChunk
 from openai import AsyncOpenAI
 

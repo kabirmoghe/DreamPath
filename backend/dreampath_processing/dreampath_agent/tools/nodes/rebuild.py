@@ -30,14 +30,14 @@ from dreampath_processing.dreampath_agent.dreampath_types import (
     RebuildCoursePathOutput,
 )
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
-from dreampath_processing.dreampath_agent.nodes.course_search import invoke_search_agent
-from dreampath_processing.dreampath_agent.nodes.modify_profile import modify_student_profile
-from dreampath_processing.dreampath_agent.nodes.prompts import (
-    COURSE_REC_SYNTHESIS_SYS,
-    PARAMETER_COURSE_SEARCH_GOAL,
-)
 from dreampath_processing.dreampath_agent.search_agent.nodes.summarize import (
     render_search_summary_markdown,
+)
+from dreampath_processing.dreampath_agent.tools.nodes.course_search import invoke_search_agent
+from dreampath_processing.dreampath_agent.tools.nodes.modify_profile import modify_student_profile
+from dreampath_processing.dreampath_agent.tools.nodes.prompts import (
+    COURSE_REC_SYNTHESIS_SYS,
+    PARAMETER_COURSE_SEARCH_GOAL,
 )
 from langchain_core.messages import AIMessage
 from openai import AsyncOpenAI
@@ -115,7 +115,7 @@ def format_existing_recommendations(
 
 def format_rebuild_course_path_output(output: RebuildCoursePathOutput) -> str:
     """Format rebuild output for context."""
-    from dreampath_processing.dreampath_agent.nodes.modify_profile import (
+    from dreampath_processing.dreampath_agent.tools.nodes.modify_profile import (
         format_modified_student_profile,
     )
 
@@ -268,10 +268,15 @@ async def execute_rebuild_tool(
     student_db_service = config["configurable"]["student_db_service"]
     current_profile = await student_db_service.load_student_profile(config["configurable"]["user_id"])
 
+    # Get rebuild instructions from tool_input (if available)
+    instructions = ""
+    if state.tool_input is not None:
+        instructions = getattr(state.tool_input, "instructions", "")
+
     if not state.init_mode:
         emit_status("Adjusting your profile")
         print("Modifying student profile...")
-        modified_profile, _ = await modify_student_profile(state, config)
+        modified_profile, _ = await modify_student_profile(state, config, instructions=instructions)
 
         # Update only the modifiable fields from ModifiedStudentProfile
         current_profile.major = modified_profile.major

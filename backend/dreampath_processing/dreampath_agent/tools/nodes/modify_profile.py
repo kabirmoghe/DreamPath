@@ -9,7 +9,7 @@ from dreampath_processing.dreampath_agent.dreampath_types import (
 from dreampath_processing.dreampath_agent.frontend_message_helpers import (
     extract_profile_update_metadata,
 )
-from dreampath_processing.dreampath_agent.nodes.prompts import MODIFY_PROFILE_SYS
+from dreampath_processing.dreampath_agent.tools.nodes.prompts import MODIFY_PROFILE_SYS
 from langgraph.types import interrupt
 
 load_dotenv()
@@ -24,7 +24,7 @@ def format_modified_student_profile(modified_profile: ModifiedStudentProfile) ->
     return f"<mod_result>\n{modified_profile_content}</mod_result>"
 
 
-async def modify_student_profile(state: DreamPathAgentState, config) -> tuple[ModifiedStudentProfile, dict]:
+async def modify_student_profile(state: DreamPathAgentState, config, instructions: str = "") -> tuple[ModifiedStudentProfile, dict]:
     """Generate modified student profile based on context."""
     # Query fresh profile from DB
     student_profile = await config["configurable"]["student_db_service"].load_student_profile(
@@ -37,6 +37,7 @@ async def modify_student_profile(state: DreamPathAgentState, config) -> tuple[Mo
         system_prompt=MODIFY_PROFILE_SYS.format(student_name=student_name),
         response_model=ModifiedStudentProfile,
         small_context=True,
+        task=instructions,
         model="gpt-4o",
         temperature=0.1
     )
@@ -54,9 +55,13 @@ async def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAg
 
     Requires user confirmation before saving changes.
     """
+    from dreampath_processing.dreampath_agent.tools.schemas import ModifyProfileInput
+
     print("| → ProfileModifier")
 
     langchain_messages = []
+    tool_input: ModifyProfileInput = state.tool_input
+    instructions = tool_input.instructions
 
     # Check if we already computed the modified profile (to avoid re-computing on interrupt resume)
     if state.pending_pre_interrupt is not None:
@@ -64,7 +69,7 @@ async def modify_profile_node(state: DreamPathAgentState, config) -> DreamPathAg
         modified_profile = state.pending_pre_interrupt
     else:
         print("| * Computing modified profile for the first time")
-        modified_profile, _ = await modify_student_profile(state, config)
+        modified_profile, _ = await modify_student_profile(state, config, instructions=instructions)
 
     # Verify modified profile with user (skipped when require_user_confirmation=False, e.g. during rebuild)
     if state.require_user_confirmation:

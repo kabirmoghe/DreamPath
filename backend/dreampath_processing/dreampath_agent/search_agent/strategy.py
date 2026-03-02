@@ -71,13 +71,16 @@ class SearchStrategy(Protocol):
 
 def get_strategy(domain: str) -> SearchStrategy:
     """Resolve a strategy instance from a domain name."""
+    from dreampath_processing.dreampath_agent.search_agent.strategies.activity_strategy import (
+        ActivitySearchStrategy,
+    )
     from dreampath_processing.dreampath_agent.search_agent.strategies.course_strategy import (
         CourseSearchStrategy,
     )
 
     strategies: dict[str, type] = {
         "course": CourseSearchStrategy,
-        # "activity": ActivitySearchStrategy,  # Phase 2
+        "activity": ActivitySearchStrategy,
     }
 
     if domain not in strategies:
