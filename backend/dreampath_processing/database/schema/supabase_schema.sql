@@ -98,6 +98,7 @@ CREATE TABLE threads (
     id TEXT PRIMARY KEY,  -- LangGraph thread ID
     user_id TEXT NOT NULL,  -- Supabase auth UUID
     name TEXT,  -- Optional custom thread name (null = auto-generated "Discussion #N")
+    mode TEXT NOT NULL DEFAULT 'advise',  -- Current agent mode: 'advise' or 'build'
     created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     last_message_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     is_archived BOOLEAN DEFAULT FALSE
@@ -109,7 +110,26 @@ CREATE INDEX idx_threads_last_message_at ON threads(last_message_at DESC);
 CREATE INDEX idx_threads_active ON threads(user_id, is_archived) WHERE is_archived = FALSE;
 
 -- ============================================================================
--- 5. RLS
+-- 5. CLUB PATHS
+-- ============================================================================
+
+CREATE TABLE club_paths (
+    id SERIAL PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    student_profile_id INTEGER NOT NULL,
+    club_path_data JSONB NOT NULL,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (student_profile_id) REFERENCES student_profiles(id) ON DELETE CASCADE
+);
+
+CREATE INDEX idx_club_paths_user_id ON club_paths(user_id);
+CREATE INDEX idx_club_paths_student_profile ON club_paths(student_profile_id);
+CREATE INDEX idx_club_paths_active ON club_paths(user_id, is_active) WHERE is_active = TRUE;
+
+-- ============================================================================
+-- 6. RLS
 -- ============================================================================
 -- Enable RLS on all custom tables to ensure users can only access their own data
 -- Note: LangGraph tables (checkpoints, etc.) don't have user_id columns,
@@ -120,6 +140,7 @@ ALTER TABLE student_profiles ENABLE ROW LEVEL SECURITY;
 ALTER TABLE course_paths ENABLE ROW LEVEL SECURITY;
 ALTER TABLE course_path_agent_state ENABLE ROW LEVEL SECURITY;
 ALTER TABLE threads ENABLE ROW LEVEL SECURITY;
+ALTER TABLE club_paths ENABLE ROW LEVEL SECURITY;
 
 -- Student Profiles: Users can only access their own profile
 CREATE POLICY "Users can only access their own profile"
@@ -141,6 +162,11 @@ CREATE POLICY "Users can only access their own threads"
   ON threads FOR ALL
   USING (auth.uid()::TEXT = user_id);
 
+-- Club Paths: Users can only access their own club paths
+CREATE POLICY "Users can only access their own club paths"
+  ON club_paths FOR ALL
+  USING (auth.uid()::TEXT = user_id);
+
 -- ============================================================================
 -- SCHEMA VERIFICATION
 -- ============================================================================
@@ -157,18 +183,19 @@ BEGIN
     INTO table_count
     FROM information_schema.tables
     WHERE table_schema = 'public'
-    AND table_name IN ('student_profiles', 'course_paths', 'course_path_agent_state', 'threads');
+    AND table_name IN ('student_profiles', 'course_paths', 'course_path_agent_state', 'threads', 'club_paths');
 
     RAISE NOTICE '✓ Created % custom tables', table_count;
 
-    IF table_count = 4 THEN
+    IF table_count = 5 THEN
         RAISE NOTICE '✓ All custom tables created successfully!';
         RAISE NOTICE '  - student_profiles';
         RAISE NOTICE '  - course_paths';
         RAISE NOTICE '  - course_path_agent_state';
         RAISE NOTICE '  - threads';
+        RAISE NOTICE '  - club_paths';
     ELSE
-        RAISE WARNING 'Expected 4 tables, but created %', table_count;
+        RAISE WARNING 'Expected 5 tables, but created %', table_count;
     END IF;
 
     -- Check RLS enabled
@@ -176,7 +203,7 @@ BEGIN
     INTO rls_count
     FROM pg_tables
     WHERE schemaname = 'public'
-    AND tablename IN ('student_profiles', 'course_paths', 'course_path_agent_state', 'threads')
+    AND tablename IN ('student_profiles', 'course_paths', 'course_path_agent_state', 'threads', 'club_paths')
     AND rowsecurity = true;
 
     RAISE NOTICE '';
@@ -187,7 +214,7 @@ BEGIN
     INTO policy_count
     FROM pg_policies
     WHERE schemaname = 'public'
-    AND tablename IN ('student_profiles', 'course_paths', 'course_path_agent_state', 'threads');
+    AND tablename IN ('student_profiles', 'course_paths', 'course_path_agent_state', 'threads', 'club_paths');
 
     RAISE NOTICE '✓ Created % RLS policies', policy_count;
 

@@ -8,7 +8,7 @@ from dreampath_processing.dreampath_agent.context_building import (
 from dreampath_processing.dreampath_agent.debug_logger import log_messages_to_file
 from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
-from dreampath_processing.dreampath_agent.prompts import ORCHESTRATOR_DECISION_SYS
+from dreampath_processing.dreampath_agent.prompts.orchestrator import build_orchestrator_prompt
 from dreampath_processing.dreampath_agent.tools.registry import (
     get_node_for_tool,
     get_openai_tools,
@@ -43,7 +43,7 @@ async def orchestrator_node(state: DreamPathAgentState, config, *, writer=None) 
     # Build context (summarization + status events happen inside)
     messages, state_updates = await build_complete_context(
         state,
-        ORCHESTRATOR_DECISION_SYS.format(student_name=student_name),
+        build_orchestrator_prompt(mode=state.mode, student_name=student_name),
         config,
         task_prompt="What should happen next?",
         writer=writer,
@@ -72,13 +72,14 @@ async def orchestrator_node(state: DreamPathAgentState, config, *, writer=None) 
     response = await async_client.chat.completions.create(
         model="o4-mini",
         messages=messages,
-        tools=get_openai_tools(),
+        tools=get_openai_tools(mode=state.mode),
         tool_choice="required",
     )
 
     # Extract tool call (tool_choice="required" guarantees at least one)
     tool_call = response.choices[0].message.tool_calls[0]
     tool_name = tool_call.function.name
+    tool_call_id = tool_call.id
     raw_arguments = json.loads(tool_call.function.arguments)
     reason = raw_arguments.get("reason", "")
 
@@ -93,6 +94,7 @@ async def orchestrator_node(state: DreamPathAgentState, config, *, writer=None) 
             "name": "orchestrator",
             "result": format_orchestrator_tool_call(tool_name, raw_arguments),
         },
+        "tool_call_id": tool_call_id,
     }
     orchestrator_msg_lc = dreampath_to_langchain(orchestrator_decision)
 
@@ -109,7 +111,7 @@ async def orchestrator_node(state: DreamPathAgentState, config, *, writer=None) 
     )
 
     return {
-        "pending_tool_call": {"name": tool_name, "arguments": raw_arguments},
+        "pending_tool_call": {"name": tool_name, "arguments": raw_arguments, "tool_call_id": tool_call_id},
         "turn_messages": state.turn_messages + [orchestrator_decision],
         "messages": [orchestrator_msg_lc, complete_event],
         **state_updates,

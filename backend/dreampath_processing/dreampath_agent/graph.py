@@ -16,13 +16,18 @@ from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_l
 from dreampath_processing.dreampath_agent.orchestrator import orchestrator_node
 from dreampath_processing.dreampath_agent.tools.executor import tool_executor_node
 from dreampath_processing.dreampath_agent.tools.nodes import (
+    activity_search_node,
+    build_dreampath_node,
     career_search_node,
+    change_mode_node,
+    club_path_node,
+    complete_phase_node,
     course_path_node,
     course_search_node,
+    curate_node,
     finalize_node,
     modify_profile_node,
-    plan_builder_node,
-    rebuild_course_path_node,
+    plan_build_node,
 )
 from dreampath_processing.dreampath_agent.tools.registry import get_node_for_tool
 from langchain_core.messages import BaseMessage
@@ -58,12 +63,17 @@ def build_dreampath_graph(
     g.add_node("orchestrator", orchestrator_node)
     g.add_node("tool_executor", tool_executor_node)
     g.add_node("course_search", course_search_node)
+    g.add_node("activity_search", activity_search_node)
     g.add_node("career_search", career_search_node)
-    g.add_node("plan_builder", plan_builder_node)
     g.add_node("course_path", course_path_node)
+    g.add_node("club_path", club_path_node)
     g.add_node("modify_profile", modify_profile_node)
-    g.add_node("rebuild_course_path", rebuild_course_path_node)
     g.add_node("finalize", finalize_node)
+    g.add_node("change_mode", change_mode_node)
+    g.add_node("complete_phase", complete_phase_node)
+    g.add_node("curate", curate_node)
+    g.add_node("build_dreampath", build_dreampath_node)
+    g.add_node("plan_build", plan_build_node)
 
     # Entry point
     g.add_edge(START, "orchestrator")
@@ -72,37 +82,61 @@ def build_dreampath_graph(
     g.add_edge("orchestrator", "tool_executor")
 
     # Tool executor routes to target node based on tool_name
+    # tool_name=None means phase guardrail rejected the call → back to orchestrator
     def tool_router(state: DreamPathAgentState):
+        if state.tool_name is None:
+            return "orchestrator"
         return get_node_for_tool(state.tool_name)
 
     g.add_conditional_edges("tool_executor", tool_router, {
+        "orchestrator": "orchestrator",
         "course_search": "course_search",
+        "activity_search": "activity_search",
         "career_search": "career_search",
-        "plan_builder": "plan_builder",
         "course_path": "course_path",
+        "club_path": "club_path",
         "modify_profile": "modify_profile",
-        "rebuild_course_path": "rebuild_course_path",
         "finalize": "finalize",
+        "change_mode": "change_mode",
+        "complete_phase": "complete_phase",
+        "curate": "curate",
+        "build_dreampath": "build_dreampath",
+        "plan_build": "plan_build",
     })
 
     # Sub-nodes loop back to orchestrator
     g.add_edge("course_search", "orchestrator")
+    g.add_edge("activity_search", "orchestrator")
     g.add_edge("career_search", "orchestrator")
-    g.add_edge("plan_builder", "orchestrator")
+    g.add_edge("change_mode", "orchestrator")
+    g.add_edge("complete_phase", "orchestrator")
+    g.add_edge("curate", "orchestrator")
+    g.add_edge("build_dreampath", "orchestrator")
+    g.add_edge("plan_build", "orchestrator")
 
-    # course_path self-loop via cursor/worklist
-    def cp_router(state: DreamPathAgentState):
-        if state.worklist and state.cursor < len(state.worklist):
+    # course_path self-loop via course_cursor/course_worklist
+    def course_path_router(state: DreamPathAgentState):
+        if state.course_worklist and state.course_cursor < len(state.course_worklist):
             return "course_path"
         return "orchestrator"
 
-    g.add_conditional_edges("course_path", cp_router, {
+    g.add_conditional_edges("course_path", course_path_router, {
         "course_path": "course_path",
         "orchestrator": "orchestrator",
     })
 
+    # club_path self-loop via club_cursor/club_worklist
+    def club_path_router(state: DreamPathAgentState):
+        if state.club_worklist and state.club_cursor < len(state.club_worklist):
+            return "club_path"
+        return "orchestrator"
+
+    g.add_conditional_edges("club_path", club_path_router, {
+        "club_path": "club_path",
+        "orchestrator": "orchestrator",
+    })
+
     g.add_edge("modify_profile", "orchestrator")
-    g.add_edge("rebuild_course_path", "orchestrator")
     g.add_edge("finalize", END)
 
     # Compile with or without checkpointer
@@ -254,7 +288,7 @@ class DreampathAgent:
         Returns:
             str: The final response from the initialization process
         """
-        init_message = "Student completed their profile for the first time. Please build a course path for them."
+        init_message = "Student completed their profile for the first time. Please build a DreamPath for them."
         conversation = self.run(user_input=init_message, init_mode=True)
 
         # Consume the async generator to completion

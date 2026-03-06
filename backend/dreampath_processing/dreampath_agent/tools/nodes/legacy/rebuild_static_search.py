@@ -368,11 +368,12 @@ async def rebuild_course_path_node_legacy(state: DreamPathAgentState, config, *,
     output = await execute_rebuild_tool_legacy(state, config, writer=writer)
 
     tool_result = {
-        "role": "assistant",
+        "role": "tool",
         "content": {
             "name": "rebuild_course_path",
             "result": format_rebuild_course_path_output(output),
         },
+        "tool_call_id": state.pending_tool_call["tool_call_id"],
     }
 
     tool_result_lc = dreampath_to_langchain(tool_result)

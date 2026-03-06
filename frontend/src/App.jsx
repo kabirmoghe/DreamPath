@@ -8,6 +8,7 @@ import Signup from './components/Auth/Signup';
 import Onboarding from './components/Onboarding';
 import Dashboard from './components/Dashboard';
 import Courses from './components/Courses';
+import Clubs from './components/Clubs';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Create a client
@@ -62,6 +63,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Courses />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/clubs"
+                element={
+                  <ProtectedRoute>
+                    <Clubs />
                   </ProtectedRoute>
                 }
               />

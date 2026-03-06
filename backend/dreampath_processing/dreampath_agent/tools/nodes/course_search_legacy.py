@@ -75,6 +75,8 @@ async def course_search_node(state: DreamPathAgentState, config) -> DreamPathAge
     tool_messages = []
     langchain_messages = []
 
+    tool_call_id = state.pending_tool_call["tool_call_id"]
+
     for query in queries.queries:
         # Build tool call
         tool_call = {
@@ -85,6 +87,7 @@ async def course_search_node(state: DreamPathAgentState, config) -> DreamPathAge
                     "queries": json.dumps(query.model_dump()),
                 }
             },
+            "tool_call_id": tool_call_id,
         }
 
         tool_messages.append(tool_call)
@@ -94,11 +97,12 @@ async def course_search_node(state: DreamPathAgentState, config) -> DreamPathAge
         search_results = course_search_tool.structured_hybrid_search(query)
 
         tool_result = {
-            "role": "assistant",
+            "role": "tool",
             "content": {
                 "name": "course_search",
                 "result": format_course_search_output(search_results),
             },
+            "tool_call_id": tool_call_id,
         }
 
         tool_messages.append(tool_result)

@@ -5,6 +5,7 @@ import { Send, X, ChatDots, Plus, List } from 'react-bootstrap-icons';
 import { useQueryClient } from '@tanstack/react-query';
 import { apiClient } from '../lib/api';
 import CoursePathOperations from './CoursePathOperations';
+import ClubPathOperations from './ClubPathOperations';
 import ProfileUpdate from './ProfileUpdate';
 import '../styles/ChatWindow.css';
 
@@ -23,15 +24,8 @@ const getCompassIcon = (nodeStatus) => {
   if (nodeStatus.status === 'thinking') return '/compass_baseline.png';
 
   const node = nodeStatus.next_node;
-  if (node === 'course_search' || node === 'career_search') return '/compass_search.png';
-  if (node === 'plan_builder' || node === 'course_path' || node === 'modify_profile') return '/compass_edit.png';
-  if (node === 'rebuild_course_path') {
-    const reason = (nodeStatus.reason || '').toLowerCase();
-    if (reason.includes('search')) return '/compass_search.png';
-    if (reason.includes('building') || reason.includes('rebuilding') || reason.includes('curating'))
-      return '/compass_edit.png';
-    return '/compass_search.png';
-  }
+  if (node === 'course_search' || node === 'career_search' || node === 'activity_search') return '/compass_search.png';
+  if (node === 'course_path' || node === 'club_path' || node === 'modify_profile' || node === 'curate' || node === 'build_dreampath') return '/compass_edit.png';
   if (node === 'finalize') return '/compass_finalize.png';
   return '/compass_baseline.png';
 };
@@ -52,6 +46,8 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
   const [isScrolledUp, setIsScrolledUp] = useState(false);
   const [confirmNote, setConfirmNote] = useState('');
   const [showConfirmNote, setShowConfirmNote] = useState(false);
+  const [agentMode, setAgentMode] = useState('advise'); // 'advise' or 'build'
+  const [buildPhases, setBuildPhases] = useState(null); // array of {name, status} during build
 
   // Track scroll position — tuck mascot when user scrolls up
   useEffect(() => {
@@ -71,11 +67,16 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
   // Mapping of route names to user-friendly messages
   const routeMessages = {
     'course_search': 'Searching Courses',
+    'activity_search': 'Searching Activities',
     'career_search': 'Understanding Careers',
-    'plan_builder': 'Planning CoursePath Modifications',
     'course_path': 'Executing CoursePath Operations',
+    'club_path': 'Updating ClubPath',
     'modify_profile': 'Updating Profile',
-    'rebuild_course_path': 'Rebuilding CoursePath',
+    'change_mode': 'Switching Mode',
+    'plan_build': 'Planning Build',
+    'complete_phase': 'Advancing Phase',
+    'curate': 'Curating Recommendations',
+    'build_dreampath': 'Building DreamPath',
     'finalize': 'Finalizing',
   };
 
@@ -111,6 +112,13 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
 
         setThreadId(currentThreadId);
 
+        // Set mode from thread data
+        const currentThread = userThreads.find(t => t.id === currentThreadId);
+        if (currentThread?.mode) {
+          setAgentMode(currentThread.mode);
+          setBuildPhases(currentThread.mode === 'build' ? null : null);
+        }
+
         // Load history for this thread
         await loadThreadHistory(currentThreadId);
       } catch (error) {
@@ -140,6 +148,7 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
             const prevMsg = recentMessages[idx - 1];
             if (prevMsg?.type === 'ai' && (
               prevMsg.custom_data?.event_type === 'coursepath_operations' ||
+              prevMsg.custom_data?.event_type === 'clubpath_operations' ||
               prevMsg.custom_data?.event_type === 'profile_update'
             )) {
               return { ...msg, hideInUI: true };
@@ -212,6 +221,8 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
       setMessages([]);
       setError(null);
       setNodeStatus(null);
+      setAgentMode('advise');
+      setBuildPhases(null);
     } catch (error) {
       console.error('Failed to create thread:', error);
       setError('Failed to create new conversation');
@@ -226,6 +237,11 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
     setThreadId(tid);
     setError(null);
     setNodeStatus(null);
+
+    // Set mode from thread data
+    const thread = threads.find(t => t.id === tid);
+    setAgentMode(thread?.mode || 'advise');
+    setBuildPhases(null);
 
     // Load history for the new thread
     await loadThreadHistory(tid);
@@ -315,6 +331,19 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
                 setNodeStatus(chunk.custom_data);
               });
             }
+          } else if (chunk.custom_data && chunk.custom_data.event_type === 'mode_change') {
+            // Mode change — update pill immediately
+            flushSync(() => {
+              setAgentMode(chunk.custom_data.mode);
+              if (chunk.custom_data.mode === 'advise') {
+                setBuildPhases(null);
+              }
+            });
+          } else if (chunk.custom_data && chunk.custom_data.event_type === 'phase_update') {
+            // Build mode phase progress — update stepper
+            flushSync(() => {
+              setBuildPhases(chunk.custom_data.phases || null);
+            });
           } else if (chunk.type === 'ai') {
             // Only process AI messages that have meaningful content or structured data
             const hasContent = chunk.content && chunk.content.trim().length > 0;
@@ -359,7 +388,21 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
       // Stream completed successfully - invalidate queries to refetch
       // This ensures the app updates with any changes made by Compass
       queryClient.invalidateQueries(['coursePath', userId]);
+      queryClient.invalidateQueries(['clubPath', userId]);
       queryClient.invalidateQueries(['profile', userId]);
+
+      // Refetch thread to pick up mode changes
+      try {
+        const updatedThread = await apiClient.getThread(threadId);
+        if (updatedThread?.mode) {
+          setAgentMode(updatedThread.mode);
+          if (updatedThread.mode === 'advise') {
+            setBuildPhases(null);
+          }
+        }
+      } catch (e) {
+        console.error('Failed to refetch thread mode:', e);
+      }
 
       // Update thread timestamp
       apiClient.updateThreadTimestamp(userId, threadId);
@@ -414,7 +457,7 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
 
     const eventType = lastVisibleMsg.custom_data?.event_type;
     if (lastVisibleMsg.type === 'ai' &&
-        (eventType === 'coursepath_operations' || eventType === 'profile_update')) {
+        (eventType === 'coursepath_operations' || eventType === 'clubpath_operations' || eventType === 'profile_update')) {
       return eventType;
     }
 
@@ -600,7 +643,7 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
     let confirmationStatus = 'pending';
     const nextMsg = messages[idx + 1];
     if (nextMsg && nextMsg.type === 'human') {
-      if (msg.custom_data?.event_type === 'coursepath_operations') {
+      if (msg.custom_data?.event_type === 'coursepath_operations' || msg.custom_data?.event_type === 'clubpath_operations') {
         if (nextMsg.content?.startsWith('confirm')) {
           confirmationStatus = 'confirmed';
         } else if (nextMsg.content?.startsWith('reject') || nextMsg.content?.startsWith('cancel')) {
@@ -645,6 +688,14 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
             <div style={{ marginTop: hasTextContent ? '8px' : '0' }}>
               {msg.custom_data.event_type === 'coursepath_operations' && (
                 <CoursePathOperations
+                  operations={msg.custom_data.operations}
+                  opString={msg.custom_data.op_string}
+                  isPending={isPending}
+                  confirmationStatus={confirmationStatus}
+                />
+              )}
+              {msg.custom_data.event_type === 'clubpath_operations' && (
+                <ClubPathOperations
                   operations={msg.custom_data.operations}
                   opString={msg.custom_data.op_string}
                   isPending={isPending}
@@ -938,7 +989,7 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
 
           {/* Text input - always visible, disabled when buttons showing */}
           <Form.Group className="mb-0">
-            <div className="input-group">
+            <div className="input-group" style={{ position: 'relative' }}>
               <Form.Control
                 ref={inputRef}
                 as="textarea"
@@ -948,8 +999,59 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
                 onKeyPress={handleKeyPress}
                 disabled={isLoading || showConfirmButtons}
                 className="chat-input"
-                style={{ minHeight: '40px', fontSize: '14px' }}
+                style={{ minHeight: '40px', fontSize: '14px', paddingBottom: '24px' }}
               />
+              {/* Mode pill inside textarea */}
+              <div style={{
+                position: 'absolute',
+                bottom: '5px',
+                left: '8px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '4px',
+                background: agentMode === 'build' ? 'rgba(255, 152, 0, 0.06)' : 'rgba(138, 107, 193, 0.06)',
+                border: 'none',
+                padding: '1px 8px',
+                borderRadius: '3px',
+                fontFamily: "'Lora'",
+                pointerEvents: 'none',
+                transition: 'all 0.3s ease',
+              }}>
+                <div style={{
+                  width: '5px',
+                  height: '5px',
+                  borderRadius: '50%',
+                  background: agentMode === 'build' ? '#FF9800' : '#8A6BC1',
+                }} />
+                <span style={{
+                  fontSize: '9px',
+                  fontWeight: 600,
+                  color: agentMode === 'build' ? '#e65100' : '#8A6BC1',
+                  letterSpacing: '0.3px',
+                }}>
+                  {agentMode === 'build' ? 'Build' : 'Advise'}
+                </span>
+                {agentMode === 'build' && buildPhases && (
+                  <>
+                    <div style={{ width: '1px', height: '8px', background: 'rgba(0,0,0,0.1)', margin: '0 1px' }} />
+                    {buildPhases.map((phase, i) => (
+                      <div
+                        key={i}
+                        title={phase.name}
+                        style={{
+                          width: '5px',
+                          height: '5px',
+                          borderRadius: '50%',
+                          background: phase.status === 'complete' ? '#4CAF50'
+                            : phase.status === 'active' ? '#FF9800'
+                            : 'rgba(0,0,0,0.1)',
+                          transition: 'all 0.3s ease',
+                        }}
+                      />
+                    ))}
+                  </>
+                )}
+              </div>
               <Button
                 variant="primary"
                 onClick={() => handleSend()}

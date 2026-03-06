@@ -127,7 +127,9 @@ async def finalize_node(state: DreamPathAgentState, config, *, writer=None) -> D
         "role": "assistant",
         "content": reply
     }
-    compiled_turn_messages = [usr_msg_dict] + state.turn_messages + [reply_msg_dict]
+    # Filter out developer messages (e.g., phase guardrail warnings) from persisted history
+    persisted_turn = [m for m in state.turn_messages if m.get("role") != "developer"]
+    compiled_turn_messages = [usr_msg_dict] + persisted_turn + [reply_msg_dict]
 
     # Convert reply to LangChain format for streaming
     reply_msg_lc = dreampath_to_langchain(reply_msg_dict)
@@ -141,4 +143,12 @@ async def finalize_node(state: DreamPathAgentState, config, *, writer=None) -> D
         "turn_messages": [],
         "init_mode": False,
         "require_user_confirmation": True,
+        # Reset per-turn bookkeeping so next turn starts fresh
+        "pending_tool_call": None,
+        "tool_name": None,
+        "tool_input": None,
+        "course_worklist": [],
+        "course_cursor": 0,
+        "club_worklist": [],
+        "club_cursor": 0,
     }

@@ -46,18 +46,19 @@ async def plan_builder_node(state: DreamPathAgentState, config) -> DreamPathAgen
     ops, _ = await build_operations_from_context_and_results(state, config, instructions=tool_input.instructions)
 
     tool_result = {
-        "role": "assistant",
+        "role": "tool",
         "content": {
             "name": "plan_builder",
             "result": format_worklist(ops.operations),
         },
+        "tool_call_id": state.pending_tool_call["tool_call_id"],
     }
 
     tool_result_lc = dreampath_to_langchain(tool_result)
 
     return {
-        "worklist": ops.operations,
-        "cursor": 0,
+        "course_worklist": ops.operations,
+        "course_cursor": 0,
         "current_cp_agent_outcomes": {},
         "turn_messages": state.turn_messages + [tool_result],
         "messages": [tool_result_lc],

@@ -4,7 +4,7 @@ from collections.abc import Callable
 import tiktoken
 from dotenv import load_dotenv
 from dreampath_processing.dreampath_agent.debug_logger import log_messages_to_file
-from dreampath_processing.dreampath_agent.dreampath_types import DreamPathAgentState
+from dreampath_processing.dreampath_agent.dreampath_types import BuildPlan, DreamPathAgentState
 from dreampath_processing.dreampath_agent.tools.nodes.prompts import (
     MASTER_CONTEXT,
     MASTER_CONTEXT_SHORT,
@@ -175,16 +175,31 @@ def _render_turn_block(current_user_msg: str, turn_messages: list[dict], init_mo
         
     return "\n".join(lines)
 
-async def _render_dreampath_context_block(user_id: str, student_db_service) -> str:
+def _render_build_plan_block(build_plan: BuildPlan) -> str:
+    """Render build plan phases with current-phase marker."""
+    lines = ["<build_plan>"]
+    for i, phase in enumerate(build_plan.phases):
+        marker = ">>>" if i == build_plan.current_phase else "   "
+        lines.append(f"{marker} Phase {i} ({phase.name}) [{phase.status}]")
+        if phase.guidance:
+            lines.append(f"       Guidance: {phase.guidance}")
+        if phase.notes:
+            lines.append(f"       Notes: {phase.notes}")
+    lines.append("</build_plan>")
+    return "\n".join(lines)
+
+
+async def _render_dreampath_context_block(user_id: str, student_db_service, build_plan: BuildPlan | None = None) -> str:
     """
     Render the DreamPath context block by querying fresh data from the database.
 
-    This ensures we always have the latest student profile and course path,
+    This ensures we always have the latest student profile, course path, and club path,
     avoiding stale data issues with config-based caching.
     """
     # Query fresh data from DB (single source of truth)
     student_profile = await student_db_service.load_student_profile(user_id)
     course_path = await student_db_service.load_course_path(user_id)
+    club_path = await student_db_service.load_club_path(user_id)
 
     lines = []
 
@@ -196,6 +211,16 @@ async def _render_dreampath_context_block(user_id: str, student_db_service) -> s
         lines.append(f"<course_path>\n**Important**: student is currently in term {course_path.curr_window_start}\n\n{str(course_path)}\n</course_path>")
     else:
         lines.append("<course_path>\nNo course path yet.\n</course_path>")
+
+    # Add club path
+    if club_path is not None:
+        lines.append(f"<club_path>\n{str(club_path)}\n</club_path>")
+    else:
+        lines.append("<club_path>\nNo club path yet.\n</club_path>")
+
+    # Add build plan if in build mode
+    if build_plan is not None:
+        lines.append(_render_build_plan_block(build_plan))
 
     return "\n".join(lines)
 
@@ -225,7 +250,8 @@ async def build_complete_context(
     # 3) Dreampath Context Block - query fresh data from DB
     dreampath_context_block = await _render_dreampath_context_block(
         user_id=config["configurable"]["user_id"],
-        student_db_service=config["configurable"]["student_db_service"]
+        student_db_service=config["configurable"]["student_db_service"],
+        build_plan=state.build_plan,
     )
 
     # 4) Combine all blocks
@@ -249,7 +275,8 @@ async def build_small_context(state: DreamPathAgentState, prompt: str, config: d
     # 2) Dreampath Context Block - query fresh data from DB
     dreampath_context_block = await _render_dreampath_context_block(
         user_id=config["configurable"]["user_id"],
-        student_db_service=config["configurable"]["student_db_service"]
+        student_db_service=config["configurable"]["student_db_service"],
+        build_plan=state.build_plan,
     )
 
     # 3) Combine all blocks

@@ -1,22 +1,22 @@
 # Context building templates
 
 MASTER_CONTEXT = """
+# DreamPath Context (current state)
+{dreampath_context_block}
+
 # Thread (what's happened before this turn)
 {thread_block}
 
 # Current Turn Trace (what's happened this turn)
 {turn_block}
-
-# DreamPath Context (current Student Profile and CoursePath)
-{dreampath_context_block}
 """
 
 MASTER_CONTEXT_SHORT = """
+# DreamPath Context (current state)
+{dreampath_context_block}
+
 # Current Turn Trace (what's happened this turn)
 {turn_block}
-
-# DreamPath Context (current Student Profile and CoursePath)
-{dreampath_context_block}
 
 # Task
 {task}

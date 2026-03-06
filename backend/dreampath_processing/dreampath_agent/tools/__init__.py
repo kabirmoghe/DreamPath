@@ -6,12 +6,17 @@
 
 from .registry import get_all_tool_names, get_input_model, get_node_for_tool, get_openai_tools
 from .schemas import (
+    ActivitySearchInput,
+    BuildDreampathInput,
     CareerSearchInput,
+    ChangeModeInput,
+    ClubPathInput,
+    CompletePhaseInput,
     CoursePathInput,
     CourseSearchInput,
+    CurateInput,
     ModifyProfileInput,
-    PlanBuilderInput,
-    RebuildCoursePathInput,
+    PlanBuildInput,
     RespondInput,
 )
 
@@ -22,11 +27,16 @@ __all__ = [
     "get_input_model",
     "get_all_tool_names",
     # Schemas
-    "CourseSearchInput",
+    "ActivitySearchInput",
+    "BuildDreampathInput",
     "CareerSearchInput",
-    "PlanBuilderInput",
+    "ChangeModeInput",
+    "ClubPathInput",
+    "CompletePhaseInput",
     "CoursePathInput",
+    "CourseSearchInput",
+    "CurateInput",
     "ModifyProfileInput",
-    "RebuildCoursePathInput",
+    "PlanBuildInput",
     "RespondInput",
 ]

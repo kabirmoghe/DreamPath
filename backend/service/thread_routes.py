@@ -24,6 +24,7 @@ class ThreadResponse(BaseModel):
     user_id: str
     label: str  # Generated from name or creation order
     name: Optional[str] = None
+    mode: str = "advise"  # 'advise' or 'build'
     created_at: str
     last_message_at: str
     is_archived: bool = False
@@ -70,6 +71,7 @@ def _thread_to_response(thread: ThreadModel, thread_number: int) -> ThreadRespon
         user_id=thread.user_id,
         label=_generate_label(thread, thread_number),
         name=thread.name,
+        mode=thread.mode,
         created_at=thread.created_at.isoformat(),
         last_message_at=thread.last_message_at.isoformat(),
         is_archived=thread.is_archived

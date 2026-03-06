@@ -42,11 +42,11 @@ def summarize_diff(diff: Dict[str, List[Dict[str, str]]]) -> str:
     for change_type, changes in diff.items():
         for change in changes:
             if change_type == "removed":
-                summary += f"\n- {change['course_code']} (term {change['term_idx']})"
+                summary += f"\n[removed] {change['course_code']} (term {change['term_idx']})"
             elif change_type == "added":
-                summary += f"\n+ {change['course_code']} (term {change['term_idx']})"
+                summary += f"\n[added] {change['course_code']} (term {change['term_idx']})"
             elif change_type == "moved":
-                summary += f"\nMoved {change['course_code']} (term {change['old_term_idx']} -> {change['new_term_idx']})"
+                summary += f"\n[moved] {change['course_code']} (term {change['old_term_idx']} -> {change['new_term_idx']})"
 
     return summary
 

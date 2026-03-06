@@ -1,11 +1,15 @@
-"""Service for loading/saving student profiles and course paths."""
+"""Service for loading/saving student profiles, CoursePaths, and ClubPaths."""
 
 import json
-from typing import Optional
-from dreampath_processing.modules.student_profile import StudentProfile
+from dataclasses import asdict
+
+from dreampath_processing.clubs.modules.activity import Activity
+from dreampath_processing.clubs.modules.club_path import ClubPath
 from dreampath_processing.courses.schedule_modules.course_path import CoursePath
 from dreampath_processing.database.connection import DatabaseConnection
-from dreampath_processing.database.serializers import serialize_course_path, deserialize_course_path
+from dreampath_processing.database.serializers import deserialize_course_path, serialize_course_path
+from dreampath_processing.modules.student_profile import StudentProfile
+
 
 class StudentDatabaseService:
     """Service for loading/saving student profiles and course paths."""
@@ -41,7 +45,7 @@ class StudentDatabaseService:
 
         return profile_id
     
-    async def load_student_profile(self, user_id: str, student_profile_id: Optional[int] = None) -> Optional[StudentProfile]:
+    async def load_student_profile(self, user_id: str, student_profile_id: int | None = None) -> StudentProfile | None:
         """Load student profile. Defaults to active profile for user, or specific profile if provided."""
         if student_profile_id is None:
             # Load active profile for user (query student_profiles directly by user_id)
@@ -124,7 +128,7 @@ class StudentDatabaseService:
         
         return result['id']
 
-    async def load_course_path(self, user_id: str, pending_approval: bool = False, course_path_id: Optional[int] = None) -> Optional[CoursePath]:
+    async def load_course_path(self, user_id: str, pending_approval: bool = False, course_path_id: int | None = None) -> CoursePath | None:
         """Load active course path for user. Returns course path if found."""
         
         if course_path_id is not None:
@@ -194,3 +198,84 @@ class StudentDatabaseService:
         )
 
         return True
+
+    # =========================================================================
+    # ClubPath
+    # =========================================================================
+
+    async def save_club_path(self, club_path: ClubPath, user_id: str) -> int:
+        """Save ClubPath to PostgreSQL and link to active profile. Returns club path ID."""
+        active_profile = await self.db.execute_one(
+            """
+            SELECT id FROM student_profiles
+            WHERE user_id = $1 AND is_active = true
+            ORDER BY created_at DESC
+            LIMIT 1
+            """,
+            user_id
+        )
+
+        if not active_profile or not active_profile['id']:
+            raise ValueError(f"No active profile found for user {user_id}")
+
+        profile_id = active_profile['id']
+
+        # Serialize ClubPath to JSONB
+        club_path_data = {
+            slug: asdict(activity)
+            for slug, activity in club_path.recommendations.items()
+        }
+        club_path_json = json.dumps(club_path_data, default=lambda o: sorted(o) if isinstance(o, set) else o)
+
+        result = await self.db.execute_one(
+            """
+            INSERT INTO club_paths (user_id, student_profile_id, club_path_data, is_active)
+            VALUES ($1, $2, $3, true)
+            RETURNING id
+            """,
+            user_id, profile_id, club_path_json
+        )
+
+        club_path_id = result['id']
+
+        # Deactivate all other club paths for the user
+        await self.db.execute_command(
+            """
+            UPDATE club_paths
+            SET is_active = false
+            WHERE user_id = $1 AND id != $2
+            """,
+            user_id, club_path_id
+        )
+
+        return club_path_id
+
+    async def load_club_path(self, user_id: str) -> ClubPath | None:
+        """Load active ClubPath for user."""
+        row = await self.db.execute_one(
+            """
+            SELECT club_path_data
+            FROM club_paths
+            WHERE user_id = $1 AND is_active = true
+            ORDER BY created_at DESC
+            LIMIT 1
+            """,
+            user_id
+        )
+
+        if not row or not row['club_path_data']:
+            return None
+
+        data = json.loads(row['club_path_data'])
+        recommendations = {}
+        for slug, activity_dict in data.items():
+            # Convert list back to set for aligned_parameters
+            if 'aligned_parameters' in activity_dict and isinstance(activity_dict['aligned_parameters'], list):
+                activity_dict['aligned_parameters'] = set(activity_dict['aligned_parameters'])
+            # Convert list fields back from JSON
+            for field in ('skills_exposed', 'career_alignment', 'subtags'):
+                if field in activity_dict and activity_dict[field] is None:
+                    activity_dict[field] = []
+            recommendations[slug] = Activity(**activity_dict)
+
+        return ClubPath(recommendations=recommendations)

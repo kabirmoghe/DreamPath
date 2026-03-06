@@ -65,15 +65,16 @@ def _get_search_agent():
 async def course_search_node(state: DreamPathAgentState, config, *, writer=None) -> dict:
     """
     Course search node that invokes the search agent subgraph.
+    Supports multiple goals — runs parallel agents and combines results.
     """
+    import asyncio
+
     from dreampath_processing.dreampath_agent.tools.schemas import CourseSearchInput
 
     tool_input: CourseSearchInput = state.tool_input
-    search_goal = tool_input.goal
+    goals = tool_input.goals
 
-    print(f"| CourseSearchNode: invoking search agent with goal='{search_goal[:80]}...'")
-
-    search_state = SearchAgentState(goal=search_goal, domain="course")
+    print(f"| CourseSearchNode: invoking {len(goals)} search agent(s)")
 
     # Pass writer through config for status updates
     search_config = {
@@ -84,32 +85,50 @@ async def course_search_node(state: DreamPathAgentState, config, *, writer=None)
         }
     }
 
-    search_agent = _get_search_agent()
-    final_state = await search_agent.ainvoke(search_state, search_config)
+    # Run search agents in parallel for each goal
+    search_tasks = [invoke_search_agent(goal, search_config, domain="course") for goal in goals]
+    results = await asyncio.gather(*search_tasks, return_exceptions=True)
 
-    print(f"| CourseSearchNode: search agent completed with {len(final_state.get('tasks', []))} tasks")
+    # Combine summaries from all results
+    summary_parts = []
+    for i, (goal, result) in enumerate(zip(goals, results)):
+        if isinstance(result, Exception):
+            print(f"⚠️ CourseSearchNode: goal {i + 1} failed: {result}")
+            summary_parts.append(f'<search_result goal="{i + 1}">\n## Goal: {goal}\nSearch failed: {result}\n</search_result>')
+            continue
 
-    # Get structured summary and render to full markdown
-    structured_summary = final_state.get("structured_summary")
-    if structured_summary:
-        final_summary = render_search_summary_markdown(structured_summary, verbosity=2)
-    else:
-        final_summary = "No results found."
+        structured_summary = result.get("structured_summary")
+        if structured_summary:
+            rendered = render_search_summary_markdown(structured_summary, verbosity=2)
+            if len(goals) > 1:
+                summary_parts.append(f'<search_result goal="{i + 1}">\n## Goal: {goal}\n{rendered}\n</search_result>')
+            else:
+                summary_parts.append(rendered)
+        else:
+            summary_parts.append(f'<search_result goal="{i + 1}">\n## Goal: {goal}\nNo results found.\n</search_result>')
+
+    final_summary = "\n\n".join(summary_parts) if summary_parts else "No results found."
+
+    print(f"| CourseSearchNode: completed {len(goals)} search(es)")
+
+    tool_call_id = state.pending_tool_call["tool_call_id"]
 
     tool_call = {
         "role": "assistant",
         "content": {
             "name": "course_search",
-            "arguments": {"goal": search_goal}
+            "arguments": {"goals": goals}
         },
+        "tool_call_id": tool_call_id,
     }
 
     tool_result = {
-        "role": "assistant",
+        "role": "tool",
         "content": {
             "name": "course_search",
             "result": final_summary,
         },
+        "tool_call_id": tool_call_id,
     }
 
     tool_call_lc = dreampath_to_langchain(tool_call)
@@ -129,7 +148,7 @@ async def invoke_search_agent(goal: str, config: dict, domain: str = "course") -
     """
     Invoke the search agent with a goal and return the final state.
 
-    Utility function for use by other nodes (e.g., rebuild_course_path)
+    Utility function for use by other nodes (e.g., build_dreampath)
     that need to run searches without the full node machinery.
     """
     search_state = SearchAgentState(goal=goal, domain=domain)

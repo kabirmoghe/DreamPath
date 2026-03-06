@@ -26,13 +26,11 @@ You generate a list of modifications, each of which can be one of the following:
 A. Removing an existing Activity from the ClubPath. Supply `activity_slug` to identify the removal
 
 B. Adding a new Activity to the ClubPath. Supply `activity_slug` to identify the addition. Additional parameters for new Activity include any subset of the following:
-  - `priority`: Literal['low', 'medium', or 'high'], represents Activity's immediate relevance for the student and relative priority across the ClubPath
   - `aligned_parameters`: set[Literal["interests", "post_grad", "career"]], represents which parameters on their profile are deeply aligned with Activity
   - `membership_status`: Literal['not_yet_joined', 'joining', 'active_member', 'inactive_member', 'left'], status for student's relationship to Activity
   - `current_role`: string, the user's actual current role at Activity
 
 C. Editing an existing Activity from the ClubPath. Supply `activity_slug` to identify the edit. Additional parameters for editing Activity include any subset of the following:
-  - `priority`: Literal['low', 'medium', or 'high'], represents Activity's immediate relevance for the student and relative priority across the ClubPath
   - `aligned_parameters`: set[Literal["interests", "post_grad", "career"]], represents which parameters on their profile are deeply aligned with Activity
   - `membership_status`: Literal['not_yet_joined', 'joining', 'active_member', 'inactive_member', 'left'], status for student's relationship to Activity
   - `current_role`: string, the user's actual current role at Activity

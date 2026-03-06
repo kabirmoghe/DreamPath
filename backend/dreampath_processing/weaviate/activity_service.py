@@ -79,6 +79,39 @@ class WeaviateActivityService:
 
         return filters
 
+    def get_activity_by_slug(self, activity_slug: str) -> dict | None:
+        """Get activity by slug. Returns None if not found."""
+        try:
+            result = self.activity_collection.query.fetch_objects(
+                filters=Filter.by_property("activity_slug").equal(activity_slug),
+                limit=1,
+                return_properties=[
+                    "activity_slug",
+                    "display_name",
+                    "mission_synth",
+                    "activity_type",
+                    "domain",
+                    "selectivity_est",
+                    "time_commitment_est",
+                    "owner_type",
+                    "skills_exposed",
+                    "career_alignment",
+                    "subtags",
+                    "who_its_for_synth",
+                    "what_you_do_synth",
+                    "how_to_join_synth",
+                    "data_confidence",
+                    "evidence_citations",
+                    "roles_exposed",
+                ],
+            )
+            if not result.objects:
+                return None
+            return result.objects[0].properties
+        except Exception as e:
+            print(f"Error retrieving activity {activity_slug}: {e}")
+            return None
+
     def close(self):
         if hasattr(self, "client"):
             self.client.close()

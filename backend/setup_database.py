@@ -69,17 +69,17 @@ async def main():
             """
             SELECT table_name FROM information_schema.tables
             WHERE table_schema = 'public'
-            AND table_name IN ('student_profiles', 'course_paths', 'course_path_agent_state', 'threads')
+            AND table_name IN ('student_profiles', 'course_paths', 'course_path_agent_state', 'threads', 'club_paths')
             ORDER BY table_name
             """
         )
         tables = [r["table_name"] for r in rows]
         print(f"\nTables in database: {', '.join(tables)}")
 
-        if len(tables) == 4:
-            print("All 4 tables created successfully!")
+        if len(tables) == 5:
+            print("All 5 tables created successfully!")
         else:
-            print(f"Warning: expected 4 tables, found {len(tables)}")
+            print(f"Warning: expected 5 tables, found {len(tables)}")
 
         print("\nNote: LangGraph tables (checkpoints, etc.) are auto-created when the backend starts.")
         return True

@@ -69,6 +69,8 @@ async def career_search_node(state: DreamPathAgentState, config, *, writer=None)
         )
         print("| CareerSearchNode: no matches found")
 
+    tool_call_id = state.pending_tool_call["tool_call_id"]
+
     # Create tool call message (shows what was searched)
     tool_call = {
         "role": "assistant",
@@ -76,15 +78,17 @@ async def career_search_node(state: DreamPathAgentState, config, *, writer=None)
             "name": "career_search",
             "arguments": {"query": search_query},
         },
+        "tool_call_id": tool_call_id,
     }
 
     # Create tool result message
     tool_result = {
-        "role": "assistant",
+        "role": "tool",
         "content": {
             "name": "career_search",
             "result": result_text,
         },
+        "tool_call_id": tool_call_id,
     }
 
     # Convert to LangChain messages

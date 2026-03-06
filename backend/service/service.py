@@ -314,6 +314,11 @@ async def _handle_input(user_input: UserInput, agent: AgentGraph) -> tuple[dict[
                             assistant_message["additional_kwargs"]["operations"] = interrupt_value["operations"]
                         if "op_string" in interrupt_value:
                             assistant_message["additional_kwargs"]["op_string"] = interrupt_value["op_string"]
+                    elif interrupt_value["event_type"] == "clubpath_operations":
+                        if "operations" in interrupt_value:
+                            assistant_message["additional_kwargs"]["operations"] = interrupt_value["operations"]
+                        if "op_string" in interrupt_value:
+                            assistant_message["additional_kwargs"]["op_string"] = interrupt_value["op_string"]
                     elif interrupt_value["event_type"] == "profile_update":
                         if "changes" in interrupt_value:
                             assistant_message["additional_kwargs"]["changes"] = interrupt_value["changes"]
@@ -478,6 +483,11 @@ async def message_generator(
                                     ai_message.additional_kwargs["event_type"] = interrupt_value["event_type"]
 
                                     if interrupt_value["event_type"] == "coursepath_operations":
+                                        if "operations" in interrupt_value:
+                                            ai_message.additional_kwargs["operations"] = interrupt_value["operations"]
+                                        if "op_string" in interrupt_value:
+                                            ai_message.additional_kwargs["op_string"] = interrupt_value["op_string"]
+                                    elif interrupt_value["event_type"] == "clubpath_operations":
                                         if "operations" in interrupt_value:
                                             ai_message.additional_kwargs["operations"] = interrupt_value["operations"]
                                         if "op_string" in interrupt_value:
@@ -683,7 +693,7 @@ async def initialize_course_path(request: InitRequest) -> StreamingResponse:
     thread_id = str(uuid4())
 
     # Hardcode init message (same as old init_course_path method)
-    init_message = "Student completed their profile for the first time. Please build a CoursePath for them."
+    init_message = "Student completed their profile for the first time. Please build a DreamPath for them."
 
     # Create StreamInput with init_mode flag
     user_input = StreamInput(
@@ -771,8 +781,8 @@ async def history(input: ChatHistoryInput) -> ChatHistory:
             if hasattr(msg, 'additional_kwargs') and msg.additional_kwargs.get('is_init_message'):
                 continue
 
-            # Skip node_status messages (transient routing decisions)
-            if hasattr(msg, 'additional_kwargs') and msg.additional_kwargs.get('event_type') == 'node_status':
+            # Skip transient status messages (routing decisions, phase progress)
+            if hasattr(msg, 'additional_kwargs') and msg.additional_kwargs.get('event_type') in ('node_status', 'phase_update'):
                 continue
 
             # Skip empty AI messages without any metadata (likely artifacts)
@@ -811,11 +821,13 @@ async def health_check():
 
 # Include additional routers
 from service.coursepath_routes import router as coursepath_router
+from service.clubpath_routes import router as clubpath_router
 from service.profile_routes import router as profile_router
 from service.majors_routes import router as majors_router
 from service.thread_routes import router as thread_router
 
 app.include_router(coursepath_router)
+app.include_router(clubpath_router)
 app.include_router(profile_router)
 app.include_router(majors_router)
 app.include_router(thread_router)

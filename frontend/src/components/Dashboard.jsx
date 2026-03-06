@@ -53,7 +53,22 @@ function Dashboard() {
       return data;
     },
     enabled: !!user?.id,
-    staleTime: 1000 * 30, // Consider fresh for 30 seconds
+    staleTime: 1000 * 30,
+  });
+
+  // React Query for club path data
+  const {
+    data: clubPathData,
+    isLoading: clubPathLoading
+  } = useQuery({
+    queryKey: ['clubPath', user?.id ? String(user.id) : null],
+    queryFn: async () => {
+      if (!user?.id) return null;
+      const data = await apiClient.getClubPath(String(user.id));
+      return data;
+    },
+    enabled: !!user?.id,
+    staleTime: 1000 * 30,
   });
 
   const [editProfile, setEditProfile] = useState(null);
@@ -662,67 +677,80 @@ function Dashboard() {
                   <Col md={6}>
                     {/* Clubs Section */}
                     <div
+                      onClick={() => navigate('/clubs')}
                       style={{
                         background: 'linear-gradient(135deg, #f0f9f4 0%, #f6fcf9 100%)',
                         borderRadius: '12px',
                         padding: '16px',
                         border: '1px solid #d4ede0',
                         height: '100%',
-                        opacity: 0.7,
-                        cursor: 'not-allowed'
+                        cursor: 'pointer',
+                        transition: 'all 0.2s ease',
+                        boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.boxShadow = '0 4px 12px rgba(74, 157, 110, 0.15)';
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
+                        e.currentTarget.style.transform = 'translateY(0)';
                       }}
                     >
                       <h4 style={{ fontSize: '15px', fontWeight: '600', color: '#4a9d6e', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <PeopleIcon size={16} />
                         Clubs
                       </h4>
-                      <div>
-                        <div style={{
-                          background: 'white',
-                          borderRadius: '8px',
-                          padding: '7px 12px',
-                          marginBottom: '8px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          border: '1px solid #e8f5ed',
-                          boxShadow: '0 1px 2px rgba(0,0,0,0.03)'
-                        }}>
-                          <span style={{ fontSize: '13px', color: '#4a9d6e', marginRight: '8px' }}>→</span>
-                          <span style={{ fontSize: '13px', color: '#333' }}>
-                            Join {' '}
-                            <span style={{
-                              display: 'inline-block',
-                              background: '#e8e8e8',
-                              borderRadius: '3px',
-                              width: '50px',
-                              height: '12px',
-                              verticalAlign: 'middle'
-                            }}></span>
-                          </span>
+                      {clubPathLoading ? (
+                        <div className="text-center py-2">
+                          <p className="text-muted" style={{ fontSize: 13 }}>Loading...</p>
                         </div>
-                        <div style={{
-                          background: 'white',
-                          borderRadius: '8px',
-                          padding: '7px 12px',
-                          display: 'flex',
-                          alignItems: 'center',
-                          border: '1px solid #e8f5ed',
-                          boxShadow: '0 1px 2px rgba(0,0,0,0.03)'
-                        }}>
-                          <span style={{ fontSize: '13px', color: '#4a9d6e', marginRight: '8px' }}>→</span>
-                          <span style={{ fontSize: '13px', color: '#333' }}>
-                            Attend {' '}
-                            <span style={{
-                              display: 'inline-block',
-                              background: '#e8e8e8',
-                              borderRadius: '3px',
-                              width: '50px',
-                              height: '12px',
-                              verticalAlign: 'middle'
-                            }}></span>
-                          </span>
+                      ) : clubPathData?.activities?.length > 0 ? (
+                        <div>
+                          {clubPathData.activities.slice(0, 2).map((activity, idx) => (
+                            <div key={activity.activity_slug} style={{
+                              background: 'white',
+                              borderRadius: '8px',
+                              padding: '7px 12px',
+                              marginBottom: idx < Math.min(clubPathData.activities.length, 2) - 1 ? '8px' : '0',
+                              border: '1px solid #e8f5ed',
+                              boxShadow: '0 1px 2px rgba(0,0,0,0.03)',
+                            }}>
+                              <div style={{ fontSize: '13px', fontWeight: '600', color: '#333', marginBottom: '3px' }}>
+                                {activity.display_name}
+                              </div>
+                              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>
+                                {activity.activity_type && (
+                                  <span style={{
+                                    fontSize: '10px', color: '#5a9e5e', background: 'rgba(90, 158, 94, 0.08)',
+                                    padding: '1px 7px', borderRadius: '10px', fontWeight: 500,
+                                  }}>{activity.activity_type}</span>
+                                )}
+                                {activity.domain && (
+                                  <span style={{
+                                    fontSize: '10px', color: '#6a8e5e', background: 'rgba(90, 158, 94, 0.06)',
+                                    padding: '1px 7px', borderRadius: '10px', fontWeight: 500,
+                                  }}>{activity.domain}</span>
+                                )}
+                              </div>
+                            </div>
+                          ))}
+                          {clubPathData.activities.length > 2 && (
+                            <div style={{ fontSize: '11px', color: '#888', textAlign: 'center', marginTop: '6px' }}>
+                              +{clubPathData.activities.length - 2} more
+                            </div>
+                          )}
                         </div>
-                      </div>
+                      ) : (
+                        <div className="text-center py-2">
+                          <p style={{ color: '#888', fontSize: 13, marginBottom: '4px' }}>
+                            Build your club path
+                          </p>
+                          <p className="text-muted" style={{ fontSize: 11, margin: 0 }}>
+                            Try: "Find clubs for me"
+                          </p>
+                        </div>
+                      )}
                     </div>
                   </Col>
 

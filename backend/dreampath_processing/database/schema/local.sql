@@ -84,6 +84,7 @@ CREATE TABLE IF NOT EXISTS threads (
     id TEXT PRIMARY KEY,
     user_id TEXT NOT NULL,
     name TEXT,
+    mode TEXT NOT NULL DEFAULT 'advise',
     created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     last_message_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
     is_archived BOOLEAN DEFAULT FALSE
@@ -92,3 +93,22 @@ CREATE TABLE IF NOT EXISTS threads (
 CREATE INDEX IF NOT EXISTS idx_threads_user_id ON threads(user_id);
 CREATE INDEX IF NOT EXISTS idx_threads_last_message_at ON threads(last_message_at DESC);
 CREATE INDEX IF NOT EXISTS idx_threads_active ON threads(user_id, is_archived) WHERE is_archived = FALSE;
+
+-- ============================================================================
+-- 5. CLUB PATHS
+-- ============================================================================
+
+CREATE TABLE IF NOT EXISTS club_paths (
+    id SERIAL PRIMARY KEY,
+    user_id TEXT NOT NULL,
+    student_profile_id INTEGER NOT NULL,
+    club_path_data JSONB NOT NULL,
+    is_active BOOLEAN DEFAULT TRUE,
+    created_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITHOUT TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (student_profile_id) REFERENCES student_profiles(id) ON DELETE CASCADE
+);
+
+CREATE INDEX IF NOT EXISTS idx_club_paths_user_id ON club_paths(user_id);
+CREATE INDEX IF NOT EXISTS idx_club_paths_student_profile ON club_paths(student_profile_id);
+CREATE INDEX IF NOT EXISTS idx_club_paths_active ON club_paths(user_id, is_active) WHERE is_active = TRUE;

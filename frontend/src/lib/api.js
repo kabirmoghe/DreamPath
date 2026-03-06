@@ -221,6 +221,27 @@ class APIClient {
   }
 
   /**
+   * Get user's club path from PostgreSQL
+   * Returns list of recommended activities
+   */
+  async getClubPath(userId) {
+    const headers = await this.getAuthHeaders();
+    const response = await fetch(`${this.baseUrl}/clubpath/${userId}`, {
+      method: 'GET',
+      headers,
+    });
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        return null;
+      }
+      throw new Error('Failed to fetch club path');
+    }
+
+    return response.json();
+  }
+
+  /**
    * Get user's course path visualization (text format)
    */
   async getCoursePathVisualization(userId) {

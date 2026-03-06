@@ -18,6 +18,7 @@ class Thread:
     id: str
     user_id: str
     name: Optional[str]
+    mode: str  # 'advise' or 'build'
     created_at: datetime
     last_message_at: datetime
     is_archived: bool = False
@@ -28,6 +29,18 @@ class ThreadDatabaseService:
 
     def __init__(self, db: DatabaseConnection):
         self.db = db
+
+    @staticmethod
+    def _row_to_thread(row) -> Thread:
+        return Thread(
+            id=row['id'],
+            user_id=row['user_id'],
+            name=row['name'],
+            mode=row.get('mode', 'advise'),
+            created_at=row['created_at'],
+            last_message_at=row['last_message_at'],
+            is_archived=row['is_archived'],
+        )
 
     async def create_thread(
         self,
@@ -50,20 +63,13 @@ class ThreadDatabaseService:
             """
             INSERT INTO threads (id, user_id, name, created_at, last_message_at)
             VALUES ($1, $2, $3, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-            RETURNING id, user_id, name, created_at, last_message_at, is_archived
+            RETURNING id, user_id, name, mode, created_at, last_message_at, is_archived
             """,
             thread_id, user_id, name
         )
         if not row:
             raise RuntimeError("Failed to create thread")
-        return Thread(
-            id=row['id'],
-            user_id=row['user_id'],
-            name=row['name'],
-            created_at=row['created_at'],
-            last_message_at=row['last_message_at'],
-            is_archived=row['is_archived']
-        )
+        return self._row_to_thread(row)
 
     async def get_thread(self, thread_id: str) -> Optional[Thread]:
         """
@@ -77,7 +83,7 @@ class ThreadDatabaseService:
         """
         row = await self.db.execute_one(
             """
-            SELECT id, user_id, name, created_at, last_message_at, is_archived
+            SELECT id, user_id, name, mode, created_at, last_message_at, is_archived
             FROM threads
             WHERE id = $1
             """,
@@ -85,14 +91,7 @@ class ThreadDatabaseService:
         )
         if not row:
             return None
-        return Thread(
-            id=row['id'],
-            user_id=row['user_id'],
-            name=row['name'],
-            created_at=row['created_at'],
-            last_message_at=row['last_message_at'],
-            is_archived=row['is_archived']
-        )
+        return self._row_to_thread(row)
 
     async def list_user_threads(
         self,
@@ -112,7 +111,7 @@ class ThreadDatabaseService:
         if include_archived:
             rows = await self.db.execute_query(
                 """
-                SELECT id, user_id, name, created_at, last_message_at, is_archived
+                SELECT id, user_id, name, mode, created_at, last_message_at, is_archived
                 FROM threads
                 WHERE user_id = $1
                 ORDER BY last_message_at DESC
@@ -122,7 +121,7 @@ class ThreadDatabaseService:
         else:
             rows = await self.db.execute_query(
                 """
-                SELECT id, user_id, name, created_at, last_message_at, is_archived
+                SELECT id, user_id, name, mode, created_at, last_message_at, is_archived
                 FROM threads
                 WHERE user_id = $1 AND is_archived = FALSE
                 ORDER BY last_message_at DESC
@@ -130,17 +129,7 @@ class ThreadDatabaseService:
                 user_id
             )
 
-        return [
-            Thread(
-                id=row['id'],
-                user_id=row['user_id'],
-                name=row['name'],
-                created_at=row['created_at'],
-                last_message_at=row['last_message_at'],
-                is_archived=row['is_archived']
-            )
-            for row in rows
-        ]
+        return [self._row_to_thread(row) for row in rows]
 
     async def update_last_message_at(
         self,
@@ -172,6 +161,23 @@ class ThreadDatabaseService:
                 """,
                 timestamp, thread_id
             )
+
+    async def update_mode(self, thread_id: str, mode: str) -> None:
+        """
+        Update the agent mode for a thread.
+
+        Args:
+            thread_id: Thread ID
+            mode: 'advise' or 'build'
+        """
+        await self.db.execute_command(
+            """
+            UPDATE threads
+            SET mode = $1
+            WHERE id = $2
+            """,
+            mode, thread_id
+        )
 
     async def update_thread_name(
         self,

@@ -12,21 +12,41 @@ def dreampath_to_langchain(msg: dict[str, str | dict]) -> BaseMessage:
     """
     Convert your dict-format message to LangChain BaseMessage.
 
-    Handles three cases:
+    Handles these cases:
     1. User message: {"role": "user", "content": "text"}
-    2. Assistant with tool call: {"role": "assistant", "content": {"name": "X", "arguments": {...}}}
-    3. Tool result: {"role": "assistant", "content": {"name": "X", "result": "..."}}
-    4. Assistant with additional_kwargs (for structured metadata): {"role": "assistant", "content": "text", "additional_kwargs": {...}}
+    2. Assistant with tool call: {"role": "assistant", "content": {"name": "X", "arguments": {...}}, "tool_call_id": "..."}
+    3. Tool result (legacy): {"role": "assistant", "content": {"name": "X", "result": "..."}}
+    4. Tool result (new): {"role": "tool", "content": {"name": "X", "result": "..."}, "tool_call_id": "..."}
+    5. Assistant with additional_kwargs: {"role": "assistant", "content": "text", "additional_kwargs": {...}}
     """
     role = msg.get("role", "user")
     content = msg.get("content", "")
     additional_kwargs = msg.get("additional_kwargs", {})
+    msg_tool_call_id = msg.get("tool_call_id")
 
     # Case 1: User message (string content)
     if role == "user" or role == "system":
         return HumanMessage(content=str(content))
 
-    # Case 2 & 3: Assistant message (may have nested dict)
+    # Case 4: Explicit tool role
+    if role == "tool":
+        if isinstance(content, dict):
+            name = content.get("name", "unknown")
+            result_str = content.get("result", "")
+            if not isinstance(result_str, str):
+                result_str = json.dumps(result_str)
+            return ToolMessage(
+                content=result_str,
+                name=name,
+                tool_call_id=msg_tool_call_id or generate_tool_call_id(),
+            )
+        # Fallback for string content with tool role
+        return ToolMessage(
+            content=str(content),
+            tool_call_id=msg_tool_call_id or generate_tool_call_id(),
+        )
+
+    # Case 2, 3, 5: Assistant message (may have nested dict)
     if role == "assistant":
         if isinstance(content, dict):
             name = content.get("name", "unknown")
@@ -34,26 +54,27 @@ def dreampath_to_langchain(msg: dict[str, str | dict]) -> BaseMessage:
             # Check if this is a tool call (has "arguments") or result (has "result")
             if "arguments" in content:
                 # Tool call - convert to AIMessage with tool_calls
-                tool_call_id = generate_tool_call_id()
+                call_id = msg_tool_call_id or generate_tool_call_id()
                 return AIMessage(
                     content="",  # Tool calls typically have empty content
                     tool_calls=[{
                         "name": name,
                         "args": content.get("arguments", {}),
-                        "id": tool_call_id,
+                        "id": call_id,
                         "type": "tool_call"
                     }],
                     additional_kwargs=additional_kwargs
                 )
             elif "result" in content:
-                # Tool result - convert to ToolMessage
+                # Legacy tool result (role="assistant") — kept for backwards compat
+                # with persisted dreampath_messages in thread history
                 result_str = content.get("result", "")
                 if not isinstance(result_str, str):
                     result_str = json.dumps(result_str)
                 return ToolMessage(
                     content=result_str,
                     name=name,
-                    tool_call_id=generate_tool_call_id()  # Should match original call
+                    tool_call_id=msg_tool_call_id or generate_tool_call_id(),
                 )
             else:
                 # Generic assistant message with dict content
