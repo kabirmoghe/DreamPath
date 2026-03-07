@@ -102,6 +102,7 @@ class WeaviateActivityService:
                     "how_to_join_synth",
                     "data_confidence",
                     "evidence_citations",
+                    "source_of_truth_url",
                     "roles_exposed",
                 ],
             )

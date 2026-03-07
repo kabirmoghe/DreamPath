@@ -48,6 +48,7 @@ async def _execute_operation(
             how_to_join_synth=activity_data.get("how_to_join_synth", ""),
             data_confidence=activity_data.get("data_confidence", ""),
             evidence_citations=activity_data.get("evidence_citations", ""),
+            source_of_truth_url=activity_data.get("source_of_truth_url", ""),
             roles_exposed=activity_data.get("roles_exposed") or [],
         )
         if club_path is None:

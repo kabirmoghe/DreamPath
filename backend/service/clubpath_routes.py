@@ -38,6 +38,7 @@ class ActivityResponse(BaseModel):
     how_to_join_synth: str = ""
     data_confidence: str = ""
     evidence_citations: str = ""
+    source_of_truth_url: str = ""
     current_role: str | None = None
     roles_exposed: list[str] | None = None
 
@@ -88,6 +89,7 @@ async def get_club_path(
                 how_to_join_synth=activity.how_to_join_synth,
                 data_confidence=activity.data_confidence,
                 evidence_citations=activity.evidence_citations,
+                source_of_truth_url=activity.source_of_truth_url,
                 current_role=activity.current_role,
                 roles_exposed=activity.roles_exposed or None,
             ))

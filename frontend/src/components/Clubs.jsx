@@ -34,10 +34,12 @@ const FILTER_OPTIONS = {
   ],
 };
 
-function formatMembership(status) {
-  if (!status) return null;
-  return status.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+function formatTag(text) {
+  if (!text) return null;
+  return text.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
 }
+
+const formatMembership = formatTag;
 
 function Clubs() {
   const { user, signOut } = useAuth();
@@ -262,19 +264,13 @@ function Clubs() {
           <span style={{
             fontSize: '10px', color: '#5a9e5e', background: 'rgba(90, 158, 94, 0.08)',
             padding: '2px 8px', borderRadius: '10px', fontWeight: 500,
-          }}>{activity.activity_type}</span>
+          }}>{formatTag(activity.activity_type)}</span>
         )}
         {activity.domain && (
           <span style={{
             fontSize: '10px', color: '#5a8a6e', background: 'rgba(90, 158, 94, 0.06)',
             padding: '2px 8px', borderRadius: '10px', fontWeight: 500,
-          }}>{activity.domain}</span>
-        )}
-        {activity.membership_status && activity.membership_status !== 'not_yet_joined' && (
-          <span style={{
-            fontSize: '10px', color: '#7b6fa0', background: 'rgba(138, 107, 193, 0.08)',
-            padding: '2px 8px', borderRadius: '10px', fontWeight: 500,
-          }}>{formatMembership(activity.membership_status)}</span>
+          }}>{formatTag(activity.domain)}</span>
         )}
       </div>
 
@@ -290,17 +286,25 @@ function Clubs() {
         </div>
       )}
 
-      {/* Aligned parameters */}
-      {activity.aligned_parameters && activity.aligned_parameters.length > 0 && (
-        <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
-          {activity.aligned_parameters.map(param => (
-            <span key={param} style={{
-              fontSize: '9px', color: '#8A6BC1', background: 'rgba(138, 107, 193, 0.08)',
-              padding: '1px 7px', borderRadius: '8px', fontWeight: 500, textTransform: 'capitalize',
-            }}>{param.replace(/_/g, ' ')}</span>
-          ))}
+      {/* Bottom row: aligned params left, status right */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 'auto' }}>
+        {activity.aligned_parameters && activity.aligned_parameters.length > 0 ? (
+          <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+            {activity.aligned_parameters.map(param => (
+              <span key={param} style={{
+                fontSize: '9px', color: '#8A6BC1', background: 'rgba(138, 107, 193, 0.08)',
+                padding: '1px 7px', borderRadius: '8px', fontWeight: 500, textTransform: 'capitalize',
+              }}>{param.replace(/_/g, ' ')}</span>
+            ))}
+          </div>
+        ) : <div />}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '5px', flexShrink: 0 }}>
+          <span className={`clubs-status-dot clubs-status-dot--${activity.membership_status || 'not_yet_joined'}`} />
+          <span style={{ fontSize: '10px', color: '#888', fontWeight: 500 }}>
+            {formatMembership(activity.membership_status || 'not_yet_joined')}
+          </span>
         </div>
-      )}
+      </div>
     </div>
   );
 
@@ -313,13 +317,6 @@ function Clubs() {
   const renderDetailsModal = () => {
     if (!expandedActivity) return null;
     const a = expandedActivity;
-
-    const miniTiles = [
-      { label: 'Mission', value: a.mission_synth },
-      { label: 'What You Do', value: a.what_you_do_synth },
-      { label: 'Who It\'s For', value: a.who_its_for_synth },
-      { label: 'How to Join', value: a.how_to_join_synth },
-    ].filter(s => s.value);
 
     return (
       <>
@@ -341,7 +338,10 @@ function Clubs() {
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                 <span style={{ fontSize: '12px', color: '#999', fontFamily: 'monospace' }}>{a.activity_slug}</span>
                 {a.activity_type && (
-                  <span style={{ fontSize: '11px', color: '#888', background: '#f5f5f5', padding: '1px 8px', borderRadius: '8px' }}>{a.activity_type}</span>
+                  <span style={{ fontSize: '11px', color: '#888', background: '#f5f5f5', padding: '1px 8px', borderRadius: '8px' }}>{formatTag(a.activity_type)}</span>
+                )}
+                {a.domain && (
+                  <span style={{ fontSize: '11px', color: '#888', background: '#f5f5f5', padding: '1px 8px', borderRadius: '8px' }}>{formatTag(a.domain)}</span>
                 )}
               </div>
             </div>
@@ -368,97 +368,119 @@ function Clubs() {
               </div>
             )}
 
-            {/* Your Status section — always shown */}
-            <div className="clubs-status-section">
-              <h6 className="clubs-section-title" style={{ marginBottom: '10px' }}>Your Status</h6>
-              <div className="clubs-status-grid">
-                <div className="clubs-status-item">
-                  <span className="clubs-status-label">Membership</span>
-                  <span className="clubs-status-value">{formatMembership(a.membership_status || 'not_yet_joined')}</span>
-                </div>
-                {a.current_role && (
-                  <div className="clubs-status-item">
-                    <span className="clubs-status-label">Current Role</span>
-                    <span className="clubs-status-value">{a.current_role}</span>
-                  </div>
-                )}
-              </div>
-              {a.roles_exposed && a.roles_exposed.length > 0 && (
-                <div style={{ marginTop: '10px' }}>
-                  <span className="clubs-status-label">Available Roles</span>
-                  <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', marginTop: '4px' }}>
-                    {a.roles_exposed.map(role => (
-                      <span key={role} className="clubs-role-pill">{role}</span>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* At a Glance — structured metadata */}
-            {(a.domain || a.owner_type || a.selectivity_est || a.time_commitment_est) && (
+            {/* Mission */}
+            {a.mission_synth && (
               <div className="clubs-modal-section">
-                <h6 className="clubs-section-title">At a Glance</h6>
-                <div className="clubs-glance-grid">
-                  {a.domain && (
-                    <div className="clubs-glance-item">
-                      <span className="clubs-glance-label">Domain</span>
-                      <span className="clubs-glance-value">{a.domain}</span>
-                    </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <h6 className="clubs-section-title" style={{ marginBottom: 0 }}>Mission</h6>
+                  {a.source_of_truth_url && (
+                    <a
+                      href={a.source_of_truth_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ display: 'flex', alignItems: 'center', color: '#999', transition: 'color 0.15s' }}
+                      onMouseEnter={e => e.currentTarget.style.color = '#666'}
+                      onMouseLeave={e => e.currentTarget.style.color = '#999'}
+                    >
+                      <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 3H3.5A1.5 1.5 0 002 4.5v8A1.5 1.5 0 003.5 14h8a1.5 1.5 0 001.5-1.5V10m-4-7h4m0 0v4m0-4L7 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </a>
                   )}
+                </div>
+                <p style={{ fontSize: '13.5px', color: '#555', lineHeight: '1.55', margin: '6px 0 0' }}>
+                  {a.mission_synth}
+                </p>
+              </div>
+            )}
+            {/* Status + quick facts row */}
+            <div style={{
+              borderRadius: '4px',
+              backgroundColor: '#f5fbf0',
+              padding: '12px 14px',
+              display: 'flex',
+              alignItems: 'flex-start',
+              justifyContent: 'space-between',
+              marginBottom: '16px',
+              flexWrap: 'wrap',
+              gap: '10px',
+            }}>
+              {/* Left: membership status */}
+              <div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
+                  <span className={`clubs-status-dot clubs-status-dot--${a.membership_status || 'not_yet_joined'}`} />
+                  <span style={{ fontSize: '13px', color: '#444', fontWeight: 500 }}>
+                    {formatMembership(a.membership_status || 'not_yet_joined')}
+                  </span>
+                </div>
+                <div style={{ fontSize: '12px', color: '#888', marginTop: '3px', marginLeft: '15px' }}>
+                  Role: {a.current_role || 'None'}
+                </div>
+              </div>
+              {/* Right: quick facts */}
+              {(a.owner_type || a.selectivity_est || a.time_commitment_est) && (
+                <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
                   {a.owner_type && (
                     <div className="clubs-glance-item">
-                      <span className="clubs-glance-label">Run By</span>
-                      <span className="clubs-glance-value">{a.owner_type}</span>
+                      <span className="clubs-glance-label">Structure</span>
+                      <span className="clubs-glance-value">{formatTag(a.owner_type)}</span>
                     </div>
                   )}
                   {a.selectivity_est && (
                     <div className="clubs-glance-item">
                       <span className="clubs-glance-label">Selectivity</span>
-                      <span className="clubs-glance-value">{a.selectivity_est}</span>
+                      <span className="clubs-glance-value">{formatTag(a.selectivity_est)}</span>
                     </div>
                   )}
                   {a.time_commitment_est && (
                     <div className="clubs-glance-item">
-                      <span className="clubs-glance-label">Time Commitment</span>
-                      <span className="clubs-glance-value">{a.time_commitment_est}</span>
+                      <span className="clubs-glance-label">Commitment</span>
+                      <span className="clubs-glance-value">{formatTag(a.time_commitment_est)}</span>
                     </div>
                   )}
                 </div>
-              </div>
-            )}
+              )}
+            </div>
 
-            {/* 2x2 Mini tiles */}
-            {miniTiles.length > 0 && (
-              <div className="clubs-mini-tiles">
-                {miniTiles.map(tile => (
-                  <div key={tile.label} className="clubs-mini-tile">
-                    <div className="clubs-mini-tile-label">{tile.label}</div>
-                    <div className="clubs-mini-tile-text">{tile.value}</div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Skills */}
-            {a.skills_exposed && a.skills_exposed.length > 0 && (
+            {/* Detail sections */}
+            {a.what_you_do_synth && (
               <div className="clubs-modal-section">
-                <h6 className="clubs-section-title">Skills</h6>
-                <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
+                <h6 className="clubs-section-title">What You Do</h6>
+                <p className="clubs-section-text">{a.what_you_do_synth}</p>
+                <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', marginTop: '10px' }}>
                   {a.skills_exposed.map(skill => (
-                    <span key={skill} className="clubs-detail-pill">{skill}</span>
+                    <span key={skill} className="clubs-detail-pill">{formatTag(skill)}</span>
                   ))}
                 </div>
               </div>
             )}
-
-            {/* Career alignment */}
-            {a.career_alignment && a.career_alignment.length > 0 && (
+            {a.who_its_for_synth && (
               <div className="clubs-modal-section">
-                <h6 className="clubs-section-title">Career Alignment</h6>
+                <h6 className="clubs-section-title">Who It's For</h6>
+                <p className="clubs-section-text">{a.who_its_for_synth}</p>
+                {a.career_alignment && a.career_alignment.length > 0 && (
+                  <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', marginTop: '10px' }}>
+                    {a.career_alignment.map(career => (
+                      <span key={career} className="clubs-detail-pill">{formatTag(career)}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+            {a.how_to_join_synth && (
+              <div className="clubs-modal-section">
+                <h6 className="clubs-section-title">How to Join</h6>
+                <p className="clubs-section-text">{a.how_to_join_synth}</p>
+              </div>
+            )}
+
+            {/* Available Roles */}
+            {a.roles_exposed && a.roles_exposed.length > 0 && (
+              <div className="clubs-modal-section">
+                <h6 className="clubs-section-title">Available Roles</h6>
                 <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
-                  {a.career_alignment.map(career => (
-                    <span key={career} className="clubs-detail-pill">{career}</span>
+                  {a.roles_exposed.map(role => (
+                    <span key={role} className="clubs-role-pill">{formatTag(role)}</span>
                   ))}
                 </div>
               </div>
@@ -467,10 +489,10 @@ function Clubs() {
             {/* Subtags */}
             {a.subtags && a.subtags.length > 0 && (
               <div className="clubs-modal-section">
-                <h6 className="clubs-section-title">Tags</h6>
+                <h6 className="clubs-section-title">Other Tags</h6>
                 <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
                   {a.subtags.map(tag => (
-                    <span key={tag} className="clubs-detail-pill">{tag}</span>
+                    <span key={tag} className="clubs-detail-pill">{formatTag(tag)}</span>
                   ))}
                 </div>
               </div>
@@ -607,13 +629,14 @@ function Clubs() {
         }
 
         .clubs-modal-section {
+          margin-top: 20px;
           margin-bottom: 16px;
         }
 
         .clubs-section-title {
-          font-size: 0.9rem;
+          font-size: 0.7rem;
           font-weight: 600;
-          color: #444;
+          color: #999;
           margin-bottom: 6px;
           text-transform: uppercase;
           letter-spacing: 0.5px;
@@ -656,39 +679,17 @@ function Clubs() {
           box-shadow: 0 1px 4px rgba(0,0,0,0.06);
         }
 
-        .clubs-status-section {
-          background: #fafafa;
-          border: 1px solid #f0f0f0;
-          border-radius: 10px;
-          padding: 14px;
-          margin-bottom: 16px;
+        .clubs-status-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          flex-shrink: 0;
         }
-
-        .clubs-status-grid {
-          display: flex;
-          gap: 20px;
-          flex-wrap: wrap;
-        }
-
-        .clubs-status-item {
-          display: flex;
-          flex-direction: column;
-          gap: 2px;
-        }
-
-        .clubs-status-label {
-          font-size: 10px;
-          font-weight: 600;
-          color: #999;
-          text-transform: uppercase;
-          letter-spacing: 0.4px;
-        }
-
-        .clubs-status-value {
-          font-size: 13px;
-          color: #444;
-          font-weight: 500;
-        }
+        .clubs-status-dot--not_yet_joined { background: #ccc; }
+        .clubs-status-dot--joining { background: #e8a735; }
+        .clubs-status-dot--active_member { background: #5a9e5e; }
+        .clubs-status-dot--inactive_member { background: #b0b0b0; }
+        .clubs-status-dot--left { background: #c85046; }
 
         .clubs-role-pill {
           font-size: 11px;
@@ -727,8 +728,8 @@ function Clubs() {
         }
 
         .clubs-mini-tiles {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          display: flex;                                                                                                                                           
+          flex-direction: column; 
           gap: 10px;
           margin-bottom: 16px;
         }

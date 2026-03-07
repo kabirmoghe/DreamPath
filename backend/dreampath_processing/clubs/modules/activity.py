@@ -30,4 +30,5 @@ class Activity:
     how_to_join_synth: str = ""
     data_confidence: str = ""
     evidence_citations: str = ""
+    source_of_truth_url: str = ""
     roles_exposed: list[str] = field(default_factory=list)
