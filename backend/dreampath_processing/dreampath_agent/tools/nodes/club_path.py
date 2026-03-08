@@ -51,13 +51,30 @@ async def _execute_operation(
             source_of_truth_url=activity_data.get("source_of_truth_url", ""),
             roles_exposed=activity_data.get("roles_exposed") or [],
         )
+        # Apply optional metadata before adding
+        details = []
+        if op.membership_status is not None:
+            activity.membership_status = op.membership_status
+            details.append(f"membership → {op.membership_status}")
+        if op.current_role is not None and op.current_role != "":
+            if activity.roles_exposed and op.current_role not in activity.roles_exposed:
+                return f"Invalid role '{op.current_role}' for '{op.activity_slug}'. Valid roles: {', '.join(activity.roles_exposed)}."
+            activity.current_role = op.current_role
+            details.append(f"role → {op.current_role}")
+
         if club_path is None:
             club_path = ClubPath(recommendations={op.activity_slug: activity})
         else:
             club_path.add_activity(activity)
             if op.rank is not None:
                 club_path.reorder_activity(op.activity_slug, op.rank - 1)  # 1-indexed → 0-indexed
-        return f"Added '{op.activity_slug}' to ClubPath{f' at rank {op.rank}' if op.rank else ''}."
+
+        result = f"Added '{op.activity_slug}' to ClubPath"
+        if op.rank:
+            result += f" at rank {op.rank}"
+        if details:
+            result += f" ({', '.join(details)})"
+        return result + "."
 
     elif op.action == "remove":
         if club_path is None:

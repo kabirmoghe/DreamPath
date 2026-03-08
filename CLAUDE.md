@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-DreamPath is an AI platform that helps college students maximize their post-grad potential by optimizing their college experience across three pillars: Courses, Clubs, and Career (alumni network). The system uses a multi-agent LangGraph architecture to provide dynamic, personalized recommendations.
+DreamPath is an AI platform that helps college students maximize their post-grad readiness with guidance that effectively prepares them for contemporary roles using insights from real market signals on phenomena like AI-induced disruption, crafting personalized recommendations for Courses and Clubs on campus. The system uses a multi-agent LangGraph architecture to provide dynamic, personalized recommendations.
 
 ## Production URLs
 

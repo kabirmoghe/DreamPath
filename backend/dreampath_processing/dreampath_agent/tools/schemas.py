@@ -42,9 +42,9 @@ class ClubPathOperation(BaseModel):
     """A single ClubPath operation."""
     action: Literal["add", "remove", "edit"]
     activity_slug: str
-    rank: int | None = Field(default=None, description="Target rank (1-indexed). For edit: repositions the activity.")
-    membership_status: Literal["not_yet_joined", "joining", "active_member", "inactive_member", "left"] | None = Field(default=None, description="For edit: update the student's membership status.")
-    current_role: str | None = Field(default=None, description="For edit: update the student's role at the activity.")
+    rank: int | None = Field(default=None, description="Target rank (1-indexed). For add: insert at position. For edit: reposition.")
+    membership_status: Literal["not_yet_joined", "joining", "active_member", "inactive_member", "left"] | None = Field(default=None, description="Set the student's membership status.")
+    current_role: str | None = Field(default=None, description="Set the student's role at the activity. Must match one of the activity's available roles.")
 
 
 class ClubPathInput(BaseModel):

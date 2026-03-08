@@ -32,7 +32,7 @@ from dreampath_processing.dreampath_agent.tools.nodes.course_search import (
     format_course_search_result,
 )
 from dreampath_processing.dreampath_agent.tools.nodes.modify_profile import modify_student_profile
-from dreampath_processing.dreampath_agent.tools.nodes.prompts import (
+from dreampath_processing.dreampath_agent.tools.nodes.legacy.prompts.rebuild import (
     PARAMETER_COURSE_SEARCH_QUERIES_SYS,
     UPDATE_COURSE_RECOMMENDATIONS_SYS,
 )

@@ -20,7 +20,7 @@ from dreampath_processing.dreampath_agent.dreampath_types import (
     DreamPathAgentState,
 )
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
-from dreampath_processing.dreampath_agent.tools.nodes.prompts import COURSE_SEARCH_SYS
+from dreampath_processing.dreampath_agent.tools.nodes.legacy.prompts.course_search import COURSE_SEARCH_SYS
 
 
 def format_course_search_result(course_obj: CourseSearchResult) -> str:

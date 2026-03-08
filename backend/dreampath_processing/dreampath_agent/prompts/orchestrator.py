@@ -87,13 +87,13 @@ You then help them make the best modifications as needs arise through the course
   - **Efficiency:** use the most efficient operation(s) for the desired outcome on the first pass. Only break into individual moves if a prior attempt fails (e.g., swap fails → try individual moves).
 
 4. `club_path(operations)`: human-in-the-loop ClubPath modifier. Executes structured operations.
-  - `operations`: list of structured operations, each with `action` ("add"/"remove"/"edit"), `activity_slug`, and optional fields depending on action.
-    - **add**: adds an activity to the ClubPath. Optional `rank` to insert at a specific position.
-    - **remove**: removes an activity from the ClubPath.
-    - **edit**: modifies metadata for an activity already in the ClubPath. All fields are nullable — omit (null) to leave unchanged, provide a value to set. For `current_role`, pass `""` (empty string) to explicitly clear it.
-      - `rank`: reposition the activity within the ClubPath (1-indexed).
-      - `membership_status`: one of "not_yet_joined", "joining", "active_member", "inactive_member", "left".
-      - `current_role`: set the student's role at the activity. Must match one of the available roles shown in ClubPath context.
+  - `operations`: list of structured operations, each with `action` ("add"/"remove"/"edit"), `activity_slug`, and shared optional fields.
+    - **add** vs **edit**: both accept the same optional fields. The distinction is purely about existence: `add` introduces a new activity to the ClubPath, `edit` modifies one already there. You can (and should) set metadata like `membership_status` and `current_role` on add when known — no need to add first then edit.
+    - **remove**: removes an activity from the ClubPath. No optional fields.
+  - Shared optional fields (for add and edit). All are nullable — omit (null) to leave unchanged/use defaults, provide a value to set:
+    - `rank`: position in the ClubPath (1-indexed). For add: insert at position. For edit: reposition.
+    - `membership_status`: one of "not_yet_joined", "joining", "active_member", "inactive_member", "left".
+    - `current_role`: the student's role at the activity. Must match one of the available roles shown in ClubPath context. Pass `""` (empty string) to explicitly clear it.
 
 5. `modify_profile(major, college_interests, post_grad_goals, career_goals)`: human-in-the-loop node for modifying the student profile.
   - All four fields are **nullable** — only include fields you want to change. Omit unchanged fields (pass null).
@@ -294,13 +294,13 @@ Follow the build plan phases in order. Call exactly one tool per turn.
   - **Efficiency:** use the most efficient operation(s) for the desired outcome on the first pass. Only break into individual moves if a prior attempt fails (e.g., swap fails → try individual moves).
 
 5. `club_path(operations)`: human-in-the-loop ClubPath modifier. Executes structured operations.
-  - `operations`: list of structured operations, each with `action` ("add"/"remove"/"edit"), `activity_slug`, and optional fields depending on action.
-    - **add**: adds an activity to the ClubPath. Optional `rank` to insert at a specific position.
-    - **remove**: removes an activity from the ClubPath.
-    - **edit**: modifies metadata for an activity already in the ClubPath. All fields are nullable — omit (null) to leave unchanged, provide a value to set. For `current_role`, pass `""` (empty string) to explicitly clear it.
-      - `rank`: reposition the activity within the ClubPath (1-indexed).
-      - `membership_status`: one of "not_yet_joined", "joining", "active_member", "inactive_member", "left".
-      - `current_role`: set the student's role at the activity. Must match one of the available roles shown in ClubPath context.
+  - `operations`: list of structured operations, each with `action` ("add"/"remove"/"edit"), `activity_slug`, and shared optional fields.
+    - **add** vs **edit**: both accept the same optional fields. The distinction is purely about existence: `add` introduces a new activity to the ClubPath, `edit` modifies one already there. You can (and should) set metadata like `membership_status` and `current_role` on add when known — no need to add first then edit.
+    - **remove**: removes an activity from the ClubPath. No optional fields.
+  - Shared optional fields (for add and edit). All are nullable — omit (null) to leave unchanged/use defaults, provide a value to set:
+    - `rank`: position in the ClubPath (1-indexed). For add: insert at position. For edit: reposition.
+    - `membership_status`: one of "not_yet_joined", "joining", "active_member", "inactive_member", "left".
+    - `current_role`: the student's role at the activity. Must match one of the available roles shown in ClubPath context. Pass `""` (empty string) to explicitly clear it.
 
 6. `modify_profile(major, college_interests, post_grad_goals, career_goals)`: human-in-the-loop node for modifying the student profile.
   - All four fields are **nullable** — only include fields you want to change. Omit unchanged fields (pass null).
@@ -466,7 +466,3 @@ def build_orchestrator_prompt(mode: str, student_name: str) -> str:
     else:
         tools = ORCHESTRATOR_ADVISE_TOOLS.format(student_name=student_name)
         return base + tools + ORCHESTRATOR_ADVISE_EXAMPLES
-
-
-# Legacy compat — kept for any callers that still reference ORCHESTRATOR_DECISION_SYS directly
-ORCHESTRATOR_DECISION_SYS = ORCHESTRATOR_BASE + ORCHESTRATOR_ADVISE_TOOLS + ORCHESTRATOR_ADVISE_EXAMPLES

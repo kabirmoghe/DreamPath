@@ -8,7 +8,7 @@ from dreampath_processing.dreampath_agent.dreampath_types import (
     DreamPathAgentState,
 )
 from dreampath_processing.dreampath_agent.message_adapters import dreampath_to_langchain
-from dreampath_processing.dreampath_agent.tools.nodes.prompts import BUILD_OPERATIONS_SYS
+from dreampath_processing.dreampath_agent.tools.nodes.legacy.prompts.plan_builder import BUILD_OPERATIONS_SYS
 from dreampath_processing.dreampath_agent.tools.schemas import PlanBuilderInput
 
 

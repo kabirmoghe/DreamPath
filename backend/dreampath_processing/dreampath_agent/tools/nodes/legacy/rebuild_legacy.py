@@ -35,7 +35,7 @@ from dreampath_processing.dreampath_agent.search_agent.nodes.summarize import (
 )
 from dreampath_processing.dreampath_agent.tools.nodes.course_search import invoke_search_agent
 from dreampath_processing.dreampath_agent.tools.nodes.modify_profile import modify_student_profile
-from dreampath_processing.dreampath_agent.tools.nodes.prompts import (
+from dreampath_processing.dreampath_agent.tools.nodes.legacy.prompts.rebuild import (
     COURSE_REC_SYNTHESIS_SYS,
     PARAMETER_COURSE_SEARCH_GOAL,
 )
