@@ -463,6 +463,105 @@
   background: #7A5BB1;
 }
 
+/* ============================================
+   Build Mode Mini Phase Stepper
+   ============================================ */
+
+.chat-phase-stepper {
+  position: relative;
+  width: calc(100% - 16px);
+  height: 36px;
+  margin: 0 8px 8px 8px;
+}
+
+.chat-phase-track {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e8e0f0;
+  border-radius: 1px;
+}
+
+.chat-phase-fill {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #81c784, #a5d6a7);
+  border-radius: 1px;
+  transition: width 0.6s ease;
+}
+
+.chat-phase-node-container {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.chat-phase-node {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.chat-phase-pending {
+  background: #e8e0f0;
+  border: 1.5px solid #d6cdea;
+}
+
+.chat-phase-active {
+  background: #FF9800;
+  border: 1.5px solid #FF9800;
+  box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.2);
+  animation: chatPhasePulse 2s ease-in-out infinite;
+}
+
+.chat-phase-complete {
+  background: #81c784;
+  border: 1.5px solid #81c784;
+}
+
+.chat-phase-skipped {
+  background: #f0ecf4;
+  border: 1.5px solid #e0d8ea;
+}
+
+@keyframes chatPhasePulse {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(255, 152, 0, 0.2); }
+  50% { box-shadow: 0 0 0 4px rgba(255, 152, 0, 0); }
+}
+
+.chat-phase-label {
+  font-family: 'Lora', serif;
+  font-size: 8px;
+  font-weight: 500;
+  color: #bbb;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.chat-phase-label-active {
+  color: #e65100;
+  font-weight: 600;
+}
+
+.chat-phase-label-complete {
+  color: #5a9e5e;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .compass-window {

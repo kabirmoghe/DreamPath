@@ -4,25 +4,24 @@ import { Card } from 'react-bootstrap';
 const pulseAnimation = `
   @keyframes clubPulse {
     0%, 100% {
-      box-shadow: 0 0 8px rgba(90, 158, 94, 0.18), 0 0 16px rgba(90, 158, 94, 0.08);
+      box-shadow: 0 0 10px rgba(121, 197, 94, 0.2), 0 0 20px rgba(133, 194, 90, 0.1);
     }
     50% {
-      box-shadow: 0 0 16px rgba(90, 158, 94, 0.30), 0 0 32px rgba(90, 158, 94, 0.15);
+      box-shadow: 0 0 22px rgba(144, 197, 103, 0.4), 0 0 45px rgba(134, 206, 101, 0.2);
     }
   }
 `;
 
-// Warmer green palette (shifted slightly yellow vs the old blue-green)
 const CLUB_GREEN = '#5a9e5e';
 const CLUB_GREEN_BORDER = 'rgba(90, 158, 94, 0.22)';
-const CLUB_GREEN_HOVER = 'rgba(90, 158, 94, 0.15)';
+const CLUB_GREEN_HOVER = 'rgba(17, 65, 20, 0.15)';
 const CONFIRMED_BG = 'rgba(90, 158, 94, 0.10)';
 
 const OP_STYLES = {
-  add: { bg: 'rgba(90, 158, 94, 0.08)', border: CLUB_GREEN, color: '#3d7a42', prefix: '+', label: 'Add' },
-  remove: { bg: 'rgba(200, 80, 70, 0.08)', border: '#c85046', color: '#a3413a', prefix: '-', label: 'Remove' },
-  reorder: { bg: 'rgba(70, 130, 200, 0.08)', border: '#4682c8', color: '#3a6da3', prefix: '↕', label: 'Reorder' },
-  edit: { bg: 'rgba(138, 107, 193, 0.08)', border: '#8A6BC1', color: '#6A4C93', prefix: '✎', label: 'Edit' },
+  add: { bg: 'rgba(76, 175, 80, 0.15)', border: '#4CAF50', color: '#2e7d32', prefix: '+', label: 'Add' },
+  remove: { bg: 'rgba(244, 67, 54, 0.15)', border: '#f44336', color: '#c62828', prefix: '-', label: 'Remove' },
+  reorder: { bg: 'rgba(33, 150, 243, 0.15)', border: '#2196F3', color: '#1565c0', prefix: '↕', label: 'Reorder' },
+  edit: { bg: 'rgba(138, 107, 193, 0.15)', border: '#8A6BC1', color: '#6A4C93', prefix: '✎', label: 'Edit' },
 };
 
 function formatSlugAsName(slug) {

@@ -716,7 +716,7 @@ function Dashboard() {
                               border: '1px solid #e8f5ed',
                               boxShadow: '0 1px 2px rgba(0,0,0,0.03)',
                             }}>
-                              <div style={{ fontSize: '13px', fontWeight: '600', color: '#333', marginBottom: '3px' }}>
+                              <div style={{ fontSize: '13px', fontWeight: '500', color: '#333', marginBottom: '3px' }}>
                                 {activity.display_name}
                               </div>
                               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px' }}>

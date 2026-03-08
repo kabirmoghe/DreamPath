@@ -81,13 +81,13 @@ class ChangeModeInput(BaseModel):
 class CuratedCourse(BaseModel):
     """A course selected for the curated build plan."""
     course_code: str
-    aligned_parameters: list[str]  # e.g. ["interests", "post_grad", "career"]
+    aligned_parameters: list[Literal["interests", "post_grad", "career"]]
 
 
 class CuratedActivity(BaseModel):
     """An activity selected for the curated build plan."""
     activity_slug: str
-    aligned_parameters: list[str]
+    aligned_parameters: list[Literal["interests", "post_grad", "career"]]
 
 
 class CurateInput(BaseModel):

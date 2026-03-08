@@ -55,7 +55,9 @@ async def _execute_operation(
             club_path = ClubPath(recommendations={op.activity_slug: activity})
         else:
             club_path.add_activity(activity)
-        return f"Added '{op.activity_slug}' to ClubPath."
+            if op.rank is not None:
+                club_path.reorder_activity(op.activity_slug, op.rank - 1)  # 1-indexed → 0-indexed
+        return f"Added '{op.activity_slug}' to ClubPath{f' at rank {op.rank}' if op.rank else ''}."
 
     elif op.action == "remove":
         if club_path is None:

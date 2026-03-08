@@ -19,6 +19,18 @@ import '../styles/ChatWindow.css';
  * - Thread management (create, list, switch)
  * - Slides in from the right
  */
+const PHASE_LABELS = {
+  plan_build: 'Plan',
+  update_profile: 'Profile',
+  course_search: 'Courses',
+  activity_search: 'Activities',
+  curate: 'Curate',
+  build_dreampath: 'Build',
+  reflect: 'Reflect',
+  refine: 'Refine',
+  finish: 'Finish',
+};
+
 const getCompassIcon = (nodeStatus) => {
   if (!nodeStatus) return '/compass_baseline.png';
   if (nodeStatus.status === 'thinking') return '/compass_baseline.png';
@@ -914,6 +926,38 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
             );
           })()}
 
+          {/* Build mode mini stepper */}
+          {agentMode === 'build' && buildPhases && (() => {
+            const lastCompleteIndex = buildPhases.reduce((acc, p, i) => p.status === 'complete' ? i : acc, -1);
+            const activeIndex = buildPhases.findIndex(p => p.status === 'active');
+            const progressPct = buildPhases.length > 1
+              ? ((lastCompleteIndex + 1 + (activeIndex > lastCompleteIndex ? 0.5 : 0)) / (buildPhases.length - 1)) * 100
+              : 0;
+            return (
+              <div className="chat-phase-stepper">
+                <div className="chat-phase-track" />
+                <div className="chat-phase-fill" style={{ width: `${Math.min(progressPct, 100)}%` }} />
+                {buildPhases.map((phase, i) => {
+                  const left = buildPhases.length > 1 ? (i / (buildPhases.length - 1)) * 100 : 50;
+                  return (
+                    <div key={phase.name} className="chat-phase-node-container" style={{ left: `${left}%` }}>
+                      <div className={`chat-phase-node chat-phase-${phase.status}`}>
+                        {phase.status === 'complete' && (
+                          <svg width="6" height="6" viewBox="0 0 10 10">
+                            <path d="M2 5 L4.5 7.5 L8 3" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                          </svg>
+                        )}
+                      </div>
+                      <span className={`chat-phase-label ${phase.status === 'active' ? 'chat-phase-label-active' : ''} ${phase.status === 'complete' ? 'chat-phase-label-complete' : ''}`}>
+                        {PHASE_LABELS[phase.name] || phase.name}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })()}
+
           {/* Confirm/Accept + Reject buttons positioned above textarea */}
           {showConfirmButtons && (
             <div className="confirm-buttons-container">
@@ -1031,26 +1075,6 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
                 }}>
                   {agentMode === 'build' ? 'Build' : 'Advise'}
                 </span>
-                {agentMode === 'build' && buildPhases && (
-                  <>
-                    <div style={{ width: '1px', height: '8px', background: 'rgba(0,0,0,0.1)', margin: '0 1px' }} />
-                    {buildPhases.map((phase, i) => (
-                      <div
-                        key={i}
-                        title={phase.name}
-                        style={{
-                          width: '5px',
-                          height: '5px',
-                          borderRadius: '50%',
-                          background: phase.status === 'complete' ? '#4CAF50'
-                            : phase.status === 'active' ? '#FF9800'
-                            : 'rgba(0,0,0,0.1)',
-                          transition: 'all 0.3s ease',
-                        }}
-                      />
-                    ))}
-                  </>
-                )}
               </div>
               <Button
                 variant="primary"

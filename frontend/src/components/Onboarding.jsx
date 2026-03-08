@@ -482,6 +482,7 @@ function Onboarding() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isInitializing, setIsInitializing] = useState(false);
   const [initStatus, setInitStatus] = useState(null);
+  const [buildPhases, setBuildPhases] = useState(null);
   const [error, setError] = useState('');
   const [majors, setMajors] = useState([]);
   const [loadingMajors, setLoadingMajors] = useState(true);
@@ -660,6 +661,8 @@ function Onboarding() {
           console.log('Captured thread_id:', capturedThreadId);
         } else if (chunk.custom_data?.event_type === 'node_status') {
           setInitStatus(chunk.custom_data);
+        } else if (chunk.custom_data?.event_type === 'phase_update') {
+          setBuildPhases(chunk.custom_data.phases || null);
         }
       }
       console.log('Init stream complete');
@@ -1095,7 +1098,7 @@ function Onboarding() {
   return (
     <>
       <style>{onboardingStyles}</style>
-      <InitLoadingOverlay isOpen={isInitializing} nodeStatus={initStatus} />
+      <InitLoadingOverlay isOpen={isInitializing} nodeStatus={initStatus} buildPhases={buildPhases} />
 
       <div
         style={{

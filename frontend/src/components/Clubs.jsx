@@ -395,17 +395,15 @@ function Clubs() {
             )}
             {/* Status + quick facts row */}
             <div style={{
-              borderRadius: '4px',
-              backgroundColor: '#f5fbf0',
-              padding: '12px 14px',
               display: 'flex',
               alignItems: 'flex-start',
               justifyContent: 'space-between',
-              marginBottom: '16px',
+              marginBottom: '25px',
               flexWrap: 'wrap',
               gap: '10px',
+              padding: '12px 0px'
             }}>
-              {/* Left: membership status */}
+              {/* Left: membership status in green box */}
               <div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
                   <span className={`clubs-status-dot clubs-status-dot--${a.membership_status || 'not_yet_joined'}`} />
@@ -500,7 +498,7 @@ function Clubs() {
 
             {/* Data confidence — bottom */}
             {a.data_confidence && (
-              <div style={{ fontSize: '11px', color: '#bbb', textAlign: 'right', marginTop: '4px' }}>
+              <div style={{ fontSize: '11px', color: '#bbb', textAlign: 'right', marginTop: '20px' }}>
                 Data confidence: {a.data_confidence}
               </div>
             )}
@@ -544,6 +542,7 @@ function Clubs() {
               ) : (
                 <>
                   {renderFilterBar()}
+                  <p style={{ color: '#888', fontStyle: 'italic', textAlign: 'center', marginBottom: '1.5rem', fontFamily: 'Lora, serif', fontSize: '16px' }}>Your personalized set of extracurricular activities.</p>
 
                   {activities.length === 0 && hasActiveFilters ? (
                     <div className="text-center text-muted" style={{ padding: '30px 0' }}>
@@ -629,8 +628,8 @@ function Clubs() {
         }
 
         .clubs-modal-section {
-          margin-top: 20px;
-          margin-bottom: 16px;
+          margin-top: 8px;
+          margin-bottom: 25px;
         }
 
         .clubs-section-title {

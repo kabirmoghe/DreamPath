@@ -24,6 +24,7 @@
 | `CoursePathOperations.jsx` | Course path modification UI with confirmation cards (Confirm/Reject + note) |
 | `ClubPathOperations.jsx` | Club path modification UI with confirmation cards (Confirm/Reject); supports add/remove/edit with per-field detail rendering |
 | `ProfileUpdate.jsx` | Profile modification UI card with Accept/Reject confirmation and status footer |
+| `InitLoadingOverlay.jsx` | Onboarding loading overlay with phase stepper timeline and node status |
 | `OverlayTest.jsx` | Testing route for UI components |
 
 ## Authentication
@@ -59,9 +60,19 @@ During streaming, `ChatWindow.jsx` processes custom SSE events from `additional_
 | Event Type | Handler |
 |-----------|---------|
 | `mode_change` | Updates mode pill immediately via `flushSync()` (`setAgentMode`); clears `buildPhases` on advise transition |
-| `phase_update` | Updates build phase progress display |
+| `phase_update` | Updates build phase stepper (mini stepper above input in ChatWindow; full stepper in InitLoadingOverlay during onboarding) |
 | `node_info` | Status updates from search agent (loading indicators) |
 | `coursepath_operations` / `clubpath_operations` | HITL confirmation cards |
 | `profile_update` | Profile modification cards with Accept/Reject |
 
 Mode pill state (`agentMode`) is initialized from thread metadata on load and updated in real-time via `mode_change` events during streaming.
+
+### Build Phase Stepper
+
+Two implementations of the phase stepper exist:
+
+1. **ChatWindow mini stepper** (`chat-phase-stepper` in `ChatWindow.css`) — Compact 36px-tall horizontal stepper above the textarea. 10px nodes with progress track. Appears only during build mode. Disappears on mode transition back to advise.
+
+2. **InitLoadingOverlay stepper** (`phase-stepper` in `InitLoadingOverlay.css`) — Full-width stepper in the onboarding loading overlay. 16px nodes with labels. `Onboarding.jsx` passes `buildPhases` state from `phase_update` SSE events.
+
+Both share the same `PHASE_LABELS` map (Plan, Profile, Courses, Activities, Curate, Build, Reflect, Refine, Finish) and compute progress fill from completed/active phase indices.

@@ -145,7 +145,7 @@ Button-driven, deterministic — no LLM interprets confirmation.
 
 **Stack:** React + Vite + TanStack Query + Supabase Auth. Colors: `#8A6BC1` (--dream-purple), `#6A4C93` (--dream-blue).
 
-Key components: `Dashboard.jsx` (main UI + chat), `Courses.jsx` (course path visualization + detail modal), `Clubs.jsx` (club path visualization + redesigned detail modal), `CoursePathOperations.jsx` (CP cards with Confirm/Reject), `ClubPathOperations.jsx` (ClubPath cards with Confirm/Reject; supports add/remove/edit rendering), `ProfileUpdate.jsx` (profile cards with Accept/Reject), `api.js` (backend client + streaming). For full component tree, routing, auth flow, and data flow details, see [`FRONTEND_OVERVIEW.md`](docs/architecture/FRONTEND_OVERVIEW.md).
+Key components: `Dashboard.jsx` (main UI + chat), `Courses.jsx` (course path visualization + detail modal), `Clubs.jsx` (club path visualization + redesigned detail modal), `CoursePathOperations.jsx` (CP cards with Confirm/Reject), `ClubPathOperations.jsx` (ClubPath cards with Confirm/Reject; supports add/remove/edit rendering), `ProfileUpdate.jsx` (profile cards with Accept/Reject), `InitLoadingOverlay.jsx` (onboarding loading with phase stepper), `api.js` (backend client + streaming). For full component tree, routing, auth flow, and data flow details, see [`FRONTEND_OVERVIEW.md`](docs/architecture/FRONTEND_OVERVIEW.md).
 
 ## Database
 
@@ -187,7 +187,7 @@ Must use transaction pooler: hostname `aws-0-us-east-2.pooler.supabase.com`, por
 
 ## What's Next
 
-- **Frontend for dual-modal agent** — Build mode UI (phase progress visualization). Mode pill, `change_mode` SSE events, ClubPath display (`Clubs.jsx`), and club_path confirmation flow (`ClubPathOperations.jsx`) already implemented.
+- **Frontend for dual-modal agent** — Build mode UI largely complete: mode pill, `change_mode` SSE events, ClubPath display (`Clubs.jsx`), club_path confirmation flow (`ClubPathOperations.jsx`), phase stepper in ChatWindow + InitLoadingOverlay (Onboarding) all implemented.
 - **Execution persistence** — Track status across page navigation (see `docs/EXECUTION_PERSISTENCE.md`)
 - **Ops** — Monitoring/alerts, security hardening, staging environment, performance optimization
 

@@ -23,6 +23,11 @@
 - Added club edit capability with `roles_exposed` validation pipeline (Weaviate → Activity → ClubPath context → orchestrator prompt → node validation)
 - Redesigned Clubs detail modal: alignment badges with SVG icons, structured status/at-a-glance sections, 2x2 mini tiles, neutral styling matching Courses aesthetic
 - Enhanced ClubPathOperations card to render edit operations with per-field detail (membership_status, current_role, rank)
+- Implemented build phase stepper in ChatWindow (mini stepper above input) and InitLoadingOverlay (full stepper during onboarding)
+- Onboarding now handles `phase_update` SSE events and passes `buildPhases` to InitLoadingOverlay
+- `build_dreampath_node` now passes `source_of_truth_url` and `roles_exposed` through to Activity objects
+- `club_path_node` supports rank-on-add (reorders activity immediately after adding)
+- `CurateInput` aligned_parameters now uses `Literal["interests", "post_grad", "career"]` for type safety
 
 ## Architectural Decision: Sub-Agent Integration
 
