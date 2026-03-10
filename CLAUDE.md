@@ -127,7 +127,9 @@ Button-driven, deterministic — no LLM interprets confirmation.
 
 **Frontend** (`ChatWindow.jsx`): Sends `"confirm"/"accept"/"reject"`, optionally `"action: <note>"`. Messages after structured cards are hidden (`hideInUI: true`).
 
-**CP Operations** (`course_path_node`): Maps `'reject'` → `'cancel'` (sub-agent only understands CONFIRM/CANCEL). Note stays in `turn_messages` for orchestrator context.
+**CoursePath Operations** (`course_path_node`): Maps `'reject'` → `'cancel'` (sub-agent only understands CONFIRM/CANCEL). Note stays in `turn_messages` for orchestrator context.
+
+**CoursePath Operations** (`club_path_node`): Follows similar but simpler logic via HITL for ClubPath modification requests.
 
 **Profile Modification** (`modify_profile_node`): `startswith('accept')` check. Accept saves to DB; reject returns proposed changes so orchestrator knows what was rejected. Skipped entirely when `require_user_confirmation=False`.
 
@@ -137,6 +139,8 @@ Button-driven, deterministic — no LLM interprets confirmation.
 
 ### Message Format
 - `message_adapters.py` converts between DreamPath format (`{"role", "content": {"name", "result"}}`) and LangChain `BaseMessage`
+- **Node message pattern**: Nodes emit only `tool_result` (not `tool_call`) to both `turn_messages` and `messages`. The orchestrator already records the tool call in its own message — nodes should not duplicate it. `messages` (LangChain) receives `tool_result_lc` for LangSmith/history consistency.
+- **Context rendering**: `_render_thread_block` uses XML tags (`<summary>`, `<recent_messages_prior_to_current_turn>`) for structured context. ClubPath operation results use `=` format (e.g. `role=president`, `membership=active_member`).
 
 ### Memory/Checkpointing
 - Local: SQLite (`checkpoints.db`). Production: PostgreSQL (Supabase). Set `DATABASE_TYPE` in `.env`.
@@ -184,6 +188,8 @@ Must use transaction pooler: hostname `aws-0-us-east-2.pooler.supabase.com`, por
 **Profile interrupt text fallback** — If `extract_profile_update_metadata()` returns `{}`, fallback text may leak as user-facing message. Low risk since Accept/Reject buttons send clean strings. Monitor for recurrence.
 
 **Empty slots in scheduling** — When no complementary courses available, scheduling leaves empty slots instead of adjusting term load. Likely in `courses/scheduling_helpers.py` or `schedule_modules/`. Low priority.
+
+**HITL blank assistant** — Interrupt flow produces an empty `<assistant></assistant>` message in the context trace. TODO: replace with descriptive filler text.
 
 ## What's Next
 

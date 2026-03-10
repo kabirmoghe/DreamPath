@@ -125,13 +125,13 @@ def _render_thread_block(summary: str | None, recent_messages: list[dict]) -> st
     lines = []
 
     if summary:
-        lines.append(f"Summary: {summary.strip()}")
+        lines.append(f"<summary>\n{summary.strip()}\n</summary>")
     if tail:
-        lines.append("Recent Messages Prior to Current Turn:")
+        lines.append("<recent_messages_prior_to_current_turn>")
         for m in tail:
             role = m.get("role", "user")
             content = m.get("content", "")
-                    
+
             # Handle dictionary content (e.g., tool calls)
             if isinstance(content, dict):
                 tag_name = content.get("name", role)
@@ -145,7 +145,7 @@ def _render_thread_block(summary: str | None, recent_messages: list[dict]) -> st
                 # Handle string content normally
                 content = str(content).strip()
                 lines.append(f"<{role}>\n{content}\n</{role}>")
-            
+        lines.append("</recent_messages_prior_to_current_turn>")
     return "\n".join(lines) if lines else "None."
 
 def _render_turn_block(current_user_msg: str, turn_messages: list[dict], init_mode: bool=False) -> str:

@@ -55,12 +55,12 @@ async def _execute_operation(
         details = []
         if op.membership_status is not None:
             activity.membership_status = op.membership_status
-            details.append(f"membership → {op.membership_status}")
+            details.append(f"membership={op.membership_status}")
         if op.current_role is not None and op.current_role != "":
             if activity.roles_exposed and op.current_role not in activity.roles_exposed:
                 return f"Invalid role '{op.current_role}' for '{op.activity_slug}'. Valid roles: {', '.join(activity.roles_exposed)}."
             activity.current_role = op.current_role
-            details.append(f"role → {op.current_role}")
+            details.append(f"role={op.current_role}")
 
         if club_path is None:
             club_path = ClubPath(recommendations={op.activity_slug: activity})
@@ -91,7 +91,7 @@ async def _execute_operation(
 
         if op.membership_status is not None:
             activity.membership_status = op.membership_status
-            changes.append(f"membership → {op.membership_status}")
+            changes.append(f"membership={op.membership_status}")
 
         if op.current_role is not None:
             if op.current_role == "":
@@ -101,11 +101,11 @@ async def _execute_operation(
                 if activity.roles_exposed and op.current_role not in activity.roles_exposed:
                     return f"Invalid role '{op.current_role}' for '{op.activity_slug}'. Valid roles: {', '.join(activity.roles_exposed)}."
                 activity.current_role = op.current_role
-                changes.append(f"role → {op.current_role}")
+                changes.append(f"role={op.current_role}")
 
         if op.rank is not None:
             club_path.reorder_activity(op.activity_slug, op.rank - 1)  # 1-indexed → 0-indexed
-            changes.append(f"rank → {op.rank}")
+            changes.append(f"rank={op.rank}")
 
         if not changes:
             return f"No changes specified for '{op.activity_slug}'."
@@ -127,7 +127,6 @@ async def club_path_node(state: DreamPathAgentState, config) -> dict:
 
     cursor = state.club_cursor
     tool_messages = []
-    langchain_messages = []
 
     # On first entry, read operations from tool_input
     if cursor == 0:
@@ -139,21 +138,6 @@ async def club_path_node(state: DreamPathAgentState, config) -> dict:
     tool_call_id = state.pending_tool_call["tool_call_id"]
 
     print(f"| → ClubPathNode: club_worklist={[str(op) for op in worklist]}, club_cursor={cursor}")
-
-    # Build tool call trace at start of execution
-    if cursor == 0:
-        tool_call = {
-            "role": "assistant",
-            "content": {
-                "name": "club_path",
-                "arguments": {
-                    "operations": [op.model_dump() for op in worklist],
-                }
-            },
-            "tool_call_id": tool_call_id,
-        }
-        tool_messages.append(tool_call)
-        langchain_messages.append(dreampath_to_langchain(tool_call))
 
     if worklist and cursor < len(worklist):
         current_op = worklist[cursor]
@@ -193,7 +177,6 @@ async def club_path_node(state: DreamPathAgentState, config) -> dict:
                     "turn_messages": state.turn_messages + tool_messages,
                     "club_worklist": worklist,
                     "club_cursor": cursor,
-                    "messages": langchain_messages,
                 }
 
         # Load current club path and execute
@@ -228,12 +211,13 @@ async def club_path_node(state: DreamPathAgentState, config) -> dict:
         "turn_messages": state.turn_messages + tool_messages,
         "club_worklist": worklist,
         "club_cursor": cursor,
-        "messages": langchain_messages,
     }
 
     # Clean up when done looping so next club_path call this turn starts fresh
     if not worklist or cursor >= len(worklist):
         updates["club_worklist"] = []
         updates["club_cursor"] = 0
+        # Emit final result to messages for LangSmith/history
+        updates["messages"] = [dreampath_to_langchain(tool_result)]
 
     return updates

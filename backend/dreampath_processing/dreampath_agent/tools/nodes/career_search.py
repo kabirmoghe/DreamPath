@@ -71,17 +71,6 @@ async def career_search_node(state: DreamPathAgentState, config, *, writer=None)
 
     tool_call_id = state.pending_tool_call["tool_call_id"]
 
-    # Create tool call message (shows what was searched)
-    tool_call = {
-        "role": "assistant",
-        "content": {
-            "name": "career_search",
-            "arguments": {"query": search_query},
-        },
-        "tool_call_id": tool_call_id,
-    }
-
-    # Create tool result message
     tool_result = {
         "role": "tool",
         "content": {
@@ -91,14 +80,10 @@ async def career_search_node(state: DreamPathAgentState, config, *, writer=None)
         "tool_call_id": tool_call_id,
     }
 
-    # Convert to LangChain messages
-    tool_call_lc = dreampath_to_langchain(tool_call)
-    tool_result_lc = dreampath_to_langchain(tool_result)
-    
     # Sleep for each role to simulate processing time
     await asyncio.sleep(5)
 
     return {
-        "turn_messages": state.turn_messages + [tool_call, tool_result],
-        "messages": [tool_call_lc, tool_result_lc],
+        "turn_messages": state.turn_messages + [tool_result],
+        "messages": [dreampath_to_langchain(tool_result)],
     }

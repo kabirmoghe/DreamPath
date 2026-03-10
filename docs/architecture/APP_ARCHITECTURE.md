@@ -49,6 +49,12 @@ Each node is a separate module in `dreampath_agent/tools/nodes/` with its own lo
 - Persistent state placed early for primacy; current turn at end for recency
 - `_render_build_plan_block()` visualizes build plan phases with current-phase marker
 - Master templates in `tools/nodes/prompts/context.py`
+- **Thread block rendering**: `_render_thread_block` wraps summary in `<summary>` tags and recent messages in `<recent_messages_prior_to_current_turn>` tags (XML structure, not plain text labels)
+
+### Node Message Pattern
+Nodes emit only `tool_result` to both `turn_messages` (DreamPath format) and `messages` (LangChain format). The orchestrator already records the tool call decision — nodes must not duplicate it. This applies uniformly across all nodes (course_search, activity_search, career_search, course_path, club_path, etc.).
+
+**Known issue — HITL blank assistant message**: The interrupt flow injects an empty `<assistant></assistant>` tag into the context trace. TODO: replace with descriptive filler text like "[Presented to user for confirmation]".
 
 ## Course Path Sub-Agent (`courses/coursepath_agent/agent_v3.py`)
 

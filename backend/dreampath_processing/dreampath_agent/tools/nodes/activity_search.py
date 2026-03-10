@@ -63,15 +63,6 @@ async def activity_search_node(state: DreamPathAgentState, config, *, writer=Non
 
     tool_call_id = state.pending_tool_call["tool_call_id"]
 
-    tool_call = {
-        "role": "assistant",
-        "content": {
-            "name": "activity_search",
-            "arguments": {"goals": goals}
-        },
-        "tool_call_id": tool_call_id,
-    }
-
     tool_result = {
         "role": "tool",
         "content": {
@@ -81,10 +72,7 @@ async def activity_search_node(state: DreamPathAgentState, config, *, writer=Non
         "tool_call_id": tool_call_id,
     }
 
-    tool_call_lc = dreampath_to_langchain(tool_call)
-    tool_result_lc = dreampath_to_langchain(tool_result)
-
     return {
-        "turn_messages": state.turn_messages + [tool_call, tool_result],
-        "messages": [tool_call_lc, tool_result_lc],
+        "turn_messages": state.turn_messages + [tool_result],
+        "messages": [dreampath_to_langchain(tool_result)],
     }

@@ -44,7 +44,6 @@ async def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgent
     current_op = None
     outcomes = state.current_cp_agent_outcomes
     tool_messages = []
-    langchain_messages = []
 
     # On first entry, read operations from tool_input
     if cursor == 0:
@@ -57,22 +56,6 @@ async def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgent
     print(f"| → CoursePathAgent: course_worklist={worklist}, course_cursor={cursor}")
 
     tool_call_id = state.pending_tool_call["tool_call_id"]
-
-    # Build tool call at start of execution
-    if cursor == 0:
-        tool_call = {
-            "role": "assistant",
-            "content": {
-                "name": "course_path_agent",
-                "arguments": {
-                    "course_worklist": worklist,
-                    "course_cursor": cursor
-                }
-            },
-            "tool_call_id": tool_call_id,
-        }
-        tool_messages.append(tool_call)
-        langchain_messages.append(dreampath_to_langchain(tool_call))
 
     # Execute operations one by one
     if worklist and cursor < len(worklist):
@@ -149,7 +132,6 @@ async def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgent
         "current_cp_agent_outcomes": outcomes,
         "course_worklist": worklist,
         "course_cursor": cursor,
-        "messages": langchain_messages,
     }
 
     # Clean up when done looping so next course_path call this turn starts fresh
@@ -157,5 +139,7 @@ async def course_path_node(state: DreamPathAgentState, config) -> DreamPathAgent
         updates["course_worklist"] = []
         updates["course_cursor"] = 0
         updates["current_cp_agent_outcomes"] = {}
+        # Emit aggregate result to messages for LangSmith/history
+        updates["messages"] = [dreampath_to_langchain(tool_result)]
 
     return updates
