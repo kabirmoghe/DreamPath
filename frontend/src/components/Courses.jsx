@@ -7,7 +7,7 @@ import { apiClient } from '../lib/api';
 import DashboardNavbar from './DashboardNavbar';
 import LeftSidebar from './LeftSidebar';
 import ChatWindow from './ChatWindow';
-import { Calendar, CheckSquare, Lightbulb, Lock, BoxArrowUpRight, PeopleFill, CheckCircleFill } from 'react-bootstrap-icons';
+import { Calendar, CheckSquare, Lightbulb, Lock, PeopleFill, CheckCircleFill } from 'react-bootstrap-icons';
 
 /**
  * Courses - Course path visualization and management
@@ -111,7 +111,7 @@ function Courses() {
 
   // Typing animation effect
   useEffect(() => {
-    const fullText = 'Courses';
+    const fullText = 'CoursePath';
     let currentIndex = 0;
     setTypedText(''); // Reset
     setShowCursor(true); // Reset cursor visibility
@@ -387,42 +387,6 @@ function Courses() {
       <>
         <div className={`modal-overlay ${detailsPanelVisible ? 'visible' : ''}`} onClick={() => handleClosePanel()}></div>
         <div className={`course-details-modal ${detailsPanelVisible ? 'visible' : ''}`} ref={detailsPanelRef}>
-          {/* Side Schedule Tab - outside left edge */}
-          {courseDetails && ((courseDetails.term_idx !== null && courseDetails.term_idx !== undefined) || (courseDetails.must_have_window && courseDetails.must_have_window.length > 0)) && (
-            <div className="side-schedule-tab">
-              {courseDetails.term_idx !== null && courseDetails.term_idx !== undefined && (
-                <div className="side-tab-row">
-                  <span className="side-term-badge">
-                    <span className="term-short">T: {courseDetails.term_idx + 1}</span>
-                    <span className="term-full">Scheduled in Term {courseDetails.term_idx + 1}</span>
-                  </span>
-                </div>
-              )}
-              {courseDetails.must_have_window && courseDetails.must_have_window.length > 0 && (
-                <div className="side-tab-row">
-                  <span className="side-lock-pill">
-                    <Lock size={11} color="#d32f2f" />
-                    {(() => {
-                      const window = courseDetails.must_have_window;
-                      const startTerm = Math.min(...window) + 1;
-                      const endTerm = Math.max(...window) + 1;
-                      const shortText = startTerm === endTerm ? `${startTerm}` : `${startTerm} ↔ ${endTerm}`;
-                      const fullText = startTerm === endTerm
-                        ? `Prioritized for Term ${startTerm}`
-                        : `Prioritized for Terms ${startTerm} ↔ ${endTerm}`;
-                      return (
-                        <>
-                          <span className="priority-short">{shortText}</span>
-                          <span className="priority-full">{fullText}</span>
-                        </>
-                      );
-                    })()}
-                  </span>
-                </div>
-              )}
-            </div>
-          )}
-
           <div className="modal-header-row">
             {courseDetails ? (
               <div className="modal-header-content">
@@ -433,6 +397,28 @@ function Courses() {
                   {courseDetails.is_prereq && <Badge bg="secondary">Prerequisite</Badge>}
                 </div>
                 <h6 className="course-title">{courseDetails.course_title || 'No title available'}</h6>
+                {((courseDetails.term_idx !== null && courseDetails.term_idx !== undefined) || (courseDetails.must_have_window && courseDetails.must_have_window.length > 0)) && (
+                  <div className="schedule-pills-row">
+                    {courseDetails.term_idx !== null && courseDetails.term_idx !== undefined && (
+                      <span className="schedule-pill schedule-pill--term" data-tooltip={`Scheduled in Term ${courseDetails.term_idx + 1}`}>
+                        <Calendar size={11} />
+                        Term {courseDetails.term_idx + 1}
+                      </span>
+                    )}
+                    {courseDetails.must_have_window && courseDetails.must_have_window.length > 0 && (() => {
+                      const w = courseDetails.must_have_window;
+                      const startTerm = Math.min(...w) + 1;
+                      const endTerm = Math.max(...w) + 1;
+                      const label = startTerm === endTerm ? `Term ${startTerm}` : `Terms ${startTerm}–${endTerm}`;
+                      return (
+                        <span className="schedule-pill schedule-pill--priority" data-tooltip={`Prioritized for ${label}`}>
+                          <Lock size={10} />
+                          {label}
+                        </span>
+                      );
+                    })()}
+                  </div>
+                )}
               </div>
             ) : (
               <h4 className="modal-title">Course Details</h4>
@@ -461,8 +447,17 @@ function Courses() {
                   <div className="section-title-row">
                     <h6 className="section-title">Description</h6>
                     {courseDetails.course_url && (
-                      <a href={courseDetails.course_url} target="_blank" rel="noopener noreferrer" className="course-link">
-                        <BoxArrowUpRight size={14} />
+                      <a
+                        href={courseDetails.course_url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{ display: 'flex', alignItems: 'center', color: '#999', transition: 'color 0.15s' }}
+                        onMouseEnter={e => e.currentTarget.style.color = '#666'}
+                        onMouseLeave={e => e.currentTarget.style.color = '#999'}
+                      >
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M6 3H3.5A1.5 1.5 0 002 4.5v8A1.5 1.5 0 003.5 14h8a1.5 1.5 0 001.5-1.5V10m-4-7h4m0 0v4m0-4L7 9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
                       </a>
                     )}
                   </div>
@@ -646,10 +641,12 @@ function Courses() {
       return <p className="text-muted">No course recommendations available.</p>;
     }
 
+    // Color scheme per tab
+    const colors = tab === 'major'
+      ? { accent: '#8A6BC1', subtle: 'rgba(138, 107, 193, 0.07)', border: 'rgba(138, 107, 193, 0.18)', hoverShadow: 'rgba(138, 107, 193, 0.12)', hoverBorder: 'rgba(138, 107, 193, 0.35)' }
+      : { accent: '#3873a0', subtle: 'rgba(56, 115, 160, 0.07)', border: 'rgba(56, 115, 160, 0.18)', hoverShadow: 'rgba(56, 115, 160, 0.12)', hoverBorder: 'rgba(56, 115, 160, 0.35)' };
+
     // Priority scoring based on aligned_parameters (same as rebuild node)
-    // 2 points: both interests AND post_grad
-    // 1 point: either interests OR post_grad
-    // 0 points: only career or no alignment
     const getPriorityScore = (course) => {
       const aligned = course.aligned_parameters || [];
       const hasInterests = aligned.includes('interests');
@@ -661,83 +658,117 @@ function Courses() {
 
     // Sort: scheduled first, then by priority score within each group
     const sortedCourses = [...courses].sort((a, b) => {
-      // Primary: scheduled courses on top
       const aScheduled = a.term_idx !== null && a.term_idx !== undefined;
       const bScheduled = b.term_idx !== null && b.term_idx !== undefined;
       if (aScheduled && !bScheduled) return -1;
       if (!aScheduled && bScheduled) return 1;
-
-      // Secondary: sort by priority score within each group
-      const aScore = getPriorityScore(a);
-      const bScore = getPriorityScore(b);
-      return bScore - aScore;
+      return getPriorityScore(b) - getPriorityScore(a);
     });
 
     return (
-      <Row xs={1} md={2} className="g-4">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '16px' }}>
         {sortedCourses.map((course, idx) => {
-          const rankBadgeClass = tab === 'major' ? 'rank-badge-major' : 'rank-badge-complementary';
           const hasWindow = course.must_have_window && course.must_have_window.length > 0;
-
-          // Compute window text if exists
           let windowText = null;
           if (hasWindow) {
             const startTerm = Math.min(...course.must_have_window) + 1;
             const endTerm = Math.max(...course.must_have_window) + 1;
             windowText = startTerm === endTerm ? `${startTerm}` : `${startTerm} ↔ ${endTerm}`;
           }
+          const isScheduled = course.term_idx !== null && course.term_idx !== undefined;
 
           return (
-            <Col key={course.course_code}>
-              <Card className="h-100 shadow-sm border-0" style={{ background: '#fff', borderRadius: 14, marginBottom: 12, position: 'relative' }}>
-                <Card.Header className="d-flex justify-content-between align-items-center bg-white border-0" style={{ borderRadius: 14 }}>
-                  <Badge pill className={rankBadgeClass}>{idx + 1}</Badge>
-                  <span className="ms-2 fw-bold" style={{ fontSize: 18 }}>{course.course_code}</span>
-                </Card.Header>
-                <Card.Body>
-                  <Card.Title style={{ fontSize: 20, fontWeight: 500 }}>{course.course_title}</Card.Title>
-                  <Card.Text style={{ color: '#555', fontSize: 15 }}>
-                    {course.course_description ?
-                      course.course_description.substring(0, 180) + (course.course_description.length > 180 ? '...' : '')
-                      : 'No description available.'}
-                  </Card.Text>
-                  <div className="text-center mt-2">
-                    <Button
-                      variant="outline-secondary"
-                      size="sm"
-                      className="view-details-btn"
-                      onClick={e => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        setExpandedCourse(course.course_code);
-                        setDetailsPanelVisible(true);
-                      }}
-                    >
-                      Details
-                    </Button>
+            <div
+              key={course.course_code}
+              onClick={() => { setExpandedCourse(course.course_code); setDetailsPanelVisible(true); }}
+              style={{
+                background: 'white',
+                borderRadius: '12px',
+                padding: '16px',
+                border: `1px solid ${colors.border}`,
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.04)',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '8px',
+                minHeight: '170px',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = `0 4px 14px ${colors.hoverShadow}`;
+                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.borderColor = colors.hoverBorder;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = '0 2px 6px rgba(0,0,0,0.04)';
+                e.currentTarget.style.transform = 'translateY(0)';
+                e.currentTarget.style.borderColor = colors.border;
+              }}
+            >
+              {/* Top row: code + title left, rank right */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontSize: '15px', fontWeight: 600, color: '#333', fontFamily: 'Lora, serif', marginBottom: '2px' }}>
+                    {course.course_code}
                   </div>
-                </Card.Body>
-                {/* Bottom right badges: scheduled term + lock pill */}
-                {((course.term_idx !== null && course.term_idx !== undefined) || hasWindow) && (
-                  <div className="course-card-bottom-badges">
-                    {course.term_idx !== null && course.term_idx !== undefined && (
-                      <span className="course-card-term-badge">
-                        Term {course.term_idx + 1}
-                      </span>
-                    )}
-                    {hasWindow && (
-                      <span className="course-card-lock-pill">
-                        <Lock size={11} color="#d32f2f" />
-                        <span>{windowText}</span>
-                      </span>
-                    )}
+                  <div style={{ fontSize: '12px', color: '#777', fontFamily: 'Lora, serif' }}>
+                    {course.course_title}
                   </div>
-                )}
-              </Card>
-            </Col>
+                </div>
+                <span style={{
+                  fontSize: '11px', fontWeight: 600, color: colors.accent,
+                  background: colors.subtle, padding: '2px 8px', borderRadius: '10px',
+                  flexShrink: 0, marginLeft: '8px',
+                }}>#{idx + 1}</span>
+              </div>
+
+              {/* Description preview */}
+              {course.course_description && (
+                <div style={{
+                  fontSize: '12px', color: '#777', lineHeight: '1.4',
+                  fontFamily: 'Lora, serif',
+                  display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical',
+                  overflow: 'hidden',
+                }}>
+                  {course.course_description}
+                </div>
+              )}
+
+              {/* Bottom row: aligned params left, scheduling info right */}
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginTop: 'auto' }}>
+                {course.aligned_parameters && course.aligned_parameters.length > 0 ? (
+                  <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+                    {course.aligned_parameters.map(param => (
+                      <span key={param} style={{
+                        fontSize: '9px', color: '#8A6BC1', background: 'rgba(138, 107, 193, 0.08)',
+                        padding: '1px 7px', borderRadius: '8px', fontWeight: 500, textTransform: 'capitalize',
+                      }}>{param.replace(/_/g, ' ')}</span>
+                    ))}
+                  </div>
+                ) : <div />}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', flexShrink: 0 }}>
+                  {isScheduled && (
+                    <span style={{
+                      fontSize: '10px', fontWeight: 600, color: '#2e7d32',
+                      background: 'rgba(76, 175, 80, 0.12)', padding: '2px 7px', borderRadius: '8px',
+                    }}>Term {course.term_idx + 1}</span>
+                  )}
+                  {hasWindow && (
+                    <span style={{
+                      fontSize: '10px', fontWeight: 500, color: '#d32f2f',
+                      background: 'rgba(211, 47, 47, 0.08)', padding: '2px 7px', borderRadius: '8px',
+                      display: 'flex', alignItems: 'center', gap: '3px',
+                    }}>
+                      <Lock size={9} />
+                      {windowText}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
           );
         })}
-      </Row>
+      </div>
     );
   }
 
@@ -782,7 +813,7 @@ function Courses() {
                         background: activeTab === 'coursePath' ? '#f3f3f3' : '#fff'
                       }}
                     >
-                      <Calendar className="tab-icon me-1" style={{ color: activeTab === 'coursePath' ? '#888' : '#888' }} /> CoursePath
+                      <Calendar className="tab-icon me-1" style={{ color: activeTab === 'coursePath' ? '#888' : '#888' }} /> Plan
                     </Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
@@ -1099,7 +1130,7 @@ function Courses() {
           transition: all 0.3s ease-out;
           display: flex;
           flex-direction: column;
-          overflow: visible;
+          overflow: hidden;
         }
 
         .course-details-modal.visible {
@@ -1153,108 +1184,59 @@ function Courses() {
           display: none;
         }
 
-        /* Side Schedule Tab - outside left edge like a physical tab */
-        .side-schedule-tab {
-          position: absolute;
-          top: 8%;
-          right: 100%;
-          transform: translateY(-50%);
-          z-index: 10;
-          background: white;
-          border-radius: 8px 0 0 8px;
-          box-shadow: -4px 2px 12px rgba(0, 0, 0, 0.1);
-          cursor: default;
-          transition: all 0.35s ease-out;
-          border: 1px solid #e0e0e0;
-          border-right: none;
-          overflow: hidden;
-        }
-
-        .side-schedule-tab {
+        /* Schedule pills in header */
+        .schedule-pills-row {
           display: flex;
-          flex-direction: column;
-          gap: 6px;
-          padding: 10px 8px;
-        }
-
-        .side-tab-row {
-          display: flex;
-          align-items: center;
           gap: 8px;
-          white-space: nowrap;
+          flex-wrap: wrap;
+          margin-top: 8px;
         }
 
-        .side-tab-text {
-          max-width: 0;
-          overflow: hidden;
-          opacity: 0;
-          transition: max-width 0.3s ease-out, opacity 0.25s ease-out;
-        }
-
-        .side-schedule-tab:hover .side-tab-text {
-          max-width: 200px;
-          opacity: 1;
-          transition: max-width 0.35s ease-out, opacity 0.3s ease-out 0.1s;
-        }
-
-        .side-schedule-tab:hover {
-          box-shadow: -4px 4px 16px rgba(0, 0, 0, 0.15);
-          padding: 10px 12px;
-        }
-
-        .side-term-badge {
-          font-size: 12px;
-          font-weight: 600;
-          color: #2e7d32;
-          background: rgba(76, 175, 80, 0.15);
-          padding: 4px 8px;
-          border-radius: 4px;
-          line-height: 1.2;
-          flex-shrink: 0;
-        }
-
-        .term-full {
-          display: none;
-        }
-
-        .side-schedule-tab:hover .term-short {
-          display: none;
-        }
-
-        .side-schedule-tab:hover .term-full {
-          display: inline;
-        }
-
-        .side-lock-pill {
-          display: flex;
+        .schedule-pill {
+          display: inline-flex;
           align-items: center;
-          justify-content: center;
           gap: 5px;
-          background-color: #ffe0e0;
-          border-radius: 12px;
-          padding: 4px 8px;
-          min-height: 22px;
-          flex-shrink: 0;
-        }
-
-        .priority-short,
-        .priority-full {
           font-size: 12px;
-          color: #d32f2f;
           font-weight: 500;
-          line-height: 1.2;
+          padding: 3px 10px;
+          border-radius: 10px;
+          cursor: default;
+          position: relative;
         }
 
-        .priority-full {
-          display: none;
+        .schedule-pill--term {
+          color: #2e7d32;
+          background: rgba(76, 175, 80, 0.12);
         }
 
-        .side-schedule-tab:hover .priority-short {
-          display: none;
+        .schedule-pill--priority {
+          color: #d32f2f;
+          background: rgba(211, 47, 47, 0.08);
         }
 
-        .side-schedule-tab:hover .priority-full {
-          display: inline;
+        .schedule-pill::after {
+          content: attr(data-tooltip);
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          bottom: calc(100% + 6px);
+          padding: 5px 10px;
+          background: #333;
+          color: #fff;
+          font-size: 11px;
+          font-weight: 400;
+          white-space: nowrap;
+          border-radius: 4px;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 0.15s, visibility 0.15s;
+          pointer-events: none;
+          z-index: 10;
+        }
+
+        .schedule-pill:hover::after {
+          opacity: 1;
+          visibility: visible;
         }
 
         .course-path-lock-circle {
@@ -1401,20 +1383,6 @@ function Courses() {
           margin-bottom: 0;
         }
 
-        .course-link {
-          color: #555;
-          opacity: 0.7;
-          transition: opacity 0.2s;
-          display: inline-flex;
-          align-items: center;
-          position: relative;
-          top: -1px;
-        }
-
-        .course-link:hover {
-          opacity: 1;
-          color: #6B4FA0;
-        }
 
         .description-text {
           margin: 0;
@@ -1688,16 +1656,6 @@ function Courses() {
           color: #999;
         }
 
-        .rank-badge-major {
-          font-family: 'Lora', serif;
-          background: linear-gradient(135deg, #8A6BC1 0%, #6B8FC7 100%);
-        }
-
-        .rank-badge-complementary {
-          font-family: 'Lora', serif;
-          background: linear-gradient(135deg, #6B8FC7 0%, #5A9FC7 100%);
-        }
-
         .mini-type-badge {
           font-size: 0.7rem;
           font-family: 'Lora', serif;
@@ -1731,41 +1689,6 @@ function Courses() {
           border: none !important;
         }
 
-        /* Bottom badges for major/complementary course cards */
-        .course-card-bottom-badges {
-          position: absolute;
-          bottom: 10px;
-          right: 10px;
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          z-index: 1;
-        }
-
-        .course-card-term-badge {
-          font-size: 12px;
-          font-weight: 600;
-          color: #2e7d32;
-          background: rgba(76, 175, 80, 0.15);
-          padding: 4px 8px;
-          border-radius: 4px;
-          line-height: 1.2;
-        }
-
-        .course-card-lock-pill {
-          display: flex;
-          align-items: center;
-          gap: 5px;
-          background-color: #ffe0e0;
-          border-radius: 12px;
-          padding: 4px 8px;
-        }
-
-        .course-card-lock-pill span {
-          font-size: 11px;
-          color: #d32f2f;
-          font-weight: 500;
-        }
       `}</style>
 
       {/* Compass Chat Window */}

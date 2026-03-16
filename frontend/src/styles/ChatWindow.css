@@ -100,7 +100,7 @@
   color: #5c695b;
   padding: 5px 10px;
   font-weight: 500;
-  border: 2px #e2e7d8 dashed;
+  border: 1px #e2e7d8 solid;
   border-radius: 11px 11px 1px 11px;
   letter-spacing: -0.1px;
 }

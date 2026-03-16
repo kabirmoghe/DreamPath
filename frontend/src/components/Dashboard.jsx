@@ -586,7 +586,7 @@ function Dashboard() {
                 >
                   <h4 style={{ fontSize: '15px', fontWeight: '600', color: '#8A6BC1', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <BookIcon size={16} />
-                    Courses
+                    CoursePath
                   </h4>
                   {coursePathLoading ? (
                     <div className="text-center py-2">
@@ -699,7 +699,7 @@ function Dashboard() {
                     >
                       <h4 style={{ fontSize: '15px', fontWeight: '600', color: '#4a9d6e', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                         <PeopleIcon size={16} />
-                        Clubs
+                        ClubPath
                       </h4>
                       {clubPathLoading ? (
                         <div className="text-center py-2">

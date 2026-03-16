@@ -337,8 +337,9 @@ function ChatWindow({ userId, isOpen = true, onToggle }) {
         } else if (typeof chunk === 'object') {
           // Check if this is a node status event
           if (chunk.custom_data && chunk.custom_data.event_type === 'node_status') {
-            // Don't show node status if we're already receiving token stream
-            if (!receivedTokens) {
+            // Don't show node status if we're already receiving token stream,
+            // or if the next node is complete_phase (too fast, just flickers)
+            if (!receivedTokens && chunk.custom_data.next_node !== 'complete_phase') {
               flushSync(() => {
                 setNodeStatus(chunk.custom_data);
               });

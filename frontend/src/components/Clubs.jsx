@@ -69,7 +69,10 @@ function Clubs() {
   const [sortBy, setSortBy] = useState('rank');
   const [membershipFilter, setMembershipFilter] = useState('all');
   const [confidenceFilter, setConfidenceFilter] = useState('all');
+  const [roleDropdownOpen, setRoleDropdownOpen] = useState(false);
+  const [selectedRole, setSelectedRole] = useState(null);
   const detailsPanelRef = useRef(null);
+  const roleDropdownRef = useRef(null);
 
   useEffect(() => {
     if (!user) { navigate('/login'); }
@@ -77,7 +80,7 @@ function Clubs() {
 
   // Typing animation
   useEffect(() => {
-    const fullText = 'Clubs';
+    const fullText = 'ClubPath';
     let currentIndex = 0;
     setTypedText('');
     setShowCursor(true);
@@ -100,10 +103,24 @@ function Clubs() {
     return () => { document.body.style.overflow = ''; };
   }, [detailsVisible]);
 
+  // Close role dropdown on click outside
+  useEffect(() => {
+    if (!roleDropdownOpen) return;
+    const handleClickOutside = (e) => {
+      if (roleDropdownRef.current && !roleDropdownRef.current.contains(e.target)) {
+        setRoleDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [roleDropdownOpen]);
+
   const handleSignOut = async () => { await signOut(); navigate('/login'); };
 
   const handleOpenDetails = (activity) => {
     setExpandedActivity(activity);
+    setRoleDropdownOpen(false);
+    setSelectedRole(activity.current_role || null);
     setTimeout(() => setDetailsVisible(true), 10);
   };
 
@@ -329,7 +346,7 @@ function Clubs() {
           <div className="clubs-modal-header">
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', flexWrap: 'wrap' }}>
-                <h5 style={{ margin: 0, fontSize: '18px', fontWeight: 600, color: '#333' }}>{a.display_name}</h5>
+                <h5 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 700, color: '#333' }}>{a.display_name}</h5>
                 <span style={{
                   fontSize: '11px', fontWeight: 600, color: CLUB_GREEN,
                   background: CLUB_GREEN_SUBTLE, padding: '2px 8px', borderRadius: '10px',
@@ -343,6 +360,53 @@ function Clubs() {
                 {a.domain && (
                   <span style={{ fontSize: '11px', color: '#888', background: '#f5f5f5', padding: '1px 8px', borderRadius: '8px' }}>{formatTag(a.domain)}</span>
                 )}
+                {a.owner_type && (
+                  <span style={{ fontSize: '11px', color: '#888', background: '#f5f5f5', padding: '1px 8px', borderRadius: '8px' }}>{formatTag(a.owner_type)}</span>
+                )}
+              </div>
+              {/* Status + role pills */}
+              <div className="clubs-header-pills">
+                <span className={`clubs-status-pill clubs-status-pill--${a.membership_status || 'not_yet_joined'}`}>
+                  <span className={`clubs-status-dot clubs-status-dot--${a.membership_status || 'not_yet_joined'}`} />
+                  {formatMembership(a.membership_status || 'not_yet_joined')}
+                </span>
+                {a.roles_exposed && a.roles_exposed.length > 0 && (
+                  <div className="clubs-role-dropdown" ref={roleDropdownRef}>
+                    <button
+                      className="clubs-role-dropdown-trigger"
+                      onClick={() => setRoleDropdownOpen(!roleDropdownOpen)}
+                    >
+                      <span style={{ color: selectedRole ? '#7b6fa0' : '#999' }}>
+                        {selectedRole ? selectedRole.replace(/_/g, ' ') : 'No role'}
+                      </span>
+                      <svg
+                        width="10" height="10" viewBox="0 0 12 12" fill="none"
+                        style={{ color: '#999', transition: 'transform 0.2s', transform: roleDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}
+                      >
+                        <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
+                    {roleDropdownOpen && (
+                      <div className="clubs-role-dropdown-menu">
+                        <div
+                          className={`clubs-role-dropdown-item ${!selectedRole ? 'active' : ''}`}
+                          onClick={() => { setSelectedRole(null); setRoleDropdownOpen(false); }}
+                        >
+                          No role
+                        </div>
+                        {a.roles_exposed.map(role => (
+                          <div
+                            key={role}
+                            className={`clubs-role-dropdown-item ${selectedRole === role ? 'active' : ''}`}
+                            onClick={() => { setSelectedRole(role); setRoleDropdownOpen(false); }}
+                          >
+                            {role.replace(/_/g, ' ')}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
             <CloseButton onClick={handleCloseDetails} />
@@ -353,14 +417,14 @@ function Clubs() {
             {/* Alignment section */}
             {a.aligned_parameters && a.aligned_parameters.length > 0 && (
               <div className="clubs-alignment-section">
-                <h6 className="clubs-section-title" style={{ color: '#7b6fa0', marginBottom: '8px' }}>Alignment</h6>
-                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                <h6 className="clubs-section-title" style={{ marginBottom: '8px' }}>Alignment</h6>
+                <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                   {a.aligned_parameters.map(param => {
                     const info = ALIGNMENT_ICONS[param] || { label: param };
                     return (
                       <span key={param} className="clubs-alignment-badge">
                         {info.icon && <img src={info.icon} alt="" style={{ width: 22, height: 22 }} />}
-                        <span style={{ fontStyle: 'italic' }}>{info.label}</span>
+                        <span>{info.label}</span>
                       </span>
                     );
                   })}
@@ -378,7 +442,7 @@ function Clubs() {
                       href={a.source_of_truth_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ display: 'flex', alignItems: 'center', color: '#999', transition: 'color 0.15s' }}
+                      style={{ display: 'flex', alignItems: 'center', color: '#999', transition: 'color 0.15s', position: 'relative', top: '-1px' }}
                       onMouseEnter={e => e.currentTarget.style.color = '#666'}
                       onMouseLeave={e => e.currentTarget.style.color = '#999'}
                     >
@@ -388,68 +452,64 @@ function Clubs() {
                     </a>
                   )}
                 </div>
-                <p style={{ fontSize: '13.5px', color: '#555', lineHeight: '1.55', margin: '6px 0 0' }}>
+                <p style={{ fontSize: '14px', color: '#555', lineHeight: '1.6', margin: '6px 0 0' }}>
                   {a.mission_synth}
                 </p>
               </div>
             )}
-            {/* Status + quick facts row */}
-            <div style={{
-              display: 'flex',
-              alignItems: 'flex-start',
-              justifyContent: 'space-between',
-              marginBottom: '25px',
-              flexWrap: 'wrap',
-              gap: '10px',
-              padding: '12px 0px'
-            }}>
-              {/* Left: membership status in green box */}
-              <div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
-                  <span className={`clubs-status-dot clubs-status-dot--${a.membership_status || 'not_yet_joined'}`} />
-                  <span style={{ fontSize: '13px', color: '#444', fontWeight: 500 }}>
-                    {formatMembership(a.membership_status || 'not_yet_joined')}
-                  </span>
-                </div>
-                <div style={{ fontSize: '12px', color: '#888', marginTop: '3px', marginLeft: '15px' }}>
-                  Role: {a.current_role || 'None'}
-                </div>
+
+            {/* Selectivity & Commitment bars */}
+            {(a.selectivity_est || a.time_commitment_est) && (
+              <div className="clubs-modal-section clubs-metrics-section">
+                {a.selectivity_est && (() => {
+                  const raw = (a.selectivity_est || '').toLowerCase();
+                  const level = raw.includes('high') ? 'high' : raw.includes('low') ? 'low' : 'medium';
+                  const config = { low: { pct: 25, color: '#4caf50', label: 'Low' }, medium: { pct: 55, color: '#ff9800', label: 'Medium' }, high: { pct: 85, color: '#f44336', label: 'High' } };
+                  const c = config[level];
+                  return (
+                    <div className="clubs-metric-row">
+                      <div className="clubs-metric-header">
+                        <span className="clubs-metric-label">Selectivity</span>
+                        <span className={`clubs-metric-badge clubs-metric-badge--${level}`}>{c.label}</span>
+                      </div>
+                      <div className="clubs-bar-bg">
+                        <div className="clubs-bar-fill" style={{ width: `${c.pct}%`, backgroundColor: c.color }} />
+                      </div>
+                    </div>
+                  );
+                })()}
+                {a.time_commitment_est && (() => {
+                  const raw = (a.time_commitment_est || '').toLowerCase();
+                  const level = raw.includes('high') ? 'high' : raw.includes('low') ? 'low' : 'medium';
+                  const config = { low: { pct: 25, color: '#4caf50', label: 'Low' }, medium: { pct: 55, color: '#ff9800', label: 'Medium' }, high: { pct: 85, color: '#f44336', label: 'High' } };
+                  const c = config[level];
+                  return (
+                    <div className="clubs-metric-row">
+                      <div className="clubs-metric-header">
+                        <span className="clubs-metric-label">Commitment</span>
+                        <span className={`clubs-metric-badge clubs-metric-badge--${level}`}>{c.label}</span>
+                      </div>
+                      <div className="clubs-bar-bg">
+                        <div className="clubs-bar-fill" style={{ width: `${c.pct}%`, backgroundColor: c.color }} />
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
-              {/* Right: quick facts */}
-              {(a.owner_type || a.selectivity_est || a.time_commitment_est) && (
-                <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                  {a.owner_type && (
-                    <div className="clubs-glance-item">
-                      <span className="clubs-glance-label">Structure</span>
-                      <span className="clubs-glance-value">{formatTag(a.owner_type)}</span>
-                    </div>
-                  )}
-                  {a.selectivity_est && (
-                    <div className="clubs-glance-item">
-                      <span className="clubs-glance-label">Selectivity</span>
-                      <span className="clubs-glance-value">{formatTag(a.selectivity_est)}</span>
-                    </div>
-                  )}
-                  {a.time_commitment_est && (
-                    <div className="clubs-glance-item">
-                      <span className="clubs-glance-label">Commitment</span>
-                      <span className="clubs-glance-value">{formatTag(a.time_commitment_est)}</span>
-                    </div>
-                  )}
-                </div>
-              )}
-            </div>
+            )}
 
             {/* Detail sections */}
             {a.what_you_do_synth && (
               <div className="clubs-modal-section">
                 <h6 className="clubs-section-title">What You Do</h6>
                 <p className="clubs-section-text">{a.what_you_do_synth}</p>
-                <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', marginTop: '10px' }}>
-                  {a.skills_exposed.map(skill => (
-                    <span key={skill} className="clubs-detail-pill">{formatTag(skill)}</span>
-                  ))}
-                </div>
+                {a.skills_exposed && a.skills_exposed.length > 0 && (
+                  <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', marginTop: '10px' }}>
+                    {a.skills_exposed.map(skill => (
+                      <span key={skill} className="clubs-detail-pill">{skill.replace(/_/g, ' ')}</span>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
             {a.who_its_for_synth && (
@@ -459,7 +519,7 @@ function Clubs() {
                 {a.career_alignment && a.career_alignment.length > 0 && (
                   <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap', marginTop: '10px' }}>
                     {a.career_alignment.map(career => (
-                      <span key={career} className="clubs-detail-pill">{formatTag(career)}</span>
+                      <span key={career} className="clubs-detail-pill">{career.replace(/_/g, ' ')}</span>
                     ))}
                   </div>
                 )}
@@ -469,37 +529,6 @@ function Clubs() {
               <div className="clubs-modal-section">
                 <h6 className="clubs-section-title">How to Join</h6>
                 <p className="clubs-section-text">{a.how_to_join_synth}</p>
-              </div>
-            )}
-
-            {/* Available Roles */}
-            {a.roles_exposed && a.roles_exposed.length > 0 && (
-              <div className="clubs-modal-section">
-                <h6 className="clubs-section-title">Available Roles</h6>
-                <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
-                  {a.roles_exposed.map(role => (
-                    <span key={role} className="clubs-role-pill">{formatTag(role)}</span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Subtags */}
-            {a.subtags && a.subtags.length > 0 && (
-              <div className="clubs-modal-section">
-                <h6 className="clubs-section-title">Other Tags</h6>
-                <div style={{ display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
-                  {a.subtags.map(tag => (
-                    <span key={tag} className="clubs-detail-pill">{formatTag(tag)}</span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Data confidence — bottom */}
-            {a.data_confidence && (
-              <div style={{ fontSize: '11px', color: '#bbb', textAlign: 'right', marginTop: '20px' }}>
-                Data confidence: {a.data_confidence}
               </div>
             )}
           </div>
@@ -587,7 +616,7 @@ function Clubs() {
           position: fixed;
           top: 50%; left: 50%;
           transform: translate(-50%, -50%) scale(0.95);
-          width: 560px;
+          width: 580px;
           max-width: 90vw;
           max-height: 85vh;
           background: white;
@@ -611,7 +640,7 @@ function Clubs() {
           display: flex;
           justify-content: space-between;
           align-items: flex-start;
-          padding: 22px 24px 16px;
+          padding: 25px 25px 20px;
           border-bottom: 1px solid #f0f0f0;
           flex-shrink: 0;
           gap: 16px;
@@ -620,7 +649,7 @@ function Clubs() {
         .clubs-modal-content {
           flex: 1;
           overflow-y: auto;
-          padding: 16px 24px 24px;
+          padding: 0px 24px 24px;
           scrollbar-width: none;
         }
         .clubs-modal-content::-webkit-scrollbar {
@@ -628,23 +657,28 @@ function Clubs() {
         }
 
         .clubs-modal-section {
-          margin-top: 8px;
-          margin-bottom: 25px;
+          margin-bottom: 20px;
+          padding: 16px 0;
+          border-bottom: 1px solid #f5f5f5;
+        }
+        .clubs-modal-section:last-child {
+          border-bottom: none;
+          margin-bottom: 0;
         }
 
         .clubs-section-title {
-          font-size: 0.7rem;
+          font-size: 0.9rem;
           font-weight: 600;
-          color: #999;
-          margin-bottom: 6px;
+          color: #444;
+          margin-bottom: 10px;
           text-transform: uppercase;
           letter-spacing: 0.5px;
         }
 
         .clubs-section-text {
-          font-size: 13px;
+          font-size: 14px;
           color: #555;
-          line-height: 1.5;
+          line-height: 1.6;
           margin: 0;
         }
 
@@ -659,23 +693,23 @@ function Clubs() {
         }
 
         .clubs-alignment-section {
-          background: linear-gradient(135deg, rgb(239 232 249), rgba(107, 143, 199, 0.06));
-          border-radius: 10px;
-          padding: 12px 14px;
-          margin-bottom: 16px;
+          background: linear-gradient(135deg, rgb(239 232 249) 0%, rgba(107, 143, 199, 0.06) 100%);
+          margin: 0 -24px 16px;
+          padding: 16px 24px;
         }
 
         .clubs-alignment-badge {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
+          gap: 3px;
           background: white;
-          padding: 4px 12px;
+          padding: 6px 12px;
           border-radius: 10px;
-          font-size: 12px;
-          color: #7b6fa0;
+          font-size: 13px;
           font-weight: 500;
-          box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+          font-style: italic;
+          color: #555;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .clubs-status-dot {
@@ -690,74 +724,146 @@ function Clubs() {
         .clubs-status-dot--inactive_member { background: #b0b0b0; }
         .clubs-status-dot--left { background: #c85046; }
 
-        .clubs-role-pill {
-          font-size: 11px;
-          color: #7b6fa0;
-          background: rgba(138, 107, 193, 0.10);
+        .clubs-header-pills {
+          display: flex;
+          gap: 8px;
+          flex-wrap: wrap;
+          margin-top: 8px;
+          align-items: center;
+        }
+
+        .clubs-status-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          font-size: 12px;
+          font-weight: 500;
           padding: 3px 10px;
           border-radius: 10px;
-          font-weight: 500;
-          white-space: nowrap;
+          cursor: default;
         }
 
-        .clubs-glance-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 10px 20px;
+        .clubs-status-pill--not_yet_joined { color: #888; background: rgba(0,0,0,0.04); }
+        .clubs-status-pill--joining { color: #9a7b1a; background: rgba(232, 167, 53, 0.12); }
+        .clubs-status-pill--active_member { color: #2e7d32; background: rgba(76, 175, 80, 0.12); }
+        .clubs-status-pill--inactive_member { color: #888; background: rgba(0,0,0,0.04); }
+        .clubs-status-pill--left { color: #c85046; background: rgba(200, 80, 70, 0.08); }
+
+        .clubs-role-dropdown {
+          position: relative;
         }
 
-        .clubs-glance-item {
-          display: flex;
-          flex-direction: column;
-          gap: 1px;
-        }
-
-        .clubs-glance-label {
-          font-size: 10px;
-          font-weight: 600;
-          color: #999;
-          text-transform: uppercase;
-          letter-spacing: 0.4px;
-        }
-
-        .clubs-glance-value {
-          font-size: 13px;
-          color: #444;
-          font-weight: 500;
-        }
-
-        .clubs-mini-tiles {
-          display: flex;                                                                                                                                           
-          flex-direction: column; 
-          gap: 10px;
-          margin-bottom: 16px;
-        }
-
-        .clubs-mini-tile {
-          background: #fafbfd;
-          border: 1px solid #f0f0f0;
-          border-radius: 8px;
-          padding: 12px;
-        }
-
-        .clubs-mini-tile-label {
-          font-size: 10px;
-          font-weight: 600;
-          color: #999;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          margin-bottom: 4px;
-        }
-
-        .clubs-mini-tile-text {
+        .clubs-role-dropdown-trigger {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
           font-size: 12px;
-          color: #555;
-          line-height: 1.45;
-          display: -webkit-box;
-          -webkit-line-clamp: 5;
-          -webkit-box-orient: vertical;
+          font-weight: 500;
+          font-family: 'Lora', serif;
+          padding: 3px 10px;
+          border-radius: 10px;
+          border: 1px solid rgba(138, 107, 193, 0.2);
+          background: rgba(138, 107, 193, 0.06);
+          cursor: pointer;
+          transition: all 0.15s;
+        }
+
+        .clubs-role-dropdown-trigger:hover {
+          border-color: rgba(138, 107, 193, 0.4);
+          background: rgba(138, 107, 193, 0.10);
+        }
+
+        .clubs-role-dropdown-menu {
+          position: absolute;
+          top: calc(100% + 4px);
+          left: 0;
+          min-width: 160px;
+          background: white;
+          border-radius: 8px;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+          border: 1px solid #eee;
+          z-index: 10;
           overflow: hidden;
         }
+
+        .clubs-role-dropdown-item {
+          padding: 7px 12px;
+          font-size: 12px;
+          color: #555;
+          cursor: pointer;
+          transition: background 0.1s;
+        }
+
+        .clubs-role-dropdown-item:hover {
+          background: rgba(138, 107, 193, 0.08);
+        }
+
+        .clubs-role-dropdown-item.active {
+          color: #7b6fa0;
+          font-weight: 600;
+          background: rgba(138, 107, 193, 0.06);
+        }
+
+        .clubs-metrics-section {
+          padding-top: 12px;
+        }
+
+        .clubs-metric-row {
+          margin-bottom: 12px;
+        }
+
+        .clubs-metric-row:last-of-type {
+          margin-bottom: 8px;
+        }
+
+        .clubs-metric-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 6px;
+        }
+
+        .clubs-metric-label {
+          font-size: 13px;
+          color: #666;
+        }
+
+        .clubs-metric-badge {
+          padding: 2px 10px;
+          border-radius: 12px;
+          font-size: 11px;
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+
+        .clubs-metric-badge--low {
+          background: rgba(76, 175, 80, 0.15);
+          color: #2e7d32;
+        }
+
+        .clubs-metric-badge--medium {
+          background: rgba(255, 152, 0, 0.15);
+          color: #e65100;
+        }
+
+        .clubs-metric-badge--high {
+          background: rgba(244, 67, 54, 0.15);
+          color: #c62828;
+        }
+
+        .clubs-bar-bg {
+          height: 8px;
+          background: #e8e8e8;
+          border-radius: 4px;
+          overflow: hidden;
+        }
+
+        .clubs-bar-fill {
+          height: 100%;
+          border-radius: 4px;
+          transition: width 0.4s ease-out;
+        }
+
       `}</style>
 
       <ChatWindow
